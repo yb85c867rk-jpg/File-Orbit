@@ -1,0 +1,46 @@
+{
+  "change": "r124 Open browser populated-list focus correction",
+  "status": "IMPLEMENTED - relevant 19/19 and full 1083 tests passing",
+  "application": {
+    "url": "http://127.0.0.1:8099/tests/harness/m5-exploration/",
+    "indexSha256": "7F9B430AB1021F258C72194B0B2DD3536E9966852F10BE6A33741C0F61413BDB",
+    "mainSha256": "BA2D68EABED46312C0B365982E6D8C54950D520A9B1F1041A3A3E6DBA5DEBB0D",
+    "browserModuleSha256": "26F10678E817497F24E14916B61D9EADEA705610FE1772A2D41009FDD43F723D"
+  },
+  "defect": "allControls() used Choose, Refresh, Open elsewhere, Close, map rows instead of actual DOM order Choose, Refresh, map rows, Open elsewhere, Close.",
+  "correction": {
+    "controls": "card.querySelectorAll('button') actual DOM order",
+    "filters": [
+      "hidden",
+      "disabled",
+      "disconnected"
+    ],
+    "tabCycle": "explicit next/previous across filtered actual-order controls",
+    "focusPreservation": "matching row, else first row, else Refresh/Choose after list replacement",
+    "nativeKeyboard": "NOT RUN - headless harness"
+  },
+  "tests": {
+    "relevant": "19/19 passed",
+    "fullEngine": "1083 tests, 1082 passed, 1 skipped, 0 failed",
+    "populatedFocus": [
+      "Shift+Tab first wraps to Close",
+      "Tab Close wraps to first",
+      "last map row reaches footer",
+      "focus usable after list replacement",
+      "empty/unsupported states"
+    ]
+  },
+  "userReportedPcAcceptance": {
+    "status": "USER REPORTED PASS",
+    "independentlyVerified": false,
+    "note": "Not native keyboard verification."
+  },
+  "scope": "No automatic-save or Settings cleanup work started.",
+  "limitations": [
+    "Native keyboard/picker acceptance not run.",
+    "Preflight-to-write race; empty/partial leftovers; no automatic cleanup.",
+    "Stale Open Orbit controller selection may remain.",
+    "No persisted handle, watching, recursion, rename/delete, or sync.",
+    "No atomic/exclusive creation, compare-and-write, rollback, or crash durability claim."
+  ]
+}

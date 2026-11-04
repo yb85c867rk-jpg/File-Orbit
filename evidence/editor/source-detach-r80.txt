@@ -1,0 +1,37 @@
+﻿FileOrbit native file-read failure investigation r80
+
+Confirmed source-backed attachment defect:
+- decodeBackup() validated source slices with sha256, then retained the raw blob.slice(...) for each attachment.
+- Runtime registry adopted those slices, which could remain backed by the opened .fileorbit File.
+- Overwriting the same handle could invalidate previously acquired File/slice reads; later encoding failed while reading an existing attachment.
+- The new PDF itself and viewer were not the cause.
+
+Correction:
+- decodeBackup reads each validated attachment range into an ArrayBuffer and constructs a new detached Blob before returning/adoption.
+- Bounded diagnostics:
+  - decode: attachment-read-failed includes attachment originalName/id, error name/message (no bytes/content).
+  - encode: attachment-read-failed includes originalName/runtime id, error name/message.
+- Validation/hashes/metadata/IDs/cancellation/limits unchanged. Save still completes only after write+close.
+
+Regressions:
+Unit (backup.test, now 11):
+- Open attachment-bearing package from invalidatable source, invalidate source after decode, decoded attachment bytes still readable and equal payload.
+- encode read failure identifies doc.pdf/att_runtime/NotReadableError.
+- decode read failure identifies attachment stage, file/id, NotReadableError.
+
+Actual main-entry P1B_SOURCE_RELOCK (legacy .fileorbit source):
+- Open legacy.fileorbit containing import.pdf from invalidatable source.
+- Existing import.pdf readable exact bytes.
+- Edit Folder + Save same legacy.fileorbit handle; write/close succeeds; source invalidated on overwrite.
+- Existing import.pdf still readable exact bytes after overwrite.
+- Add Data added.pdf, form Save same handle; succeeds, both attachments exact.
+- Decode written package: import.pdf and added.pdf exact bytes.
+- Save As new-copy.map; decode both attachment bytes exact; no IDB substitutes.
+- This fixture throws NotReadableError for old source slices after invalidate.
+
+Results: P1b69/69, backup11+adapter3=14/14, full833/833. Native browser NOT RUN.
+
+Limitations:
+- Native browser reproduction cannot be rerun here; controlled source invalidation demonstrates the mechanism but does not conclusively certify the user's native browser failure is resolved.
+- The failing attachment diagnostic is provided; no byte/content logging.
+- Recovery conversion pending.

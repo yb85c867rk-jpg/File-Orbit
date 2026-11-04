@@ -1,0 +1,35 @@
+﻿FileOrbit P1b Open recovery-result correction (r42)
+
+Defect:
+- recover callback called recoverAuthoritativeSession(old.session) but did not return it.
+- Shared installer requires recover(...) === true. Successful recovery was treated as failure, causing outer restoreSuspendedMap() and an extra resize draw/labels/hits installation.
+
+Correction:
+- Recovery result is returned to installCandidateEnvironment.
+- Successful recovery keeps its installed frame, labels, hit snapshot, link readiness, camera/framing, selection/focus/details.
+- Successful terminal path clears suspension without calling restoreSuspendedMap and releases creation ownership once.
+- Failed recovery still sets a separate recovery error; interaction remains inert; no fallback resize redraw.
+
+Actual main-entry frame counters (test hooks):
+- Candidate label failure:
+  open-saved-map draw=1, labels=1, installHit=1
+  recovery draw=1, labels=1, installHit=1
+  resize draw/labels/installHit=0
+- Candidate hit failure:
+  open-saved-map draw=1, installHit=1
+  recovery draw=1, labels=1, installHit=1
+  resize draw/labels/installHit=0
+
+Assertions:
+- Previous structural root, revision, camera, framing, focus, selection, details, durable id and guard state preserved.
+- Recovery scene labels/hits match previous map.
+- Subsequent restored filename viewer activation works.
+- Subsequent wheel navigation changes camera.
+- No duplicate resize installation; ownership released once.
+- Real recovery failure still reports original + separate recovery failure and remains creation-suspended/inert.
+
+Executed:
+- Persistence: 31/31.
+- P1b main-entry: 13/13.
+- Full tests/engine: 749/749.
+- Native browser: NOT RUN.

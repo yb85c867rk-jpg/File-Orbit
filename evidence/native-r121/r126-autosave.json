@@ -1,0 +1,53 @@
+{
+  "revision": "r126",
+  "change": "automatic persistence R1/R2 corrections",
+  "status": "CORRECTED - focused 106/106, R1/R2 4/4, full 1087 tests passing",
+  "application": {
+    "url": "http://127.0.0.1:8099/tests/harness/m5-exploration/",
+    "mainSha256": "D115421326B53613951A89CDD8459317249D31ECCB3219E822ADAA73FE0D9EDB",
+    "indexSha256": "B46804A24AF62DB60C7741572459137A28301F6D8066F9B7E3FA42CF4005FE91"
+  },
+  "r1": {
+    "defect": "temporary editor blocking discarded pending persistence",
+    "fix": "retain temporary-blocked requests; reconcile revision; resume on editor/guard release; omit unsubmitted drafts",
+    "tests": [
+      "deferred close -> Redo -> editor open -> earlier close -> Cancel",
+      "explicit editor Save coordination"
+    ],
+    "markers": [
+      "AUTO_EDITOR_R1_COMPLETE",
+      "AUTO_EDITOR_R1_WATCHDOG"
+    ]
+  },
+  "r2": {
+    "defect": "conflict Cancel removed actionable feedback",
+    "fix": "preserve blocked failure and bound Retry/Save As until success or invalidation",
+    "tests": [
+      "Retry -> Cancel keeps feedback",
+      "repeated Cancel/no writes",
+      "mutation while paused",
+      "later Retry/Overwrite resolves",
+      "actual replacement invalidates actions"
+    ],
+    "markers": [
+      "AUTO_CONFLICT_R2_COMPLETE",
+      "AUTO_CONFLICT_R2_WATCHDOG"
+    ]
+  },
+  "verification": {
+    "r1_r2": "4/4 passed",
+    "focusedRegression": "106/106 passed",
+    "fullEngine": "1087 tests, 1086 passed, 1 skipped, 0 failed",
+    "native": "NOT RUN",
+    "syntheticOnly": true
+  },
+  "unchanged": [
+    "theme-only Settings",
+    "integrated Open browser"
+  ],
+  "limitations": [
+    "Synthetic main-entry tests are not native filesystem evidence",
+    "no native picker/write/keyboard verification",
+    "no cross-platform acceptance"
+  ]
+}

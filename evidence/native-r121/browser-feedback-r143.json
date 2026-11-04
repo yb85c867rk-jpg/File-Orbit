@@ -1,0 +1,33 @@
+{
+  "desktop": {
+    "documentHidden": true,
+    "documentAria": "true",
+    "documentDisplay": "none",
+    "documentRect": {
+      "w": 0,
+      "h": 0
+    },
+    "saveHidden": true,
+    "saveRect": {
+      "w": 0,
+      "h": 0
+    },
+    "hostRect": {
+      "w": 0,
+      "h": 0
+    },
+    "shellText": "",
+    "shellEmpty": true,
+    "title": "FileOrbit"
+  },
+  "narrow": {
+    "documentHidden": true,
+    "documentDisplay": "none",
+    "hostRect": {
+      "w": 0,
+      "h": 0
+    },
+    "overflow": false
+  },
+  "capturedAt": "2026-11-01T11:10:57.124Z"
+}

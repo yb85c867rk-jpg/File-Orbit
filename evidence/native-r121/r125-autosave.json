@@ -1,0 +1,78 @@
+{
+  "slice": 6,
+  "change": "r125 automatic persistence and Settings simplification",
+  "status": "IMPLEMENTED - focused 139/139 and full 1087 tests passing",
+  "application": {
+    "url": "http://127.0.0.1:8099/tests/harness/m5-exploration/",
+    "indexSha256": "B46804A24AF62DB60C7741572459137A28301F6D8066F9B7E3FA42CF4005FE91",
+    "mainSha256": "8A20BCF175DD3AE36B6CD32D8FCBC7541F5254B33AB8FC2DC330EB0632F72CBE"
+  },
+  "automaticPersistence": {
+    "triggers": [
+      "successful reparent",
+      "successful undo",
+      "successful redo"
+    ],
+    "nonTriggers": [
+      "camera pan",
+      "selection/navigation",
+      "zoom/resize",
+      "rejected/self/no-op drop",
+      "failed history replay",
+      "unsubmitted editor draft"
+    ],
+    "serialized": true,
+    "coalesced": true,
+    "savedRevision": "captured revision actually written",
+    "failureFeedback": [
+      "Retry",
+      "Save As"
+    ],
+    "automaticPicker": false,
+    "automaticDownload": false,
+    "conflictDialogOnAutomatic": false,
+    "conflictCancelLoops": false
+  },
+  "settings": {
+    "visible": [
+      "Theme"
+    ],
+    "removed": [
+      "Save changes",
+      "Previous local maps",
+      "Fit graph",
+      "Storage & backup help"
+    ],
+    "feedbackArea": "fixed bottom document/save feedback; no layout shift",
+    "preserved": [
+      "primary Save As",
+      "integrated Open",
+      "Orbit list/Refresh/Close/Add",
+      "Fit internals",
+      "diagnostics",
+      "recovery",
+      "legacy records"
+    ]
+  },
+  "verification": {
+    "focused": "139/139 passed",
+    "fullEngine": "1087 tests, 1086 passed, 1 skipped, 0 failed",
+    "browser": [
+      "browser-settings-r125.png",
+      "browser-settings-r125.json"
+    ],
+    "native": "NOT RUN"
+  },
+  "userReportedPcAcceptance": {
+    "status": "USER REPORTED PASS",
+    "independentlyVerified": false,
+    "note": "Not native or cross-platform acceptance."
+  },
+  "limitations": [
+    "No independent native picker/write/keyboard verification.",
+    "Preflight-to-write race; empty/partial leftovers; no automatic cleanup.",
+    "Stale Open Orbit controller selection may remain.",
+    "No persisted handle, watching, recursion, rename/delete, or sync.",
+    "No atomic/exclusive creation, compare-and-write, rollback, or crash durability claim."
+  ]
+}

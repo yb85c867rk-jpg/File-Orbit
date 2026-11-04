@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>M4 Static Labels</title>
+  <style>
+    :root { color-scheme: dark; }
+    body { margin: 0; font: 14px/1.4 system-ui, sans-serif; background: #10131a; color: #d9deea; }
+    main { max-width: 1100px; margin: 24px auto; padding: 0 16px; }
+    h1 { font-size: 20px; font-weight: 600; }
+    .toolbar { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin: 12px 0; }
+    button, select { background: #1d2635; color: inherit; border: 1px solid #39465c; border-radius: 6px; padding: 6px 10px; }
+    #graph-host {
+      position: relative; width: 100%; height: min(68vh, 640px); min-height: 280px;
+      border: 1px solid #39465c; background: #0b0e14; overflow: hidden;
+    }
+    #graph-host canvas { position: absolute; left: 0; top: 0; }
+    #status { white-space: pre-wrap; background: #151b25; border: 1px solid #2b3648; padding: 12px; border-radius: 6px; max-height: 420px; overflow: auto; }
+    .muted { color: #8f9bb0; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>M4 Static Labels and File Icons</h1>
+  <p class="muted">Static labels/icons only. No clicks, opening, focus, search, or previews.</p>
+  <div class="toolbar">
+    <label>Fixture <select id="fixture"><option value="f20">F20</option><option value="f200">F200</option></select></label>
+    <label>Phase <select id="phase"><option value="current">current</option><option value="start">start</option><option value="end">end</option></select></label>
+    <label>DPR <select id="dpr-source"><option value="actual">actual</option><option value="1">synthetic 1</option><option value="1.25">synthetic 1.25</option><option value="2">synthetic 2</option><option value="3">synthetic 3</option></select></label>
+    <button id="resize" type="button">Resize</button>
+    <button id="recreate" type="button">Recreate</button>
+    <button id="destroy" type="button">Destroy</button>
+  </div>
+  <div id="graph-host"></div>
+  <h2 style="font-size:16px;margin-top:18px;">Machine-readable status</h2>
+  <pre id="status"></pre>
+</main>
+<script type="module" src="./main.mjs"></script>
+</body>
+</html>

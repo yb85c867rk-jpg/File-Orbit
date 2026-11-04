@@ -1,0 +1,15 @@
+﻿{
+  "revision": "r151",
+  "baseline": {"r150Sha256": "926EE9AE123100543C6882E9AD9EE44685F00C1627E5D188EB91C55467278063"},
+  "os": "Microsoft Windows NT 10.0.26300.0",
+  "browser": "headed Google Chrome 156.0.8078.76",
+  "profile": ".browser-prof-r151-headed",
+  "origin": "http://127.0.0.1:8099",
+  "nativeSelection": {"files": 299, "folders": 0, "candidateTotal": 300, "status": "0 folders, 299 files, 6171 bytes. Review, then choose Create Map."},
+  "nativeCommit": "NOT RUN",
+  "nativeSaveDialogReached": true,
+  "nativeFileWritten": false,
+  "focused": "12/12",
+  "fullSuite": "r149 serial 1119/1118/1 retained; not rerun",
+  "readiness": "NOT ACCEPTED; native commit/open/save/cancel/conflict/301/restart NOT RUN"
+}

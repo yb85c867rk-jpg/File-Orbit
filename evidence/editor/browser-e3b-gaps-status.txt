@@ -1,0 +1,5 @@
+﻿FileOrbit E3-B gap-fix browser verification: NOT RUN.
+No browser executable/automation was available without installing dependencies.
+Node integration tests cover missing-attachment rejection before frames, actual Add post-view replay,
+candidate 301-node rejection, moved-subtree mismatch, invalid indices, and subtree-ID collision.
+Native browser replay was not executed.

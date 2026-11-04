@@ -1,0 +1,29 @@
+﻿FileOrbit document destination ownership corrections r69
+
+Fixed:
+- Save and continue now uses the destination-aware document save for active file documents, with replacementGuard token ownership; waits for writable close; no IndexedDB substitution. Handoff download keeps replacement pending and reports unconfirmed saving.
+- Document identity is established atomically inside the candidate install commit: Open File gets selected handle/baseline; Import Backup/Create Map clear inherited handle; failed install leaves prior identity intact.
+- Editor form Save/Retry for active fallback documents no longer advances clean state on download handoff; applied changes stay retryable.
+- Restored missing persisted.ok branch after routing changes.
+
+Destination matrix:
+- Open File: selected handle + clean baseline on commit.
+- Import Backup: no handle, unsaved restored document.
+- Create Map: no handle, unsaved new document.
+- Previous local maps: no inherited file handle.
+- Failed/cancelled Open/Import: prior document identity preserved.
+- Save As: destination switched only after write+close.
+
+Tests:
+- P1B_DOCUMENT_REPLACEMENT: dirty writable A -> Open B -> Save and continue writes A once/closes before B; zero IndexedDB saves; B becomes active.
+- P1B_DOCUMENT_IMPORT: Open writable A -> Import B -> B has no handle, Restored/unsaved; Save As writes new.map, A untouched.
+- all prior document/.map/legacy/PDF/P3 tests.
+
+Results: P1b50/50, backup8/8, adapter3/3, full811/811. Native NOT RUN.
+
+Remaining / NOT RUN:
+- Create Map/new-map toolbar Save still uses legacy IndexedDB; Save As creates .map. R3 not complete.
+- Save As cancel/failure only adapter-level, not integration.
+- fallback Save-and-continue prompt behavior not directly tested.
+- deferred document save vs replacement/destroy not tested.
+- recovery conversion pending; native browser/mobile.

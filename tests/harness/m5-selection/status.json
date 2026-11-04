@@ -1,0 +1,12 @@
+{
+  "harness": "m5-selection",
+  "browserVerification": "NOT_RUN",
+  "note": "Mouse-only selection. Runtime status is exposed as window.__M5_SELECTION_STATUS__.",
+  "fixtures": ["f20", "f200"],
+  "phases": ["current", "start", "end"],
+  "syntheticDprCases": [1, 1.25, 2, 3],
+  "hitPadding": 0,
+  "measurement": "canvas CSS coordinates; no DPR multiplier",
+  "numericalProbe": "separate from user-click event status",
+  "observed": null
+}

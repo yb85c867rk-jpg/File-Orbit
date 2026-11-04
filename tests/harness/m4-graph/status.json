@@ -1,0 +1,10 @@
+{
+  "harness": "m4-graph",
+  "browserVerification": "NOT_RUN",
+  "note": "Static node/hyperline calibration harness. Runtime status is exposed as window.__M4_GRAPH_STATUS__.",
+  "fixtures": ["f20", "f200"],
+  "phases": ["current", "start", "end"],
+  "syntheticDprCases": [1, 1.25, 2, 3],
+  "expected": { "f20": { "nodes": 20, "edges": 19 }, "f200": { "nodes": 200, "edges": 199 } },
+  "observed": null
+}

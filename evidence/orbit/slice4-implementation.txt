@@ -1,0 +1,26 @@
+﻿FileOrbit Orbit Slice 4 — navigation/list UI and protected writable Open
+
+Status: implemented in the working tree. Orbit Create/Create Map/Add/rename/delete/recursion/watching/persisted handles/sync remain deferred.
+
+Production call flow:
+1. Left-rail Orbit action/Open calls orbitState.openDirectory(); OrbitDirectoryAdapter invokes showDirectoryPicker from the user click.
+2. OrbitStateController enumerates top-level .map metadata; OrbitPanel renders name/status/list/current marker and Open/Refresh/Close controls.
+3. Selecting a list entry reads the exact File, creates an opened-content baseline from those bytes, and calls importBackupFile with origin orbit, writable handle, document identity, openedBaseline and orbitToken.
+4. importBackupFile/decodeBackup validates package content, adopts detached attachments, and reuses unsaved-map/editor guards.
+5. installCreatedMap installs the authoritative tree/IDs/metadata through installCandidateEnvironment and commits activeDocument; baseline is bound at commit and post-install verification cannot replace the opened digest.
+6. saveDocument (toolbar, editor Save, Retry, replacement Save-and-continue) calls protectOrbitOverwrite before encode and again before write.
+7. Conflict decisions: known unchanged proceeds; changed content requires Overwrite/Save a Copy/Cancel; unverifiable content disables Overwrite; approvals are content- and destination-bound. Save a Copy invokes showSaveFilePicker from the conflict dialog click callback.
+8. After write/close, createConfirmedWriteBaseline reads the actual destination and publishes only while the save/document owner is current. A baseline read failure retains savedRevision/clean state and marks the baseline unknown/observed.
+
+Automated evidence:
+- Focused Orbit + document-adapter/backup compatibility after r117 corrections: 139/139 passed.
+- New Orbit tests: 121 (names6, adapter37, state33, baseline27, dialog10, panel5, main1, r1-ownership1, r2-save-copy1).
+- Full engine suite: 1065 tests, 1064 passed, 1 skipped, 0 failed (exit 0).
+- Native File System Access verification: NOT RUN.
+
+Known limitations:
+- Preflight-to-write remains non-atomic; no compare-and-write/rollback claim.
+- Size/lastModified precheck can miss same-size/time changes; SHA-256 is stronger but not atomic.
+- Native directory/file pickers, permission revocation, and pagehide behavior are not verified.
+- Orbit Create/Add, rename/delete, recursion, watching, persisted handles, manifests/indexes, sync are deferred.
+- Save-and-continue and Save As existing arbitrary destinations share the normal save path but are not separately native-verified.

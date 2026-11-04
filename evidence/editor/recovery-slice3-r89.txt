@@ -1,0 +1,32 @@
+﻿FileOrbit Recovery Slice 3 implementation r89
+
+Production flow:
+1. Startup: existing production open path lists recovery candidates once after stable empty state. Dialog appears only if candidates exist; Create/Open/import/editor start cancels pending discovery. Later/Escape close without writes.
+2. Recover: claim exact source workspace/generation/checkpoint ID -> load and revalidate complete checkpoint/tree/metadata/hashes/detached bytes -> create independent child with exact forkedFrom identity -> reconstruct runtime registry via reconstructSavedMapRuntime -> install through installCandidateEnvironment -> publish only after authoritative commit.
+3. Adopt: scheduler.adoptWorkspace(child) validates control/token/state, invalidates outgoing ownership, adopts durable controlVersion, keeps session/dataset guards. Subsequent edits/Undo/Redo/Save use child.
+4. Durability: child baseline checkpoint is secured before repository.supersedeRecoverySource(source exact ID/generation, child exact checkpoint). Failures preserve source and live installed work; claim is released. Source advancement rejects supersession without deleting newer source.
+5. Discard: claim exact selected candidate, then discard exact workspace/token/checkpoint/claim; revalidate and refresh on claimed/advanced. Later performs no writes.
+
+Responsive/accessible dialog:
+- title/body/actions text; candidate names/metadata as text only; radio exact selection; name/date/folder/file counts; initial focus Later; focus trap; Escape closes; status aria-live; focus restoration; Discard warning describes selected recovery copy only.
+
+Executed results:
+- recovery-slice3-main actual main-entry: 15/15 passed (empty, dialog, Later, Escape, single/multi selection, discard isolation, claimed discard, exact recovery, PDF viewer, scheduler child adoption, later edit, confirmed Save, fallback, failed draw/label/hit, failed child checkpoint, destroy, start-Create interruption).
+- recovery-slice2-main actual main-entry: 2/2 passed.
+- P1b legacy actual main-entry: 70/70 passed. Prior reviewer note preserved: one earlier main-entry run was 69/70; the isolated failing scenario and a full rerun passed. No claim that every historical execution passed.
+- recovery-scheduler: 16/16 passed; recovery repository: 31 tests (30 pass, 1 skipped); persistence/upgrade/lifecycle/recovery/scheduler: 90 (89 pass, 1 skipped); codec/document adapter: 18/18; attachment history/retention: 9/9.
+- full tests/engine: 903 tests, 902 passed, 0 failed, 1 skipped, 0 todo.
+- syntax: 7 changed modules passed.
+
+Native acceptance checklist (NOT RUN):
+- PC Chromium/Edge: v1->v2 upgrade, startup dialog, Recover exact bytes, PDF viewer, Save/Save As, restart/relaunch candidate persistence.
+- PC multi-tab: concurrent claim/discard/advance, no duplicate install, no stale source deletion.
+- Mobile/touch profiles: dialog focus/trap, recovery install, Save picker/download fallback.
+- Quota pressure/crash: checkpoint/capacity failures preserve source and live work.
+- Native IndexedDB serialization/quota/upgrade remains unverified. The skipped FakeIndexedDB cross-tab concurrency test remains skipped; it is not counted as native verification.
+
+Remaining limitations:
+- No automatic pruning/Discard all.
+- No cloud/cross-device recovery.
+- Native PC/mobile acceptance not run.
+- Recovery feature is not declared complete from Node/mock evidence.

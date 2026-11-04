@@ -1,0 +1,17 @@
+{
+  "before": {
+    "available": "true",
+    "disabled": null,
+    "label": "Embed"
+  },
+  "dialog": {
+    "open": true,
+    "title": "Embed FileOrbit",
+    "text": "Embed FileOrbit\nClose\n\nLocal read-only preview: open the development host fixture. It embeds the viewer in a real sandboxed iframe with a synthetic snapshot.\n\nExternally usable embed URL: not available. FileOrbit has no map hosting, publishing, stable embed URL, access policy, or sharing service in this build.\n\nSnapshot boundary: local files, IndexedDB, handles, permissions, attachments, and private paths are not exposed. File opening is unavailable in the embedded viewer.\n\nOpen local iframe preview\nCopy embed code — unavailable until hosting exists",
+    "link": "./embed-host.html",
+    "copyDisabled": true,
+    "focused": "Close"
+  },
+  "exceptions": [],
+  "capturedAt": "2026-11-01T20:17:35.330Z"
+}

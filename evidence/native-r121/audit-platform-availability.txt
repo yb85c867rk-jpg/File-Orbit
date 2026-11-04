@@ -1,0 +1,11 @@
+﻿FileOrbit r148 platform availability
+Date: 2026-11-02 (Pacific/Auckland)
+OS: Windows
+Actual browser evidence: headless Chromium 156.0.8078.76 on Windows (CDP 9223)
+ADB: not installed / no device target
+Firefox executable: not found in PATH
+Edge executable: not found in PATH for this audit; no Edge session used
+Android Chrome: NOT RUN (no device/ADB)
+iPhone/iPad Safari: NOT RUN (no device)
+Firefox/Safari native: NOT RUN
+Viewport 390x844 is emulation only, not mobile acceptance.

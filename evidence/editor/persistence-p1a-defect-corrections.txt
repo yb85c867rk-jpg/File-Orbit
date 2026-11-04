@@ -1,0 +1,28 @@
+﻿FileOrbit P1a persistence defect corrections (r37)
+
+1. Authoritative accounting
+- save/remove/repairUsage now read actual mapAttachments rows and validate records.
+- Global usage is the sum of actual stored rows, including orphan rows with no map record.
+- Map summaries are reconciled transactionally from actual rows; target map summary uses proposed saved set.
+- Cap checks use actual total minus actual target rows plus new target bytes.
+- Orphan policy: retained and counted, never silently excluded; no Blob content reads/hashing.
+- Regressions: underreported map/global summaries bypass, overreported summaries, missing usage, count corruption, orphan bytes, remove/repair, injected transaction failure.
+
+2. Load metadata consistency
+- Every attachment-bearing tree node is compared to its document ref and durable row: ID, originalName, size, normalized MIME, semantic classification.
+- Malformed classifications rejected.
+- Legacy attachment-free nodes preserved.
+- Repeated references supported.
+- Map/document identity, stored name, generation, actual node count, per-file and aggregate per-map limits validated.
+- Unused references and unused durable rows rejected.
+
+3. Save-boundary snapshot validation
+- ownSaveSnapshot() copies tree/data/metadata, payload metadata, mapping, and validates actual tree structure/count, exact referenced membership, unused payloads, metadata consistency.
+- Repository calls it synchronously before awaiting open/estimate, preventing caller mutation during pending save preparation.
+- Invalid snapshots write nothing and do not return generation/mapping success.
+
+Verification:
+- Persistence tests: 28/28
+- Full tests/engine: 732/732
+- Native browser verification: NOT RUN
+- Test double models staged transactions/abort/versionchange but not real disk quota, cross-tab serialization, crash durability, eviction.

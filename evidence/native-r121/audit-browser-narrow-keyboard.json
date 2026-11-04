@@ -1,0 +1,54 @@
+{
+  "load": {
+    "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "counts": "20 visible / 20 total"
+  },
+  "search": {
+    "status": "Search highlights 4 folders containing matching results.",
+    "cards": 1
+  },
+  "narrow": {
+    "width": 390,
+    "scrollWidth": 390,
+    "overflow": false,
+    "canvas": {
+      "x": 64,
+      "y": 135,
+      "width": 326,
+      "height": 664,
+      "top": 135,
+      "right": 390,
+      "bottom": 799,
+      "left": 64
+    },
+    "embedVisible": {
+      "x": 228.5,
+      "y": 40,
+      "width": 44,
+      "height": 44,
+      "top": 40,
+      "right": 272.5,
+      "bottom": 84,
+      "left": 228.5
+    },
+    "searchVisible": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0,
+      "top": 0,
+      "right": 0,
+      "bottom": 0,
+      "left": 0
+    }
+  },
+  "dialog": {
+    "open": false,
+    "active": "Close",
+    "afterTab": "Close",
+    "restored": "embed-action",
+    "inert": false
+  },
+  "exceptions": [],
+  "capturedAt": "2026-11-01T21:13:28.936Z"
+}

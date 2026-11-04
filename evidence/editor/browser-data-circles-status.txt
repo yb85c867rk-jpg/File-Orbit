@@ -1,0 +1,5 @@
+﻿FileOrbit data-circle browser verification: NOT RUN.
+No browser executable/automation was available without installing dependencies.
+Node tests cover green radius-4 data circles, scene/hit agreement, rendering/selection rings,
+data-circle click/editor target resolution, labels/palette, transitions, and F20 containment.
+Native browser click/right-click/drag/PDF-open/transition checks were not executed.

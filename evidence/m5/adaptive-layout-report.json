@@ -1,0 +1,616 @@
+﻿{
+  "f20": {
+    "layoutMs": {
+      "baseline": 1.3222000000000023,
+      "experimental": 1.347999999999999
+    },
+    "comparison": {
+      "totalNodes": {
+        "baseline": 20,
+        "experimental": 20
+      },
+      "visible": {
+        "baseline": 20,
+        "experimental": 17
+      },
+      "hidden": {
+        "baseline": 0,
+        "experimental": 3
+      },
+      "newlyHiddenIds": [
+        "n15",
+        "n16",
+        "n17"
+      ],
+      "newlyVisibleIds": [],
+      "visibleOverlap": {
+        "baseline": 0,
+        "experimental": 0
+      },
+      "sameIdsVisibleBoth": {
+        "count": 17,
+        "baselineOverlap": 0,
+        "experimentalOverlap": 0
+      },
+      "fixedSizeDiagnostic": {
+        "radiusCss": 6,
+        "shapeAware": true,
+        "sample": "all nodes in the scene; visibility ignored",
+        "baselineOverlap": 1,
+        "experimentalOverlap": 1,
+        "provenance": "analytical only; actual rendering/hit radii unchanged"
+      },
+      "radiusStats": {
+        "baseline": {
+          "all": {
+            "count": 20,
+            "min": 0.9695944007317587,
+            "max": 4.9914,
+            "mean": 2.589058709871859,
+            "median": 2.3464998919964994,
+            "p90": 4.1594999999999995
+          },
+          "visible": {
+            "count": 20,
+            "min": 0.9695944007317587,
+            "max": 4.9914,
+            "mean": 2.589058709871859,
+            "median": 2.3464998919964994,
+            "p90": 4.1594999999999995
+          }
+        },
+        "experimental": {
+          "all": {
+            "count": 20,
+            "min": 0.11442563508356018,
+            "max": 4,
+            "mean": 1.1998950882208619,
+            "median": 0.7323215538985581,
+            "p90": 2.9902241209978877
+          },
+          "visible": {
+            "count": 17,
+            "min": 0.20024486139623032,
+            "max": 4,
+            "mean": 1.386400331344346,
+            "median": 0.8762420717539889,
+            "p90": 3.899945362929706
+          }
+        }
+      },
+      "bounds": {
+        "baseline": {
+          "minX": 319.82767572105803,
+          "minY": 220.61010095164866,
+          "maxX": 486.0430796488992,
+          "maxY": 386.2503405114388
+        },
+        "experimental": {
+          "minX": 309.51527116825366,
+          "minY": 209.87810053159987,
+          "maxX": 488.5480762120195,
+          "maxY": 398.3309185819119
+        }
+      },
+      "minCenterSeparation": {
+        "baseline": 6.765200999999988,
+        "experimental": 4.04352290449551
+      },
+      "diagnosticLimit": 300
+    },
+    "labelMetrics": "NOT MEASURED (Node report); use m5-adaptive-layout browser harness"
+  },
+  "f200": {
+    "layoutMs": {
+      "baseline": 1.4232000000000014,
+      "experimental": 1.6629000000000005
+    },
+    "comparison": {
+      "totalNodes": {
+        "baseline": 200,
+        "experimental": 200
+      },
+      "visible": {
+        "baseline": 200,
+        "experimental": 181
+      },
+      "hidden": {
+        "baseline": 0,
+        "experimental": 19
+      },
+      "newlyHiddenIds": [
+        "n156",
+        "n161",
+        "n162",
+        "n163",
+        "n168",
+        "n169",
+        "n170",
+        "n175",
+        "n176",
+        "n177",
+        "n182",
+        "n183",
+        "n184",
+        "n189",
+        "n190",
+        "n191",
+        "n196",
+        "n197",
+        "n198"
+      ],
+      "newlyVisibleIds": [],
+      "visibleOverlap": {
+        "baseline": 97,
+        "experimental": 0
+      },
+      "sameIdsVisibleBoth": {
+        "count": 181,
+        "baselineOverlap": 94,
+        "experimentalOverlap": 0
+      },
+      "fixedSizeDiagnostic": {
+        "radiusCss": 6,
+        "shapeAware": true,
+        "sample": "all nodes in the scene; visibility ignored",
+        "baselineOverlap": 449,
+        "experimentalOverlap": 686,
+        "provenance": "analytical only; actual rendering/hit radii unchanged"
+      },
+      "radiusStats": {
+        "baseline": {
+          "all": {
+            "count": 200,
+            "min": 0.9695944007317583,
+            "max": 7.4871,
+            "mean": 2.5689829468364356,
+            "median": 2.4239860018293973,
+            "p90": 3.5559083199899986
+          },
+          "visible": {
+            "count": 200,
+            "min": 0.9695944007317583,
+            "max": 7.4871,
+            "mean": 2.5689829468364356,
+            "median": 2.4239860018293973,
+            "p90": 3.5559083199899986
+          }
+        },
+        "experimental": {
+          "all": {
+            "count": 200,
+            "min": 0.1144256350835593,
+            "max": 5.929041293742143,
+            "mean": 0.9190401817579361,
+            "median": 0.778806872079657,
+            "p90": 1.7163795033889984
+          },
+          "visible": {
+            "count": 181,
+            "min": 0.20024486139622877,
+            "max": 5.929041293742143,
+            "mean": 0.99987109713677,
+            "median": 0.7788068720796586,
+            "p90": 2.002442753953831
+          }
+        }
+      },
+      "bounds": {
+        "baseline": {
+          "minX": 316.43350795352245,
+          "minY": 216.17596634473193,
+          "maxX": 488.7181495189314,
+          "maxY": 387.1475343396432
+        },
+        "experimental": {
+          "minX": 305.03571656882707,
+          "minY": 204.73543279937343,
+          "maxX": 498.74389230508115,
+          "maxY": 395.18567406548254
+        }
+      },
+      "minCenterSeparation": {
+        "baseline": 2.3405980986123724,
+        "experimental": 1.1815318700113033
+      },
+      "diagnosticLimit": 300
+    },
+    "labelMetrics": "NOT MEASURED (Node report); use m5-adaptive-layout browser harness"
+  },
+  "crowdedFolder": {
+    "layoutMs": {
+      "baseline": 0.24049999999999727,
+      "experimental": 0.41160000000000707
+    },
+    "comparison": {
+      "totalNodes": {
+        "baseline": 34,
+        "experimental": 34
+      },
+      "visible": {
+        "baseline": 34,
+        "experimental": 34
+      },
+      "hidden": {
+        "baseline": 0,
+        "experimental": 0
+      },
+      "newlyHiddenIds": [],
+      "newlyVisibleIds": [],
+      "visibleOverlap": {
+        "baseline": 0,
+        "experimental": 0
+      },
+      "sameIdsVisibleBoth": {
+        "count": 34,
+        "baselineOverlap": 0,
+        "experimentalOverlap": 0
+      },
+      "fixedSizeDiagnostic": {
+        "radiusCss": 6,
+        "shapeAware": true,
+        "sample": "all nodes in the scene; visibility ignored",
+        "baselineOverlap": 0,
+        "experimentalOverlap": 23,
+        "provenance": "analytical only; actual rendering/hit radii unchanged"
+      },
+      "radiusStats": {
+        "baseline": {
+          "all": {
+            "count": 34,
+            "min": 0.6656987699999988,
+            "max": 3,
+            "mean": 1.230448372058822,
+            "median": 1.109497949999998,
+            "p90": 2.2196999999999996
+          },
+          "visible": {
+            "count": 34,
+            "min": 0.6656987699999988,
+            "max": 3,
+            "mean": 1.230448372058822,
+            "median": 1.109497949999998,
+            "p90": 2.2196999999999996
+          }
+        },
+        "experimental": {
+          "all": {
+            "count": 34,
+            "min": 0.6770686254344395,
+            "max": 3,
+            "mean": 1.325706980961517,
+            "median": 1.1417811003760194,
+            "p90": 2.4690957062889485
+          },
+          "visible": {
+            "count": 34,
+            "min": 0.6770686254344395,
+            "max": 3,
+            "mean": 1.325706980961517,
+            "median": 1.1417811003760194,
+            "p90": 2.4690957062889485
+          }
+        }
+      },
+      "bounds": {
+        "baseline": {
+          "minX": 310.3631476664452,
+          "minY": 210.9052510202295,
+          "maxX": 488.5921816792991,
+          "maxY": 389.31949795
+        },
+        "experimental": {
+          "minX": 319.0450066081229,
+          "minY": 228.98103472359946,
+          "maxX": 488.57982537037185,
+          "maxY": 389.0806226315471
+        }
+      },
+      "minCenterSeparation": {
+        "baseline": 17.29218389694099,
+        "experimental": 8.052313586930625
+      },
+      "diagnosticLimit": 300
+    },
+    "labelMetrics": "NOT MEASURED (Node report); use m5-adaptive-layout browser harness"
+  },
+  "denseNeighbors": {
+    "layoutMs": {
+      "baseline": 0.37990000000000634,
+      "experimental": 0.873500000000007
+    },
+    "comparison": {
+      "totalNodes": {
+        "baseline": 53,
+        "experimental": 53
+      },
+      "visible": {
+        "baseline": 53,
+        "experimental": 53
+      },
+      "hidden": {
+        "baseline": 0,
+        "experimental": 0
+      },
+      "newlyHiddenIds": [],
+      "newlyVisibleIds": [],
+      "visibleOverlap": {
+        "baseline": 0,
+        "experimental": 0
+      },
+      "sameIdsVisibleBoth": {
+        "count": 53,
+        "baselineOverlap": 0,
+        "experimentalOverlap": 0
+      },
+      "fixedSizeDiagnostic": {
+        "radiusCss": 6,
+        "shapeAware": true,
+        "sample": "all nodes in the scene; visibility ignored",
+        "baselineOverlap": 8,
+        "experimentalOverlap": 4,
+        "provenance": "analytical only; actual rendering/hit radii unchanged"
+      },
+      "radiusStats": {
+        "baseline": {
+          "all": {
+            "count": 53,
+            "min": 0.6656987699999988,
+            "max": 3,
+            "mean": 1.178715217358489,
+            "median": 1.109497949999998,
+            "p90": 1.553297129999998
+          },
+          "visible": {
+            "count": 53,
+            "min": 0.6656987699999988,
+            "max": 3,
+            "mean": 1.178715217358489,
+            "median": 1.109497949999998,
+            "p90": 1.553297129999998
+          }
+        },
+        "experimental": {
+          "all": {
+            "count": 53,
+            "min": 0.6770686254344398,
+            "max": 3,
+            "mean": 1.1591305212492902,
+            "median": 1.1284477090574003,
+            "p90": 1.5798267926803602
+          },
+          "visible": {
+            "count": 53,
+            "min": 0.6770686254344398,
+            "max": 3,
+            "mean": 1.1591305212492902,
+            "median": 1.1284477090574003,
+            "p90": 1.5798267926803602
+          }
+        }
+      },
+      "bounds": {
+        "baseline": {
+          "minX": 311.159433909423,
+          "minY": 211.15943390942297,
+          "maxX": 488.840566090577,
+          "maxY": 388.84056609057706
+        },
+        "experimental": {
+          "minX": 311.2907334444937,
+          "minY": 211.2907334444937,
+          "maxX": 488.7092665555063,
+          "maxY": 388.7092665555063
+        }
+      },
+      "minCenterSeparation": {
+        "baseline": 10.578091555938387,
+        "experimental": 11.51028523496364
+      },
+      "diagnosticLimit": 300
+    },
+    "labelMetrics": "NOT MEASURED (Node report); use m5-adaptive-layout browser harness"
+  },
+  "mixedDeepWide": {
+    "layoutMs": {
+      "baseline": 0.26189999999999714,
+      "experimental": 0.29769999999999186
+    },
+    "comparison": {
+      "totalNodes": {
+        "baseline": 50,
+        "experimental": 50
+      },
+      "visible": {
+        "baseline": 50,
+        "experimental": 48
+      },
+      "hidden": {
+        "baseline": 0,
+        "experimental": 2
+      },
+      "newlyHiddenIds": [
+        "deep-5",
+        "deep-leaf"
+      ],
+      "newlyVisibleIds": [],
+      "visibleOverlap": {
+        "baseline": 3,
+        "experimental": 0
+      },
+      "sameIdsVisibleBoth": {
+        "count": 48,
+        "baselineOverlap": 1,
+        "experimentalOverlap": 0
+      },
+      "fixedSizeDiagnostic": {
+        "radiusCss": 6,
+        "shapeAware": true,
+        "sample": "all nodes in the scene; visibility ignored",
+        "baselineOverlap": 13,
+        "experimentalOverlap": 18,
+        "provenance": "analytical only; actual rendering/hit radii unchanged"
+      },
+      "radiusStats": {
+        "baseline": {
+          "all": {
+            "count": 50,
+            "min": 0.6120043945312498,
+            "max": 4.0425,
+            "mean": 2.3158199707031266,
+            "median": 2.1534375,
+            "p90": 3.465
+          },
+          "visible": {
+            "count": 50,
+            "min": 0.6120043945312498,
+            "max": 4.0425,
+            "mean": 2.3158199707031266,
+            "median": 2.1534375,
+            "p90": 3.465
+          }
+        },
+        "experimental": {
+          "all": {
+            "count": 50,
+            "min": 0.005529216106827217,
+            "max": 3,
+            "mean": 1.2268148756780906,
+            "median": 1.1012913430333846,
+            "p90": 2.1068604318009867
+          },
+          "visible": {
+            "count": 48,
+            "min": 0.3799656019699533,
+            "max": 3,
+            "mean": 1.2762479039759527,
+            "median": 1.2039202467434205,
+            "p90": 2.106860431800987
+          }
+        }
+      },
+      "bounds": {
+        "baseline": {
+          "minX": 331.10112150800495,
+          "minY": 220.90991334222733,
+          "maxX": 488.60104612612145,
+          "maxY": 367.25388525193165
+        },
+        "experimental": {
+          "minX": 315.0437157370868,
+          "minY": 208.08989256029363,
+          "maxX": 491.9244718830881,
+          "maxY": 382.9716923164482
+        }
+      },
+      "minCenterSeparation": {
+        "baseline": 0.7812500000000672,
+        "experimental": 2.396209132396619
+      },
+      "diagnosticLimit": 300
+    },
+    "labelMetrics": "NOT MEASURED (Node report); use m5-adaptive-layout browser harness"
+  },
+  "longLabels": {
+    "layoutMs": {
+      "baseline": 0.10179999999999723,
+      "experimental": 0.48699999999999477
+    },
+    "comparison": {
+      "totalNodes": {
+        "baseline": 11,
+        "experimental": 11
+      },
+      "visible": {
+        "baseline": 11,
+        "experimental": 11
+      },
+      "hidden": {
+        "baseline": 0,
+        "experimental": 0
+      },
+      "newlyHiddenIds": [],
+      "newlyVisibleIds": [],
+      "visibleOverlap": {
+        "baseline": 0,
+        "experimental": 0
+      },
+      "sameIdsVisibleBoth": {
+        "count": 11,
+        "baselineOverlap": 0,
+        "experimentalOverlap": 0
+      },
+      "fixedSizeDiagnostic": {
+        "radiusCss": 6,
+        "shapeAware": true,
+        "sample": "all nodes in the scene; visibility ignored",
+        "baselineOverlap": 0,
+        "experimentalOverlap": 0,
+        "provenance": "analytical only; actual rendering/hit radii unchanged"
+      },
+      "radiusStats": {
+        "baseline": {
+          "all": {
+            "count": 11,
+            "min": 0.6656987699999984,
+            "max": 3,
+            "mean": 1.3621805509090896,
+            "median": 1.109497949999998,
+            "p90": 2.2197
+          },
+          "visible": {
+            "count": 11,
+            "min": 0.6656987699999984,
+            "max": 3,
+            "mean": 1.3621805509090896,
+            "median": 1.109497949999998,
+            "p90": 2.2197
+          }
+        },
+        "experimental": {
+          "all": {
+            "count": 11,
+            "min": 0.6770686254344398,
+            "max": 3,
+            "mean": 1.2874359516534348,
+            "median": 1.1284477090573997,
+            "p90": 1.7441755232987326
+          },
+          "visible": {
+            "count": 11,
+            "min": 0.6770686254344398,
+            "max": 3,
+            "mean": 1.2874359516534348,
+            "median": 1.1284477090573997,
+            "p90": 1.7441755232987326
+          }
+        }
+      },
+      "bounds": {
+        "baseline": {
+          "minX": 311.8002522516829,
+          "minY": 216.020267217771,
+          "maxX": 483.314034012229,
+          "maxY": 386.859823817316
+        },
+        "experimental": {
+          "minX": 317.8005434398524,
+          "minY": 217.3491643562294,
+          "maxX": 482.87652518558207,
+          "maxY": 381.97376701833616
+        }
+      },
+      "minCenterSeparation": {
+        "baseline": 44.18001703590258,
+        "experimental": 37.542029346037424
+      },
+      "diagnosticLimit": 300
+    },
+    "labelMetrics": "NOT MEASURED (Node report); use m5-adaptive-layout browser harness"
+  },
+  "infeasible": {
+    "rejected": true,
+    "code": "experimental-infeasible",
+    "message": "depth and minStep cannot fit inside the unit disk"
+  }
+}

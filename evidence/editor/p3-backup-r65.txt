@@ -1,0 +1,23 @@
+﻿FileOrbit P3 final lifecycle/concurrency regressions r65
+
+Concrete defects found/fixed:
+- destroy() did not clear pendingBackupImport; destroy while awaiting editor/map decision left candidate registry/pending request alive. Added clearPendingBackupImport() on destroy.
+- Repeated editor Discard could call handlePendingIntent(null); added null-safe guard.
+- Installer request/lifecycle separation needed restoration of hadPriorMap/available and Create Map lifecycle; corrected.
+- Failed recovery inert-state publication corrected; link/frame cleared and inert marked on recovery failure.
+- PDF viewer fallback timer cleanup via normal destroy (branch ~2.3s).
+
+Executed four requested variants:
+1. Destroy while awaiting dirty-editor and dirty-map decisions: pending request false, registry released, detached prompt callback cannot commit.
+2. Distinct A/B packages (different root name, B-only PDF bytes): A cancel cannot affect B; B commits once; B root/PDF installed; A absent.
+3. Late failure from cancelled A while B active: A error cannot alter B; B commits; no unhandled rejection.
+4. Repeated dirty-map Save and Discard clicks: one save, one import commit; imported unsaved; Save and Discard duplicate paths deterministic.
+
+Also retained/retested: duplicate editor Discard; same-package overlap; prep failure; recovery success/failure; draw/label/hit; actual Upload dirty editor; PDF Save/reopen exact ID/viewer/bytes/source; P1b 45/45; full 801/801.
+
+Native browser NOT RUN.
+
+Remaining limitations:
+- Native download/picker/mobile/viewer.
+- No native timing/IndexedDB arbitration.
+- Automated P3 scope covered by these tests; no claim of native acceptance.

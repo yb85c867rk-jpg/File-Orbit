@@ -1,0 +1,30 @@
+{
+  "generatedAt": "2026-11-04T15:25:56.588Z",
+  "sources": [
+    {
+      "file": "evidence\\stage3j2a-correction\\p1b-main.txt",
+      "tests": 69,
+      "passed": 69,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "file": "evidence\\stage3j2a-correction\\remainder.txt",
+      "tests": 1217,
+      "passed": 1216,
+      "failed": 0,
+      "skipped": 1
+    }
+  ],
+  "totals": {
+    "tests": 1286,
+    "passed": 1285,
+    "failed": 0,
+    "skipped": 1
+  },
+  "report": {
+    "file": "docs/engine/FILEORBIT-STAGE-3J-2A-ROUTING-CORRECTION.md",
+    "expected": "1,286 tests, 1,285 pass, 1 skip",
+    "matched": true
+  }
+}

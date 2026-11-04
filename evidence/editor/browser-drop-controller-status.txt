@@ -1,0 +1,6 @@
+﻿FileOrbit shared drop-controller browser verification: NOT RUN.
+No browser executable/automation was available without installing dependencies.
+Mocked tests drive the real label/Canvas drag controller pointerdown→move→pointerup callback,
+verify exact English feedback, no mutation for data targets, empty/stale distinctions,
+folder reparent callback, and harness consumption of createPointerUpDropHandler.
+They do not establish native pointer capture or pointerup behavior in a browser.

@@ -1,0 +1,6 @@
+﻿FileOrbit Delete modal/e2e browser verification: NOT RUN.
+No browser executable/automation was available without installing dependencies.
+Node end-to-end test uses real menu component, shared dispatcher, real confirmation dialog,
+performDeleteInstallation with real frame/session/layout, history Undo/Redo, cancel/Escape,
+explicit target difference, and installation failure preservation.
+Dirty Continue/Discard is wired to the existing editor prompt but lacks a dedicated end-to-end test.

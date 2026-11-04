@@ -1,0 +1,39 @@
+﻿FileOrbit persistence planning — inspected source inventory (no code changes)
+Baseline r34: fileorbit-initial-labels-r34.zip SHA-256 F5140E182EE282FA64D14600019814822DC05F0377E05F74156B427F6CB507E7E7
+
+Inspected:
+- src/engine/hypertree/data/tree-loader.js — loadTree, normalizeLimits, LIMITS
+- src/engine/hypertree/data/metadata.js — cloneMetadata
+- src/engine/hypertree/data/errors.js — TreeLoadError, LIMITS
+- src/engine/hypertree/graph/graph.js — Graph, addNode, metadata limits
+- src/engine/hypertree/graph/node.js — GraphNode id/name/kind/data
+- src/engine/hypertree/editor/attachments.js — createAttachmentRegistry, sweepAttachmentOwnership
+- src/engine/hypertree/editor/attachment-classification.js — caps, classifyAttachment/File, prefix reader
+- src/engine/hypertree/editor/attachment-viewer.js — resolveAttachmentViewerTarget, registry lookup
+- src/engine/hypertree/editor/validation.js — 300 node limit, ID allocator, name validation
+- src/engine/hypertree/editor/commands.js — rename/add/metadata/edit/delete/reparent candidate builders
+- src/engine/hypertree/editor/action.js — performEditorCommandInstallation and command installers
+- src/engine/hypertree/editor/history.js — session history bounds
+- src/engine/hypertree/editor/history-replay.js — undo/redo replay + attachment validation
+- src/engine/hypertree/editor/controller.js — editor dirty/saving state
+- src/engine/hypertree/exploration/create-map.js — candidate tree/registry, transient IDs
+- src/engine/hypertree/exploration/reparent-action.js — installCandidateEnvironment
+- src/engine/hypertree/exploration/navigation-model.js — details/attachment projection
+- src/engine/hypertree/exploration/search.js — search derived from tree
+- tests/harness/m5-exploration/main.mjs — runtime state, dataRevision/datasetToken, create/open installation boundary, actions
+- tests/harness/m5-exploration/index.html — toolbar/menu, disabled Upload/Download
+- tests/harness/m5-exploration/shell-controls.js — actions, theme/fullscreen
+- tests/harness/m5-exploration/create-map-dialog.js — creation lifecycle
+- src/engine/hypertree/render/label-overlay.js — candidate label installation
+- src/engine/hypertree/exploration/frame.js — draw/label/hit frame staging
+
+Not found in source:
+- IndexedDB
+- localStorage/sessionStorage persistence
+- navigator.storage / StorageManager
+- Save/Open persistence controller
+- portable backup format
+- Upload/Download implementation (placeholders disabled)
+
+Executed storage tests: NONE (planning only)
+Native browser verification: NOT RUN

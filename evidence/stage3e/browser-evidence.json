@@ -1,0 +1,3193 @@
+{
+  "initial": {
+    "mounted": true,
+    "nodeCount": 1000,
+    "ids": 1000,
+    "proxyIds": 25,
+    "mode": "folder",
+    "folder": "Stage 3D 문서",
+    "crumb": [
+      "Stage 3D 문서"
+    ],
+    "items": [
+      "folder-big",
+      "folder-docs",
+      "folder-empty",
+      "root-file"
+    ],
+    "selectedId": null,
+    "details": null,
+    "searchTargetId": null,
+    "render": {
+      "scene": {
+        "phase": "current",
+        "projection": {
+          "width": 978,
+          "height": 600,
+          "radius": 252,
+          "centerX": 489,
+          "centerY": 300,
+          "toCss": {},
+          "fromCss": {},
+          "toClient": {},
+          "fromClient": {}
+        },
+        "presentation": {
+          "background": "#0b0e14",
+          "edgeStroke": "#344054",
+          "edgeWidth": 1,
+          "folderFill": "#2f3f56",
+          "folderStroke": "#7c8ca8",
+          "fileFill": "#8793a6",
+          "fileStroke": "#c3ccda",
+          "rootFill": "#6366f1",
+          "rootStroke": "#c7d2fe",
+          "nodeStrokeWidth": 1,
+          "defaultNodeRadius": 3,
+          "minNodeRadius": 0.2,
+          "transformNodes": true,
+          "maxArcRadiusCss": 1000000
+        },
+        "nodes": {},
+        "edges": [
+          {
+            "fromId": "root",
+            "toId": "folder-big",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 489,
+              "y": 300
+            },
+            "toCss": {
+              "x": 489,
+              "y": 138.72
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "root",
+            "toId": "folder-docs",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 489,
+              "y": 300
+            },
+            "toCss": {
+              "x": 650.28,
+              "y": 300
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "root",
+            "toId": "folder-empty",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 489,
+              "y": 300
+            },
+            "toCss": {
+              "x": 489,
+              "y": 461.28
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "root",
+            "toId": "root-file",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 489,
+              "y": 300
+            },
+            "toCss": {
+              "x": 327.72,
+              "y": 300
+            },
+            "stroke": "#344054",
+            "width": 1
+          }
+        ],
+        "nodeCount": 5,
+        "edgeCount": 4,
+        "limits": {
+          "maxNodes": 1500,
+          "maxEdges": 1499
+        }
+      },
+      "snapshot": {
+        "nodes": [
+          {
+            "id": "root",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 489,
+              "y": 300
+            },
+            "radius": 3
+          },
+          {
+            "id": "folder-big",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 489,
+              "y": 138.72
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "folder-docs",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 650.28,
+              "y": 300
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "folder-empty",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 489,
+              "y": 461.28
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "root-file",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 327.72,
+              "y": 300
+            },
+            "radius": 1.7712
+          }
+        ],
+        "padding": 0
+      },
+      "metrics": {
+        "candidateCount": 5,
+        "viewportEligibleCount": 5,
+        "viewportIneligibleCount": 0,
+        "budgetExcludedCount": 0,
+        "createdCount": 5,
+        "visibleCount": 5,
+        "invalidWebLinkCount": 0,
+        "suppressedCount": 0,
+        "overlapSuppressedCount": 0,
+        "viewportSuppressedCount": 0,
+        "nodeObstacleSuppressedCount": 0,
+        "labelNodeOverlapCount": 0,
+        "placementAttempts": 6,
+        "labelNodeOverlapDefinition": "visible label-node pairs; owner node excluded; exact circle/diamond intersection",
+        "placementObstaclePolicy": "conservative glyph bounds",
+        "priorityVisibleCount": 0,
+        "prioritySuppressedCount": 0,
+        "unmeasurableCount": 0,
+        "measuredCount": 5,
+        "visibleIconCount": 0,
+        "leadingIconCount": 0,
+        "rootProtection": true,
+        "rootProtectionRect": {
+          "left": 387,
+          "top": 198,
+          "right": 591,
+          "bottom": 402
+        },
+        "rootLabelVisible": true,
+        "selectedLabelVisible": null,
+        "selectedLabelOpacity": null,
+        "textMismatchCount": 0,
+        "measurement": "getBoundingClientRect/offsetWidth",
+        "dprIndependent": true,
+        "viewport": {
+          "width": 978,
+          "height": 600
+        },
+        "labels": {}
+      },
+      "nodeCount": 5,
+      "edgeCount": 4,
+      "proxyCount": 0,
+      "labelCount": 5,
+      "mode": "folder",
+      "folderId": "root",
+      "searchTargetId": null
+    },
+    "labels": {
+      "labels": 5,
+      "priority": 0,
+      "clipped": [],
+      "priorityCollisions": [],
+      "fontSizes": [
+        "11px / 13.2px system-ui, sans-serif"
+      ],
+      "host": {
+        "width": 978,
+        "height": 600
+      }
+    },
+    "hostChildren": 2,
+    "status": "Mounted folder Stage 3D 문서"
+  },
+  "big": {
+    "mounted": true,
+    "nodeCount": 1000,
+    "ids": 1000,
+    "proxyIds": 25,
+    "mode": "overview",
+    "folder": "큰-폴더",
+    "crumb": [
+      "Stage 3D 문서",
+      "큰-폴더"
+    ],
+    "items": [
+      "proxy:folder-big:0:40",
+      "proxy:folder-big:40:40",
+      "proxy:folder-big:80:40",
+      "proxy:folder-big:120:40",
+      "proxy:folder-big:160:40",
+      "proxy:folder-big:200:40",
+      "proxy:folder-big:240:40",
+      "proxy:folder-big:280:40",
+      "proxy:folder-big:320:40",
+      "proxy:folder-big:360:40",
+      "proxy:folder-big:400:40",
+      "proxy:folder-big:440:40",
+      "proxy:folder-big:480:40",
+      "proxy:folder-big:520:40",
+      "proxy:folder-big:560:40",
+      "proxy:folder-big:600:40",
+      "proxy:folder-big:640:40",
+      "proxy:folder-big:680:40",
+      "proxy:folder-big:720:40",
+      "proxy:folder-big:760:40",
+      "proxy:folder-big:800:40",
+      "proxy:folder-big:840:40",
+      "proxy:folder-big:880:40",
+      "proxy:folder-big:920:40",
+      "proxy:folder-big:960:31"
+    ],
+    "selectedId": null,
+    "details": null,
+    "searchTargetId": null,
+    "render": {
+      "scene": {
+        "phase": "current",
+        "projection": {
+          "width": 963,
+          "height": 600,
+          "radius": 252,
+          "centerX": 481.5,
+          "centerY": 300,
+          "toCss": {},
+          "fromCss": {},
+          "toClient": {},
+          "fromClient": {}
+        },
+        "presentation": {
+          "background": "#0b0e14",
+          "edgeStroke": "#344054",
+          "edgeWidth": 1,
+          "folderFill": "#2f3f56",
+          "folderStroke": "#7c8ca8",
+          "fileFill": "#8793a6",
+          "fileStroke": "#c3ccda",
+          "rootFill": "#6366f1",
+          "rootStroke": "#c7d2fe",
+          "nodeStrokeWidth": 1,
+          "defaultNodeRadius": 3,
+          "minNodeRadius": 0.2,
+          "transformNodes": true,
+          "maxArcRadiusCss": 1000000
+        },
+        "nodes": {},
+        "edges": [
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:0:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 481.5,
+              "y": 300
+            },
+            "toCss": {
+              "x": 481.5,
+              "y": 138.72
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:40:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 481.5,
+              "y": 300
+            },
+            "toCss": {
+              "x": 521.6087050019478,
+              "y": 143.7869077731744
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:80:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 481.5,
+              "y": 300
+            },
+            "toCss": {
+              "x": 559.1972325591247,
+              "y": 158.66925864252568
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:120:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 481.5,
+              "y": 300
+            },
+            "toCss": {
+              "x": 591.9037572441789,
+              "y": 182.43193976947475
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:160:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 481.5,
+              "y": 300
+            },
+            "toCss": {
+              "x": 617.673207824965,
+              "y": 213.58185450578742
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:200:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 481.5,
+              "y": 300
+            },
+            "toCss": {
+              "x": 634.8863949480824,
+              "y": 250.1617391472085
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:240:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 481.5,
+              "y": 300
+            },
+            "toCss": {
+              "x": 642.4617507609116,
+              "y": 289.8731450103123
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:280:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 481.5,
+              "y": 300
+            },
+            "toCss": {
+              "x": 639.9232877975229,
+              "y": 330.2208584163857
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:320:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 481.5,
+              "y": 300
+            },
+            "toCss": {
+              "x": 627.4305070217197,
+              "y": 368.669684143615
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:360:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 481.5,
+              "y": 300
+            },
+            "toCss": {
+              "x": 605.7683757948793,
+              "y": 402.8037410666687
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:400:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 481.5,
+              "y": 300
+            },
+            "toCss": {
+              "x": 576.29800548973,
+              "y": 430.47826085279155
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:440:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 481.5,
+              "y": 300
+            },
+            "toCss": {
+              "x": 540.8711278569849,
+              "y": 449.95435164405717
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:480:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 481.5,
+              "y": 300
+            },
+            "toCss": {
+              "x": 501.71374390925104,
+              "y": 460.008259027999
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:520:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 481.5,
+              "y": 300
+            },
+            "toCss": {
+              "x": 461.28625609074896,
+              "y": 460.008259027999
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:560:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 481.5,
+              "y": 300
+            },
+            "toCss": {
+              "x": 422.1288721430151,
+              "y": 449.95435164405717
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:600:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 481.5,
+              "y": 300
+            },
+            "toCss": {
+              "x": 386.70199451026997,
+              "y": 430.47826085279155
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:640:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 481.5,
+              "y": 300
+            },
+            "toCss": {
+              "x": 357.2316242051207,
+              "y": 402.80374106666864
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:680:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 481.5,
+              "y": 300
+            },
+            "toCss": {
+              "x": 335.5694929782803,
+              "y": 368.66968414361486
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:720:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 481.5,
+              "y": 300
+            },
+            "toCss": {
+              "x": 323.0767122024771,
+              "y": 330.2208584163857
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:760:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 481.5,
+              "y": 300
+            },
+            "toCss": {
+              "x": 320.5382492390884,
+              "y": 289.87314501031244
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:800:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 481.5,
+              "y": 300
+            },
+            "toCss": {
+              "x": 328.1136050519176,
+              "y": 250.1617391472085
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:840:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 481.5,
+              "y": 300
+            },
+            "toCss": {
+              "x": 345.32679217503494,
+              "y": 213.5818545057875
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:880:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 481.5,
+              "y": 300
+            },
+            "toCss": {
+              "x": 371.09624275582104,
+              "y": 182.43193976947478
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:920:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 481.5,
+              "y": 300
+            },
+            "toCss": {
+              "x": 403.80276744087536,
+              "y": 158.66925864252568
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:960:31",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 481.5,
+              "y": 300
+            },
+            "toCss": {
+              "x": 441.39129499805216,
+              "y": 143.7869077731744
+            },
+            "stroke": "#344054",
+            "width": 1
+          }
+        ],
+        "nodeCount": 26,
+        "edgeCount": 25,
+        "limits": {
+          "maxNodes": 1500,
+          "maxEdges": 1499
+        }
+      },
+      "snapshot": {
+        "nodes": [
+          {
+            "id": "folder-big",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 481.5,
+              "y": 300
+            },
+            "radius": 3
+          },
+          {
+            "id": "proxy:folder-big:0:40",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 481.5,
+              "y": 138.72
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "proxy:folder-big:40:40",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 521.6087050019478,
+              "y": 143.7869077731744
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "proxy:folder-big:80:40",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 559.1972325591247,
+              "y": 158.66925864252568
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "proxy:folder-big:120:40",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 591.9037572441789,
+              "y": 182.43193976947475
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "proxy:folder-big:160:40",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 617.673207824965,
+              "y": 213.58185450578742
+            },
+            "radius": 1.7711999999999999
+          },
+          {
+            "id": "proxy:folder-big:200:40",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 634.8863949480824,
+              "y": 250.1617391472085
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "proxy:folder-big:240:40",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 642.4617507609116,
+              "y": 289.8731450103123
+            },
+            "radius": 1.7711999999999999
+          },
+          {
+            "id": "proxy:folder-big:280:40",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 639.9232877975229,
+              "y": 330.2208584163857
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "proxy:folder-big:320:40",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 627.4305070217197,
+              "y": 368.669684143615
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "proxy:folder-big:360:40",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 605.7683757948793,
+              "y": 402.8037410666687
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "proxy:folder-big:400:40",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 576.29800548973,
+              "y": 430.47826085279155
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "proxy:folder-big:440:40",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 540.8711278569849,
+              "y": 449.95435164405717
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "proxy:folder-big:480:40",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 501.71374390925104,
+              "y": 460.008259027999
+            },
+            "radius": 1.7711999999999999
+          },
+          {
+            "id": "proxy:folder-big:520:40",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 461.28625609074896,
+              "y": 460.008259027999
+            },
+            "radius": 1.7711999999999999
+          },
+          {
+            "id": "proxy:folder-big:560:40",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 422.1288721430151,
+              "y": 449.95435164405717
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "proxy:folder-big:600:40",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 386.70199451026997,
+              "y": 430.47826085279155
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "proxy:folder-big:640:40",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 357.2316242051207,
+              "y": 402.80374106666864
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "proxy:folder-big:680:40",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 335.5694929782803,
+              "y": 368.66968414361486
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "proxy:folder-big:720:40",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 323.0767122024771,
+              "y": 330.2208584163857
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "proxy:folder-big:760:40",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 320.5382492390884,
+              "y": 289.87314501031244
+            },
+            "radius": 1.7711999999999999
+          },
+          {
+            "id": "proxy:folder-big:800:40",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 328.1136050519176,
+              "y": 250.1617391472085
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "proxy:folder-big:840:40",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 345.32679217503494,
+              "y": 213.5818545057875
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "proxy:folder-big:880:40",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 371.09624275582104,
+              "y": 182.43193976947478
+            },
+            "radius": 1.7711999999999999
+          },
+          {
+            "id": "proxy:folder-big:920:40",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 403.80276744087536,
+              "y": 158.66925864252568
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "proxy:folder-big:960:31",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 441.39129499805216,
+              "y": 143.7869077731744
+            },
+            "radius": 1.7711999999999999
+          }
+        ],
+        "padding": 0
+      },
+      "metrics": {
+        "candidateCount": 26,
+        "viewportEligibleCount": 26,
+        "viewportIneligibleCount": 0,
+        "budgetExcludedCount": 8,
+        "createdCount": 18,
+        "visibleCount": 18,
+        "invalidWebLinkCount": 0,
+        "suppressedCount": 0,
+        "overlapSuppressedCount": 0,
+        "viewportSuppressedCount": 0,
+        "nodeObstacleSuppressedCount": 0,
+        "labelNodeOverlapCount": 0,
+        "placementAttempts": 30,
+        "labelNodeOverlapDefinition": "visible label-node pairs; owner node excluded; exact circle/diamond intersection",
+        "placementObstaclePolicy": "conservative glyph bounds",
+        "priorityVisibleCount": 0,
+        "prioritySuppressedCount": 0,
+        "unmeasurableCount": 0,
+        "measuredCount": 18,
+        "visibleIconCount": 0,
+        "leadingIconCount": 0,
+        "rootProtection": true,
+        "rootProtectionRect": {
+          "left": 379.5,
+          "top": 198,
+          "right": 583.5,
+          "bottom": 402
+        },
+        "rootLabelVisible": true,
+        "selectedLabelVisible": null,
+        "selectedLabelOpacity": null,
+        "textMismatchCount": 0,
+        "measurement": "getBoundingClientRect/offsetWidth",
+        "dprIndependent": true,
+        "viewport": {
+          "width": 963,
+          "height": 600
+        },
+        "labels": {}
+      },
+      "nodeCount": 26,
+      "edgeCount": 25,
+      "proxyCount": 25,
+      "labelCount": 18,
+      "mode": "overview",
+      "folderId": "folder-big",
+      "searchTargetId": null
+    },
+    "labels": {
+      "labels": 18,
+      "priority": 0,
+      "clipped": [],
+      "priorityCollisions": [],
+      "fontSizes": [
+        "11px / 13.2px system-ui, sans-serif"
+      ],
+      "host": {
+        "width": 963,
+        "height": 600
+      }
+    },
+    "hostChildren": 2,
+    "status": "Mounted overview 큰-폴더"
+  },
+  "page1": {
+    "mounted": true,
+    "nodeCount": 1000,
+    "ids": 1000,
+    "proxyIds": 25,
+    "mode": "cluster",
+    "folder": "큰-폴더",
+    "crumb": [
+      "Stage 3D 문서",
+      "큰-폴더",
+      "묶음 1 (40개)"
+    ],
+    "page": 1,
+    "pages": 5,
+    "total": 40,
+    "items": [
+      "big-0",
+      "big-1",
+      "big-2",
+      "big-3",
+      "big-4",
+      "big-5",
+      "big-6",
+      "big-7"
+    ],
+    "selectedId": null,
+    "details": null,
+    "searchTargetId": null,
+    "render": {
+      "scene": {
+        "phase": "current",
+        "projection": {
+          "width": 978,
+          "height": 600,
+          "radius": 252,
+          "centerX": 489,
+          "centerY": 300,
+          "toCss": {},
+          "fromCss": {},
+          "toClient": {},
+          "fromClient": {}
+        },
+        "presentation": {
+          "background": "#0b0e14",
+          "edgeStroke": "#344054",
+          "edgeWidth": 1,
+          "folderFill": "#2f3f56",
+          "folderStroke": "#7c8ca8",
+          "fileFill": "#8793a6",
+          "fileStroke": "#c3ccda",
+          "rootFill": "#6366f1",
+          "rootStroke": "#c7d2fe",
+          "nodeStrokeWidth": 1,
+          "defaultNodeRadius": 3,
+          "minNodeRadius": 0.2,
+          "transformNodes": true,
+          "maxArcRadiusCss": 1000000
+        },
+        "nodes": {},
+        "edges": [
+          {
+            "fromId": "folder-big",
+            "toId": "big-0",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 489,
+              "y": 300
+            },
+            "toCss": {
+              "x": 489,
+              "y": 138.72
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-1",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 489,
+              "y": 300
+            },
+            "toCss": {
+              "x": 603.0421816697664,
+              "y": 185.95781833023364
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-2",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 489,
+              "y": 300
+            },
+            "toCss": {
+              "x": 650.28,
+              "y": 300
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-3",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 489,
+              "y": 300
+            },
+            "toCss": {
+              "x": 603.0421816697664,
+              "y": 414.04218166976636
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-4",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 489,
+              "y": 300
+            },
+            "toCss": {
+              "x": 489,
+              "y": 461.28
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-5",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 489,
+              "y": 300
+            },
+            "toCss": {
+              "x": 374.95781833023364,
+              "y": 414.0421816697664
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-6",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 489,
+              "y": 300
+            },
+            "toCss": {
+              "x": 327.72,
+              "y": 300
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-7",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 489,
+              "y": 300
+            },
+            "toCss": {
+              "x": 374.9578183302336,
+              "y": 185.95781833023364
+            },
+            "stroke": "#344054",
+            "width": 1
+          }
+        ],
+        "nodeCount": 9,
+        "edgeCount": 8,
+        "limits": {
+          "maxNodes": 1500,
+          "maxEdges": 1499
+        }
+      },
+      "snapshot": {
+        "nodes": [
+          {
+            "id": "folder-big",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 489,
+              "y": 300
+            },
+            "radius": 3
+          },
+          {
+            "id": "big-0",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 489,
+              "y": 138.72
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "big-1",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 603.0421816697664,
+              "y": 185.95781833023364
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "big-2",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 650.28,
+              "y": 300
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "big-3",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 603.0421816697664,
+              "y": 414.04218166976636
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "big-4",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 489,
+              "y": 461.28
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "big-5",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 374.95781833023364,
+              "y": 414.0421816697664
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "big-6",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 327.72,
+              "y": 300
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "big-7",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 374.9578183302336,
+              "y": 185.95781833023364
+            },
+            "radius": 1.7711999999999999
+          }
+        ],
+        "padding": 0
+      },
+      "metrics": {
+        "candidateCount": 9,
+        "viewportEligibleCount": 9,
+        "viewportIneligibleCount": 0,
+        "budgetExcludedCount": 0,
+        "createdCount": 9,
+        "visibleCount": 9,
+        "invalidWebLinkCount": 0,
+        "suppressedCount": 0,
+        "overlapSuppressedCount": 0,
+        "viewportSuppressedCount": 0,
+        "nodeObstacleSuppressedCount": 0,
+        "labelNodeOverlapCount": 0,
+        "placementAttempts": 10,
+        "labelNodeOverlapDefinition": "visible label-node pairs; owner node excluded; exact circle/diamond intersection",
+        "placementObstaclePolicy": "conservative glyph bounds",
+        "priorityVisibleCount": 0,
+        "prioritySuppressedCount": 0,
+        "unmeasurableCount": 0,
+        "measuredCount": 9,
+        "visibleIconCount": 0,
+        "leadingIconCount": 0,
+        "rootProtection": true,
+        "rootProtectionRect": {
+          "left": 387,
+          "top": 198,
+          "right": 591,
+          "bottom": 402
+        },
+        "rootLabelVisible": true,
+        "selectedLabelVisible": null,
+        "selectedLabelOpacity": null,
+        "textMismatchCount": 0,
+        "measurement": "getBoundingClientRect/offsetWidth",
+        "dprIndependent": true,
+        "viewport": {
+          "width": 978,
+          "height": 600
+        },
+        "labels": {}
+      },
+      "nodeCount": 9,
+      "edgeCount": 8,
+      "proxyCount": 0,
+      "labelCount": 9,
+      "mode": "cluster",
+      "folderId": "folder-big",
+      "searchTargetId": null
+    },
+    "labels": {
+      "labels": 9,
+      "priority": 0,
+      "clipped": [],
+      "priorityCollisions": [],
+      "fontSizes": [
+        "11px / 13.2px system-ui, sans-serif"
+      ],
+      "host": {
+        "width": 978,
+        "height": 600
+      }
+    },
+    "hostChildren": 2,
+    "status": "Mounted cluster 큰-폴더"
+  },
+  "selected": {
+    "mounted": true,
+    "nodeCount": 1000,
+    "ids": 1000,
+    "proxyIds": 25,
+    "mode": "cluster",
+    "folder": "큰-폴더",
+    "crumb": [
+      "Stage 3D 문서",
+      "큰-폴더",
+      "묶음 1 (40개)"
+    ],
+    "page": 1,
+    "pages": 5,
+    "total": 40,
+    "items": [
+      "big-0",
+      "big-1",
+      "big-2",
+      "big-3",
+      "big-4",
+      "big-5",
+      "big-6",
+      "big-7"
+    ],
+    "selectedId": "big-0",
+    "details": {
+      "kind": "document",
+      "id": "big-0",
+      "name": "같은이름.txt",
+      "nodeKind": "file",
+      "path": "Stage 3D 문서 / 큰-폴더 / 같은이름.txt",
+      "depth": 2,
+      "proxy": false,
+      "canPreview": true,
+      "canEdit": false,
+      "attachmentId": null
+    },
+    "searchTargetId": null,
+    "render": {
+      "scene": {
+        "phase": "current",
+        "projection": {
+          "width": 978,
+          "height": 600,
+          "radius": 252,
+          "centerX": 489,
+          "centerY": 300,
+          "toCss": {},
+          "fromCss": {},
+          "toClient": {},
+          "fromClient": {}
+        },
+        "presentation": {
+          "background": "#0b0e14",
+          "edgeStroke": "#344054",
+          "edgeWidth": 1,
+          "folderFill": "#2f3f56",
+          "folderStroke": "#7c8ca8",
+          "fileFill": "#8793a6",
+          "fileStroke": "#c3ccda",
+          "rootFill": "#6366f1",
+          "rootStroke": "#c7d2fe",
+          "nodeStrokeWidth": 1,
+          "defaultNodeRadius": 3,
+          "minNodeRadius": 0.2,
+          "transformNodes": true,
+          "maxArcRadiusCss": 1000000
+        },
+        "nodes": {},
+        "edges": [
+          {
+            "fromId": "folder-big",
+            "toId": "big-0",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 489,
+              "y": 300
+            },
+            "toCss": {
+              "x": 489,
+              "y": 138.72
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-1",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 489,
+              "y": 300
+            },
+            "toCss": {
+              "x": 603.0421816697664,
+              "y": 185.95781833023364
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-2",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 489,
+              "y": 300
+            },
+            "toCss": {
+              "x": 650.28,
+              "y": 300
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-3",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 489,
+              "y": 300
+            },
+            "toCss": {
+              "x": 603.0421816697664,
+              "y": 414.04218166976636
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-4",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 489,
+              "y": 300
+            },
+            "toCss": {
+              "x": 489,
+              "y": 461.28
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-5",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 489,
+              "y": 300
+            },
+            "toCss": {
+              "x": 374.95781833023364,
+              "y": 414.0421816697664
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-6",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 489,
+              "y": 300
+            },
+            "toCss": {
+              "x": 327.72,
+              "y": 300
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-7",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 489,
+              "y": 300
+            },
+            "toCss": {
+              "x": 374.9578183302336,
+              "y": 185.95781833023364
+            },
+            "stroke": "#344054",
+            "width": 1
+          }
+        ],
+        "nodeCount": 9,
+        "edgeCount": 8,
+        "limits": {
+          "maxNodes": 1500,
+          "maxEdges": 1499
+        }
+      },
+      "snapshot": {
+        "nodes": [
+          {
+            "id": "folder-big",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 489,
+              "y": 300
+            },
+            "radius": 3
+          },
+          {
+            "id": "big-0",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 489,
+              "y": 138.72
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "big-1",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 603.0421816697664,
+              "y": 185.95781833023364
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "big-2",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 650.28,
+              "y": 300
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "big-3",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 603.0421816697664,
+              "y": 414.04218166976636
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "big-4",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 489,
+              "y": 461.28
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "big-5",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 374.95781833023364,
+              "y": 414.0421816697664
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "big-6",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 327.72,
+              "y": 300
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "big-7",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 374.9578183302336,
+              "y": 185.95781833023364
+            },
+            "radius": 1.7711999999999999
+          }
+        ],
+        "padding": 0
+      },
+      "metrics": {
+        "candidateCount": 9,
+        "viewportEligibleCount": 9,
+        "viewportIneligibleCount": 0,
+        "budgetExcludedCount": 0,
+        "createdCount": 9,
+        "visibleCount": 9,
+        "invalidWebLinkCount": 0,
+        "suppressedCount": 0,
+        "overlapSuppressedCount": 0,
+        "viewportSuppressedCount": 0,
+        "nodeObstacleSuppressedCount": 0,
+        "labelNodeOverlapCount": 0,
+        "placementAttempts": 10,
+        "labelNodeOverlapDefinition": "visible label-node pairs; owner node excluded; exact circle/diamond intersection",
+        "placementObstaclePolicy": "conservative glyph bounds",
+        "priorityVisibleCount": 1,
+        "prioritySuppressedCount": 0,
+        "unmeasurableCount": 0,
+        "measuredCount": 9,
+        "visibleIconCount": 0,
+        "leadingIconCount": 0,
+        "rootProtection": true,
+        "rootProtectionRect": {
+          "left": 387,
+          "top": 198,
+          "right": 591,
+          "bottom": 402
+        },
+        "rootLabelVisible": true,
+        "selectedLabelVisible": true,
+        "selectedLabelOpacity": 1,
+        "textMismatchCount": 0,
+        "measurement": "getBoundingClientRect/offsetWidth",
+        "dprIndependent": true,
+        "viewport": {
+          "width": 978,
+          "height": 600
+        },
+        "labels": {}
+      },
+      "nodeCount": 9,
+      "edgeCount": 8,
+      "proxyCount": 0,
+      "labelCount": 9,
+      "mode": "cluster",
+      "folderId": "folder-big",
+      "searchTargetId": null
+    },
+    "labels": {
+      "labels": 9,
+      "priority": 1,
+      "clipped": [],
+      "priorityCollisions": [],
+      "fontSizes": [
+        "11px / 13.2px system-ui, sans-serif"
+      ],
+      "host": {
+        "width": 978,
+        "height": 600
+      }
+    },
+    "hostChildren": 2,
+    "status": "Mounted cluster 큰-폴더"
+  },
+  "page2": {
+    "mounted": true,
+    "nodeCount": 1000,
+    "ids": 1000,
+    "proxyIds": 25,
+    "mode": "cluster",
+    "folder": "큰-폴더",
+    "crumb": [
+      "Stage 3D 문서",
+      "큰-폴더",
+      "묶음 1 (40개)"
+    ],
+    "page": 2,
+    "pages": 5,
+    "total": 40,
+    "items": [
+      "big-8",
+      "proxy:root:0:40",
+      "big-10",
+      "big-11",
+      "big-12",
+      "big-13",
+      "big-14",
+      "big-15"
+    ],
+    "selectedId": "big-0",
+    "details": {
+      "kind": "document",
+      "id": "big-0",
+      "name": "같은이름.txt",
+      "nodeKind": "file",
+      "path": "Stage 3D 문서 / 큰-폴더 / 같은이름.txt",
+      "depth": 2,
+      "proxy": false,
+      "canPreview": true,
+      "canEdit": false,
+      "attachmentId": null
+    },
+    "searchTargetId": null,
+    "render": {
+      "scene": {
+        "phase": "current",
+        "projection": {
+          "width": 978,
+          "height": 600,
+          "radius": 252,
+          "centerX": 489,
+          "centerY": 300,
+          "toCss": {},
+          "fromCss": {},
+          "toClient": {},
+          "fromClient": {}
+        },
+        "presentation": {
+          "background": "#0b0e14",
+          "edgeStroke": "#344054",
+          "edgeWidth": 1,
+          "folderFill": "#2f3f56",
+          "folderStroke": "#7c8ca8",
+          "fileFill": "#8793a6",
+          "fileStroke": "#c3ccda",
+          "rootFill": "#6366f1",
+          "rootStroke": "#c7d2fe",
+          "nodeStrokeWidth": 1,
+          "defaultNodeRadius": 3,
+          "minNodeRadius": 0.2,
+          "transformNodes": true,
+          "maxArcRadiusCss": 1000000
+        },
+        "nodes": {},
+        "edges": [
+          {
+            "fromId": "folder-big",
+            "toId": "big-8",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 489,
+              "y": 300
+            },
+            "toCss": {
+              "x": 489,
+              "y": 138.72
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:root:0:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 489,
+              "y": 300
+            },
+            "toCss": {
+              "x": 603.0421816697664,
+              "y": 185.95781833023364
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-10",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 489,
+              "y": 300
+            },
+            "toCss": {
+              "x": 650.28,
+              "y": 300
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-11",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 489,
+              "y": 300
+            },
+            "toCss": {
+              "x": 603.0421816697664,
+              "y": 414.04218166976636
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-12",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 489,
+              "y": 300
+            },
+            "toCss": {
+              "x": 489,
+              "y": 461.28
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-13",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 489,
+              "y": 300
+            },
+            "toCss": {
+              "x": 374.95781833023364,
+              "y": 414.0421816697664
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-14",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 489,
+              "y": 300
+            },
+            "toCss": {
+              "x": 327.72,
+              "y": 300
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-15",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 489,
+              "y": 300
+            },
+            "toCss": {
+              "x": 374.9578183302336,
+              "y": 185.95781833023364
+            },
+            "stroke": "#344054",
+            "width": 1
+          }
+        ],
+        "nodeCount": 9,
+        "edgeCount": 8,
+        "limits": {
+          "maxNodes": 1500,
+          "maxEdges": 1499
+        }
+      },
+      "snapshot": {
+        "nodes": [
+          {
+            "id": "folder-big",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 489,
+              "y": 300
+            },
+            "radius": 3
+          },
+          {
+            "id": "big-8",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 489,
+              "y": 138.72
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "proxy:root:0:40",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 603.0421816697664,
+              "y": 185.95781833023364
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "big-10",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 650.28,
+              "y": 300
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "big-11",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 603.0421816697664,
+              "y": 414.04218166976636
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "big-12",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 489,
+              "y": 461.28
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "big-13",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 374.95781833023364,
+              "y": 414.0421816697664
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "big-14",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 327.72,
+              "y": 300
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "big-15",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 374.9578183302336,
+              "y": 185.95781833023364
+            },
+            "radius": 1.7711999999999999
+          }
+        ],
+        "padding": 0
+      },
+      "metrics": {
+        "candidateCount": 9,
+        "viewportEligibleCount": 9,
+        "viewportIneligibleCount": 0,
+        "budgetExcludedCount": 0,
+        "createdCount": 9,
+        "visibleCount": 9,
+        "invalidWebLinkCount": 0,
+        "suppressedCount": 0,
+        "overlapSuppressedCount": 0,
+        "viewportSuppressedCount": 0,
+        "nodeObstacleSuppressedCount": 0,
+        "labelNodeOverlapCount": 0,
+        "placementAttempts": 10,
+        "labelNodeOverlapDefinition": "visible label-node pairs; owner node excluded; exact circle/diamond intersection",
+        "placementObstaclePolicy": "conservative glyph bounds",
+        "priorityVisibleCount": 0,
+        "prioritySuppressedCount": 1,
+        "unmeasurableCount": 0,
+        "measuredCount": 9,
+        "visibleIconCount": 0,
+        "leadingIconCount": 0,
+        "rootProtection": true,
+        "rootProtectionRect": {
+          "left": 387,
+          "top": 198,
+          "right": 591,
+          "bottom": 402
+        },
+        "rootLabelVisible": true,
+        "selectedLabelVisible": false,
+        "selectedLabelOpacity": 1,
+        "textMismatchCount": 0,
+        "measurement": "getBoundingClientRect/offsetWidth",
+        "dprIndependent": true,
+        "viewport": {
+          "width": 978,
+          "height": 600
+        },
+        "labels": {}
+      },
+      "nodeCount": 9,
+      "edgeCount": 8,
+      "proxyCount": 0,
+      "labelCount": 9,
+      "mode": "cluster",
+      "folderId": "folder-big",
+      "searchTargetId": null
+    },
+    "labels": {
+      "labels": 9,
+      "priority": 0,
+      "clipped": [],
+      "priorityCollisions": [],
+      "fontSizes": [
+        "11px / 13.2px system-ui, sans-serif"
+      ],
+      "host": {
+        "width": 978,
+        "height": 600
+      }
+    },
+    "hostChildren": 2,
+    "status": "Mounted cluster 큰-폴더"
+  },
+  "fileSelected": {
+    "mounted": true,
+    "nodeCount": 1000,
+    "ids": 1000,
+    "proxyIds": 25,
+    "mode": "folder",
+    "folder": "문서-모음",
+    "crumb": [
+      "Stage 3D 문서",
+      "문서-모음"
+    ],
+    "items": [
+      "doc-0",
+      "doc-1",
+      "doc-2",
+      "doc-3"
+    ],
+    "selectedId": "doc-1",
+    "details": {
+      "kind": "document",
+      "id": "doc-1",
+      "name": "이미지-그림.png",
+      "nodeKind": "file",
+      "path": "Stage 3D 문서 / 문서-모음 / 이미지-그림.png",
+      "depth": 2,
+      "proxy": false,
+      "canPreview": true,
+      "canEdit": false,
+      "attachmentId": "att_2196060f-eae7-4ab9-b126-2497afb2baa0"
+    },
+    "searchTargetId": null,
+    "render": {
+      "scene": {
+        "phase": "current",
+        "projection": {
+          "width": 978,
+          "height": 600,
+          "radius": 252,
+          "centerX": 489,
+          "centerY": 300,
+          "toCss": {},
+          "fromCss": {},
+          "toClient": {},
+          "fromClient": {}
+        },
+        "presentation": {
+          "background": "#0b0e14",
+          "edgeStroke": "#344054",
+          "edgeWidth": 1,
+          "folderFill": "#2f3f56",
+          "folderStroke": "#7c8ca8",
+          "fileFill": "#8793a6",
+          "fileStroke": "#c3ccda",
+          "rootFill": "#6366f1",
+          "rootStroke": "#c7d2fe",
+          "nodeStrokeWidth": 1,
+          "defaultNodeRadius": 3,
+          "minNodeRadius": 0.2,
+          "transformNodes": true,
+          "maxArcRadiusCss": 1000000
+        },
+        "nodes": {},
+        "edges": [
+          {
+            "fromId": "folder-docs",
+            "toId": "doc-0",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 489,
+              "y": 300
+            },
+            "toCss": {
+              "x": 489,
+              "y": 138.72
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-docs",
+            "toId": "doc-1",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 489,
+              "y": 300
+            },
+            "toCss": {
+              "x": 650.28,
+              "y": 300
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-docs",
+            "toId": "doc-2",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 489,
+              "y": 300
+            },
+            "toCss": {
+              "x": 489,
+              "y": 461.28
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-docs",
+            "toId": "doc-3",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 489,
+              "y": 300
+            },
+            "toCss": {
+              "x": 327.72,
+              "y": 300
+            },
+            "stroke": "#344054",
+            "width": 1
+          }
+        ],
+        "nodeCount": 5,
+        "edgeCount": 4,
+        "limits": {
+          "maxNodes": 1500,
+          "maxEdges": 1499
+        }
+      },
+      "snapshot": {
+        "nodes": [
+          {
+            "id": "folder-docs",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 489,
+              "y": 300
+            },
+            "radius": 3
+          },
+          {
+            "id": "doc-0",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 489,
+              "y": 138.72
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "doc-1",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 650.28,
+              "y": 300
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "doc-2",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 489,
+              "y": 461.28
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "doc-3",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 327.72,
+              "y": 300
+            },
+            "radius": 1.7712
+          }
+        ],
+        "padding": 0
+      },
+      "metrics": {
+        "candidateCount": 5,
+        "viewportEligibleCount": 5,
+        "viewportIneligibleCount": 0,
+        "budgetExcludedCount": 0,
+        "createdCount": 5,
+        "visibleCount": 5,
+        "invalidWebLinkCount": 0,
+        "suppressedCount": 0,
+        "overlapSuppressedCount": 0,
+        "viewportSuppressedCount": 0,
+        "nodeObstacleSuppressedCount": 0,
+        "labelNodeOverlapCount": 0,
+        "placementAttempts": 6,
+        "labelNodeOverlapDefinition": "visible label-node pairs; owner node excluded; exact circle/diamond intersection",
+        "placementObstaclePolicy": "conservative glyph bounds",
+        "priorityVisibleCount": 1,
+        "prioritySuppressedCount": 0,
+        "unmeasurableCount": 0,
+        "measuredCount": 5,
+        "visibleIconCount": 0,
+        "leadingIconCount": 0,
+        "rootProtection": true,
+        "rootProtectionRect": {
+          "left": 387,
+          "top": 198,
+          "right": 591,
+          "bottom": 402
+        },
+        "rootLabelVisible": true,
+        "selectedLabelVisible": true,
+        "selectedLabelOpacity": 1,
+        "textMismatchCount": 0,
+        "measurement": "getBoundingClientRect/offsetWidth",
+        "dprIndependent": true,
+        "viewport": {
+          "width": 978,
+          "height": 600
+        },
+        "labels": {}
+      },
+      "nodeCount": 5,
+      "edgeCount": 4,
+      "proxyCount": 0,
+      "labelCount": 5,
+      "mode": "folder",
+      "folderId": "folder-docs",
+      "searchTargetId": null
+    },
+    "labels": {
+      "labels": 5,
+      "priority": 1,
+      "clipped": [],
+      "priorityCollisions": [],
+      "fontSizes": [
+        "11px / 13.2px system-ui, sans-serif"
+      ],
+      "host": {
+        "width": 978,
+        "height": 600
+      }
+    },
+    "hostChildren": 2,
+    "status": "Mounted folder 문서-모음"
+  },
+  "preview": {
+    "text": {
+      "url": "blob:http://127.0.0.1:8146/5d848642-af3f-4288-95f3-fff5990a6ce8",
+      "content": "텍스트 첨부"
+    },
+    "image1": {
+      "url": "blob:http://127.0.0.1:8146/89f9760a-7d1f-4be4-977d-0c4f688df9c4",
+      "src": "blob:http://127.0.0.1:8146/89f9760a-7d1f-4be4-977d-0c4f688df9c4",
+      "complete": true,
+      "naturalWidth": 1
+    },
+    "image2": {
+      "url": "blob:http://127.0.0.1:8146/89f9760a-7d1f-4be4-977d-0c4f688df9c4",
+      "src": "blob:http://127.0.0.1:8146/89f9760a-7d1f-4be4-977d-0c4f688df9c4",
+      "complete": true,
+      "naturalWidth": 1
+    },
+    "imageAgain": {
+      "url": "blob:http://127.0.0.1:8146/89f9760a-7d1f-4be4-977d-0c4f688df9c4",
+      "src": "blob:http://127.0.0.1:8146/89f9760a-7d1f-4be4-977d-0c4f688df9c4",
+      "complete": true,
+      "naturalWidth": 1
+    },
+    "pdf": {
+      "url": "blob:http://127.0.0.1:8146/9ef537dd-bdd7-44ef-93e5-c003ab9605c5",
+      "prefix": "%PDF-1.7"
+    },
+    "bytes": [
+      68,
+      68,
+      68
+    ],
+    "naturalWidth": 1
+  },
+  "revealed": {
+    "mounted": true,
+    "nodeCount": 1000,
+    "ids": 1000,
+    "proxyIds": 25,
+    "mode": "cluster",
+    "folder": "큰-폴더",
+    "crumb": [
+      "Stage 3D 문서",
+      "큰-폴더",
+      "묶음 1 (40개)"
+    ],
+    "page": 2,
+    "pages": 5,
+    "total": 40,
+    "items": [
+      "big-8",
+      "proxy:root:0:40",
+      "big-10",
+      "big-11",
+      "big-12",
+      "big-13",
+      "big-14",
+      "big-15"
+    ],
+    "selectedId": "big-8",
+    "details": {
+      "kind": "document",
+      "id": "big-8",
+      "name": "아주-긴-한국어-파일-이름-아주-긴-한국어-파일-이름-8.txt",
+      "nodeKind": "file",
+      "path": "Stage 3D 문서 / 큰-폴더 / 아주-긴-한국어-파일-이름-아주-긴-한국어-파일-이름-8.txt",
+      "depth": 2,
+      "proxy": false,
+      "canPreview": true,
+      "canEdit": false,
+      "attachmentId": null
+    },
+    "searchTargetId": "big-8",
+    "render": {
+      "scene": {
+        "phase": "current",
+        "projection": {
+          "width": 978,
+          "height": 600,
+          "radius": 252,
+          "centerX": 489,
+          "centerY": 300,
+          "toCss": {},
+          "fromCss": {},
+          "toClient": {},
+          "fromClient": {}
+        },
+        "presentation": {
+          "background": "#0b0e14",
+          "edgeStroke": "#344054",
+          "edgeWidth": 1,
+          "folderFill": "#2f3f56",
+          "folderStroke": "#7c8ca8",
+          "fileFill": "#8793a6",
+          "fileStroke": "#c3ccda",
+          "rootFill": "#6366f1",
+          "rootStroke": "#c7d2fe",
+          "nodeStrokeWidth": 1,
+          "defaultNodeRadius": 3,
+          "minNodeRadius": 0.2,
+          "transformNodes": true,
+          "maxArcRadiusCss": 1000000
+        },
+        "nodes": {},
+        "edges": [
+          {
+            "fromId": "folder-big",
+            "toId": "big-8",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 489,
+              "y": 300
+            },
+            "toCss": {
+              "x": 489,
+              "y": 138.72
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:root:0:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 489,
+              "y": 300
+            },
+            "toCss": {
+              "x": 603.0421816697664,
+              "y": 185.95781833023364
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-10",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 489,
+              "y": 300
+            },
+            "toCss": {
+              "x": 650.28,
+              "y": 300
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-11",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 489,
+              "y": 300
+            },
+            "toCss": {
+              "x": 603.0421816697664,
+              "y": 414.04218166976636
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-12",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 489,
+              "y": 300
+            },
+            "toCss": {
+              "x": 489,
+              "y": 461.28
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-13",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 489,
+              "y": 300
+            },
+            "toCss": {
+              "x": 374.95781833023364,
+              "y": 414.0421816697664
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-14",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 489,
+              "y": 300
+            },
+            "toCss": {
+              "x": 327.72,
+              "y": 300
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-15",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 489,
+              "y": 300
+            },
+            "toCss": {
+              "x": 374.9578183302336,
+              "y": 185.95781833023364
+            },
+            "stroke": "#344054",
+            "width": 1
+          }
+        ],
+        "nodeCount": 9,
+        "edgeCount": 8,
+        "limits": {
+          "maxNodes": 1500,
+          "maxEdges": 1499
+        }
+      },
+      "snapshot": {
+        "nodes": [
+          {
+            "id": "folder-big",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 489,
+              "y": 300
+            },
+            "radius": 3
+          },
+          {
+            "id": "big-8",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 489,
+              "y": 138.72
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "proxy:root:0:40",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 603.0421816697664,
+              "y": 185.95781833023364
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "big-10",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 650.28,
+              "y": 300
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "big-11",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 603.0421816697664,
+              "y": 414.04218166976636
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "big-12",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 489,
+              "y": 461.28
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "big-13",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 374.95781833023364,
+              "y": 414.0421816697664
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "big-14",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 327.72,
+              "y": 300
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "big-15",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 374.9578183302336,
+              "y": 185.95781833023364
+            },
+            "radius": 1.7711999999999999
+          }
+        ],
+        "padding": 0
+      },
+      "metrics": {
+        "candidateCount": 9,
+        "viewportEligibleCount": 9,
+        "viewportIneligibleCount": 0,
+        "budgetExcludedCount": 0,
+        "createdCount": 9,
+        "visibleCount": 9,
+        "invalidWebLinkCount": 0,
+        "suppressedCount": 0,
+        "overlapSuppressedCount": 0,
+        "viewportSuppressedCount": 0,
+        "nodeObstacleSuppressedCount": 0,
+        "labelNodeOverlapCount": 0,
+        "placementAttempts": 10,
+        "labelNodeOverlapDefinition": "visible label-node pairs; owner node excluded; exact circle/diamond intersection",
+        "placementObstaclePolicy": "conservative glyph bounds",
+        "priorityVisibleCount": 1,
+        "prioritySuppressedCount": 0,
+        "unmeasurableCount": 0,
+        "measuredCount": 9,
+        "visibleIconCount": 0,
+        "leadingIconCount": 0,
+        "rootProtection": true,
+        "rootProtectionRect": {
+          "left": 387,
+          "top": 198,
+          "right": 591,
+          "bottom": 402
+        },
+        "rootLabelVisible": true,
+        "selectedLabelVisible": true,
+        "selectedLabelOpacity": 1,
+        "textMismatchCount": 0,
+        "measurement": "getBoundingClientRect/offsetWidth",
+        "dprIndependent": true,
+        "viewport": {
+          "width": 978,
+          "height": 600
+        },
+        "labels": {}
+      },
+      "nodeCount": 9,
+      "edgeCount": 8,
+      "proxyCount": 0,
+      "labelCount": 9,
+      "mode": "cluster",
+      "folderId": "folder-big",
+      "searchTargetId": "big-8"
+    },
+    "labels": {
+      "labels": 9,
+      "priority": 1,
+      "clipped": [],
+      "priorityCollisions": [],
+      "fontSizes": [
+        "11px / 13.2px system-ui, sans-serif"
+      ],
+      "host": {
+        "width": 978,
+        "height": 600
+      }
+    },
+    "hostChildren": 2,
+    "status": "Mounted cluster 큰-폴더"
+  },
+  "targetVisible": true,
+  "cleared": {
+    "target": null,
+    "rendered": null,
+    "results": 0,
+    "info": "No results"
+  },
+  "changed": {
+    "target": null,
+    "rendered": null,
+    "info": "1/20 of 985",
+    "page": 1
+  },
+  "cleanupImmediate": {
+    "hostChildren": 0,
+    "canvas": 0,
+    "domNodes": 0,
+    "previewOutput": 2,
+    "disposed": true
+  },
+  "viewports": [
+    {
+      "width": 1600,
+      "height": 1000,
+      "metrics": {
+        "host": {
+          "width": 978,
+          "height": 600
+        },
+        "canvas": {
+          "width": 978,
+          "height": 600
+        },
+        "surface": {
+          "cssWidth": 978,
+          "cssHeight": 600,
+          "dpr": 1,
+          "backingWidth": 978,
+          "backingHeight": 600,
+          "scaleX": 1,
+          "scaleY": 1
+        },
+        "nodeCount": 9,
+        "proxyCount": 0,
+        "labelCount": 9,
+        "labels": {
+          "labels": 9,
+          "priority": 1,
+          "clipped": [],
+          "priorityCollisions": [],
+          "fontSizes": [
+            "11px / 13.2px system-ui, sans-serif"
+          ],
+          "host": {
+            "width": 978,
+            "height": 600
+          }
+        },
+        "renderMetrics": {
+          "candidateCount": 9,
+          "viewportEligibleCount": 9,
+          "viewportIneligibleCount": 0,
+          "budgetExcludedCount": 0,
+          "createdCount": 9,
+          "visibleCount": 9,
+          "invalidWebLinkCount": 0,
+          "suppressedCount": 0,
+          "overlapSuppressedCount": 0,
+          "viewportSuppressedCount": 0,
+          "nodeObstacleSuppressedCount": 0,
+          "labelNodeOverlapCount": 0,
+          "placementAttempts": 10,
+          "labelNodeOverlapDefinition": "visible label-node pairs; owner node excluded; exact circle/diamond intersection",
+          "placementObstaclePolicy": "conservative glyph bounds",
+          "priorityVisibleCount": 1,
+          "prioritySuppressedCount": 0,
+          "unmeasurableCount": 0,
+          "measuredCount": 9,
+          "visibleIconCount": 0,
+          "leadingIconCount": 0,
+          "rootProtection": true,
+          "rootProtectionRect": {
+            "left": 387,
+            "top": 198,
+            "right": 591,
+            "bottom": 402
+          },
+          "rootLabelVisible": true,
+          "selectedLabelVisible": true,
+          "selectedLabelOpacity": 1,
+          "textMismatchCount": 0,
+          "measurement": "getBoundingClientRect/offsetWidth",
+          "dprIndependent": true,
+          "viewport": {
+            "width": 978,
+            "height": 600
+          },
+          "labels": {}
+        }
+      },
+      "directSelected": "big-0",
+      "selectedLabel": {
+        "visible": true,
+        "width": 79.265625
+      },
+      "searchTargetLabel": {
+        "visible": true,
+        "width": 180
+      },
+      "scene": {
+        "mode": "cluster",
+        "page": 2,
+        "pages": 5,
+        "total": 40,
+        "items": 8
+      }
+    },
+    {
+      "width": 1280,
+      "height": 800,
+      "metrics": {
+        "host": {
+          "width": 658,
+          "height": 600
+        },
+        "canvas": {
+          "width": 658,
+          "height": 600
+        },
+        "surface": {
+          "cssWidth": 658,
+          "cssHeight": 600,
+          "dpr": 1,
+          "backingWidth": 658,
+          "backingHeight": 600,
+          "scaleX": 1,
+          "scaleY": 1
+        },
+        "nodeCount": 9,
+        "proxyCount": 0,
+        "labelCount": 9,
+        "labels": {
+          "labels": 9,
+          "priority": 1,
+          "clipped": [],
+          "priorityCollisions": [],
+          "fontSizes": [
+            "11px / 13.2px system-ui, sans-serif"
+          ],
+          "host": {
+            "width": 658,
+            "height": 600
+          }
+        },
+        "renderMetrics": {
+          "candidateCount": 9,
+          "viewportEligibleCount": 9,
+          "viewportIneligibleCount": 0,
+          "budgetExcludedCount": 0,
+          "createdCount": 9,
+          "visibleCount": 9,
+          "invalidWebLinkCount": 0,
+          "suppressedCount": 0,
+          "overlapSuppressedCount": 0,
+          "viewportSuppressedCount": 0,
+          "nodeObstacleSuppressedCount": 0,
+          "labelNodeOverlapCount": 0,
+          "placementAttempts": 10,
+          "labelNodeOverlapDefinition": "visible label-node pairs; owner node excluded; exact circle/diamond intersection",
+          "placementObstaclePolicy": "conservative glyph bounds",
+          "priorityVisibleCount": 1,
+          "prioritySuppressedCount": 0,
+          "unmeasurableCount": 0,
+          "measuredCount": 9,
+          "visibleIconCount": 0,
+          "leadingIconCount": 0,
+          "rootProtection": true,
+          "rootProtectionRect": {
+            "left": 227,
+            "top": 198,
+            "right": 431,
+            "bottom": 402
+          },
+          "rootLabelVisible": true,
+          "selectedLabelVisible": true,
+          "selectedLabelOpacity": 1,
+          "textMismatchCount": 0,
+          "measurement": "getBoundingClientRect/offsetWidth",
+          "dprIndependent": true,
+          "viewport": {
+            "width": 658,
+            "height": 600
+          },
+          "labels": {}
+        }
+      },
+      "directSelected": "big-0",
+      "selectedLabel": {
+        "visible": true,
+        "width": 79.265625
+      },
+      "searchTargetLabel": {
+        "visible": true,
+        "width": 180
+      },
+      "scene": {
+        "mode": "cluster",
+        "page": 2,
+        "pages": 5,
+        "total": 40,
+        "items": 8
+      }
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "metrics": {
+        "host": {
+          "width": 402,
+          "height": 600
+        },
+        "canvas": {
+          "width": 402,
+          "height": 600
+        },
+        "surface": {
+          "cssWidth": 402,
+          "cssHeight": 600,
+          "dpr": 1,
+          "backingWidth": 402,
+          "backingHeight": 600,
+          "scaleX": 1,
+          "scaleY": 1
+        },
+        "nodeCount": 9,
+        "proxyCount": 0,
+        "labelCount": 5,
+        "labels": {
+          "labels": 5,
+          "priority": 1,
+          "clipped": [],
+          "priorityCollisions": [],
+          "fontSizes": [
+            "11px / 13.2px system-ui, sans-serif"
+          ],
+          "host": {
+            "width": 402,
+            "height": 600
+          }
+        },
+        "renderMetrics": {
+          "candidateCount": 9,
+          "viewportEligibleCount": 9,
+          "viewportIneligibleCount": 0,
+          "budgetExcludedCount": 0,
+          "createdCount": 9,
+          "visibleCount": 5,
+          "invalidWebLinkCount": 0,
+          "suppressedCount": 4,
+          "overlapSuppressedCount": 4,
+          "viewportSuppressedCount": 0,
+          "nodeObstacleSuppressedCount": 0,
+          "labelNodeOverlapCount": 0,
+          "placementAttempts": 27,
+          "labelNodeOverlapDefinition": "visible label-node pairs; owner node excluded; exact circle/diamond intersection",
+          "placementObstaclePolicy": "conservative glyph bounds",
+          "priorityVisibleCount": 1,
+          "prioritySuppressedCount": 0,
+          "unmeasurableCount": 0,
+          "measuredCount": 9,
+          "visibleIconCount": 0,
+          "leadingIconCount": 0,
+          "rootProtection": true,
+          "rootProtectionRect": {
+            "left": 99,
+            "top": 198,
+            "right": 303,
+            "bottom": 402
+          },
+          "rootLabelVisible": true,
+          "selectedLabelVisible": true,
+          "selectedLabelOpacity": 1,
+          "textMismatchCount": 0,
+          "measurement": "getBoundingClientRect/offsetWidth",
+          "dprIndependent": true,
+          "viewport": {
+            "width": 402,
+            "height": 600
+          },
+          "labels": {}
+        }
+      },
+      "directSelected": "big-0",
+      "selectedLabel": {
+        "visible": true,
+        "width": 79.265625
+      },
+      "searchTargetLabel": {
+        "visible": true,
+        "width": 180
+      },
+      "scene": {
+        "mode": "cluster",
+        "page": 2,
+        "pages": 5,
+        "total": 40,
+        "items": 8
+      }
+    }
+  ],
+  "invariants": {
+    "mapId": "map_fc6d724b-cea4-4260-ae1c-24f6e391b288",
+    "nodeCount": 1000,
+    "treeRoot": "root",
+    "liveSentinel": {
+      "untouched": true
+    }
+  },
+  "errors": []
+}

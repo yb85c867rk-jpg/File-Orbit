@@ -1,0 +1,5 @@
+﻿FileOrbit shell Slice 1 browser verification: NOT RUN.
+No browser executable/automation was available without installing dependencies.
+Node tests cover sidebar collapse/action behavior, unavailable states, theme tokens/canvas adapter,
+fullscreen success/rejection/change, toolbar Undo/Redo labels/availability/guards, and shell markup.
+Native sidebar click/focus, fullscreen API, visual theme, and responsive resize were not executed.

@@ -1,0 +1,1496 @@
+{
+  "environment": {
+    "node": "v24.12.0",
+    "platform": "win32",
+    "arch": "x64",
+    "cpu": "13th Gen Intel(R) Core(TM) i5-13420H",
+    "logicalCpus": 12,
+    "browser": "NOT RUN",
+    "generatedAt": "2026-11-03T08:22:11.981Z",
+    "repetitions": 3,
+    "viewport": {
+      "width": 1600,
+      "height": 900
+    },
+    "glyphRadiusCss": 6
+  },
+  "defaults": {
+    "editorMaxNodes": 300,
+    "v2WorkspaceScaleMax": 16,
+    "v2ReferenceProjectionRadiusCss": 240,
+    "diagnosticMaxNodes": 300
+  },
+  "fixtures": {
+    "flat": {
+      "300": {
+        "descriptor": "flat-300",
+        "actual": {
+          "nodeCount": 300,
+          "depth": 1,
+          "maxFanout": 299,
+          "folderCount": 1,
+          "fileCount": 299
+        },
+        "runs": [
+          {
+            "repetition": 1,
+            "ok": true,
+            "stageMs": 21.328,
+            "workspaceScale": 14.25,
+            "evaluation": {
+              "ok": true,
+              "reason": null,
+              "ms": 18.813,
+              "fit": {
+                "ok": true,
+                "zoom": 0.22731260079377882,
+                "eligibleCount": 300,
+                "containedCount": 300,
+                "clippedCount": 0
+              },
+              "metrics": {
+                "overlapPairs": 318,
+                "minCenterSeparation": 3.0374395105635585,
+                "visibleNodes": 300,
+                "totalNodes": 300,
+                "edges": 299,
+                "bounds": {
+                  "minX": 374.0766146028896,
+                  "minY": 24,
+                  "maxX": 1225.9233853971105,
+                  "maxY": 876
+                }
+              }
+            }
+          },
+          {
+            "repetition": 2,
+            "ok": true,
+            "stageMs": 13.816,
+            "workspaceScale": 14.25,
+            "evaluation": {
+              "ok": true,
+              "reason": null,
+              "ms": 5.972,
+              "fit": {
+                "ok": true,
+                "zoom": 0.22731260079377882,
+                "eligibleCount": 300,
+                "containedCount": 300,
+                "clippedCount": 0
+              },
+              "metrics": {
+                "overlapPairs": 318,
+                "minCenterSeparation": 3.0374395105635585,
+                "visibleNodes": 300,
+                "totalNodes": 300,
+                "edges": 299,
+                "bounds": {
+                  "minX": 374.0766146028896,
+                  "minY": 24,
+                  "maxX": 1225.9233853971105,
+                  "maxY": 876
+                }
+              }
+            }
+          },
+          {
+            "repetition": 3,
+            "ok": true,
+            "stageMs": 8.645,
+            "workspaceScale": 14.25,
+            "evaluation": {
+              "ok": true,
+              "reason": null,
+              "ms": 3.169,
+              "fit": {
+                "ok": true,
+                "zoom": 0.22731260079377882,
+                "eligibleCount": 300,
+                "containedCount": 300,
+                "clippedCount": 0
+              },
+              "metrics": {
+                "overlapPairs": 318,
+                "minCenterSeparation": 3.0374395105635585,
+                "visibleNodes": 300,
+                "totalNodes": 300,
+                "edges": 299,
+                "bounds": {
+                  "minX": 374.0766146028896,
+                  "minY": 24,
+                  "maxX": 1225.9233853971105,
+                  "maxY": 876
+                }
+              }
+            }
+          }
+        ]
+      },
+      "1000": {
+        "descriptor": "flat-1000",
+        "actual": {
+          "nodeCount": 1000,
+          "depth": 1,
+          "maxFanout": 999,
+          "folderCount": 1,
+          "fileCount": 999
+        },
+        "runs": [
+          {
+            "repetition": 1,
+            "ok": false,
+            "ms": 44.735,
+            "code": "experimental-v2-infeasible",
+            "message": "no workspace scale up to 16 satisfies angular clearance (node root)",
+            "unsatisfied": [
+              {
+                "parentId": "root",
+                "required": 18.39686153283418,
+                "available": 6.283185307179586,
+                "workspaceScale": 16
+              }
+            ],
+            "workspaceScale": 16
+          },
+          {
+            "repetition": 2,
+            "ok": false,
+            "ms": 60.292,
+            "code": "experimental-v2-infeasible",
+            "message": "no workspace scale up to 16 satisfies angular clearance (node root)",
+            "unsatisfied": [
+              {
+                "parentId": "root",
+                "required": 18.39686153283418,
+                "available": 6.283185307179586,
+                "workspaceScale": 16
+              }
+            ],
+            "workspaceScale": 16
+          },
+          {
+            "repetition": 3,
+            "ok": false,
+            "ms": 31.448,
+            "code": "experimental-v2-infeasible",
+            "message": "no workspace scale up to 16 satisfies angular clearance (node root)",
+            "unsatisfied": [
+              {
+                "parentId": "root",
+                "required": 18.39686153283418,
+                "available": 6.283185307179586,
+                "workspaceScale": 16
+              }
+            ],
+            "workspaceScale": 16
+          }
+        ]
+      }
+    },
+    "wide": {
+      "300": {
+        "descriptor": "wide-300",
+        "actual": {
+          "nodeCount": 300,
+          "depth": 2,
+          "maxFanout": 24,
+          "folderCount": 13,
+          "fileCount": 287
+        },
+        "runs": [
+          {
+            "repetition": 1,
+            "ok": true,
+            "stageMs": 6.585,
+            "workspaceScale": 8,
+            "evaluation": {
+              "ok": true,
+              "reason": null,
+              "ms": 5.207,
+              "fit": {
+                "ok": true,
+                "zoom": 0.3009912963781113,
+                "eligibleCount": 300,
+                "containedCount": 300,
+                "clippedCount": 0
+              },
+              "metrics": {
+                "overlapPairs": 76,
+                "minCenterSeparation": 5.5754170141030475,
+                "visibleNodes": 300,
+                "totalNodes": 300,
+                "edges": 299,
+                "bounds": {
+                  "minX": 373.4235261585846,
+                  "minY": 24.000000000000057,
+                  "maxX": 1226.5764738414155,
+                  "maxY": 876
+                }
+              }
+            }
+          },
+          {
+            "repetition": 2,
+            "ok": true,
+            "stageMs": 6.57,
+            "workspaceScale": 8,
+            "evaluation": {
+              "ok": true,
+              "reason": null,
+              "ms": 5.484,
+              "fit": {
+                "ok": true,
+                "zoom": 0.3009912963781113,
+                "eligibleCount": 300,
+                "containedCount": 300,
+                "clippedCount": 0
+              },
+              "metrics": {
+                "overlapPairs": 76,
+                "minCenterSeparation": 5.5754170141030475,
+                "visibleNodes": 300,
+                "totalNodes": 300,
+                "edges": 299,
+                "bounds": {
+                  "minX": 373.4235261585846,
+                  "minY": 24.000000000000057,
+                  "maxX": 1226.5764738414155,
+                  "maxY": 876
+                }
+              }
+            }
+          },
+          {
+            "repetition": 3,
+            "ok": true,
+            "stageMs": 6.605,
+            "workspaceScale": 8,
+            "evaluation": {
+              "ok": true,
+              "reason": null,
+              "ms": 6.734,
+              "fit": {
+                "ok": true,
+                "zoom": 0.3009912963781113,
+                "eligibleCount": 300,
+                "containedCount": 300,
+                "clippedCount": 0
+              },
+              "metrics": {
+                "overlapPairs": 76,
+                "minCenterSeparation": 5.5754170141030475,
+                "visibleNodes": 300,
+                "totalNodes": 300,
+                "edges": 299,
+                "bounds": {
+                  "minX": 373.4235261585846,
+                  "minY": 24.000000000000057,
+                  "maxX": 1226.5764738414155,
+                  "maxY": 876
+                }
+              }
+            }
+          }
+        ]
+      },
+      "1000": {
+        "descriptor": "wide-1000",
+        "actual": {
+          "nodeCount": 1000,
+          "depth": 2,
+          "maxFanout": 83,
+          "folderCount": 13,
+          "fileCount": 987
+        },
+        "runs": [
+          {
+            "repetition": 1,
+            "ok": false,
+            "ms": 34.497,
+            "code": "experimental-v2-infeasible",
+            "message": "no workspace scale up to 16 satisfies angular clearance (node root)",
+            "unsatisfied": [
+              {
+                "parentId": "g0",
+                "required": 0.9296355979736148,
+                "available": 0.5362505753966832,
+                "workspaceScale": 16
+              }
+            ],
+            "workspaceScale": 16
+          },
+          {
+            "repetition": 2,
+            "ok": false,
+            "ms": 29.883,
+            "code": "experimental-v2-infeasible",
+            "message": "no workspace scale up to 16 satisfies angular clearance (node root)",
+            "unsatisfied": [
+              {
+                "parentId": "g0",
+                "required": 0.9296355979736148,
+                "available": 0.5362505753966832,
+                "workspaceScale": 16
+              }
+            ],
+            "workspaceScale": 16
+          },
+          {
+            "repetition": 3,
+            "ok": false,
+            "ms": 30.339,
+            "code": "experimental-v2-infeasible",
+            "message": "no workspace scale up to 16 satisfies angular clearance (node root)",
+            "unsatisfied": [
+              {
+                "parentId": "g0",
+                "required": 0.9296355979736148,
+                "available": 0.5362505753966832,
+                "workspaceScale": 16
+              }
+            ],
+            "workspaceScale": 16
+          }
+        ]
+      }
+    },
+    "balanced": {
+      "300": {
+        "descriptor": "balanced-300",
+        "actual": {
+          "nodeCount": 300,
+          "depth": 5,
+          "maxFanout": 3,
+          "folderCount": 300,
+          "fileCount": 0
+        },
+        "runs": [
+          {
+            "repetition": 1,
+            "ok": true,
+            "stageMs": 8.453,
+            "workspaceScale": 3.75,
+            "evaluation": {
+              "ok": true,
+              "reason": null,
+              "ms": 5.129,
+              "fit": {
+                "ok": true,
+                "zoom": 0.59101413331594,
+                "eligibleCount": 300,
+                "containedCount": 300,
+                "clippedCount": 0
+              },
+              "metrics": {
+                "overlapPairs": 9,
+                "minCenterSeparation": 7.645160328184791,
+                "visibleNodes": 300,
+                "totalNodes": 300,
+                "edges": 299,
+                "bounds": {
+                  "minX": 374.02881594287743,
+                  "minY": 24,
+                  "maxX": 1225.9711840571224,
+                  "maxY": 876
+                }
+              }
+            }
+          },
+          {
+            "repetition": 2,
+            "ok": true,
+            "stageMs": 8.263,
+            "workspaceScale": 3.75,
+            "evaluation": {
+              "ok": true,
+              "reason": null,
+              "ms": 4.058,
+              "fit": {
+                "ok": true,
+                "zoom": 0.59101413331594,
+                "eligibleCount": 300,
+                "containedCount": 300,
+                "clippedCount": 0
+              },
+              "metrics": {
+                "overlapPairs": 9,
+                "minCenterSeparation": 7.645160328184791,
+                "visibleNodes": 300,
+                "totalNodes": 300,
+                "edges": 299,
+                "bounds": {
+                  "minX": 374.02881594287743,
+                  "minY": 24,
+                  "maxX": 1225.9711840571224,
+                  "maxY": 876
+                }
+              }
+            }
+          },
+          {
+            "repetition": 3,
+            "ok": true,
+            "stageMs": 7.353,
+            "workspaceScale": 3.75,
+            "evaluation": {
+              "ok": true,
+              "reason": null,
+              "ms": 3.301,
+              "fit": {
+                "ok": true,
+                "zoom": 0.59101413331594,
+                "eligibleCount": 300,
+                "containedCount": 300,
+                "clippedCount": 0
+              },
+              "metrics": {
+                "overlapPairs": 9,
+                "minCenterSeparation": 7.645160328184791,
+                "visibleNodes": 300,
+                "totalNodes": 300,
+                "edges": 299,
+                "bounds": {
+                  "minX": 374.02881594287743,
+                  "minY": 24,
+                  "maxX": 1225.9711840571224,
+                  "maxY": 876
+                }
+              }
+            }
+          }
+        ]
+      },
+      "1000": {
+        "descriptor": "balanced-1000",
+        "actual": {
+          "nodeCount": 1000,
+          "depth": 6,
+          "maxFanout": 3,
+          "folderCount": 1000,
+          "fileCount": 0
+        },
+        "runs": [
+          {
+            "repetition": 1,
+            "ok": true,
+            "stageMs": 53.15,
+            "workspaceScale": 10.75,
+            "evaluation": {
+              "ok": true,
+              "reason": null,
+              "ms": 14.326,
+              "fit": {
+                "ok": true,
+                "zoom": 0.20157727484380517,
+                "eligibleCount": 1000,
+                "containedCount": 1000,
+                "clippedCount": 0
+              },
+              "metrics": {
+                "overlapPairs": 968,
+                "minCenterSeparation": 3.828163481714502,
+                "visibleNodes": 1000,
+                "totalNodes": 1000,
+                "edges": 999,
+                "bounds": {
+                  "minX": 371.2473861116281,
+                  "minY": 24,
+                  "maxX": 1228.752613888372,
+                  "maxY": 876
+                }
+              }
+            }
+          },
+          {
+            "repetition": 2,
+            "ok": true,
+            "stageMs": 53.497,
+            "workspaceScale": 10.75,
+            "evaluation": {
+              "ok": true,
+              "reason": null,
+              "ms": 12.378,
+              "fit": {
+                "ok": true,
+                "zoom": 0.20157727484380517,
+                "eligibleCount": 1000,
+                "containedCount": 1000,
+                "clippedCount": 0
+              },
+              "metrics": {
+                "overlapPairs": 968,
+                "minCenterSeparation": 3.828163481714502,
+                "visibleNodes": 1000,
+                "totalNodes": 1000,
+                "edges": 999,
+                "bounds": {
+                  "minX": 371.2473861116281,
+                  "minY": 24,
+                  "maxX": 1228.752613888372,
+                  "maxY": 876
+                }
+              }
+            }
+          },
+          {
+            "repetition": 3,
+            "ok": true,
+            "stageMs": 55.826,
+            "workspaceScale": 10.75,
+            "evaluation": {
+              "ok": true,
+              "reason": null,
+              "ms": 10.556,
+              "fit": {
+                "ok": true,
+                "zoom": 0.20157727484380517,
+                "eligibleCount": 1000,
+                "containedCount": 1000,
+                "clippedCount": 0
+              },
+              "metrics": {
+                "overlapPairs": 968,
+                "minCenterSeparation": 3.828163481714502,
+                "visibleNodes": 1000,
+                "totalNodes": 1000,
+                "edges": 999,
+                "bounds": {
+                  "minX": 371.2473861116281,
+                  "minY": 24,
+                  "maxX": 1228.752613888372,
+                  "maxY": 876
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "mixed": {
+      "300": {
+        "descriptor": "mixed-300",
+        "actual": {
+          "nodeCount": 300,
+          "depth": 9,
+          "maxFanout": 89,
+          "folderCount": 15,
+          "fileCount": 285
+        },
+        "runs": [
+          {
+            "repetition": 1,
+            "ok": true,
+            "stageMs": 6.471,
+            "workspaceScale": 7.5,
+            "evaluation": {
+              "ok": true,
+              "reason": null,
+              "ms": 3.018,
+              "fit": {
+                "ok": true,
+                "zoom": 0.36359551288632946,
+                "eligibleCount": 300,
+                "containedCount": 300,
+                "clippedCount": 0
+              },
+              "metrics": {
+                "overlapPairs": 104,
+                "minCenterSeparation": 5.159971556896695,
+                "visibleNodes": 300,
+                "totalNodes": 300,
+                "edges": 299,
+                "bounds": {
+                  "minX": 346.2328611048457,
+                  "minY": 23.999999999999943,
+                  "maxX": 1253.7671388951542,
+                  "maxY": 876
+                }
+              }
+            }
+          },
+          {
+            "repetition": 2,
+            "ok": true,
+            "stageMs": 2.461,
+            "workspaceScale": 7.5,
+            "evaluation": {
+              "ok": true,
+              "reason": null,
+              "ms": 5.364,
+              "fit": {
+                "ok": true,
+                "zoom": 0.36359551288632946,
+                "eligibleCount": 300,
+                "containedCount": 300,
+                "clippedCount": 0
+              },
+              "metrics": {
+                "overlapPairs": 104,
+                "minCenterSeparation": 5.159971556896695,
+                "visibleNodes": 300,
+                "totalNodes": 300,
+                "edges": 299,
+                "bounds": {
+                  "minX": 346.2328611048457,
+                  "minY": 23.999999999999943,
+                  "maxX": 1253.7671388951542,
+                  "maxY": 876
+                }
+              }
+            }
+          },
+          {
+            "repetition": 3,
+            "ok": true,
+            "stageMs": 5.796,
+            "workspaceScale": 7.5,
+            "evaluation": {
+              "ok": true,
+              "reason": null,
+              "ms": 2.85,
+              "fit": {
+                "ok": true,
+                "zoom": 0.36359551288632946,
+                "eligibleCount": 300,
+                "containedCount": 300,
+                "clippedCount": 0
+              },
+              "metrics": {
+                "overlapPairs": 104,
+                "minCenterSeparation": 5.159971556896695,
+                "visibleNodes": 300,
+                "totalNodes": 300,
+                "edges": 299,
+                "bounds": {
+                  "minX": 346.2328611048457,
+                  "minY": 23.999999999999943,
+                  "maxX": 1253.7671388951542,
+                  "maxY": 876
+                }
+              }
+            }
+          }
+        ]
+      },
+      "1000": {
+        "descriptor": "mixed-1000",
+        "actual": {
+          "nodeCount": 1000,
+          "depth": 9,
+          "maxFanout": 205,
+          "folderCount": 15,
+          "fileCount": 985
+        },
+        "runs": [
+          {
+            "repetition": 1,
+            "ok": false,
+            "ms": 25.605,
+            "code": "experimental-v2-infeasible",
+            "message": "no workspace scale up to 16 satisfies angular clearance (node root)",
+            "unsatisfied": [
+              {
+                "parentId": "g0",
+                "required": 1.8538465314194001,
+                "available": 1.0579215632541317,
+                "workspaceScale": 16
+              }
+            ],
+            "workspaceScale": 16
+          },
+          {
+            "repetition": 2,
+            "ok": false,
+            "ms": 21.952,
+            "code": "experimental-v2-infeasible",
+            "message": "no workspace scale up to 16 satisfies angular clearance (node root)",
+            "unsatisfied": [
+              {
+                "parentId": "g0",
+                "required": 1.8538465314194001,
+                "available": 1.0579215632541317,
+                "workspaceScale": 16
+              }
+            ],
+            "workspaceScale": 16
+          },
+          {
+            "repetition": 3,
+            "ok": false,
+            "ms": 24.009,
+            "code": "experimental-v2-infeasible",
+            "message": "no workspace scale up to 16 satisfies angular clearance (node root)",
+            "unsatisfied": [
+              {
+                "parentId": "g0",
+                "required": 1.8538465314194001,
+                "available": 1.0579215632541317,
+                "workspaceScale": 16
+              }
+            ],
+            "workspaceScale": 16
+          }
+        ]
+      }
+    },
+    "deep": {
+      "300": {
+        "descriptor": "deep-300",
+        "actual": {
+          "nodeCount": 300,
+          "depth": 51,
+          "maxFanout": 6,
+          "folderCount": 51,
+          "fileCount": 249
+        },
+        "runs": [
+          {
+            "repetition": 1,
+            "ok": false,
+            "ms": 9.301,
+            "code": "experimental-v2-infeasible",
+            "message": "no workspace scale up to 16 satisfies angular clearance (node root)",
+            "unsatisfied": [
+              {
+                "parentId": "n5",
+                "required": 0.055901704687741645,
+                "available": 0.014897227044914462,
+                "workspaceScale": 16
+              }
+            ],
+            "workspaceScale": 16
+          },
+          {
+            "repetition": 2,
+            "ok": false,
+            "ms": 6.315,
+            "code": "experimental-v2-infeasible",
+            "message": "no workspace scale up to 16 satisfies angular clearance (node root)",
+            "unsatisfied": [
+              {
+                "parentId": "n5",
+                "required": 0.055901704687741645,
+                "available": 0.014897227044914462,
+                "workspaceScale": 16
+              }
+            ],
+            "workspaceScale": 16
+          },
+          {
+            "repetition": 3,
+            "ok": false,
+            "ms": 6.186,
+            "code": "experimental-v2-infeasible",
+            "message": "no workspace scale up to 16 satisfies angular clearance (node root)",
+            "unsatisfied": [
+              {
+                "parentId": "n5",
+                "required": 0.055901704687741645,
+                "available": 0.014897227044914462,
+                "workspaceScale": 16
+              }
+            ],
+            "workspaceScale": 16
+          }
+        ]
+      },
+      "1000": {
+        "descriptor": "deep-1000",
+        "actual": {
+          "nodeCount": 1000,
+          "depth": 51,
+          "maxFanout": 20,
+          "folderCount": 51,
+          "fileCount": 949
+        },
+        "runs": [
+          {
+            "repetition": 1,
+            "ok": false,
+            "ms": 23.293,
+            "code": "experimental-v2-infeasible",
+            "message": "no workspace scale up to 16 satisfies angular clearance (node root)",
+            "unsatisfied": [
+              {
+                "parentId": "n2",
+                "required": 0.27497699945095055,
+                "available": 0.08634458364392532,
+                "workspaceScale": 16
+              }
+            ],
+            "workspaceScale": 16
+          },
+          {
+            "repetition": 2,
+            "ok": false,
+            "ms": 35.932,
+            "code": "experimental-v2-infeasible",
+            "message": "no workspace scale up to 16 satisfies angular clearance (node root)",
+            "unsatisfied": [
+              {
+                "parentId": "n2",
+                "required": 0.27497699945095055,
+                "available": 0.08634458364392532,
+                "workspaceScale": 16
+              }
+            ],
+            "workspaceScale": 16
+          },
+          {
+            "repetition": 3,
+            "ok": false,
+            "ms": 33.07,
+            "code": "experimental-v2-infeasible",
+            "message": "no workspace scale up to 16 satisfies angular clearance (node root)",
+            "unsatisfied": [
+              {
+                "parentId": "n2",
+                "required": 0.27497699945095055,
+                "available": 0.08634458364392532,
+                "workspaceScale": 16
+              }
+            ],
+            "workspaceScale": 16
+          }
+        ]
+      }
+    }
+  },
+  "parity": [
+    {
+      "shape": "flat",
+      "total": 300,
+      "production": {
+        "overlapPairs": 318,
+        "minCenterSeparation": 3.0374395105635585,
+        "bounds": {
+          "minX": 374.0766146028896,
+          "minY": 24,
+          "maxX": 1225.9233853971105,
+          "maxY": 876
+        },
+        "visibleNodes": 300,
+        "ms": 114.565
+      },
+      "exact": {
+        "overlapPairs": 318,
+        "minCenterSeparation": 3.0374395105635585,
+        "bounds": {
+          "minX": 374.0766146028896,
+          "minY": 24,
+          "maxX": 1225.9233853971105,
+          "maxY": 876
+        },
+        "visibleNodes": 300,
+        "ms": 1.732
+      },
+      "match": true
+    },
+    {
+      "shape": "flat",
+      "total": 300,
+      "production": {
+        "overlapPairs": 318,
+        "minCenterSeparation": 3.0374395105635585,
+        "bounds": {
+          "minX": 374.0766146028896,
+          "minY": 24,
+          "maxX": 1225.9233853971105,
+          "maxY": 876
+        },
+        "visibleNodes": 300,
+        "ms": 111.024
+      },
+      "exact": {
+        "overlapPairs": 318,
+        "minCenterSeparation": 3.0374395105635585,
+        "bounds": {
+          "minX": 374.0766146028896,
+          "minY": 24,
+          "maxX": 1225.9233853971105,
+          "maxY": 876
+        },
+        "visibleNodes": 300,
+        "ms": 1.574
+      },
+      "match": true
+    },
+    {
+      "shape": "flat",
+      "total": 300,
+      "production": {
+        "overlapPairs": 318,
+        "minCenterSeparation": 3.0374395105635585,
+        "bounds": {
+          "minX": 374.0766146028896,
+          "minY": 24,
+          "maxX": 1225.9233853971105,
+          "maxY": 876
+        },
+        "visibleNodes": 300,
+        "ms": 110.228
+      },
+      "exact": {
+        "overlapPairs": 318,
+        "minCenterSeparation": 3.0374395105635585,
+        "bounds": {
+          "minX": 374.0766146028896,
+          "minY": 24,
+          "maxX": 1225.9233853971105,
+          "maxY": 876
+        },
+        "visibleNodes": 300,
+        "ms": 1.711
+      },
+      "match": true
+    },
+    {
+      "shape": "wide",
+      "total": 300,
+      "production": {
+        "overlapPairs": 76,
+        "minCenterSeparation": 5.5754170141030475,
+        "bounds": {
+          "minX": 373.4235261585846,
+          "minY": 24.000000000000057,
+          "maxX": 1226.5764738414155,
+          "maxY": 876
+        },
+        "visibleNodes": 300,
+        "ms": 131.254
+      },
+      "exact": {
+        "overlapPairs": 76,
+        "minCenterSeparation": 5.5754170141030475,
+        "bounds": {
+          "minX": 373.4235261585846,
+          "minY": 24.000000000000057,
+          "maxX": 1226.5764738414155,
+          "maxY": 876
+        },
+        "visibleNodes": 300,
+        "ms": 2.308
+      },
+      "match": true
+    },
+    {
+      "shape": "wide",
+      "total": 300,
+      "production": {
+        "overlapPairs": 76,
+        "minCenterSeparation": 5.5754170141030475,
+        "bounds": {
+          "minX": 373.4235261585846,
+          "minY": 24.000000000000057,
+          "maxX": 1226.5764738414155,
+          "maxY": 876
+        },
+        "visibleNodes": 300,
+        "ms": 103.529
+      },
+      "exact": {
+        "overlapPairs": 76,
+        "minCenterSeparation": 5.5754170141030475,
+        "bounds": {
+          "minX": 373.4235261585846,
+          "minY": 24.000000000000057,
+          "maxX": 1226.5764738414155,
+          "maxY": 876
+        },
+        "visibleNodes": 300,
+        "ms": 1.449
+      },
+      "match": true
+    },
+    {
+      "shape": "wide",
+      "total": 300,
+      "production": {
+        "overlapPairs": 76,
+        "minCenterSeparation": 5.5754170141030475,
+        "bounds": {
+          "minX": 373.4235261585846,
+          "minY": 24.000000000000057,
+          "maxX": 1226.5764738414155,
+          "maxY": 876
+        },
+        "visibleNodes": 300,
+        "ms": 108.26
+      },
+      "exact": {
+        "overlapPairs": 76,
+        "minCenterSeparation": 5.5754170141030475,
+        "bounds": {
+          "minX": 373.4235261585846,
+          "minY": 24.000000000000057,
+          "maxX": 1226.5764738414155,
+          "maxY": 876
+        },
+        "visibleNodes": 300,
+        "ms": 1.625
+      },
+      "match": true
+    },
+    {
+      "shape": "balanced",
+      "total": 300,
+      "production": {
+        "overlapPairs": 9,
+        "minCenterSeparation": 7.645160328184791,
+        "bounds": {
+          "minX": 374.02881594287743,
+          "minY": 24,
+          "maxX": 1225.9711840571224,
+          "maxY": 876
+        },
+        "visibleNodes": 300,
+        "ms": 4.847
+      },
+      "exact": {
+        "overlapPairs": 9,
+        "minCenterSeparation": 7.645160328184791,
+        "bounds": {
+          "minX": 374.02881594287743,
+          "minY": 24,
+          "maxX": 1225.9711840571224,
+          "maxY": 876
+        },
+        "visibleNodes": 300,
+        "ms": 1.221
+      },
+      "match": true
+    },
+    {
+      "shape": "balanced",
+      "total": 300,
+      "production": {
+        "overlapPairs": 9,
+        "minCenterSeparation": 7.645160328184791,
+        "bounds": {
+          "minX": 374.02881594287743,
+          "minY": 24,
+          "maxX": 1225.9711840571224,
+          "maxY": 876
+        },
+        "visibleNodes": 300,
+        "ms": 7.184
+      },
+      "exact": {
+        "overlapPairs": 9,
+        "minCenterSeparation": 7.645160328184791,
+        "bounds": {
+          "minX": 374.02881594287743,
+          "minY": 24,
+          "maxX": 1225.9711840571224,
+          "maxY": 876
+        },
+        "visibleNodes": 300,
+        "ms": 0.889
+      },
+      "match": true
+    },
+    {
+      "shape": "balanced",
+      "total": 300,
+      "production": {
+        "overlapPairs": 9,
+        "minCenterSeparation": 7.645160328184791,
+        "bounds": {
+          "minX": 374.02881594287743,
+          "minY": 24,
+          "maxX": 1225.9711840571224,
+          "maxY": 876
+        },
+        "visibleNodes": 300,
+        "ms": 4.402
+      },
+      "exact": {
+        "overlapPairs": 9,
+        "minCenterSeparation": 7.645160328184791,
+        "bounds": {
+          "minX": 374.02881594287743,
+          "minY": 24,
+          "maxX": 1225.9711840571224,
+          "maxY": 876
+        },
+        "visibleNodes": 300,
+        "ms": 1.572
+      },
+      "match": true
+    },
+    {
+      "shape": "mixed",
+      "total": 300,
+      "production": {
+        "overlapPairs": 104,
+        "minCenterSeparation": 5.159971556896695,
+        "bounds": {
+          "minX": 346.2328611048457,
+          "minY": 23.999999999999943,
+          "maxX": 1253.7671388951542,
+          "maxY": 876
+        },
+        "visibleNodes": 300,
+        "ms": 74.949
+      },
+      "exact": {
+        "overlapPairs": 104,
+        "minCenterSeparation": 5.159971556896695,
+        "bounds": {
+          "minX": 346.2328611048457,
+          "minY": 23.999999999999943,
+          "maxX": 1253.7671388951542,
+          "maxY": 876
+        },
+        "visibleNodes": 300,
+        "ms": 0.645
+      },
+      "match": true
+    },
+    {
+      "shape": "mixed",
+      "total": 300,
+      "production": {
+        "overlapPairs": 104,
+        "minCenterSeparation": 5.159971556896695,
+        "bounds": {
+          "minX": 346.2328611048457,
+          "minY": 23.999999999999943,
+          "maxX": 1253.7671388951542,
+          "maxY": 876
+        },
+        "visibleNodes": 300,
+        "ms": 100.003
+      },
+      "exact": {
+        "overlapPairs": 104,
+        "minCenterSeparation": 5.159971556896695,
+        "bounds": {
+          "minX": 346.2328611048457,
+          "minY": 23.999999999999943,
+          "maxX": 1253.7671388951542,
+          "maxY": 876
+        },
+        "visibleNodes": 300,
+        "ms": 1.484
+      },
+      "match": true
+    },
+    {
+      "shape": "mixed",
+      "total": 300,
+      "production": {
+        "overlapPairs": 104,
+        "minCenterSeparation": 5.159971556896695,
+        "bounds": {
+          "minX": 346.2328611048457,
+          "minY": 23.999999999999943,
+          "maxX": 1253.7671388951542,
+          "maxY": 876
+        },
+        "visibleNodes": 300,
+        "ms": 114.247
+      },
+      "exact": {
+        "overlapPairs": 104,
+        "minCenterSeparation": 5.159971556896695,
+        "bounds": {
+          "minX": 346.2328611048457,
+          "minY": 23.999999999999943,
+          "maxX": 1253.7671388951542,
+          "maxY": 876
+        },
+        "visibleNodes": 300,
+        "ms": 1.203
+      },
+      "match": true
+    }
+  ],
+  "special": {
+    "binary1000": {
+      "actual": {
+        "nodeCount": 1000,
+        "depth": 9,
+        "maxFanout": 2,
+        "folderCount": 500,
+        "fileCount": 500
+      },
+      "runs": [
+        {
+          "repetition": 1,
+          "ok": true,
+          "stageMs": 36.824,
+          "workspaceScale": 5.75,
+          "refineMs": 1497.072,
+          "refinement": {
+            "applied": true,
+            "attempts": 3,
+            "beforeOverlap": 2041,
+            "afterOverlap": 1971
+          },
+          "refinementError": null,
+          "evaluation": {
+            "ok": true,
+            "metrics": {
+              "overlapPairs": 1971,
+              "visibleNodes": 1000,
+              "edges": 999
+            },
+            "fit": {
+              "ok": true,
+              "zoom": 0.3679736353292277,
+              "eligibleCount": 1000,
+              "containedCount": 1000,
+              "clippedCount": 0
+            }
+          }
+        },
+        {
+          "repetition": 2,
+          "ok": true,
+          "stageMs": 38.603,
+          "workspaceScale": 5.75,
+          "refineMs": 1310.986,
+          "refinement": {
+            "applied": true,
+            "attempts": 3,
+            "beforeOverlap": 2041,
+            "afterOverlap": 1971
+          },
+          "refinementError": null,
+          "evaluation": {
+            "ok": true,
+            "metrics": {
+              "overlapPairs": 1971,
+              "visibleNodes": 1000,
+              "edges": 999
+            },
+            "fit": {
+              "ok": true,
+              "zoom": 0.3679736353292277,
+              "eligibleCount": 1000,
+              "containedCount": 1000,
+              "clippedCount": 0
+            }
+          }
+        },
+        {
+          "repetition": 3,
+          "ok": true,
+          "stageMs": 35.171,
+          "workspaceScale": 5.75,
+          "refineMs": 1216.319,
+          "refinement": {
+            "applied": true,
+            "attempts": 3,
+            "beforeOverlap": 2041,
+            "afterOverlap": 1971
+          },
+          "refinementError": null,
+          "evaluation": {
+            "ok": true,
+            "metrics": {
+              "overlapPairs": 1971,
+              "visibleNodes": 1000,
+              "edges": 999
+            },
+            "fit": {
+              "ok": true,
+              "zoom": 0.3679736353292277,
+              "eligibleCount": 1000,
+              "containedCount": 1000,
+              "clippedCount": 0
+            }
+          }
+        }
+      ]
+    },
+    "diagnostic1000": {
+      "runs": [
+        {
+          "repetition": 1,
+          "production": {
+            "overlapPairs": 1971,
+            "minCenterSeparation": 4.2216374021014245,
+            "ms": 469.47
+          },
+          "exact": {
+            "overlapPairs": 1971,
+            "minCenterSeparation": 4.2216374021014245,
+            "ms": 5.738
+          },
+          "match": true
+        },
+        {
+          "repetition": 2,
+          "production": {
+            "overlapPairs": 1971,
+            "minCenterSeparation": 4.2216374021014245,
+            "ms": 435.445
+          },
+          "exact": {
+            "overlapPairs": 1971,
+            "minCenterSeparation": 4.2216374021014245,
+            "ms": 5.126
+          },
+          "match": true
+        },
+        {
+          "repetition": 3,
+          "production": {
+            "overlapPairs": 1971,
+            "minCenterSeparation": 4.2216374021014245,
+            "ms": 369.284
+          },
+          "exact": {
+            "overlapPairs": 1971,
+            "minCenterSeparation": 4.2216374021014245,
+            "ms": 3.27
+          },
+          "match": true
+        }
+      ]
+    },
+    "flat1000Reference960": {
+      "actual": {
+        "nodeCount": 1000,
+        "depth": 1,
+        "maxFanout": 999,
+        "folderCount": 1,
+        "fileCount": 999
+      },
+      "runs": [
+        {
+          "repetition": 1,
+          "ok": true,
+          "stageMs": 22.613,
+          "workspaceScale": 11.75,
+          "evaluation": {
+            "ok": true,
+            "fit": {
+              "ok": true,
+              "zoom": 0.05703750800534931,
+              "eligibleCount": 1000,
+              "containedCount": 1000,
+              "clippedCount": 0
+            },
+            "metrics": {
+              "overlapPairs": 4605,
+              "minCenterSeparation": 0.914417332875928,
+              "visibleNodes": 1000,
+              "edges": 999
+            }
+          }
+        },
+        {
+          "repetition": 2,
+          "ok": true,
+          "stageMs": 14.88,
+          "workspaceScale": 11.75,
+          "evaluation": {
+            "ok": true,
+            "fit": {
+              "ok": true,
+              "zoom": 0.05703750800534931,
+              "eligibleCount": 1000,
+              "containedCount": 1000,
+              "clippedCount": 0
+            },
+            "metrics": {
+              "overlapPairs": 4605,
+              "minCenterSeparation": 0.914417332875928,
+              "visibleNodes": 1000,
+              "edges": 999
+            }
+          }
+        },
+        {
+          "repetition": 3,
+          "ok": true,
+          "stageMs": 16.973,
+          "workspaceScale": 11.75,
+          "evaluation": {
+            "ok": true,
+            "fit": {
+              "ok": true,
+              "zoom": 0.05703750800534931,
+              "eligibleCount": 1000,
+              "containedCount": 1000,
+              "clippedCount": 0
+            },
+            "metrics": {
+              "overlapPairs": 4605,
+              "minCenterSeparation": 0.914417332875928,
+              "visibleNodes": 1000,
+              "edges": 999
+            }
+          }
+        }
+      ]
+    },
+    "cluster1000": {
+      "overview": {
+        "clusters": 25,
+        "result": {
+          "ok": true,
+          "actual": {
+            "nodeCount": 26,
+            "depth": 1,
+            "maxFanout": 25,
+            "folderCount": 26,
+            "fileCount": 0
+          },
+          "stageMs": 0.112,
+          "evaluation": {
+            "ok": true,
+            "fit": {
+              "ok": true,
+              "zoom": 2.6183947394144083,
+              "eligibleCount": 26,
+              "containedCount": 26,
+              "clippedCount": 0
+            },
+            "metrics": {
+              "overlapPairs": 0,
+              "visibleNodes": 26,
+              "totalNodes": 26,
+              "edges": 25
+            }
+          }
+        }
+      },
+      "focused": {
+        "clusters": 25,
+        "focusedIndex": 0,
+        "result": {
+          "ok": true,
+          "actual": {
+            "nodeCount": 42,
+            "depth": 2,
+            "maxFanout": 40,
+            "folderCount": 2,
+            "fileCount": 40
+          },
+          "stageMs": 0.112,
+          "evaluation": {
+            "ok": true,
+            "fit": {
+              "ok": true,
+              "zoom": 2.4173810703317162,
+              "eligibleCount": 42,
+              "containedCount": 42,
+              "clippedCount": 0
+            },
+            "metrics": {
+              "overlapPairs": 0,
+              "visibleNodes": 42,
+              "totalNodes": 42,
+              "edges": 41
+            }
+          }
+        }
+      }
+    }
+  }
+}

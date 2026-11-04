@@ -1,0 +1,26 @@
+﻿FileOrbit production replacement save invalidation r76
+
+Root cause:
+invalidateDocumentSave() was only wired to destroy() and the test replaceSession hook. Successful production commits changed tree/document state without invalidating old documentSaveOwner/inFlight, so B inherited A's save lock.
+
+Correction (production lifecycle boundary):
+- installCreatedMap candidate commit calls invalidateDocumentSave() before publishing installed tree/document state. Covers Open File, Import Backup, Create Map successful commits; failed/cancelled installation never calls commit and preserves A.
+- resetActiveDocument() calls invalidateDocumentSave(); covers Previous local maps, empty-state reset, Create Map reset and other reset paths.
+- Open File candidate commit sets B identity atomically after invalidation.
+- destroy already invalidates.
+- Picker cancellation/replacement cancellation/validation failure do not commit, so A remains owner.
+- Save-and-continue still requires A close success before commit; then invalidation is harmless.
+- A external write may finish; obsolete completion checks owner and cannot publish/adopt/clear B.
+
+Actual-path tests (legacy harness false):
+1. Toolbar Save A → controlled close-entered → actual Open File B → actual unsaved prompt Discard → B commits. Assert B handle exact object active, A owner null, inFlight false, zero IDB. Edit B (real form) → B save enters close and remains pending. Release A success → B owner/inFlight/destination/status unchanged. Release B → B closes once, Saved, decoded B content and nonempty attachment bytes, A one write, B one write, zero IDB.
+2. Same with A close failure: B unaffected.
+3. Open File picker cancellation: A stays owner; release A success → A adopted, no B.
+Retained destroy/stale/r75 tests.
+
+Results: P1b62/62, codec+adapter11/11, full823/823. Native NOT RUN.
+
+Limitations:
+- Actual replacement test covers Open File/Discard. Import Backup, Previous local maps, Create Map use same commit/reset boundary but lack identical deferred-save replacement integration tests.
+- Native picker/close/permission/mobile NOT RUN.
+- External writes already started are not cancelled/rolled back.

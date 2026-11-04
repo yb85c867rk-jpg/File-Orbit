@@ -1,0 +1,23 @@
+﻿FileOrbit Orbit Slice 5 r120 correction — Open Orbit choice ownership
+
+Defect:
+- Open Orbit choice captured ownership/session/dataset, but after awaiting openOrbit it validated current persistenceSessionSeq/datasetToken, substituting replacement-session identities into the obsolete request. Shared openOrbit also published status before caller rejection. Obsolete workflow opened Create Map and changed NEW SESSION feedback.
+
+Correction:
+- openOrbitForCreation preserves immutable choice workflow/session/dataset across the Open Orbit path.
+- openOrbit supports deferred status and returns its intentionally claimed ownership token plus statusMessage.
+- Caller validates captured session/dataset and returned ownership before status publication or scheduling.
+- scheduleChoiceStart uses the same owner, so invalidation after selection but before the continuation prevents Create Map.
+- Stale completion closes choice without status/form/focus/dialog changes; newer choice request identity protected.
+- Valid Open Orbit, picker cancel/denial, and ordinary non-replacement document behavior preserved.
+
+Tests:
+- Actual-main deferred Open Orbit picker + session replacement: no Create Map, NEW SESSION feedback unchanged, handle/tree/attachment/dirty/baseline/locks unchanged.
+- Actual-main invalidation after selection before scheduled continuation: no Create Map/status publication.
+- Completion marker and 45s watchdog; 90s spawn timeout.
+- Focused Orbit + compatibility: 147/147 passed.
+- Relevant creation/Save/editor/recovery/navigation: 96/96 passed.
+- Full engine: 1073 tests, 1072 passed, 1 skipped, 0 failed.
+- Native filesystem verification: NOT RUN.
+
+No Slice 6, no Slice 5 acceptance claim, no user-file modification, no IndexedDB reset, no dependency/schema changes, no commit/push/deploy.

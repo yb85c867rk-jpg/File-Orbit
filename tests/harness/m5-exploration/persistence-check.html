@@ -1,0 +1,55 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>FileOrbit P1a IndexedDB check</title>
+</head>
+<body>
+  <h1>FileOrbit P1a repository check</h1>
+  <p>Explicit developer check. Nothing runs until the button is pressed. Synthetic data only; isolated test database; removed at the end.</p>
+  <button id="run" type="button">Run real IndexedDB check</button>
+  <pre id="result">NOT RUN</pre>
+  <script type="module">
+    import { createPersistenceRepository, buildSaveSnapshot, createAttachmentRegistry, createMapId, deletePersistenceDatabase } from '../../../src/engine/hypertree/persistence/index.js';
+
+    const out = document.querySelector('#result');
+    const button = document.querySelector('#run');
+    const dbName = `fileorbit-p1a-check-${crypto.randomUUID()}`;
+    button.addEventListener('click', async () => {
+      button.disabled = true;
+      out.textContent = 'RUNNING';
+      const registry = createAttachmentRegistry({ datasetToken: 1 });
+      const repository = createPersistenceRepository({ indexedDB, dbName, mapIdFactory: createMapId });
+      try {
+        const file = new File(['P1a native check'], 'check.txt', { type: 'text/plain' });
+        const staged = registry.stage(file, { format: 'text', badge: 'TXT', needsReview: false, confidence: 'extension', reason: 'text-extension', extension: 'txt', mime: 'text/plain', classifier: 'fileorbit-attachment-v1' });
+        registry.commit(staged.id);
+        const tree = {
+          id: 'root', name: 'P1a Check', kind: 'folder', data: {},
+          children: [{ id: 'file', name: 'check.txt', kind: 'file', data: {
+            dataType: 'file', description: 'native check', attachmentId: staged.id,
+            originalName: 'check.txt', sizeBytes: file.size, mime: 'text/plain', classification: staged.metadata.classification
+          } }]
+        };
+        const snapshot = buildSaveSnapshot({ tree, registry, datasetToken: 1, capturedRevision: 0, allocateAttachmentId: () => `att_${crypto.randomUUID()}` });
+        const saved = await repository.save(snapshot);
+        const loaded = await repository.load(saved.mapId);
+        const loadedText = await loaded.attachments[0].blob.text();
+        const listed = await repository.list();
+        out.textContent = JSON.stringify({
+          status: 'PASS', mapId: saved.mapId, generation: saved.generation,
+          attachmentBytes: saved.libraryBytes, loadedText, listed: listed.length
+        }, null, 2);
+        await repository.remove(saved.mapId);
+      } catch (error) {
+        out.textContent = JSON.stringify({ status: 'FAIL', name: error?.name, code: error?.code, message: String(error?.message || error) }, null, 2);
+      } finally {
+        repository.close();
+        registry.clear();
+        try { await deletePersistenceDatabase({ indexedDB, name: dbName }); } catch {}
+        button.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>

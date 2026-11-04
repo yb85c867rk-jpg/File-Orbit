@@ -1,0 +1,17 @@
+{
+  "imp": {
+    "ok": true
+  },
+  "result": {
+    "status": "A map is limited to 300 nodes including its root.",
+    "kind": "error",
+    "countsBefore": "300 visible / 300 total",
+    "countsAfter": "300 visible / 300 total",
+    "treeEqual": true
+  },
+  "fileUnchanged": true,
+  "beforeHash": "5962fee2ab493a371c3868adb1ea49fc1604b1bc6c7b8340a151548f3ca9130e",
+  "afterHash": "5962fee2ab493a371c3868adb1ea49fc1604b1bc6c7b8340a151548f3ca9130e",
+  "exceptions": [],
+  "capturedAt": "2026-11-02T00:00:56.757Z"
+}

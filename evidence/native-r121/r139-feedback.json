@@ -1,0 +1,72 @@
+{
+  "revision": "r139",
+  "change": "Bottom-left feedback refinement",
+  "permanentDocumentInfo": {
+    "visible": false,
+    "container": "#document-feedback",
+    "hidden": true,
+    "ariaHidden": true,
+    "layout": "0x0",
+    "settings": "Theme-only"
+  },
+  "feedbackPolicy": {
+    "routine": [
+      "opened",
+      "created",
+      "copied",
+      "browser download handoff",
+      "cancellation",
+      "local save",
+      "deletion"
+    ],
+    "routineTtlMs": 4000,
+    "structuredKinds": [
+      "routine",
+      "actionable",
+      "progress"
+    ],
+    "textMatching": false,
+    "actionablePersistent": true,
+    "progressPersistent": true,
+    "timerIdentity": [
+      "token",
+      "documentOwnershipSeq",
+      "persistenceSessionSeq",
+      "datasetToken"
+    ],
+    "timerCleanupOnDestroy": true
+  },
+  "verification": {
+    "focused": "112/112 passed",
+    "full": "1103 tests, 1102 passed, 1 skipped, 0 failed",
+    "native": "NOT RUN",
+    "archiveFocused": "32/32 passed"
+  },
+  "browser": {
+    "permanentBox": "absent, host/document 0x0",
+    "toast": "fullscreen routine notice shown then hidden after 4.3s",
+    "themes": [
+      "dark",
+      "light"
+    ],
+    "widths": [
+      "desktop",
+      "narrow"
+    ]
+  },
+  "evidence": [
+    "evidence/native-r121/feedback-focused-r139.txt",
+    "evidence/native-r121/feedback-full-r139-final.txt",
+    "evidence/native-r121/browser-feedback-r139.json",
+    "evidence/native-r121/browser-feedback-toast-r139.json"
+  ],
+  "archive": {
+    "path": "review/fileorbit-feedback-r139.zip",
+    "sha256": "3824373A9CE390234C1BCC80AC19E1DD1BCAE24DAFFB853999887DE3C2A15E7A",
+    "entries": 1264,
+    "manifestMismatches": 0
+  },
+  "application": {
+    "mainSha256": "BF299FE01994C1D3BB94B82B5C954EB2F934FD419E403136AD4AA80F38D07B6E"
+  }
+}

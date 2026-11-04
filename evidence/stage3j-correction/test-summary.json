@@ -1,0 +1,30 @@
+{
+  "generatedAt": "2026-11-04T08:27:16.084Z",
+  "sources": [
+    {
+      "file": "..\\p1b.txt",
+      "tests": 69,
+      "passed": 69,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "file": "..\\remainder.txt",
+      "tests": 1210,
+      "passed": 1209,
+      "failed": 0,
+      "skipped": 1
+    }
+  ],
+  "totals": {
+    "tests": 1279,
+    "passed": 1278,
+    "failed": 0,
+    "skipped": 1
+  },
+  "report": {
+    "file": "docs/engine/FILEORBIT-STAGE-3J-INTEGRATION-CORRECTION.md",
+    "expected": "1,279 tests, 1,278 pass, 1 skip",
+    "matched": true
+  }
+}

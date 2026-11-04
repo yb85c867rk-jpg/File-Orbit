@@ -1,0 +1,19 @@
+﻿{
+  "name": "viewport-50",
+  "viewport": { "width": 800, "height": 600 },
+  "nodes": 50,
+  "root": { "id": "root", "center": { "x": 400, "y": 50 } },
+  "technical": { "id": "technical", "center": { "x": 400, "y": 100 } },
+  "offscreenChildren": { "ids": ["child-00..child-39"], "centers": "x >= 1500" },
+  "onscreenChildren": [
+    { "id": "child-40", "center": { "x": 5, "y": 180 } },
+    { "id": "child-41", "center": { "x": 250, "y": 180 } },
+    { "id": "child-42", "center": { "x": 550, "y": 180 } },
+    { "id": "child-43", "center": { "x": 795, "y": 180 } },
+    { "id": "child-44", "center": { "x": 5, "y": 450 } },
+    { "id": "child-45", "center": { "x": 250, "y": 450 } },
+    { "id": "child-46", "center": { "x": 550, "y": 450 } },
+    { "id": "child-47", "center": { "x": 795, "y": 450 } }
+  ],
+  "expected": { "candidateCount": 50, "viewportEligibleCount": 10, "viewportIneligibleCount": 40, "createdCount": 10, "visibleCount": 10, "onscreenNamesVisible": 8 }
+}

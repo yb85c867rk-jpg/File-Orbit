@@ -1,0 +1,10 @@
+﻿PowerShell parse: OK (tokens=7346)
+guard_function_line=435
+guard_call_line=823
+selftest_branch_line=824
+guard_before_selftest=True
+fixed_selftest_literal_count=0
+selftest_uses_unique_guid=True
+taskkill_has_bounded_wait=True
+cleanup_parent_before_child_unknown=True
+script_sha256=FC96CA531B4C7F8C9805A7DD5561F8A41EE4E3C4BA057EC08E86B1D60A6C29D4

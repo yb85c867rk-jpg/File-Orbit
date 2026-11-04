@@ -1,0 +1,23 @@
+﻿FileOrbit P3 correction r57
+
+R1 FIXED:
+- encodeBackup now assigns package IDs and builds the validated canonical snapshot BEFORE any async read/hash.
+- Attachment metadata/name/mime/size/classification and Blob references are captured first; hashing uses only captured entries.
+- Deferred-hash regression mutates source tree and registry after digest entry; generated package remains nodeCount=2, captured root name, one child, original attachment name, and decodes successfully.
+- Download still does not mark clean or change savedRevision.
+
+R2 PARTIAL:
+- Added backupCancel button wired to cancelBackup; operation IDs, session/dataset owner snapshots, cancellation checks between attachments and after hash awaits, owned URL/timer/file-input cleanup, destroy invalidation, admission rejection when another persistence operation is busy.
+- In-flight digest is ignored rather than physically aborted.
+- Not yet verified by main-entry cancellation/replacement tests.
+
+R3/R4 NOT COMPLETE:
+- Dirty editor/map import still blocked; no Continue/Save/Discard/Cancel resume path.
+- Import still uses create-map candidate helper rather than explicit import owner.
+- Candidate failure/recovery and picker cleanup scenarios not tested.
+
+R5 PARTIAL:
+- Actual harness export/import/save/reopen branch remains.
+- No production Download button handoff test, no Upload file-input change test, no dirty decision or cancellation/replacement tests.
+
+Executed: backup 5/5, P1b 28/28, full 781/781. Native browser download/picker/mobile NOT RUN.

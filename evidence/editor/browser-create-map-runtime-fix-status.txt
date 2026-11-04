@@ -1,0 +1,5 @@
+﻿FileOrbit Create Map runtime browser verification: NOT RUN.
+No browser executable/automation was available without installing dependencies.
+An isolated-process test imports the actual main.mjs entry, boots the graph, and drives desktop/mobile
+Create Map, file selection, folder drop, cancellation, and initialization-failure behavior.
+Native browser picker/drop checks were not executed.

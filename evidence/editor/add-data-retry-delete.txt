@@ -1,0 +1,22 @@
+﻿FileOrbit Add Data retry + Delete ownership fixes (r44)
+
+R1:
+- Retry regression now requires both P1B_ADD_DATA and P1B_ADD_FAIL_RETRY; the scenario executes.
+- Add Data is reached through the real folder context menu, actual Add Data item, form, file input, classification, and shared save/install.
+- Failure is a one-shot frame injection at the actual add-data draw callback. Recovery is the real shared recovery and succeeds.
+- Assertions: candidate draw count 1; recovery draw/labels/installHit 1; resize 0; revision/tree unchanged; same pending ID and pending bytes before/after; form/draft/file retained; Save failed status; retry without reselection; one node/rev; committed attachment; label/hit; PDF viewer.
+- Genuine recovery failure remains separately tested inert.
+
+R2:
+- createEditor destroys the previous delete confirmation and any orphaned delete-confirm backdrop before creating the current one.
+- Actual Open replacements leave exactly one delete confirmation; replaced element disconnected.
+- One real Delete Data action opens one confirmation; Cancel leaves tree unchanged; Confirm deletes once.
+
+Executed:
+- Persistence: 31/31.
+- P1b main-entry: 18/18.
+- Full tests/engine: 754/754.
+- Native browser: NOT RUN.
+
+Pending-byte evidence: retry test asserts identical reservation ID and identical registry size/totalBytes before/after failed Save, then committed=true after retry.
+Delete DOM evidence: exactly one `.delete-confirm-backdrop` after initial create and each repeated Open; replaced element parent=null and hidden.

@@ -1,0 +1,26 @@
+{
+  "expanded": {
+    "rail": "true",
+    "title": null,
+    "aria": "Create Map",
+    "description": "Create Map",
+    "tipHidden": true
+  },
+  "hoverExpanded": {
+    "tipHidden": true
+  },
+  "graphExpanded": {
+    "tipHidden": false,
+    "text": "Search"
+  },
+  "collapsed": {
+    "rail": "false",
+    "title": "Create Map",
+    "aria": "Create Map"
+  },
+  "hoverCollapsed": {
+    "tipHidden": false,
+    "text": "Create Map"
+  },
+  "capturedAt": "2026-10-31T23:21:51.561Z"
+}

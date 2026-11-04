@@ -1,0 +1,34 @@
+﻿FileOrbit native verification r102 (isolated headless Edge 156, 2026-10-31)
+
+Title-only creation:
+- Opened Create Map, entered Native Solo, selected Create Map with no files/folders.
+- Result: total=1, visible=1, hitActive=true, labelMetrics.visibleCount=1.
+- One label visible: Native Solo.
+- Zero attachments; no placeholder child in tree (runtime/tests).
+- Header text exactly "FileOrbit".
+- Details panel shows Native Solo · folder on the right.
+- Screenshot title-only-desktop-r102.png.
+
+Desktop layout 1440x900:
+- Left rail x=0..64; graph viewport x=64..1139; Details x=1139..1440.
+- Header height 34; no document/status/fixture/status row.
+- Save indicator dot inside Save action; save state "Unsaved changes" shown in Settings.
+- Settings contains Native Solo, Unsaved changes, Theme: Light, Previous local maps, Fit graph, Storage & backup help.
+- Screenshot nav-settings-r102.png.
+
+Phone 375x667:
+- rail x=8..64; graph x=64..375; Details x=64..375; document scrollWidth=375.
+- Header text FileOrbit only.
+- Screenshot title-only-phone-r102.png and expanded nav-phone-expanded-r102.png.
+
+Short 320x480:
+- rail x=8..64; graph x=64..320; Details x=64..320; document scrollWidth=320.
+- toolbar wraps to two rows inside graph; no horizontal overflow.
+- Screenshot title-only-320-r102.png.
+
+Native NOT RUN:
+- OS file picker Open / legacy .fileorbit,
+- native Download handoff,
+- native fullscreen rail,
+- native physical pointer drag after rail move.
+These are covered by automated production-handler tests but remain NOT RUN natively.

@@ -1,0 +1,151 @@
+{
+  "expanded": {
+    "expanded": "true",
+    "ariaExpanded": "true",
+    "hidden": false,
+    "menu": {
+      "left": 8,
+      "top": 184,
+      "right": 168,
+      "bottom": 270,
+      "width": 160,
+      "height": 86
+    },
+    "items": [
+      {
+        "text": "Orbit File",
+        "box": {
+          "left": 14,
+          "top": 190,
+          "right": 162,
+          "bottom": 226,
+          "width": 148,
+          "height": 36
+        }
+      },
+      {
+        "text": "Orbit Folder",
+        "box": {
+          "left": 14,
+          "top": 228,
+          "right": 162,
+          "bottom": 264,
+          "width": 148,
+          "height": 36
+        }
+      }
+    ]
+  },
+  "routing": {
+    "parentCalls": {
+      "file": 0,
+      "folder": 0,
+      "hidden": false
+    },
+    "afterFile": {
+      "file": 1,
+      "folder": 0,
+      "hidden": true,
+      "status": "Open cancelled. The current map and edits were preserved."
+    },
+    "afterFolder": {
+      "file": 1,
+      "folder": 1,
+      "hidden": true,
+      "status": "Orbit selection cancelled. The current Orbit and map were preserved."
+    }
+  },
+  "collapsedState": {
+    "expanded": "false",
+    "hidden": false,
+    "menu": {
+      "left": 70,
+      "top": 136,
+      "right": 230,
+      "bottom": 222,
+      "width": 160,
+      "height": 86
+    },
+    "trigger": {
+      "left": 6,
+      "top": 136,
+      "right": 57,
+      "bottom": 180,
+      "width": 51,
+      "height": 44
+    },
+    "nav": {
+      "left": 0,
+      "top": 32,
+      "right": 64,
+      "bottom": 800,
+      "width": 64,
+      "height": 768
+    },
+    "items": [
+      {
+        "text": "Orbit File",
+        "box": {
+          "left": 76,
+          "top": 142,
+          "right": 224,
+          "bottom": 178,
+          "width": 148,
+          "height": 36
+        }
+      },
+      {
+        "text": "Orbit Folder",
+        "box": {
+          "left": 76,
+          "top": 180,
+          "right": 224,
+          "bottom": 216,
+          "width": 148,
+          "height": 36
+        }
+      }
+    ]
+  },
+  "narrowState": {
+    "viewport": {
+      "width": 390,
+      "height": 700
+    },
+    "expanded": "false",
+    "hidden": false,
+    "menu": {
+      "left": 70,
+      "top": 329,
+      "right": 230,
+      "bottom": 415,
+      "width": 160,
+      "height": 86
+    },
+    "items": [
+      {
+        "text": "Orbit File",
+        "box": {
+          "left": 76,
+          "top": 335,
+          "right": 224,
+          "bottom": 371,
+          "width": 148,
+          "height": 36
+        }
+      },
+      {
+        "text": "Orbit Folder",
+        "box": {
+          "left": 76,
+          "top": 373,
+          "right": 224,
+          "bottom": 409,
+          "width": 148,
+          "height": 36
+        }
+      }
+    ]
+  },
+  "errors": []
+}

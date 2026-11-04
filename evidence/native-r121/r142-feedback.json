@@ -1,0 +1,58 @@
+{
+  "revision": "r142",
+  "change": "Routine feedback is nonvisual",
+  "policy": {
+    "routineVisual": false,
+    "routineUsesStructuredKind": true,
+    "feedbackHostHidden": false,
+    "visibleKinds": [
+      "actionable",
+      "progress"
+    ],
+    "routineExamples": [
+      "opened",
+      "created",
+      "saved",
+      "copied",
+      "download handoff",
+      "fullscreen",
+      "folder/refresh",
+      "cancellation"
+    ],
+    "visibleFeedbackRetained": [
+      "save/write failures",
+      "automatic-save paused/blocked",
+      "permission/external conflicts",
+      "recovery warnings",
+      "progress/cancel",
+      "drag/drop guidance"
+    ]
+  },
+  "verification": {
+    "p1b": "69/69",
+    "focused": "90/90",
+    "full": "1103 tests, 1102 passed, 1 skipped, 0 failed",
+    "native": "NOT RUN",
+    "archiveFocused": "17/17"
+  },
+  "browser": {
+    "startupNoExceptions": true,
+    "routineStatus": "data-feedback-kind=routine, 0px width, clipped, host 0x0",
+    "documentBox": "0x0",
+    "screenshots": "dark/light desktop/narrow"
+  },
+  "preserved": {
+    "r141": "0EA9292945DCBCAAFC483CA03B9580BC95C17255F3DFAE6FB8BC48C3855EC0C4",
+    "r140": "F20E1345FAF4A6713C693AD50236E2E5C0CED70D3BD27C7459F643D354886935",
+    "r139": "3824373A9CE390234C1BCC80AC19E1DD1BCAE24DAFFB853999887DE3C2A15E7A"
+  },
+  "archive": {
+    "path": "review/fileorbit-feedback-r142.zip",
+    "sha256": "64D31175303045113D1835260122D373CEB9098444636DB27AF4F171FE6826AC",
+    "entries": 1315,
+    "manifestMismatches": 0
+  },
+  "application": {
+    "mainSha256": "5E8B27B019CBCC92DCCAB0C5F69CC48E23992CE7711E30C9D648AD30089F68BA"
+  }
+}

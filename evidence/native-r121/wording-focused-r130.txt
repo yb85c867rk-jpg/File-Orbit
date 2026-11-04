@@ -1,0 +1,36 @@
+﻿CREATE_LOCATION_COMPLETE
+CREATE_LOCATION_STALE_COMPLETE
+CREATE_LOCATION_UNSUPPORTED_COMPLETE
+✔ Create Map opens directly with folder default, reuse, and standalone Save elsewhere (1077.5753ms)
+✔ cancelled map creation ignores late folder selection (640.0262ms)
+✔ Create Map stays standalone when directory APIs are unavailable (1422.5916ms)
+✔ Create Map CSS is valid and hidden stages cannot be overridden by display rules (0.8438ms)
+✔ Create Map style block contains real newlines and no stray quote tokens (0.4995ms)
+✔ Create Map dialog exposes exactly one stage at a time in source transitions (0.5787ms)
+✔ dialog opens, previews picks, confirms replacement, and creates once (4.8889ms)
+✔ dialog drop delegates directory entries once and escape closes (1.7659ms)
+✔ map-name changes rebuild from retained selection and never install stale names (25.1045ms)
+✔ invalid name blocks creation and rapid changes keep only the latest preview (29.2944ms)
+SIDEBAR_TOOLTIPS_COMPLETE
+✔ focus trap follows the active stage and back restores creation focus (15.9981ms)
+✔ visibility ignores null offsetParent, includes document ancestors, and recovers outside focus (0.3286ms)
+✔ close falls back from hidden/responsive/removed invokers and restores once (0.2842ms)
+✔ save location defaults to connected Orbit, changes folder without losing the draft, and supports standalone (1.0774ms)
+✔ primary actions live once in the left rail; header/menu copies are gone (0.9016ms)
+✔ rail collapses to icons, expands labels, and overlays on phones with touch targets (0.2235ms)
+✔ header is brand-only; feedback and save state live outside it (0.2622ms)
+✔ download is the final toolbar action, Open accepts both containers, no duplicate install controls (0.2153ms)
+✔ Settings contains only the theme control; document/save feedback is outside it (0.2362ms)
+✔ connected Orbit menu sits between Save As and Settings with accessible toggle and retained actions (0.2819ms)
+✔ approved logo asset is unavailable, so the accessible text fallback remains without an exit control (0.6242ms)
+✔ Create Map in active Orbit writes without a per-map picker and Add copies without adoption (1265.7887ms)
+✔ Orbit create write failure leaves recoverable work, Retry rechecks leftovers, and stale destroy does not write (1270.6155ms)
+✔ sidebar tooltips only show while the rail is collapsed (393.836ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 24
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6195.2418

@@ -1,0 +1,51 @@
+{
+  "revision": "r134",
+  "change": "Open File renamed Open Orbit with supplied icon; dialog heading Open Orbit Folder",
+  "labels": {
+    "sidebarVisible": "Open Orbit",
+    "sidebarAccessible": "Open Orbit",
+    "sidebarTitle": "Open Orbit",
+    "dialog": "Open Orbit Folder"
+  },
+  "handler": "data-action=\"open-document\" unchanged",
+  "asset": {
+    "path": "tests/harness/m5-exploration/assets/folder_supervised_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png",
+    "sha256": "A4F60E231CBFCBD3C33F8898E1241A21B02E9DCFBB9873041BC1E7FA9321A97F",
+    "decorative": true,
+    "box": "20x20"
+  },
+  "verification": {
+    "focused": "26/26 passed",
+    "full": "1099 tests, 1098 passed, 1 skipped, 0 failed",
+    "browserVisual": "PASS (headless Chrome; not native filesystem)",
+    "native": "NOT RUN",
+    "archiveFocused": "19/19 passed; archive/disk main hashes match"
+  },
+  "application": {
+    "url": "http://127.0.0.1:8099/tests/harness/m5-exploration/",
+    "mainSha256": "39A7E25FE834B47296095639D173705EAE13E3D8AE47D8B2FE52E269674590F1",
+    "indexSha256": "F84B87491E3FBD7E87FF08CAFA6A17A4D4C2999CE48182143C967E7E4D87BCFB",
+    "fileOpenBrowserSha256": "7F893B7E144A17277B6AEBC8B713584AFCA5DCF5BB5F2E25C0C6153C1F6C077E"
+  },
+  "browser": [
+    "browser-open-orbit-dark-collapsed-r134.png",
+    "browser-open-orbit-dark-expanded-r134.png",
+    "browser-open-orbit-light-expanded-r134.png",
+    "browser-open-orbit-dialog-r134.png"
+  ],
+  "limitations": [
+    "native filesystem acceptance NOT RUN"
+  ],
+  "archive": {
+    "path": "review/fileorbit-open-orbit-r134.zip",
+    "sha256": "EF9FC3EC1088FC122ECE1C63FD98892E3D430507CC97F4D3CC754D0B394BCB0F",
+    "entries": 1186,
+    "manifestMismatches": 0
+  },
+  "evidence": [
+    "evidence/native-r121/open-orbit-focused-r134.txt",
+    "evidence/native-r121/open-orbit-full-r134.txt",
+    "evidence/native-r121/r134-archive-focused.txt",
+    "evidence/native-r121/browser-open-orbit-r134.json"
+  ]
+}

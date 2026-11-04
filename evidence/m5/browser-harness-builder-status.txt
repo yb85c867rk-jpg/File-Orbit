@@ -1,0 +1,1 @@
+﻿browser adaptive harness verification: NOT RUN (no launch claimed)

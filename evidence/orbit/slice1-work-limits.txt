@@ -1,0 +1,20 @@
+﻿FileOrbit Orbit Slice 1 — enumeration work limits and preflight bounds
+
+Correction:
+- enumerateTopLevelMaps stops once the result limit is filled and the next matching .map establishes truncation. It does not iterate the remainder.
+- When the remaining entries are non-matching, lookahead is bounded (default 100 entries) and truncation is reported when the bound/time is reached.
+- An exactly-full directory is not marked truncated.
+- The directory iterator is closed with return() on early exit where supported.
+- Time checks are cooperative; they cannot cancel an already-pending native iterator.next()/getFile() call.
+- caseInsensitivePreflight scans incrementally, does not accumulate all names, is bounded (default 1000 entries/500 ms plus one completion lookahead), checks caller ownership, and fails preflight-incomplete/stale without any create:true mutation.
+
+Tests:
+- 10,000 matching maps with limit 1: entries1, metadataReads1, yielded2, scanned2, truncated true, iterator return1.
+- Exactly-full 1-entry/limit-1 and 2-entry/limit-2 cases: truncated false.
+- Mixed unrelated entries: result plus bounded lookahead, no metadata reads for lookahead.
+- Iterator cleanup on early termination.
+- Incomplete and stale preflights: zero exact/create calls.
+- Existing collision/permission behavior retained.
+- Focused new + existing document-adapter/backup compatibility: 61/61 passed.
+
+Slice 1 remains isolated: no main.mjs, Orbit UI/state, document routing, recovery, editor, viewer, or schema changes. Native filesystem checks: NOT RUN.

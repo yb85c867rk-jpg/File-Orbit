@@ -1,0 +1,26 @@
+﻿FileOrbit Orbit Slice 2 r112 — pending-open invalidation and return-value isolation
+
+R1 correction:
+- Starting a newer openDirectory request now clears the outgoing list request token while retaining active handle/entries.
+- Late A initial-enumeration success/failure and late refresh success/failure are stale and cannot alter entries, errors, truncation, timestamps, or settled state.
+- If B is cancelled/denied after A first listing was interrupted, state becomes blocked with listing-incomplete and a usable explicit Refresh; no invalidated A request is resurrected.
+- If B is cancelled/denied after a committed list, phase returns to its settled ready/blocked state with committed entries and a retained list token.
+- Membership comparisons started before B become stale; new comparisons remain handle-based.
+- Synchronous picker activation is preserved.
+
+R2 correction:
+- applyList() returns a cloned/frozen truncation object instead of the controller-owned object.
+- Public success results expose frozen entries/state/truncation; matchEntry exposes a frozen matched entry.
+- Browser file/directory handles retain native identity and are not deep-cloned/frozen.
+- snapshot() remains isolated; result metadata is isolated beyond snapshot.
+
+Tests added:
+- A initial enumeration pending -> B picker pending -> late A success/rejection.
+- Existing committed list + deferred Refresh A -> late success/failure.
+- B cancellation/denial after interrupted/committed listing; committed content and Refresh usable.
+- Membership comparison started before B becomes stale.
+- Mutation attempts against returned truncation/state/entry metadata cannot alter controller state; matched entry frozen.
+- Existing close/destroy, sorting, permission, out-of-order cases retained.
+
+Focused new/state + document-adapter + backup compatibility: 94/94 passed.
+Native filesystem verification: NOT RUN.

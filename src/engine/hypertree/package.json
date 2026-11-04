@@ -1,0 +1,11 @@
+{
+  "name": "@fileorbit/hypertree-engine",
+  "version": "0.0.0-m1",
+  "private": true,
+  "type": "module",
+  "description": "M1 pure mathematics for the Hypertree modernization. No dependencies.",
+  "engines": {
+    "node": ">=20"
+  }
+}
+

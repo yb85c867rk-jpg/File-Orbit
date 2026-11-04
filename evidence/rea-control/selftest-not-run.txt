@@ -1,0 +1,19 @@
+﻿REA control script self-test — NOT RUN in the agent environment
+Date: 2026-10-25
+Script: tools/rea-control/rea-control.ps1
+PowerShell parse: OK (tokens=7346)
+
+Observed:
+1) powershell.exe -NoProfile -ExecutionPolicy RemoteSigned -File ... -SelfTest
+   -> UnauthorizedAccess: "...rea-control.ps1 is not digitally signed. You cannot run this script on the current system."
+   Effective process policy was RemoteSigned; the host still blocks unsigned local .ps1 execution (AppLocker/WDAC-style).
+2) A direct Start-Process cmd.exe ... synthetic process check
+   -> Win32Exception: Access is denied.
+3) A local unsigned .psm1 import probe
+   -> same "not digitally signed" policy error.
+
+Conclusion:
+- The focused missing-child-identity cleanup fixture and all other runtime fixtures are prepared in the script (-SelfTest) but could not be executed here.
+- Process creation and unsigned script execution are blocked by the host.
+- REA itself was not installed or run.
+- Mark all runtime fixtures NOT RUN; parser/static checks are not runtime validation.

@@ -1,0 +1,29 @@
+﻿FileOrbit Save As failure/ownership slice r74
+
+Production path traced:
+actual Save As → saveCurrentDocument → saveDocument → save picker (before encoding) → encode captured tree/attachments → createWritable → write → close → only then activeDocument={B,savedRevision=captured}.
+
+Findings:
+- No concrete Save As ownership defect found in production path. Picker cancellation and createWritable/write/close failures leave A active and saveDocument does not publish B or advance savedRevision.
+- adapter.write reports write-failed and uses its existing cleanup; no rollback claim is made.
+- Deferred close: A remains active until close resolves, then B/C becomes active with captured revision.
+- Later edits during pending close remain dirty because savedRevision reflects captured revision only.
+- saveDocument still encodes before writing, but picker is invoked before encoding (activation preserved).
+
+Executed actual main-entry branch P1B_SAVE_AS with __M5_LEGACY_PERSISTENCE_HARNESS__=false:
+- Open writable A.
+- Real Edit Folder; force close failure to leave applied edit; Close panel retains dirty edit.
+- Save As picker cancellation: picker +1, zero B writes, A active, dirty, cancel status, controls available.
+- createWritable rejection: B not adopted, A active, dirty.
+- write rejection: B not adopted, A active, dirty, error.
+- close rejection: B not adopted, A active, dirty, Unsaved status, no revision advance.
+- deferred successful close to C: before close A active; real Edit Folder submitted while close pending increments revision; after close C active, savedRevision=captured revision, dirty true; decoded C tree/attachment bytes equal captured snapshot.
+- ordinary Save after closing later form writes C again without picker; clean; zero IndexedDB saves.
+
+Results: P1b55/55, backup+adapter11/11, full816/816. Native NOT RUN.
+
+Limitations:
+- No production code defect required correction; only test support/decode hook.
+- F relies on Save As permitting later committed edit while write pending; guard is not a lock, and later edit remains dirty as asserted.
+- Native picker cancellation/write/close behavior NOT RUN.
+- Existing r73 remaining limitations remain.

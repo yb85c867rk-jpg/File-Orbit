@@ -1,0 +1,26 @@
+{
+  "duplicate": {
+    "status": "The path \"same.txt\" was selected more than once.",
+    "kind": "error",
+    "preview": "",
+    "confirmHidden": true,
+    "createDisabled": true,
+    "counts": "20 visible / 20 total"
+  },
+  "cancel": {
+    "closed": true,
+    "counts": "20 visible / 20 total"
+  },
+  "unicode": {
+    "status": "0 folders, 1 files, 1 bytes. Review, then choose Create Map.",
+    "kind": "ok",
+    "preview": "▸\n유니코드 지도\n•\n한글 🌟.txt",
+    "createDisabled": false
+  },
+  "escape": {
+    "closed": true,
+    "counts": "20 visible / 20 total"
+  },
+  "exceptions": [],
+  "capturedAt": "2026-11-01T21:12:34.608Z"
+}

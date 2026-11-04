@@ -1,0 +1,64 @@
+﻿AUTO_CONFLICT_R2_COMPLETE
+COPY_MAP_COMPLETE
+COPY_MAP_STALE_COMPLETE
+COPY_MAP_UNSUPPORTED_COMPLETE
+CREATE_LOCATION_COMPLETE
+✔ Settings contains only Theme and document/save feedback is outside it (1.5445ms)
+✔ automatic save without a writable destination requires explicit Save As and does not auto-download (2327.4146ms)
+✔ automatic external conflict Cancel keeps feedback, Retry resolves, replacement invalidates (1823.5516ms)
+✔ Copy Map writes an exact copy without adopting it or changing the connected Orbit (876.9171ms)
+✔ late Copy Map completion cannot affect a replacement document (519.6552ms)
+✔ Copy Map reports unsupported directory access without changing the map (1338.1482ms)
+✔ Create Map opens directly with folder default, reuse, and standalone Save elsewhere (943.9921ms)
+✔ dialog opens, previews picks, confirms replacement, and creates once (7.2123ms)
+✔ dialog drop delegates directory entries once and escape closes (1.5904ms)
+✔ map-name changes rebuild from retained selection and never install stale names (11.8149ms)
+✔ invalid name blocks creation and rapid changes keep only the latest preview (46.2132ms)
+STALE_STAGE_1
+STALE_STAGE_3
+ORBIT_MENU_COMPLETE
+✔ focus trap follows the active stage and back restores creation focus (4.8106ms)
+✔ visibility ignores null offsetParent, includes document ancestors, and recovers outside focus (0.6388ms)
+✔ close falls back from hidden/responsive/removed invokers and restores once (0.5144ms)
+✔ save location defaults to connected Orbit, changes folder without losing the draft, and supports standalone (1.2904ms)
+✔ browser ignores stale folder results after session replacement, close/reopen, and destroy (634.9736ms)
+✔ production navigation removes primary Save/Open Orbit and keeps Settings theme-only (1.8693ms)
+✔ unified Open supports Orbit, standalone Open, cancel, and unsupported directory access (1441.9002ms)
+✔ primary actions live once in the left rail; header/menu copies are gone (1.0096ms)
+✔ rail collapses to icons, expands labels, and overlays on phones with touch targets (0.427ms)
+✔ header is brand-only; feedback and save state live outside it (0.6067ms)
+✔ download is the final toolbar action, Open accepts both containers, no duplicate install controls (0.5332ms)
+✔ Settings contains only the theme control; document/save feedback is outside it (0.3048ms)
+✔ connected Orbit menu sits between Save As and Settings with accessible toggle and retained actions (0.697ms)
+✔ approved logo asset is unavailable, so the accessible text fallback remains without an exit control (0.3632ms)
+✔ Create Map in active Orbit writes without a per-map picker and rejects collisions (1241.3701ms)
+✔ actual main Orbit navigation lists, opens with exact bytes, and protects saves (1460.6724ms)
+✔ actual connected Orbit menu toggles, preserves drafts, and opens a listed map without a close action (706.9268ms)
+✔ closed Orbit is hidden with no list or primary Open Orbit action (1.5487ms)
+✔ active Orbit lists top-level entries, marks current, and selects (22.2523ms)
+✔ loading preserves entries and honestly marks busy/truncated/stale/empty states (0.7956ms)
+✔ blocked errors and unsupported capability are represented (0.2642ms)
+✔ Refresh callback is wired only for active Orbit; focus survives rerender (0.7732ms)
+✔ desktop and responsive action buttons share one execution path and preserve unavailable states (0.7322ms)
+✔ Map menu clamps, closes on Escape/outside, restores focus, and removes listeners (1.3582ms)
+✔ theme toggles tokens and themed canvas presentation without replacing DOM nodes (0.6753ms)
+✔ fullscreen success, rejection, and fullscreenchange update state and status (0.8932ms)
+✔ fullscreen unsupported state is honest (0.2049ms)
+✔ harness shell has two top rows, no sidebar, and app-owned overlay/fullscreen hosts (4.144ms)
+✔ toolbar Undo/Redo sync availability, accessible labels, guarded invocation, and history retention (0.5439ms)
+✔ icon-only desktop Theme/Fullscreen preserve SVG identity and synchronize mobile text (1.7821ms)
+✔ harness has one Undo/Redo registration boundary and one replay per click (3.5371ms)
+✔ direct theme redraw is blocked from installing a frame during transition ownership (3.394ms)
+✔ unsupported icon-only fullscreen preserves SVG and synchronizes mobile state (0.4558ms)
+✔ creation ownership preserves recovery failure and releases exactly once (0.3477ms)
+✔ harness shared gates consume ownership for graph, history, Fit, editor and drag paths (1.6451ms)
+✔ responsive fallback resolver ignores null offsetParent and hidden menu items (0.2165ms)
+✔ open popup re-clamps on resize, preserves focus/scroll, and safely handles hidden trigger (0.5144ms)
+ℹ tests 48
+ℹ suites 0
+ℹ pass 48
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 13483.73

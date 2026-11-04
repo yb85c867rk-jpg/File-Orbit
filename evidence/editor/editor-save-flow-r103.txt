@@ -1,0 +1,48 @@
+﻿FileOrbit editor presentation / create-save workflow r103
+
+A. Editor presentation:
+- Removed obsolete permanent form notices:
+  - "Attachment stays in this browser..." removed.
+  - "Save your changes to IndexedDB..." removed.
+- While an editor is active, detailsPanel[data-editor-active=true] hides selected-node Details and #search-results-host via CSS; DOM, query/results, input identity and draft state are preserved.
+- Summary/search presentation is restored when the editor closes by setting data-editor-active=false.
+- Actual-main test retains search host child identity across open/close; typing does not show the dirty Continue/Discard prompt; legitimate conflicting Add Folder still does.
+- Form DOM/input/focus/caret/IME/rail-resize behavior preserved.
+
+B. Create Map -> file Save:
+- Title-only and populated creation now invokes the existing Save picker before candidate installation:
+  - pickCreationDestination() uses documentAdapter.pickSave with safeDocumentFilename(title) e.g. "Solo Root.map".
+  - invoked synchronously by the Create/Replace click path before installation awaits.
+- Picker cancellation returns keepDraft; Create Map dialog retains title/preview/selection and outgoing map/destination.
+- After candidate installation and immediate recovery baseline, creation calls the existing saveDocument(target handle/forceDownload) path:
+  - write and close must succeed before activeDocument adoption;
+  - tree/metadata/attachment bytes preserved;
+  - no write to outgoing handle;
+  - confirmed save sets destination, clean revision, retires recovery baseline;
+  - write/close failure leaves live new map unsaved, activeDocument inactive, Retry available through Save.
+- Fallback (writable APIs unavailable): install live map, request .map download, keep dirty/recovery, report unconfirmed handoff.
+- Duplicate submission blocked; one picker write and one install for the successful attempt.
+
+C. Editor Save reuse:
+- Confirmed destination handle is reused by Add Folder/Add Data form Save and toolbar Save; no picker per edit.
+- Recovery baseline retirement/creation ordering covered by create-baseline test.
+
+Tests:
+- title-only actual: picker cancel keeps draft, duplicate submit, picker suggested name, write/close success/adoption/clean, one root/label/hit, zero attachments, Save/reopen, Add Data form, Add Folder form reuses handle (write2, picker unchanged), baseline retired, write failure leaves unsaved new map and old destination package intact, Save retry adopts.
+- create-baseline actual: checkpoint root-only before write, retired after confirmed save.
+- fallback actual: dirty unsaved one-root map, unconfirmed download, recovery checkpoint remains.
+- YAML populated creation auto-save/.map reopen exact bytes.
+- editor visibility actual: editor-only dataset, search marker retained, prompt not shown on typing, conflicting Add Folder prompt still shown.
+- full tests/engine: 937 tests, 936 passed, 0 failed, 1 skipped, 0 todo.
+- syntax 18/18; served 104 files 200/no-store byte-match.
+
+Native:
+- Headless Edge title-only Create with injected test picker: header FileOrbit, rail left, graph/Details correct, total/visible=1, label visible, Saved, document Native Solo.map.
+- 320/375 desktop/phone layout screenshots.
+- Native OS Save picker did not run; injected picker used to exercise browser DOM flow.
+- Native editor form, file picker, download handoff, fullscreen, physical pointer NOT RUN.
+
+Limitations:
+- Native OS picker/activation, native file save/reopen, native editor form and pointer checks NOT RUN.
+- Failure close path covered by shared save path/tests; creation close failure not separately injected.
+- Existing FakeIndexedDB cross-tab skip retained.

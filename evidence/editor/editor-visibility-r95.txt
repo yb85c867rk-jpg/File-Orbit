@@ -1,0 +1,50 @@
+﻿FileOrbit hidden-editor correction r95
+
+Root cause:
+- editor-panel opened the form by setting form.hidden=false, but never told the shell to reveal detailsContent.
+- In narrow mode detailsContent was hidden by responsive collapse, so the form was open but invisible.
+- There was no shared successful-open notification; menu/action code did not expand Details.
+- Responsive collapse did not consult actual editor lifecycle, and the Details toggle could hide an active form.
+
+Correction:
+- Added shared editor-panel `onFormShown` boundary, invoked after:
+  - successful new editor open / showForm;
+  - same-target existing form activation;
+  - Continue editing returning to the existing draft.
+- Main wires it to `revealDetailsForEditor`, which expands Details with focus:false, synchronizes dataset.collapsed, detailsContent.hidden, toggle label/aria-expanded, and the existing viewport resize path.
+- Added no expansion on menu open, rejected action, stale target, or discard prompt creation.
+- Discard replacement reaches the same onFormShown path exactly once.
+- Added `editorLifecycleActive` based on actual controller state. While active:
+  - responsive collapse cannot hide Details/form;
+  - Details toggle is disabled with `aria-disabled` and title/name explanation;
+  - existing form DOM, values, errors, focus, caret/selection and composition state are preserved.
+- After editor close/save/cancel, toggle is re-enabled and normal user/responsive behavior resumes.
+- No toggle focus is taken on editor open; editor focus policy still focuses the field.
+- Drawable viewport/refit path reused; no camera reset.
+
+Actual-main regressions (EDITOR_VISIBILITY):
+- narrow startup / collapsed Details -> Add Folder reveals form;
+- Edit Folder, Add Data, Edit Data each reveal;
+- desktop manual collapse -> editor open reveals;
+- same form/input identity, draft value, validation error, focus, caret/selection and composition survive desktop->narrow resize;
+- Details toggle cannot hide active form;
+- dirty prompt survives narrow resize; Continue preserves existing draft; Discard opens Add Folder replacement visibly once;
+- missing/stale target and context-menu-only do not expand Details;
+- Cancel restores toggle and normal geometry.
+
+Executed:
+- editor visibility main: 1/1
+- search/details main: 1/1
+- drag history main: 1/1
+- geometry main: 1/1
+- UI focused: 5/5
+- shell/history/UI: 31/31
+- startup recovery actual main: 21/21
+- Slice2 actual main: 2/2
+- P1b actual main: 70/70
+- main init: 9/9
+- full tests/engine: 919 tests, 918 passed, 0 failed, 1 skipped, 0 todo
+- syntax: 13/13 JS modules
+- served source: 104 files, HTTP 200/no-store, byte SHA match; root 302/trailing 200.
+
+Native visual/focus/IME checks NOT RUN. No screenshots captured. Mock focus/IME assertions are not native evidence.

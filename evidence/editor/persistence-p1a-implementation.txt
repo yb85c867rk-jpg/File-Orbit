@@ -1,0 +1,40 @@
+﻿FileOrbit P1a persistence implementation evidence — 2026-10-28
+
+New/shared modules:
+- src/engine/hypertree/persistence/schema.js
+- src/engine/hypertree/persistence/ids.js
+- src/engine/hypertree/persistence/codec.js
+- src/engine/hypertree/persistence/idb.js
+- src/engine/hypertree/persistence/repository.js
+- src/engine/hypertree/persistence/runtime.js
+- src/engine/hypertree/persistence/index.js
+- src/engine/hypertree/editor/attachments.js (adopt extension)
+
+Tests:
+- tests/engine/persistence/persistence.test.mjs — 31/31 PASS
+- tests/engine/persistence/fake-indexeddb.mjs — transaction/test double, not native proof
+- tests/harness/m5-exploration/persistence-check.html — explicit synthetic native check, NOT RUN
+
+Commands:
+- node --check all persistence modules, attachments.js, tests
+- node --test --test-isolation=none tests/engine/persistence/persistence.test.mjs -> 18/18
+- full tests/engine -> 735/735
+- layout/render suites remain green (91/91 render, existing fixtures unchanged)
+
+Limits: 300 nodes, 20MiB/file, 100MiB/map, 512MiB application hard cap.
+Integrity: structural/reference/size validation only; sha256 null; no same-size corruption claim.
+Native browser durability: NOT RUN.
+
+Baseline/layout comparison versus r35 planning archive:
+- tests/engine/layout/fixtures.mjs: unchanged
+- tests/engine/layout/crowding-fixtures.mjs: unchanged
+- tests/harness/m5-exploration/main.mjs: unchanged
+- tests/harness/m5-exploration/index.html: unchanged
+- tests/harness/m5-exploration/shell-controls.js: unchanged
+- render suite: 91/91 PASS in full suite
+
+
+Native browser availability: Chrome/Edge executables not found; native persistence-check.html NOT RUN.
+
+
+

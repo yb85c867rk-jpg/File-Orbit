@@ -1,0 +1,32 @@
+> Superseded by r138: the approved variation 06 asset was supplied and installed. See variation-06-audit-r138.txt.
+
+﻿# FileOrbit naming audit
+
+Date: 2026-10-26
+
+## Updated active branding
+
+- README.md: FileOrbit product description and history note.
+- docs/VISUAL-DIRECTORY-V2-IMPLEMENTATION-PLAN.md: display title/prose; filename retained.
+- tests/harness/index.html: title and h1.
+- tests/harness/m5-exploration/index.html: title and visible brand heading.
+- tests/harness/instrumentation.js / minimal-hypertree.js: active source comments.
+- src/engine/hypertree/package.json: machine-readable name @fileorbit/hypertree-engine.
+
+## Retained legacy references (intentional)
+
+- Working directory path `C:\Users\openw\Documents\Projects\visual-directory`.
+- Plan filename `docs/VISUAL-DIRECTORY-V2-IMPLEMENTATION-PLAN.md` to keep links stable.
+- Proposed/legacy technical path `plugins/visual-directory-files/`.
+- Fixture root name `visual-directory` in legacy T2 harness fixture data.
+- REA historical evidence/JSON and tools/rea-control path references.
+- Existing review archive names and historical hashes.
+- Harness URLs, exported APIs, file paths, and test identifiers unchanged.
+
+## Checked
+
+- No remaining old product-name page title/h1 in active harness HTML.
+- README link resolves to the retained plan file.
+- JS/MJS syntax checks pass.
+- package.json parses after UTF-8 BOM removal.
+- Tests rerun: exploration 63/63, M4 71/71.

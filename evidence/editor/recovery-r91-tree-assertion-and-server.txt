@@ -1,0 +1,30 @@
+﻿FileOrbit r91 tree-assertion correction and served-source verification
+
+Correction:
+- Added narrowly scoped test hook `treeSnapshot()` returning a detached structuredClone of authoritative `tree`, only under __M5_P1B_TEST_HOOKS__.
+- Replaced ineffective `JSON.stringify(hooks.snapshot().tree)` comparison (snapshot has no tree) with:
+  - `bTreeBefore = hooks.treeSnapshot(); assert.ok(bTreeBefore);`
+  - after stale A release: `bTreeAfter = hooks.treeSnapshot(); assert.ok(bTreeAfter); assert.deepEqual(bTreeAfter, bTreeBefore);`
+- Removed the superseded duplicate RECOVERY_CANCEL_AFTER_INSTALL branch.
+- Preserved independent B workspace ID/token/control, real B-Edit Add Folder, B checkpoint ownership, and exact alpha.txt byte assertions.
+
+Executed:
+- corrected main-entry scenario: 1/1 passed.
+- startup recovery actual-main suite: 21/21 passed.
+
+Served source verification:
+- Reused existing FileOrbit server at http://127.0.0.1:8099/tests/harness/m5-exploration/ (new start attempt reported EADDRINUSE; existing server left untouched).
+- `/` and `/tests/harness/m5-exploration` return 302 to trailing-slash URL.
+- `/tests/harness/m5-exploration/` returns 200 with Cache-Control: no-store.
+- index.html, main.mjs, recovery-dialog.js, recovery-scheduler.js and local imports: 104 files, all HTTP 200, Cache-Control no-store, byte-for-byte SHA match to reviewed disk files.
+- r91 production markers present in served main/scheduler.
+
+Native manual checklist: docs/engine/FILEORBIT-RECOVERY-NATIVE-CHECKLIST-KO.md
+Native checks NOT RUN. HTTP/source checks and Node tests are not native acceptance.
+
+Limitations:
+- No native PC/Android/iPhone recovery run.
+- No IndexedDB upgrade/quota/cross-tab native verification.
+- FakeIndexedDB cross-tab concurrency skip retained; not native proof.
+- No production checkpoint-completion UI exposed; checklist uses optional read-only IndexedDB inspection only.
+- No database reset, user-document overwrite, dependency, commit, push, or deployment.

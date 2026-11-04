@@ -1,0 +1,6 @@
+﻿FileOrbit label context-menu browser verification: NOT RUN.
+No browser executable or browser automation was available without installing dependencies.
+Mocked DOM/Canvas tests verify label owner resolution, exact stable IDs, menu activation,
+native-menu preservation for background/hidden labels, transition rejection, and stale/frame diagnostics.
+They do NOT establish real browser right-click behavior on rendered labels/glyphs,
+native anchor left-click/new-tab behavior, or real pointer ownership.

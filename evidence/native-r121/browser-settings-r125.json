@@ -1,0 +1,20 @@
+{
+  "settings": {
+    "buttons": [
+      {
+        "id": "theme-action",
+        "text": "Theme: Light"
+      }
+    ],
+    "text": "Theme: Light",
+    "feedback": "No document\nNo map",
+    "saveFeedbackHidden": true
+  },
+  "narrow": {
+    "innerWidth": 390,
+    "scrollWidth": 390,
+    "settingsOpen": true,
+    "feedback": "No document\nNo map"
+  },
+  "capturedAt": "2026-10-31T10:39:25.184Z"
+}

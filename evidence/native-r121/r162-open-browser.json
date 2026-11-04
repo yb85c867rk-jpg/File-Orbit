@@ -1,0 +1,88 @@
+{
+  "desktopState": {
+    "rail": "true",
+    "menuHidden": false,
+    "menu": {
+      "left": 127,
+      "top": 178,
+      "right": 287,
+      "bottom": 226,
+      "width": 160,
+      "height": 48
+    },
+    "connect": {
+      "left": 133,
+      "top": 184,
+      "right": 281,
+      "bottom": 220,
+      "width": 148,
+      "height": 36
+    },
+    "open": {
+      "left": 6,
+      "top": 136,
+      "right": 121,
+      "bottom": 180,
+      "width": 115,
+      "height": 44
+    },
+    "more": {
+      "left": 127,
+      "top": 142,
+      "right": 159,
+      "bottom": 174,
+      "width": 32,
+      "height": 32
+    },
+    "labels": [
+      {
+        "text": "Connect Folder",
+        "role": "menuitem"
+      }
+    ]
+  },
+  "routing": {
+    "afterFile": {
+      "file": 1,
+      "folder": 0,
+      "status": "Open cancelled. The current map and edits were preserved."
+    },
+    "afterFolder": {
+      "file": 1,
+      "folder": 1,
+      "status": "Orbit selection cancelled. The current Orbit and map were preserved."
+    }
+  },
+  "narrowState": {
+    "viewport": {
+      "width": 390,
+      "height": 700
+    },
+    "menuHidden": false,
+    "menu": {
+      "left": 142,
+      "top": 371,
+      "right": 302,
+      "bottom": 419,
+      "width": 160,
+      "height": 48
+    },
+    "connect": {
+      "left": 148,
+      "top": 377,
+      "right": 296,
+      "bottom": 413,
+      "width": 148,
+      "height": 36
+    },
+    "open": {
+      "left": 14,
+      "top": 329,
+      "right": 136,
+      "bottom": 373,
+      "width": 122,
+      "height": 44
+    }
+  },
+  "errors": []
+}

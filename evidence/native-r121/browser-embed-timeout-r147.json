@@ -1,0 +1,15 @@
+{
+  "initial": {
+    "status": "Local read-only preview loaded · 10 nodes",
+    "state": "ready",
+    "noticeHidden": true,
+    "noticeText": ""
+  },
+  "late": {
+    "status": "Local read-only preview loaded · 10 nodes",
+    "state": "ready",
+    "noticeHidden": true
+  },
+  "exceptions": [],
+  "capturedAt": "2026-11-01T20:50:36.190Z"
+}

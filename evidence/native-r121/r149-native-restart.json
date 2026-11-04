@@ -1,0 +1,48 @@
+{
+  "result": {
+    "candidates": 1,
+    "usage": {
+      "libraryBytes": 0,
+      "recoveryBytes": 22,
+      "totalBytes": 22,
+      "hardCapBytes": 1048576,
+      "withinCap": true
+    },
+    "nodeCount": 2,
+    "tree": {
+      "id": "root",
+      "name": "Native Audit",
+      "kind": "folder",
+      "data": {},
+      "children": [
+        {
+          "id": "file-0",
+          "name": "recovery.txt",
+          "kind": "file",
+          "data": {
+            "dataType": "file",
+            "description": "native audit",
+            "attachmentId": "att_000000000033",
+            "originalName": "recovery.txt",
+            "sizeBytes": 22,
+            "mime": "text/plain",
+            "classification": {
+              "format": "text",
+              "badge": "TXT",
+              "needsReview": false
+            }
+          }
+        }
+      ]
+    },
+    "bytes": [
+      {
+        "name": "recovery.txt",
+        "text": "persisted-native-bytes",
+        "sha": "71fef56eee3fb482b0ef21a6d542ba9a8b1bdc19f223e10e8b0c24296ce710d0"
+      }
+    ]
+  },
+  "exceptions": [],
+  "capturedAt": "2026-11-01T23:56:17.300Z"
+}

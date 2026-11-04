@@ -1,0 +1,5 @@
+﻿FileOrbit E3-B final details browser verification: NOT RUN.
+No browser executable/automation was available without installing dependencies.
+Node integration tests execute actual Add/reparent wrappers and shared replay, compare committed views
+with history viewAfter, explicit-null reparent, and mixed edit/add/move Undo x3 / Redo x3.
+The outside-visible-scope Add scenario is covered by policy-level tests, not full DOM execution.

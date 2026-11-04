@@ -1,0 +1,46 @@
+﻿HELP_DEBUG_AFTER true false
+SIDEBAR_TOOLTIPS_COMPLETE
+✔ workspace layout owns the final grid row regardless of hidden error row (1.3262ms)
+✔ empty state is contained below toolbar and can scroll rather than clip (0.3227ms)
+✔ responsive details and fullscreen retain the workspace layout contract (0.2064ms)
+✔ actual rail expand/settings/theme/local maps, .orbit download, unified Open and help preserve lifecycle (2565.6907ms)
+✔ primary actions live once in the left rail; header/menu copies are gone (0.6999ms)
+✔ rail collapses to icons, expands labels, and overlays on phones with touch targets (0.2022ms)
+✔ header is brand-only; feedback and save state live outside it (0.3158ms)
+✔ download is the final toolbar action, Open accepts both containers, no duplicate install controls (0.2394ms)
+✔ Settings contains only the theme control; document/save feedback is outside it (0.2056ms)
+✔ connected Orbit menu sits between Save As and Settings with accessible toggle and retained actions (0.3722ms)
+✔ approved variation 06 logo, favicon, title, and accessible brand are installed locally (2.0309ms)
+✔ sidebar Create Map and connected Orbit use the supplied local theme-masked assets (0.8727ms)
+✔ Orbit refresh precedes empty/list content and status follows the list in DOM order (0.1205ms)
+✔ expanded sidebar exposes the independent circular Open Orbit help control (0.3045ms)
+✔ desktop and responsive action buttons share one execution path and preserve unavailable states (0.7867ms)
+✔ Map menu clamps, closes on Escape/outside, restores focus, and removes listeners (0.5451ms)
+✔ theme toggles tokens and themed canvas presentation without replacing DOM nodes (0.3346ms)
+✔ fullscreen success, rejection, and fullscreenchange update state and status (0.3769ms)
+✔ fullscreen unsupported state is honest (0.0947ms)
+✔ harness shell has two top rows, no sidebar, and app-owned overlay/fullscreen hosts (2.423ms)
+✔ toolbar Undo/Redo sync availability, accessible labels, guarded invocation, and history retention (0.3945ms)
+✔ icon-only desktop Theme/Fullscreen preserve SVG identity and synchronize mobile text (0.4327ms)
+✔ harness has one Undo/Redo registration boundary and one replay per click (1.8776ms)
+✔ direct theme redraw is blocked from installing a frame during transition ownership (0.9661ms)
+✔ unsupported icon-only fullscreen preserves SVG and synchronizes mobile state (0.1913ms)
+✔ creation ownership preserves recovery failure and releases exactly once (0.1371ms)
+✔ harness shared gates consume ownership for graph, history, Fit, editor and drag paths (0.8735ms)
+✔ responsive fallback resolver ignores null offsetParent and hidden menu items (0.317ms)
+✔ open popup re-clamps on resize, preserves focus/scroll, and safely handles hidden trigger (0.5451ms)
+✔ sidebar tooltips only show while the rail is collapsed (249.1124ms)
+✔ developer Status block is absent while production diagnostics remain published (0.6034ms)
+✔ one centered icon toolbar owns Undo, Redo, Embed, Fullscreen, and Download (0.6984ms)
+✔ history icons preserve their SVG while labels and tooltips update and guards disable actions (0.2847ms)
+✔ fullscreen enter/exit updates accessible name, tooltip, native title, and pressed state (0.2203ms)
+✔ tooltip controller shows on focus and clamps inside the viewport (0.418ms)
+✔ tooltip controller can be disabled and dismisses an active tooltip (0.2096ms)
+ℹ tests 36
+ℹ suites 0
+ℹ pass 36
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2864.0248

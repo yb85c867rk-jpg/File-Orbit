@@ -1,0 +1,27 @@
+﻿FileOrbit P3 lifecycle/concurrency regressions r64
+
+Concrete defects fixed:
+- handlePendingIntent(null) from repeated editor Discard click threw; now null-safe.
+- Failed import recovery left linkFrameReady/inert stale; recover clears link/frame, deactivates links, marks failure and publishes.
+- Restored missing hadPriorMap/available and Create Map lifecycle after prior refactor.
+- installCreatedMap request context truly separates import from Create Map UI; import ownership phase/id/session/dataset/revision/cancelled.
+- PDF viewer fallback timer cleaned via normal viewer destroy (PDF branch ~2.3s).
+
+Executed new actual-path tests:
+1. Destroy during deferred import hash via normal pagehide/destroy; late result cancelled, no commit, pending cleared.
+2. Stale pending import after replaceSession; Discard cannot install; map identity unchanged; candidate released.
+3. Overlap: start A, cancel, start B, release/cancel A while B active; A cannot hide cancel or clear B; B commits once; map unsaved.
+4. Duplicate editor Discard clicks: import commits once.
+5. Preparation failure; recovery success; recovery failure inert.
+6. Draw/label/hit failure.
+7. Imported PDF Save/reopen exact imported ID, viewer bytes, source exact ID unchanged.
+8. Actual Upload button + file-input dirty editor Continue/Discard.
+
+Results: P1b 40/40, backup6/6, resources2/2, full796/796. Native NOT RUN.
+
+Remaining NOT RUN:
+- destroy while awaiting editor/map decision.
+- late failure from A (late cancellation tested; overlap uses same package A/B, not distinct packages).
+- duplicate Save and dirty-map Discard rapid clicks (editor Discard duplicate tested).
+- full distinct A/B package overlap.
+- native browser download/picker/mobile/viewer.

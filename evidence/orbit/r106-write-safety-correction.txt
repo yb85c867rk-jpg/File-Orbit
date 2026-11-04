@@ -1,0 +1,9 @@
+FileOrbit Orbit plan r106 correction notes
+
+Resolved:
+1. Write-safety sequencing: Slice 3 is now the file-baseline/external-conflict prerequisite. No writable Orbit Open is enabled until Slice 3 exits; no Orbit create/write before that. Slice 4 is protected writable Open; Slice 5 is create/Save/Add.
+2. Post-save baseline: actual destination file getFile() after close; size/lastModified plus SHA-256 of actual file compared with digest of exact written bytes; known baseline requires write provenance; metadata-only is `observed` and gates next overwrite. Baseline read bound to exact save operation/document/savedRevision; stale read discarded; read failure keeps save success/savedRevision and marks baseline unknown/observed; next overwrite requires explicit revalidation/conflict. Encoded metadata is not used as filesystem stamp.
+3. Incomplete creation: candidate/encode/preflight before destination; candidate install before destination create; empty/partial files may remain on cancel/destroy/write/close failure; no automatic cleanup; zero size is not ownership; retry uses collision policy with explicit confirmation only if unchanged empty; existing zero-byte file is not owned.
+4. r105 bounded correction review-accepted with 11 relevant tests; native OS picker/pagehide unverified.
+
+Documentation-only; no suites rerun.

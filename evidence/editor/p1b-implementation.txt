@@ -1,0 +1,21 @@
+﻿FileOrbit P1b implementation evidence
+
+Implemented:
+- Toolbar + narrow Map menu Save/Open, saved-state indicator, browser/device storage note.
+- Session-owned durable mapId/generation/savedRevision and attachment mapping.
+- Repository save after metadata-only Blob reuse; later edits stay dirty; stale completion cannot publish into a replaced session.
+- Saved-map library with name, last saved, nodes, attachment bytes, Open/Delete saved map confirmation.
+- Open through repository load -> isolated reconstruction -> candidate draw/labels/hits -> commit; root fit/details; failure recovery.
+- Shared unsaved replacement prompt for Open/Create; replacement guard blocks editor/history/drag/canvas/delete/search/create during Save and handoff.
+- Delete current saved copy detaches identity but preserves runtime graph/attachments; next Save creates a new map.
+- Empty startup and unavailable IndexedDB handled honestly.
+
+Executed:
+- Focused persistence: 31/31.
+- Full tests/engine: 739/739.
+- Actual main-entry synthetic IndexedDB integration: create/save/list/open/empty-open/metadata-save/later-edit-dirty/guard/unsaved-cancel/save-and-continue/delete/re-save/late-completion/draw-failure/unavailable-IDB.
+- Native browser verification: NOT RUN.
+
+Limitations:
+- Test double does not prove native quota, cross-tab serialization, crash durability, eviction, or private-mode behavior.
+- Browser storage is not permanent.

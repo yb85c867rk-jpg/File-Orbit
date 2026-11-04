@@ -1,0 +1,9 @@
+main.mjs:
+795: overlay.update({ scene: frameState.scene, presentation: presentation(), priorityIds: priorityIds(model), rootId: model.structuralRootId, selectedId: model.selectedId });
+1092: overlay.completeTransition({ scene, presentation: presentation(env.graph), priorityIds: priorityIds(env.model), rootId: env.model.structuralRootId, selectedId: env.model.selectedId });
+1095: overlay.update({ scene, presentation: presentation(env.graph), priorityIds: priorityIds(env.model), rootId: env.model.structuralRootId, selectedId: env.model.selectedId });
+1238: return overlay.beginTransition(labelInput);
+1240: return overlay.updateTransition(labelInput);
+embed-viewer.mjs:
+59: labels: (scene) => overlay.update({ scene, presentation: labelPresentation(), priorityIds: labelPriorityIds(), rootId: tree.id, selectedId: model?.selectedId ?? null }),
+80: overlay.update({ scene: frameState.scene, presentation: labelPresentation(), priorityIds: labelPriorityIds(), rootId: tree.id, selectedId: model?.selectedId ?? null });

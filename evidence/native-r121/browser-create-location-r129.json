@@ -1,0 +1,80 @@
+{
+  "desktop": {
+    "title": "Create Map",
+    "labels": [
+      "Files and folders are optional. Add them now or create a title-only map. Files are never uploaded; browser storage can be cleared.",
+      "Map title",
+      "Save location",
+      "Choose the folder where your maps will be saved. Map files may not appear in the folder selection window.",
+      "Enter a map title. Files and folders are optional.",
+      "Replace the current map and clear its session history?"
+    ],
+    "location": "Standalone file (choose when creating)",
+    "note": "Choose the folder where your maps will be saved. Map files may not appear in the folder selection window.",
+    "buttons": [
+      {
+        "text": "Select files (optional)",
+        "disabled": false,
+        "hidden": false
+      },
+      {
+        "text": "Select folder (optional)",
+        "disabled": false,
+        "hidden": false
+      },
+      {
+        "text": "Choose save location",
+        "disabled": false,
+        "hidden": false
+      },
+      {
+        "text": "Save elsewhere…",
+        "disabled": false,
+        "hidden": false
+      },
+      {
+        "text": "Use connected Orbit",
+        "disabled": false,
+        "hidden": true
+      },
+      {
+        "text": "Cancel",
+        "disabled": false,
+        "hidden": false
+      },
+      {
+        "text": "Create Map",
+        "disabled": true,
+        "hidden": false
+      },
+      {
+        "text": "Cancel",
+        "disabled": false,
+        "hidden": false
+      },
+      {
+        "text": "Back",
+        "disabled": true,
+        "hidden": false
+      },
+      {
+        "text": "Replace map",
+        "disabled": true,
+        "hidden": false
+      }
+    ],
+    "activeTag": "INPUT",
+    "activeType": "text",
+    "hasCreateOrbit": false,
+    "overflow": false
+  },
+  "narrow": {
+    "innerWidth": 390,
+    "scrollWidth": 390,
+    "dialogHeight": 525.6875,
+    "viewportHeight": 844,
+    "overflow": false,
+    "title": "Create Map"
+  },
+  "capturedAt": "2026-11-01T01:42:41.491Z"
+}

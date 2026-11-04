@@ -1,0 +1,33 @@
+﻿FileOrbit unified-Save integration fixes (r51)
+
+R1:
+- Editor panel explicitly exposes submit and completeAppliedFromPersistence in its public API.
+- Desktop toolbar Save submits the open Edit Folder form; narrow toolbar Save submits the open Edit Data form. Both persist the current map.
+- Main no longer optional-chains missing submit/completion; missing APIs produce an explicit status error.
+- Conflict Save-as-copy can complete the originating applied form after successful current-session save.
+
+R2:
+- On applied persistence failure, panel transfers the committed attachment out of pendingReservation before showing Retry/Close.
+- Close no longer releases a live attachment. Actual main-entry: Add PDF, force maps write failure after application; total 3 nodes, revision 1, attachments 2; Close keeps 3 nodes/2 attachments; ordinary Save succeeds; reopen shows retained.pdf; viewer opens.
+- Cancel before application still releases pending reservation.
+
+R3:
+- Global boolean replaced by editorAppliedOperation record: session, dataset, applied revision, formToken, target/action, persisting.
+- Retry validates same session/dataset/formToken/open controller and has in-flight protection; panel also has retryInFlight.
+- Applied form inputs freeze after application.
+- Close emits editor-cancelled and clears operation; createEditor/replacement/destroy paths clear operation.
+- New forms receive new formToken, so they apply normally rather than inheriting retry.
+- Late retry after Close/replacement fails ownership validation.
+
+Executed:
+- P1b actual main-entry 26/26.
+- Editor suite 184/184 (panel 29/29).
+- Persistence 31/31.
+- P2 lifecycle 9/9.
+- P2 upgrade 3/3.
+- Full 774/774.
+- Native browser NOT RUN.
+
+Remaining gaps:
+- Dedicated Retry-after-failure actual-main-entry scenario is not present; Close retention is covered.
+- Conflict Cancel/Copy/Reload actual unified-form scenarios and new-form-after-Close remain without dedicated integration assertions.

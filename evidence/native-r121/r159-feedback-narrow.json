@@ -1,0 +1,30 @@
+{
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "host": {
+    "left": 68,
+    "top": 639.4375,
+    "right": 390,
+    "bottom": 792,
+    "width": 322,
+    "height": 152.5625
+  },
+  "shell": {
+    "left": 68,
+    "top": 727.4375,
+    "right": 390,
+    "bottom": 792,
+    "width": 322,
+    "height": 64.5625
+  },
+  "save": {
+    "left": 68,
+    "top": 639.4375,
+    "right": 390,
+    "bottom": 721.4375,
+    "width": 322,
+    "height": 82
+  }
+}

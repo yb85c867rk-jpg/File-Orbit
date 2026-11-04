@@ -1,0 +1,303 @@
+{
+  "imported": true,
+  "importedFlat": true,
+  "nav": {
+    "selected": "north",
+    "focused": "north",
+    "busy": false
+  },
+  "sel": "north029",
+  "sel2": "north039",
+  "clearSel": "north039",
+  "navRoot": {
+    "focused": "root",
+    "selected": "root"
+  },
+  "search": "root",
+  "clearSearch": {
+    "selected": "root",
+    "highlight": {
+      "query": "",
+      "ids": [],
+      "colors": {},
+      "folderColors": {
+        "root": {
+          "fill": "#F8FAFC",
+          "stroke": "#F8FAFC"
+        },
+        "north": {
+          "fill": "#D1D5DB",
+          "stroke": "#D1D5DB"
+        },
+        "south": {
+          "fill": "#D1D5DB",
+          "stroke": "#D1D5DB"
+        },
+        "east": {
+          "fill": "#D1D5DB",
+          "stroke": "#D1D5DB"
+        },
+        "west": {
+          "fill": "#D1D5DB",
+          "stroke": "#D1D5DB"
+        },
+        "center": {
+          "fill": "#D1D5DB",
+          "stroke": "#D1D5DB"
+        }
+      },
+      "selectedId": "root",
+      "status": "",
+      "scenePresent": true
+    }
+  },
+  "states": [
+    {
+      "label": "import-distributed",
+      "selected": null,
+      "focused": "root",
+      "hasMap": true,
+      "leaders": [],
+      "leaderCount": 0,
+      "rootProtection": true,
+      "rootProtectionRect": {
+        "left": 356.29567869691175,
+        "top": 349.79567869691175,
+        "right": 515.21875,
+        "bottom": 472.20432130308825
+      },
+      "rootLabelVisible": true,
+      "selectedLabelVisible": null,
+      "visibleCount": 14,
+      "labelCount": 40,
+      "dirty": true,
+      "revision": 0
+    },
+    {
+      "label": "after-transition",
+      "selected": "north",
+      "focused": "north",
+      "hasMap": true,
+      "leaders": [],
+      "leaderCount": 0,
+      "rootProtection": true,
+      "rootProtectionRect": {
+        "left": 132.12347887005836,
+        "top": 190.16228673257052,
+        "right": 266.05965106868155,
+        "bottom": 262.59713112981694
+      },
+      "rootLabelVisible": true,
+      "selectedLabelVisible": true,
+      "visibleCount": 14,
+      "labelCount": 40,
+      "dirty": true,
+      "revision": 0
+    },
+    {
+      "label": "after-file-selection",
+      "selected": "north029",
+      "focused": "north",
+      "hasMap": true,
+      "leaders": [],
+      "leaderCount": 0,
+      "rootProtection": true,
+      "rootProtectionRect": {
+        "left": 132.12347887005836,
+        "top": 190.16228673257052,
+        "right": 266.05965106868155,
+        "bottom": 262.59713112981694
+      },
+      "rootLabelVisible": true,
+      "selectedLabelVisible": true,
+      "visibleCount": 39,
+      "labelCount": 40,
+      "dirty": true,
+      "revision": 0
+    },
+    {
+      "label": "narrow",
+      "selected": "north029",
+      "focused": "north",
+      "hasMap": true,
+      "leaders": [
+        {
+          "left": "175.678px",
+          "top": "341.394px",
+          "width": "41px",
+          "parent": ""
+        }
+      ],
+      "leaderCount": 1,
+      "rootProtection": true,
+      "rootProtectionRect": {
+        "left": 59.986270171365845,
+        "top": 251.0070785569274,
+        "right": 175.70502017136585,
+        "bottom": 287.0070785569274
+      },
+      "rootLabelVisible": true,
+      "selectedLabelVisible": true,
+      "visibleCount": 10,
+      "labelCount": 40,
+      "dirty": true,
+      "revision": 0
+    },
+    {
+      "label": "selection-change",
+      "selected": "north039",
+      "focused": "north",
+      "hasMap": true,
+      "leaders": [
+        {
+          "left": "139.124px",
+          "top": "266.423px",
+          "width": "25px",
+          "parent": ""
+        }
+      ],
+      "leaderCount": 1,
+      "rootProtection": true,
+      "rootProtectionRect": {
+        "left": 59.986270171365845,
+        "top": 148.0070785569274,
+        "right": 175.70502017136585,
+        "bottom": 184.0070785569274
+      },
+      "rootLabelVisible": true,
+      "selectedLabelVisible": true,
+      "visibleCount": 10,
+      "labelCount": 40,
+      "dirty": true,
+      "revision": 0
+    },
+    {
+      "label": "selection-cleared",
+      "selected": "north039",
+      "focused": "north",
+      "hasMap": true,
+      "leaders": [],
+      "leaderCount": 0,
+      "rootProtection": true,
+      "rootProtectionRect": {
+        "left": 59.986270171365845,
+        "top": 148.0070785569274,
+        "right": 175.70502017136585,
+        "bottom": 184.0070785569274
+      },
+      "rootLabelVisible": true,
+      "selectedLabelVisible": true,
+      "visibleCount": 10,
+      "labelCount": 40,
+      "dirty": true,
+      "revision": 0
+    },
+    {
+      "label": "root-transition",
+      "selected": "root",
+      "focused": "root",
+      "hasMap": true,
+      "leaders": [],
+      "leaderCount": 0,
+      "rootProtection": true,
+      "rootProtectionRect": {
+        "left": 141.13329043410295,
+        "top": 215.63329043410295,
+        "right": 260.71875,
+        "bottom": 259.36670956589705
+      },
+      "rootLabelVisible": true,
+      "selectedLabelVisible": true,
+      "visibleCount": 4,
+      "labelCount": 40,
+      "dirty": true,
+      "revision": 0
+    },
+    {
+      "label": "map-replaced-flat",
+      "selected": "root",
+      "focused": "root",
+      "hasMap": true,
+      "leaders": [],
+      "leaderCount": 0,
+      "rootProtection": true,
+      "rootProtectionRect": {
+        "left": 141.13329043410295,
+        "top": 215.63329043410295,
+        "right": 260.71875,
+        "bottom": 259.36670956589705
+      },
+      "rootLabelVisible": true,
+      "selectedLabelVisible": true,
+      "visibleCount": 4,
+      "labelCount": 40,
+      "dirty": true,
+      "revision": 0
+    },
+    {
+      "label": "resize-back",
+      "selected": "root",
+      "focused": "root",
+      "hasMap": true,
+      "leaders": [],
+      "leaderCount": 0,
+      "rootProtection": true,
+      "rootProtectionRect": {
+        "left": 356.29567869691175,
+        "top": 349.79567869691175,
+        "right": 515.21875,
+        "bottom": 472.20432130308825
+      },
+      "rootLabelVisible": true,
+      "selectedLabelVisible": true,
+      "visibleCount": 14,
+      "labelCount": 40,
+      "dirty": true,
+      "revision": 0
+    },
+    {
+      "label": "flat-selection",
+      "selected": "root",
+      "focused": "root",
+      "hasMap": true,
+      "leaders": [],
+      "leaderCount": 0,
+      "rootProtection": true,
+      "rootProtectionRect": {
+        "left": 356.29567869691175,
+        "top": 349.79567869691175,
+        "right": 515.21875,
+        "bottom": 472.20432130308825
+      },
+      "rootLabelVisible": true,
+      "selectedLabelVisible": true,
+      "visibleCount": 14,
+      "labelCount": 40,
+      "dirty": true,
+      "revision": 0
+    },
+    {
+      "label": "search-cleared",
+      "selected": "root",
+      "focused": "root",
+      "hasMap": true,
+      "leaders": [],
+      "leaderCount": 0,
+      "rootProtection": true,
+      "rootProtectionRect": {
+        "left": 356.29567869691175,
+        "top": 349.79567869691175,
+        "right": 515.21875,
+        "bottom": 472.20432130308825
+      },
+      "rootLabelVisible": true,
+      "selectedLabelVisible": true,
+      "visibleCount": 14,
+      "labelCount": 40,
+      "dirty": true,
+      "revision": 0
+    }
+  ],
+  "errors": [],
+  "capturedAt": "2026-11-02T03:14:11.780Z"
+}

@@ -1,0 +1,5 @@
+﻿FileOrbit menu/field-policy browser verification: NOT RUN.
+No browser executable or automation was available without installing dependencies.
+Mocked DOM/Canvas tests verify data menus contain no Add, disabled Delete controls,
+folder-only Add rejection, typed URL visibility, hidden-field omission, and link preservation.
+They do NOT establish real browser menu rendering, disabled control behavior, or click-through.

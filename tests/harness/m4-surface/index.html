@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>M4 Canvas Surface Calibration</title>
+  <style>
+    :root { color-scheme: dark; }
+    body {
+      margin: 0;
+      font: 14px/1.4 system-ui, sans-serif;
+      background: #10131a;
+      color: #d9deea;
+    }
+    main { max-width: 980px; margin: 24px auto; padding: 0 16px; }
+    h1 { font-size: 20px; font-weight: 600; }
+    .toolbar { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin: 12px 0; }
+    button, select { background: #1d2635; color: inherit; border: 1px solid #39465c; border-radius: 6px; padding: 6px 10px; }
+    button { cursor: pointer; }
+    #surface-host {
+      position: relative;
+      width: 100%;
+      height: min(62vh, 560px);
+      min-height: 240px;
+      border: 1px solid #39465c;
+      background: #0b0e14;
+      overflow: hidden;
+    }
+    #status { white-space: pre-wrap; background: #151b25; border: 1px solid #2b3648; padding: 12px; border-radius: 6px; }
+    .muted { color: #8f9bb0; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>M4 Canvas Surface Calibration</h1>
+  <p class="muted">Axes, calibration marks, and a sample unit circle only. No graph rendering.</p>
+  <div class="toolbar">
+    <button id="resize" type="button">Resize / refresh</button>
+    <button id="recreate" type="button">Recreate surface</button>
+    <button id="destroy" type="button">Destroy surface</button>
+    <label>DPR source
+      <select id="dpr-source">
+        <option value="actual">actual browser DPR</option>
+        <option value="1">synthetic 1</option>
+        <option value="1.25">synthetic 1.25</option>
+        <option value="2">synthetic 2</option>
+        <option value="3">synthetic 3</option>
+      </select>
+    </label>
+  </div>
+  <div id="surface-host"></div>
+  <h2 style="font-size:16px;margin-top:18px;">Machine-readable status</h2>
+  <pre id="status"></pre>
+</main>
+<script type="module" src="./main.mjs"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+﻿FileOrbit applied-but-unsaved input protection (r54)
+
+R1:
+- Replaced ad-hoc setFormBusy locking with syncFormControls derived from appliedPending, controller.saving, canEdit, retryInFlight.
+- Applied state locks name/description/link with readOnly, data type and file with disabled.
+- Publication/setDetails/resize cannot unlock because appliedPending dominates.
+- Status states inputs are locked and Retry Save only retries storage.
+- Retry failure calls syncFormControls and keeps locks.
+- Close/success clears appliedPending; newly opened form is editable again.
+
+R2:
+- requestCancel shared by Close button and Escape; both reject while retryInFlight or controller saving.
+- cancelEdit checks retryInFlight before clearing appliedPending.
+- clear() refuses while retryInFlight.
+- openAction already rejects retry replacement.
+- destroy still increments formToken and invalidates late completion.
+
+Actual main-entry regressions in P1B_RETRY_DEFER:
+- Add PDF applies, maps write fails; name.readOnly true, dataType.disabled true, file.disabled true.
+- Resize publication preserves locks.
+- Old retry failure keeps applied form/locks, then Close available.
+- Deferred retry: Close disabled and Escape cannot close; desktop/narrow Save do not add requests; one release closes only originating form.
+- Revision 1, total 3, attachment 2; new form draft independent and editable.
+- P1B_CLOSE_ATTACH: Close applied preserves PDF, map Save/reopen/viewer; newly opened form controls are editable.
+
+Executed: P1b 27/27, editor184, persistence31, lifecycle9, upgrade3, full775. Native NOT RUN.
+
+Limitations: forced session replacement/destroy during deferred completion lacks a dedicated end-to-end assertion; ownership token/disposed guards remain in code. No camera/pan-specific lock test; resize/publication covered.

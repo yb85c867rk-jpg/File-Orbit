@@ -1,0 +1,31 @@
+﻿FileOrbit Orbit Slice 4 r117 correction — ownership and Save a Copy identity
+
+R1 — late Orbit Open replacing a newer standalone document
+Reproduced sequence: Orbit alpha open; deferred second listed alpha getFile; standalone Open File installs alpha-copy.map; release deferred read.
+Correction:
+- added shared documentOwnershipSeq claimed before first async read;
+- openOrbitEntry captures ownership, session, dataset, and Orbit request token before getFile;
+- standalone Open, saved-map Open, fallback backup Open, Create Map, Orbit Open, backup import, and destroy invalidate outgoing ownership;
+- openOrbitEntry rechecks ownership/session after getFile, baseline preparation, and before import;
+- import requests carry ownership; current/commit/failure paths reject stale ownership;
+- stale cleanup clears only the request's own registry/prompt and suppresses status;
+- existing dirty editor/map decision flow preserved.
+Tests: actual-main `orbit-r1-ownership.test.mjs` covers standalone replacement with exact B handle/tree/attachment bytes/dirty/savedRevision/baseline/status unchanged; newer Create Map prompt remains; destroy remains destroyed. Completion marker + 45s watchdog + 90s spawn timeout.
+
+R2 — Save a Copy bypassing disabled overwrite protection
+Reproduced sequence: unverifiable original; Save a Copy picker returns original; createWritable called.
+Correction:
+- resolveCopyDestination uses exact identity and isSameEntry;
+- exact original, same-entry distinct handle, and comparison failure do not become copied:true;
+- unverifiable original is never written via Save a Copy;
+- verifiable changed original requires a normal explicit Overwrite and content revalidation;
+- genuinely distinct destination still saves and adopts confirmed-write baseline;
+- picker remains invoked synchronously from the Save a Copy click.
+Tests: actual-main `orbit-r2-save-copy.test.mjs` covers exact original, same-entry distinct handle, identity comparison failure (zero original createWritable), changed original selected as copy (zero original writes), explicit Overwrite, and a genuinely distinct copy that writes successfully. Dirty edits, attachments, active destination, and savedRevision are asserted.
+
+Results:
+- Focused Orbit + compatibility: 139/139 passed.
+- Relevant Save/editor/lifecycle/recovery/navigation regressions: 98/98 passed.
+- Full engine suite: 1065 tests, 1064 passed, 1 skipped, 0 failed (exit 0).
+- Native filesystem verification: NOT RUN.
+- No Slice 5 work, no user-file modification, no dependency/schema/database reset, no commit/push/deploy.

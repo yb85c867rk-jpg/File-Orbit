@@ -1,0 +1,131 @@
+{
+  "preparedAt": "2026-10-31T06:50:48.596Z",
+  "root": "C:\\Users\\openw\\Documents\\Projects\\visual-directory\\evidence\\native-r121\\FileOrbit-Native-Acceptance",
+  "paths": {
+    "parent": "C:\\Users\\openw\\Documents\\Projects\\visual-directory\\evidence\\native-r121\\FileOrbit-Native-Acceptance\\Orbit Parent",
+    "existingOrbit": "C:\\Users\\openw\\Documents\\Projects\\visual-directory\\evidence\\native-r121\\FileOrbit-Native-Acceptance\\Orbit Parent\\Existing Orbit",
+    "standaloneDir": "C:\\Users\\openw\\Documents\\Projects\\visual-directory\\evidence\\native-r121\\FileOrbit-Native-Acceptance\\Standalone",
+    "populated": "C:\\Users\\openw\\Documents\\Projects\\visual-directory\\evidence\\native-r121\\FileOrbit-Native-Acceptance\\Orbit Parent\\Existing Orbit\\populated.map",
+    "zero": "C:\\Users\\openw\\Documents\\Projects\\visual-directory\\evidence\\native-r121\\FileOrbit-Native-Acceptance\\Orbit Parent\\Existing Orbit\\zero.map",
+    "invalid": "C:\\Users\\openw\\Documents\\Projects\\visual-directory\\evidence\\native-r121\\FileOrbit-Native-Acceptance\\Orbit Parent\\Existing Orbit\\invalid.map",
+    "standalone": "C:\\Users\\openw\\Documents\\Projects\\visual-directory\\evidence\\native-r121\\FileOrbit-Native-Acceptance\\Standalone\\standalone.map",
+    "legacy": "C:\\Users\\openw\\Documents\\Projects\\visual-directory\\evidence\\native-r121\\FileOrbit-Native-Acceptance\\Standalone\\legacy.fileorbit",
+    "externalChanged": "C:\\Users\\openw\\Documents\\Projects\\visual-directory\\evidence\\native-r121\\FileOrbit-Native-Acceptance\\Standalone\\external-changed.map"
+  },
+  "tree": {
+    "id": "native-populated",
+    "kind": "folder",
+    "name": "Native Populated",
+    "children": [
+      {
+        "id": "native-populated-pdf-file",
+        "kind": "file",
+        "name": "brief.pdf",
+        "data": {
+          "description": null,
+          "link": null,
+          "dataType": "file",
+          "attachmentId": "native-populated-pdf",
+          "originalName": "brief.pdf",
+          "sizeBytes": 85,
+          "mime": "application/pdf",
+          "classification": {
+            "format": "pdf",
+            "badge": "PDF",
+            "needsReview": false
+          }
+        }
+      },
+      {
+        "id": "native-populated-yaml-file",
+        "kind": "file",
+        "name": "notes.yaml",
+        "data": {
+          "description": null,
+          "link": null,
+          "dataType": "file",
+          "attachmentId": "native-populated-yaml",
+          "originalName": "notes.yaml",
+          "sizeBytes": 58,
+          "mime": "application/yaml",
+          "classification": {
+            "format": "yaml",
+            "badge": "YAML",
+            "needsReview": false
+          }
+        }
+      }
+    ]
+  },
+  "populated": {
+    "bytes": 1554,
+    "sha256": "62CF469B9C9C7CA4C506A21A8EF94EEE84F9BF2ED6FFC1268FB1310DAF604864",
+    "treeId": "native-populated",
+    "attachments": [
+      {
+        "name": "brief.pdf",
+        "bytes": 85,
+        "sha256": "0945232BD84C7D3707D0706721BE320681CFAC633C1AF61EF8DDC29DCB5F16CD"
+      },
+      {
+        "name": "notes.yaml",
+        "bytes": 58,
+        "sha256": "FBF6506861D15C7756E7DC1382195392E86F6284466A09096B0D0990F0D6BC77"
+      }
+    ]
+  },
+  "standalone": {
+    "bytes": 914,
+    "sha256": "3BF4C43254376AF755E3413DD7A25C8E7D509D126C5DD4C65EF99392DAB0069D",
+    "treeId": "native-standalone",
+    "attachments": [
+      {
+        "name": "standalone.pdf",
+        "bytes": 46,
+        "sha256": "71885E9D1DF66CC740CF516E6C5D963BAD531CD63AAA837A305101FA49B0E439"
+      }
+    ]
+  },
+  "changed": {
+    "bytes": 885,
+    "sha256": "C93CD71150D0599466CF4FC888EF85CEB5F49E7F6C791C7A3C9AE22472DFA382"
+  },
+  "files": {
+    "Orbit Parent/Existing Orbit/populated.map": {
+      "bytes": 1554,
+      "sha256": "62CF469B9C9C7CA4C506A21A8EF94EEE84F9BF2ED6FFC1268FB1310DAF604864"
+    },
+    "Orbit Parent/Existing Orbit/zero.map": {
+      "bytes": 0,
+      "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    "Orbit Parent/Existing Orbit/invalid.map": {
+      "bytes": 32,
+      "sha256": "38472951404CBD61897D5BF9B17B8BBB9DB82EBF46A215637865A7B881F5AE3E"
+    },
+    "Orbit Parent/Existing Orbit/notes.txt": {
+      "bytes": 29,
+      "sha256": "5ED6EF6DB0D1A4E1A4D0096C6728EF95988EA7D850E85EBA93BFAA9E2D7759F2"
+    },
+    "Standalone/standalone.map": {
+      "bytes": 914,
+      "sha256": "3BF4C43254376AF755E3413DD7A25C8E7D509D126C5DD4C65EF99392DAB0069D"
+    },
+    "Standalone/legacy.fileorbit": {
+      "bytes": 914,
+      "sha256": "3BF4C43254376AF755E3413DD7A25C8E7D509D126C5DD4C65EF99392DAB0069D"
+    },
+    "Standalone/external-changed.map": {
+      "bytes": 885,
+      "sha256": "C93CD71150D0599466CF4FC888EF85CEB5F49E7F6C791C7A3C9AE22472DFA382"
+    }
+  },
+  "zero": {
+    "bytes": 0,
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+  },
+  "invalid": {
+    "bytes": 32,
+    "sha256": "38472951404CBD61897D5BF9B17B8BBB9DB82EBF46A215637865A7B881F5AE3E"
+  }
+}

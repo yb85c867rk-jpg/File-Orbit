@@ -1,0 +1,113 @@
+{
+  "revision": "r136",
+  "change": ".orbit exclusive document format, disposable old test-document cleanup, expanded Open Orbit help",
+  "extensionPolicy": {
+    "supported": [
+      ".orbit"
+    ],
+    "rejected": [
+      ".map",
+      ".fileorbit"
+    ],
+    "legacyCompatibility": false,
+    "contentValidation": true
+  },
+  "help": {
+    "label": "About Open Orbit",
+    "expandedOnly": true,
+    "neverTriggersOpen": true,
+    "text": "An .orbit file contains your visual map and its attached files. An Orbit folder is a regular folder where you keep these files. Choose a folder to browse and open your saved maps."
+  },
+  "deleted": {
+    "count": 7,
+    "files": [
+      {
+        "Path": "C:\\Users\\openw\\Downloads\\knowledge map - Copy.fileorbit",
+        "Length": 334756,
+        "SHA256": "803F559A5205BA13C44F03525EE123D9CAC6E02D36F0A709DFDDC93526FEC520",
+        "provenance": "FileOrbit container magic + disposable test filename",
+        "retained": false
+      },
+      {
+        "Path": "C:\\Users\\openw\\Downloads\\knowledge map.fileorbit",
+        "Length": 282610,
+        "SHA256": "1C9B4EE79A70447069DFAFD40F5F673242FB9DEB85F4B7E8E853A2039186E116",
+        "provenance": "FileOrbit container magic + disposable test filename",
+        "retained": false
+      },
+      {
+        "Path": "C:\\Users\\openw\\Downloads\\new map (1).fileorbit",
+        "Length": 462927,
+        "SHA256": "1613B4EF97AABF779ECB992FBBA675E85A4927497BE99AAD64B70EA9053A09FE",
+        "provenance": "FileOrbit container magic + disposable test filename",
+        "retained": false
+      },
+      {
+        "Path": "C:\\Users\\openw\\Downloads\\new map.fileorbit",
+        "Length": 462927,
+        "SHA256": "D4DDA5F09C0504384D3D5CDC1CE937CDB24D22353168E780A940548D113D9FC7",
+        "provenance": "FileOrbit container magic + disposable test filename",
+        "retained": false
+      },
+      {
+        "Path": "C:\\Users\\openw\\Downloads\\recovered-test.map",
+        "Length": 52264,
+        "SHA256": "C586CC2695B64E2F55C7A7B3844600FB19070B0F997ED6B778B73BA0623BDDD1",
+        "provenance": "FileOrbit container magic + disposable test filename",
+        "retained": false
+      },
+      {
+        "Path": "C:\\Users\\openw\\Downloads\\test map.map",
+        "Length": 52832,
+        "SHA256": "486AD30B2505B870D4F0EE5675649DBE494838222AAC9B4E95475723432E333D",
+        "provenance": "FileOrbit container magic + disposable test filename",
+        "retained": false
+      },
+      {
+        "Path": "C:\\Users\\openw\\Downloads\\test-r81.map",
+        "Length": 543634,
+        "SHA256": "B88136F498CBEA6C14228193698F0A31BF66F48B3082C10105B86E36586D41FF",
+        "provenance": "FileOrbit container magic + disposable test filename",
+        "retained": false
+      }
+    ]
+  },
+  "verification": {
+    "focused": "151/151 passed",
+    "full": "1102 tests, 1101 passed, 1 skipped, 0 failed",
+    "native": "NOT RUN",
+    "archiveFocused": "24/24 passed; archive/disk main hashes match"
+  },
+  "application": {
+    "mainSha256": "6A830785346E486554ABB52A0A78D1B928885AD5369BBF0DCF3FBA226F0B31BD",
+    "indexSha256": "77E1FEB4197AF17BDDC2EF2604EAE35A24F1D9674BEABBC356D159280764FDF8",
+    "namesSha256": "D6951AB5BA641FFF983A9E86E605D6CB14E9E03F1C20F0C3B12F45A58DFC985B",
+    "backupSha256": "12133EC47FECA1F561587552DEA06A34709E981716CDA4F042E0EEC06E19F92E",
+    "runnerSha256": "D1BA4831021AF4E676B6F15F3F5AD0498B9F78539EB51D5F09346CAC06A780A4"
+  },
+  "evidence": [
+    "evidence/native-r121/orbit-extensions-focused-r136.txt",
+    "evidence/native-r121/orbit-help-corrected-full-r137.txt",
+    "evidence/native-r121/browser-help-same-row-r137.json",
+    "evidence/native-r121/deleted-legacy-documents-r136.json",
+    "evidence/native-r121/r137-archive-focused.txt"
+  ],
+  "limitations": [
+    "native filesystem acceptance NOT RUN",
+    "browser help inspection uses synthetic directory handles and is not native filesystem evidence"
+  ],
+  "archive": {
+    "path": "review/fileorbit-orbit-exclusive-r137.zip",
+    "sha256": "66A656702A61FC5B673F9DABED8861F94B76CD7F16AC227DBEE1C8D07AF0889E",
+    "entries": 1224,
+    "manifestMismatches": 0
+  },
+  "helpCorrection": {
+    "row": "Open Orbit and help are sibling buttons in one row",
+    "accessibleName": "About Orbit files",
+    "firstActivationPinsOpen": true,
+    "outsideDismiss": true,
+    "escapeWithoutReopen": true,
+    "collapseDismiss": true
+  }
+}

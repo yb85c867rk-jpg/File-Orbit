@@ -1,0 +1,20 @@
+﻿FileOrbit editor-to-toolbar synchronization (r49)
+
+Cause: panel published before controller.saveSucceeded/close, and had no post-final-state notification.
+
+Fix:
+- createEditorPanel accepts onState; calls after successful Save, failed Save, Cancel, Continue editing, Discard resolution.
+- Main onState runs syncPersistenceControls + publish.
+- No polling/forced button state/autosave.
+
+Actual main-entry tests:
+- Open saved map → real Edit Folder rename → form Save: form hidden, revision incremented, dirty, busy null, desktop+narrow Save enabled, then actual toolbar Save cleans.
+- Cancel after dirty form: revision unchanged, toolbar Save still enabled.
+- Reopen shows renamed root label.
+- Real Edit Data name/description edit → form Save: toolbar Save enabled and actual Save cleans.
+- Add PDF form Save → toolbar Save enabled.
+- Editor Save failure retains form and toolbar Save disabled; retry path existing.
+- Duplicate Save blocked/false conflict existing.
+- Both desktop and narrow controls assert disabled/data-available.
+
+Results: persistence31, P2 lifecycle9, upgrade3, P1b25, full773. Native browser NOT RUN.

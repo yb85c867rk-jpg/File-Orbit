@@ -1,0 +1,27 @@
+﻿FileOrbit Orbit Slice 5 r119 correction — Save ownership and Create Orbit lifecycle
+
+R1 — obsolete Save after invalidation:
+- saveDocument rejects when already destroyed or when expected ownership/session/dataset no longer match.
+- Ownership is rechecked after recovery reservation, after ordinary/preencoded encoding, before download, and before write.
+- Preencoded Orbit creation passes captured owner and rechecks creation ownership before saveDocument.
+- Actual-main:
+  - deferred ordinary encoding + session replacement: zero new createWritable, destination/tree/attachments/locks/dirty/baseline/status unchanged;
+  - deferred encoding + destroy: zero new createWritable, destroyed state retained;
+  - obsolete preencoded creation after session invalidation: zero writer calls;
+  - download fallback after invalidation: zero download handoff.
+- Existing successful writes already started before invalidation are not rolled back.
+
+R2 — Create Orbit lifecycle:
+- Choice workflow has immutable request/session/document ownership.
+- Parent picker, directory creation, adoption, and scheduled Create Map continuation recheck it.
+- Destroy invalidates/closes the choice; no late creation, adoption, status, focus, or form.
+- Adapter creation receives isCurrent; creation after invalidation may leave a directory but is never adopted or deleted.
+- Actual-main: deferred parent picker + destroy (zero createDirectory calls); delayed directory completion after replacement (leftover allowed, no adoption/UI); deferred picker + newer workflow; superseded scheduled standalone continuation; valid Create Orbit/Open Orbit/standalone flows.
+- Watchdogs and completion markers bound the scenarios.
+
+Results:
+- Focused Orbit + compatibility: 146/146 passed.
+- Relevant creation/Save/editor/recovery/navigation: 96/96 passed.
+- Full engine: 1072 tests, 1071 passed, 1 skipped, 0 failed.
+- Native filesystem verification: NOT RUN.
+- No Slice 6 work, no user-file modification, no dependency/schema/database reset, no commit/push/deploy.

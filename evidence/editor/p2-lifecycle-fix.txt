@@ -1,0 +1,29 @@
+﻿FileOrbit P2 lifecycle corrections (r46)
+
+R1 beforeunload:
+- Removed destroy() from beforeunload. Warning listener evaluates map dirtiness and editor draft only.
+- Added pagehide handler: non-persisted departure destroys once; persisted BFCache pagehide leaves page alive.
+- destroy is idempotent; publish is blocked after destruction.
+- Actual main-entry test asserts warning request leaves attachment count/tree/graph usable; then Save, dirty editor draft warning, draft value preserved, Cancel.
+- Dialog destruction removed from beforeunload and moved to non-persisted pagehide.
+
+R2 blocked DB:
+- Blocked opening now uses recoverable persistenceBlocked state separate from permanent unavailability/versionchange.
+- onOpenSuccess clears blocked state and refreshes controls.
+- Save/Open controls and status reflect blocked state.
+- Versionchange remains distinct and closes/reload-required.
+- Native blocked arbitration and cancel/retry late-success are NOT RUN natively; test double lacks blocked event arbitration. No claims.
+
+R3 upgrade:
+- Existing harness covers fresh creation, reopen, newer-version rejection, versionchange closure.
+- Upgrade transaction failure/rollback and blocked upgrade are NOT RUN because the test double cannot faithfully model them. No production migration/version bump was added.
+
+User-reported: Open → Add PDF → Save → refresh → Open works (narrowly that flow).
+
+Executed:
+- Persistence 31/31.
+- P2 lifecycle 5/5.
+- P2 upgrade harness 3/3.
+- P1b main-entry 22/22.
+- Full 766/766.
+- Native browser: NOT RUN.

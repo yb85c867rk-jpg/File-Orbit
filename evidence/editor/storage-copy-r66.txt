@@ -1,0 +1,27 @@
+﻿FileOrbit persistence wording/accessibility correction r66
+
+Messages:
+- Saving: “Saving to IndexedDB…”
+- Saved: “Saved to IndexedDB on this device”
+- Restored unsaved: “Restored map — not saved yet”
+- Ordinary dirty: “Unsaved changes”
+- Restore completion: “Backup restored. Save to IndexedDB to keep this restored map on this device.”
+- Save shell status: “Saved to IndexedDB on this device.”
+
+Added restoredMapAwaitingSave lifecycle flag:
+- set only on successful imported candidate commit;
+- cleared on Save success, Open success, Create Map commit, empty/dataset reset, delete-saved-map.
+- does not suppress dirty state or autosave.
+
+Added accessible storage help:
+- button #storage-help with aria-expanded/aria-controls and keyboard/touch click toggle;
+- text #storage-help-text with required explanation;
+- no permanent graph-toolbar paragraph; positioned help panel uses theme surface/text/border variables.
+
+Tests:
+- saveState transitions saved → restored → saved → dirty → saved across Open;
+- help toggle expands/collapses and contains IndexedDB/.fileorbit/Upload explanation;
+- backup completion message updated;
+- existing P3/P1b tests updated for new wording.
+
+Executed: P1b 46/46, full802/802, Create Map CSS 3/3. Native NOT RUN.

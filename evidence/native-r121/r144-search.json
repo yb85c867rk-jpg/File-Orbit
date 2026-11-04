@@ -1,0 +1,60 @@
+{
+  "revision": "r144",
+  "change": "Search-result folder highlighting and Embed status",
+  "search": {
+    "folderIds": "complete authoritative matching set plus canonical ancestors to structural root",
+    "dark": {
+      "fill": "#7F1D1D",
+      "stroke": "#FCA5A5",
+      "outline": "#FCA5A5"
+    },
+    "light": {
+      "fill": "#B91C1C",
+      "stroke": "#7F1D1D",
+      "outline": "#7F1D1D"
+    },
+    "nonColorCue": "dashed outer ring + hidden polite folder-count status",
+    "resultLimit": 50,
+    "temporaryPresentation": true,
+    "metadataMutation": false
+  },
+  "embed": {
+    "available": false,
+    "ariaDisabled": true,
+    "implementedAction": false,
+    "message": "Embed requires shareable map hosting and is not available yet.",
+    "iframeOrBlob": false,
+    "prerequisites": [
+      "distributable read-only viewer",
+      "deliberate map/attachment sharing model"
+    ]
+  },
+  "verification": {
+    "focused": "46/46",
+    "full": "1107 tests, 1106 passed, 1 skipped, 0 failed",
+    "native": "NOT RUN",
+    "archiveFocused": "29/29"
+  },
+  "browser": {
+    "query": "Node 15",
+    "highlightedFolders": 4,
+    "themes": [
+      "dark",
+      "light"
+    ],
+    "exceptions": []
+  },
+  "preserved": {
+    "r143": "3115355BC79BAC551C80069990F20665A943E4E0C2B5E9BECD7B7AAF6A7CAA47",
+    "r142": "64D31175303045113D1835260122D373CEB9098444636DB27AF4F171FE6826AC"
+  },
+  "archive": {
+    "path": "review/fileorbit-search-highlight-r144.zip",
+    "sha256": "A3AA9E07F3B67D9301FF4D49447CF5679AE8C9153240794F755513527B03FCFE",
+    "entries": 1343,
+    "manifestMismatches": 0
+  },
+  "application": {
+    "mainSha256": "BDE574BD35E2C6BDF076075EF7130AB0E6CE6F047DCEFCFF8E7E7CFA56A73EA9"
+  }
+}

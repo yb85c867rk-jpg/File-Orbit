@@ -1,0 +1,45 @@
+{
+  "revision": "r132",
+  "change": "Copy Map stale encoding ownership correction",
+  "defect": "encodeBackup rejection published feedback without current()",
+  "correction": [
+    "encoding rejection checks ownership before status",
+    "obsolete rejection returns stale",
+    "temporary attachment registry clears in finally",
+    "create/write exception paths recheck ownership",
+    "Orbit refresh status deferred until current success"
+  ],
+  "tests": {
+    "focused": "74/74 passed",
+    "full": "1097 tests, 1096 passed, 1 skipped, 0 failed",
+    "native": "NOT RUN",
+    "markers": [
+      "COPY_MAP_ENCODE_SESSION_COMPLETE",
+      "COPY_MAP_ENCODE_DESTROY_COMPLETE",
+      "COPY_MAP_ENCODE_SUCCESS_COMPLETE",
+      "COPY_MAP_ENCODE_CURRENT_COMPLETE"
+    ],
+    "archiveFocused": "5/5 passed; archive/disk main hashes match"
+  },
+  "application": {
+    "url": "http://127.0.0.1:8099/tests/harness/m5-exploration/",
+    "mainSha256": "39A7E25FE834B47296095639D173705EAE13E3D8AE47D8B2FE52E269674590F1",
+    "indexSha256": "E8AE1534C9E3F8B185CFD61E28183E2FB6B0E0861AD04D318B3564BE2D24A4D8",
+    "runnerSha256": "9E433D11C22BA80C524C22F2BFEEE75419D7AF6C1524E471217C2A5C1A26D41F"
+  },
+  "archive": {
+    "path": "review/fileorbit-copy-encoding-stale-r132.zip",
+    "sha256": "282646A0EB76925FD0600FA3ABD5DFDC86D34696E6CC1D529F16169CB6EB6353",
+    "entries": 1149,
+    "manifestMismatches": 0
+  },
+  "limitations": [
+    "native filesystem acceptance NOT RUN",
+    "synthetic handles are not native filesystem evidence"
+  ],
+  "evidence": [
+    "evidence/native-r121/copy-encoding-focused-r132.txt",
+    "evidence/native-r121/copy-encoding-full-r132.txt",
+    "evidence/native-r121/r132-archive-focused.txt"
+  ]
+}

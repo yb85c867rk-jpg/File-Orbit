@@ -1,0 +1,32 @@
+{
+  "c299": {
+    "status": "0 folders, 299 files, 299 bytes. Review, then choose Create Map.",
+    "kind": "ok",
+    "createDisabled": false,
+    "confirmHidden": true,
+    "counts": "20 visible / 20 total"
+  },
+  "c300": {
+    "status": "A map is limited to 300 nodes including its root.",
+    "kind": "error",
+    "createDisabled": true,
+    "confirmHidden": true,
+    "counts": "20 visible / 20 total"
+  },
+  "exact20": {
+    "status": "0 folders, 1 files, 20971520 bytes. Review, then choose Create Map.",
+    "kind": "ok",
+    "createDisabled": false,
+    "confirmHidden": true,
+    "counts": "20 visible / 20 total"
+  },
+  "above20": {
+    "status": "\"f-0.txt\" exceeds the 20971520-byte file limit.",
+    "kind": "error",
+    "createDisabled": true,
+    "confirmHidden": true,
+    "counts": "20 visible / 20 total"
+  },
+  "exceptions": [],
+  "capturedAt": "2026-11-01T21:14:20.430Z"
+}

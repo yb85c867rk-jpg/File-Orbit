@@ -1,0 +1,7 @@
+﻿FileOrbit branding audit — r129
+Date: 2026-11-01
+
+Searched active workspace image assets and names (logo/brand/variation/favicon/icon/fo), active docs for variation 06/FO connected/indigo F, and historical review ZIP entry names.
+Result: exact approved variation 06 asset NOT FOUND.
+Header: existing accessible FileOrbit text retained temporarily. No invented/substitute logo. No header X/exit control.
+Action required: supply the approved local asset, then replace the h1 text with an <img> or approved inline asset preserving aspect ratio and accessible name FileOrbit.

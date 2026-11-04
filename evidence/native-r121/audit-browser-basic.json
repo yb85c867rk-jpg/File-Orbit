@@ -1,0 +1,26 @@
+{
+  "search": {
+    "before": {
+      "query": "Node 15",
+      "cards": 1,
+      "resultStatus": "1 match.",
+      "highlight": "Search highlights 4 folders containing matching results."
+    },
+    "cardId": "n15",
+    "details": "Details\nHide details\nNode 15 · file\nSearch results\nClear search\n\n1 match.\n\nNode 15\nNo description\nFile\nNode 0 / Node 1 / Node 3 / Node 7\nBack to results\n\nSearch highlights 4 folders containing matching results.",
+    "status": "{\n  \"hasMap\": true,\n  \"structuralRootId\": \"n0\",\n  \"datasetToken\": 1,\n  \"focusedFolderId\": \"n0\",\n  \"focusedStructuralDepth\": 0,\n  \"contextCount\": 1,\n  \"subtreeCo"
+  },
+  "clear": {
+    "value": "",
+    "cards": 0,
+    "status": ""
+  },
+  "replace": {
+    "counts": "200 visible / 200 total",
+    "canvas": true,
+    "errors": "",
+    "search": ""
+  },
+  "exceptions": [],
+  "capturedAt": "2026-11-01T21:11:45.440Z"
+}

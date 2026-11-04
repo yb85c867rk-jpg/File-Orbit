@@ -1,0 +1,10 @@
+﻿{
+  "revision": "r149",
+  "baseline": {"r148Sha256": "FA523761D3FD4AFDB702C5AFA40476FCDB81EA5D3D4F71A6F252AED56EA91C2B", "mainBefore": "A59AEEDA2D8F111BC01673F66A543AEFE491B9D4A07336B411EFA3AA11259DB2", "mainAfter": "6F04F2BC72A1622075ED6548551476E19C04A3605F3F47BCBE5B869C12D2E138", "index": "7F7D2B5A4E01EDED877A27C3C52B63984AB87BF6EF63E46E2A3128E3CC4B2BA2"},
+  "browser": {"version": "156.0.8078.76", "platform": "Windows", "mode": "headless", "origin": "http://127.0.0.1:8099", "profile": ".browser-prof-r149-final"},
+  "fixture": {"nodes": 300, "folders": 38, "files": 262, "orbitBytes": 36942, "sha256": "5962fee2ab493a371c3868adb1ea49fc1604b1bc6c7b8340a151548f3ca9130e"},
+  "lifecycle": {"pass": true, "treeEqual": true, "bytesEqual": true, "restartRecovery": true, "301Preserved": true},
+  "nativeIdb": {"iterations": 5, "oneSuccessOneCapacityReject": true, "abortPreserved": true, "restartVerified": true, "skipRetained": true},
+  "tests": {"serialFull": "1119 tests, 1118 passed, 1 skipped", "parallelFull": "1117 passed, 1 test-harness timing failure", "newFeedback": "pass"},
+  "readiness": "NOT READY for free-edition release; tested desktop Chromium data-safety scope passes"
+}

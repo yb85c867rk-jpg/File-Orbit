@@ -1,0 +1,30 @@
+{
+  "generatedAt": "2026-11-04T21:03:27.714Z",
+  "sources": [
+    {
+      "file": "evidence\\stage3j2a-manual-save\\p1b-main.txt",
+      "tests": 69,
+      "passed": 69,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "file": "evidence\\stage3j2a-manual-save\\remainder.txt",
+      "tests": 1219,
+      "passed": 1218,
+      "failed": 0,
+      "skipped": 1
+    }
+  ],
+  "totals": {
+    "tests": 1288,
+    "passed": 1287,
+    "failed": 0,
+    "skipped": 1
+  },
+  "report": {
+    "file": "docs/engine/FILEORBIT-STAGE-3J-2A-MANUAL-SAVE-CORRECTION.md",
+    "expected": "1,288 tests, 1,287 pass, 1 skip",
+    "matched": true
+  }
+}

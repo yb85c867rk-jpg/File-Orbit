@@ -1,0 +1,30 @@
+﻿FileOrbit file-documents slice 1 — executed checks
+
+Implementer-run, workspace only. Native browser/mobile NOT RUN.
+
+Commands:
+node --test --test-isolation=none tests/engine/persistence/backup.test.mjs
+node --test --test-isolation=none tests/engine/exploration/document-adapter.test.mjs
+node --test --test-isolation=none tests/engine/exploration/p1b-main.test.mjs
+node --test --test-isolation=none <all tests/engine *.test.mjs>
+
+Results:
+- backup codec tests: 8/8
+- document adapter tests: 3/3
+- P1b actual main-entry tests: 48/48
+- full tests/engine: 809/809
+
+Covered:
+- .map filename, legacy suffix normalization, duplicate suffix prevention.
+- unrelated .map rejected by container magic.
+- writable picker/file read, cancellation/permission denial, write/close success and close failure, download cleanup.
+- writable Open establishes clean “Saved” baseline, form Save writes/closes, Save As writes separate handle, close failure retains dirty.
+- fallback Open of legacy .fileorbit is clean; fallback Save reports “Download started” and keeps Unsaved changes.
+- all prior P1b/P3 lifecycle, PDF, IndexedDB, editor/history/viewer tests.
+
+NOT RUN:
+- native PC/Android/iPhone pickers, permission revocation after restart, actual file overwrite, mobile downloads/viewers.
+- Save cancellation while picker open on native.
+- edits while direct write is pending (code compares captured revision, but no dedicated integration assertion).
+- recovery-checkpoint conversion.
+

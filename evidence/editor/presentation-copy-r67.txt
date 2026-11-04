@@ -1,0 +1,9 @@
+﻿FileOrbit presentation corrections r67
+
+1. Editor notices: both details summary and form now use
+“Save your changes to IndexedDB to keep them on this device. Download a .fileorbit backup to keep a separate copy.”
+Old “In-memory only” sentence absent.
+
+2. Storage help background: #storage-help-text uses defined --fo-panel, present in dark (#111827) and light (#ffffff). aria-expanded/controls, keyboard/touch toggle and layout preserved.
+
+Executed: static harness 5/5, P1b 46/46, full802/802. Native visual NOT RUN.

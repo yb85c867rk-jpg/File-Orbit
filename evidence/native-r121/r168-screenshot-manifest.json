@@ -1,0 +1,65 @@
+[
+  {
+    "file": "r168-back-to-portrait-390.png",
+    "width": 390,
+    "height": 844,
+    "bytes": 18848,
+    "sha256": "D6156D69888ABD1BC301AB257FE8F843CA2CB30C9A55F6FDBEE3405462D2097A"
+  },
+  {
+    "file": "r168-desktop-1200.png",
+    "width": 1200,
+    "height": 800,
+    "bytes": 26899,
+    "sha256": "3D2E5013CE765C6EE6F3C478B4A1332860C85E88013CAE90D451806027C9D175"
+  },
+  {
+    "file": "r168-editor-landscape-844.png",
+    "width": 844,
+    "height": 390,
+    "bytes": 18097,
+    "sha256": "1DFC4CA0D21880C06676AD1F1AB233BA57A447C947122272CF31AFD48F6CCDC6"
+  },
+  {
+    "file": "r168-landscape-expanded-844.png",
+    "width": 844,
+    "height": 390,
+    "bytes": 21601,
+    "sha256": "C47503228BD3DE1E6C1F500D66C0B6233F30A9E27EDD708F776CDD26BF3C1118"
+  },
+  {
+    "file": "r168-landscape-initial-844.png",
+    "width": 844,
+    "height": 390,
+    "bytes": 17177,
+    "sha256": "0F9202BA5208F7BA005F919E154DF0589BE5EB53EC923194F6A427561DB8DD4B"
+  },
+  {
+    "file": "r168-portrait-375.png",
+    "width": 375,
+    "height": 812,
+    "bytes": 18646,
+    "sha256": "9446EB5B021F07B803A0E807DFF1B8D6F74E77F21FDE5832058F28E5000F82A7"
+  },
+  {
+    "file": "r168-portrait-menu-375.png",
+    "width": 375,
+    "height": 812,
+    "bytes": 22191,
+    "sha256": "409A74B22B7E6202814B6A1C688723F63F85EB94B4CFEBE1BB2CFF0908432C98"
+  },
+  {
+    "file": "r168-portrait-to-landscape-844.png",
+    "width": 844,
+    "height": 390,
+    "bytes": 17171,
+    "sha256": "67AA4ED33FF50E70A09C86B91182C7F6CA3F5D495AAA960DB8AE0B7F1F581096"
+  },
+  {
+    "file": "r168-portrait-tooltip-375.png",
+    "width": 375,
+    "height": 812,
+    "bytes": 21620,
+    "sha256": "383D0561CA977A17730BACFF25322657F298047EC6759BB1DC5E398C6B4D3A54"
+  }
+]

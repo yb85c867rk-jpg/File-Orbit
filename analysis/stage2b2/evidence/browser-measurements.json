@@ -1,0 +1,1478 @@
+{
+  "environment": {
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36 Edg/156.0.0.0",
+    "language": "en-US",
+    "devicePixelRatio": 1,
+    "viewport": {
+      "width": 1600,
+      "height": 1000
+    },
+    "browserProduct": "Edg/156.0.4314.58"
+  },
+  "loadMs": 8,
+  "reachability": [
+    {
+      "shape": "flat",
+      "total": 300,
+      "count": 300,
+      "failures": 0,
+      "ms": 11.899999998509884,
+      "sourceUnchanged": true
+    },
+    {
+      "shape": "flat",
+      "total": 1000,
+      "count": 1000,
+      "failures": 0,
+      "ms": 12.200000002980232,
+      "sourceUnchanged": true
+    },
+    {
+      "shape": "wide",
+      "total": 300,
+      "count": 300,
+      "failures": 0,
+      "ms": 6.399999998509884,
+      "sourceUnchanged": true
+    },
+    {
+      "shape": "wide",
+      "total": 1000,
+      "count": 1000,
+      "failures": 0,
+      "ms": 6.399999998509884,
+      "sourceUnchanged": true
+    },
+    {
+      "shape": "balanced",
+      "total": 300,
+      "count": 300,
+      "failures": 0,
+      "ms": 3.100000001490116,
+      "sourceUnchanged": true
+    },
+    {
+      "shape": "balanced",
+      "total": 1000,
+      "count": 1000,
+      "failures": 0,
+      "ms": 1.2999999970197678,
+      "sourceUnchanged": true
+    },
+    {
+      "shape": "mixed",
+      "total": 300,
+      "count": 300,
+      "failures": 0,
+      "ms": 7.700000002980232,
+      "sourceUnchanged": true
+    },
+    {
+      "shape": "mixed",
+      "total": 1000,
+      "count": 1000,
+      "failures": 0,
+      "ms": 12.299999997019768,
+      "sourceUnchanged": true
+    },
+    {
+      "shape": "deep",
+      "total": 300,
+      "count": 300,
+      "failures": 0,
+      "ms": 4.899999998509884,
+      "sourceUnchanged": true
+    },
+    {
+      "shape": "deep",
+      "total": 1000,
+      "count": 1000,
+      "failures": 0,
+      "ms": 8.600000001490116,
+      "sourceUnchanged": true
+    }
+  ],
+  "overviews": {
+    "flat": {
+      "shape": "flat",
+      "total": 1000,
+      "mode": "overview",
+      "sceneNodes": 26,
+      "edges": 25,
+      "labels": 14,
+      "proxies": 25,
+      "labelMetrics": {
+        "priorityVisibleCount": 0,
+        "prioritySuppressedCount": 0,
+        "overlapSuppressedCount": 4,
+        "selectedLabelVisible": null
+      },
+      "folderId": "root",
+      "expandedClusterId": null,
+      "selectedId": null,
+      "searchTargetId": null,
+      "searchQuery": "",
+      "searchPage": 1,
+      "searchTotal": 0,
+      "searchPages": 0,
+      "breadcrumb": [
+        {
+          "id": "root",
+          "name": "아주긴한국어이름으로만든노드-평면-루트"
+        }
+      ]
+    },
+    "wide": {
+      "shape": "wide",
+      "total": 1000,
+      "mode": "folder",
+      "sceneNodes": 13,
+      "edges": 12,
+      "labels": 10,
+      "proxies": 0,
+      "labelMetrics": {
+        "priorityVisibleCount": 0,
+        "prioritySuppressedCount": 0,
+        "overlapSuppressedCount": 3,
+        "selectedLabelVisible": null
+      },
+      "folderId": "root",
+      "expandedClusterId": null,
+      "selectedId": null,
+      "searchTargetId": null,
+      "searchQuery": "",
+      "searchPage": 1,
+      "searchTotal": 0,
+      "searchPages": 0,
+      "breadcrumb": [
+        {
+          "id": "root",
+          "name": "아주긴한국어이름으로만든노드-넓은-루트"
+        }
+      ]
+    },
+    "balanced": {
+      "shape": "balanced",
+      "total": 1000,
+      "mode": "folder",
+      "sceneNodes": 4,
+      "edges": 3,
+      "labels": 3,
+      "proxies": 0,
+      "labelMetrics": {
+        "priorityVisibleCount": 0,
+        "prioritySuppressedCount": 0,
+        "overlapSuppressedCount": 1,
+        "selectedLabelVisible": null
+      },
+      "folderId": "root",
+      "expandedClusterId": null,
+      "selectedId": null,
+      "searchTargetId": null,
+      "searchQuery": "",
+      "searchPage": 1,
+      "searchTotal": 0,
+      "searchPages": 0,
+      "breadcrumb": [
+        {
+          "id": "root",
+          "name": "아주긴한국어이름으로만든노드-균형-루트"
+        }
+      ]
+    },
+    "mixed": {
+      "shape": "mixed",
+      "total": 1000,
+      "mode": "folder",
+      "sceneNodes": 7,
+      "edges": 6,
+      "labels": 5,
+      "proxies": 0,
+      "labelMetrics": {
+        "priorityVisibleCount": 0,
+        "prioritySuppressedCount": 0,
+        "overlapSuppressedCount": 2,
+        "selectedLabelVisible": null
+      },
+      "folderId": "root",
+      "expandedClusterId": null,
+      "selectedId": null,
+      "searchTargetId": null,
+      "searchQuery": "",
+      "searchPage": 1,
+      "searchTotal": 0,
+      "searchPages": 0,
+      "breadcrumb": [
+        {
+          "id": "root",
+          "name": "아주긴한국어이름으로만든노드-혼합-루트"
+        }
+      ]
+    },
+    "deep": {
+      "shape": "deep",
+      "total": 1000,
+      "mode": "folder",
+      "sceneNodes": 21,
+      "edges": 20,
+      "labels": 15,
+      "proxies": 0,
+      "labelMetrics": {
+        "priorityVisibleCount": 0,
+        "prioritySuppressedCount": 0,
+        "overlapSuppressedCount": 3,
+        "selectedLabelVisible": null
+      },
+      "folderId": "root",
+      "expandedClusterId": null,
+      "selectedId": null,
+      "searchTargetId": null,
+      "searchQuery": "",
+      "searchPage": 1,
+      "searchTotal": 0,
+      "searchPages": 0,
+      "breadcrumb": [
+        {
+          "id": "root",
+          "name": "아주긴한국어이름으로만든노드-깊은-루트"
+        }
+      ]
+    }
+  },
+  "proxyId": "proxy:root:0:40",
+  "afterProxy": {
+    "folderId": "root",
+    "expandedClusterId": "proxy:root:0:40",
+    "selectedId": null,
+    "searchTargetId": null,
+    "searchQuery": "",
+    "searchPage": 1,
+    "searchTotal": 0,
+    "searchPages": 0,
+    "breadcrumb": [
+      {
+        "id": "root",
+        "name": "아주긴한국어이름으로만든노드-평면-루트"
+      },
+      {
+        "id": "proxy:root:0:40",
+        "name": "묶음 1 (40개)",
+        "proxy": true,
+        "count": 40
+      }
+    ],
+    "query": "",
+    "mode": "cluster",
+    "shape": "flat",
+    "total": 1000,
+    "clusterSize": 40
+  },
+  "fileId": "n1",
+  "afterFileLabel": {
+    "folderId": "root",
+    "expandedClusterId": "proxy:root:0:40",
+    "selectedId": "n1",
+    "searchTargetId": null,
+    "searchQuery": "",
+    "searchPage": 1,
+    "searchTotal": 0,
+    "searchPages": 0,
+    "breadcrumb": [
+      {
+        "id": "root",
+        "name": "아주긴한국어이름으로만든노드-평면-루트"
+      },
+      {
+        "id": "proxy:root:0:40",
+        "name": "묶음 1 (40개)",
+        "proxy": true,
+        "count": 40
+      }
+    ],
+    "query": "",
+    "mode": "cluster",
+    "shape": "flat",
+    "total": 1000,
+    "clusterSize": 40
+  },
+  "breadcrumbNavigation": {
+    "rootBreadcrumb": {
+      "folderId": "root",
+      "expandedClusterId": null,
+      "selectedId": null,
+      "searchTargetId": null,
+      "searchQuery": "",
+      "searchPage": 1,
+      "searchTotal": 0,
+      "searchPages": 0,
+      "breadcrumb": [
+        {
+          "id": "root",
+          "name": "아주긴한국어이름으로만든노드-평면-루트"
+        }
+      ],
+      "query": "",
+      "mode": "overview",
+      "shape": "flat",
+      "total": 1000,
+      "clusterSize": 40
+    },
+    "ancestorBreadcrumb": {
+      "folderId": "root",
+      "expandedClusterId": null,
+      "selectedId": null,
+      "searchTargetId": null,
+      "searchQuery": "",
+      "searchPage": 1,
+      "searchTotal": 0,
+      "searchPages": 0,
+      "breadcrumb": [
+        {
+          "id": "root",
+          "name": "아주긴한국어이름으로만든노드-넓은-루트"
+        }
+      ],
+      "query": "",
+      "mode": "folder",
+      "shape": "wide",
+      "total": 1000,
+      "clusterSize": 40
+    }
+  },
+  "deep": {
+    "id": "n101",
+    "ms": 7,
+    "state": {
+      "shape": "deep",
+      "total": 1000,
+      "mode": "folder",
+      "sceneNodes": 19,
+      "edges": 18,
+      "labels": 14,
+      "proxies": 0,
+      "labelMetrics": {
+        "priorityVisibleCount": 1,
+        "prioritySuppressedCount": 0,
+        "overlapSuppressedCount": 4,
+        "selectedLabelVisible": true
+      },
+      "folderId": "n50",
+      "expandedClusterId": null,
+      "selectedId": "n101",
+      "searchTargetId": "n101",
+      "searchQuery": "",
+      "searchPage": 1,
+      "searchTotal": 0,
+      "searchPages": 0,
+      "breadcrumb": [
+        {
+          "id": "root",
+          "name": "아주긴한국어이름으로만든노드-깊은-루트"
+        },
+        {
+          "id": "n1",
+          "name": "아주긴한국어이름으로만든노드-0001-파일"
+        },
+        {
+          "id": "n2",
+          "name": "아주긴한국어이름으로만든노드-0002-파일"
+        },
+        {
+          "id": "n3",
+          "name": "아주긴한국어이름으로만든노드-0003-파일"
+        },
+        {
+          "id": "n4",
+          "name": "아주긴한국어이름으로만든노드-0004-파일"
+        },
+        {
+          "id": "n5",
+          "name": "아주긴한국어이름으로만든노드-0005-파일"
+        },
+        {
+          "id": "n6",
+          "name": "아주긴한국어이름으로만든노드-0006-파일"
+        },
+        {
+          "id": "n7",
+          "name": "아주긴한국어이름으로만든노드-0007-파일"
+        },
+        {
+          "id": "n8",
+          "name": "아주긴한국어이름으로만든노드-0008-파일"
+        },
+        {
+          "id": "n9",
+          "name": "아주긴한국어이름으로만든노드-0009-파일"
+        },
+        {
+          "id": "n10",
+          "name": "아주긴한국어이름으로만든노드-0010-파일"
+        },
+        {
+          "id": "n11",
+          "name": "아주긴한국어이름으로만든노드-0011-파일"
+        },
+        {
+          "id": "n12",
+          "name": "아주긴한국어이름으로만든노드-0012-파일"
+        },
+        {
+          "id": "n13",
+          "name": "아주긴한국어이름으로만든노드-0013-파일"
+        },
+        {
+          "id": "n14",
+          "name": "아주긴한국어이름으로만든노드-0014-파일"
+        },
+        {
+          "id": "n15",
+          "name": "아주긴한국어이름으로만든노드-0015-파일"
+        },
+        {
+          "id": "n16",
+          "name": "아주긴한국어이름으로만든노드-0016-파일"
+        },
+        {
+          "id": "n17",
+          "name": "아주긴한국어이름으로만든노드-0017-파일"
+        },
+        {
+          "id": "n18",
+          "name": "아주긴한국어이름으로만든노드-0018-파일"
+        },
+        {
+          "id": "n19",
+          "name": "아주긴한국어이름으로만든노드-0019-파일"
+        },
+        {
+          "id": "n20",
+          "name": "아주긴한국어이름으로만든노드-0020-파일"
+        },
+        {
+          "id": "n21",
+          "name": "아주긴한국어이름으로만든노드-0021-파일"
+        },
+        {
+          "id": "n22",
+          "name": "아주긴한국어이름으로만든노드-0022-파일"
+        },
+        {
+          "id": "n23",
+          "name": "아주긴한국어이름으로만든노드-0023-파일"
+        },
+        {
+          "id": "n24",
+          "name": "아주긴한국어이름으로만든노드-0024-파일"
+        },
+        {
+          "id": "n25",
+          "name": "아주긴한국어이름으로만든노드-0025-파일"
+        },
+        {
+          "id": "n26",
+          "name": "아주긴한국어이름으로만든노드-0026-파일"
+        },
+        {
+          "id": "n27",
+          "name": "아주긴한국어이름으로만든노드-0027-파일"
+        },
+        {
+          "id": "n28",
+          "name": "아주긴한국어이름으로만든노드-0028-파일"
+        },
+        {
+          "id": "n29",
+          "name": "아주긴한국어이름으로만든노드-0029-파일"
+        },
+        {
+          "id": "n30",
+          "name": "아주긴한국어이름으로만든노드-0030-파일"
+        },
+        {
+          "id": "n31",
+          "name": "아주긴한국어이름으로만든노드-0031-파일"
+        },
+        {
+          "id": "n32",
+          "name": "아주긴한국어이름으로만든노드-0032-파일"
+        },
+        {
+          "id": "n33",
+          "name": "아주긴한국어이름으로만든노드-0033-파일"
+        },
+        {
+          "id": "n34",
+          "name": "아주긴한국어이름으로만든노드-0034-파일"
+        },
+        {
+          "id": "n35",
+          "name": "아주긴한국어이름으로만든노드-0035-파일"
+        },
+        {
+          "id": "n36",
+          "name": "아주긴한국어이름으로만든노드-0036-파일"
+        },
+        {
+          "id": "n37",
+          "name": "아주긴한국어이름으로만든노드-0037-파일"
+        },
+        {
+          "id": "n38",
+          "name": "아주긴한국어이름으로만든노드-0038-파일"
+        },
+        {
+          "id": "n39",
+          "name": "아주긴한국어이름으로만든노드-0039-파일"
+        },
+        {
+          "id": "n40",
+          "name": "아주긴한국어이름으로만든노드-0040-파일"
+        },
+        {
+          "id": "n41",
+          "name": "아주긴한국어이름으로만든노드-0041-파일"
+        },
+        {
+          "id": "n42",
+          "name": "아주긴한국어이름으로만든노드-0042-파일"
+        },
+        {
+          "id": "n43",
+          "name": "아주긴한국어이름으로만든노드-0043-파일"
+        },
+        {
+          "id": "n44",
+          "name": "아주긴한국어이름으로만든노드-0044-파일"
+        },
+        {
+          "id": "n45",
+          "name": "아주긴한국어이름으로만든노드-0045-파일"
+        },
+        {
+          "id": "n46",
+          "name": "아주긴한국어이름으로만든노드-0046-파일"
+        },
+        {
+          "id": "n47",
+          "name": "아주긴한국어이름으로만든노드-0047-파일"
+        },
+        {
+          "id": "n48",
+          "name": "아주긴한국어이름으로만든노드-0048-파일"
+        },
+        {
+          "id": "n49",
+          "name": "아주긴한국어이름으로만든노드-0049-파일"
+        },
+        {
+          "id": "n50",
+          "name": "아주긴한국어이름으로만든노드-0050-파일"
+        }
+      ]
+    }
+  },
+  "uiPaging": {
+    "page1": {
+      "state": {
+        "folderId": "root",
+        "expandedClusterId": null,
+        "selectedId": null,
+        "searchTargetId": null,
+        "searchQuery": "파일",
+        "searchPage": 1,
+        "searchTotal": 999,
+        "searchPages": 20,
+        "breadcrumb": [
+          {
+            "id": "root",
+            "name": "아주긴한국어이름으로만든노드-평면-루트"
+          }
+        ],
+        "query": "파일",
+        "mode": "overview",
+        "shape": "flat",
+        "total": 1000,
+        "clusterSize": 40
+      },
+      "summary": "“파일” · 999개 · 1/20 페이지",
+      "prevDisabled": true,
+      "nextDisabled": false,
+      "resultCount": 50
+    },
+    "nextPages": [
+      {
+        "folderId": "root",
+        "expandedClusterId": null,
+        "selectedId": null,
+        "searchTargetId": null,
+        "searchQuery": "파일",
+        "searchPage": 2,
+        "searchTotal": 999,
+        "searchPages": 20,
+        "breadcrumb": [
+          {
+            "id": "root",
+            "name": "아주긴한국어이름으로만든노드-평면-루트"
+          }
+        ],
+        "query": "파일",
+        "mode": "overview",
+        "shape": "flat",
+        "total": 1000,
+        "clusterSize": 40
+      },
+      {
+        "folderId": "root",
+        "expandedClusterId": null,
+        "selectedId": null,
+        "searchTargetId": null,
+        "searchQuery": "파일",
+        "searchPage": 3,
+        "searchTotal": 999,
+        "searchPages": 20,
+        "breadcrumb": [
+          {
+            "id": "root",
+            "name": "아주긴한국어이름으로만든노드-평면-루트"
+          }
+        ],
+        "query": "파일",
+        "mode": "overview",
+        "shape": "flat",
+        "total": 1000,
+        "clusterSize": 40
+      },
+      {
+        "folderId": "root",
+        "expandedClusterId": null,
+        "selectedId": null,
+        "searchTargetId": null,
+        "searchQuery": "파일",
+        "searchPage": 4,
+        "searchTotal": 999,
+        "searchPages": 20,
+        "breadcrumb": [
+          {
+            "id": "root",
+            "name": "아주긴한국어이름으로만든노드-평면-루트"
+          }
+        ],
+        "query": "파일",
+        "mode": "overview",
+        "shape": "flat",
+        "total": 1000,
+        "clusterSize": 40
+      },
+      {
+        "folderId": "root",
+        "expandedClusterId": null,
+        "selectedId": null,
+        "searchTargetId": null,
+        "searchQuery": "파일",
+        "searchPage": 5,
+        "searchTotal": 999,
+        "searchPages": 20,
+        "breadcrumb": [
+          {
+            "id": "root",
+            "name": "아주긴한국어이름으로만든노드-평면-루트"
+          }
+        ],
+        "query": "파일",
+        "mode": "overview",
+        "shape": "flat",
+        "total": 1000,
+        "clusterSize": 40
+      },
+      {
+        "folderId": "root",
+        "expandedClusterId": null,
+        "selectedId": null,
+        "searchTargetId": null,
+        "searchQuery": "파일",
+        "searchPage": 6,
+        "searchTotal": 999,
+        "searchPages": 20,
+        "breadcrumb": [
+          {
+            "id": "root",
+            "name": "아주긴한국어이름으로만든노드-평면-루트"
+          }
+        ],
+        "query": "파일",
+        "mode": "overview",
+        "shape": "flat",
+        "total": 1000,
+        "clusterSize": 40
+      },
+      {
+        "folderId": "root",
+        "expandedClusterId": null,
+        "selectedId": null,
+        "searchTargetId": null,
+        "searchQuery": "파일",
+        "searchPage": 7,
+        "searchTotal": 999,
+        "searchPages": 20,
+        "breadcrumb": [
+          {
+            "id": "root",
+            "name": "아주긴한국어이름으로만든노드-평면-루트"
+          }
+        ],
+        "query": "파일",
+        "mode": "overview",
+        "shape": "flat",
+        "total": 1000,
+        "clusterSize": 40
+      },
+      {
+        "folderId": "root",
+        "expandedClusterId": null,
+        "selectedId": null,
+        "searchTargetId": null,
+        "searchQuery": "파일",
+        "searchPage": 8,
+        "searchTotal": 999,
+        "searchPages": 20,
+        "breadcrumb": [
+          {
+            "id": "root",
+            "name": "아주긴한국어이름으로만든노드-평면-루트"
+          }
+        ],
+        "query": "파일",
+        "mode": "overview",
+        "shape": "flat",
+        "total": 1000,
+        "clusterSize": 40
+      },
+      {
+        "folderId": "root",
+        "expandedClusterId": null,
+        "selectedId": null,
+        "searchTargetId": null,
+        "searchQuery": "파일",
+        "searchPage": 9,
+        "searchTotal": 999,
+        "searchPages": 20,
+        "breadcrumb": [
+          {
+            "id": "root",
+            "name": "아주긴한국어이름으로만든노드-평면-루트"
+          }
+        ],
+        "query": "파일",
+        "mode": "overview",
+        "shape": "flat",
+        "total": 1000,
+        "clusterSize": 40
+      },
+      {
+        "folderId": "root",
+        "expandedClusterId": null,
+        "selectedId": null,
+        "searchTargetId": null,
+        "searchQuery": "파일",
+        "searchPage": 10,
+        "searchTotal": 999,
+        "searchPages": 20,
+        "breadcrumb": [
+          {
+            "id": "root",
+            "name": "아주긴한국어이름으로만든노드-평면-루트"
+          }
+        ],
+        "query": "파일",
+        "mode": "overview",
+        "shape": "flat",
+        "total": 1000,
+        "clusterSize": 40
+      },
+      {
+        "folderId": "root",
+        "expandedClusterId": null,
+        "selectedId": null,
+        "searchTargetId": null,
+        "searchQuery": "파일",
+        "searchPage": 11,
+        "searchTotal": 999,
+        "searchPages": 20,
+        "breadcrumb": [
+          {
+            "id": "root",
+            "name": "아주긴한국어이름으로만든노드-평면-루트"
+          }
+        ],
+        "query": "파일",
+        "mode": "overview",
+        "shape": "flat",
+        "total": 1000,
+        "clusterSize": 40
+      },
+      {
+        "folderId": "root",
+        "expandedClusterId": null,
+        "selectedId": null,
+        "searchTargetId": null,
+        "searchQuery": "파일",
+        "searchPage": 12,
+        "searchTotal": 999,
+        "searchPages": 20,
+        "breadcrumb": [
+          {
+            "id": "root",
+            "name": "아주긴한국어이름으로만든노드-평면-루트"
+          }
+        ],
+        "query": "파일",
+        "mode": "overview",
+        "shape": "flat",
+        "total": 1000,
+        "clusterSize": 40
+      },
+      {
+        "folderId": "root",
+        "expandedClusterId": null,
+        "selectedId": null,
+        "searchTargetId": null,
+        "searchQuery": "파일",
+        "searchPage": 13,
+        "searchTotal": 999,
+        "searchPages": 20,
+        "breadcrumb": [
+          {
+            "id": "root",
+            "name": "아주긴한국어이름으로만든노드-평면-루트"
+          }
+        ],
+        "query": "파일",
+        "mode": "overview",
+        "shape": "flat",
+        "total": 1000,
+        "clusterSize": 40
+      },
+      {
+        "folderId": "root",
+        "expandedClusterId": null,
+        "selectedId": null,
+        "searchTargetId": null,
+        "searchQuery": "파일",
+        "searchPage": 14,
+        "searchTotal": 999,
+        "searchPages": 20,
+        "breadcrumb": [
+          {
+            "id": "root",
+            "name": "아주긴한국어이름으로만든노드-평면-루트"
+          }
+        ],
+        "query": "파일",
+        "mode": "overview",
+        "shape": "flat",
+        "total": 1000,
+        "clusterSize": 40
+      },
+      {
+        "folderId": "root",
+        "expandedClusterId": null,
+        "selectedId": null,
+        "searchTargetId": null,
+        "searchQuery": "파일",
+        "searchPage": 15,
+        "searchTotal": 999,
+        "searchPages": 20,
+        "breadcrumb": [
+          {
+            "id": "root",
+            "name": "아주긴한국어이름으로만든노드-평면-루트"
+          }
+        ],
+        "query": "파일",
+        "mode": "overview",
+        "shape": "flat",
+        "total": 1000,
+        "clusterSize": 40
+      },
+      {
+        "folderId": "root",
+        "expandedClusterId": null,
+        "selectedId": null,
+        "searchTargetId": null,
+        "searchQuery": "파일",
+        "searchPage": 16,
+        "searchTotal": 999,
+        "searchPages": 20,
+        "breadcrumb": [
+          {
+            "id": "root",
+            "name": "아주긴한국어이름으로만든노드-평면-루트"
+          }
+        ],
+        "query": "파일",
+        "mode": "overview",
+        "shape": "flat",
+        "total": 1000,
+        "clusterSize": 40
+      },
+      {
+        "folderId": "root",
+        "expandedClusterId": null,
+        "selectedId": null,
+        "searchTargetId": null,
+        "searchQuery": "파일",
+        "searchPage": 17,
+        "searchTotal": 999,
+        "searchPages": 20,
+        "breadcrumb": [
+          {
+            "id": "root",
+            "name": "아주긴한국어이름으로만든노드-평면-루트"
+          }
+        ],
+        "query": "파일",
+        "mode": "overview",
+        "shape": "flat",
+        "total": 1000,
+        "clusterSize": 40
+      },
+      {
+        "folderId": "root",
+        "expandedClusterId": null,
+        "selectedId": null,
+        "searchTargetId": null,
+        "searchQuery": "파일",
+        "searchPage": 18,
+        "searchTotal": 999,
+        "searchPages": 20,
+        "breadcrumb": [
+          {
+            "id": "root",
+            "name": "아주긴한국어이름으로만든노드-평면-루트"
+          }
+        ],
+        "query": "파일",
+        "mode": "overview",
+        "shape": "flat",
+        "total": 1000,
+        "clusterSize": 40
+      },
+      {
+        "folderId": "root",
+        "expandedClusterId": null,
+        "selectedId": null,
+        "searchTargetId": null,
+        "searchQuery": "파일",
+        "searchPage": 19,
+        "searchTotal": 999,
+        "searchPages": 20,
+        "breadcrumb": [
+          {
+            "id": "root",
+            "name": "아주긴한국어이름으로만든노드-평면-루트"
+          }
+        ],
+        "query": "파일",
+        "mode": "overview",
+        "shape": "flat",
+        "total": 1000,
+        "clusterSize": 40
+      },
+      {
+        "folderId": "root",
+        "expandedClusterId": null,
+        "selectedId": null,
+        "searchTargetId": null,
+        "searchQuery": "파일",
+        "searchPage": 20,
+        "searchTotal": 999,
+        "searchPages": 20,
+        "breadcrumb": [
+          {
+            "id": "root",
+            "name": "아주긴한국어이름으로만든노드-평면-루트"
+          }
+        ],
+        "query": "파일",
+        "mode": "overview",
+        "shape": "flat",
+        "total": 1000,
+        "clusterSize": 40
+      }
+    ],
+    "page20": {
+      "state": {
+        "folderId": "root",
+        "expandedClusterId": null,
+        "selectedId": null,
+        "searchTargetId": null,
+        "searchQuery": "파일",
+        "searchPage": 20,
+        "searchTotal": 999,
+        "searchPages": 20,
+        "breadcrumb": [
+          {
+            "id": "root",
+            "name": "아주긴한국어이름으로만든노드-평면-루트"
+          }
+        ],
+        "query": "파일",
+        "mode": "overview",
+        "shape": "flat",
+        "total": 1000,
+        "clusterSize": 40
+      },
+      "summary": "“파일” · 999개 · 20/20 페이지",
+      "prevDisabled": false,
+      "nextDisabled": true,
+      "resultCount": 49
+    },
+    "page19": {
+      "state": {
+        "folderId": "root",
+        "expandedClusterId": null,
+        "selectedId": null,
+        "searchTargetId": null,
+        "searchQuery": "파일",
+        "searchPage": 19,
+        "searchTotal": 999,
+        "searchPages": 20,
+        "breadcrumb": [
+          {
+            "id": "root",
+            "name": "아주긴한국어이름으로만든노드-평면-루트"
+          }
+        ],
+        "query": "파일",
+        "mode": "overview",
+        "shape": "flat",
+        "total": 1000,
+        "clusterSize": 40
+      },
+      "prevDisabled": false,
+      "nextDisabled": false,
+      "resultCount": 50
+    },
+    "target": {
+      "state": {
+        "folderId": "root",
+        "expandedClusterId": "proxy:root:920:40",
+        "selectedId": "n950",
+        "searchTargetId": "n950",
+        "searchQuery": "파일",
+        "searchPage": 19,
+        "searchTotal": 999,
+        "searchPages": 20,
+        "breadcrumb": [
+          {
+            "id": "root",
+            "name": "아주긴한국어이름으로만든노드-평면-루트"
+          },
+          {
+            "id": "proxy:root:920:40",
+            "name": "묶음 24 (40개)",
+            "proxy": true,
+            "count": 40
+          }
+        ],
+        "query": "파일",
+        "mode": "cluster",
+        "shape": "flat",
+        "total": 1000,
+        "clusterSize": 40
+      },
+      "details": "아주긴한국어이름으로만든노드-0949-파일파일아주긴한국어이름으로만든노드-평면-루트 / 아주긴한국어이름으로만든노드-0949-파일ID: n950",
+      "redLabels": 0,
+      "labels": {
+        "labels": 8,
+        "priority": 1,
+        "clipped": [],
+        "priorityCollisions": [],
+        "fontSizes": [
+          "11px / 13.2px system-ui, sans-serif"
+        ],
+        "host": {
+          "width": 1200,
+          "height": 700
+        }
+      }
+    },
+    "cleared": {
+      "state": {
+        "folderId": "root",
+        "expandedClusterId": "proxy:root:920:40",
+        "selectedId": "n950",
+        "searchTargetId": null,
+        "searchQuery": "",
+        "searchPage": 1,
+        "searchTotal": 0,
+        "searchPages": 0,
+        "breadcrumb": [
+          {
+            "id": "root",
+            "name": "아주긴한국어이름으로만든노드-평면-루트"
+          },
+          {
+            "id": "proxy:root:920:40",
+            "name": "묶음 24 (40개)",
+            "proxy": true,
+            "count": 40
+          }
+        ],
+        "query": "",
+        "mode": "cluster",
+        "shape": "flat",
+        "total": 1000,
+        "clusterSize": 40
+      },
+      "summary": "",
+      "prevDisabled": true,
+      "nextDisabled": true,
+      "redLabels": 0
+    },
+    "noMatch": {
+      "state": {
+        "folderId": "root",
+        "expandedClusterId": "proxy:root:920:40",
+        "selectedId": "n950",
+        "searchTargetId": null,
+        "searchQuery": "없는검색어-XYZ",
+        "searchPage": 1,
+        "searchTotal": 0,
+        "searchPages": 0,
+        "breadcrumb": [
+          {
+            "id": "root",
+            "name": "아주긴한국어이름으로만든노드-평면-루트"
+          },
+          {
+            "id": "proxy:root:920:40",
+            "name": "묶음 24 (40개)",
+            "proxy": true,
+            "count": 40
+          }
+        ],
+        "query": "없는검색어-XYZ",
+        "mode": "cluster",
+        "shape": "flat",
+        "total": 1000,
+        "clusterSize": 40
+      },
+      "summary": "“없는검색어-XYZ” · 0개 · 1/1 페이지",
+      "prevDisabled": true,
+      "nextDisabled": true,
+      "text": "일치하는 노드가 없습니다."
+    },
+    "beforeQueryChange": {
+      "folderId": "root",
+      "expandedClusterId": "proxy:root:920:40",
+      "selectedId": "n950",
+      "searchTargetId": null,
+      "searchQuery": "파일",
+      "searchPage": 2,
+      "searchTotal": 999,
+      "searchPages": 20,
+      "breadcrumb": [
+        {
+          "id": "root",
+          "name": "아주긴한국어이름으로만든노드-평면-루트"
+        },
+        {
+          "id": "proxy:root:920:40",
+          "name": "묶음 24 (40개)",
+          "proxy": true,
+          "count": 40
+        }
+      ],
+      "query": "파일",
+      "mode": "cluster",
+      "shape": "flat",
+      "total": 1000,
+      "clusterSize": 40
+    },
+    "changedQuery": {
+      "state": {
+        "folderId": "root",
+        "expandedClusterId": "proxy:root:920:40",
+        "selectedId": "n950",
+        "searchTargetId": null,
+        "searchQuery": "노드",
+        "searchPage": 1,
+        "searchTotal": 1000,
+        "searchPages": 20,
+        "breadcrumb": [
+          {
+            "id": "root",
+            "name": "아주긴한국어이름으로만든노드-평면-루트"
+          },
+          {
+            "id": "proxy:root:920:40",
+            "name": "묶음 24 (40개)",
+            "proxy": true,
+            "count": 40
+          }
+        ],
+        "query": "노드",
+        "mode": "cluster",
+        "shape": "flat",
+        "total": 1000,
+        "clusterSize": 40
+      },
+      "summary": "“노드” · 1000개 · 1/20 페이지",
+      "prevDisabled": true,
+      "nextDisabled": false
+    }
+  },
+  "search": {
+    "page1": {
+      "total": 999,
+      "pages": 20,
+      "results": 50,
+      "ms": 27
+    },
+    "page20": {
+      "page": 20,
+      "results": 49,
+      "ms": 7
+    },
+    "targetId": "n999",
+    "reveal": {
+      "shape": "flat",
+      "total": 1000,
+      "mode": "cluster",
+      "sceneNodes": 40,
+      "edges": 39,
+      "labels": 8,
+      "proxies": 0,
+      "labelMetrics": {
+        "priorityVisibleCount": 1,
+        "prioritySuppressedCount": 0,
+        "overlapSuppressedCount": 9,
+        "selectedLabelVisible": true
+      },
+      "folderId": "root",
+      "expandedClusterId": "proxy:root:960:39",
+      "selectedId": "n999",
+      "searchTargetId": "n999",
+      "searchQuery": "파일",
+      "searchPage": 20,
+      "searchTotal": 999,
+      "searchPages": 20,
+      "breadcrumb": [
+        {
+          "id": "root",
+          "name": "아주긴한국어이름으로만든노드-평면-루트"
+        },
+        {
+          "id": "proxy:root:960:39",
+          "name": "묶음 25 (39개)",
+          "proxy": true,
+          "count": 39
+        }
+      ]
+    },
+    "revealMs": 10,
+    "labelStats": {
+      "labels": 8,
+      "priority": 1,
+      "clipped": [],
+      "priorityCollisions": [],
+      "fontSizes": [
+        "11px / 13.2px system-ui, sans-serif"
+      ],
+      "host": {
+        "width": 1200,
+        "height": 700
+      }
+    },
+    "canvasHit": null,
+    "targetLabelCenter": {
+      "x": 461,
+      "y": -1363.25
+    },
+    "afterTargetLabel": {
+      "folderId": "root",
+      "expandedClusterId": "proxy:root:960:39",
+      "selectedId": "n999",
+      "searchTargetId": "n999",
+      "searchQuery": "파일",
+      "searchPage": 20,
+      "searchTotal": 999,
+      "searchPages": 20,
+      "breadcrumb": [
+        {
+          "id": "root",
+          "name": "아주긴한국어이름으로만든노드-평면-루트"
+        },
+        {
+          "id": "proxy:root:960:39",
+          "name": "묶음 25 (39개)",
+          "proxy": true,
+          "count": 39
+        }
+      ],
+      "query": "파일",
+      "mode": "cluster",
+      "shape": "flat",
+      "total": 1000,
+      "clusterSize": 40
+    },
+    "redBeforeClear": 0,
+    "redAfterClear": 0,
+    "cleared": {
+      "folderId": "root",
+      "expandedClusterId": "proxy:root:960:39",
+      "selectedId": "n999",
+      "searchTargetId": null,
+      "searchQuery": "",
+      "searchPage": 1,
+      "searchTotal": 0,
+      "searchPages": 0,
+      "breadcrumb": [
+        {
+          "id": "root",
+          "name": "아주긴한국어이름으로만든노드-평면-루트"
+        },
+        {
+          "id": "proxy:root:960:39",
+          "name": "묶음 25 (39개)",
+          "proxy": true,
+          "count": 39
+        }
+      ],
+      "query": "",
+      "mode": "cluster",
+      "shape": "flat",
+      "total": 1000,
+      "clusterSize": 40
+    },
+    "clearedLabels": {
+      "red": 0,
+      "stats": {
+        "labels": 8,
+        "priority": 1,
+        "clipped": [],
+        "priorityCollisions": [],
+        "fontSizes": [
+          "11px / 13.2px system-ui, sans-serif"
+        ],
+        "host": {
+          "width": 1200,
+          "height": 700
+        }
+      }
+    }
+  },
+  "centerHit": {
+    "hit": "root"
+  },
+  "centerClick": {
+    "folderId": "root",
+    "expandedClusterId": null,
+    "selectedId": "root",
+    "searchTargetId": null,
+    "searchQuery": "",
+    "searchPage": 1,
+    "searchTotal": 0,
+    "searchPages": 0,
+    "breadcrumb": [
+      {
+        "id": "root",
+        "name": "아주긴한국어이름으로만든노드-혼합-루트"
+      }
+    ],
+    "query": "",
+    "mode": "folder",
+    "shape": "mixed",
+    "total": 1000,
+    "clusterSize": 40
+  },
+  "backgroundHit": null,
+  "rapid": {
+    "errors": 0,
+    "backErrors": 0,
+    "state": {
+      "canvases": 1,
+      "labelOverlays": 1,
+      "labelGroups": 13
+    }
+  },
+  "rapidMs": 221,
+  "remount": {
+    "iterations": 8,
+    "afterDispose": [
+      {
+        "canvases": 0,
+        "labelOverlays": 0,
+        "labelGroups": 0
+      },
+      {
+        "canvases": 0,
+        "labelOverlays": 0,
+        "labelGroups": 0
+      },
+      {
+        "canvases": 0,
+        "labelOverlays": 0,
+        "labelGroups": 0
+      },
+      {
+        "canvases": 0,
+        "labelOverlays": 0,
+        "labelGroups": 0
+      },
+      {
+        "canvases": 0,
+        "labelOverlays": 0,
+        "labelGroups": 0
+      },
+      {
+        "canvases": 0,
+        "labelOverlays": 0,
+        "labelGroups": 0
+      },
+      {
+        "canvases": 0,
+        "labelOverlays": 0,
+        "labelGroups": 0
+      },
+      {
+        "canvases": 0,
+        "labelOverlays": 0,
+        "labelGroups": 0
+      }
+    ],
+    "final": {
+      "canvases": 1,
+      "labelOverlays": 1,
+      "labelGroups": 7
+    }
+  },
+  "cleanupState": {
+    "canvases": 1,
+    "labelOverlays": 1,
+    "labelGroups": 7
+  },
+  "screenshots": [
+    "overview-flat-1000.png",
+    "overview-wide-1000.png",
+    "overview-balanced-1000.png",
+    "overview-mixed-1000.png",
+    "overview-deep-1000.png",
+    "proxy-details.png",
+    "focus-flat-cluster.png",
+    "selected-flat.png",
+    "center-current.png",
+    "breadcrumb-root.png",
+    "breadcrumb-ancestor.png",
+    "deep-focus.png",
+    "search-ui-page1.png",
+    "search-ui-page20.png",
+    "search-ui-page19.png",
+    "search-ui-target.png",
+    "search-ui-cleared.png",
+    "search-ui-no-match.png",
+    "search-ui-changed-query.png"
+  ]
+}

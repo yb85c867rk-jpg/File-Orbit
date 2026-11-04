@@ -1,0 +1,6 @@
+﻿FileOrbit E3-B final browser verification: NOT RUN.
+No browser executable/automation was available without installing dependencies.
+Node integration tests capture actual post-Add model/session/details view, verify redo restores it,
+exercise matching/mismatching root identity for metadata/structural replay, missing attachments,
+candidate admission, subtree mismatch, invalid index, and collision rejection.
+Native browser replay was not executed.

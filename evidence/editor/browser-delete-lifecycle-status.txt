@@ -1,0 +1,5 @@
+﻿FileOrbit Delete lifecycle browser verification: NOT RUN.
+No browser executable/automation was available without installing dependencies.
+Node tests cover menu enable/root protection, shared dispatch, confirmation lifecycle,
+delete installer/history Undo/Redo, admission, fallback, attachments.
+Full browser menu -> confirmation -> delete was not executed; dirty draft remains blocked rather than Continue/Discard.

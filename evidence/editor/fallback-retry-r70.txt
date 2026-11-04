@@ -1,0 +1,20 @@
+﻿FileOrbit fallback Retry ownership r70
+
+Fixed R1:
+- saveEditorAction now creates editorAppliedOperation before returning a fallback handoff.
+- owner captures session, datasetToken, applied revision, form token, target/action.
+- Retry calls shared saveDocument for active fallback document with captured operation.revision; repeats do not reapply edit, increment revision, append history, allocate IDs, or duplicate attachments.
+- repeated fallback handoffs retain the same owner; duplicate Retry is blocked by operation.persisting.
+- Close retains authoritative applied edit and committed attachment; editor-applied-closed clears owner.
+- dataset replacement/destroy invalidates via session/dataset/form ownership.
+
+Verified:
+- fallback legacy document: Edit Folder submits once, download starts, owner exists, Retry downloads again with same owner and unchanged dataRevision.
+- existing fallback toolbar Save keeps dirty and reports Download started.
+- P1b 50/50, full811/811, static/adapter/backup pass. Native NOT RUN.
+
+R2 status — NOT COMPLETE:
+- active file documents use document save for toolbar/form/Retry/Save-and-continue.
+- Create Map/new-map and Import Backup documents still use legacy IndexedDB on toolbar/form Save unless Save As is used.
+- Previous local maps still save to IndexedDB unless Save As.
+Therefore no claim that normal Save never targets legacy IndexedDB.

@@ -1,0 +1,17 @@
+﻿FileOrbit fallback file-picker activation r73
+
+Fixed:
+- chooseBackupFile configures accept/filter and document-vs-backup intent, then synchronously calls backupFileInput.click() exactly once while still in the toolbar/menu user action.
+- No await/timer/deferred callback before activation.
+- Reuses one owned input/listener; clears value after selection so same-file reselect works.
+- Change callback guards destroying/input-null; importBackupFile rejects when destroying.
+- destroy/replacement cleanup retained.
+
+Tests through actual Open File and Import Backup controls with writable APIs disabled:
+- Open File: one input click, accept includes .map/.fileorbit, dataset.asDocument=true; then selection installs fallback document with handle null, clean Saved baseline, labels/hits.
+- Import Backup: one input click, dataset.asDocument=false; selection resets inherited handle, becomes restored unsaved document.
+- Repeated activation increments input click without duplicate listener; no selection leaves map unchanged.
+- Same file selected for import after Open succeeds (value cleared).
+- Input click count is separate from Open button click.
+
+Executed: P1b54/54, full815/815, syntax. Native browser picker activation NOT RUN.

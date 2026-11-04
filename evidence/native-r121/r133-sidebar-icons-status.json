@@ -1,0 +1,56 @@
+{
+  "revision": "r133",
+  "change": "Sidebar local icons and Orbit status DOM order",
+  "orbitStatusOrder": [
+    "orbit-actions",
+    "orbit-empty/orbit-list",
+    "orbit-status"
+  ],
+  "assets": {
+    "create": {
+      "path": "tests/harness/m5-exploration/assets/graph_4_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png",
+      "sha256": "F15D48313BBC53934DF28A607B57035E674270780E9D85CFF579F8FD84588020"
+    },
+    "orbit": {
+      "path": "tests/harness/m5-exploration/assets/hdr_weak_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png",
+      "sha256": "DEF08AA09D13073BF689A23F89D7EEAAAE93923C3C57B91E8363A8DA15D327B6"
+    }
+  },
+  "verification": {
+    "focused": "26/26 passed",
+    "full": "1099 tests, 1098 passed, 1 skipped, 0 failed",
+    "browserVisual": "PASS (headless Chrome; not native filesystem)",
+    "native": "NOT RUN",
+    "archiveFocused": "16/16 passed; archive/disk main hashes match"
+  },
+  "application": {
+    "url": "http://127.0.0.1:8099/tests/harness/m5-exploration/",
+    "mainSha256": "39A7E25FE834B47296095639D173705EAE13E3D8AE47D8B2FE52E269674590F1",
+    "indexSha256": "B009F21236164308EA0A8E4FEA500731E52ACB36A5C56765D999B6C272117BD0"
+  },
+  "browser": [
+    "browser-sidebar-icons-dark-collapsed-r133.png",
+    "browser-sidebar-icons-dark-expanded-r133.png",
+    "browser-sidebar-icons-light-expanded-r133.png",
+    "browser-sidebar-icons-narrow-r133.png",
+    "browser-orbit-connected-icon-dark-r133.png",
+    "browser-orbit-connected-icon-light-r133.png"
+  ],
+  "limitations": [
+    "native filesystem acceptance NOT RUN",
+    "browser masks use synthetic directory handles for connected Orbit inspection"
+  ],
+  "archive": {
+    "path": "review/fileorbit-sidebar-icons-status-r133.zip",
+    "sha256": "C8F42FA4DCCD2B0CB4B86CBE5A0FB6044AD5953D0248B59CBFC0AC4B9ECA5BE6",
+    "entries": 1172,
+    "manifestMismatches": 0
+  },
+  "evidence": [
+    "evidence/native-r121/sidebar-icons-status-focused-r133.txt",
+    "evidence/native-r121/sidebar-icons-full-r133.txt",
+    "evidence/native-r121/r133-archive-focused.txt",
+    "evidence/native-r121/browser-sidebar-icons-r133.json",
+    "evidence/native-r121/browser-orbit-panel-order-r133.json"
+  ]
+}

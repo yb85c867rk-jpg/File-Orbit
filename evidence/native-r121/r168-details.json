@@ -1,0 +1,87 @@
+{
+  "initialLandscape": {
+    "initial": {
+      "collapsed": "true",
+      "contentHidden": true,
+      "expanded": "false",
+      "label": "Details",
+      "width": 129,
+      "height": 358,
+      "graphHeight": 300,
+      "touch": 5
+    },
+    "manualExpand": {
+      "collapsed": "false",
+      "contentHidden": false,
+      "expanded": "true",
+      "label": "Hide details",
+      "width": 301,
+      "height": 358,
+      "graphHeight": 300,
+      "touch": 5
+    },
+    "afterChromeResize": {
+      "collapsed": "false",
+      "contentHidden": false,
+      "expanded": "true",
+      "label": "Hide details",
+      "width": 301,
+      "height": 358,
+      "graphHeight": 300,
+      "touch": 5
+    }
+  },
+  "portrait": {
+    "initial": {
+      "collapsed": "true",
+      "contentHidden": true,
+      "expanded": "false",
+      "label": "Details",
+      "width": 311,
+      "height": 45,
+      "graphHeight": 681,
+      "touch": 5
+    },
+    "rotatedLandscape": {
+      "collapsed": "true",
+      "contentHidden": true,
+      "expanded": "false",
+      "label": "Details",
+      "width": 311,
+      "height": 45,
+      "graphHeight": 681,
+      "touch": 5
+    },
+    "portraitManualExpand": {
+      "collapsed": "false",
+      "contentHidden": false,
+      "expanded": "true",
+      "label": "Hide details",
+      "width": 311,
+      "height": 132,
+      "graphHeight": 594,
+      "touch": 5
+    },
+    "rotatedPortrait": {
+      "collapsed": "true",
+      "contentHidden": true,
+      "expanded": "false",
+      "label": "Details",
+      "width": 311,
+      "height": 45,
+      "graphHeight": 681,
+      "touch": 5
+    },
+    "reenteredLandscape": {
+      "collapsed": "true",
+      "contentHidden": true,
+      "expanded": "false",
+      "label": "Details",
+      "width": 311,
+      "height": 45,
+      "graphHeight": 681,
+      "touch": 5
+    }
+  },
+  "errs": []
+}

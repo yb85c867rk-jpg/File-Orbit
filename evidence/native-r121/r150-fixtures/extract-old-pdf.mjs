@@ -1,0 +1,2 @@
+﻿import { readFileSync, writeFileSync } from 'node:fs'; import { decodeBackup } from '../../../src/engine/hypertree/persistence/backup.js';
+const d=await decodeBackup(new Blob([readFileSync('evidence/native-r121/r149-fixtures/r149-300.orbit')]));const a=d.attachments.find(x=>x.metadata.originalName==='report.pdf');writeFileSync('evidence/native-r121/r150-fixtures/historical-report-r149.pdf',Buffer.from(await a.blob.arrayBuffer()));console.log(a.blob.size);

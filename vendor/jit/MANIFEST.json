@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "artifactId": "visual-directory-vendor-jit",
+  "library": {
+    "name": "jit",
+    "versionString": "2.0.1",
+    "upstreamProject": "philogb/jit",
+    "license": "MIT"
+  },
+  "file": {
+    "path": "vendor/jit/jit.2.0.1.js",
+    "bytes": 530341,
+    "lines": 18541
+  },
+  "hashes": {
+    "sha256": "4A413A0A21435AEE893EBE3572CAEB5EA81B14C437FA8BEC3AABB5F7A921546F",
+    "sha1": "65F92C0EF4910AC6847C5BD8CA24276A0E241E33",
+    "md5": "98DB9441AAD61D07FD1FF967498883FC",
+    "gitBlobSha1": "9ea1c611fff44e931d93ddfd4a2f921db452b386"
+  },
+  "licenseFile": {
+    "path": "vendor/jit/LICENSE",
+    "bytes": 1126,
+    "sha256": "97E60BEC1111052A47019D1E83A7114FC089A9FE6A9AAF634304C986B7EB14D4",
+    "source": "https://raw.githubusercontent.com/philogb/jit/9966fbb6843538e6019fa8b233068ba0e7d283a8/LICENSE",
+    "sourceNote": "Upstream raw LICENSE was retrieved over HTTPS in this session. Its text is identical to the license block embedded in jit.js lines 1-22. Byte-for-byte fidelity of the retrieval transport was not independently verified; the embedded header remains the authoritative in-repo copy."
+  },
+  "provenance": {
+    "upstreamCommit": "9966fbb6843538e6019fa8b233068ba0e7d283a8",
+    "upstreamCommitDate": "2014-09-28",
+    "upstreamPath": "Jit/jit.js",
+    "upstreamBlobSha1": "9ea1c611fff44e931d93ddfd4a2f921db452b386",
+    "upstreamUrl": "https://github.com/philogb/jit/blob/9966fbb6843538e6019fa8b233068ba0e7d283a8/Jit/jit.js",
+    "rawUrl": "https://raw.githubusercontent.com/philogb/jit/9966fbb6843538e6019fa8b233068ba0e7d283a8/Jit/jit.js",
+    "upstream2_0_2BlobSha1": "ff54faddfdbcfa8ef9ad6b62d24f3e3a6b8dbb98",
+    "upstream2_0_2Note": "The 2.0.2 tag artifact differs from this file; this baseline is the upstream master commit with version string 2.0.1, not an official 2.0.1 release artifact."
+  },
+  "dates": {
+    "localCopyDate": "2026-10-25",
+    "localCopyTimeZone": "Pacific/Auckland",
+    "originalDownloadDate": null,
+    "originalDownloadDateNote": "When the root jit.js was originally downloaded is unknown. The repository has no .git history and no download record exists. This date is intentionally left null rather than estimated."
+  },
+  "patches": [],
+  "verification": {
+    "byteIdenticalToRootCopy": true,
+    "method": "System.IO.File.ReadAllBytes byte-by-byte comparison against the root jit.js, plus SHA-256 / SHA-1 / MD5 and git blob SHA-1",
+    "verifiedAt": "2026-10-25",
+    "hashMatchDocumentedValues": true,
+    "acl": "not-modified",
+    "aclNote": "No filesystem ACL or file attribute was changed. Change detection is hash-based only.",
+    "ci": "not-run",
+    "ciNote": "No CI pipeline was created or executed. Do not read this manifest as CI-verified."
+  },
+  "tooling": {
+    "os": "Windows",
+    "shell": "pwsh",
+    "hashCommand": "Get-FileHash -Algorithm SHA256 | SHA1 | MD5",
+    "gitBlobMethod": "sha1(ASCII('blob ' + bytes + NUL) + content)"
+  },
+  "notes": [
+    "The root jit.js is untouched; this file is a byte-identical copy.",
+    "No patch has been applied. patches/ is intentionally empty.",
+    "Generation/date fields describe this local copy, not the library's release date."
+  ]
+}

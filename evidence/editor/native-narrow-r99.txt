@@ -1,0 +1,38 @@
+﻿FileOrbit narrow header / Undo-Redo investigation r99
+
+Confirmed native failure before correction:
+- index.html had no viewport meta.
+- At a 320 CSS-px device, the browser used a 980px layout viewport and scaled the page down.
+- Media queries did not activate at phone width; header desktop controls/Map-More layout were clipped and Undo/Redo/menu targets were physically tiny.
+- Native pre-fix header metrics: innerWidth/layout width 980 at a 320 device.
+
+Header corrections:
+- Added <meta name="viewport" content="width=device-width, initial-scale=1">.
+- Added a single #header-menu-cluster around Map and More at <=880px, so the two triggers wrap together instead of being separated/pushed.
+- Added min-width:0/max-width:100% constraints to #app-header, .header-row, #dev-controls and its select; status/help cannot push triggers out.
+- At <=560px Map/More and graph toolbar buttons are 44px; Details remains a 44px full-width bar.
+- Popup menus retain r98 clamp/scroll behaviour.
+
+Undo/Redo corrections and finding:
+- No history-replay failure reproduced in native Chromium after the viewport correction. Physical mouse drag n10 -> n1 (F20) committed; Undo enabled; Undo/Redo restored states and status "Undid/Redid: Move".
+- Native failure mode before correction is consistent with scaled-down 32px controls plus header clipping at a 980px layout viewport; taps/menu access were not reliable.
+- Hardened availability by calling syncHistoryControls() at the publish boundary, so buttons reflect actual entries/blockers after commit, Undo, Redo, drop cleanup, responsive changes, and editor close instead of relying only on one call site.
+- Existing exact-parent/sibling/attachment/ID tests remain.
+- Background camera panning is not a tree edit and is not undoable; only a committed node reparent to a folder creates history.
+
+Native verification performed (isolated headless Edge 156):
+- 320x600 device, DPR2: innerWidth=320, document scrollWidth=320, header client/scroll=320.
+- header menu cluster x=196.4..312, height 44; Map and More both visible.
+- Undo/Redo 44x44; Details collapsed bar 320x44.
+- Map menu rect x=152..320,y=56..352; maxHeight 584px; overflow auto.
+- Screenshots: evidence/native/app-320-r99.png, app-map-320-r99.png.
+- Desktop physical pointer drag + Undo/Redo verified; screenshot undo-redo-native.png.
+- Narrow physical drag could not be confirmed: node/label hit regions overlap at 320 and probe coordinates produced an empty-canvas rejection. Narrow reparent/Undo remains NOT RUN natively.
+
+Tests:
+- layout ownership 3/3 (adds viewport meta/header constraints/cluster/44px assertions)
+- narrow menus/details 3/3
+- drag-history actual main 1/1 (adds narrow resize after commit; Undo/Redo exact parent/sibling/attachment)
+- menu resize 1/1, layout empty 1/1, shell controls 15/15, editor visibility 1/1, search 1/1, geometry 1/1
+- full tests/engine: 928 tests, 927 passed, 0 failed, 1 skipped, 0 todo
+- syntax 17/17; served source 104 files 200/no-store byte-match.

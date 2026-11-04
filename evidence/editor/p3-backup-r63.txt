@@ -1,0 +1,18 @@
+﻿FileOrbit P3 verification completion r63
+
+Implemented/verified:
+- installCreatedMap now truly uses request context: import suppresses Create Map dialog/creationTerminal/ownership/pending candidate; create behavior restored and Create Map tests pass.
+- Request ownership uses id/session/dataset/revision/phase/cancelled with single-resume/install phase; no unconditional true branch.
+- Concrete recovery defect fixed: failed authoritative recovery now clears linkFrameReady/frameState, deactivates links, marks recovery failure and publishes, yielding inert state.
+- Actual Upload button + file-input dirty editor Continue/Discard.
+- Preparation failure via fault injection; recovery success; recovery failure inert.
+- Deferred import hash cancellation through real decode crypto path; no install, current map preserved.
+- Draw/label/hit failures.
+- Imported PDF full path: Save, reopen exact imported mapId, label/hit, viewer, byte equality, then source exact mapId unchanged.
+- Viewer cleanup via destroy removes PDF fallback timer; PDF branch runtime ~2.4s instead of ~61s.
+- Create Map lifecycle tests restored.
+
+Results: P1b 36/36; backup6/6; resources2/2; full792/792. Native NOT RUN.
+
+Not run:
+- destroy during verification; session change while awaiting editor/map decision; A cancel→B→A completion; duplicate resume UI; native browser picker/download/mobile/viewer.

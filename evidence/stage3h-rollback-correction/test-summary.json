@@ -1,0 +1,30 @@
+{
+  "generatedAt": "2026-11-04T07:00:03.983Z",
+  "sources": [
+    {
+      "file": "../p1b.txt",
+      "tests": 69,
+      "passed": 69,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "file": "../remainder.txt",
+      "tests": 1202,
+      "passed": 1201,
+      "failed": 0,
+      "skipped": 1
+    }
+  ],
+  "totals": {
+    "tests": 1271,
+    "passed": 1270,
+    "failed": 0,
+    "skipped": 1
+  },
+  "report": {
+    "file": "docs/engine/FILEORBIT-STAGE-3H-ROLLBACK-ATTACHMENT-CORRECTION.md",
+    "expected": "1,271 tests, 1,270 pass, 1 skip",
+    "matched": true
+  }
+}

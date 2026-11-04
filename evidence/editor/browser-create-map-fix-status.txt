@@ -1,0 +1,4 @@
+﻿FileOrbit Create Map corrections browser verification: NOT RUN.
+No browser executable/automation was available without installing dependencies.
+Node tests cover name-change rebuild/blocking/focus stages, ownership separation, candidate release, and shared install gates.
+Native picker/drop/focus/fullscreen/recovery checks were not executed.

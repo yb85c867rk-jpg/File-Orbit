@@ -1,0 +1,23 @@
+﻿FileOrbit P3 safe import replacement (r60)
+
+Implemented:
+- Import validates package/hashes/adopts isolated registry before dirty prompts; invalid package preserves dirty draft/form.
+- Pending semantic import request retains tree/registry/manifest and session/dataset/revision/editor identity.
+- Dirty editor uses existing panel prompt: Continue cancels import and preserves draft; Discard resumes exactly once and may then proceed to map decision.
+- Dirty map uses unsavedMapPrompt: Save and continue runs real persistence then resumes import only on success; failure keeps prompt/map and prevents install; Discard installs; Cancel clears pending import and preserves state.
+- Import installation now calls shared installCreatedMap with importOperation/silent options; no Create Map dialog close/status ownership.
+- Destroy/replacement clears pending import registry.
+
+Actual main-entry decisions test:
+- invalid package while dirty form; Continue; Discard; dirty map Cancel; Save failure; Discard installs.
+- Existing production Download/Upload event and export/import Save/Open branches still pass.
+
+Executed: P1b 31/31, backup 6/6, resources 2/2, full 787/787. Native NOT RUN.
+
+Pending/not run:
+- Dirty-map Save success before import installation (only Save failure, Cancel, Discard tested).
+- Cancel during delayed import hashing/install.
+- Stale pending identity after external session change.
+- Candidate preparation/draw/label/hit failure/recovery and inert recovery.
+- Source saved-map byte/content unchanged assertion beyond independent imported ID.
+- Native picker/download/viewer.

@@ -1,0 +1,14 @@
+﻿import { writeFile } from 'node:fs/promises';
+const v=await (await fetch('http://127.0.0.1:9222/json/version')).json(); const ws=new WebSocket(v.webSocketDebuggerUrl); let seq=0;const p=new Map();
+ws.addEventListener('message',e=>{const m=JSON.parse(e.data);if(m.id&&p.has(m.id)){const q=p.get(m.id);p.delete(m.id);m.error?q.reject(new Error(JSON.stringify(m.error))):q.resolve(m.result)}}); await new Promise((r,j)=>{ws.addEventListener('open',r,{once:true});ws.addEventListener('error',j,{once:true})});
+const send=(method,params={},sessionId)=>new Promise((res,rej)=>{const id=++seq;p.set(id,{resolve:res,reject:rej});ws.send(JSON.stringify({id,method,params,...(sessionId?{sessionId}:{})}))});
+const c=await send('Target.createBrowserContext',{disposeOnDetach:true}); const t=await send('Target.createTarget',{url:'http://127.0.0.1:8099/tests/harness/m5-exploration/',browserContextId:c.browserContextId}); const s=(await send('Target.attachToTarget',{targetId:t.targetId,flatten:true})).sessionId; await new Promise(r=>setTimeout(r,1500));
+const ev=async e=>(await send('Runtime.evaluate',{expression:e,returnByValue:true,awaitPromise:true},s)).result.value;
+await send('Emulation.setDeviceMetricsOverride',{width:1365,height:900,deviceScaleFactor:1,mobile:false},s);
+await ev(`document.querySelector('#settings-action')?.click()`); await new Promise(r=>setTimeout(r,200));
+const settings=await ev(`(() => ({ buttons:[...document.querySelectorAll('#settings-panel button')].map(b=>({id:b.id,text:b.textContent.trim()})), text:document.querySelector('#settings-panel').innerText, feedback:document.querySelector('#document-feedback')?.innerText, saveFeedbackHidden:document.querySelector('#save-feedback')?.hidden }))()`);
+const shot=await send('Page.captureScreenshot',{format:'png'},s); await writeFile('evidence/native-r121/browser-settings-r125.png',Buffer.from(shot.data,'base64'));
+await send('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true},s); await new Promise(r=>setTimeout(r,250));
+const narrow=await ev(`({innerWidth, scrollWidth:document.documentElement.scrollWidth, settingsOpen:!document.querySelector('#settings-panel').hidden, feedback:document.querySelector('#document-feedback')?.innerText})`);
+const report={settings,narrow,capturedAt:new Date().toISOString()}; await writeFile('evidence/native-r121/browser-settings-r125.json',JSON.stringify(report,null,2),'utf8'); console.log(JSON.stringify(report,null,2));
+await send('Target.closeTarget',{targetId:t.targetId}); await send('Target.disposeBrowserContext',{browserContextId:c.browserContextId}); ws.close(); process.exit(0);

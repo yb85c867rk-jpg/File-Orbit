@@ -1,0 +1,66 @@
+{
+  "slice": 6,
+  "change": "r122 navigation refinement",
+  "status": "IMPLEMENTED - focused 232/232 and full 1077 tests passing",
+  "application": {
+    "url": "http://127.0.0.1:8099/tests/harness/m5-exploration/",
+    "indexBytes": 48486,
+    "indexSha256": "76B32ED2A7496DD4DA49C73A9376491BA9A1723A534665454C77E14FA391FE70",
+    "mainSha256": "81098F4D99AC7E4AE78F3A7E651C10E28DB571F70FEE61B91E58A25F4EB7E9C9",
+    "servedMatchesDisk": true
+  },
+  "navigation": {
+    "primaryRailSave": "REMOVED",
+    "primaryRailOpenOrbit": "REMOVED",
+    "openFileChoices": [
+      "Open Orbit",
+      "Open map file",
+      "Cancel"
+    ],
+    "settingsSaveChanges": "ADDED",
+    "orbitRefreshCloseAdd": "RETAINED",
+    "standaloneOpenChangesOrbit": false,
+    "orbitConnectReplacesLiveDocument": false
+  },
+  "ownership": "r117-r120 guards retained; shared saveDocument/load paths reused",
+  "verification": {
+    "focusedSuites": "232/232 passed",
+    "fullEngine": "1077 tests, 1076 passed, 1 skipped, 0 failed",
+    "browserEvidence": "browser-nav-current.json",
+    "screenshots": [
+      "browser-open-choice-current.png",
+      "browser-settings-current.png"
+    ],
+    "nativePicker": "BLOCKED in headless harness; not claimed"
+  },
+  "userReportedPcAcceptance": {
+    "status": "USER REPORTED PASS",
+    "independentlyVerified": false,
+    "statement": "User reports all functions tested on their PC work correctly.",
+    "limitations": "No per-scenario log, browser/version, screenshots, or hashes; not complete cross-platform acceptance."
+  },
+  "changedFiles": [
+    "tests/harness/m5-exploration/main.mjs",
+    "tests/harness/m5-exploration/index.html",
+    "tests/harness/m5-exploration/orbit-panel.js",
+    "tests/harness/m5-exploration/file-open-choice.js",
+    "tests/engine/exploration/main-harness-init-runner.mjs",
+    "tests/engine/exploration/file-open-choice.test.mjs",
+    "tests/engine/exploration/file-open-navigation-main.test.mjs",
+    "tests/engine/exploration/navigation-rail.test.mjs",
+    "tests/engine/exploration/orbit-panel.test.mjs",
+    "docs/engine/FILEORBIT-NAVIGATION-REFINEMENT-r122.md",
+    "docs/engine/FILEORBIT-ORBIT-USAGE.md",
+    "docs/engine/FILEORBIT-ORBIT-NATIVE-CHECKLIST.md",
+    "docs/engine/FILEORBIT-ORBIT-IMPLEMENTATION-PLAN.md",
+    "docs/engine/FILEORBIT-FILE-DOCUMENTS.md",
+    "README.md"
+  ],
+  "limitations": [
+    "No independent native picker/write verification in this environment.",
+    "Preflight-to-write race; empty/partial leftovers; no automatic cleanup.",
+    "Stale Open Orbit selection may remain in the controller.",
+    "No persisted Orbit handle, watching, recursion, rename/delete, or synchronization.",
+    "No atomic/exclusive creation, compare-and-write, rollback, or crash durability claim."
+  ]
+}

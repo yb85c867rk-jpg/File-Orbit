@@ -1,0 +1,122 @@
+﻿{
+  "f20": {
+    "workspaceScale": 1,
+    "nodeCount": 20,
+    "visibleNodes": 20,
+    "fit": {
+      "ok": true,
+      "reason": "fitted",
+      "eligibleCount": 20,
+      "containedCount": 20,
+      "clippedCount": 0,
+      "requiredZoom": 0.9669118254847764,
+      "appliedZoom": 0.9669118254847764,
+      "panX": -0.5119753459959594,
+      "panY": -4.125143392046148,
+      "padding": {
+        "ok": true,
+        "x": 24,
+        "y": 24
+      },
+      "limits": {
+        "minZoom": 0.02,
+        "maxZoom": 8,
+        "maxPanCss": 1000000,
+        "wheelLineCss": 16,
+        "wheelMaxCss": 1200,
+        "zoomSensitivity": 0.0015
+      },
+      "toleranceCss": 0.000001
+    }
+  },
+  "f200": {
+    "workspaceScale": 9.5,
+    "nodeCount": 200,
+    "visibleNodes": 200,
+    "fit": {
+      "ok": true,
+      "reason": "fitted",
+      "eligibleCount": 200,
+      "containedCount": 200,
+      "clippedCount": 0,
+      "requiredZoom": 0.0955315408534804,
+      "appliedZoom": 0.0955315408534804,
+      "panX": -3.0655003411598996,
+      "panY": 0.5283802182510073,
+      "padding": {
+        "ok": true,
+        "x": 24,
+        "y": 24
+      },
+      "limits": {
+        "minZoom": 0.02,
+        "maxZoom": 8,
+        "maxPanCss": 1000000,
+        "wheelLineCss": 16,
+        "wheelMaxCss": 1200,
+        "zoomSensitivity": 0.0015
+      },
+      "toleranceCss": 0.000001
+    }
+  },
+  "crowdedFolder": {
+    "workspaceScale": 2,
+    "nodeCount": 34,
+    "visibleNodes": 34,
+    "fit": {
+      "ok": true,
+      "reason": "fitted",
+      "eligibleCount": 34,
+      "containedCount": 34,
+      "clippedCount": 0,
+      "requiredZoom": 0.6686919045427618,
+      "appliedZoom": 0.6686919045427618,
+      "panX": 7.011634214099024,
+      "panY": -17.587872698880847,
+      "padding": {
+        "ok": true,
+        "x": 24,
+        "y": 24
+      },
+      "limits": {
+        "minZoom": 0.02,
+        "maxZoom": 8,
+        "maxPanCss": 1000000,
+        "wheelLineCss": 16,
+        "wheelMaxCss": 1200,
+        "zoomSensitivity": 0.0015
+      },
+      "toleranceCss": 0.000001
+    }
+  },
+  "mixedDeepWide": {
+    "workspaceScale": 1,
+    "nodeCount": 50,
+    "visibleNodes": 50,
+    "fit": {
+      "ok": true,
+      "reason": "fitted",
+      "eligibleCount": 50,
+      "containedCount": 50,
+      "clippedCount": 0,
+      "requiredZoom": 1.069973441070047,
+      "appliedZoom": 1.069973441070047,
+      "panX": 19.379641291843786,
+      "panY": 16.18353311429589,
+      "padding": {
+        "ok": true,
+        "x": 24,
+        "y": 24
+      },
+      "limits": {
+        "minZoom": 0.02,
+        "maxZoom": 8,
+        "maxPanCss": 1000000,
+        "wheelLineCss": 16,
+        "wheelMaxCss": 1200,
+        "zoomSensitivity": 0.0015
+      },
+      "toleranceCss": 0.000001
+    }
+  }
+}

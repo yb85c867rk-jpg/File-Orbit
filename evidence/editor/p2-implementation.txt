@@ -1,0 +1,23 @@
+﻿FileOrbit P2 implementation evidence
+
+User-reported: Open → Add PDF → Save → refresh → Open works in their browser. Recorded only as that flow, not quota/cross-tab/durability.
+
+Implemented:
+- Library usage: application attachment bytes/cap + separate browser origin estimate/persisted state; unknown states; optional Request persistent storage with granted/not-granted/unavailable/error.
+- Stale-generation conflict dialog: Cancel, Reload saved version with discard confirmation, Save as new copy. Copy uses new map ID, preserves node IDs/attachment bytes, independent rows, original unchanged; identity publishes after commit only.
+- Repository lifecycle: close invalidates pending open; late connection closes and cannot publish; versionchange blocks reopen; snapshot/own payload preserved.
+- Error messages for quota, application cap, unavailable IDB, blocked, versionchange/schema, abort, inconsistent/missing attachments.
+- Teardown invalidates operation tokens, closes repo/dialogs; synchronous beforeunload warning for committed dirty/draft; no async save.
+- Accounting/deletion behavior preserved.
+
+Tests:
+- Persistence: 31/31.
+- P2 lifecycle: 5/5.
+- P2 upgrade: 3/3.
+- P1b main-entry: 22/22.
+- Full tests/engine: 766/766.
+- Native browser: NOT RUN.
+
+P2 test-double gaps:
+- Native quota enforcement, cross-tab serialization, blocked-upgrade arbitration, crash durability, eviction, private mode not modeled.
+- Upgrade harness covers fresh creation, reopen, newer-version rejection, versionchange; upgrade transaction failure/rollback and blocked-upgrade closure are not natively modeled by the current double.

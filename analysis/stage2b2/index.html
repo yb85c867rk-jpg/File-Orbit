@@ -1,0 +1,11 @@
+﻿<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>FileOrbit Stage 2B-2 renderer harness</title>
+<style>
+:root{color-scheme:dark;--bg:#0b0e14;--panel:#111827;--line:#263244;--text:#e5e7eb;--muted:#9ca3af;--search:#60A5FA}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 "Segoe UI",system-ui,sans-serif}
+#app{max-width:1600px;margin:0 auto;padding:14px 18px 30px}.top{display:flex;justify-content:space-between;gap:18px;align-items:flex-start}h1{font-size:19px;margin:0 0 3px}h2{font-size:15px;margin:0 0 8px}.subtle{color:var(--muted);font-size:12px}.fixture-controls{display:flex;gap:12px;align-items:center;flex-wrap:wrap;font-size:12px}
+select,input,button{background:#172033;color:var(--text);border:1px solid var(--line);border-radius:6px;padding:6px 9px;font:inherit}button{cursor:pointer}button:disabled{opacity:.38;cursor:default}.bar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:12px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:7px 0}#crumbs{display:flex;gap:2px;align-items:center;flex-wrap:wrap;min-height:30px}.crumb{padding:3px 6px;border:0;background:none;color:#cbd5e1}.actions,.pager{display:flex;gap:6px}.search{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:9px 0 12px}.search input{min-width:360px;flex:1;max-width:720px}
+main{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:14px}.graph-panel{background:#0e1420;border:1px solid var(--line);border-radius:10px;padding:8px;overflow:hidden}.canvas-host{position:relative;width:1200px;max-width:100%;height:700px;margin:0 auto;overflow:hidden}.canvas-host canvas{display:block}.details{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px;min-height:120px}.details p{margin:5px 0;word-break:break-word}.details button{margin-top:8px}#scene-summary{margin:4px 6px 0}.results{margin-top:14px}.result{display:block;width:100%;text-align:left;margin:4px 0;padding:7px 9px;border-color:#2a3a52;font:12px ui-monospace,Consolas,monospace}@media(max-width:900px){main{grid-template-columns:1fr}.canvas-host{height:480px}.search input{min-width:0}}
+</style></head><body><div id="app"></div><script type="module" src="./app.mjs"></script></body></html>
+
+

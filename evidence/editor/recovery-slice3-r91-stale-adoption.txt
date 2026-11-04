@@ -1,0 +1,50 @@
+﻿FileOrbit Recovery Slice 3 stale-adoption correction r91
+
+Confirmed defect:
+- Recover A installed, then paused immediately before scheduler adoption.
+- Replacement session B established a valid recovery workspace through the production workspace-establishment path.
+- A released; B’s scheduler workspace became null.
+Controlled lifecycle evidence, not native browser proof.
+
+Root cause:
+- main.mjs did not recheck postInstallOwned(request) after recoveryAfterInstallGate before calling adoptWorkspace.
+- adoptWorkspace called invalidate() before validating incoming session/dataset, so stale A invalidated B before rejecting.
+- Stale cleanup tested !adopted rather than whether this request actually owned an adopted owner.
+
+Correction:
+- Main rechecks exact post-install ownership immediately before adopt and again after any await; binds adoption to captured committed session/dataset/runtime/child and passes an `authorized` predicate.
+- adoptWorkspace validates incoming source session/dataset, caller authorization, lifecycle and current owner before any mutation. It loads durable control first, then revalidates lifecycle/owner/source/authorization/token/state before invalidate and ownership replacement.
+- Rejected adoption preserves current owner, queued work, leases, pending Save and diagnostics.
+- Stale cleanup invalidates only an owner actually adopted by that request, still at exact object identity and exact child workspace ID/token; replacement owner is never invalidated.
+
+Actual main regression:
+- Pause A before adoption.
+- Replace session; establish B with a real scheduler owner through shared production establishment.
+- Release A.
+- Assert B exact workspace ID/token/controlVersion, diagnostics, tree, attachment bytes, document handle, dirty state and status are unchanged.
+- Perform real B Add Folder edit; flush; assert complete checkpoint in B’s original workspace with edited tree and exact alpha.txt bytes.
+
+Scheduler API regressions:
+- Valid owner B with queued preparation work; stale A adoption rejects with B owner/control/diagnostics intact; queued work flushes into B.
+- Deferred durable load; establish newer B; release A; adoption rejects and B remains owner.
+- Wrong workspace token rejects without mutation; unauthorized caller rejects.
+- Valid adoption still checkpoints into the adopted child.
+
+Executed results:
+- startup recovery actual main: 21/21 passed.
+- Slice 2 actual main: 2/2 passed.
+- P1b legacy actual main: 70/70 passed.
+- scheduler: 17/17 passed.
+- recovery repository: 31 (30 pass, 1 skipped).
+- persistence/upgrade/lifecycle: 90 (89 pass, 1 skipped).
+- codec/document adapter: 18/18.
+- attachment history/retention: 9/9.
+- full tests/engine: 910 tests, 909 passed, 0 failed, 1 skipped, 0 todo.
+- syntax: 9/9 changed modules.
+
+Native IndexedDB concurrency skip retained: FakeIndexedDB cross-tab serialization test is skipped; it is not native browser or cross-tab verification. Native PC/mobile/IDB upgrade/quota/cross-tab acceptance NOT RUN.
+
+Remaining limitations:
+- Recovery is not declared accepted or native-complete from automated evidence.
+- No pruning, Discard all, cloud recovery, new limits or dependencies.
+- Destructive discard already started remains a documented non-rollback boundary.

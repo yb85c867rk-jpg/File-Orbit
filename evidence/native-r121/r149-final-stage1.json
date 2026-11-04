@@ -1,0 +1,305 @@
+{
+  "imp": {
+    "ok": true,
+    "ms": 396.2000000476837
+  },
+  "initial": {
+    "counts": "300 visible / 300 total",
+    "hash": "d0d2275872ee4964449eac94d8b01250392e7d826ba41f901009b0023e6a49a0",
+    "attachmentNames": [
+      "report.pdf",
+      "notes.md",
+      "pixel.png",
+      "plain.txt"
+    ]
+  },
+  "previews": [
+    {
+      "name": "report.pdf",
+      "cycles": [
+        {
+          "opened": true,
+          "kind": "pdf",
+          "text": "report.pdf\nClose\n\nreport.pdf\n\nPDF preview uses the browser’s native viewer when ",
+          "left": false
+        },
+        {
+          "opened": true,
+          "kind": "pdf",
+          "text": "report.pdf\nClose\n\nreport.pdf\n\nPDF preview uses the browser’s native viewer when ",
+          "left": false
+        },
+        {
+          "opened": true,
+          "kind": "pdf",
+          "text": "report.pdf\nClose\n\nreport.pdf\n\nPDF preview uses the browser’s native viewer when ",
+          "left": false
+        }
+      ]
+    },
+    {
+      "name": "notes.md",
+      "cycles": [
+        {
+          "opened": true,
+          "kind": "text",
+          "text": "notes.md\nClose\n\nnotes.md\n\nMarkdown source\n\n# Field Notes\n\n한글 문서입니다.\n\n- one\n- two",
+          "left": false
+        },
+        {
+          "opened": true,
+          "kind": "text",
+          "text": "notes.md\nClose\n\nnotes.md\n\nMarkdown source\n\n# Field Notes\n\n한글 문서입니다.\n\n- one\n- two",
+          "left": false
+        },
+        {
+          "opened": true,
+          "kind": "text",
+          "text": "notes.md\nClose\n\nnotes.md\n\nMarkdown source\n\n# Field Notes\n\n한글 문서입니다.\n\n- one\n- two",
+          "left": false
+        }
+      ]
+    },
+    {
+      "name": "plain.txt",
+      "cycles": [
+        {
+          "opened": true,
+          "kind": "text",
+          "text": "plain.txt\nClose\n\nplain.txt\n\nPlain text preview\n한글 줄\n",
+          "left": false
+        },
+        {
+          "opened": true,
+          "kind": "text",
+          "text": "plain.txt\nClose\n\nplain.txt\n\nPlain text preview\n한글 줄\n",
+          "left": false
+        },
+        {
+          "opened": true,
+          "kind": "text",
+          "text": "plain.txt\nClose\n\nplain.txt\n\nPlain text preview\n한글 줄\n",
+          "left": false
+        }
+      ]
+    },
+    {
+      "name": "pixel.png",
+      "cycles": [
+        {
+          "opened": true,
+          "kind": "image",
+          "text": "pixel.png\nClose\n\npixel.png",
+          "left": false
+        },
+        {
+          "opened": true,
+          "kind": "image",
+          "text": "pixel.png\nClose\n\npixel.png",
+          "left": false
+        },
+        {
+          "opened": true,
+          "kind": "image",
+          "text": "pixel.png\nClose\n\npixel.png",
+          "left": false
+        }
+      ]
+    }
+  ],
+  "unavailable": {
+    "opened": true,
+    "text": "",
+    "left": false
+  },
+  "move": {
+    "ok": true,
+    "actionMs": 272.10000002384186,
+    "history": {
+      "undo": 1,
+      "redo": 0,
+      "revision": 1,
+      "mapId": null,
+      "blocked": null
+    },
+    "undo": true,
+    "redo": true,
+    "undo2": true,
+    "counts": "300 visible / 300 total",
+    "parents": {
+      "before": "wide",
+      "after": "deep12",
+      "undone": "wide",
+      "redone": "deep12",
+      "final": "wide"
+    }
+  },
+  "focus": {
+    "focused": "deep12",
+    "counts": "300 visible / 300 total"
+  },
+  "search": {
+    "first": {
+      "ms": 28.600000023841858,
+      "count": 1,
+      "status": "Search highlights 2 folders containing matching results.",
+      "ids": [
+        "n0",
+        "wide"
+      ]
+    },
+    "details": "Details\nHide details\nwide-057.txt · file\nSearch results\nClear search\n\n1 match.\n\nwide-057.txt\nWide file 57 — observable marker\nText\nR149 300 Node Map / Wide\nBack to results\n\nSearch ",
+    "cleared": true,
+    "remaining": 0,
+    "highlight": ""
+  },
+  "create301": {
+    "status": "Preparing preview…",
+    "kind": "info",
+    "counts": "300 visible / 300 total",
+    "treeEqual": true
+  },
+  "saveWall": 222,
+  "downloaded": {
+    "file": "R149 300 Node Map.orbit",
+    "bytes": 36942,
+    "sha256": "5962fee2ab493a371c3868adb1ea49fc1604b1bc6c7b8340a151548f3ca9130e",
+    "treeHash": "1d7b7ea5d9f50e11037341b21133a847b2dab97598b727cbea78c641bf57c18c",
+    "attachments": [
+      {
+        "name": "report.pdf",
+        "sha256": "cfa3181c1ee36e8bce5e39f84959f4558ea7ba32c0e4539a8ab3c8ce8c716ec6"
+      },
+      {
+        "name": "notes.md",
+        "sha256": "63571c33b3ed004f05b2ab43ed4a85ec029d253af2b264308e8e2840b2c08eb4"
+      },
+      {
+        "name": "pixel.png",
+        "sha256": "431ced6916a2a21a156e38701afe55bbd7f88969fbbfc56d7fe099d47f265460"
+      },
+      {
+        "name": "plain.txt",
+        "sha256": "2f497badebdd68b1720a8b352345b1b619daeb709d1c808bfa4647ef0c67a3c9"
+      }
+    ]
+  },
+  "reopened": {
+    "ms": 411.0999999642372,
+    "wall": 779,
+    "counts": "300 visible / 300 total",
+    "treeEqual": false,
+    "attachmentHashes": {
+      "report.pdf": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "notes.md": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "pixel.png": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "plain.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "attachmentNames": [
+      "report.pdf",
+      "notes.md",
+      "pixel.png",
+      "plain.txt"
+    ],
+    "recovery": {
+      "workspace": {
+        "workspaceId": "ws_2c1e9c4e-d3e4-4471-a8c2-97668ea6eaee",
+        "workspaceToken": "wst_8d566d13-687d-4eff-a94a-c7214ba11943",
+        "controlVersion": 2,
+        "session": 3,
+        "dataset": 1,
+        "active": true,
+        "documentName": null,
+        "origin": "test",
+        "sourceMapId": null
+      },
+      "scheduled": true,
+      "flushed": {
+        "workspaceId": "ws_2c1e9c4e-d3e4-4471-a8c2-97668ea6eaee",
+        "lastError": null,
+        "lastCheckpoint": {
+          "generation": 1,
+          "capturedRevision": 0,
+          "at": "2026-11-01T23:58:48.258Z"
+        },
+        "lastRetirement": null,
+        "lastAbandon": null,
+        "writesStarted": 2,
+        "writesCompleted": 2,
+        "maxConcurrentWrites": 1,
+        "activeWrites": 0
+      },
+      "candidates": [
+        {
+          "workspaceId": "ws_2c1e9c4e-d3e4-4471-a8c2-97668ea6eaee",
+          "nodeCount": 300,
+          "attachments": 4
+        },
+        {
+          "workspaceId": "ws_58c008fa-1764-469e-90ed-5c1f41cb1fd8",
+          "nodeCount": 300,
+          "attachments": 4
+        },
+        {
+          "workspaceId": "ws_a6b78150-21d9-4391-8935-95b564c37ed0",
+          "nodeCount": 300,
+          "attachments": 4
+        }
+      ]
+    }
+  },
+  "exceptions": [],
+  "downloads": [
+    {
+      "method": "Browser.downloadWillBegin",
+      "frameId": "67558251706B20C481334D151C12D01B",
+      "guid": "25dbd0e6-0568-4245-9b37-7dfe539d0b30",
+      "url": "blob:http://127.0.0.1:8099/e37074bb-adbd-4855-b55d-99ba8fa0ac15",
+      "suggestedFilename": "R149 300 Node Map.orbit"
+    },
+    {
+      "method": "Browser.downloadProgress",
+      "guid": "25dbd0e6-0568-4245-9b37-7dfe539d0b30",
+      "totalBytes": 36942,
+      "receivedBytes": 0,
+      "state": "inProgress"
+    },
+    {
+      "method": "Browser.downloadProgress",
+      "guid": "25dbd0e6-0568-4245-9b37-7dfe539d0b30",
+      "totalBytes": 36942,
+      "receivedBytes": 36942,
+      "state": "inProgress"
+    },
+    {
+      "method": "Browser.downloadProgress",
+      "guid": "25dbd0e6-0568-4245-9b37-7dfe539d0b30",
+      "totalBytes": 36942,
+      "receivedBytes": 36942,
+      "state": "inProgress"
+    },
+    {
+      "method": "Browser.downloadProgress",
+      "guid": "25dbd0e6-0568-4245-9b37-7dfe539d0b30",
+      "totalBytes": 36942,
+      "receivedBytes": 36942,
+      "state": "inProgress"
+    },
+    {
+      "method": "Browser.downloadProgress",
+      "guid": "25dbd0e6-0568-4245-9b37-7dfe539d0b30",
+      "totalBytes": 36942,
+      "receivedBytes": 36942,
+      "state": "inProgress"
+    },
+    {
+      "method": "Browser.downloadProgress",
+      "guid": "25dbd0e6-0568-4245-9b37-7dfe539d0b30",
+      "totalBytes": 36942,
+      "receivedBytes": 36942,
+      "state": "completed",
+      "filePath": "C:\\Users\\openw\\Documents\\Projects\\visual-directory\\evidence\\native-r121\\r149-final-downloads\\R149 300 Node Map.orbit"
+    }
+  ],
+  "capturedAt": "2026-11-01T23:58:48.613Z"
+}

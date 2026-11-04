@@ -1,0 +1,46 @@
+﻿FileOrbit graph viewport / drag coordinate correction r93
+
+Confirmed defect:
+- #graph-host and #label-host begin 56px below #graph-wrap due the centered action toolbar, but viewport() returned the full wrapper height.
+- Controlled geometry: wrapper 1100x473, drawable 1100x417; canvas was 473 tall.
+- showTarget() used canvas-local node coordinates in #drag-layer, which began at graph-wrap top.
+- moveGhost() used client coordinates in the same overlay without conversion.
+
+Correction:
+- viewport() now measures wrapper width and subtracts the live measured action-toolbar height:
+  - width = graphWrap.clientWidth
+  - height = max(0, graphWrap.clientHeight - graphActionToolbar.offsetHeight)
+- One drawable height feeds canvas sizing, backing-store/DPR sizing, layout/session viewport, Fit/containment, camera projection, labels, frame/hit snapshots, navigation, and Create/Open/Import/Recovery preparation.
+- No hardcoded 56 is added outside the CSS layout contract; the toolbar height is measured.
+- #drag-layer now starts at the drawable region top via the shared CSS variable.
+- Drag ghost coordinates are converted with clientToCanvasCss(canvas, clientX, clientY), so canvas-local, drag-layer, label, hit, and target-ring coordinates share one origin.
+- Drag feedback center accounts for the toolbar inset.
+- Toolbar-area points cannot become graph hits because conversion/hit testing is relative to the canvas, which starts below the toolbar.
+- Box-sizing added so the 56px toolbar CSS height and measured offsetHeight agree; 44px button targets remain exact.
+
+Geometry regression (main entry):
+- wrapper 1100x473, toolbar 56, drawable 1100x417;
+- canvas CSS 1100x417, backing 2200x834 at DPR2;
+- label/session/Fit/status viewport 1100x417; scene bounds maxY within 417;
+- nonzero canvas page rect (left 120, top 80) coordinate probe:
+  - ghost follows point in canvas-local coordinates;
+  - target ring aligns to scene center/radius;
+  - click hit and context-menu target resolve the intended stable ID;
+  - toolbar-area point resolves no node;
+- resize 900x400 -> canvas 900x344; narrow 420x800 -> canvas 420x744;
+- zero-size viewport -> 0; restore 1100x473 -> 417;
+- Create Map starts while graph content is hidden and still uses drawable dimensions.
+
+Executed:
+- geometry main: 1/1 passed.
+- UI focused: 5/5.
+- shell/history/UI: 24/24.
+- startup recovery actual main: 21/21.
+- Slice2 actual main: 2/2.
+- P1b actual main: 70/70.
+- full tests/engine: 916 tests, 915 passed, 0 failed, 1 skipped, 0 todo.
+- syntax: 8/8 JS modules.
+- served source: 104 files, 200/no-store, byte SHA match; root/no-slash redirects verified.
+
+Native visual checks NOT RUN. No screenshots captured. Mock geometry does not establish visual acceptance.
+FakeIndexedDB cross-tab concurrency skip retained; not native proof.

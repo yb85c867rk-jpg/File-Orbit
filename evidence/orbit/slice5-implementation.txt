@@ -1,0 +1,48 @@
+﻿FileOrbit Orbit Slice 5 — Create in Orbit, protected Save, and Add to Orbit
+
+Status: implemented. Native filesystem acceptance NOT RUN.
+
+Create Map with active Orbit:
+1. Create dialog prepares the candidate tree/registry.
+2. installCreatedMap captures creation, document, session/dataset, and Orbit ownership before asynchronous work.
+3. It validates the sanitized title and performs a bounded/case-insensitive Orbit collision scan; incomplete/truncated scans and existing/zero-byte/case-equivalent names block creation.
+4. It encodes the candidate snapshot before creating any destination entry.
+5. It installs the candidate through installCandidateEnvironment, then revalidates ownership and collision.
+6. orbitDirectoryAdapter.createMapFile performs final collision preflight and creates the entry (atomic:false).
+7. saveDocument writes/closes with preencoded bytes, adopts the destination/revision only after close, and establishes the confirmed-write baseline.
+8. The actual Orbit list and current marker are refreshed. Write failure leaves installed work unsaved/recoverable; Retry hits the leftover as a collision.
+
+No active Orbit:
+- Explicit Create Orbit / Open Orbit / Save standalone / Cancel choice.
+- Create Orbit names a child directory and creates it in a user-selected parent; existing same-name directories are explicit collisions.
+- Open Orbit selects an existing directory.
+- Picker cancellation/denial preserves the current map and choice.
+- No directory access keeps standalone creation/download available and hides Orbit choices.
+
+Add to Orbit:
+- Accessible Orbit-panel action.
+- Rejects editor drafts/busy/replacement states.
+- Clones the authoritative tree and retains exact attachment bytes in a copied registry.
+- Encodes before destination creation; uses the same filename/collision/incomplete policy.
+- Does not adopt the copy, open it, or change the source handle/tree/baseline/dirty/savedRevision/history/recovery.
+- Refreshes the actual list after owned completion.
+- Existing .map and legacy .fileorbit/recovered maps produce .map copies.
+
+Save/workspace:
+- Created Orbit maps use saveDocument protection for toolbar/editor/Retry/replacement saves.
+- Membership is handle/isSameEntry based; Settings marks Orbit-origin documents outside the active Orbit.
+- Orbit switch/refresh/close/open controls are blocked while an Orbit destination write is active.
+
+Evidence:
+- Focused Orbit + compatibility after r120 correction: 147/147 passed.
+- Relevant creation/Save/editor/recovery/navigation regressions: 96/96 passed.
+- Full engine after r120 correction: 1073 tests, 1072 passed, 1 skipped, 0 failed.
+- Main-entry scenarios use completion markers and bounded watchdogs.
+- Native filesystem verification: NOT RUN.
+
+Limitations:
+- No atomic creation/compare-and-write/rollback claim; adapter reports atomic:false.
+- A created destination may remain empty/partial after cancellation/write/close failure; no automatic cleanup.
+- Preparation/install failure before entry creation leaves no destination.
+- Forced mid-write lifecycle invalidation and native picker behavior are automated/mock evidence only.
+- Rename/delete, recursion, watching, persisted handles, manifests/indexes, sync, cloud features remain deferred.

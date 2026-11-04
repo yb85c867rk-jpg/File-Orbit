@@ -1,0 +1,1 @@
+﻿browser adaptive layout: NOT RUN (no launch claimed)

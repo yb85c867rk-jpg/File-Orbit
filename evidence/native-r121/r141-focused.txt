@@ -1,0 +1,224 @@
+﻿AUTO_CONFLICT_R2_COMPLETE
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+System.Management.Automation.RemoteException
+AssertionError [ERR_ASSERTION]: Orbit opened: Empty Orbit.
+System.Management.Automation.RemoteException
+false !== true
+System.Management.Automation.RemoteException
+    at run (file:///C:/Users/openw/Documents/Projects/visual-directory/tests/engine/exploration/main-harness-init-runner.mjs:2043:12)
+    at async file:///C:/Users/openw/Documents/Projects/visual-directory/tests/engine/exploration/main-harness-init-runner.mjs:4811:1 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+System.Management.Automation.RemoteException
+Node.js v24.12.0
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+System.Management.Automation.RemoteException
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+System.Management.Automation.RemoteException
++ 'actionable'
+- 'progress'
+System.Management.Automation.RemoteException
+    at run (file:///C:/Users/openw/Documents/Projects/visual-directory/tests/engine/exploration/main-harness-init-runner.mjs:1114:12)
+    at async file:///C:/Users/openw/Documents/Projects/visual-directory/tests/engine/exploration/main-harness-init-runner.mjs:4811:1 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 'actionable',
+  expected: 'progress',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+System.Management.Automation.RemoteException
+Node.js v24.12.0
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+System.Management.Automation.RemoteException
+AssertionError [ERR_ASSERTION]: standalone Open install settled before reopening the browser
+System.Management.Automation.RemoteException
+false !== true
+System.Management.Automation.RemoteException
+    at run (file:///C:/Users/openw/Documents/Projects/visual-directory/tests/engine/exploration/main-harness-init-runner.mjs:1575:14)
+    at async file:///C:/Users/openw/Documents/Projects/visual-directory/tests/engine/exploration/main-harness-init-runner.mjs:4811:1 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+System.Management.Automation.RemoteException
+Node.js v24.12.0
+HELP_DEBUG_AFTER true false
+✔ Settings contains only Theme and document/save feedback is outside it (1.9713ms)
+✔ automatic save without a writable destination requires explicit Save As and does not auto-download (5344.9664ms)
+✔ automatic external conflict Cancel keeps feedback, Retry resolves, replacement invalidates (1946.0661ms)
+✖ Copy Map writes an exact copy without adopting it or changing the connected Orbit (5295.1532ms)
+✖ routine feedback expires with identity-safe ownership and critical feedback remains (172.4325ms)
+✔ production navigation removes primary Save/Open Orbit and keeps Settings theme-only (1.0894ms)
+✖ unified Open supports Orbit, standalone Open, cancel, and unsupported directory access (5283.6255ms)
+✔ workspace layout owns the final grid row regardless of hidden error row (0.481ms)
+✔ empty state is contained below toolbar and can scroll rather than clip (0.3479ms)
+✔ responsive details and fullscreen retain the workspace layout contract (0.3217ms)
+✔ actual main entry initializes in an isolated process and opens Create Map (1426.341ms)
+✔ Create Map initialization failure keeps actions unavailable and publishes the original error (172.4286ms)
+✔ Create Map installation failure from empty startup returns to empty state with an error (280.499ms)
+✔ Create Map cancellation restoration failure remains inert with the original error (1233.9982ms)
+✔ normal-motion search reveal failure/cancellation mode: draw (4476.9091ms)
+✔ normal-motion search reveal failure/cancellation mode: resize (4430.7767ms)
+✔ normal-motion search reveal failure/cancellation mode: dataset (1471.5515ms)
+✔ zero-sized graph viewport reports an error and allows retry when usable (4286.1983ms)
+✔ Create Map button lifecycle survives reuse, Back, double submit, and reopen (4471.9332ms)
+✔ actual rail expand/settings/theme/local maps, .orbit download, unified Open and help preserve lifecycle (2715.7069ms)
+✔ actual main Save/Open/library/delete wiring works through synthetic IndexedDB (3199.6288ms)
+✔ Open from empty startup reports unavailable IndexedDB honestly (4198.9463ms)
+✔ Open draw failure preserves the previous authoritative map (1253.6325ms)
+✔ Save-and-continue Open keeps replacement ownership through delayed loading (1260.2376ms)
+✔ Open load failure preserves the old map and releases ownership (1266.1208ms)
+✔ Open label failure preserves the old map and releases ownership (1359.071ms)
+✔ Open hit failure preserves the old map and releases ownership (1378.8792ms)
+✔ dirty editor Continue editing preserves the draft and Discard resumes Open once (4611.2506ms)
+✔ ordinary Open holds replacement ownership during delayed loading (4908.9231ms)
+✔ failed Open recovery leaves interaction inert and preserves the original error (1263.8842ms)
+✔ empty-startup Open failure returns to a coherent empty state (1262.1761ms)
+✔ clean editor form Open closes coherently and opens the library (4593.3981ms)
+✔ narrow Map menu Open works and routes dirty editor prompts (4585.3227ms)
+✔ Add Data PDF after Open uses the active registry and viewer path (5149.2944ms)
+✔ failed Add Data save retains draft/reservation, clears Saving, and retries without double count (5267.4855ms)
+✔ Add Data cancel and type switch release the originating pending reservation (4772.1702ms)
+✔ Add Data PDF after Create Map uses the active registry (4785.2438ms)
+✔ repeated Open replacements own exactly one Delete confirmation (4999.4784ms)
+✔ stale Save offers Cancel, Save as new copy, and confirmed Reload (1932.5095ms)
+✔ saved-map library shows application usage, origin estimate, and persist grant (4702.8499ms)
+✔ saved-map library shows unknown/ unavailable storage states (4615.4389ms)
+✔ beforeunload warning is registered for committed unsaved changes (4553.8671ms)
+✔ overlapping desktop/narrow Save is blocked and later edits stay dirty (4901.8743ms)
+✔ blocked open clears on success and cancel/late-success does not publish (1434.8537ms)
+✔ desktop and narrow toolbar Save submit open editor forms and persist (5439.628ms)
+✔ applied Add PDF persists after Close with attachment and viewer intact (1777.785ms)
+✔ deferred Retry blocks Close, survives old failure, and commits without replay (1483.1052ms)
+✔ backup export/import installs a saveable map with fresh durable identity (4834.3691ms)
+✔ production Download and Upload file-input handlers round-trip through install (4736.2464ms)
+✔ production Download cancel and session replacement preserve newer ownership (1265.1979ms)
+✔ backup import validates first and honors dirty editor/map decisions (3322.3744ms)
+✔ backup replacement installs distinct incoming map and preserves source saved map (5313.1224ms)
+✔ production Upload validates while draft open and honors editor prompt (1274.5759ms)
+✔ candidate draw/label/hit failures preserve authoritative map (1262.8151ms)
+✔ imported PDF Save/Open and source membership remain intact (6240.6964ms)
+✔ deferred import hash cancellation, preparation failure, and recovery outcomes (1259.991ms)
+✔ destroy during deferred import cancels without installation (1262.4042ms)
+✔ stale pending import cannot resume after session replacement (1249.129ms)
+✔ duplicate editor discard resumes import once despite repeated clicks (1262.9094ms)
+✔ old cancelled import cannot affect newer overlapping import (4798.3772ms)
+✔ destroy while dirty-map decision awaits releases pending import (1258.9453ms)
+✔ destroy while dirty-editor decision awaits releases pending import (1261.9147ms)
+✔ distinct A/B package overlap isolates old cancellation from new import (5483.6198ms)
+✔ late failure from cancelled A cannot affect active B import (5077.4899ms)
+✔ repeated dirty-map Save/Discard clicks commit import once (4783.5287ms)
+✔ storage status wording tracks save/restored/dirty lifecycle with accessible help (4885.5164ms)
+✔ file Open and Save routes through writable document adapter with clean baseline (1651.1044ms)
+✔ fallback file Open is clean and Save reports download handoff without clearing dirty (5158.4235ms)
+✔ Save and continue writes active document handle before Open replacement commits (5051.6878ms)
+✔ Import Backup clears inherited writable document identity (4962.4419ms)
+✔ deferred applied save owner cannot be recreated for replacement session (2017.6412ms)
+✔ new/previous-local toolbar and form Save request .orbit without IndexedDB (5318.8678ms)
+✔ fallback new Save and Save-and-continue keep dirty and pending replacement (5077.5003ms)
+✔ fallback Open File and Import Backup activate the owned input with intent (5061.3839ms)
+✔ Save As cancellation/write/close failures keep A; deferred close adopts C with dirty later edits (2526.2829ms)
+✔ obsolete deferred save cannot affect replacement session or newer save (1253.0466ms)
+✔ destroy during deferred save suppresses late success adoption/status (1277.8576ms)
+✔ destroy during deferred save suppresses late failure/status (1269.359ms)
+✔ applied form Save blocks Open File until persistence completes (1522.9191ms)
+✔ actual Open/Discard replacement invalidates pending A; late A success cannot affect B (5203.6016ms)
+✔ actual replacement invalidates pending A; late A close failure cannot affect B (5211.0867ms)
+✔ cancelled Open preserves pending A save ownership and completion (4811.8298ms)
+✔ Import Backup first Save uses .orbit picker before adopting and clears A handle (1819.7594ms)
+✔ Previous local maps first Save uses .orbit picker and preserves legacy record (5415.4721ms)
+✔ Previous local maps fallback first Save downloads without confirmed clean state (5054.7368ms)
+✔ Import Backup fallback applies once, Retry handoff, Close, and Save-and-continue Cancel/Discard (5932.155ms)
+✔ Previous local fallback applies once, Retry handoff, Close, and Save-and-continue Cancel/Discard (5962.912ms)
+✔ stale applied-operation Retry preflight rejects before handoff side effects (4805.1943ms)
+✔ Save As awaits permission, skips redundant request, and reports picker versus permission stages (1570.5262ms)
+ℹ tests 89
+ℹ suites 0
+ℹ pass 86
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 282788.1569
+
+✖ failing tests:
+
+test at tests\engine\exploration\copy-map-main.test.mjs:8:1
+✖ Copy Map writes an exact copy without adopting it or changing the connected Orbit (5295.1532ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (file:///C:/Users/openw/Documents/Projects/visual-directory/tests/engine/exploration/copy-map-main.test.mjs:14:12)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\engine\exploration\feedback-expiry-main.test.mjs:8:1
+✖ routine feedback expires with identity-safe ownership and critical feedback remains (172.4325ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (file:///C:/Users/openw/Documents/Projects/visual-directory/tests/engine/exploration/feedback-expiry-main.test.mjs:13:12)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\engine\exploration\file-open-navigation-main.test.mjs:43:1
+✖ unified Open supports Orbit, standalone Open, cancel, and unsupported directory access (5283.6255ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 0
+  
+      at run (file:///C:/Users/openw/Documents/Projects/visual-directory/tests/engine/exploration/file-open-navigation-main.test.mjs:20:12)
+      at TestContext.<anonymous> (file:///C:/Users/openw/Documents/Projects/visual-directory/tests/engine/exploration/file-open-navigation-main.test.mjs:44:3)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

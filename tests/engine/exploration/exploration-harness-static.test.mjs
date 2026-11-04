@@ -1,0 +1,150 @@
+﻿import test from 'node:test';
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+
+const base = new URL('../../harness/m5-exploration/', import.meta.url);
+const main = readFileSync(new URL('main.mjs', base), 'utf8');
+const html = readFileSync(new URL('index.html', base), 'utf8');
+const status = JSON.parse(readFileSync(new URL('status.json', base), 'utf8'));
+
+test('node-only exploration harness has no breadcrumb/history navigation controls', () => {
+  assert.match(main, /stageExperimentalV2Layout/);
+  assert.match(main, /refineExperimentalV2Layout/);
+  assert.doesNotMatch(main, /refineExperimentalV2Crowding/);
+  assert.doesNotMatch(main, /refineExperimentalV2LocalCrowding/);
+  assert.match(main, /stageExplorationFrame/);
+  assert.match(main, /createExplorationModel/);
+  assert.match(main, /createExplorationSession/);
+  assert.match(main, /createExplorationNavigator/);
+  assert.match(main, /onFolder/);
+  assert.match(main, /suspendNavigation/);
+  assert.match(main, /transition-busy/);
+  assert.match(main, /createExplorationNavigator/);
+  assert.match(main, /onFolder/);
+  assert.match(main, /suspendNavigation/);
+  assert.match(main, /transition-busy/);
+  assert.match(main, /createMouseNavigationController/);
+  assert.match(main, /EXPERIMENTAL_CAMERA_LIMITS/);
+  assert.match(main, /clientToCanvasCss/);
+  assert.match(main, /handleExplorationCanvasClick/);
+  assert.match(main, /lastClickDiagnostic/);
+  assert.match(main, /createNodeDragGesture/);
+  assert.match(main, /performReparentInstallation/);
+  assert.match(main, /fitBlockReason/);
+  assert.match(main, /isNodeGestureOwned/);
+  assert.match(main, /recoverAuthoritativeSession/);
+  assert.match(main, /dragFeedbackEl/);
+  assert.match(main, /createDropFeedback/);
+  assert.match(html, /aria-live/);
+  assert.match(main, /explorationLabelPriorityIds/);
+  assert.match(main, /meta\.targetView/);
+  assert.match(main, /beginTransition/);
+  assert.match(main, /updateTransition/);
+  assert.match(main, /completeTransition/);
+  assert.match(main, /cancelTransition/);
+  assert.match(main, /EXPLORATION_TRANSITION_DURATION_MS/);
+  assert.match(main, /rootFill: '#F8FAFC'/);
+  assert.match(main, /EXPLORATION_TRANSITION_DURATION_MS/);
+  assert.match(main, /rootFill: '#F8FAFC'/);
+  assert.doesNotMatch(main, /enterAncestor/);
+  assert.doesNotMatch(main, /model\.back/);
+  assert.doesNotMatch(main, /model\.overview/);
+  assert.doesNotMatch(main, /historyDepth/);
+  assert.doesNotMatch(main, /isPrimary === false/);
+  assert.match(main, /focusedFolderId/);
+  assert.match(main, /focusedStructuralDepth/);
+  assert.match(main, /contextCount/);
+  assert.match(main, /subtreeCount/);
+  assert.match(main, /ancestorCount/);
+  assert.match(main, /descendantCount/);
+  assert.match(main, /focusedCenterError/);
+  assert.match(main, /__M5_EXPLORATION_STATUS__/);
+  assert.match(main, /lastEvent/);
+  assert.match(main, /fitGraph|fitBlockReason/);
+  assert.doesNotMatch(html, /id="fit"/);
+  assert.doesNotMatch(html, /id="back"/);
+  assert.doesNotMatch(html, /id="overview"/);
+  assert.doesNotMatch(html, /id="breadcrumbs"/);
+  assert.match(html, /id="details"/);
+  assert.match(html, /id="drag-feedback"/);
+  assert.match(html, /drag-ghost/);
+  assert.equal(status.correction, 'off');
+  assert.equal(status.browserVerification, 'NOT_RUN');
+});
+const panelSource = readFileSync(new URL('editor-panel.js', base), 'utf8');
+test('E1 rename panel is wired without E2 actions', () => {
+  assert.match(main, /createEditorController/);
+  assert.match(main, /createEditorPanel/);
+  assert.match(main, /performRenameInstallation/);
+  assert.match(main, /EDITOR_MAX_NODES/);
+  assert.match(main, /dataRevision/);
+  assert.match(html, /id="editor-host"/);
+  assert.match(panelSource, /editor-form/);
+  assert.equal((panelSource.match(/Save your changes to IndexedDB to keep them on this device\. Download a \.orbit copy to keep a separate copy\./g) || []).length, 0);
+  assert.doesNotMatch(panelSource, /In-memory only/);
+  assert.match(html, /--fo-panel: #111827/);
+  assert.match(html, /--fo-panel: #ffffff/);
+  assert.match(panelSource, /compositionstart/);
+  assert.match(panelSource, /aria-busy/);
+  assert.match(panelSource, /openEditor/);
+  assert.match(panelSource, /editor-target/);
+  assert.doesNotMatch(panelSource, /rename-open/);
+  assert.doesNotMatch(html, /Copy status|Click a folder to center|Right-click a folder/);
+  assert.match(panelSource, /editor-description/);
+  assert.match(panelSource, /editor-link/);
+  assert.match(panelSource, /openAdd/);
+  assert.match(panelSource, /openDetails/);
+  assert.match(panelSource, /editor-file/);
+  assert.match(panelSource, /editor-data-type/);
+  assert.doesNotMatch(panelSource, /Attachment stays in this browser|Save your changes to IndexedDB/);
+  assert.doesNotMatch(panelSource, /Delete/);
+  assert.match(main, /attachEditorContextMenu/);
+  assert.match(main, /resolveEditorTarget/);
+  assert.match(main, /event\.button !== 0/);
+  assert.match(main, /activateEditorTarget/);
+  assert.match(main, /detailsTargetId = tree\.id/);
+  assert.match(main, /createEditorContextMenu/);
+  assert.match(main, /function activateEditorTarget\(target, event\)/);
+  assert.doesNotMatch(main, /window\.event/);
+  assert.match(main, /createEditorTarget/);
+  assert.match(main, /resumeEditorAction/);
+  assert.match(main, /performAddChildInstallation/);
+  assert.match(main, /performMetadataInstallation/);
+  assert.match(main, /saveEditorAction/);
+  assert.match(main, /createEditorIdAllocator/);
+  assert.match(main, /createAttachmentRegistry/);
+  assert.match(main, /attachmentRegistry\.metadata/);
+  assert.match(main, /attachmentRegistry\.commit/);
+  assert.match(panelSource, /attachmentOwner\.reserve/);
+  assert.match(panelSource, /pendingReservation\.owner\.setClassification/);
+  assert.match(panelSource, /pendingReservation\.owner\.release/);
+  assert.doesNotMatch(main.slice(main.indexOf('function onCanvasClick'), main.indexOf('function enterFolder')), /openEditor/);
+});
+test('exploration harness supplies stored links to the label overlay and scopes link CSS', () => {
+  const harness = readFileSync(new URL('../../harness/m5-exploration/main.mjs', import.meta.url), 'utf8');
+  const html = readFileSync(new URL('../../harness/m5-exploration/index.html', import.meta.url), 'utf8');
+  assert.match(harness, /link: node\.data\?\.link/);
+  assert.match(html, /#label-host \{ pointer-events: none; \}/);
+  assert.match(html, /\[data-vd-link\] \{[^}]*pointer-events: auto/);
+  assert.match(html, /\[data-vd-link\]\[aria-disabled="true"\] \{[^}]*pointer-events: none/);
+});test('actual file-name activation consumes label metadata and opens the viewer', () => {
+  assert.match(main, /select: \(id, meta = null\) => \{/);
+  assert.match(main, /const activation = meta\?\.activation === 'file-name'/);
+  assert.match(main, /openAttachment: activation === 'file-name'/);
+  assert.match(main, /const activation = meta\?\.activation === 'file-name'/);
+  assert.match(main, /openAttachment: activation === 'file-name'/);
+  assert.match(main, /if \(intent\.openAttachment\) openAttachmentViewer\(intent\.targetId\)/);
+  assert.match(main, /createAttachmentViewer/);
+  assert.match(main, /attachmentViewer\?\.isOpen/);
+});test('actual harness uses shared viewer ownership guards', () => {
+  assert.match(main, /viewerBlocksInteraction\(attachmentViewer\)/);
+  assert.match(main, /canApplyViewerGuardedCamera\(\{ viewer: attachmentViewer/);
+  assert.match(main, /attachment-viewer-open/);
+});
+
+
+
+
+
+
+

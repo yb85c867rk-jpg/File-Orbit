@@ -1,0 +1,5 @@
+﻿FileOrbit E3-A integration-fix browser verification: NOT RUN.
+No browser executable/automation was available without installing dependencies.
+The Node suite verifies history bounds, metadata inverse/redo commands, 300-node replay rejection,
+expected-state/dataset mismatches, attachment metadata preservation, and static harness/UI wiring.
+The actual browser button → replay → frame installation path was NOT executed.

@@ -1,0 +1,5 @@
+﻿FileOrbit focus-correction browser verification: NOT RUN.
+No browser executable/automation was available without installing dependencies.
+Node tests cover fixed-position/null-offsetParent visibility, ancestor chains, stage Tab wrapping,
+outside-stage focus recovery, responsive fallback resolver, removed/disabled invokers, and single restoration.
+Native browser Tab/fullscreen/responsive focus checks were not executed.

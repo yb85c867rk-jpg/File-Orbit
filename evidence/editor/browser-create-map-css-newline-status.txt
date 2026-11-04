@@ -1,0 +1,8 @@
+﻿FileOrbit r31 Create Map CSS newline correction.
+- Literal backslash-n removed from .create-map-form hidden-stage and input rules.
+- Real newlines/selectors verified.
+- Lone quote token removed from style block.
+- No other escape text in style block.
+- Creation stage and confirmation stage semantics unchanged.
+- Full tests/engine: 696/696 pass.
+Native browser verification: NOT RUN.

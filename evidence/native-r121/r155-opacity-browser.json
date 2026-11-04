@@ -1,0 +1,101 @@
+{
+  "states": [
+    {
+      "step": "update-1",
+      "leaderCount": 1,
+      "leaderOpacity": "0.7",
+      "labelOpacity": "1",
+      "labelDisplay": "flex",
+      "metrics": {
+        "visible": true,
+        "opacity": 1,
+        "root": true
+      }
+    },
+    {
+      "step": "update-.5",
+      "leaderCount": 1,
+      "leaderOpacity": "0.35",
+      "labelOpacity": "0.5",
+      "labelDisplay": "flex",
+      "metrics": {
+        "visible": true,
+        "opacity": 0.5,
+        "root": true
+      }
+    },
+    {
+      "step": "update-0",
+      "leaderCount": 0,
+      "leaderOpacity": null,
+      "labelOpacity": "0",
+      "labelDisplay": "flex",
+      "metrics": {
+        "visible": false,
+        "opacity": 0,
+        "root": true
+      }
+    },
+    {
+      "step": "update-1-again",
+      "leaderCount": 1,
+      "leaderOpacity": "0.7",
+      "labelOpacity": "1",
+      "labelDisplay": "flex",
+      "metrics": {
+        "visible": true,
+        "opacity": 1,
+        "root": true
+      }
+    },
+    {
+      "step": "begin-1",
+      "leaderCount": 1,
+      "leaderOpacity": "0.7",
+      "labelOpacity": "1",
+      "labelDisplay": "flex",
+      "metrics": {
+        "visible": true,
+        "opacity": 1,
+        "root": true
+      }
+    },
+    {
+      "step": "updateTransition-.5",
+      "leaderCount": 1,
+      "leaderOpacity": "0.35",
+      "labelOpacity": "0.5",
+      "labelDisplay": "flex",
+      "metrics": {
+        "visible": true,
+        "opacity": 0.5,
+        "root": true
+      }
+    },
+    {
+      "step": "updateTransition-0",
+      "leaderCount": 0,
+      "leaderOpacity": null,
+      "labelOpacity": "0",
+      "labelDisplay": "flex",
+      "metrics": {
+        "visible": false,
+        "opacity": 0,
+        "root": true
+      }
+    },
+    {
+      "step": "complete-0",
+      "leaderCount": 0,
+      "leaderOpacity": null,
+      "labelOpacity": "0",
+      "labelDisplay": "flex",
+      "metrics": {
+        "visible": false,
+        "opacity": 0,
+        "root": true
+      }
+    }
+  ],
+  "errors": []
+}

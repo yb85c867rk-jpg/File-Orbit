@@ -1,0 +1,52 @@
+﻿FileOrbit Recovery Slice 1 identity corrections r86
+
+Scope: storage layer only. No scheduler, startup prompt/install, Save retirement wiring, main.mjs, editor/history/graph/viewer, user-document, capacity, pruning, or migration changes. Slice 1 remains not accepted.
+
+R1 — complete source identity for fork creation
+Root cause: createRecoveryWorkspace checked source active generation and checkpoint ID, but did not compare forkedFrom.workspaceToken with the stored source token, and did not require the claim's checkpointId/generation to match the requested fork. A wrong valid-format token or a generation-1 claim could create a child for generation 2.
+Correction: inside the child-creation readwrite transaction, require exact agreement among:
+- source workspace key, stored source.workspaceId, forkedFrom.workspaceId;
+- stored source.workspaceToken, forkedFrom.workspaceToken;
+- forkedFrom checkpoint ID/generation, source active generation, source checkpoint record workspace ID/token/ID/generation;
+- claim ID, claim.checkpointId, claim.checkpointGeneration;
+- source active state, source claim presence, unexpired claim.
+All checks happen before workspaces.put(child). Rejections abort with no child/control write. forkedFrom is persisted from the validated captured identity only, never substituted with current values.
+
+R2 — checkpoint identity bound to workspace token
+Root cause: loadRecoveryCheckpoint validated the checkpoint schema but not checkpoint.workspaceId/workspaceToken against the containing workspace control, so a checkpoint with a corrupted token was returned.
+Correction: shared checkpointIdentityError() validates:
+- checkpoint.workspaceId === workspace.workspaceId and expected workspace ID;
+- checkpoint.workspaceToken === workspace.workspaceToken and expected token;
+- checkpoint.checkpointGeneration === expected active generation;
+- checkpoint.checkpointId === expected checkpoint ID when supplied.
+Applied at:
+- loadRecoveryCheckpoint (throws recovery-checkpoint-identity-mismatch);
+- claimSource (throws before issuing a claim);
+- listRecoveryCandidates (identity-inconsistent checkpoint is not eligible);
+- discardRecoveryWorkspace (identity before deletion);
+- supersedeRecoverySource (source and child identity rechecked atomically; child preflight failure remains child-not-durable).
+No automatic repair, rewrite, or deletion occurs.
+
+Test-harness note: FakeIndexedDB now supports get() on compound array keys and correctly applies version upgrades. These are test-only model fixes; product IndexedDB calls are unchanged.
+
+Tests added:
+- wrong valid-format source token rejected; no child; source state/checkpoint/bytes/claim/controlVersion/usage unchanged;
+- generation-1 claim against generation-2 source rejected;
+- mismatched claim checkpoint ID rejected;
+- expired claim rejected;
+- valid exact-identity fork succeeds and stores the exact captured identity;
+- checkpoint token mismatch rejected by load and excluded from candidates, preserving stored records/accounting;
+- checkpoint workspaceId mismatch (controlled fake-store corruption where IndexedDB keyPath cannot naturally express it) rejected by load and excluded from candidates;
+- valid load/candidate behavior unchanged;
+- inconsistent child identity cannot authorize supersession; inconsistent source identity cannot authorize supersession; source remains active and accounting unchanged.
+
+Executed results:
+- recovery.test.mjs: 31 tests, 30 passed, 0 failed, 1 skipped.
+- persistence + upgrade + lifecycle + recovery: 74 tests, 73 passed, 0 failed, 1 skipped.
+- backup codec + adapter: 18/18 passed.
+- P1b actual main-entry: 70/70 passed.
+- full tests/engine: 869 tests, 868 passed, 0 failed, 1 skipped, 0 todo.
+- syntax checks: 11 modules passed.
+Skipped test remains the fake-IndexedDB cross-tab concurrency case. Native IndexedDB serialization is NOT RUN and is not claimed. This limitation is separate from the r86 identity defects.
+
+Native browser IndexedDB upgrade, quota, and multi-tab behavior remain NOT RUN.

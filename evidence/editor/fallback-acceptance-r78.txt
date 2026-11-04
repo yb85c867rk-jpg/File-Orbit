@@ -1,0 +1,26 @@
+﻿FileOrbit fallback first-Save acceptance r78
+
+No production Save-routing defect found. Added missing fallback evidence for both origins; test-support repository fixture/record hooks and decode/download instrumentation only.
+
+Import Backup fallback (actual Upload input, writable APIs absent):
+- Synthesized distinct Import package (imp-root, exact %PDF-import-exact).
+- Edit Folder submitted once; revision +1; history undo +1; one download handoff; anchor filename *.map (no .map.map); no handle; dirty; no Saved; status Download started/cannot confirm; owner valid; zero IDB.
+- Retry form submit: second handoff only; same owner; revision/history/ids unchanged; decoded content has edit and exact bytes.
+- Close: edit persists, owner released, dirty, attachment bytes exact.
+- Save-and-continue with distinct incoming package: one handoff, prompt remains, incoming not committed, cancel keeps outgoing; second run handoff then Discard twice installs incoming once; exact incoming bytes.
+
+Previous local fallback (fixture via repository boundary; actual dialog):
+- Stable node IDs and exact note.txt bytes reconstructed.
+- Same edit/retry/close assertions with exact download bytes; original repository record tree/bytes unchanged; zero IDB during file actions.
+- Save-and-continue Cancel/Discard same as import; incoming install once.
+
+Download counting: patched URL.createObjectURL and owned anchor createElement capture; counts separate from button clicks.
+
+Results: P1b67/67, codec+adapter11/11, full828/828. Native NOT RUN.
+
+Coverage complete within Node/mock for the listed fallback matrix. Entire file-document transition not complete: recovery-store conversion pending.
+
+Remaining:
+- Native browser download completion/file pickers/permissions/physical write/mobile NOT RUN.
+- Writable first-Save for Import/local remains r77 evidence; this slice fallback only.
+- Repository fixture setup writes distinguished from production actions; production save count unchanged.

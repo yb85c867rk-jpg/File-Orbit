@@ -1,0 +1,2 @@
+﻿browser native E2 menu/forms/IME/focus/link-text verification: NOT RUN
+Mocked Node DOM tests do not establish native browser behavior.

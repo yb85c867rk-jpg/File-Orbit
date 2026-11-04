@@ -1,0 +1,36 @@
+{
+  "desktop": {
+    "order": [
+      "search-toggle",
+      "undo-history",
+      "redo-history",
+      "embed-action",
+      "fullscreen-action",
+      "copy-map",
+      "download-backup"
+    ],
+    "copy": {
+      "aria": "Copy Map",
+      "title": "Copy Map",
+      "tooltip": "Copy Map",
+      "disabled": true,
+      "available": "false",
+      "svg": true
+    },
+    "sidebar": {
+      "close": false,
+      "add": false,
+      "refresh": "Refresh list",
+      "actions": "\n          Refresh list\n        "
+    },
+    "overflow": false
+  },
+  "narrow": {
+    "innerWidth": 390,
+    "scrollWidth": 390,
+    "overflow": false,
+    "toolbarHeight": 99,
+    "buttonCount": 8
+  },
+  "capturedAt": "2026-11-01T03:00:04.102Z"
+}

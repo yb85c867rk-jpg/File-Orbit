@@ -1,0 +1,40 @@
+﻿FileOrbit Slice 6 native browser attempt log
+Executed: 2026-10-31 19:47–19:52 +13:00
+
+1. Existing FileOrbit server
+- URL: http://127.0.0.1:8099/tests/harness/m5-exploration/
+- HTTP status: 200
+- index bytes: 47535
+- served index SHA-256: 64A02389C475076C34F2013A8FC1EF6AA70E07A448EF72BB1272F2DA10203834
+- served main SHA-256: 9BE40D6BE5EFB1A69159FD37CD1F1BC08EC46E543D8DE3EBD06073E1D2ADD5C6
+- disk hashes matched served hashes and the r120 archive.
+
+2. Headed browser launch attempts
+- Chrome executable 156.0.8078.48, dedicated profile, --remote-debugging-port=9223:
+  result: process exited; no CDP endpoint.
+- Edge executable 156.0.4314.50, dedicated profile, --remote-debugging-port=9224:
+  result: process exited; no CDP endpoint.
+- Existing CDP endpoint 9222:
+  Browser: Edg/156.0.4314.50
+  UA: HeadlessChrome/156.0.0.0
+  No native window/picker.
+
+3. Browser initialization and layout
+- New browser context + target created through CDP (no user profile/storage mutation).
+- Page title: FileOrbit — M5 Exploration
+- Secure context: true
+- typeof showDirectoryPicker/showOpenFilePicker/showSaveFilePicker: function/function/function
+- Orbit action/panel: present
+- Desktop 1414x773: no horizontal overflow
+- Narrow 390x844: no horizontal overflow
+- Choice dialog: Create Orbit, Open Orbit, Save standalone, Cancel, Choose Parent Folder, Back
+- Rail expanded; Details control toggled to "Show details"; theme switched to light.
+- Screenshots: browser-desktop-clean.png, browser-narrow-clean.png, browser-choice-clean.png, browser-rail-expanded.png, browser-details-collapsed.png, browser-theme.png.
+
+4. Native filesystem interaction
+- NOT EXECUTED. No native picker could be displayed; no API-injected handle was used.
+- Therefore no native create/open/save/refresh/permission/external-change/recovery rows are marked PASS.
+
+5. Mobile
+- adb: unavailable; idevice_id: unavailable.
+- Android/iPhone: NOT RUN. No localhost-from-phone assumption was made and no network exposure was changed.

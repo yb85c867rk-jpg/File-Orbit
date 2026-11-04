@@ -1,0 +1,14 @@
+﻿Native keyboard checks — r124
+Status: NOT RUN
+
+Reason: the available Chromium target is a headless Edge session (`HeadlessChrome/156`). Native keyboard/picker interaction by a human was not available. No native keyboard result is claimed.
+
+Separate mock/unit coverage:
+- populated-list Shift+Tab first -> Close
+- populated-list Tab Close -> first
+- last map row -> footer control
+- focus preserved/recovered across list replacement
+- empty and unsupported-directory states
+- Escape close and focus restoration
+
+Automated full engine: 1083 tests, 1082 passed, 1 skipped, 0 failed.

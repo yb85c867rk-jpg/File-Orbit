@@ -1,0 +1,30 @@
+[
+  {
+    "file": "r160-dialog-desktop.png",
+    "width": 1200,
+    "height": 800,
+    "bytes": 30525,
+    "sha256": "D75673CCD24802CF2D01D98D9F76127BA6DDE863262C35FD6691DB7F3CA225A8"
+  },
+  {
+    "file": "r160-dialog-narrow.png",
+    "width": 390,
+    "height": 700,
+    "bytes": 26879,
+    "sha256": "D3F15DE4575F91B41B9B0DB6EBC329DF354BE862430EDA77278CCC1F745B1640"
+  },
+  {
+    "file": "r162-open-desktop.png",
+    "width": 1200,
+    "height": 800,
+    "bytes": 32558,
+    "sha256": "5AA6712461D4287346489498D5EB419985AAE91BB5A73CD1D904FA9715482A9A"
+  },
+  {
+    "file": "r162-open-narrow.png",
+    "width": 390,
+    "height": 700,
+    "bytes": 25760,
+    "sha256": "E85C65CEB53004B0BF4F366EEA865D8576762830D7DE2EEA4F35EC8814B0C8DE"
+  }
+]

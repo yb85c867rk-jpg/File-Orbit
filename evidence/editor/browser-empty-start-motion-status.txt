@@ -1,0 +1,5 @@
+﻿FileOrbit empty-start / normal-motion evidence.
+Normal-motion search reveal: mocked controlled RAF + actual main.mjs subprocess. NOT native browser.
+No-map startup, empty Create Map, no-map resize/theme/fullscreen, existing-map suspension/cancel,
+successful replacement, no-map install failure, hidden Markdown viewer, 780 ms PDF reveal.
+Native browser verification: NOT RUN.

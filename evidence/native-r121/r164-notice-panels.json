@@ -1,0 +1,24 @@
+{
+  "map": {
+    "left": 204,
+    "top": 78,
+    "right": 1071,
+    "bottom": 800,
+    "width": 867,
+    "height": 722
+  },
+  "shell": {
+    "left": 357.5,
+    "top": 745.8125,
+    "right": 917.5,
+    "bottom": 780,
+    "width": 560,
+    "height": 34.1875
+  },
+  "centerDelta": 0,
+  "inside": true,
+  "panels": {
+    "nav": "true",
+    "details": "true"
+  }
+}

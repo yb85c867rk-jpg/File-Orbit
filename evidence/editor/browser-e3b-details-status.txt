@@ -1,0 +1,5 @@
+﻿FileOrbit E3-B details-policy browser verification: NOT RUN.
+No browser executable/automation was available without installing dependencies.
+Node integration tests compare actual Add/reparent details targets with recorded viewAfter and Undo/Redo
+restoration, including visible-parent fallback, preserved reparent details, explicit null, and camera/framing.
+Native browser details panel behavior was not executed.

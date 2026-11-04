@@ -1,0 +1,7 @@
+﻿FileOrbit create Map browser blockers evidence.
+Actual main entry: hidden graph-host clientWidth 0, graph-wrap 1100x473, surface 1100, no-map direct create,
+existing-map confirm only, current viewport after resize (canvas 900), unchanged cancel camera,
+zero-viewport error/retry, Dark->Light / Light->Dark draw colors, first-create no history claim.
+CSS source tests: no stray quote, hidden form/actions/preview/confirm, hidden file inputs, centered backdrop,
+scrollable preview/dialog.
+Native browser verification: NOT RUN.

@@ -1,0 +1,6 @@
+﻿FileOrbit Delete pending/E2E browser verification: NOT RUN.
+No browser executable/automation was available without installing dependencies.
+Node tests cover pending identity validation, real controller/panel Continue/Discard intent emission,
+menu -> real confirmation -> shared installer -> actual candidate frame/hit -> Undo/Redo,
+Cancel/Escape, explicit target difference, and installation failure preservation.
+Native browser flow not executed; actual details state vs history viewAfter is asserted from finalized view, not via a browser panel.

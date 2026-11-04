@@ -1,0 +1,29 @@
+﻿FileOrbit Recovery Slice 2 review corrections r88
+
+R1 — later edit queued when Save completes
+Root cause: retirement advanced owner.controlVersion while a debounce-queued request retained the pre-retirement expectedControlVersion. processQueue skipped that request without reconciling the later dirty state.
+Correction: after confirmed retirement or abandonment, the scheduler checks the captured owner's latest source. If its dirty revision is later than the retired reservation, it drops the obsolete request's lease and captures a fresh request with the current controlVersion. Pre-Save requests at the saved revision remain fenced. Debounce, coalescing, and one writer remain.
+Tests: R+1 pending, R+1 preparing, R+1 already committed, delayed pre-Save writer, failed/abandoned Save with queued newer work. Assertions cover tree, revision, attachment bytes, and generation > saveSequence. Actual main-entry: deferred writable close, real later history commit, close succeeds before debounce, latest dirty state remains recoverable.
+
+R2 — stale recovery completion must not change replacement session
+Root cause: owner was mutable global state read after awaits; retirement/main save adoption did not recheck the original operation owner.
+Correction: immutable owner + lifecycleToken captured before each await; after every await exact scheduler lifecycle/owner/workspace/token/session/dataset and save-operation identity are validated. beginWorkspace, currentControl, beginDocumentSave, retireDocumentSave, abandonDocumentSave, checkpoint success/failure and cleanup all use captured owners. invalidate() increments lifecycle and invalidates pending workspace creation. Old operations abandon their own reservation by explicit workspace/token; they do not use B's owner or publish diagnostics into B. Main rechecks owns() after retirement and before activeDocument/savedRevision/Saved publication.
+Tests: delayed retirement success/failure followed by replacement; delayed reservation completion; delayed abandonment; delayed workspace creation + invalidation; B controlVersion/owner/diagnostics unchanged. Actual main-entry controlled lifecycle injection: A close succeeds, retirement delayed, replaceSession, release; A does not adopt destination or publish Saved.
+
+R3 — effective counted attachment retention
+Root cause: registry had a Set but no exposed isRetained(), so sweeps deleted retained attachments; Set could not represent independent retainers.
+Correction: independent lease tokens with per-attachment retained counts, isRetained(), idempotent release. Scheduler stores leases, releases each request once; coalescing/success/failure/cancellation/invalidation release only their own leases. Final release permits normal sweep reclamation; clear/destroy remain explicit and idempotent.
+Tests: retained survives empty sweep; two leases, release one; repeated release; final release reclaims bytes; real scheduler shared-attachment coalescing; preparation failure and invalidation release leases without deleting a still-live attachment.
+
+Results:
+- recovery-scheduler.test.mjs: 14/14 passed.
+- attachment history/retention: 9/9 passed.
+- recovery.test.mjs: 31 tests, 30 passed, 1 skipped.
+- persistence + upgrade + lifecycle + recovery + scheduler: 88 tests, 87 passed, 1 skipped.
+- codec/adapter: 18/18 passed.
+- P1b legacy actual main-entry: 70/70 passed.
+- Recovery actual main-entry: 2/2 passed.
+- full tests/engine: 886 tests, 885 passed, 0 failed, 1 skipped, 0 todo.
+- syntax: 7 changed modules passed.
+
+Limitations: native IndexedDB concurrency/upgrade/quota NOT RUN; skipped fake-IDB concurrency case retained. Startup recovery UX/install still planned. R2 replacement-session coverage is scheduler-level plus a controlled main lifecycle injection; no full second-map UI replacement while Save retirement is pending was exercised. Slice 2 is not accepted.

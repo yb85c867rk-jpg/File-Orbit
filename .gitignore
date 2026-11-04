@@ -1,0 +1,12 @@
+﻿# Local/browser data
+.browser-profile*/
+.stage3j*/
+*.sqlite
+*.sqlite3
+*.db
+*.log
+_*extract*/
+_stage/
+*.tmp
+.DS_Store
+Thumbs.db

@@ -1,0 +1,2 @@
+﻿browser native file reservation/picker/classification/badges/IME/focus verification: NOT RUN
+Synthetic files only; mocked Node DOM does not establish native behavior.

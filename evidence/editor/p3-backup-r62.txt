@@ -1,0 +1,32 @@
+﻿FileOrbit P3 import corrections r62
+
+R1 separation:
+- installCreatedMap now takes {request,silent}; import context controls Create Map dialog/status/creationTerminal/pending candidate/ownership cleanup.
+- Import prep/install failures publish import messages and do not close/publish Create Map dialog state.
+- Removed duplicate ensureCreateMapRuntime.
+- Fixed hadPriorMap/available accidental omissions and guarded candidate release.
+
+R2 request ownership:
+- request has id/session/dataset/revision/phase/cancelled.
+- backupImportRequestCurrent checks phase-specific pending/installing ownership, session, revision, dataset, cancellation.
+- Resume only once; pending set before decision; terminal clears installing; destroyed/pending requests release registry.
+- Existing editor Continue/Discard and map Save/Discard/Cancel paths work.
+
+R3 failures:
+- Draw/labels/hit installation failure actual import tests; authoritative map id/revision/count preserved; recovery status reported.
+- Preparation failure/recovery failure not separately induced.
+
+R4 event tests:
+- Actual Upload button click creates file input; actual change event validates, prompts dirty editor, Continue/Discard.
+- Distinct incoming map replacement: old-only node removed; source saved map retains Old Only after reopen.
+- Dirty map Save success/failure/discard/cancel.
+- Imported PDF install -> label/hit -> viewer -> Save independent ID -> reopen source membership.
+- Backup codec pre-cancel and snapshot tests retained.
+
+Executed: P1b 35/35, backup6/6, resources2/2, full791/791. Native NOT RUN.
+
+Remaining NOT RUN:
+- Preparation/layout failure and recovery-failure inert path.
+- Cancel during deferred import codec/hash; destroy during import; stale pending request after external session change; old/new import overlap; duplicate resume integration.
+- Exact imported attachment byte equality in UI (codec covers bytes).
+- Native browser.

@@ -1,0 +1,91 @@
+{
+  "slice": 6,
+  "status": "PARTIAL - native picker/filesystem acceptance BLOCKED",
+  "acceptanceClaimed": false,
+  "executedAtLocal": "2026-10-31T19:50:17+13:00",
+  "host": {
+    "os": "Windows NT 10.0.26300.0",
+    "architecture": "X64"
+  },
+  "browser": {
+    "active": "Microsoft Edge 156.0.4314.50 (HeadlessChrome/156.0.0.0)",
+    "chromeInstalled": "156.0.8078.48",
+    "edgeInstalled": "156.0.4314.50",
+    "nativePickerUiAvailable": false,
+    "reason": "Only a headless Edge CDP target was available. Headed Chrome/Edge launches with dedicated profiles exited without a debuggable window, so no native directory picker could be shown or operated."
+  },
+  "application": {
+    "url": "http://127.0.0.1:8099/tests/harness/m5-exploration/",
+    "title": "FileOrbit — M5 Exploration",
+    "httpStatus": 200,
+    "indexBytes": 47535,
+    "indexSha256": "64A02389C475076C34F2013A8FC1EF6AA70E07A448EF72BB1272F2DA10203834",
+    "mainSha256": "9BE40D6BE5EFB1A69159FD37CD1F1BC08EC46E543D8DE3EBD06073E1D2ADD5C6",
+    "servedSourceMatchesDisk": true,
+    "servedSourceMatchesR120Archive": true
+  },
+  "baseline": {
+    "r120Archive": "review/fileorbit-orbit-slice5-r120.zip",
+    "r120Sha256": "935B871B8C0478596FC365E1A6BDE700B150CE659DA29597ABD4BFFF8696D9B8",
+    "r119Sha256": "B75484A31D9911E468BBEE80BBF479D09463D0721905DE208064208C0EE3E07C",
+    "workingTreeSourceChanged": false
+  },
+  "capabilities": {
+    "isSecureContext": true,
+    "showDirectoryPicker": "function",
+    "showOpenFilePicker": "function",
+    "showSaveFilePicker": "function",
+    "note": "Presence of API functions is not native picker/write evidence."
+  },
+  "fixtures": {
+    "root": "evidence/native-r121/FileOrbit-Native-Acceptance",
+    "manifest": "evidence/native-r121/fixture-manifest.sha256",
+    "files": 9,
+    "populatedMapBytes": 1554,
+    "zeroByteMapChosen": true,
+    "invalidMapChosen": true
+  },
+  "nativeScenarios": {
+    "A": "BLOCKED - no native picker/window",
+    "B": "BLOCKED - no native picker/window",
+    "C": "BLOCKED - no native picker/window",
+    "D": "BLOCKED - no native picker/window",
+    "E": "BLOCKED - no native picker/window",
+    "F": "BLOCKED - no native picker/window",
+    "G_browser_layout": "PARTIAL/PASS - desktop, narrow, rail, details, theme via actual rendered browser; editor-draft/reparent/fullscreen not run"
+  },
+  "platforms": {
+    "pc": "PARTIAL - source/server and browser layout verified; native blocked",
+    "android": "NOT RUN - no device/adb configured",
+    "iphone": "NOT RUN - no device configured",
+    "firefox_safari": "NOT RUN"
+  },
+  "defects": [],
+  "limitations": [
+    "Native directory picker, permission, write, close, and external-change behavior remain unverified.",
+    "No crash durability, atomic/exclusive creation, compare-and-write, or rollback claim.",
+    "A failed/invalidated creation may leave empty or partial leftovers; no automatic cleanup.",
+    "A stale Open Orbit selection may remain in the controller.",
+    "No persisted Orbit handle, watching, recursion, rename/delete, or synchronization."
+  ],
+  "artifacts": {
+    "desktopScreenshot": "evidence/native-r121/browser-desktop-clean.png",
+    "narrowScreenshot": "evidence/native-r121/browser-narrow-clean.png",
+    "choiceScreenshot": "evidence/native-r121/browser-choice-clean.png",
+    "railScreenshot": "evidence/native-r121/browser-rail-expanded.png",
+    "detailsScreenshot": "evidence/native-r121/browser-details-collapsed.png",
+    "themeScreenshot": "evidence/native-r121/browser-theme.png",
+    "browserEvidence": "evidence/native-r121/browser-evidence-clean.json",
+    "layoutEvidence": "evidence/native-r121/browser-layout.json"
+  },
+  "userReportedPcAcceptance": {
+    "recordedAt": "2026-10-31",
+    "status": "USER REPORTED PASS",
+    "independentlyVerified": false,
+    "statement": "User reports all functions tested on their PC work correctly.",
+    "limitations": [
+      "No browser/version, screenshots, hashes, or per-scenario log supplied in this report.",
+      "Not independent verification or complete cross-platform acceptance."
+    ]
+  }
+}

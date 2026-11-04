@@ -1,0 +1,11 @@
+﻿FileOrbit initial label installation evidence.
+Actual Create Map path:
+- label host concealed but measurable during candidate install.
+- sparse new map initial labels: Map, Docs, Other, Notes.md, keep.txt without click.
+- label viewport 1100x473; visibleCount 5; unmeasurable 0; textMismatch 0.
+- initial filename activation opens Notes.md viewer via current registry.
+- replacement labels only Second Map/Second.md; old Notes labels absent.
+- PDF icon red #F87171; text icon green #22C55E.
+- resized restore labels visible with positive viewport.
+Full tests/engine: 704/704.
+Native browser verification: NOT RUN.

@@ -1,0 +1,66 @@
+{
+  "before": {
+    "sectionHidden": true,
+    "toggleHidden": true,
+    "toggleDisabled": true
+  },
+  "connected": true,
+  "browserClose": true,
+  "expandedRail": {
+    "railExpanded": "true",
+    "toggleHidden": false,
+    "toggleDisabled": false,
+    "ariaExpanded": "true",
+    "ariaLabel": "Orbit: A very long connected Orbit directory name for truncation and accessibility",
+    "title": "Orbit: A very long connected Orbit directory name for truncation and accessibility",
+    "panelHidden": false,
+    "name": "A very long connected Orbit directory name for truncation and accessibility",
+    "nameClient": 121,
+    "nameScroll": 410,
+    "labelDisplay": "block",
+    "actions": [
+      {
+        "id": "orbit-refresh",
+        "disabled": false
+      },
+      {
+        "id": "orbit-close",
+        "disabled": false
+      },
+      {
+        "id": "orbit-add",
+        "disabled": true
+      }
+    ],
+    "panelHeight": 108.140625,
+    "listHeight": 0,
+    "overflow": false
+  },
+  "menuCollapsed": {
+    "ariaExpanded": "false",
+    "panelHidden": true,
+    "panelHeight": 0,
+    "listHeight": 0
+  },
+  "narrowCollapsed": {
+    "innerWidth": 390,
+    "innerHeight": 844,
+    "scrollWidth": 390,
+    "railExpanded": "false",
+    "orbitToggleVisible": true,
+    "panelHidden": true,
+    "panelHeight": 0,
+    "listScrollHeight": 0,
+    "listClientHeight": 0,
+    "overflow": false
+  },
+  "narrowExpanded": {
+    "railExpanded": "true",
+    "toggleVisible": true,
+    "ariaExpanded": "true",
+    "panelHidden": false,
+    "labelDisplay": "block",
+    "overflow": false
+  },
+  "capturedAt": "2026-10-31T22:09:57.290Z"
+}

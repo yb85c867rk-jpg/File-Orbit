@@ -1,0 +1,30 @@
+﻿FileOrbit P1b verification closure (r41)
+
+R1 real install boundaries:
+- Label failure is injected inside installFrame's labels adapter before overlay.update.
+- Hit failure is injected inside installFrame's installHit adapter.
+- Candidate operation is open-saved-map. Counters confirm candidate boundary and recovery:labels/recovery:installHit.
+- Recovery installs the previous scene, labels, hits, root details; restored filename opens viewer afterward.
+- Candidate tree/registry are never committed; old durable id, revision, structural root and history remain.
+- Guard releases after recovery; injected failures are cleared.
+
+R2 real recovery failure:
+- Candidate hit failure triggers the real recover callback and recoverAuthoritativeSession.
+- Recovery labels failure makes recover return false; no manual expected-state assignment.
+- Production keeps original error and appends separate "Recovery failed:" text.
+- Interaction remains creation-suspended/inert; details report unavailable; Create cannot open a dialog.
+- Ownership is released; no duplicate recovery or release.
+
+R3 narrow menu:
+- Actual Map menu button opens the menu; actual Open item opens the library; menu closes and focus returns to the Map button.
+- Dirty editor form: Continue editing preserves value; Discard resumes Open once; only one library overlay is published.
+
+Executed:
+- Persistence: 31/31.
+- P1b main-entry: 13/13.
+- Full tests/engine: 749/749.
+- Native browser IndexedDB: NOT RUN.
+
+Limitations:
+- No native quota/cross-tab/crash/eviction verification.
+- Browser storage is not permanent.

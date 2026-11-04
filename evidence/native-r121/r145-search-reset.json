@@ -1,0 +1,46 @@
+{
+  "revision": "r145",
+  "change": "Search-highlight reset corrections",
+  "clearSearch": {
+    "query": "",
+    "highlightIds": [],
+    "announcement": "",
+    "redraw": "normal"
+  },
+  "datasetReset": {
+    "clearedBeforeReplacement": true,
+    "finalFrameNormal": true,
+    "createOpenRecoverySharedBoundary": true
+  },
+  "rollback": {
+    "failedReplacementPreservesSurvivingSearch": true
+  },
+  "closingSearch": "retains query/highlights",
+  "embed": {
+    "deferred": true,
+    "enabled": false
+  },
+  "verification": {
+    "focused": "115/115",
+    "full": "1107 tests, 1106 passed, 1 skipped, 0 failed",
+    "native": "NOT RUN",
+    "archiveFocused": "29/29"
+  },
+  "browser": {
+    "clear": "query/announcement empty; no red folders",
+    "replacement": "query/announcement empty; no stale red frame",
+    "exceptions": []
+  },
+  "preserved": {
+    "r144": "A3AA9E07F3B67D9301FF4D49447CF5679AE8C9153240794F755513527B03FCFE"
+  },
+  "archive": {
+    "path": "review/fileorbit-search-reset-r145.zip",
+    "sha256": "CB4590093B54E1FB7258813B59D6272DECF5E0EF180EB9F2B507254FE1C70692",
+    "entries": 1354,
+    "manifestMismatches": 0
+  },
+  "application": {
+    "mainSha256": "231DF76410F0AA328FE2DBCD041804C44046002C4C61F6A369E08B4160EF25E1"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "generatedAt": "2026-11-04T09:18:21.528Z",
+  "sources": [
+    {
+      "file": "..\\p1b.txt",
+      "tests": 69,
+      "passed": 69,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "file": "..\\remainder.txt",
+      "tests": 1213,
+      "passed": 1212,
+      "failed": 0,
+      "skipped": 1
+    }
+  ],
+  "totals": {
+    "tests": 1282,
+    "passed": 1281,
+    "failed": 0,
+    "skipped": 1
+  },
+  "report": {
+    "file": "docs/engine/FILEORBIT-STAGE-3J-LIFECYCLE-CORRECTION.md",
+    "expected": "1,282 tests, 1,281 pass, 1 skip",
+    "matched": true
+  }
+}

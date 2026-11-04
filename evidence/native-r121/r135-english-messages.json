@@ -1,0 +1,47 @@
+{
+  "revision": "r135",
+  "change": "English application-generated user messages",
+  "translatedSources": [
+    "src/engine/hypertree/exploration/drop-feedback.js",
+    "src/engine/hypertree/exploration/reparent-action.js"
+  ],
+  "remainingHangulInProduction": false,
+  "userContentPreserved": true,
+  "messages": {
+    "empty": "Drop onto a folder to move this item.",
+    "data": "Drop onto a folder, not a data item.",
+    "root": "The root folder cannot be moved.",
+    "self": "An item cannot be moved into itself.",
+    "descendant": "A folder cannot be moved into one of its subfolders.",
+    "existingParent": "This item is already in that folder.",
+    "stale": "The map changed. Please try dragging again.",
+    "generic": "This item cannot be moved.",
+    "preparation": "Could not prepare the move.",
+    "installation": "Could not apply the move."
+  },
+  "verification": {
+    "focused": "35/35 passed",
+    "full": "1100 tests, 1099 passed, 1 skipped, 0 failed",
+    "nativePointer": "NOT RUN",
+    "archiveFocused": "14/14 passed; archive/disk reparent hashes match"
+  },
+  "application": {
+    "dropFeedbackSha256": "DAE25D5936786AC216B862CBF55DEAF3BC1509FDB43164CA77FBBADA5BCB9195",
+    "reparentSha256": "E06105256DDF6F8C584690FCD5FA2896E5EA1352E5BFE598CD3870FC0BEE439A",
+    "runnerSha256": "3CA68EC89A350A6A788578A75D7BC412D3469E672DB3BD42518C9E40468DE17A"
+  },
+  "evidence": [
+    "evidence/native-r121/english-messages-focused-r135.txt",
+    "evidence/native-r121/english-messages-full-r135.txt",
+    "evidence/native-r121/r135-archive-focused.txt"
+  ],
+  "limitations": [
+    "native pointer verification NOT RUN; actual pointer suite is synthetic"
+  ],
+  "archive": {
+    "path": "review/fileorbit-english-messages-r135.zip",
+    "sha256": "F818DF990B8AEA3B09437656A57E55CE1F46D2CF738306252991EAEF6B4EC4AD",
+    "entries": 1193,
+    "manifestMismatches": 0
+  }
+}

@@ -1,0 +1,8 @@
+﻿FileOrbit Create Map button lifecycle evidence.
+Actual same-dialog sequence: first create, reopen, disabled Replace click no-op, preparation failure,
+valid preview, confirmation Back/Replace/Cancel enabled, Back restores preview, re-enter confirmation,
+double-click Replace commits exactly once/datasetToken +1, reopen controls reset, Cancel preserves map,
+zero-viewport retry restores Create enabled.
+Fake DOM click respects disabled semantics.
+Full tests/engine: 697/697.
+Native browser verification: NOT RUN.

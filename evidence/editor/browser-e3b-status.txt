@@ -1,0 +1,5 @@
+﻿FileOrbit E3-B browser verification: NOT RUN.
+No browser executable/automation was available without installing dependencies.
+Node integration tests cover actual Add Folder/Add File wrappers, real reparent action, structural
+inverse/redo commands, stable IDs, expected-state/dataset rejection, and attachment refs.
+Native button/drag replay was not executed.

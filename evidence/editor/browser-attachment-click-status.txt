@@ -1,0 +1,5 @@
+﻿FileOrbit attachment-name click browser verification: NOT RUN.
+No browser executable/automation was available without installing dependencies.
+Source-supported issue: pointer capture can make click target the label host; activation now falls back to installed label geometry.
+Node tests cover host-target coordinates, name/icon classification, drag suppression, activation diagnostics,
+and async viewer failure handling. Native browser pointer-capture click behavior was not reproduced.

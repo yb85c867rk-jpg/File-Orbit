@@ -1,0 +1,58 @@
+{
+  "pending": {
+    "open": true,
+    "busy": "true",
+    "current": "Current folder: Old",
+    "status": "Loading folder contents…",
+    "rows": []
+  },
+  "newBusy": {
+    "open": true,
+    "busy": "true",
+    "current": "Current folder: New",
+    "status": "Loading folder contents…",
+    "rows": []
+  },
+  "afterOld": {
+    "open": true,
+    "busy": "true",
+    "current": "Current folder: New",
+    "status": "Loading folder contents…",
+    "rows": []
+  },
+  "newReady": {
+    "open": true,
+    "busy": "false",
+    "current": "Current folder: New",
+    "status": "0 folders, 1 Orbit file.",
+    "rows": [
+      "new.orbitOrbit file"
+    ]
+  },
+  "denialPending": {
+    "open": true,
+    "busy": "true",
+    "current": "Current folder: Old",
+    "status": "Loading folder contents…",
+    "rows": []
+  },
+  "beforeDeny": {
+    "open": true,
+    "busy": "false",
+    "current": "Current folder: New",
+    "status": "0 folders, 1 Orbit file.",
+    "rows": [
+      "new.orbitOrbit file"
+    ]
+  },
+  "afterDeny": {
+    "open": true,
+    "busy": "false",
+    "current": "Current folder: New",
+    "status": "0 folders, 1 Orbit file.",
+    "rows": [
+      "new.orbitOrbit file"
+    ]
+  },
+  "orbitName": "New"
+}

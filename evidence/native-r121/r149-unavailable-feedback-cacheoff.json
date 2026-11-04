@@ -1,0 +1,16 @@
+{
+  "res": {
+    "opened": true,
+    "status": "This file has no attachment to preview.",
+    "kind": "actionable",
+    "state": {
+      "message": "This file has no attachment to preview.",
+      "kind": "actionable",
+      "token": 6,
+      "timer": false
+    },
+    "backdrop": false
+  },
+  "exceptions": [],
+  "capturedAt": "2026-11-02T00:07:44.604Z"
+}

@@ -1,0 +1,5 @@
+﻿FileOrbit shared drop-action browser verification: NOT RUN.
+No browser executable/automation was available without installing dependencies.
+Mocked tests exercise the shared pointerup action, exact feedback text, data/folder/empty/stale
+resolution, feedback timer, and no-mutation rejection. They do not establish real pointer capture
+or pointerup behavior in a browser.

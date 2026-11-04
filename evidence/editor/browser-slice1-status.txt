@@ -1,0 +1,6 @@
+﻿Slice 1 browser-native verification: NOT RUN.
+Mocked DOM/Canvas/Node evidence only.
+Not verified in a browser: Korean IME, real focus/caret behavior, visual camera/framing,
+pointer-driven menu placement, drag/drop, pan/zoom, and 780 ms transition rendering.
+CSS computed-display/focusability and real-harness browser verification: NOT RUN (no browser executable/automation available; no dependencies installed).
+

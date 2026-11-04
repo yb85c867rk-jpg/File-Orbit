@@ -1,0 +1,56 @@
+{
+  "revision": "r141",
+  "change": "Startup glyph and feedback scope corrections",
+  "startup": {
+    "fullscreenGlyphConstantsRestored": true,
+    "productionGlyphDomInSharedMainEntry": true,
+    "svgPath": "button#fullscreen-action > svg > path#fullscreen-glyph",
+    "browserRuntimeExceptions": [],
+    "devFitBindingGuarded": true
+  },
+  "r2": {
+    "progressReplacesActionable": false,
+    "scopeValidation": [
+      "operation",
+      "ownership",
+      "session",
+      "dataset"
+    ],
+    "duplicateOwnershipComparisonRemoved": true,
+    "legitimateInstallRenewal": [
+      "save",
+      "open",
+      "import",
+      "download"
+    ],
+    "criticalWarningDownload": "preserved through start, completion, cancellation",
+    "normalDownload": "progress -> routine handoff -> 4s expiry",
+    "downloadFailure": "actionable"
+  },
+  "verification": {
+    "p1b": "69/69",
+    "focused": "90/90",
+    "full": "1103 tests, 1102 passed, 1 skipped, 0 failed",
+    "native": "NOT RUN",
+    "browserFullscreen": "NOT RUN",
+    "archiveFocused": "17/17"
+  },
+  "browser": {
+    "startupNoExceptions": true,
+    "hiddenDocumentBox": "0x0",
+    "screenshots": "dark/light desktop/narrow"
+  },
+  "preserved": {
+    "r140": "F20E1345FAF4A6713C693AD50236E2E5C0CED70D3BD27C7459F643D354886935",
+    "r139": "3824373A9CE390234C1BCC80AC19E1DD1BCAE24DAFFB853999887DE3C2A15E7A"
+  },
+  "archive": {
+    "path": "review/fileorbit-feedback-r141.zip",
+    "sha256": "0EA9292945DCBCAAFC483CA03B9580BC95C17255F3DFAE6FB8BC48C3855EC0C4",
+    "entries": 1300,
+    "manifestMismatches": 0
+  },
+  "application": {
+    "mainSha256": "C7A583BB0DD96B2E1A44467C77ED206CCD80ACE893B2158702E1681D1B19E960"
+  }
+}

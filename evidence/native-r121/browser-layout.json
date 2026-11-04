@@ -1,0 +1,18 @@
+{
+  "rail": {
+    "expanded": false,
+    "width": 204,
+    "label": "Collapse navigation"
+  },
+  "details": {
+    "hidden": false,
+    "label": "Show details",
+    "width": 129
+  },
+  "theme": {
+    "theme": "light",
+    "bodyClass": "",
+    "label": "Switch to dark theme"
+  },
+  "capturedAt": "2026-10-31T06:51:11.619Z"
+}

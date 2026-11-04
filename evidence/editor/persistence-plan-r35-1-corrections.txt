@@ -1,0 +1,40 @@
+﻿FileOrbit persistence plan revision r35.1 — R1–R4 corrections
+
+R1 Attachment mapping lifecycle
+- Persistence controller owns session attachmentIds map.
+- Save builds non-mutating proposal and persisted tree with persistent IDs.
+- Live tree/history unchanged; proposal published only after transaction completion for originating session.
+- Failed/stale save discards proposal.
+- Every save checks durable row existence/size; missing row requires Blob reinsert.
+- Sequences documented: first/metadata, add, failure/retry, dataset replacement, delete/undo/reinsert.
+
+R2 Save-before-replace
+- Policy A chosen: bounded replacement guard blocks mutations through save and handoff.
+- Ordinary Save remains non-locking; newer edits stay dirty.
+- Save success alone does not authorize discard; dataset/revision revalidated.
+- Guard release on failure, cancel, target cancel, handoff; no indefinite lock.
+- Editor drafts handled before guard.
+
+R3 Durable vs runtime ownership
+- IndexedDB retains only saved-tree attachments.
+- Runtime registry keeps live/history/pending Blobs.
+- Durable cleanup independent of history; no history-only retention in IDB.
+- Undo → Save reinserts missing bytes; mapping is not proof of durable content.
+- Runtime sweeps separated from durable cleanup.
+
+R4 Integrity/quota
+- P1/P2 structural/reference/size validation only; sha256:null; no same-size corruption claim.
+- Portable backup mandates full SHA-256.
+- 512 MiB is application hard cap, separate from browser quota and 100 MiB/map.
+- Transactional meta.libraryUsage serializes concurrent-tab cap enforcement.
+- Incremental/peak put bytes checked; deleted bytes not assumed free before commit.
+- Metadata-only save checks durable rows; missing rows make it byte-growing.
+- Delete Saved Map available in P1b.
+
+Planning checks:
+- No src/ or tests/ changes versus r35 (hash comparison).
+- Plan revision r35.1 present.
+- Controls chars: 0.
+- Removed soft-cap terminology and protectedAttachmentIds history retention.
+- No storage implementation, no dependencies, no IDB writes, no application tests.
+- Native browser verification: NOT RUN.

@@ -1,0 +1,5 @@
+﻿FileOrbit attachment-viewer keyboard browser verification: NOT RUN.
+No browser executable/automation was available without installing dependencies.
+Node tests cover non-array HTMLCollection traversal, uppercase link tag matching, PDF focus fallback,
+shared guard behavior, PDF deferred cleanup, UTF-8 boundaries, and file-name/icon activation.
+Native browser focus, PDF, and image viewing remain NOT RUN.

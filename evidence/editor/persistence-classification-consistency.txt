@@ -1,0 +1,20 @@
+﻿FileOrbit P1a classification consistency correction (r38)
+
+Reproduced before:
+- buildSaveSnapshot() TXT snapshot; tree data.classification=null; payload classification TXT.
+- repository.save() previously succeeded.
+- repository.load() then rejected attachment-classification-mismatch.
+
+After:
+- ownSaveSnapshot() always compares tree classification (undefined/null normalized to null) against payload classification using shared sameClassification().
+- Null/deleted tree classification against non-null payload rejects before any write.
+- Tree non-null against null payload rejects.
+- Both null is accepted by save and load; durable row/ref/tree stay null.
+- Matching non-null classifications and semantically equal objects with different key insertion order save/load successfully.
+- Rejected overwrite and rejected new save leave records, generation, usage, tree, mapping, and caller-owned snapshot unchanged.
+
+Executed:
+- Persistence tests: 31/31.
+- Full tests/engine: 735/735.
+- Syntax checks: pass.
+- Native browser IndexedDB verification: NOT RUN.

@@ -1,0 +1,22 @@
+﻿FileOrbit shared document Save routing r72
+
+Production routing:
+- saveCurrentDocument() is the single user Save API used by desktop/narrow toolbar, editor form, applied Retry, Save and continue, Save As.
+- Production path always calls saveDocument(): active writable handle → write/close; no handle + writable APIs → Save picker; no writable APIs → .map download handoff.
+- No production caller selects saveActiveMap based on document state/capability.
+- Save and continue passes replacement token; only confirmed write/close allows replacement; handoff keeps prompt pending; picker/write/close failure stops.
+- Applied owner still created before await; stale session cannot recreate owner.
+
+Tests:
+- P1B_NEW_DOCUMENT: no active doc, writable APIs → one Save picker, exact handle, decoded written tree, form edit writes same handle without second picker, zero IndexedDB saves.
+- P1B_NEW_FALLBACK: dirty new map toolbar Save downloads, remains dirty, zero IndexedDB; Save-and-continue downloads, prompt remains pending, no replacement, zero IDB.
+- Existing document/import/replacement/applied-session regressions.
+- P1b53/53, full814/814.
+
+Test-harness note:
+- Existing legacy IndexedDB persistence tests run with __M5_LEGACY_PERSISTENCE_HARNESS__=true so their obsolete UI Save expectations test the repository/library boundary. Production path (flag false; normal browser) never uses this branch. This is a test-only divergence and is a limitation of the old suite, not production.
+
+Remaining:
+- Import Backup writable first-Save and Previous local maps file-Save lack dedicated new tests.
+- Save As cancel/failure, concurrent edits, old form B isolation, destroy during write partial.
+- Native NOT RUN.

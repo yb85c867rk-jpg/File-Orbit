@@ -1,0 +1,5 @@
+﻿FileOrbit two-row toolbar browser verification: NOT RUN.
+No browser executable/automation was available without installing dependencies.
+Node tests cover desktop order, responsive action/menu behavior, Undo/Redo single activation,
+theme DOM/canvas colors, fullscreen controller state, and app-owned overlay/fullscreen containment.
+Native browser desktop/narrow layout, fullscreen right-click/Delete/viewer, and visual menu checks were not executed.

@@ -1,0 +1,21 @@
+﻿FileOrbit Orbit plan r108 — Open baseline clarification
+
+Corrected:
+- Open baseline provenance is now `opened-content`: SHA-256 of the exact file bytes decoded and installed as the live map.
+- The opened digest and associated observed metadata are bound to the exact opening request, file handle, committed document identity, and committed session/dataset.
+- After installation, a fresh getFile() read verifies the opened digest; it does not establish overwrite eligibility solely from the later observation.
+- If the post-install read differs, baseline state is `changed`, the live map remains based on opened bytes, and overwrite is gated. The newer digest is never silently adopted.
+- If verification fails, baseline is `observed`/unknown and overwrite is gated.
+- A stale post-install verification cannot alter a replacement document.
+- Ordinary unchanged Open yields a `known` opened-content baseline and permits protected Save without an unnecessary first-save conflict.
+- `confirmed-write` remains distinct: digest of exact encoded bytes written, verified by an actual-file read after close.
+- Pre-write SHA-256 recheck and the non-atomic race limitations remain.
+
+Acceptance cases added:
+- file changes between initial read/decode and post-install verification;
+- live map remains opened bytes and later Save detects conflict;
+- unchanged Open allows protected Save without unnecessary first-save conflict;
+- stale Open baseline completion cannot alter a replacement document.
+
+Recommended first implementation scope remains Slice 1 only: directory capability adapter and filename policy, no Orbit UI or document-routing changes.
+Documentation-only; application suites not rerun.

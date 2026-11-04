@@ -1,0 +1,28 @@
+﻿FileOrbit native verification r103 (isolated headless Edge 156, 2026-10-31)
+
+Title-only creation flow:
+- Header only FileOrbit.
+- Left rail x=0..64; graph x=64..1139; Details x=1139..1440 (desktop).
+- Entered Native Solo; installed title-only map: total=1, visible=1, label visible=1.
+- Injected browser Save picker stub (OS picker not available headless) received suggested "Native Solo.map"; write+close completed; save state Saved; document name Native Solo.map; no unsaved dot.
+- Screenshot title-only-desktop-r102.png (current UI after r103 flow).
+- This verifies browser DOM flow with a test picker, not the native OS picker.
+
+Settings:
+- Document Native Solo.map; Saved; Theme: Light; Previous local maps; Fit graph; Storage & backup help.
+- Screenshot nav-settings-r102.png.
+
+Phone 375:
+- rail x=8..64; graph x=64..375; Details x=64..375; doc scrollWidth=375;
+- Header FileOrbit only.
+- Screenshot title-only-phone-r102.png; expanded nav-phone-expanded-r102.png.
+
+320x480:
+- collapsed rail x=8..64; graph x=64..320; toolbar wraps to 2 rows; Details 45px; no horizontal overflow.
+- Screenshot title-only-320-r102.png; measurements title-only-320-r102-metrics.txt.
+
+NOT RUN natively:
+- native OS Save picker/activation and real writable write/close;
+- native editor-only form presentation/search restoration;
+- native Download handoff, fullscreen, physical pointer drag.
+These are covered by production-handler tests but are not native OS evidence.

@@ -1,0 +1,5616 @@
+﻿{
+  "f20": {
+    "primary": {
+      "workspaceScale": 1,
+      "projection": {
+        "calculationRadiusCss": 240,
+        "displayedRadiusCss": 240,
+        "cameraZoom": 1
+      },
+      "modes": {
+        "baseline": {
+          "layoutMs": 1.4908999999999963,
+          "metrics": {
+            "totalNodes": 20,
+            "visibleNodes": 20,
+            "hiddenNodes": 0,
+            "viewportIntersectingNodes": 20,
+            "visibleIds": [
+              "n0",
+              "n1",
+              "n3",
+              "n7",
+              "n15",
+              "n16",
+              "n8",
+              "n17",
+              "n18",
+              "n4",
+              "n9",
+              "n19",
+              "n10",
+              "n2",
+              "n5",
+              "n11",
+              "n12",
+              "n6",
+              "n13",
+              "n14"
+            ],
+            "hiddenIds": [],
+            "overlapPairs": 0,
+            "minCenterSeparation": 16.236482400000018,
+            "bounds": {
+              "minX": 205.00009371772967,
+              "minY": 108.58475026474238,
+              "maxX": 610.1763645956019,
+              "maxY": 508.92852074437974
+            },
+            "radiusStats": {
+              "all": {
+                "count": 20,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              },
+              "visible": {
+                "count": 20,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              }
+            }
+          },
+          "fixedSizeDiagnostic": {
+            "radiusCss": 6,
+            "overlapPairs": 0,
+            "provenance": "fixed presentation radius is the rendered radius"
+          },
+          "radialSpread": {
+            "0": {
+              "min": 0,
+              "max": 0,
+              "mean": 0,
+              "count": 1
+            },
+            "1": {
+              "min": 0.41000000000000003,
+              "max": 0.41000000000000003,
+              "mean": 0.41000000000000003,
+              "count": 2
+            },
+            "2": {
+              "min": 0.6701,
+              "max": 0.6701,
+              "mean": 0.6701,
+              "count": 4
+            },
+            "3": {
+              "min": 0.8027510000000001,
+              "max": 0.8027510000000001,
+              "mean": 0.802751,
+              "count": 8
+            },
+            "4": {
+              "min": 0.8704030100000001,
+              "max": 0.8704030100000001,
+              "mean": 0.8704030100000001,
+              "count": 5
+            }
+          },
+          "boundaryClearance": 0.1295969899999999,
+          "feasibility": null
+        },
+        "v1": {
+          "layoutMs": 0.835799999999999,
+          "metrics": {
+            "totalNodes": 20,
+            "visibleNodes": 20,
+            "hiddenNodes": 0,
+            "viewportIntersectingNodes": 20,
+            "visibleIds": [
+              "n0",
+              "n1",
+              "n3",
+              "n7",
+              "n15",
+              "n16",
+              "n8",
+              "n17",
+              "n18",
+              "n4",
+              "n9",
+              "n19",
+              "n10",
+              "n2",
+              "n5",
+              "n11",
+              "n12",
+              "n6",
+              "n13",
+              "n14"
+            ],
+            "hiddenIds": [],
+            "overlapPairs": 1,
+            "minCenterSeparation": 9.70445497078925,
+            "bounds": {
+              "minX": 178.25530660263667,
+              "minY": 79.28467700499684,
+              "maxX": 637.2927396090561,
+              "maxY": 541.5136169292375
+            },
+            "radiusStats": {
+              "all": {
+                "count": 20,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              },
+              "visible": {
+                "count": 20,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              }
+            }
+          },
+          "fixedSizeDiagnostic": {
+            "radiusCss": 6,
+            "overlapPairs": 1,
+            "provenance": "fixed presentation radius is the rendered radius"
+          },
+          "radialSpread": {
+            "0": {
+              "min": 0,
+              "max": 0,
+              "mean": 0,
+              "count": 1
+            },
+            "1": {
+              "min": 0.5916156743853076,
+              "max": 0.63399935,
+              "mean": 0.6128075121926537,
+              "count": 2
+            },
+            "2": {
+              "min": 0.8462177734287679,
+              "max": 0.8623991225,
+              "mean": 0.8509366419996207,
+              "count": 4
+            },
+            "3": {
+              "min": 0.9231594414231832,
+              "max": 0.948839042875,
+              "mean": 0.9423251585402567,
+              "count": 8
+            },
+            "4": {
+              "min": 0.9836107997450241,
+              "max": 0.98559301500625,
+              "mean": 0.9851965719540047,
+              "count": 5
+            }
+          },
+          "boundaryClearance": 0.014406984993750038,
+          "feasibility": null
+        },
+        "v2": {
+          "layoutMs": 1.6230000000000047,
+          "metrics": {
+            "totalNodes": 20,
+            "visibleNodes": 20,
+            "hiddenNodes": 0,
+            "viewportIntersectingNodes": 20,
+            "visibleIds": [
+              "n0",
+              "n1",
+              "n3",
+              "n7",
+              "n15",
+              "n16",
+              "n8",
+              "n17",
+              "n18",
+              "n4",
+              "n9",
+              "n19",
+              "n10",
+              "n2",
+              "n5",
+              "n11",
+              "n12",
+              "n6",
+              "n13",
+              "n14"
+            ],
+            "hiddenIds": [],
+            "overlapPairs": 1,
+            "minCenterSeparation": 9.920848598652038,
+            "bounds": {
+              "minX": 180.89780477135457,
+              "minY": 84.69978122721784,
+              "maxX": 620.1611859918194,
+              "maxY": 523.8328342260639
+            },
+            "radiusStats": {
+              "all": {
+                "count": 20,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              },
+              "visible": {
+                "count": 20,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              }
+            }
+          },
+          "fixedSizeDiagnostic": {
+            "radiusCss": 6,
+            "overlapPairs": 1,
+            "provenance": "fixed presentation radius is the rendered radius"
+          },
+          "radialSpread": {
+            "0": {
+              "min": 0,
+              "max": 0,
+              "mean": 0,
+              "count": 1
+            },
+            "1": {
+              "min": 0.13383987,
+              "max": 0.6371993499999999,
+              "mean": 0.38551960999999996,
+              "count": 2
+            },
+            "2": {
+              "min": 0.2513205569,
+              "max": 0.8654191225,
+              "mean": 0.6238065721,
+              "count": 4
+            },
+            "3": {
+              "min": 0.354568754503,
+              "max": 0.950496042875,
+              "mean": 0.7722816189809999,
+              "count": 8
+            },
+            "4": {
+              "min": 0.44543468641761,
+              "max": 0.91024589072025,
+              "mean": 0.7372751638732019,
+              "count": 5
+            }
+          },
+          "boundaryClearance": 0.049503957125,
+          "feasibility": {
+            "satisfied": true,
+            "workspaceScale": 1,
+            "maxWorkspaceScale": 1,
+            "unsatisfied": [],
+            "glyphRadiusCss": 6,
+            "clearanceCss": 4,
+            "referenceProjectionRadiusCss": 240,
+            "projectionScope": "local sibling angular capacity only; not a global node-clearance guarantee",
+            "attemptCount": 1,
+            "selectedCandidateIndex": 0,
+            "candidateCount": 1
+          }
+        }
+      },
+      "v2Error": null,
+      "baselineVsV2": {
+        "totalNodes": {
+          "baseline": 20,
+          "experimental": 20
+        },
+        "visible": {
+          "baseline": 20,
+          "experimental": 20
+        },
+        "hidden": {
+          "baseline": 0,
+          "experimental": 0
+        },
+        "viewportIntersecting": {
+          "baseline": 20,
+          "experimental": 20
+        },
+        "newlyHiddenIds": [],
+        "newlyVisibleIds": [],
+        "visibleOverlap": {
+          "baseline": 0,
+          "experimental": 1
+        },
+        "sameIdsVisibleBoth": {
+          "count": 20,
+          "baselineOverlap": 0,
+          "experimentalOverlap": 1
+        },
+        "fixedSizeDiagnostic": {
+          "radiusCss": 6,
+          "shapeAware": true,
+          "sample": "all nodes in the scene; visibility ignored",
+          "baselineOverlap": 0,
+          "experimentalOverlap": 1,
+          "provenance": "analytical only; actual rendering/hit radii unchanged"
+        },
+        "radiusStats": {
+          "baseline": {
+            "all": {
+              "count": 20,
+              "min": 6,
+              "max": 6,
+              "mean": 6,
+              "median": 6,
+              "p90": 6
+            },
+            "visible": {
+              "count": 20,
+              "min": 6,
+              "max": 6,
+              "mean": 6,
+              "median": 6,
+              "p90": 6
+            }
+          },
+          "experimental": {
+            "all": {
+              "count": 20,
+              "min": 6,
+              "max": 6,
+              "mean": 6,
+              "median": 6,
+              "p90": 6
+            },
+            "visible": {
+              "count": 20,
+              "min": 6,
+              "max": 6,
+              "mean": 6,
+              "median": 6,
+              "p90": 6
+            }
+          }
+        },
+        "bounds": {
+          "baseline": {
+            "minX": 205.00009371772967,
+            "minY": 108.58475026474238,
+            "maxX": 610.1763645956019,
+            "maxY": 508.92852074437974
+          },
+          "experimental": {
+            "minX": 180.89780477135457,
+            "minY": 84.69978122721784,
+            "maxX": 620.1611859918194,
+            "maxY": 523.8328342260639
+          }
+        },
+        "minCenterSeparation": {
+          "baseline": 16.236482400000018,
+          "experimental": 9.920848598652038
+        },
+        "diagnosticLimit": 300
+      },
+      "labelMetrics": "NOT MEASURED (Node report); use m5-adaptive-layout browser harness"
+    },
+    "secondary": {
+      "workspaceScale": 1,
+      "projection": {
+        "calculationRadiusCss": 240,
+        "displayedRadiusCss": 240,
+        "cameraZoom": 1
+      },
+      "modes": {
+        "baseline": {
+          "layoutMs": 0.13989999999999725,
+          "metrics": {
+            "totalNodes": 20,
+            "visibleNodes": 20,
+            "hiddenNodes": 0,
+            "viewportIntersectingNodes": 20,
+            "visibleIds": [
+              "n0",
+              "n1",
+              "n3",
+              "n7",
+              "n15",
+              "n16",
+              "n8",
+              "n17",
+              "n18",
+              "n4",
+              "n9",
+              "n19",
+              "n10",
+              "n2",
+              "n5",
+              "n11",
+              "n12",
+              "n6",
+              "n13",
+              "n14"
+            ],
+            "hiddenIds": [],
+            "overlapPairs": 0,
+            "minCenterSeparation": 16.236482400000018,
+            "bounds": {
+              "minX": 205.00009371772967,
+              "minY": 108.58475026474238,
+              "maxX": 610.1763645956019,
+              "maxY": 508.92852074437974
+            },
+            "radiusStats": {
+              "all": {
+                "count": 20,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              },
+              "visible": {
+                "count": 20,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              }
+            }
+          },
+          "fixedSizeDiagnostic": {
+            "radiusCss": 6,
+            "overlapPairs": 0,
+            "provenance": "fixed presentation radius is the rendered radius"
+          },
+          "radialSpread": {
+            "0": {
+              "min": 0,
+              "max": 0,
+              "mean": 0,
+              "count": 1
+            },
+            "1": {
+              "min": 0.41000000000000003,
+              "max": 0.41000000000000003,
+              "mean": 0.41000000000000003,
+              "count": 2
+            },
+            "2": {
+              "min": 0.6701,
+              "max": 0.6701,
+              "mean": 0.6701,
+              "count": 4
+            },
+            "3": {
+              "min": 0.8027510000000001,
+              "max": 0.8027510000000001,
+              "mean": 0.802751,
+              "count": 8
+            },
+            "4": {
+              "min": 0.8704030100000001,
+              "max": 0.8704030100000001,
+              "mean": 0.8704030100000001,
+              "count": 5
+            }
+          },
+          "boundaryClearance": 0.1295969899999999,
+          "feasibility": null
+        },
+        "v1": {
+          "layoutMs": 0.15930000000000177,
+          "metrics": {
+            "totalNodes": 20,
+            "visibleNodes": 20,
+            "hiddenNodes": 0,
+            "viewportIntersectingNodes": 20,
+            "visibleIds": [
+              "n0",
+              "n1",
+              "n3",
+              "n7",
+              "n15",
+              "n16",
+              "n8",
+              "n17",
+              "n18",
+              "n4",
+              "n9",
+              "n19",
+              "n10",
+              "n2",
+              "n5",
+              "n11",
+              "n12",
+              "n6",
+              "n13",
+              "n14"
+            ],
+            "hiddenIds": [],
+            "overlapPairs": 1,
+            "minCenterSeparation": 9.70445497078925,
+            "bounds": {
+              "minX": 178.25530660263667,
+              "minY": 79.28467700499684,
+              "maxX": 637.2927396090561,
+              "maxY": 541.5136169292375
+            },
+            "radiusStats": {
+              "all": {
+                "count": 20,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              },
+              "visible": {
+                "count": 20,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              }
+            }
+          },
+          "fixedSizeDiagnostic": {
+            "radiusCss": 6,
+            "overlapPairs": 1,
+            "provenance": "fixed presentation radius is the rendered radius"
+          },
+          "radialSpread": {
+            "0": {
+              "min": 0,
+              "max": 0,
+              "mean": 0,
+              "count": 1
+            },
+            "1": {
+              "min": 0.5916156743853076,
+              "max": 0.63399935,
+              "mean": 0.6128075121926537,
+              "count": 2
+            },
+            "2": {
+              "min": 0.8462177734287679,
+              "max": 0.8623991225,
+              "mean": 0.8509366419996207,
+              "count": 4
+            },
+            "3": {
+              "min": 0.9231594414231832,
+              "max": 0.948839042875,
+              "mean": 0.9423251585402567,
+              "count": 8
+            },
+            "4": {
+              "min": 0.9836107997450241,
+              "max": 0.98559301500625,
+              "mean": 0.9851965719540047,
+              "count": 5
+            }
+          },
+          "boundaryClearance": 0.014406984993750038,
+          "feasibility": null
+        },
+        "v2": {
+          "layoutMs": 0.6599000000000075,
+          "metrics": {
+            "totalNodes": 20,
+            "visibleNodes": 20,
+            "hiddenNodes": 0,
+            "viewportIntersectingNodes": 20,
+            "visibleIds": [
+              "n0",
+              "n1",
+              "n3",
+              "n7",
+              "n15",
+              "n16",
+              "n8",
+              "n17",
+              "n18",
+              "n4",
+              "n9",
+              "n19",
+              "n10",
+              "n2",
+              "n5",
+              "n11",
+              "n12",
+              "n6",
+              "n13",
+              "n14"
+            ],
+            "hiddenIds": [],
+            "overlapPairs": 1,
+            "minCenterSeparation": 9.920848598652038,
+            "bounds": {
+              "minX": 180.89780477135457,
+              "minY": 84.69978122721784,
+              "maxX": 620.1611859918194,
+              "maxY": 523.8328342260639
+            },
+            "radiusStats": {
+              "all": {
+                "count": 20,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              },
+              "visible": {
+                "count": 20,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              }
+            }
+          },
+          "fixedSizeDiagnostic": {
+            "radiusCss": 6,
+            "overlapPairs": 1,
+            "provenance": "fixed presentation radius is the rendered radius"
+          },
+          "radialSpread": {
+            "0": {
+              "min": 0,
+              "max": 0,
+              "mean": 0,
+              "count": 1
+            },
+            "1": {
+              "min": 0.13383987,
+              "max": 0.6371993499999999,
+              "mean": 0.38551960999999996,
+              "count": 2
+            },
+            "2": {
+              "min": 0.2513205569,
+              "max": 0.8654191225,
+              "mean": 0.6238065721,
+              "count": 4
+            },
+            "3": {
+              "min": 0.354568754503,
+              "max": 0.950496042875,
+              "mean": 0.7722816189809999,
+              "count": 8
+            },
+            "4": {
+              "min": 0.44543468641761,
+              "max": 0.91024589072025,
+              "mean": 0.7372751638732019,
+              "count": 5
+            }
+          },
+          "boundaryClearance": 0.049503957125,
+          "feasibility": {
+            "satisfied": true,
+            "workspaceScale": 1,
+            "maxWorkspaceScale": 1,
+            "unsatisfied": [],
+            "glyphRadiusCss": 6,
+            "clearanceCss": 4,
+            "referenceProjectionRadiusCss": 240,
+            "projectionScope": "local sibling angular capacity only; not a global node-clearance guarantee",
+            "attemptCount": 1,
+            "selectedCandidateIndex": 0,
+            "candidateCount": 1
+          }
+        }
+      },
+      "v2Error": null,
+      "baselineVsV2": {
+        "totalNodes": {
+          "baseline": 20,
+          "experimental": 20
+        },
+        "visible": {
+          "baseline": 20,
+          "experimental": 20
+        },
+        "hidden": {
+          "baseline": 0,
+          "experimental": 0
+        },
+        "viewportIntersecting": {
+          "baseline": 20,
+          "experimental": 20
+        },
+        "newlyHiddenIds": [],
+        "newlyVisibleIds": [],
+        "visibleOverlap": {
+          "baseline": 0,
+          "experimental": 1
+        },
+        "sameIdsVisibleBoth": {
+          "count": 20,
+          "baselineOverlap": 0,
+          "experimentalOverlap": 1
+        },
+        "fixedSizeDiagnostic": {
+          "radiusCss": 6,
+          "shapeAware": true,
+          "sample": "all nodes in the scene; visibility ignored",
+          "baselineOverlap": 0,
+          "experimentalOverlap": 1,
+          "provenance": "analytical only; actual rendering/hit radii unchanged"
+        },
+        "radiusStats": {
+          "baseline": {
+            "all": {
+              "count": 20,
+              "min": 6,
+              "max": 6,
+              "mean": 6,
+              "median": 6,
+              "p90": 6
+            },
+            "visible": {
+              "count": 20,
+              "min": 6,
+              "max": 6,
+              "mean": 6,
+              "median": 6,
+              "p90": 6
+            }
+          },
+          "experimental": {
+            "all": {
+              "count": 20,
+              "min": 6,
+              "max": 6,
+              "mean": 6,
+              "median": 6,
+              "p90": 6
+            },
+            "visible": {
+              "count": 20,
+              "min": 6,
+              "max": 6,
+              "mean": 6,
+              "median": 6,
+              "p90": 6
+            }
+          }
+        },
+        "bounds": {
+          "baseline": {
+            "minX": 205.00009371772967,
+            "minY": 108.58475026474238,
+            "maxX": 610.1763645956019,
+            "maxY": 508.92852074437974
+          },
+          "experimental": {
+            "minX": 180.89780477135457,
+            "minY": 84.69978122721784,
+            "maxX": 620.1611859918194,
+            "maxY": 523.8328342260639
+          }
+        },
+        "minCenterSeparation": {
+          "baseline": 16.236482400000018,
+          "experimental": 9.920848598652038
+        },
+        "diagnosticLimit": 300
+      },
+      "labelMetrics": "NOT MEASURED (Node report); use m5-adaptive-layout browser harness"
+    },
+    "presentation": {
+      "fixedGlyphRadiusCss": 6,
+      "viewport": {
+        "width": 800,
+        "height": 600
+      },
+      "dpr": "reference-only"
+    }
+  },
+  "f200": {
+    "primary": {
+      "workspaceScale": 1,
+      "projection": {
+        "calculationRadiusCss": 240,
+        "displayedRadiusCss": 240,
+        "cameraZoom": 1
+      },
+      "modes": {
+        "baseline": {
+          "layoutMs": 1.1965999999999894,
+          "metrics": {
+            "totalNodes": 200,
+            "visibleNodes": 200,
+            "hiddenNodes": 0,
+            "viewportIntersectingNodes": 200,
+            "visibleIds": [
+              "n0",
+              "n1",
+              "n6",
+              "n31",
+              "n156",
+              "n157",
+              "n158",
+              "n159",
+              "n160",
+              "n32",
+              "n161",
+              "n162",
+              "n163",
+              "n164",
+              "n165",
+              "n33",
+              "n166",
+              "n167",
+              "n168",
+              "n169",
+              "n170",
+              "n34",
+              "n171",
+              "n172",
+              "n173",
+              "n174",
+              "n175",
+              "n35",
+              "n176",
+              "n177",
+              "n178",
+              "n179",
+              "n180",
+              "n7",
+              "n36",
+              "n181",
+              "n182",
+              "n183",
+              "n184",
+              "n185",
+              "n37",
+              "n186",
+              "n187",
+              "n188",
+              "n189",
+              "n190",
+              "n38",
+              "n191",
+              "n192",
+              "n193",
+              "n194",
+              "n195",
+              "n39",
+              "n196",
+              "n197",
+              "n198",
+              "n199",
+              "n40",
+              "n8",
+              "n41",
+              "n42",
+              "n43",
+              "n44",
+              "n45",
+              "n9",
+              "n46",
+              "n47",
+              "n48",
+              "n49",
+              "n50",
+              "n10",
+              "n51",
+              "n52",
+              "n53",
+              "n54",
+              "n55",
+              "n2",
+              "n11",
+              "n56",
+              "n57",
+              "n58",
+              "n59",
+              "n60",
+              "n12",
+              "n61",
+              "n62",
+              "n63",
+              "n64",
+              "n65",
+              "n13",
+              "n66",
+              "n67",
+              "n68",
+              "n69",
+              "n70",
+              "n14",
+              "n71",
+              "n72",
+              "n73",
+              "n74",
+              "n75",
+              "n15",
+              "n76",
+              "n77",
+              "n78",
+              "n79",
+              "n80",
+              "n3",
+              "n16",
+              "n81",
+              "n82",
+              "n83",
+              "n84",
+              "n85",
+              "n17",
+              "n86",
+              "n87",
+              "n88",
+              "n89",
+              "n90",
+              "n18",
+              "n91",
+              "n92",
+              "n93",
+              "n94",
+              "n95",
+              "n19",
+              "n96",
+              "n97",
+              "n98",
+              "n99",
+              "n100",
+              "n20",
+              "n101",
+              "n102",
+              "n103",
+              "n104",
+              "n105",
+              "n4",
+              "n21",
+              "n106",
+              "n107",
+              "n108",
+              "n109",
+              "n110",
+              "n22",
+              "n111",
+              "n112",
+              "n113",
+              "n114",
+              "n115",
+              "n23",
+              "n116",
+              "n117",
+              "n118",
+              "n119",
+              "n120",
+              "n24",
+              "n121",
+              "n122",
+              "n123",
+              "n124",
+              "n125",
+              "n25",
+              "n126",
+              "n127",
+              "n128",
+              "n129",
+              "n130",
+              "n5",
+              "n26",
+              "n131",
+              "n132",
+              "n133",
+              "n134",
+              "n135",
+              "n27",
+              "n136",
+              "n137",
+              "n138",
+              "n139",
+              "n140",
+              "n28",
+              "n141",
+              "n142",
+              "n143",
+              "n144",
+              "n145",
+              "n29",
+              "n146",
+              "n147",
+              "n148",
+              "n149",
+              "n150",
+              "n30",
+              "n151",
+              "n152",
+              "n153",
+              "n154",
+              "n155"
+            ],
+            "hiddenIds": [],
+            "overlapPairs": 143,
+            "minCenterSeparation": 5.6174354366696715,
+            "bounds": {
+              "minX": 201.34072419080925,
+              "minY": 101.35649919533267,
+              "maxX": 614.8755524140051,
+              "maxY": 511.08178593207026
+            },
+            "radiusStats": {
+              "all": {
+                "count": 200,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              },
+              "visible": {
+                "count": 200,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              }
+            }
+          },
+          "fixedSizeDiagnostic": {
+            "radiusCss": 6,
+            "overlapPairs": 143,
+            "provenance": "fixed presentation radius is the rendered radius"
+          },
+          "radialSpread": {
+            "0": {
+              "min": 0,
+              "max": 0,
+              "mean": 0,
+              "count": 1
+            },
+            "1": {
+              "min": 0.41000000000000003,
+              "max": 0.41000000000000003,
+              "mean": 0.41000000000000003,
+              "count": 5
+            },
+            "2": {
+              "min": 0.6701,
+              "max": 0.6701,
+              "mean": 0.6700999999999999,
+              "count": 25
+            },
+            "3": {
+              "min": 0.8027510000000001,
+              "max": 0.8027510000000001,
+              "mean": 0.8027510000000005,
+              "count": 125
+            },
+            "4": {
+              "min": 0.8704030100000001,
+              "max": 0.8704030100000001,
+              "mean": 0.8704030099999998,
+              "count": 44
+            }
+          },
+          "boundaryClearance": 0.1295969899999999,
+          "feasibility": null
+        },
+        "v1": {
+          "layoutMs": 2.8241000000000014,
+          "metrics": {
+            "totalNodes": 200,
+            "visibleNodes": 200,
+            "hiddenNodes": 0,
+            "viewportIntersectingNodes": 200,
+            "visibleIds": [
+              "n0",
+              "n1",
+              "n6",
+              "n31",
+              "n156",
+              "n157",
+              "n158",
+              "n159",
+              "n160",
+              "n32",
+              "n161",
+              "n162",
+              "n163",
+              "n164",
+              "n165",
+              "n33",
+              "n166",
+              "n167",
+              "n168",
+              "n169",
+              "n170",
+              "n34",
+              "n171",
+              "n172",
+              "n173",
+              "n174",
+              "n175",
+              "n35",
+              "n176",
+              "n177",
+              "n178",
+              "n179",
+              "n180",
+              "n7",
+              "n36",
+              "n181",
+              "n182",
+              "n183",
+              "n184",
+              "n185",
+              "n37",
+              "n186",
+              "n187",
+              "n188",
+              "n189",
+              "n190",
+              "n38",
+              "n191",
+              "n192",
+              "n193",
+              "n194",
+              "n195",
+              "n39",
+              "n196",
+              "n197",
+              "n198",
+              "n199",
+              "n40",
+              "n8",
+              "n41",
+              "n42",
+              "n43",
+              "n44",
+              "n45",
+              "n9",
+              "n46",
+              "n47",
+              "n48",
+              "n49",
+              "n50",
+              "n10",
+              "n51",
+              "n52",
+              "n53",
+              "n54",
+              "n55",
+              "n2",
+              "n11",
+              "n56",
+              "n57",
+              "n58",
+              "n59",
+              "n60",
+              "n12",
+              "n61",
+              "n62",
+              "n63",
+              "n64",
+              "n65",
+              "n13",
+              "n66",
+              "n67",
+              "n68",
+              "n69",
+              "n70",
+              "n14",
+              "n71",
+              "n72",
+              "n73",
+              "n74",
+              "n75",
+              "n15",
+              "n76",
+              "n77",
+              "n78",
+              "n79",
+              "n80",
+              "n3",
+              "n16",
+              "n81",
+              "n82",
+              "n83",
+              "n84",
+              "n85",
+              "n17",
+              "n86",
+              "n87",
+              "n88",
+              "n89",
+              "n90",
+              "n18",
+              "n91",
+              "n92",
+              "n93",
+              "n94",
+              "n95",
+              "n19",
+              "n96",
+              "n97",
+              "n98",
+              "n99",
+              "n100",
+              "n20",
+              "n101",
+              "n102",
+              "n103",
+              "n104",
+              "n105",
+              "n4",
+              "n21",
+              "n106",
+              "n107",
+              "n108",
+              "n109",
+              "n110",
+              "n22",
+              "n111",
+              "n112",
+              "n113",
+              "n114",
+              "n115",
+              "n23",
+              "n116",
+              "n117",
+              "n118",
+              "n119",
+              "n120",
+              "n24",
+              "n121",
+              "n122",
+              "n123",
+              "n124",
+              "n125",
+              "n25",
+              "n126",
+              "n127",
+              "n128",
+              "n129",
+              "n130",
+              "n5",
+              "n26",
+              "n131",
+              "n132",
+              "n133",
+              "n134",
+              "n135",
+              "n27",
+              "n136",
+              "n137",
+              "n138",
+              "n139",
+              "n140",
+              "n28",
+              "n141",
+              "n142",
+              "n143",
+              "n144",
+              "n145",
+              "n29",
+              "n146",
+              "n147",
+              "n148",
+              "n149",
+              "n150",
+              "n30",
+              "n151",
+              "n152",
+              "n153",
+              "n154",
+              "n155"
+            ],
+            "hiddenIds": [],
+            "overlapPairs": 165,
+            "minCenterSeparation": 2.8356764880271714,
+            "bounds": {
+              "minX": 167.74656419308647,
+              "minY": 67.76821420948488,
+              "maxX": 642.5380742914564,
+              "maxY": 532.2513701636326
+            },
+            "radiusStats": {
+              "all": {
+                "count": 200,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              },
+              "visible": {
+                "count": 200,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              }
+            }
+          },
+          "fixedSizeDiagnostic": {
+            "radiusCss": 6,
+            "overlapPairs": 165,
+            "provenance": "fixed presentation radius is the rendered radius"
+          },
+          "radialSpread": {
+            "0": {
+              "min": 0,
+              "max": 0,
+              "mean": 0,
+              "count": 1
+            },
+            "1": {
+              "min": 0.5841383689064183,
+              "max": 0.63399935,
+              "mean": 0.5941105651251346,
+              "count": 5
+            },
+            "2": {
+              "min": 0.8260634833547718,
+              "max": 0.8623991225,
+              "mean": 0.8438890692586886,
+              "count": 25
+            },
+            "3": {
+              "min": 0.9131972054998757,
+              "max": 0.948839042875,
+              "mean": 0.942062357290796,
+              "count": 125
+            },
+            "4": {
+              "min": 0.9838670552804533,
+              "max": 0.98559301500625,
+              "mean": 0.985239098425076,
+              "count": 44
+            }
+          },
+          "boundaryClearance": 0.014406984993750038,
+          "feasibility": null
+        }
+      },
+      "v2Error": {
+        "name": "LayoutContractError",
+        "code": "experimental-v2-infeasible",
+        "message": "no workspace scale up to 1 satisfies angular clearance (node n0)",
+        "diagnostics": {
+          "satisfied": false,
+          "workspaceScale": 1,
+          "maxWorkspaceScale": 1,
+          "unsatisfied": [
+            {
+              "parentId": "n6",
+              "required": 0.7462291962003573,
+              "available": 0.3747248134722839,
+              "workspaceScale": 1
+            }
+          ],
+          "glyphRadiusCss": 6,
+          "clearanceCss": 4,
+          "referenceProjectionRadiusCss": 240,
+          "attemptCount": 1,
+          "selectedCandidateIndex": 0,
+          "candidateCount": 1
+        }
+      },
+      "baselineVsV2": null,
+      "labelMetrics": "NOT MEASURED (Node report); use m5-adaptive-layout browser harness"
+    },
+    "secondary": {
+      "workspaceScale": 9.5,
+      "projection": {
+        "calculationRadiusCss": 240,
+        "displayedRadiusCss": 2280,
+        "cameraZoom": 1
+      },
+      "modes": {
+        "baseline": {
+          "layoutMs": 2.642300000000006,
+          "metrics": {
+            "totalNodes": 200,
+            "visibleNodes": 200,
+            "hiddenNodes": 0,
+            "viewportIntersectingNodes": 1,
+            "visibleIds": [
+              "n0",
+              "n1",
+              "n6",
+              "n31",
+              "n156",
+              "n157",
+              "n158",
+              "n159",
+              "n160",
+              "n32",
+              "n161",
+              "n162",
+              "n163",
+              "n164",
+              "n165",
+              "n33",
+              "n166",
+              "n167",
+              "n168",
+              "n169",
+              "n170",
+              "n34",
+              "n171",
+              "n172",
+              "n173",
+              "n174",
+              "n175",
+              "n35",
+              "n176",
+              "n177",
+              "n178",
+              "n179",
+              "n180",
+              "n7",
+              "n36",
+              "n181",
+              "n182",
+              "n183",
+              "n184",
+              "n185",
+              "n37",
+              "n186",
+              "n187",
+              "n188",
+              "n189",
+              "n190",
+              "n38",
+              "n191",
+              "n192",
+              "n193",
+              "n194",
+              "n195",
+              "n39",
+              "n196",
+              "n197",
+              "n198",
+              "n199",
+              "n40",
+              "n8",
+              "n41",
+              "n42",
+              "n43",
+              "n44",
+              "n45",
+              "n9",
+              "n46",
+              "n47",
+              "n48",
+              "n49",
+              "n50",
+              "n10",
+              "n51",
+              "n52",
+              "n53",
+              "n54",
+              "n55",
+              "n2",
+              "n11",
+              "n56",
+              "n57",
+              "n58",
+              "n59",
+              "n60",
+              "n12",
+              "n61",
+              "n62",
+              "n63",
+              "n64",
+              "n65",
+              "n13",
+              "n66",
+              "n67",
+              "n68",
+              "n69",
+              "n70",
+              "n14",
+              "n71",
+              "n72",
+              "n73",
+              "n74",
+              "n75",
+              "n15",
+              "n76",
+              "n77",
+              "n78",
+              "n79",
+              "n80",
+              "n3",
+              "n16",
+              "n81",
+              "n82",
+              "n83",
+              "n84",
+              "n85",
+              "n17",
+              "n86",
+              "n87",
+              "n88",
+              "n89",
+              "n90",
+              "n18",
+              "n91",
+              "n92",
+              "n93",
+              "n94",
+              "n95",
+              "n19",
+              "n96",
+              "n97",
+              "n98",
+              "n99",
+              "n100",
+              "n20",
+              "n101",
+              "n102",
+              "n103",
+              "n104",
+              "n105",
+              "n4",
+              "n21",
+              "n106",
+              "n107",
+              "n108",
+              "n109",
+              "n110",
+              "n22",
+              "n111",
+              "n112",
+              "n113",
+              "n114",
+              "n115",
+              "n23",
+              "n116",
+              "n117",
+              "n118",
+              "n119",
+              "n120",
+              "n24",
+              "n121",
+              "n122",
+              "n123",
+              "n124",
+              "n125",
+              "n25",
+              "n126",
+              "n127",
+              "n128",
+              "n129",
+              "n130",
+              "n5",
+              "n26",
+              "n131",
+              "n132",
+              "n133",
+              "n134",
+              "n135",
+              "n27",
+              "n136",
+              "n137",
+              "n138",
+              "n139",
+              "n140",
+              "n28",
+              "n141",
+              "n142",
+              "n143",
+              "n144",
+              "n145",
+              "n29",
+              "n146",
+              "n147",
+              "n148",
+              "n149",
+              "n150",
+              "n30",
+              "n151",
+              "n152",
+              "n153",
+              "n154",
+              "n155"
+            ],
+            "hiddenIds": [],
+            "overlapPairs": 0,
+            "minCenterSeparation": 53.365636648362354,
+            "bounds": {
+              "minX": -1436.263120187312,
+              "minY": -1536.1132576443395,
+              "maxX": 2390.317747933049,
+              "maxY": 2254.276966354668
+            },
+            "radiusStats": {
+              "all": {
+                "count": 200,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              },
+              "visible": {
+                "count": 200,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              }
+            }
+          },
+          "fixedSizeDiagnostic": {
+            "radiusCss": 6,
+            "overlapPairs": 0,
+            "provenance": "fixed presentation radius is the rendered radius"
+          },
+          "radialSpread": {
+            "0": {
+              "min": 0,
+              "max": 0,
+              "mean": 0,
+              "count": 1
+            },
+            "1": {
+              "min": 0.41000000000000003,
+              "max": 0.41000000000000003,
+              "mean": 0.41000000000000003,
+              "count": 5
+            },
+            "2": {
+              "min": 0.6701,
+              "max": 0.6701,
+              "mean": 0.6700999999999999,
+              "count": 25
+            },
+            "3": {
+              "min": 0.8027510000000001,
+              "max": 0.8027510000000001,
+              "mean": 0.8027510000000005,
+              "count": 125
+            },
+            "4": {
+              "min": 0.8704030100000001,
+              "max": 0.8704030100000001,
+              "mean": 0.8704030099999998,
+              "count": 44
+            }
+          },
+          "boundaryClearance": 0.1295969899999999,
+          "feasibility": null
+        },
+        "v1": {
+          "layoutMs": 0.8701000000000079,
+          "metrics": {
+            "totalNodes": 200,
+            "visibleNodes": 200,
+            "hiddenNodes": 0,
+            "viewportIntersectingNodes": 1,
+            "visibleIds": [
+              "n0",
+              "n1",
+              "n6",
+              "n31",
+              "n156",
+              "n157",
+              "n158",
+              "n159",
+              "n160",
+              "n32",
+              "n161",
+              "n162",
+              "n163",
+              "n164",
+              "n165",
+              "n33",
+              "n166",
+              "n167",
+              "n168",
+              "n169",
+              "n170",
+              "n34",
+              "n171",
+              "n172",
+              "n173",
+              "n174",
+              "n175",
+              "n35",
+              "n176",
+              "n177",
+              "n178",
+              "n179",
+              "n180",
+              "n7",
+              "n36",
+              "n181",
+              "n182",
+              "n183",
+              "n184",
+              "n185",
+              "n37",
+              "n186",
+              "n187",
+              "n188",
+              "n189",
+              "n190",
+              "n38",
+              "n191",
+              "n192",
+              "n193",
+              "n194",
+              "n195",
+              "n39",
+              "n196",
+              "n197",
+              "n198",
+              "n199",
+              "n40",
+              "n8",
+              "n41",
+              "n42",
+              "n43",
+              "n44",
+              "n45",
+              "n9",
+              "n46",
+              "n47",
+              "n48",
+              "n49",
+              "n50",
+              "n10",
+              "n51",
+              "n52",
+              "n53",
+              "n54",
+              "n55",
+              "n2",
+              "n11",
+              "n56",
+              "n57",
+              "n58",
+              "n59",
+              "n60",
+              "n12",
+              "n61",
+              "n62",
+              "n63",
+              "n64",
+              "n65",
+              "n13",
+              "n66",
+              "n67",
+              "n68",
+              "n69",
+              "n70",
+              "n14",
+              "n71",
+              "n72",
+              "n73",
+              "n74",
+              "n75",
+              "n15",
+              "n76",
+              "n77",
+              "n78",
+              "n79",
+              "n80",
+              "n3",
+              "n16",
+              "n81",
+              "n82",
+              "n83",
+              "n84",
+              "n85",
+              "n17",
+              "n86",
+              "n87",
+              "n88",
+              "n89",
+              "n90",
+              "n18",
+              "n91",
+              "n92",
+              "n93",
+              "n94",
+              "n95",
+              "n19",
+              "n96",
+              "n97",
+              "n98",
+              "n99",
+              "n100",
+              "n20",
+              "n101",
+              "n102",
+              "n103",
+              "n104",
+              "n105",
+              "n4",
+              "n21",
+              "n106",
+              "n107",
+              "n108",
+              "n109",
+              "n110",
+              "n22",
+              "n111",
+              "n112",
+              "n113",
+              "n114",
+              "n115",
+              "n23",
+              "n116",
+              "n117",
+              "n118",
+              "n119",
+              "n120",
+              "n24",
+              "n121",
+              "n122",
+              "n123",
+              "n124",
+              "n125",
+              "n25",
+              "n126",
+              "n127",
+              "n128",
+              "n129",
+              "n130",
+              "n5",
+              "n26",
+              "n131",
+              "n132",
+              "n133",
+              "n134",
+              "n135",
+              "n27",
+              "n136",
+              "n137",
+              "n138",
+              "n139",
+              "n140",
+              "n28",
+              "n141",
+              "n142",
+              "n143",
+              "n144",
+              "n145",
+              "n29",
+              "n146",
+              "n147",
+              "n148",
+              "n149",
+              "n150",
+              "n30",
+              "n151",
+              "n152",
+              "n153",
+              "n154",
+              "n155"
+            ],
+            "hiddenIds": [],
+            "overlapPairs": 0,
+            "minCenterSeparation": 26.938926636258184,
+            "bounds": {
+              "minX": -1755.4076401656785,
+              "minY": -1855.2019650098937,
+              "maxX": 2653.111705768836,
+              "maxY": 2455.3880165545097
+            },
+            "radiusStats": {
+              "all": {
+                "count": 200,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              },
+              "visible": {
+                "count": 200,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              }
+            }
+          },
+          "fixedSizeDiagnostic": {
+            "radiusCss": 6,
+            "overlapPairs": 0,
+            "provenance": "fixed presentation radius is the rendered radius"
+          },
+          "radialSpread": {
+            "0": {
+              "min": 0,
+              "max": 0,
+              "mean": 0,
+              "count": 1
+            },
+            "1": {
+              "min": 0.5841383689064183,
+              "max": 0.63399935,
+              "mean": 0.5941105651251346,
+              "count": 5
+            },
+            "2": {
+              "min": 0.8260634833547718,
+              "max": 0.8623991225,
+              "mean": 0.8438890692586886,
+              "count": 25
+            },
+            "3": {
+              "min": 0.9131972054998757,
+              "max": 0.948839042875,
+              "mean": 0.942062357290796,
+              "count": 125
+            },
+            "4": {
+              "min": 0.9838670552804533,
+              "max": 0.98559301500625,
+              "mean": 0.985239098425076,
+              "count": 44
+            }
+          },
+          "boundaryClearance": 0.014406984993750038,
+          "feasibility": null
+        },
+        "v2": {
+          "layoutMs": 1.2275000000000063,
+          "metrics": {
+            "totalNodes": 200,
+            "visibleNodes": 200,
+            "hiddenNodes": 0,
+            "viewportIntersectingNodes": 4,
+            "visibleIds": [
+              "n0",
+              "n1",
+              "n6",
+              "n31",
+              "n156",
+              "n157",
+              "n158",
+              "n159",
+              "n160",
+              "n32",
+              "n161",
+              "n162",
+              "n163",
+              "n164",
+              "n165",
+              "n33",
+              "n166",
+              "n167",
+              "n168",
+              "n169",
+              "n170",
+              "n34",
+              "n171",
+              "n172",
+              "n173",
+              "n174",
+              "n175",
+              "n35",
+              "n176",
+              "n177",
+              "n178",
+              "n179",
+              "n180",
+              "n7",
+              "n36",
+              "n181",
+              "n182",
+              "n183",
+              "n184",
+              "n185",
+              "n37",
+              "n186",
+              "n187",
+              "n188",
+              "n189",
+              "n190",
+              "n38",
+              "n191",
+              "n192",
+              "n193",
+              "n194",
+              "n195",
+              "n39",
+              "n196",
+              "n197",
+              "n198",
+              "n199",
+              "n40",
+              "n8",
+              "n41",
+              "n42",
+              "n43",
+              "n44",
+              "n45",
+              "n9",
+              "n46",
+              "n47",
+              "n48",
+              "n49",
+              "n50",
+              "n10",
+              "n51",
+              "n52",
+              "n53",
+              "n54",
+              "n55",
+              "n2",
+              "n11",
+              "n56",
+              "n57",
+              "n58",
+              "n59",
+              "n60",
+              "n12",
+              "n61",
+              "n62",
+              "n63",
+              "n64",
+              "n65",
+              "n13",
+              "n66",
+              "n67",
+              "n68",
+              "n69",
+              "n70",
+              "n14",
+              "n71",
+              "n72",
+              "n73",
+              "n74",
+              "n75",
+              "n15",
+              "n76",
+              "n77",
+              "n78",
+              "n79",
+              "n80",
+              "n3",
+              "n16",
+              "n81",
+              "n82",
+              "n83",
+              "n84",
+              "n85",
+              "n17",
+              "n86",
+              "n87",
+              "n88",
+              "n89",
+              "n90",
+              "n18",
+              "n91",
+              "n92",
+              "n93",
+              "n94",
+              "n95",
+              "n19",
+              "n96",
+              "n97",
+              "n98",
+              "n99",
+              "n100",
+              "n20",
+              "n101",
+              "n102",
+              "n103",
+              "n104",
+              "n105",
+              "n4",
+              "n21",
+              "n106",
+              "n107",
+              "n108",
+              "n109",
+              "n110",
+              "n22",
+              "n111",
+              "n112",
+              "n113",
+              "n114",
+              "n115",
+              "n23",
+              "n116",
+              "n117",
+              "n118",
+              "n119",
+              "n120",
+              "n24",
+              "n121",
+              "n122",
+              "n123",
+              "n124",
+              "n125",
+              "n25",
+              "n126",
+              "n127",
+              "n128",
+              "n129",
+              "n130",
+              "n5",
+              "n26",
+              "n131",
+              "n132",
+              "n133",
+              "n134",
+              "n135",
+              "n27",
+              "n136",
+              "n137",
+              "n138",
+              "n139",
+              "n140",
+              "n28",
+              "n141",
+              "n142",
+              "n143",
+              "n144",
+              "n145",
+              "n29",
+              "n146",
+              "n147",
+              "n148",
+              "n149",
+              "n150",
+              "n30",
+              "n151",
+              "n152",
+              "n153",
+              "n154",
+              "n155"
+            ],
+            "hiddenIds": [],
+            "overlapPairs": 0,
+            "minCenterSeparation": 25.28591370699648,
+            "bounds": {
+              "minX": -1610.1505293228959,
+              "minY": -1873.1207055665172,
+              "maxX": 2474.3282933110545,
+              "maxY": 2462.0588046795338
+            },
+            "radiusStats": {
+              "all": {
+                "count": 200,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              },
+              "visible": {
+                "count": 200,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              }
+            }
+          },
+          "fixedSizeDiagnostic": {
+            "radiusCss": 6,
+            "overlapPairs": 0,
+            "provenance": "fixed presentation radius is the rendered radius"
+          },
+          "radialSpread": {
+            "0": {
+              "min": 0,
+              "max": 0,
+              "mean": 0,
+              "count": 1
+            },
+            "1": {
+              "min": 0.13383987,
+              "max": 0.6371993499999999,
+              "mean": 0.335183662,
+              "count": 5
+            },
+            "2": {
+              "min": 0.2513205569,
+              "max": 0.8654191225,
+              "mean": 0.5597792462439999,
+              "count": 25
+            },
+            "3": {
+              "min": 0.354568754503,
+              "max": 0.950496042875,
+              "mean": 0.7111655230135285,
+              "count": 125
+            },
+            "4": {
+              "min": 0.44543468641761,
+              "max": 0.96389142730125,
+              "mean": 0.7654964981749011,
+              "count": 44
+            }
+          },
+          "boundaryClearance": 0.03610857269875001,
+          "feasibility": {
+            "satisfied": true,
+            "workspaceScale": 9.5,
+            "maxWorkspaceScale": 9.5,
+            "unsatisfied": [],
+            "glyphRadiusCss": 6,
+            "clearanceCss": 4,
+            "referenceProjectionRadiusCss": 240,
+            "projectionScope": "local sibling angular capacity only; not a global node-clearance guarantee",
+            "attemptCount": 1,
+            "selectedCandidateIndex": 0,
+            "candidateCount": 1
+          }
+        }
+      },
+      "v2Error": null,
+      "baselineVsV2": {
+        "totalNodes": {
+          "baseline": 200,
+          "experimental": 200
+        },
+        "visible": {
+          "baseline": 200,
+          "experimental": 200
+        },
+        "hidden": {
+          "baseline": 0,
+          "experimental": 0
+        },
+        "viewportIntersecting": {
+          "baseline": 1,
+          "experimental": 4
+        },
+        "newlyHiddenIds": [],
+        "newlyVisibleIds": [],
+        "visibleOverlap": {
+          "baseline": 0,
+          "experimental": 0
+        },
+        "sameIdsVisibleBoth": {
+          "count": 200,
+          "baselineOverlap": 0,
+          "experimentalOverlap": 0
+        },
+        "fixedSizeDiagnostic": {
+          "radiusCss": 6,
+          "shapeAware": true,
+          "sample": "all nodes in the scene; visibility ignored",
+          "baselineOverlap": 0,
+          "experimentalOverlap": 0,
+          "provenance": "analytical only; actual rendering/hit radii unchanged"
+        },
+        "radiusStats": {
+          "baseline": {
+            "all": {
+              "count": 200,
+              "min": 6,
+              "max": 6,
+              "mean": 6,
+              "median": 6,
+              "p90": 6
+            },
+            "visible": {
+              "count": 200,
+              "min": 6,
+              "max": 6,
+              "mean": 6,
+              "median": 6,
+              "p90": 6
+            }
+          },
+          "experimental": {
+            "all": {
+              "count": 200,
+              "min": 6,
+              "max": 6,
+              "mean": 6,
+              "median": 6,
+              "p90": 6
+            },
+            "visible": {
+              "count": 200,
+              "min": 6,
+              "max": 6,
+              "mean": 6,
+              "median": 6,
+              "p90": 6
+            }
+          }
+        },
+        "bounds": {
+          "baseline": {
+            "minX": -1436.263120187312,
+            "minY": -1536.1132576443395,
+            "maxX": 2390.317747933049,
+            "maxY": 2254.276966354668
+          },
+          "experimental": {
+            "minX": -1610.1505293228959,
+            "minY": -1873.1207055665172,
+            "maxX": 2474.3282933110545,
+            "maxY": 2462.0588046795338
+          }
+        },
+        "minCenterSeparation": {
+          "baseline": 53.365636648362354,
+          "experimental": 25.28591370699648
+        },
+        "diagnosticLimit": 300
+      },
+      "labelMetrics": "NOT MEASURED (Node report); use m5-adaptive-layout browser harness"
+    },
+    "presentation": {
+      "fixedGlyphRadiusCss": 6,
+      "viewport": {
+        "width": 800,
+        "height": 600
+      },
+      "dpr": "reference-only"
+    }
+  },
+  "crowdedFolder": {
+    "primary": {
+      "workspaceScale": 1,
+      "projection": {
+        "calculationRadiusCss": 240,
+        "displayedRadiusCss": 240,
+        "cameraZoom": 1
+      },
+      "modes": {
+        "baseline": {
+          "layoutMs": 0.17629999999999768,
+          "metrics": {
+            "totalNodes": 34,
+            "visibleNodes": 34,
+            "hiddenNodes": 0,
+            "viewportIntersectingNodes": 34,
+            "visibleIds": [
+              "r",
+              "dense",
+              "dense-0",
+              "dense-1",
+              "dense-2",
+              "dense-3",
+              "dense-4",
+              "dense-5",
+              "dense-6",
+              "dense-7",
+              "dense-8",
+              "dense-9",
+              "dense-10",
+              "dense-11",
+              "dense-12",
+              "dense-13",
+              "dense-14",
+              "dense-15",
+              "dense-16",
+              "dense-17",
+              "dense-18",
+              "dense-19",
+              "dense-20",
+              "dense-21",
+              "dense-22",
+              "dense-23",
+              "small-a",
+              "a-0",
+              "a-1",
+              "small-b",
+              "b-0",
+              "small-c",
+              "c-0",
+              "c-1"
+            ],
+            "hiddenIds": [],
+            "overlapPairs": 0,
+            "minCenterSeparation": 41.50124135265844,
+            "bounds": {
+              "minX": 182.59946751146845,
+              "minY": 82.83539752855083,
+              "maxX": 616.861392761905,
+              "maxY": 517.7040000000001
+            },
+            "radiusStats": {
+              "all": {
+                "count": 34,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              },
+              "visible": {
+                "count": 34,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              }
+            }
+          },
+          "fixedSizeDiagnostic": {
+            "radiusCss": 6,
+            "overlapPairs": 0,
+            "provenance": "fixed presentation radius is the rendered radius"
+          },
+          "radialSpread": {
+            "0": {
+              "min": 0,
+              "max": 0,
+              "mean": 0,
+              "count": 1
+            },
+            "1": {
+              "min": 0.5100000000000001,
+              "max": 0.5100000000000001,
+              "mean": 0.5100000000000001,
+              "count": 4
+            },
+            "2": {
+              "min": 0.8821000000000002,
+              "max": 0.8821000000000002,
+              "mean": 0.8821000000000003,
+              "count": 29
+            }
+          },
+          "boundaryClearance": 0.11789999999999978,
+          "feasibility": null
+        },
+        "v1": {
+          "layoutMs": 0.1956000000000131,
+          "metrics": {
+            "totalNodes": 34,
+            "visibleNodes": 34,
+            "hiddenNodes": 0,
+            "viewportIntersectingNodes": 34,
+            "visibleIds": [
+              "r",
+              "dense",
+              "dense-0",
+              "dense-1",
+              "dense-2",
+              "dense-3",
+              "dense-4",
+              "dense-5",
+              "dense-6",
+              "dense-7",
+              "dense-8",
+              "dense-9",
+              "dense-10",
+              "dense-11",
+              "dense-12",
+              "dense-13",
+              "dense-14",
+              "dense-15",
+              "dense-16",
+              "dense-17",
+              "dense-18",
+              "dense-19",
+              "dense-20",
+              "dense-21",
+              "dense-22",
+              "dense-23",
+              "small-a",
+              "a-0",
+              "a-1",
+              "small-b",
+              "b-0",
+              "small-c",
+              "c-0",
+              "c-1"
+            ],
+            "hiddenIds": [],
+            "overlapPairs": 0,
+            "minCenterSeparation": 19.32555260863351,
+            "bounds": {
+              "minX": 203.1527077411057,
+              "minY": 126.13800224784691,
+              "maxX": 616.9666161878497,
+              "maxY": 517.0852198139752
+            },
+            "radiusStats": {
+              "all": {
+                "count": 34,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              },
+              "visible": {
+                "count": 34,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              }
+            }
+          },
+          "fixedSizeDiagnostic": {
+            "radiusCss": 6,
+            "overlapPairs": 0,
+            "provenance": "fixed presentation radius is the rendered radius"
+          },
+          "radialSpread": {
+            "0": {
+              "min": 0,
+              "max": 0,
+              "mean": 0,
+              "count": 1
+            },
+            "1": {
+              "min": 0.3734162122217902,
+              "max": 0.64699935,
+              "mean": 0.4654417722504027,
+              "count": 4
+            },
+            "2": {
+              "min": 0.7841950242776266,
+              "max": 0.8799491225,
+              "mean": 0.8657212907939138,
+              "count": 29
+            }
+          },
+          "boundaryClearance": 0.12005087749999999,
+          "feasibility": null
+        }
+      },
+      "v2Error": {
+        "name": "LayoutContractError",
+        "code": "experimental-v2-infeasible",
+        "message": "no workspace scale up to 1 satisfies angular clearance (node r)",
+        "diagnostics": {
+          "satisfied": false,
+          "workspaceScale": 1,
+          "maxWorkspaceScale": 1,
+          "unsatisfied": [
+            {
+              "parentId": "dense",
+              "required": 4.286336084007957,
+              "available": 2.2739553696845616,
+              "workspaceScale": 1
+            }
+          ],
+          "glyphRadiusCss": 6,
+          "clearanceCss": 4,
+          "referenceProjectionRadiusCss": 240,
+          "attemptCount": 1,
+          "selectedCandidateIndex": 0,
+          "candidateCount": 1
+        }
+      },
+      "baselineVsV2": null,
+      "labelMetrics": "NOT MEASURED (Node report); use m5-adaptive-layout browser harness"
+    },
+    "secondary": {
+      "workspaceScale": 2,
+      "projection": {
+        "calculationRadiusCss": 240,
+        "displayedRadiusCss": 480,
+        "cameraZoom": 1
+      },
+      "modes": {
+        "baseline": {
+          "layoutMs": 0.2757000000000005,
+          "metrics": {
+            "totalNodes": 34,
+            "visibleNodes": 34,
+            "hiddenNodes": 0,
+            "viewportIntersectingNodes": 14,
+            "visibleIds": [
+              "r",
+              "dense",
+              "dense-0",
+              "dense-1",
+              "dense-2",
+              "dense-3",
+              "dense-4",
+              "dense-5",
+              "dense-6",
+              "dense-7",
+              "dense-8",
+              "dense-9",
+              "dense-10",
+              "dense-11",
+              "dense-12",
+              "dense-13",
+              "dense-14",
+              "dense-15",
+              "dense-16",
+              "dense-17",
+              "dense-18",
+              "dense-19",
+              "dense-20",
+              "dense-21",
+              "dense-22",
+              "dense-23",
+              "small-a",
+              "a-0",
+              "a-1",
+              "small-b",
+              "b-0",
+              "small-c",
+              "c-0",
+              "c-1"
+            ],
+            "hiddenIds": [],
+            "overlapPairs": 0,
+            "minCenterSeparation": 83.0024827053169,
+            "bounds": {
+              "minX": -28.801064977063106,
+              "minY": -128.32920494289834,
+              "maxX": 827.72278552381,
+              "maxY": 729.4080000000001
+            },
+            "radiusStats": {
+              "all": {
+                "count": 34,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              },
+              "visible": {
+                "count": 34,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              }
+            }
+          },
+          "fixedSizeDiagnostic": {
+            "radiusCss": 6,
+            "overlapPairs": 0,
+            "provenance": "fixed presentation radius is the rendered radius"
+          },
+          "radialSpread": {
+            "0": {
+              "min": 0,
+              "max": 0,
+              "mean": 0,
+              "count": 1
+            },
+            "1": {
+              "min": 0.5100000000000001,
+              "max": 0.5100000000000001,
+              "mean": 0.5100000000000001,
+              "count": 4
+            },
+            "2": {
+              "min": 0.8821000000000002,
+              "max": 0.8821000000000002,
+              "mean": 0.8821000000000003,
+              "count": 29
+            }
+          },
+          "boundaryClearance": 0.11789999999999978,
+          "feasibility": null
+        },
+        "v1": {
+          "layoutMs": 0.157100000000014,
+          "metrics": {
+            "totalNodes": 34,
+            "visibleNodes": 34,
+            "hiddenNodes": 0,
+            "viewportIntersectingNodes": 14,
+            "visibleIds": [
+              "r",
+              "dense",
+              "dense-0",
+              "dense-1",
+              "dense-2",
+              "dense-3",
+              "dense-4",
+              "dense-5",
+              "dense-6",
+              "dense-7",
+              "dense-8",
+              "dense-9",
+              "dense-10",
+              "dense-11",
+              "dense-12",
+              "dense-13",
+              "dense-14",
+              "dense-15",
+              "dense-16",
+              "dense-17",
+              "dense-18",
+              "dense-19",
+              "dense-20",
+              "dense-21",
+              "dense-22",
+              "dense-23",
+              "small-a",
+              "a-0",
+              "a-1",
+              "small-b",
+              "b-0",
+              "small-c",
+              "c-0",
+              "c-1"
+            ],
+            "hiddenIds": [],
+            "overlapPairs": 0,
+            "minCenterSeparation": 38.65110521726702,
+            "bounds": {
+              "minX": 12.305415482211401,
+              "minY": -41.723995504306174,
+              "maxX": 827.9332323756994,
+              "maxY": 728.1704396279504
+            },
+            "radiusStats": {
+              "all": {
+                "count": 34,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              },
+              "visible": {
+                "count": 34,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              }
+            }
+          },
+          "fixedSizeDiagnostic": {
+            "radiusCss": 6,
+            "overlapPairs": 0,
+            "provenance": "fixed presentation radius is the rendered radius"
+          },
+          "radialSpread": {
+            "0": {
+              "min": 0,
+              "max": 0,
+              "mean": 0,
+              "count": 1
+            },
+            "1": {
+              "min": 0.3734162122217902,
+              "max": 0.64699935,
+              "mean": 0.4654417722504027,
+              "count": 4
+            },
+            "2": {
+              "min": 0.7841950242776266,
+              "max": 0.8799491225,
+              "mean": 0.8657212907939138,
+              "count": 29
+            }
+          },
+          "boundaryClearance": 0.12005087749999999,
+          "feasibility": null
+        },
+        "v2": {
+          "layoutMs": 0.3836000000000013,
+          "metrics": {
+            "totalNodes": 34,
+            "visibleNodes": 34,
+            "hiddenNodes": 0,
+            "viewportIntersectingNodes": 29,
+            "visibleIds": [
+              "r",
+              "dense",
+              "dense-0",
+              "dense-1",
+              "dense-2",
+              "dense-3",
+              "dense-4",
+              "dense-5",
+              "dense-6",
+              "dense-7",
+              "dense-8",
+              "dense-9",
+              "dense-10",
+              "dense-11",
+              "dense-12",
+              "dense-13",
+              "dense-14",
+              "dense-15",
+              "dense-16",
+              "dense-17",
+              "dense-18",
+              "dense-19",
+              "dense-20",
+              "dense-21",
+              "dense-22",
+              "dense-23",
+              "small-a",
+              "a-0",
+              "a-1",
+              "small-b",
+              "b-0",
+              "small-c",
+              "c-0",
+              "c-1"
+            ],
+            "hiddenIds": [],
+            "overlapPairs": 0,
+            "minCenterSeparation": 22.781864510584253,
+            "bounds": {
+              "minX": -26.192492906416305,
+              "minY": 11.490033873980451,
+              "maxX": 805.221297752219,
+              "maxY": 641.1137813640912
+            },
+            "radiusStats": {
+              "all": {
+                "count": 34,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              },
+              "visible": {
+                "count": 34,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              }
+            }
+          },
+          "fixedSizeDiagnostic": {
+            "radiusCss": 6,
+            "overlapPairs": 0,
+            "provenance": "fixed presentation radius is the rendered radius"
+          },
+          "radialSpread": {
+            "0": {
+              "min": 0,
+              "max": 0,
+              "mean": 0,
+              "count": 1
+            },
+            "1": {
+              "min": 0.13591987,
+              "max": 0.64759935,
+              "mean": 0.39175961000000004,
+              "count": 4
+            },
+            "2": {
+              "min": 0.2552101569,
+              "max": 0.8794591225,
+              "mean": 0.5131671913000001,
+              "count": 29
+            }
+          },
+          "boundaryClearance": 0.12054087749999998,
+          "feasibility": {
+            "satisfied": true,
+            "workspaceScale": 2,
+            "maxWorkspaceScale": 2,
+            "unsatisfied": [],
+            "glyphRadiusCss": 6,
+            "clearanceCss": 4,
+            "referenceProjectionRadiusCss": 240,
+            "projectionScope": "local sibling angular capacity only; not a global node-clearance guarantee",
+            "attemptCount": 1,
+            "selectedCandidateIndex": 0,
+            "candidateCount": 1
+          }
+        }
+      },
+      "v2Error": null,
+      "baselineVsV2": {
+        "totalNodes": {
+          "baseline": 34,
+          "experimental": 34
+        },
+        "visible": {
+          "baseline": 34,
+          "experimental": 34
+        },
+        "hidden": {
+          "baseline": 0,
+          "experimental": 0
+        },
+        "viewportIntersecting": {
+          "baseline": 14,
+          "experimental": 29
+        },
+        "newlyHiddenIds": [],
+        "newlyVisibleIds": [],
+        "visibleOverlap": {
+          "baseline": 0,
+          "experimental": 0
+        },
+        "sameIdsVisibleBoth": {
+          "count": 34,
+          "baselineOverlap": 0,
+          "experimentalOverlap": 0
+        },
+        "fixedSizeDiagnostic": {
+          "radiusCss": 6,
+          "shapeAware": true,
+          "sample": "all nodes in the scene; visibility ignored",
+          "baselineOverlap": 0,
+          "experimentalOverlap": 0,
+          "provenance": "analytical only; actual rendering/hit radii unchanged"
+        },
+        "radiusStats": {
+          "baseline": {
+            "all": {
+              "count": 34,
+              "min": 6,
+              "max": 6,
+              "mean": 6,
+              "median": 6,
+              "p90": 6
+            },
+            "visible": {
+              "count": 34,
+              "min": 6,
+              "max": 6,
+              "mean": 6,
+              "median": 6,
+              "p90": 6
+            }
+          },
+          "experimental": {
+            "all": {
+              "count": 34,
+              "min": 6,
+              "max": 6,
+              "mean": 6,
+              "median": 6,
+              "p90": 6
+            },
+            "visible": {
+              "count": 34,
+              "min": 6,
+              "max": 6,
+              "mean": 6,
+              "median": 6,
+              "p90": 6
+            }
+          }
+        },
+        "bounds": {
+          "baseline": {
+            "minX": -28.801064977063106,
+            "minY": -128.32920494289834,
+            "maxX": 827.72278552381,
+            "maxY": 729.4080000000001
+          },
+          "experimental": {
+            "minX": -26.192492906416305,
+            "minY": 11.490033873980451,
+            "maxX": 805.221297752219,
+            "maxY": 641.1137813640912
+          }
+        },
+        "minCenterSeparation": {
+          "baseline": 83.0024827053169,
+          "experimental": 22.781864510584253
+        },
+        "diagnosticLimit": 300
+      },
+      "labelMetrics": "NOT MEASURED (Node report); use m5-adaptive-layout browser harness"
+    },
+    "presentation": {
+      "fixedGlyphRadiusCss": 6,
+      "viewport": {
+        "width": 800,
+        "height": 600
+      },
+      "dpr": "reference-only"
+    }
+  },
+  "denseNeighbors": {
+    "primary": {
+      "workspaceScale": 1,
+      "projection": {
+        "calculationRadiusCss": 240,
+        "displayedRadiusCss": 240,
+        "cameraZoom": 1
+      },
+      "modes": {
+        "baseline": {
+          "layoutMs": 0.1285000000000025,
+          "metrics": {
+            "totalNodes": 53,
+            "visibleNodes": 53,
+            "hiddenNodes": 0,
+            "viewportIntersectingNodes": 53,
+            "visibleIds": [
+              "r",
+              "a",
+              "a-0",
+              "a-1",
+              "a-2",
+              "a-3",
+              "a-4",
+              "a-5",
+              "a-6",
+              "a-7",
+              "a-8",
+              "a-9",
+              "a-10",
+              "a-11",
+              "b",
+              "b-0",
+              "b-1",
+              "b-2",
+              "b-3",
+              "b-4",
+              "b-5",
+              "b-6",
+              "b-7",
+              "b-8",
+              "b-9",
+              "b-10",
+              "b-11",
+              "c",
+              "c-0",
+              "c-1",
+              "c-2",
+              "c-3",
+              "c-4",
+              "c-5",
+              "c-6",
+              "c-7",
+              "c-8",
+              "c-9",
+              "c-10",
+              "c-11",
+              "d",
+              "d-0",
+              "d-1",
+              "d-2",
+              "d-3",
+              "d-4",
+              "d-5",
+              "d-6",
+              "d-7",
+              "d-8",
+              "d-9",
+              "d-10",
+              "d-11"
+            ],
+            "hiddenIds": [],
+            "overlapPairs": 0,
+            "minCenterSeparation": 25.38741973425215,
+            "bounds": {
+              "minX": 182.61080830653634,
+              "minY": 82.61080830653634,
+              "maxX": 617.3891916934637,
+              "maxY": 517.3891916934637
+            },
+            "radiusStats": {
+              "all": {
+                "count": 53,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              },
+              "visible": {
+                "count": 53,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              }
+            }
+          },
+          "fixedSizeDiagnostic": {
+            "radiusCss": 6,
+            "overlapPairs": 0,
+            "provenance": "fixed presentation radius is the rendered radius"
+          },
+          "radialSpread": {
+            "0": {
+              "min": 0,
+              "max": 0,
+              "mean": 0,
+              "count": 1
+            },
+            "1": {
+              "min": 0.5100000000000001,
+              "max": 0.5100000000000001,
+              "mean": 0.5100000000000001,
+              "count": 4
+            },
+            "2": {
+              "min": 0.8821000000000002,
+              "max": 0.8821000000000002,
+              "mean": 0.8821000000000007,
+              "count": 48
+            }
+          },
+          "boundaryClearance": 0.11789999999999978,
+          "feasibility": null
+        },
+        "v1": {
+          "layoutMs": 0.2734000000000094,
+          "metrics": {
+            "totalNodes": 53,
+            "visibleNodes": 53,
+            "hiddenNodes": 0,
+            "viewportIntersectingNodes": 53,
+            "visibleIds": [
+              "r",
+              "a",
+              "a-0",
+              "a-1",
+              "a-2",
+              "a-3",
+              "a-4",
+              "a-5",
+              "a-6",
+              "a-7",
+              "a-8",
+              "a-9",
+              "a-10",
+              "a-11",
+              "b",
+              "b-0",
+              "b-1",
+              "b-2",
+              "b-3",
+              "b-4",
+              "b-5",
+              "b-6",
+              "b-7",
+              "b-8",
+              "b-9",
+              "b-10",
+              "b-11",
+              "c",
+              "c-0",
+              "c-1",
+              "c-2",
+              "c-3",
+              "c-4",
+              "c-5",
+              "c-6",
+              "c-7",
+              "c-8",
+              "c-9",
+              "c-10",
+              "c-11",
+              "d",
+              "d-0",
+              "d-1",
+              "d-2",
+              "d-3",
+              "d-4",
+              "d-5",
+              "d-6",
+              "d-7",
+              "d-8",
+              "d-9",
+              "d-10",
+              "d-11"
+            ],
+            "hiddenIds": [],
+            "overlapPairs": 0,
+            "minCenterSeparation": 27.624684563912773,
+            "bounds": {
+              "minX": 183.26437986817504,
+              "minY": 83.26437986817504,
+              "maxX": 616.7356201318249,
+              "maxY": 516.7356201318249
+            },
+            "radiusStats": {
+              "all": {
+                "count": 53,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              },
+              "visible": {
+                "count": 53,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              }
+            }
+          },
+          "fixedSizeDiagnostic": {
+            "radiusCss": 6,
+            "overlapPairs": 0,
+            "provenance": "fixed presentation radius is the rendered radius"
+          },
+          "radialSpread": {
+            "0": {
+              "min": 0,
+              "max": 0,
+              "mean": 0,
+              "count": 1
+            },
+            "1": {
+              "min": 0.64699935,
+              "max": 0.64699935,
+              "mean": 0.64699935,
+              "count": 4
+            },
+            "2": {
+              "min": 0.8799491225,
+              "max": 0.8799491225,
+              "mean": 0.8799491225000006,
+              "count": 48
+            }
+          },
+          "boundaryClearance": 0.12005087749999999,
+          "feasibility": null
+        }
+      },
+      "v2Error": {
+        "name": "LayoutContractError",
+        "code": "experimental-v2-infeasible",
+        "message": "no workspace scale up to 1 satisfies angular clearance (node r)",
+        "diagnostics": {
+          "satisfied": false,
+          "workspaceScale": 1,
+          "maxWorkspaceScale": 1,
+          "unsatisfied": [
+            {
+              "parentId": "a",
+              "required": 2.143168042003979,
+              "available": 1.767071276075453,
+              "workspaceScale": 1
+            }
+          ],
+          "glyphRadiusCss": 6,
+          "clearanceCss": 4,
+          "referenceProjectionRadiusCss": 240,
+          "attemptCount": 1,
+          "selectedCandidateIndex": 0,
+          "candidateCount": 1
+        }
+      },
+      "baselineVsV2": null,
+      "labelMetrics": "NOT MEASURED (Node report); use m5-adaptive-layout browser harness"
+    },
+    "secondary": {
+      "workspaceScale": 1.25,
+      "projection": {
+        "calculationRadiusCss": 240,
+        "displayedRadiusCss": 300,
+        "cameraZoom": 1
+      },
+      "modes": {
+        "baseline": {
+          "layoutMs": 0.12369999999998527,
+          "metrics": {
+            "totalNodes": 53,
+            "visibleNodes": 53,
+            "hiddenNodes": 0,
+            "viewportIntersectingNodes": 53,
+            "visibleIds": [
+              "r",
+              "a",
+              "a-0",
+              "a-1",
+              "a-2",
+              "a-3",
+              "a-4",
+              "a-5",
+              "a-6",
+              "a-7",
+              "a-8",
+              "a-9",
+              "a-10",
+              "a-11",
+              "b",
+              "b-0",
+              "b-1",
+              "b-2",
+              "b-3",
+              "b-4",
+              "b-5",
+              "b-6",
+              "b-7",
+              "b-8",
+              "b-9",
+              "b-10",
+              "b-11",
+              "c",
+              "c-0",
+              "c-1",
+              "c-2",
+              "c-3",
+              "c-4",
+              "c-5",
+              "c-6",
+              "c-7",
+              "c-8",
+              "c-9",
+              "c-10",
+              "c-11",
+              "d",
+              "d-0",
+              "d-1",
+              "d-2",
+              "d-3",
+              "d-4",
+              "d-5",
+              "d-6",
+              "d-7",
+              "d-8",
+              "d-9",
+              "d-10",
+              "d-11"
+            ],
+            "hiddenIds": [],
+            "overlapPairs": 0,
+            "minCenterSeparation": 31.7342746678152,
+            "bounds": {
+              "minX": 129.76351038317046,
+              "minY": 29.763510383170455,
+              "maxX": 670.2364896168295,
+              "maxY": 570.2364896168295
+            },
+            "radiusStats": {
+              "all": {
+                "count": 53,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              },
+              "visible": {
+                "count": 53,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              }
+            }
+          },
+          "fixedSizeDiagnostic": {
+            "radiusCss": 6,
+            "overlapPairs": 0,
+            "provenance": "fixed presentation radius is the rendered radius"
+          },
+          "radialSpread": {
+            "0": {
+              "min": 0,
+              "max": 0,
+              "mean": 0,
+              "count": 1
+            },
+            "1": {
+              "min": 0.5100000000000001,
+              "max": 0.5100000000000001,
+              "mean": 0.5100000000000001,
+              "count": 4
+            },
+            "2": {
+              "min": 0.8821000000000002,
+              "max": 0.8821000000000002,
+              "mean": 0.8821000000000007,
+              "count": 48
+            }
+          },
+          "boundaryClearance": 0.11789999999999978,
+          "feasibility": null
+        },
+        "v1": {
+          "layoutMs": 0.11269999999998959,
+          "metrics": {
+            "totalNodes": 53,
+            "visibleNodes": 53,
+            "hiddenNodes": 0,
+            "viewportIntersectingNodes": 53,
+            "visibleIds": [
+              "r",
+              "a",
+              "a-0",
+              "a-1",
+              "a-2",
+              "a-3",
+              "a-4",
+              "a-5",
+              "a-6",
+              "a-7",
+              "a-8",
+              "a-9",
+              "a-10",
+              "a-11",
+              "b",
+              "b-0",
+              "b-1",
+              "b-2",
+              "b-3",
+              "b-4",
+              "b-5",
+              "b-6",
+              "b-7",
+              "b-8",
+              "b-9",
+              "b-10",
+              "b-11",
+              "c",
+              "c-0",
+              "c-1",
+              "c-2",
+              "c-3",
+              "c-4",
+              "c-5",
+              "c-6",
+              "c-7",
+              "c-8",
+              "c-9",
+              "c-10",
+              "c-11",
+              "d",
+              "d-0",
+              "d-1",
+              "d-2",
+              "d-3",
+              "d-4",
+              "d-5",
+              "d-6",
+              "d-7",
+              "d-8",
+              "d-9",
+              "d-10",
+              "d-11"
+            ],
+            "hiddenIds": [],
+            "overlapPairs": 0,
+            "minCenterSeparation": 34.53085570489096,
+            "bounds": {
+              "minX": 130.5804748352188,
+              "minY": 30.58047483521881,
+              "maxX": 669.4195251647811,
+              "maxY": 569.4195251647811
+            },
+            "radiusStats": {
+              "all": {
+                "count": 53,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              },
+              "visible": {
+                "count": 53,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              }
+            }
+          },
+          "fixedSizeDiagnostic": {
+            "radiusCss": 6,
+            "overlapPairs": 0,
+            "provenance": "fixed presentation radius is the rendered radius"
+          },
+          "radialSpread": {
+            "0": {
+              "min": 0,
+              "max": 0,
+              "mean": 0,
+              "count": 1
+            },
+            "1": {
+              "min": 0.64699935,
+              "max": 0.64699935,
+              "mean": 0.64699935,
+              "count": 4
+            },
+            "2": {
+              "min": 0.8799491225,
+              "max": 0.8799491225,
+              "mean": 0.8799491225000006,
+              "count": 48
+            }
+          },
+          "boundaryClearance": 0.12005087749999999,
+          "feasibility": null
+        },
+        "v2": {
+          "layoutMs": 0.1945999999999799,
+          "metrics": {
+            "totalNodes": 53,
+            "visibleNodes": 53,
+            "hiddenNodes": 0,
+            "viewportIntersectingNodes": 53,
+            "visibleIds": [
+              "r",
+              "a",
+              "a-0",
+              "a-1",
+              "a-2",
+              "a-3",
+              "a-4",
+              "a-5",
+              "a-6",
+              "a-7",
+              "a-8",
+              "a-9",
+              "a-10",
+              "a-11",
+              "b",
+              "b-0",
+              "b-1",
+              "b-2",
+              "b-3",
+              "b-4",
+              "b-5",
+              "b-6",
+              "b-7",
+              "b-8",
+              "b-9",
+              "b-10",
+              "b-11",
+              "c",
+              "c-0",
+              "c-1",
+              "c-2",
+              "c-3",
+              "c-4",
+              "c-5",
+              "c-6",
+              "c-7",
+              "c-8",
+              "c-9",
+              "c-10",
+              "c-11",
+              "d",
+              "d-0",
+              "d-1",
+              "d-2",
+              "d-3",
+              "d-4",
+              "d-5",
+              "d-6",
+              "d-7",
+              "d-8",
+              "d-9",
+              "d-10",
+              "d-11"
+            ],
+            "hiddenIds": [],
+            "overlapPairs": 0,
+            "minCenterSeparation": 20.289455719825654,
+            "bounds": {
+              "minX": 130.5620731288351,
+              "minY": 45.00102128448282,
+              "maxX": 669.4379268711649,
+              "maxY": 554.9989787155172
+            },
+            "radiusStats": {
+              "all": {
+                "count": 53,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              },
+              "visible": {
+                "count": 53,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              }
+            }
+          },
+          "fixedSizeDiagnostic": {
+            "radiusCss": 6,
+            "overlapPairs": 0,
+            "provenance": "fixed presentation radius is the rendered radius"
+          },
+          "radialSpread": {
+            "0": {
+              "min": 0,
+              "max": 0,
+              "mean": 0,
+              "count": 1
+            },
+            "1": {
+              "min": 0.13591987,
+              "max": 0.64759935,
+              "mean": 0.39175961000000004,
+              "count": 4
+            },
+            "2": {
+              "min": 0.2552101569,
+              "max": 0.8794591225,
+              "mean": 0.6338529720999996,
+              "count": 48
+            }
+          },
+          "boundaryClearance": 0.12054087749999998,
+          "feasibility": {
+            "satisfied": true,
+            "workspaceScale": 1.25,
+            "maxWorkspaceScale": 1.25,
+            "unsatisfied": [],
+            "glyphRadiusCss": 6,
+            "clearanceCss": 4,
+            "referenceProjectionRadiusCss": 240,
+            "projectionScope": "local sibling angular capacity only; not a global node-clearance guarantee",
+            "attemptCount": 1,
+            "selectedCandidateIndex": 0,
+            "candidateCount": 1
+          }
+        }
+      },
+      "v2Error": null,
+      "baselineVsV2": {
+        "totalNodes": {
+          "baseline": 53,
+          "experimental": 53
+        },
+        "visible": {
+          "baseline": 53,
+          "experimental": 53
+        },
+        "hidden": {
+          "baseline": 0,
+          "experimental": 0
+        },
+        "viewportIntersecting": {
+          "baseline": 53,
+          "experimental": 53
+        },
+        "newlyHiddenIds": [],
+        "newlyVisibleIds": [],
+        "visibleOverlap": {
+          "baseline": 0,
+          "experimental": 0
+        },
+        "sameIdsVisibleBoth": {
+          "count": 53,
+          "baselineOverlap": 0,
+          "experimentalOverlap": 0
+        },
+        "fixedSizeDiagnostic": {
+          "radiusCss": 6,
+          "shapeAware": true,
+          "sample": "all nodes in the scene; visibility ignored",
+          "baselineOverlap": 0,
+          "experimentalOverlap": 0,
+          "provenance": "analytical only; actual rendering/hit radii unchanged"
+        },
+        "radiusStats": {
+          "baseline": {
+            "all": {
+              "count": 53,
+              "min": 6,
+              "max": 6,
+              "mean": 6,
+              "median": 6,
+              "p90": 6
+            },
+            "visible": {
+              "count": 53,
+              "min": 6,
+              "max": 6,
+              "mean": 6,
+              "median": 6,
+              "p90": 6
+            }
+          },
+          "experimental": {
+            "all": {
+              "count": 53,
+              "min": 6,
+              "max": 6,
+              "mean": 6,
+              "median": 6,
+              "p90": 6
+            },
+            "visible": {
+              "count": 53,
+              "min": 6,
+              "max": 6,
+              "mean": 6,
+              "median": 6,
+              "p90": 6
+            }
+          }
+        },
+        "bounds": {
+          "baseline": {
+            "minX": 129.76351038317046,
+            "minY": 29.763510383170455,
+            "maxX": 670.2364896168295,
+            "maxY": 570.2364896168295
+          },
+          "experimental": {
+            "minX": 130.5620731288351,
+            "minY": 45.00102128448282,
+            "maxX": 669.4379268711649,
+            "maxY": 554.9989787155172
+          }
+        },
+        "minCenterSeparation": {
+          "baseline": 31.7342746678152,
+          "experimental": 20.289455719825654
+        },
+        "diagnosticLimit": 300
+      },
+      "labelMetrics": "NOT MEASURED (Node report); use m5-adaptive-layout browser harness"
+    },
+    "presentation": {
+      "fixedGlyphRadiusCss": 6,
+      "viewport": {
+        "width": 800,
+        "height": 600
+      },
+      "dpr": "reference-only"
+    }
+  },
+  "mixedDeepWide": {
+    "primary": {
+      "workspaceScale": 1,
+      "projection": {
+        "calculationRadiusCss": 240,
+        "displayedRadiusCss": 240,
+        "cameraZoom": 1
+      },
+      "modes": {
+        "baseline": {
+          "layoutMs": 0.12189999999998236,
+          "metrics": {
+            "totalNodes": 50,
+            "visibleNodes": 50,
+            "hiddenNodes": 0,
+            "viewportIntersectingNodes": 50,
+            "visibleIds": [
+              "r",
+              "deep-0",
+              "deep-1",
+              "deep-2",
+              "deep-3",
+              "deep-4",
+              "deep-5",
+              "deep-leaf",
+              "wide",
+              "wide-0",
+              "wide-1",
+              "wide-2",
+              "wide-3",
+              "wide-4",
+              "wide-5",
+              "wide-6",
+              "wide-7",
+              "wide-8",
+              "wide-9",
+              "wide-10",
+              "wide-11",
+              "wide-12",
+              "wide-13",
+              "wide-14",
+              "wide-15",
+              "wide-16",
+              "wide-17",
+              "wide-18",
+              "wide-19",
+              "medium",
+              "medium-0",
+              "medium-0-0",
+              "medium-0-1",
+              "medium-0-2",
+              "medium-1",
+              "medium-1-0",
+              "medium-1-1",
+              "medium-1-2",
+              "medium-2",
+              "medium-2-0",
+              "medium-2-1",
+              "medium-2-2",
+              "medium-3",
+              "medium-3-0",
+              "medium-3-1",
+              "medium-3-2",
+              "medium-4",
+              "medium-4-0",
+              "medium-4-1",
+              "medium-4-2"
+            ],
+            "hiddenIds": [],
+            "overlapPairs": 5,
+            "minCenterSeparation": 1.8749999999999631,
+            "bounds": {
+              "minX": 238.34469161921194,
+              "minY": 108.16057450985704,
+              "maxX": 617.1737001558164,
+              "maxY": 461.86532460463604
+            },
+            "radiusStats": {
+              "all": {
+                "count": 50,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              },
+              "visible": {
+                "count": 50,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              }
+            }
+          },
+          "fixedSizeDiagnostic": {
+            "radiusCss": 6,
+            "overlapPairs": 5,
+            "provenance": "fixed presentation radius is the rendered radius"
+          },
+          "radialSpread": {
+            "0": {
+              "min": 0,
+              "max": 0,
+              "mean": 0,
+              "count": 1
+            },
+            "1": {
+              "min": 0.4,
+              "max": 0.4,
+              "mean": 0.4000000000000001,
+              "count": 3
+            },
+            "2": {
+              "min": 0.65,
+              "max": 0.65,
+              "mean": 0.6500000000000001,
+              "count": 26
+            },
+            "3": {
+              "min": 0.775,
+              "max": 0.775,
+              "mean": 0.7750000000000002,
+              "count": 16
+            },
+            "4": {
+              "min": 0.8375,
+              "max": 0.8375,
+              "mean": 0.8375,
+              "count": 1
+            },
+            "5": {
+              "min": 0.86875,
+              "max": 0.86875,
+              "mean": 0.86875,
+              "count": 1
+            },
+            "6": {
+              "min": 0.884375,
+              "max": 0.884375,
+              "mean": 0.884375,
+              "count": 1
+            },
+            "7": {
+              "min": 0.8921875,
+              "max": 0.8921875,
+              "mean": 0.8921875,
+              "count": 1
+            }
+          },
+          "boundaryClearance": 0.10781249999999998,
+          "feasibility": null
+        },
+        "v1": {
+          "layoutMs": 0.15000000000000568,
+          "metrics": {
+            "totalNodes": 50,
+            "visibleNodes": 50,
+            "hiddenNodes": 0,
+            "viewportIntersectingNodes": 50,
+            "visibleIds": [
+              "r",
+              "deep-0",
+              "deep-1",
+              "deep-2",
+              "deep-3",
+              "deep-4",
+              "deep-5",
+              "deep-leaf",
+              "wide",
+              "wide-0",
+              "wide-1",
+              "wide-2",
+              "wide-3",
+              "wide-4",
+              "wide-5",
+              "wide-6",
+              "wide-7",
+              "wide-8",
+              "wide-9",
+              "wide-10",
+              "wide-11",
+              "wide-12",
+              "wide-13",
+              "wide-14",
+              "wide-15",
+              "wide-16",
+              "wide-17",
+              "wide-18",
+              "wide-19",
+              "medium",
+              "medium-0",
+              "medium-0-0",
+              "medium-0-1",
+              "medium-0-2",
+              "medium-1",
+              "medium-1-0",
+              "medium-1-1",
+              "medium-1-2",
+              "medium-2",
+              "medium-2-0",
+              "medium-2-1",
+              "medium-2-2",
+              "medium-3",
+              "medium-3-0",
+              "medium-3-1",
+              "medium-3-2",
+              "medium-4",
+              "medium-4-0",
+              "medium-4-1",
+              "medium-4-2"
+            ],
+            "hiddenIds": [],
+            "overlapPairs": 6,
+            "minCenterSeparation": 2.810485484924689,
+            "bounds": {
+              "minX": 193.68989444677322,
+              "minY": 75.00701532345437,
+              "maxX": 624.6296410459743,
+              "maxY": 502.96500511533753
+            },
+            "radiusStats": {
+              "all": {
+                "count": 50,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              },
+              "visible": {
+                "count": 50,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              }
+            }
+          },
+          "fixedSizeDiagnostic": {
+            "radiusCss": 6,
+            "overlapPairs": 6,
+            "provenance": "fixed presentation radius is the rendered radius"
+          },
+          "radialSpread": {
+            "0": {
+              "min": 0,
+              "max": 0,
+              "mean": 0,
+              "count": 1
+            },
+            "1": {
+              "min": 0.4390044694248301,
+              "max": 0.61449935,
+              "mean": 0.5376157624023624,
+              "count": 3
+            },
+            "2": {
+              "min": 0.7746509142986905,
+              "max": 0.8360741224999999,
+              "mean": 0.8299992762660626,
+              "count": 26
+            },
+            "3": {
+              "min": 0.8986271700045416,
+              "max": 0.9133686973033265,
+              "mean": 0.9124473518471524,
+              "count": 16
+            },
+            "4": {
+              "min": 0.9485188595015895,
+              "max": 0.9485188595015895,
+              "mean": 0.9485188595015895,
+              "count": 1
+            },
+            "5": {
+              "min": 0.9724809508255563,
+              "max": 0.9724809508255563,
+              "mean": 0.9724809508255563,
+              "count": 1
+            },
+            "6": {
+              "min": 0.9873676827889447,
+              "max": 0.9873676827889447,
+              "mean": 0.9873676827889447,
+              "count": 1
+            },
+            "7": {
+              "min": 0.9990780389761307,
+              "max": 0.9990780389761307,
+              "mean": 0.9990780389761307,
+              "count": 1
+            }
+          },
+          "boundaryClearance": 0.0009219610238693221,
+          "feasibility": null
+        },
+        "v2": {
+          "layoutMs": 0.3061999999999898,
+          "metrics": {
+            "totalNodes": 50,
+            "visibleNodes": 50,
+            "hiddenNodes": 0,
+            "viewportIntersectingNodes": 50,
+            "visibleIds": [
+              "r",
+              "deep-0",
+              "deep-1",
+              "deep-2",
+              "deep-3",
+              "deep-4",
+              "deep-5",
+              "deep-leaf",
+              "wide",
+              "wide-0",
+              "wide-1",
+              "wide-2",
+              "wide-3",
+              "wide-4",
+              "wide-5",
+              "wide-6",
+              "wide-7",
+              "wide-8",
+              "wide-9",
+              "wide-10",
+              "wide-11",
+              "wide-12",
+              "wide-13",
+              "wide-14",
+              "wide-15",
+              "wide-16",
+              "wide-17",
+              "wide-18",
+              "wide-19",
+              "medium",
+              "medium-0",
+              "medium-0-0",
+              "medium-0-1",
+              "medium-0-2",
+              "medium-1",
+              "medium-1-0",
+              "medium-1-1",
+              "medium-1-2",
+              "medium-2",
+              "medium-2-0",
+              "medium-2-1",
+              "medium-2-2",
+              "medium-3",
+              "medium-3-0",
+              "medium-3-1",
+              "medium-3-2",
+              "medium-4",
+              "medium-4-0",
+              "medium-4-1",
+              "medium-4-2"
+            ],
+            "hiddenIds": [],
+            "overlapPairs": 0,
+            "minCenterSeparation": 14.691492243940425,
+            "bounds": {
+              "minX": 191.47870988050886,
+              "minY": 85.87938264000545,
+              "maxX": 572.2967623920313,
+              "maxY": 483.87027189700575
+            },
+            "radiusStats": {
+              "all": {
+                "count": 50,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              },
+              "visible": {
+                "count": 50,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              }
+            }
+          },
+          "fixedSizeDiagnostic": {
+            "radiusCss": 6,
+            "overlapPairs": 0,
+            "provenance": "fixed presentation radius is the rendered radius"
+          },
+          "radialSpread": {
+            "0": {
+              "min": 0,
+              "max": 0,
+              "mean": 0,
+              "count": 1
+            },
+            "1": {
+              "min": 0.13071987,
+              "max": 0.62159935,
+              "mean": 0.2943463633333333,
+              "count": 3
+            },
+            "2": {
+              "min": 0.24548615689999997,
+              "max": 0.8443591225,
+              "mean": 0.6729289041000002,
+              "count": 26
+            },
+            "3": {
+              "min": 0.346372826503,
+              "max": 0.867392306575,
+              "mean": 0.57405193331725,
+              "count": 16
+            },
+            "4": {
+              "min": 0.43518422905761,
+              "max": 0.43518422905761,
+              "mean": 0.43518422905761,
+              "count": 1
+            },
+            "5": {
+              "min": 0.5134901492801207,
+              "max": 0.5134901492801207,
+              "mean": 0.5134901492801207,
+              "count": 1
+            },
+            "6": {
+              "min": 0.582656299873705,
+              "max": 0.582656299873705,
+              "mean": 0.582656299873705,
+              "count": 1
+            },
+            "7": {
+              "min": 0.6438708508901234,
+              "max": 0.6438708508901234,
+              "mean": 0.6438708508901234,
+              "count": 1
+            }
+          },
+          "boundaryClearance": 0.132607693425,
+          "feasibility": {
+            "satisfied": true,
+            "workspaceScale": 1,
+            "maxWorkspaceScale": 1,
+            "unsatisfied": [],
+            "glyphRadiusCss": 6,
+            "clearanceCss": 4,
+            "referenceProjectionRadiusCss": 240,
+            "projectionScope": "local sibling angular capacity only; not a global node-clearance guarantee",
+            "attemptCount": 1,
+            "selectedCandidateIndex": 0,
+            "candidateCount": 1
+          }
+        }
+      },
+      "v2Error": null,
+      "baselineVsV2": {
+        "totalNodes": {
+          "baseline": 50,
+          "experimental": 50
+        },
+        "visible": {
+          "baseline": 50,
+          "experimental": 50
+        },
+        "hidden": {
+          "baseline": 0,
+          "experimental": 0
+        },
+        "viewportIntersecting": {
+          "baseline": 50,
+          "experimental": 50
+        },
+        "newlyHiddenIds": [],
+        "newlyVisibleIds": [],
+        "visibleOverlap": {
+          "baseline": 5,
+          "experimental": 0
+        },
+        "sameIdsVisibleBoth": {
+          "count": 50,
+          "baselineOverlap": 5,
+          "experimentalOverlap": 0
+        },
+        "fixedSizeDiagnostic": {
+          "radiusCss": 6,
+          "shapeAware": true,
+          "sample": "all nodes in the scene; visibility ignored",
+          "baselineOverlap": 5,
+          "experimentalOverlap": 0,
+          "provenance": "analytical only; actual rendering/hit radii unchanged"
+        },
+        "radiusStats": {
+          "baseline": {
+            "all": {
+              "count": 50,
+              "min": 6,
+              "max": 6,
+              "mean": 6,
+              "median": 6,
+              "p90": 6
+            },
+            "visible": {
+              "count": 50,
+              "min": 6,
+              "max": 6,
+              "mean": 6,
+              "median": 6,
+              "p90": 6
+            }
+          },
+          "experimental": {
+            "all": {
+              "count": 50,
+              "min": 6,
+              "max": 6,
+              "mean": 6,
+              "median": 6,
+              "p90": 6
+            },
+            "visible": {
+              "count": 50,
+              "min": 6,
+              "max": 6,
+              "mean": 6,
+              "median": 6,
+              "p90": 6
+            }
+          }
+        },
+        "bounds": {
+          "baseline": {
+            "minX": 238.34469161921194,
+            "minY": 108.16057450985704,
+            "maxX": 617.1737001558164,
+            "maxY": 461.86532460463604
+          },
+          "experimental": {
+            "minX": 191.47870988050886,
+            "minY": 85.87938264000545,
+            "maxX": 572.2967623920313,
+            "maxY": 483.87027189700575
+          }
+        },
+        "minCenterSeparation": {
+          "baseline": 1.8749999999999631,
+          "experimental": 14.691492243940425
+        },
+        "diagnosticLimit": 300
+      },
+      "labelMetrics": "NOT MEASURED (Node report); use m5-adaptive-layout browser harness"
+    },
+    "secondary": {
+      "workspaceScale": 1,
+      "projection": {
+        "calculationRadiusCss": 240,
+        "displayedRadiusCss": 240,
+        "cameraZoom": 1
+      },
+      "modes": {
+        "baseline": {
+          "layoutMs": 0.2983000000000118,
+          "metrics": {
+            "totalNodes": 50,
+            "visibleNodes": 50,
+            "hiddenNodes": 0,
+            "viewportIntersectingNodes": 50,
+            "visibleIds": [
+              "r",
+              "deep-0",
+              "deep-1",
+              "deep-2",
+              "deep-3",
+              "deep-4",
+              "deep-5",
+              "deep-leaf",
+              "wide",
+              "wide-0",
+              "wide-1",
+              "wide-2",
+              "wide-3",
+              "wide-4",
+              "wide-5",
+              "wide-6",
+              "wide-7",
+              "wide-8",
+              "wide-9",
+              "wide-10",
+              "wide-11",
+              "wide-12",
+              "wide-13",
+              "wide-14",
+              "wide-15",
+              "wide-16",
+              "wide-17",
+              "wide-18",
+              "wide-19",
+              "medium",
+              "medium-0",
+              "medium-0-0",
+              "medium-0-1",
+              "medium-0-2",
+              "medium-1",
+              "medium-1-0",
+              "medium-1-1",
+              "medium-1-2",
+              "medium-2",
+              "medium-2-0",
+              "medium-2-1",
+              "medium-2-2",
+              "medium-3",
+              "medium-3-0",
+              "medium-3-1",
+              "medium-3-2",
+              "medium-4",
+              "medium-4-0",
+              "medium-4-1",
+              "medium-4-2"
+            ],
+            "hiddenIds": [],
+            "overlapPairs": 5,
+            "minCenterSeparation": 1.8749999999999631,
+            "bounds": {
+              "minX": 238.34469161921194,
+              "minY": 108.16057450985704,
+              "maxX": 617.1737001558164,
+              "maxY": 461.86532460463604
+            },
+            "radiusStats": {
+              "all": {
+                "count": 50,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              },
+              "visible": {
+                "count": 50,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              }
+            }
+          },
+          "fixedSizeDiagnostic": {
+            "radiusCss": 6,
+            "overlapPairs": 5,
+            "provenance": "fixed presentation radius is the rendered radius"
+          },
+          "radialSpread": {
+            "0": {
+              "min": 0,
+              "max": 0,
+              "mean": 0,
+              "count": 1
+            },
+            "1": {
+              "min": 0.4,
+              "max": 0.4,
+              "mean": 0.4000000000000001,
+              "count": 3
+            },
+            "2": {
+              "min": 0.65,
+              "max": 0.65,
+              "mean": 0.6500000000000001,
+              "count": 26
+            },
+            "3": {
+              "min": 0.775,
+              "max": 0.775,
+              "mean": 0.7750000000000002,
+              "count": 16
+            },
+            "4": {
+              "min": 0.8375,
+              "max": 0.8375,
+              "mean": 0.8375,
+              "count": 1
+            },
+            "5": {
+              "min": 0.86875,
+              "max": 0.86875,
+              "mean": 0.86875,
+              "count": 1
+            },
+            "6": {
+              "min": 0.884375,
+              "max": 0.884375,
+              "mean": 0.884375,
+              "count": 1
+            },
+            "7": {
+              "min": 0.8921875,
+              "max": 0.8921875,
+              "mean": 0.8921875,
+              "count": 1
+            }
+          },
+          "boundaryClearance": 0.10781249999999998,
+          "feasibility": null
+        },
+        "v1": {
+          "layoutMs": 0.1747000000000014,
+          "metrics": {
+            "totalNodes": 50,
+            "visibleNodes": 50,
+            "hiddenNodes": 0,
+            "viewportIntersectingNodes": 50,
+            "visibleIds": [
+              "r",
+              "deep-0",
+              "deep-1",
+              "deep-2",
+              "deep-3",
+              "deep-4",
+              "deep-5",
+              "deep-leaf",
+              "wide",
+              "wide-0",
+              "wide-1",
+              "wide-2",
+              "wide-3",
+              "wide-4",
+              "wide-5",
+              "wide-6",
+              "wide-7",
+              "wide-8",
+              "wide-9",
+              "wide-10",
+              "wide-11",
+              "wide-12",
+              "wide-13",
+              "wide-14",
+              "wide-15",
+              "wide-16",
+              "wide-17",
+              "wide-18",
+              "wide-19",
+              "medium",
+              "medium-0",
+              "medium-0-0",
+              "medium-0-1",
+              "medium-0-2",
+              "medium-1",
+              "medium-1-0",
+              "medium-1-1",
+              "medium-1-2",
+              "medium-2",
+              "medium-2-0",
+              "medium-2-1",
+              "medium-2-2",
+              "medium-3",
+              "medium-3-0",
+              "medium-3-1",
+              "medium-3-2",
+              "medium-4",
+              "medium-4-0",
+              "medium-4-1",
+              "medium-4-2"
+            ],
+            "hiddenIds": [],
+            "overlapPairs": 6,
+            "minCenterSeparation": 2.810485484924689,
+            "bounds": {
+              "minX": 193.68989444677322,
+              "minY": 75.00701532345437,
+              "maxX": 624.6296410459743,
+              "maxY": 502.96500511533753
+            },
+            "radiusStats": {
+              "all": {
+                "count": 50,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              },
+              "visible": {
+                "count": 50,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              }
+            }
+          },
+          "fixedSizeDiagnostic": {
+            "radiusCss": 6,
+            "overlapPairs": 6,
+            "provenance": "fixed presentation radius is the rendered radius"
+          },
+          "radialSpread": {
+            "0": {
+              "min": 0,
+              "max": 0,
+              "mean": 0,
+              "count": 1
+            },
+            "1": {
+              "min": 0.4390044694248301,
+              "max": 0.61449935,
+              "mean": 0.5376157624023624,
+              "count": 3
+            },
+            "2": {
+              "min": 0.7746509142986905,
+              "max": 0.8360741224999999,
+              "mean": 0.8299992762660626,
+              "count": 26
+            },
+            "3": {
+              "min": 0.8986271700045416,
+              "max": 0.9133686973033265,
+              "mean": 0.9124473518471524,
+              "count": 16
+            },
+            "4": {
+              "min": 0.9485188595015895,
+              "max": 0.9485188595015895,
+              "mean": 0.9485188595015895,
+              "count": 1
+            },
+            "5": {
+              "min": 0.9724809508255563,
+              "max": 0.9724809508255563,
+              "mean": 0.9724809508255563,
+              "count": 1
+            },
+            "6": {
+              "min": 0.9873676827889447,
+              "max": 0.9873676827889447,
+              "mean": 0.9873676827889447,
+              "count": 1
+            },
+            "7": {
+              "min": 0.9990780389761307,
+              "max": 0.9990780389761307,
+              "mean": 0.9990780389761307,
+              "count": 1
+            }
+          },
+          "boundaryClearance": 0.0009219610238693221,
+          "feasibility": null
+        },
+        "v2": {
+          "layoutMs": 0.3790000000000191,
+          "metrics": {
+            "totalNodes": 50,
+            "visibleNodes": 50,
+            "hiddenNodes": 0,
+            "viewportIntersectingNodes": 50,
+            "visibleIds": [
+              "r",
+              "deep-0",
+              "deep-1",
+              "deep-2",
+              "deep-3",
+              "deep-4",
+              "deep-5",
+              "deep-leaf",
+              "wide",
+              "wide-0",
+              "wide-1",
+              "wide-2",
+              "wide-3",
+              "wide-4",
+              "wide-5",
+              "wide-6",
+              "wide-7",
+              "wide-8",
+              "wide-9",
+              "wide-10",
+              "wide-11",
+              "wide-12",
+              "wide-13",
+              "wide-14",
+              "wide-15",
+              "wide-16",
+              "wide-17",
+              "wide-18",
+              "wide-19",
+              "medium",
+              "medium-0",
+              "medium-0-0",
+              "medium-0-1",
+              "medium-0-2",
+              "medium-1",
+              "medium-1-0",
+              "medium-1-1",
+              "medium-1-2",
+              "medium-2",
+              "medium-2-0",
+              "medium-2-1",
+              "medium-2-2",
+              "medium-3",
+              "medium-3-0",
+              "medium-3-1",
+              "medium-3-2",
+              "medium-4",
+              "medium-4-0",
+              "medium-4-1",
+              "medium-4-2"
+            ],
+            "hiddenIds": [],
+            "overlapPairs": 0,
+            "minCenterSeparation": 14.691492243940425,
+            "bounds": {
+              "minX": 191.47870988050886,
+              "minY": 85.87938264000545,
+              "maxX": 572.2967623920313,
+              "maxY": 483.87027189700575
+            },
+            "radiusStats": {
+              "all": {
+                "count": 50,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              },
+              "visible": {
+                "count": 50,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              }
+            }
+          },
+          "fixedSizeDiagnostic": {
+            "radiusCss": 6,
+            "overlapPairs": 0,
+            "provenance": "fixed presentation radius is the rendered radius"
+          },
+          "radialSpread": {
+            "0": {
+              "min": 0,
+              "max": 0,
+              "mean": 0,
+              "count": 1
+            },
+            "1": {
+              "min": 0.13071987,
+              "max": 0.62159935,
+              "mean": 0.2943463633333333,
+              "count": 3
+            },
+            "2": {
+              "min": 0.24548615689999997,
+              "max": 0.8443591225,
+              "mean": 0.6729289041000002,
+              "count": 26
+            },
+            "3": {
+              "min": 0.346372826503,
+              "max": 0.867392306575,
+              "mean": 0.57405193331725,
+              "count": 16
+            },
+            "4": {
+              "min": 0.43518422905761,
+              "max": 0.43518422905761,
+              "mean": 0.43518422905761,
+              "count": 1
+            },
+            "5": {
+              "min": 0.5134901492801207,
+              "max": 0.5134901492801207,
+              "mean": 0.5134901492801207,
+              "count": 1
+            },
+            "6": {
+              "min": 0.582656299873705,
+              "max": 0.582656299873705,
+              "mean": 0.582656299873705,
+              "count": 1
+            },
+            "7": {
+              "min": 0.6438708508901234,
+              "max": 0.6438708508901234,
+              "mean": 0.6438708508901234,
+              "count": 1
+            }
+          },
+          "boundaryClearance": 0.132607693425,
+          "feasibility": {
+            "satisfied": true,
+            "workspaceScale": 1,
+            "maxWorkspaceScale": 1,
+            "unsatisfied": [],
+            "glyphRadiusCss": 6,
+            "clearanceCss": 4,
+            "referenceProjectionRadiusCss": 240,
+            "projectionScope": "local sibling angular capacity only; not a global node-clearance guarantee",
+            "attemptCount": 1,
+            "selectedCandidateIndex": 0,
+            "candidateCount": 1
+          }
+        }
+      },
+      "v2Error": null,
+      "baselineVsV2": {
+        "totalNodes": {
+          "baseline": 50,
+          "experimental": 50
+        },
+        "visible": {
+          "baseline": 50,
+          "experimental": 50
+        },
+        "hidden": {
+          "baseline": 0,
+          "experimental": 0
+        },
+        "viewportIntersecting": {
+          "baseline": 50,
+          "experimental": 50
+        },
+        "newlyHiddenIds": [],
+        "newlyVisibleIds": [],
+        "visibleOverlap": {
+          "baseline": 5,
+          "experimental": 0
+        },
+        "sameIdsVisibleBoth": {
+          "count": 50,
+          "baselineOverlap": 5,
+          "experimentalOverlap": 0
+        },
+        "fixedSizeDiagnostic": {
+          "radiusCss": 6,
+          "shapeAware": true,
+          "sample": "all nodes in the scene; visibility ignored",
+          "baselineOverlap": 5,
+          "experimentalOverlap": 0,
+          "provenance": "analytical only; actual rendering/hit radii unchanged"
+        },
+        "radiusStats": {
+          "baseline": {
+            "all": {
+              "count": 50,
+              "min": 6,
+              "max": 6,
+              "mean": 6,
+              "median": 6,
+              "p90": 6
+            },
+            "visible": {
+              "count": 50,
+              "min": 6,
+              "max": 6,
+              "mean": 6,
+              "median": 6,
+              "p90": 6
+            }
+          },
+          "experimental": {
+            "all": {
+              "count": 50,
+              "min": 6,
+              "max": 6,
+              "mean": 6,
+              "median": 6,
+              "p90": 6
+            },
+            "visible": {
+              "count": 50,
+              "min": 6,
+              "max": 6,
+              "mean": 6,
+              "median": 6,
+              "p90": 6
+            }
+          }
+        },
+        "bounds": {
+          "baseline": {
+            "minX": 238.34469161921194,
+            "minY": 108.16057450985704,
+            "maxX": 617.1737001558164,
+            "maxY": 461.86532460463604
+          },
+          "experimental": {
+            "minX": 191.47870988050886,
+            "minY": 85.87938264000545,
+            "maxX": 572.2967623920313,
+            "maxY": 483.87027189700575
+          }
+        },
+        "minCenterSeparation": {
+          "baseline": 1.8749999999999631,
+          "experimental": 14.691492243940425
+        },
+        "diagnosticLimit": 300
+      },
+      "labelMetrics": "NOT MEASURED (Node report); use m5-adaptive-layout browser harness"
+    },
+    "presentation": {
+      "fixedGlyphRadiusCss": 6,
+      "viewport": {
+        "width": 800,
+        "height": 600
+      },
+      "dpr": "reference-only"
+    }
+  },
+  "longLabels": {
+    "primary": {
+      "workspaceScale": 1,
+      "projection": {
+        "calculationRadiusCss": 240,
+        "displayedRadiusCss": 240,
+        "cameraZoom": 1
+      },
+      "modes": {
+        "baseline": {
+          "layoutMs": 0.0438000000000045,
+          "metrics": {
+            "totalNodes": 11,
+            "visibleNodes": 11,
+            "hiddenNodes": 0,
+            "viewportIntersectingNodes": 11,
+            "visibleIds": [
+              "r",
+              "long-folder",
+              "long-pdf",
+              "long-md",
+              "long-txt",
+              "long-img",
+              "types",
+              "type-1",
+              "type-2",
+              "type-3",
+              "type-4"
+            ],
+            "hiddenIds": [],
+            "overlapPairs": 0,
+            "minCenterSeparation": 106.0320408861662,
+            "bounds": {
+              "minX": 184.45084146803896,
+              "minY": 95.6439954186504,
+              "maxX": 604.3560045813496,
+              "maxY": 512.8659001135584
+            },
+            "radiusStats": {
+              "all": {
+                "count": 11,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              },
+              "visible": {
+                "count": 11,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              }
+            }
+          },
+          "fixedSizeDiagnostic": {
+            "radiusCss": 6,
+            "overlapPairs": 0,
+            "provenance": "fixed presentation radius is the rendered radius"
+          },
+          "radialSpread": {
+            "0": {
+              "min": 0,
+              "max": 0,
+              "mean": 0,
+              "count": 1
+            },
+            "1": {
+              "min": 0.5100000000000001,
+              "max": 0.5100000000000001,
+              "mean": 0.5100000000000001,
+              "count": 2
+            },
+            "2": {
+              "min": 0.8821000000000002,
+              "max": 0.8821000000000002,
+              "mean": 0.8821000000000002,
+              "count": 8
+            }
+          },
+          "boundaryClearance": 0.11789999999999978,
+          "feasibility": null
+        },
+        "v1": {
+          "layoutMs": 0.0402000000000271,
+          "metrics": {
+            "totalNodes": 11,
+            "visibleNodes": 11,
+            "hiddenNodes": 0,
+            "viewportIntersectingNodes": 11,
+            "visibleIds": [
+              "r",
+              "long-folder",
+              "long-pdf",
+              "long-md",
+              "long-txt",
+              "long-img",
+              "types",
+              "type-1",
+              "type-2",
+              "type-3",
+              "type-4"
+            ],
+            "hiddenIds": [],
+            "overlapPairs": 0,
+            "minCenterSeparation": 90.10087043048982,
+            "bounds": {
+              "minX": 198.8879238570359,
+              "minY": 98.88792385703596,
+              "maxX": 601.112076142964,
+              "maxY": 501.11207614296404
+            },
+            "radiusStats": {
+              "all": {
+                "count": 11,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              },
+              "visible": {
+                "count": 11,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              }
+            }
+          },
+          "fixedSizeDiagnostic": {
+            "radiusCss": 6,
+            "overlapPairs": 0,
+            "provenance": "fixed presentation radius is the rendered radius"
+          },
+          "radialSpread": {
+            "0": {
+              "min": 0,
+              "max": 0,
+              "mean": 0,
+              "count": 1
+            },
+            "1": {
+              "min": 0.64699935,
+              "max": 0.64699935,
+              "mean": 0.64699935,
+              "count": 2
+            },
+            "2": {
+              "min": 0.8799491225,
+              "max": 0.8799491225,
+              "mean": 0.8799491225000001,
+              "count": 8
+            }
+          },
+          "boundaryClearance": 0.12005087749999999,
+          "feasibility": null
+        },
+        "v2": {
+          "layoutMs": 0.06749999999999545,
+          "metrics": {
+            "totalNodes": 11,
+            "visibleNodes": 11,
+            "hiddenNodes": 0,
+            "viewportIntersectingNodes": 11,
+            "visibleIds": [
+              "r",
+              "long-folder",
+              "long-pdf",
+              "long-md",
+              "long-txt",
+              "long-img",
+              "types",
+              "type-1",
+              "type-2",
+              "type-3",
+              "type-4"
+            ],
+            "hiddenIds": [],
+            "overlapPairs": 0,
+            "minCenterSeparation": 32.62076879999997,
+            "bounds": {
+              "minX": 228.60471109383312,
+              "minY": 90.30752694669582,
+              "maxX": 603.2923943474702,
+              "maxY": 467.66276756385366
+            },
+            "radiusStats": {
+              "all": {
+                "count": 11,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              },
+              "visible": {
+                "count": 11,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              }
+            }
+          },
+          "fixedSizeDiagnostic": {
+            "radiusCss": 6,
+            "overlapPairs": 0,
+            "provenance": "fixed presentation radius is the rendered radius"
+          },
+          "radialSpread": {
+            "0": {
+              "min": 0,
+              "max": 0,
+              "mean": 0,
+              "count": 1
+            },
+            "1": {
+              "min": 0.13591987,
+              "max": 0.64759935,
+              "mean": 0.39175961000000004,
+              "count": 2
+            },
+            "2": {
+              "min": 0.2552101569,
+              "max": 0.8794591225,
+              "mean": 0.6338529721,
+              "count": 8
+            }
+          },
+          "boundaryClearance": 0.12054087749999998,
+          "feasibility": {
+            "satisfied": true,
+            "workspaceScale": 1,
+            "maxWorkspaceScale": 1,
+            "unsatisfied": [],
+            "glyphRadiusCss": 6,
+            "clearanceCss": 4,
+            "referenceProjectionRadiusCss": 240,
+            "projectionScope": "local sibling angular capacity only; not a global node-clearance guarantee",
+            "attemptCount": 1,
+            "selectedCandidateIndex": 0,
+            "candidateCount": 1
+          }
+        }
+      },
+      "v2Error": null,
+      "baselineVsV2": {
+        "totalNodes": {
+          "baseline": 11,
+          "experimental": 11
+        },
+        "visible": {
+          "baseline": 11,
+          "experimental": 11
+        },
+        "hidden": {
+          "baseline": 0,
+          "experimental": 0
+        },
+        "viewportIntersecting": {
+          "baseline": 11,
+          "experimental": 11
+        },
+        "newlyHiddenIds": [],
+        "newlyVisibleIds": [],
+        "visibleOverlap": {
+          "baseline": 0,
+          "experimental": 0
+        },
+        "sameIdsVisibleBoth": {
+          "count": 11,
+          "baselineOverlap": 0,
+          "experimentalOverlap": 0
+        },
+        "fixedSizeDiagnostic": {
+          "radiusCss": 6,
+          "shapeAware": true,
+          "sample": "all nodes in the scene; visibility ignored",
+          "baselineOverlap": 0,
+          "experimentalOverlap": 0,
+          "provenance": "analytical only; actual rendering/hit radii unchanged"
+        },
+        "radiusStats": {
+          "baseline": {
+            "all": {
+              "count": 11,
+              "min": 6,
+              "max": 6,
+              "mean": 6,
+              "median": 6,
+              "p90": 6
+            },
+            "visible": {
+              "count": 11,
+              "min": 6,
+              "max": 6,
+              "mean": 6,
+              "median": 6,
+              "p90": 6
+            }
+          },
+          "experimental": {
+            "all": {
+              "count": 11,
+              "min": 6,
+              "max": 6,
+              "mean": 6,
+              "median": 6,
+              "p90": 6
+            },
+            "visible": {
+              "count": 11,
+              "min": 6,
+              "max": 6,
+              "mean": 6,
+              "median": 6,
+              "p90": 6
+            }
+          }
+        },
+        "bounds": {
+          "baseline": {
+            "minX": 184.45084146803896,
+            "minY": 95.6439954186504,
+            "maxX": 604.3560045813496,
+            "maxY": 512.8659001135584
+          },
+          "experimental": {
+            "minX": 228.60471109383312,
+            "minY": 90.30752694669582,
+            "maxX": 603.2923943474702,
+            "maxY": 467.66276756385366
+          }
+        },
+        "minCenterSeparation": {
+          "baseline": 106.0320408861662,
+          "experimental": 32.62076879999997
+        },
+        "diagnosticLimit": 300
+      },
+      "labelMetrics": "NOT MEASURED (Node report); use m5-adaptive-layout browser harness"
+    },
+    "secondary": {
+      "workspaceScale": 1,
+      "projection": {
+        "calculationRadiusCss": 240,
+        "displayedRadiusCss": 240,
+        "cameraZoom": 1
+      },
+      "modes": {
+        "baseline": {
+          "layoutMs": 0.03110000000000923,
+          "metrics": {
+            "totalNodes": 11,
+            "visibleNodes": 11,
+            "hiddenNodes": 0,
+            "viewportIntersectingNodes": 11,
+            "visibleIds": [
+              "r",
+              "long-folder",
+              "long-pdf",
+              "long-md",
+              "long-txt",
+              "long-img",
+              "types",
+              "type-1",
+              "type-2",
+              "type-3",
+              "type-4"
+            ],
+            "hiddenIds": [],
+            "overlapPairs": 0,
+            "minCenterSeparation": 106.0320408861662,
+            "bounds": {
+              "minX": 184.45084146803896,
+              "minY": 95.6439954186504,
+              "maxX": 604.3560045813496,
+              "maxY": 512.8659001135584
+            },
+            "radiusStats": {
+              "all": {
+                "count": 11,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              },
+              "visible": {
+                "count": 11,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              }
+            }
+          },
+          "fixedSizeDiagnostic": {
+            "radiusCss": 6,
+            "overlapPairs": 0,
+            "provenance": "fixed presentation radius is the rendered radius"
+          },
+          "radialSpread": {
+            "0": {
+              "min": 0,
+              "max": 0,
+              "mean": 0,
+              "count": 1
+            },
+            "1": {
+              "min": 0.5100000000000001,
+              "max": 0.5100000000000001,
+              "mean": 0.5100000000000001,
+              "count": 2
+            },
+            "2": {
+              "min": 0.8821000000000002,
+              "max": 0.8821000000000002,
+              "mean": 0.8821000000000002,
+              "count": 8
+            }
+          },
+          "boundaryClearance": 0.11789999999999978,
+          "feasibility": null
+        },
+        "v1": {
+          "layoutMs": 0.03340000000000032,
+          "metrics": {
+            "totalNodes": 11,
+            "visibleNodes": 11,
+            "hiddenNodes": 0,
+            "viewportIntersectingNodes": 11,
+            "visibleIds": [
+              "r",
+              "long-folder",
+              "long-pdf",
+              "long-md",
+              "long-txt",
+              "long-img",
+              "types",
+              "type-1",
+              "type-2",
+              "type-3",
+              "type-4"
+            ],
+            "hiddenIds": [],
+            "overlapPairs": 0,
+            "minCenterSeparation": 90.10087043048982,
+            "bounds": {
+              "minX": 198.8879238570359,
+              "minY": 98.88792385703596,
+              "maxX": 601.112076142964,
+              "maxY": 501.11207614296404
+            },
+            "radiusStats": {
+              "all": {
+                "count": 11,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              },
+              "visible": {
+                "count": 11,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              }
+            }
+          },
+          "fixedSizeDiagnostic": {
+            "radiusCss": 6,
+            "overlapPairs": 0,
+            "provenance": "fixed presentation radius is the rendered radius"
+          },
+          "radialSpread": {
+            "0": {
+              "min": 0,
+              "max": 0,
+              "mean": 0,
+              "count": 1
+            },
+            "1": {
+              "min": 0.64699935,
+              "max": 0.64699935,
+              "mean": 0.64699935,
+              "count": 2
+            },
+            "2": {
+              "min": 0.8799491225,
+              "max": 0.8799491225,
+              "mean": 0.8799491225000001,
+              "count": 8
+            }
+          },
+          "boundaryClearance": 0.12005087749999999,
+          "feasibility": null
+        },
+        "v2": {
+          "layoutMs": 0.05729999999999791,
+          "metrics": {
+            "totalNodes": 11,
+            "visibleNodes": 11,
+            "hiddenNodes": 0,
+            "viewportIntersectingNodes": 11,
+            "visibleIds": [
+              "r",
+              "long-folder",
+              "long-pdf",
+              "long-md",
+              "long-txt",
+              "long-img",
+              "types",
+              "type-1",
+              "type-2",
+              "type-3",
+              "type-4"
+            ],
+            "hiddenIds": [],
+            "overlapPairs": 0,
+            "minCenterSeparation": 32.62076879999997,
+            "bounds": {
+              "minX": 228.60471109383312,
+              "minY": 90.30752694669582,
+              "maxX": 603.2923943474702,
+              "maxY": 467.66276756385366
+            },
+            "radiusStats": {
+              "all": {
+                "count": 11,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              },
+              "visible": {
+                "count": 11,
+                "min": 6,
+                "max": 6,
+                "mean": 6,
+                "median": 6,
+                "p90": 6
+              }
+            }
+          },
+          "fixedSizeDiagnostic": {
+            "radiusCss": 6,
+            "overlapPairs": 0,
+            "provenance": "fixed presentation radius is the rendered radius"
+          },
+          "radialSpread": {
+            "0": {
+              "min": 0,
+              "max": 0,
+              "mean": 0,
+              "count": 1
+            },
+            "1": {
+              "min": 0.13591987,
+              "max": 0.64759935,
+              "mean": 0.39175961000000004,
+              "count": 2
+            },
+            "2": {
+              "min": 0.2552101569,
+              "max": 0.8794591225,
+              "mean": 0.6338529721,
+              "count": 8
+            }
+          },
+          "boundaryClearance": 0.12054087749999998,
+          "feasibility": {
+            "satisfied": true,
+            "workspaceScale": 1,
+            "maxWorkspaceScale": 1,
+            "unsatisfied": [],
+            "glyphRadiusCss": 6,
+            "clearanceCss": 4,
+            "referenceProjectionRadiusCss": 240,
+            "projectionScope": "local sibling angular capacity only; not a global node-clearance guarantee",
+            "attemptCount": 1,
+            "selectedCandidateIndex": 0,
+            "candidateCount": 1
+          }
+        }
+      },
+      "v2Error": null,
+      "baselineVsV2": {
+        "totalNodes": {
+          "baseline": 11,
+          "experimental": 11
+        },
+        "visible": {
+          "baseline": 11,
+          "experimental": 11
+        },
+        "hidden": {
+          "baseline": 0,
+          "experimental": 0
+        },
+        "viewportIntersecting": {
+          "baseline": 11,
+          "experimental": 11
+        },
+        "newlyHiddenIds": [],
+        "newlyVisibleIds": [],
+        "visibleOverlap": {
+          "baseline": 0,
+          "experimental": 0
+        },
+        "sameIdsVisibleBoth": {
+          "count": 11,
+          "baselineOverlap": 0,
+          "experimentalOverlap": 0
+        },
+        "fixedSizeDiagnostic": {
+          "radiusCss": 6,
+          "shapeAware": true,
+          "sample": "all nodes in the scene; visibility ignored",
+          "baselineOverlap": 0,
+          "experimentalOverlap": 0,
+          "provenance": "analytical only; actual rendering/hit radii unchanged"
+        },
+        "radiusStats": {
+          "baseline": {
+            "all": {
+              "count": 11,
+              "min": 6,
+              "max": 6,
+              "mean": 6,
+              "median": 6,
+              "p90": 6
+            },
+            "visible": {
+              "count": 11,
+              "min": 6,
+              "max": 6,
+              "mean": 6,
+              "median": 6,
+              "p90": 6
+            }
+          },
+          "experimental": {
+            "all": {
+              "count": 11,
+              "min": 6,
+              "max": 6,
+              "mean": 6,
+              "median": 6,
+              "p90": 6
+            },
+            "visible": {
+              "count": 11,
+              "min": 6,
+              "max": 6,
+              "mean": 6,
+              "median": 6,
+              "p90": 6
+            }
+          }
+        },
+        "bounds": {
+          "baseline": {
+            "minX": 184.45084146803896,
+            "minY": 95.6439954186504,
+            "maxX": 604.3560045813496,
+            "maxY": 512.8659001135584
+          },
+          "experimental": {
+            "minX": 228.60471109383312,
+            "minY": 90.30752694669582,
+            "maxX": 603.2923943474702,
+            "maxY": 467.66276756385366
+          }
+        },
+        "minCenterSeparation": {
+          "baseline": 106.0320408861662,
+          "experimental": 32.62076879999997
+        },
+        "diagnosticLimit": 300
+      },
+      "labelMetrics": "NOT MEASURED (Node report); use m5-adaptive-layout browser harness"
+    },
+    "presentation": {
+      "fixedGlyphRadiusCss": 6,
+      "viewport": {
+        "width": 800,
+        "height": 600
+      },
+      "dpr": "reference-only"
+    }
+  },
+  "infeasible": {
+    "rejected": true,
+    "code": "experimental-v2-infeasible",
+    "message": "depth and minStep cannot fit inside the unit disk",
+    "diagnostics": null
+  }
+}

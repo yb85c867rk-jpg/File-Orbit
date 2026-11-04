@@ -1,0 +1,24 @@
+{
+  "openSearch": {
+    "visible": true,
+    "disabled": false,
+    "focused": "search-reserved"
+  },
+  "search": {
+    "status": "Search highlights 4 folders containing matching results.",
+    "cards": 1,
+    "resultsWidth": 306
+  },
+  "tab": {
+    "before": "Close",
+    "after1": "Open local iframe preview",
+    "after2": "Close",
+    "after3": "Open local iframe preview"
+  },
+  "closed": {
+    "open": false,
+    "restored": "embed-action"
+  },
+  "exceptions": [],
+  "capturedAt": "2026-11-01T21:13:39.029Z"
+}

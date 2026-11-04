@@ -1,0 +1,30 @@
+﻿FileOrbit UI/interaction corrections r94
+
+Confirmed causes and fixes:
+1. Oversized toolbar / vertical waste: r93 used 44px buttons and a separate 56px toolbar plus a permanent full search row. Search is now an icon toggle inside the one compact centered action row. Desktop controls are 32px with 18px glyphs; coarse pointers get 44px targets. One 42px row. Empty #shell-status and #error rows collapse.
+2. Search: #search-panel starts hidden; Search toggle has aria-expanded/aria-controls and focuses the existing input; close button; Escape closes only when not composing and no higher-priority dialog/editor is open; query is retained. Search results remain in the details panel.
+3. Drag Undo/Redo: two production defects found:
+   - history toolbar availability was not synchronized after a successful reparent; buttons stayed disabled until an unrelated map-state sync.
+   - navigation pointerdown was still dispatched after the drag gesture destroyed navigation; its canvas was null and the exception interfered. Navigation now guards a destroyed/null canvas; drag start suspends navigation immediately.
+   - syncHistoryControls now runs after reparent, after drop completion, and after Undo/Redo.
+   - Actual pointer drag test records exactly one reparent entry, Undo returns the node to the exact original parent and sibling index, Redo returns to the destination parent/index, IDs and attachment bytes survive, and a self/no-op drop adds no history.
+4. Narrow layout: details panel has a compact Show/Hide toggle with explicit Show details/Hide details accessible labels. It collapses automatically when crossing into <=560px, expands when returning to desktop, and never auto-opens merely because the window is narrow. Collapsed panel is 40px on narrow and 44px on desktop; graph keeps the remaining height. Search expands details only after a user search query.
+5. Contradictory Details: renderDetails now shows "No map loaded" only when !hasMap; a loaded map without a details target shows "Select an item to view details".
+
+Executed:
+- new actual search/details: 1/1
+- new actual drag history: 1/1
+- geometry main: 1/1
+- UI focused: 5/5
+- shell/history/UI: 31/31
+- startup recovery actual main: 21/21
+- Slice2 actual main: 2/2
+- P1b actual main: 70/70
+- main init: 9/9
+- full tests/engine: 918 tests, 917 passed, 0 failed, 1 skipped, 0 todo
+- syntax: 11/11 JS modules
+- served source: 104 files, HTTP 200/no-store, byte SHA match; root 302 and trailing slash 200.
+
+Native visual/physical pointer checks NOT RUN. No screenshots captured. Mock geometry/DOM tests are not native visual acceptance.
+
+

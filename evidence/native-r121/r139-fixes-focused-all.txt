@@ -1,0 +1,57 @@
+﻿AUTO_CONFLICT_R2_COMPLETE
+COPY_MAP_COMPLETE
+CREATE_LOCATION_COMPLETE
+FEEDBACK_EXPIRY_COMPLETE
+R1_STATUS {"text":"Opened alpha-copy.orbit","state":{"message":"Opened alpha-copy.orbit","kind":"routine","token":7,"timer":true},"open":{"open":false,"busy":false,"requestId":2,"block":null,"editorApplied":false,"editorSaving":false,"persistenceBusy":null,"replacementGuard":false,"pendingImport":false,"installingImport":false,"navigatorBusy":false,"sessionInstalling":false,"documentSaving":false,"documentSaveInFlight":false},"pending":{"pending":false,"installing":false,"registrySize":null},"disabled":false}
+HELP_DEBUG_AFTER true false
+✔ Settings contains only Theme and document/save feedback is outside it (1.7785ms)
+✔ automatic save without a writable destination requires explicit Save As and does not auto-download (2306.1343ms)
+✔ automatic external conflict Cancel keeps feedback, Retry resolves, replacement invalidates (5492.5014ms)
+✔ Copy Map writes an exact copy without adopting it or changing the connected Orbit (894.2744ms)
+✔ Create Map opens directly with folder default, reuse, and standalone Save elsewhere (896.3046ms)
+✔ routine feedback expires with identity-safe ownership and critical feedback remains (187.6713ms)
+✔ production navigation removes primary Save/Open Orbit and keeps Settings theme-only (0.9814ms)
+✔ unified Open supports Orbit, standalone Open, cancel, and unsupported directory access (9108.1142ms)
+✔ actual rail expand/settings/theme/local maps, .orbit download, unified Open and help preserve lifecycle (6672.3345ms)
+✔ primary actions live once in the left rail; header/menu copies are gone (0.7178ms)
+✔ rail collapses to icons, expands labels, and overlays on phones with touch targets (0.2301ms)
+✔ header is brand-only; feedback and save state live outside it (0.416ms)
+✔ download is the final toolbar action, Open accepts both containers, no duplicate install controls (0.2754ms)
+✔ Settings contains only the theme control; document/save feedback is outside it (0.1646ms)
+✔ connected Orbit menu sits between Save As and Settings with accessible toggle and retained actions (0.3404ms)
+✔ approved variation 06 logo, favicon, title, and accessible brand are installed locally (2.4678ms)
+✔ sidebar Create Map and connected Orbit use the supplied local theme-masked assets (2.8657ms)
+✔ Orbit refresh precedes empty/list content and status follows the list in DOM order (0.3878ms)
+✔ expanded sidebar exposes the independent circular Open Orbit help control (0.5798ms)
+✔ actual main recovery baseline wiring (3457.4925ms)
+✔ Import Backup commits an immediate recovery baseline in the real main path (4231.2694ms)
+✔ actual main startup: no candidate leaves normal empty startup (211.5271ms)
+✔ actual main startup: candidate shows startup recovery dialog (2103.0457ms)
+✔ actual main startup: Recover cancelled by Create preserves source and claim (753.0702ms)
+✔ actual main startup: Discard cancelled before transaction preserves source and claim (747.9822ms)
+✔ actual main startup: Discard cancelled after transaction start may complete (documented boundary) (738.9737ms)
+✔ actual main startup: Recover cancelled by Open File preserves source and claim (737.147ms)
+✔ actual main startup: Recover cancelled by Import preserves source and claim (2060.0407ms)
+✔ actual main startup: Later preserves candidates and accounting (316.4461ms)
+✔ actual main startup: Escape preserves candidates and accounting (329.6083ms)
+✔ actual main startup: Discard removes only the selected copy (653.9887ms)
+✔ actual main startup: Discard leaves another candidate intact (628.8199ms)
+✔ actual main startup: claimed candidate discard preserves data (514.9066ms)
+✔ actual main startup: multiple candidates exact selection (2193.0486ms)
+✔ actual main startup: failed child checkpoint preserves source and live work (561.1434ms)
+✔ actual main startup: replacement during adoption preserves B workspace and later checkpoint (1891.1328ms)
+✔ actual main startup: destroy during recovery does not publish late (610.5981ms)
+✔ actual main startup: recovered PDF opens in real viewer (620.1265ms)
+✔ actual main startup: draw failure preserves source and releases resources (595.57ms)
+✔ actual main startup: label failure preserves source and releases resources (564.0762ms)
+✔ actual main startup: hit failure preserves source and releases resources (590.5975ms)
+✔ actual main startup: starting Create prevents startup dialog interruption (296.994ms)
+✔ actual title-only Create Map installs one visible root, saves/reopens, and recovers zero attachments (2218.1101ms)
+ℹ tests 43
+ℹ suites 0
+ℹ pass 43
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 53237.9017

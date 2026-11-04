@@ -1,0 +1,51 @@
+{
+  "collapsed": {
+    "create": {
+      "label": "Create Map",
+      "title": "Create Map",
+      "titleAttr": "Create Map",
+      "ariaHidden": "true",
+      "w": 20,
+      "h": 20,
+      "background": "rgb(229, 231, 235)",
+      "mask": "url(\"http://127.0.0.1:8099/tests/harness/m5-exploration/assets/graph_4_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png\")",
+      "buttonH": 44
+    },
+    "orbit": {
+      "ariaHidden": "true",
+      "w": 0,
+      "h": 0,
+      "color": "rgb(129, 140, 248)",
+      "mask": "url(\"http://127.0.0.1:8099/tests/harness/m5-exploration/assets/hdr_weak_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png\")"
+    },
+    "panelOrder": [
+      "orbit-actions",
+      "orbit-empty",
+      "orbit-list",
+      "orbit-status"
+    ],
+    "theme": "dark"
+  },
+  "expanded": {
+    "rail": "true",
+    "label": "Create Map",
+    "title": null,
+    "tipHidden": true,
+    "iconW": 20
+  },
+  "light": {
+    "theme": "light",
+    "createBg": "rgb(15, 23, 42)",
+    "createMask": "url(\"http://127.0.0.1:8099/tests/harness/m5-exploration/assets/graph_4_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png\")",
+    "orbitColor": "rgb(129, 140, 248)",
+    "text": "rgb(15, 23, 42)"
+  },
+  "narrow": {
+    "overflow": false,
+    "iconW": 20,
+    "iconH": 20,
+    "buttonW": 44,
+    "buttonH": 44
+  },
+  "capturedAt": "2026-11-01T03:50:28.094Z"
+}

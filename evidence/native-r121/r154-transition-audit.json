@@ -1,0 +1,4410 @@
+{
+  "imported": true,
+  "transition": {
+    "cards": 50,
+    "clicked": true,
+    "state": {
+      "hasMap": true,
+      "structuralRootId": "root",
+      "datasetToken": 1,
+      "focusedFolderId": "north",
+      "focusedStructuralDepth": 1,
+      "contextCount": 6,
+      "subtreeCount": 60,
+      "contextOverlapCount": 1,
+      "displayRootId": "north",
+      "selectedId": "north",
+      "detailsTargetId": "north",
+      "editorTargetId": null,
+      "editorAction": "rename",
+      "idCounter": 0,
+      "menuTargetId": null,
+      "menuOpen": false,
+      "ancestorCount": 2,
+      "descendantCount": 59,
+      "visibleCount": 65,
+      "totalCount": 300,
+      "hiddenCount": 235,
+      "visibleEdgeCount": 64,
+      "focusedCenterError": 0,
+      "framingMode": "fit",
+      "camera": {
+        "zoom": 0.16317810052773327,
+        "panX": 0,
+        "panY": 0
+      },
+      "containment": {
+        "contained": true,
+        "containedCount": 65,
+        "totalCount": 65,
+        "centeredId": "north",
+        "centerError": 0
+      },
+      "generation": 3,
+      "hitActive": true,
+      "labelMetrics": {
+        "candidateCount": 65,
+        "createdCount": 40,
+        "visibleCount": 14,
+        "invalidWebLinkCount": 0,
+        "suppressedCount": 26,
+        "overlapSuppressedCount": null,
+        "viewportSuppressedCount": null,
+        "nodeObstacleSuppressedCount": null,
+        "suppressionMeasurement": "fixed-transition-policy",
+        "labelNodeOverlapCount": 0,
+        "labelNodeOverlapMeasurement": "measured-visible-label-rectangles",
+        "placementAttempts": 40,
+        "labelNodeOverlapDefinition": "visible label-node pairs; owner node excluded; exact circle/diamond intersection",
+        "placementObstaclePolicy": "fixed transition placement",
+        "priorityVisibleCount": 14,
+        "prioritySuppressedCount": 37,
+        "unmeasurableCount": 0,
+        "measuredCount": 40,
+        "visibleIconCount": 0,
+        "leadingIconCount": 0,
+        "rootProtection": true,
+        "rootProtectionRect": {
+          "left": 132.12347887005836,
+          "top": 190.16228673257052,
+          "right": 266.05965106868155,
+          "bottom": 262.59713112981694
+        },
+        "rootLabelVisible": true,
+        "selectedLabelVisible": true,
+        "textMismatchCount": 0,
+        "measurement": "getBoundingClientRect/offsetWidth",
+        "dprIndependent": true,
+        "viewport": {
+          "width": 835,
+          "height": 822
+        },
+        "labels": {}
+      },
+      "linkReady": true,
+      "lastEvent": {
+        "kind": "user",
+        "operation": "enter-folder",
+        "success": true
+      },
+      "lastClickDiagnostic": {
+        "reason": "transition-in-progress",
+        "id": "north",
+        "progress": 1
+      },
+      "drag": null,
+      "feedback": "",
+      "transition": null,
+      "error": null,
+      "installing": false,
+      "fitProjection": {
+        "width": 835,
+        "height": 822,
+        "radius": 2934.54
+      },
+      "lifecycle": {
+        "installing": false,
+        "hitActive": true
+      },
+      "revision": 0,
+      "persistence": {
+        "hasMap": true,
+        "mapId": null,
+        "generation": null,
+        "savedRevision": null,
+        "dirty": true,
+        "busy": null,
+        "guard": false,
+        "unavailable": false,
+        "lastResult": null
+      },
+      "visibleNodeIds": [
+        "root",
+        "north",
+        "north000",
+        "north001",
+        "north002",
+        "north003",
+        "north004",
+        "north005",
+        "north006",
+        "north007",
+        "north008",
+        "north009",
+        "north010",
+        "north011",
+        "north012",
+        "north013",
+        "north014",
+        "north015",
+        "north016",
+        "north017",
+        "north018",
+        "north019",
+        "north020",
+        "north021",
+        "north022",
+        "north023",
+        "north024",
+        "north025",
+        "north026",
+        "north027",
+        "north028",
+        "north029",
+        "north030",
+        "north031",
+        "north032",
+        "north033",
+        "north034",
+        "north035",
+        "north036",
+        "north037",
+        "north038",
+        "north039",
+        "north040",
+        "north041",
+        "north042",
+        "north043",
+        "north044",
+        "north045",
+        "north046",
+        "north047",
+        "north048",
+        "north049",
+        "north050",
+        "north051",
+        "north052",
+        "north053",
+        "north054",
+        "north055",
+        "north056",
+        "north057",
+        "north058",
+        "south",
+        "east",
+        "west",
+        "center"
+      ],
+      "hitNodeIds": [
+        "root",
+        "north",
+        "south",
+        "east",
+        "west",
+        "center"
+      ],
+      "editor": {
+        "mode": "closed",
+        "dirty": false,
+        "saving": false,
+        "inert": false,
+        "creationOwned": false,
+        "limit": 300
+      },
+      "controller": {
+        "camera": {
+          "zoom": 0.16317810052773327,
+          "panX": 0,
+          "panY": 0
+        },
+        "viewport": {
+          "width": 835,
+          "height": 822
+        },
+        "cameraLimits": {
+          "minZoom": 0.02,
+          "maxZoom": 8,
+          "maxPanCss": 1000000,
+          "wheelLineCss": 16,
+          "wheelMaxCss": 1200,
+          "zoomSensitivity": 0.0015
+        },
+        "threshold": 4,
+        "activePointerId": null,
+        "captureOwned": false,
+        "dragging": false,
+        "suppressNextClick": false,
+        "lastEvent": null,
+        "error": null
+      }
+    },
+    "busy": false
+  },
+  "afterTransition": {
+    "url": "http://127.0.0.1:8099/tests/harness/m5-exploration/?r153=1",
+    "status": {
+      "hasMap": true,
+      "structuralRootId": "root",
+      "datasetToken": 1,
+      "focusedFolderId": "north",
+      "focusedStructuralDepth": 1,
+      "contextCount": 6,
+      "subtreeCount": 60,
+      "contextOverlapCount": 1,
+      "displayRootId": "north",
+      "selectedId": "north",
+      "detailsTargetId": "north",
+      "editorTargetId": null,
+      "editorAction": "rename",
+      "idCounter": 0,
+      "menuTargetId": null,
+      "menuOpen": false,
+      "ancestorCount": 2,
+      "descendantCount": 59,
+      "visibleCount": 65,
+      "totalCount": 300,
+      "hiddenCount": 235,
+      "visibleEdgeCount": 64,
+      "focusedCenterError": 0,
+      "framingMode": "fit",
+      "camera": {
+        "zoom": 0.16317810052773327,
+        "panX": 0,
+        "panY": 0
+      },
+      "containment": {
+        "contained": true,
+        "containedCount": 65,
+        "totalCount": 65,
+        "centeredId": "north",
+        "centerError": 0
+      },
+      "generation": 3,
+      "hitActive": true,
+      "labelMetrics": {
+        "candidateCount": 65,
+        "createdCount": 40,
+        "visibleCount": 14,
+        "invalidWebLinkCount": 0,
+        "suppressedCount": 26,
+        "overlapSuppressedCount": null,
+        "viewportSuppressedCount": null,
+        "nodeObstacleSuppressedCount": null,
+        "suppressionMeasurement": "fixed-transition-policy",
+        "labelNodeOverlapCount": 0,
+        "labelNodeOverlapMeasurement": "measured-visible-label-rectangles",
+        "placementAttempts": 40,
+        "labelNodeOverlapDefinition": "visible label-node pairs; owner node excluded; exact circle/diamond intersection",
+        "placementObstaclePolicy": "fixed transition placement",
+        "priorityVisibleCount": 14,
+        "prioritySuppressedCount": 37,
+        "unmeasurableCount": 0,
+        "measuredCount": 40,
+        "visibleIconCount": 0,
+        "leadingIconCount": 0,
+        "rootProtection": true,
+        "rootProtectionRect": {
+          "left": 132.12347887005836,
+          "top": 190.16228673257052,
+          "right": 266.05965106868155,
+          "bottom": 262.59713112981694
+        },
+        "rootLabelVisible": true,
+        "selectedLabelVisible": true,
+        "textMismatchCount": 0,
+        "measurement": "getBoundingClientRect/offsetWidth",
+        "dprIndependent": true,
+        "viewport": {
+          "width": 835,
+          "height": 822
+        },
+        "labels": {}
+      },
+      "linkReady": true,
+      "lastEvent": {
+        "kind": "user",
+        "operation": "enter-folder",
+        "success": true
+      },
+      "lastClickDiagnostic": {
+        "reason": "transition-in-progress",
+        "id": "north",
+        "progress": 1
+      },
+      "drag": null,
+      "feedback": "",
+      "transition": null,
+      "error": null,
+      "installing": false,
+      "fitProjection": {
+        "width": 835,
+        "height": 822,
+        "radius": 2934.54
+      },
+      "lifecycle": {
+        "installing": false,
+        "hitActive": true
+      },
+      "revision": 0,
+      "persistence": {
+        "hasMap": true,
+        "mapId": null,
+        "generation": null,
+        "savedRevision": null,
+        "dirty": true,
+        "busy": null,
+        "guard": false,
+        "unavailable": false,
+        "lastResult": null
+      },
+      "visibleNodeIds": [
+        "root",
+        "north",
+        "north000",
+        "north001",
+        "north002",
+        "north003",
+        "north004",
+        "north005",
+        "north006",
+        "north007",
+        "north008",
+        "north009",
+        "north010",
+        "north011",
+        "north012",
+        "north013",
+        "north014",
+        "north015",
+        "north016",
+        "north017",
+        "north018",
+        "north019",
+        "north020",
+        "north021",
+        "north022",
+        "north023",
+        "north024",
+        "north025",
+        "north026",
+        "north027",
+        "north028",
+        "north029",
+        "north030",
+        "north031",
+        "north032",
+        "north033",
+        "north034",
+        "north035",
+        "north036",
+        "north037",
+        "north038",
+        "north039",
+        "north040",
+        "north041",
+        "north042",
+        "north043",
+        "north044",
+        "north045",
+        "north046",
+        "north047",
+        "north048",
+        "north049",
+        "north050",
+        "north051",
+        "north052",
+        "north053",
+        "north054",
+        "north055",
+        "north056",
+        "north057",
+        "north058",
+        "south",
+        "east",
+        "west",
+        "center"
+      ],
+      "hitNodeIds": [
+        "root",
+        "north",
+        "south",
+        "east",
+        "west",
+        "center"
+      ],
+      "editor": {
+        "mode": "closed",
+        "dirty": false,
+        "saving": false,
+        "inert": false,
+        "creationOwned": false,
+        "limit": 300
+      },
+      "controller": {
+        "camera": {
+          "zoom": 0.16317810052773327,
+          "panX": 0,
+          "panY": 0
+        },
+        "viewport": {
+          "width": 835,
+          "height": 822
+        },
+        "cameraLimits": {
+          "minZoom": 0.02,
+          "maxZoom": 8,
+          "maxPanCss": 1000000,
+          "wheelLineCss": 16,
+          "wheelMaxCss": 1200,
+          "zoomSensitivity": 0.0015
+        },
+        "threshold": 4,
+        "activePointerId": null,
+        "captureOwned": false,
+        "dragging": false,
+        "suppressNextClick": false,
+        "lastEvent": null,
+        "error": null
+      }
+    },
+    "metrics": {
+      "registration": true,
+      "rootProtection": true,
+      "rootProtectionRect": {
+        "left": 132.12347887005836,
+        "top": 190.16228673257052,
+        "right": 266.05965106868155,
+        "bottom": 262.59713112981694
+      },
+      "rootLabelVisible": true,
+      "selectedLabelVisible": true,
+      "visibleCount": 14
+    },
+    "labels": [
+      {
+        "id": "root",
+        "text": "Distributed 300",
+        "display": "flex",
+        "left": 185.341,
+        "top": 219.786,
+        "right": 260.05975,
+        "bottom": 232.9735,
+        "selected": false,
+        "badge": null
+      },
+      {
+        "id": "north",
+        "text": "North",
+        "display": "flex",
+        "left": 432.1,
+        "top": 404.406,
+        "right": 460.553125,
+        "bottom": 417.5935,
+        "selected": true,
+        "badge": null
+      },
+      {
+        "id": "north000",
+        "text": "north-001.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north001",
+        "text": "north-002.txtTXT",
+        "display": "flex",
+        "left": 447.647,
+        "top": 120.597,
+        "right": 535.0688749999999,
+        "bottom": 133.78449999999998,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north002",
+        "text": "north-003.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north003",
+        "text": "north-004.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north004",
+        "text": "north-005.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north005",
+        "text": "north-006.txtTXT",
+        "display": "flex",
+        "left": 471.189,
+        "top": 150.788,
+        "right": 558.6108750000001,
+        "bottom": 163.9755,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north006",
+        "text": "north-007.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north007",
+        "text": "north-008.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north008",
+        "text": "north-009.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north009",
+        "text": "north-010.txtTXT",
+        "display": "flex",
+        "left": 491.247,
+        "top": 187.64,
+        "right": 578.6688750000001,
+        "bottom": 200.8275,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north010",
+        "text": "north-011.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north011",
+        "text": "north-012.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north012",
+        "text": "north-013.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north013",
+        "text": "north-014.txtTXT",
+        "display": "flex",
+        "left": 505.588,
+        "top": 230.984,
+        "right": 593.009875,
+        "bottom": 244.1715,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north014",
+        "text": "north-015.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north015",
+        "text": "north-016.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north016",
+        "text": "north-017.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north017",
+        "text": "north-018.txtTXT",
+        "display": "flex",
+        "left": 511.758,
+        "top": 279.751,
+        "right": 599.179875,
+        "bottom": 292.9385,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north018",
+        "text": "north-019.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north019",
+        "text": "north-020.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north020",
+        "text": "north-021.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north021",
+        "text": "north-022.txtTXT",
+        "display": "flex",
+        "left": 507.526,
+        "top": 331.761,
+        "right": 594.9478750000001,
+        "bottom": 344.9485,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north022",
+        "text": "north-023.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north023",
+        "text": "north-024.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north024",
+        "text": "north-025.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north025",
+        "text": "north-026.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north026",
+        "text": "north-027.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north027",
+        "text": "north-028.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north028",
+        "text": "north-029.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north029",
+        "text": "north-030.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north030",
+        "text": "north-031.txtTXT",
+        "display": "flex",
+        "left": 616.018,
+        "top": 580.012,
+        "right": 703.439875,
+        "bottom": 593.1995,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north031",
+        "text": "north-032.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north032",
+        "text": "north-033.txtTXT",
+        "display": "flex",
+        "left": 575.944,
+        "top": 619.433,
+        "right": 663.365875,
+        "bottom": 632.6205,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north033",
+        "text": "north-034.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north034",
+        "text": "north-035.txtTXT",
+        "display": "flex",
+        "left": 531.046,
+        "top": 651.689,
+        "right": 618.467875,
+        "bottom": 664.8765,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north035",
+        "text": "north-036.txtTXT",
+        "display": "flex",
+        "left": 403.799,
+        "top": 489.209,
+        "right": 491.220875,
+        "bottom": 502.3965,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north036",
+        "text": "north-037.txtTXT",
+        "display": "flex",
+        "left": 483.127,
+        "top": 676.159,
+        "right": 570.548875,
+        "bottom": 689.3465,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north037",
+        "text": "north-038.txtTXT",
+        "display": "flex",
+        "left": 275.168,
+        "top": 503.071,
+        "right": 362.589875,
+        "bottom": 516.2585,
+        "selected": false,
+        "badge": "TXT"
+      }
+    ],
+    "rootOverlaps": [],
+    "visibleOverlaps": [],
+    "leaders": 0,
+    "highlight": {
+      "query": "North",
+      "ids": [
+        "north",
+        "root"
+      ],
+      "colors": {
+        "north": {
+          "fill": "#E74C3C",
+          "stroke": "#FCA5A5"
+        },
+        "root": {
+          "fill": "#E74C3C",
+          "stroke": "#FCA5A5"
+        }
+      },
+      "folderColors": {
+        "root": {
+          "fill": "#E74C3C",
+          "stroke": "#FCA5A5"
+        },
+        "north": {
+          "fill": "#E74C3C",
+          "stroke": "#FCA5A5"
+        },
+        "south": {
+          "fill": "#D1D5DB",
+          "stroke": "#D1D5DB"
+        },
+        "east": {
+          "fill": "#D1D5DB",
+          "stroke": "#D1D5DB"
+        },
+        "west": {
+          "fill": "#D1D5DB",
+          "stroke": "#D1D5DB"
+        },
+        "center": {
+          "fill": "#D1D5DB",
+          "stroke": "#D1D5DB"
+        }
+      },
+      "selectedId": "north",
+      "status": "Search highlights 2 folders containing matching results.",
+      "scenePresent": true
+    }
+  },
+  "selectFile": {
+    "cards": 1,
+    "state": {
+      "hasMap": true,
+      "structuralRootId": "root",
+      "datasetToken": 1,
+      "focusedFolderId": "north",
+      "focusedStructuralDepth": 1,
+      "contextCount": 6,
+      "subtreeCount": 60,
+      "contextOverlapCount": 1,
+      "displayRootId": "north",
+      "selectedId": "north029",
+      "detailsTargetId": "north029",
+      "editorTargetId": null,
+      "editorAction": "rename",
+      "idCounter": 0,
+      "menuTargetId": null,
+      "menuOpen": false,
+      "ancestorCount": 2,
+      "descendantCount": 59,
+      "visibleCount": 65,
+      "totalCount": 300,
+      "hiddenCount": 235,
+      "visibleEdgeCount": 64,
+      "focusedCenterError": 0,
+      "framingMode": "fit",
+      "camera": {
+        "zoom": 0.16317810052773327,
+        "panX": 0,
+        "panY": 0
+      },
+      "containment": {
+        "contained": true,
+        "containedCount": 65,
+        "totalCount": 65,
+        "centeredId": "north",
+        "centerError": 0
+      },
+      "generation": 4,
+      "hitActive": true,
+      "labelMetrics": {
+        "candidateCount": 65,
+        "createdCount": 40,
+        "visibleCount": 39,
+        "invalidWebLinkCount": 0,
+        "suppressedCount": 1,
+        "overlapSuppressedCount": 0,
+        "viewportSuppressedCount": 0,
+        "nodeObstacleSuppressedCount": 1,
+        "labelNodeOverlapCount": 0,
+        "placementAttempts": 49,
+        "labelNodeOverlapDefinition": "visible label-node pairs; owner node excluded; exact circle/diamond intersection",
+        "placementObstaclePolicy": "conservative glyph bounds",
+        "priorityVisibleCount": 3,
+        "prioritySuppressedCount": 0,
+        "unmeasurableCount": 0,
+        "measuredCount": 40,
+        "visibleIconCount": 0,
+        "leadingIconCount": 0,
+        "rootProtection": true,
+        "rootProtectionRect": {
+          "left": 132.12347887005836,
+          "top": 190.16228673257052,
+          "right": 266.05965106868155,
+          "bottom": 262.59713112981694
+        },
+        "rootLabelVisible": true,
+        "selectedLabelVisible": true,
+        "textMismatchCount": 0,
+        "measurement": "getBoundingClientRect/offsetWidth",
+        "dprIndependent": true,
+        "viewport": {
+          "width": 835,
+          "height": 822
+        },
+        "labels": {}
+      },
+      "linkReady": true,
+      "lastEvent": {
+        "kind": "user",
+        "operation": "select-file",
+        "success": true
+      },
+      "lastClickDiagnostic": {
+        "reason": "transition-in-progress",
+        "id": "north",
+        "progress": 1
+      },
+      "drag": null,
+      "feedback": "",
+      "transition": null,
+      "error": null,
+      "installing": false,
+      "fitProjection": {
+        "width": 835,
+        "height": 822,
+        "radius": 2934.54
+      },
+      "lifecycle": {
+        "installing": false,
+        "hitActive": true
+      },
+      "revision": 0,
+      "persistence": {
+        "hasMap": true,
+        "mapId": null,
+        "generation": null,
+        "savedRevision": null,
+        "dirty": true,
+        "busy": null,
+        "guard": false,
+        "unavailable": false,
+        "lastResult": null
+      },
+      "visibleNodeIds": [
+        "root",
+        "north",
+        "north000",
+        "north001",
+        "north002",
+        "north003",
+        "north004",
+        "north005",
+        "north006",
+        "north007",
+        "north008",
+        "north009",
+        "north010",
+        "north011",
+        "north012",
+        "north013",
+        "north014",
+        "north015",
+        "north016",
+        "north017",
+        "north018",
+        "north019",
+        "north020",
+        "north021",
+        "north022",
+        "north023",
+        "north024",
+        "north025",
+        "north026",
+        "north027",
+        "north028",
+        "north029",
+        "north030",
+        "north031",
+        "north032",
+        "north033",
+        "north034",
+        "north035",
+        "north036",
+        "north037",
+        "north038",
+        "north039",
+        "north040",
+        "north041",
+        "north042",
+        "north043",
+        "north044",
+        "north045",
+        "north046",
+        "north047",
+        "north048",
+        "north049",
+        "north050",
+        "north051",
+        "north052",
+        "north053",
+        "north054",
+        "north055",
+        "north056",
+        "north057",
+        "north058",
+        "south",
+        "east",
+        "west",
+        "center"
+      ],
+      "hitNodeIds": [
+        "root",
+        "north",
+        "south",
+        "east",
+        "west",
+        "center"
+      ],
+      "editor": {
+        "mode": "closed",
+        "dirty": false,
+        "saving": false,
+        "inert": false,
+        "creationOwned": false,
+        "limit": 300
+      },
+      "controller": {
+        "camera": {
+          "zoom": 0.16317810052773327,
+          "panX": 0,
+          "panY": 0
+        },
+        "viewport": {
+          "width": 835,
+          "height": 822
+        },
+        "cameraLimits": {
+          "minZoom": 0.02,
+          "maxZoom": 8,
+          "maxPanCss": 1000000,
+          "wheelLineCss": 16,
+          "wheelMaxCss": 1200,
+          "zoomSensitivity": 0.0015
+        },
+        "threshold": 4,
+        "activePointerId": null,
+        "captureOwned": false,
+        "dragging": false,
+        "suppressNextClick": false,
+        "lastEvent": null,
+        "error": null
+      }
+    },
+    "busy": false
+  },
+  "afterSelect": {
+    "url": "http://127.0.0.1:8099/tests/harness/m5-exploration/?r153=1",
+    "status": {
+      "hasMap": true,
+      "structuralRootId": "root",
+      "datasetToken": 1,
+      "focusedFolderId": "north",
+      "focusedStructuralDepth": 1,
+      "contextCount": 6,
+      "subtreeCount": 60,
+      "contextOverlapCount": 1,
+      "displayRootId": "north",
+      "selectedId": "north029",
+      "detailsTargetId": "north029",
+      "editorTargetId": null,
+      "editorAction": "rename",
+      "idCounter": 0,
+      "menuTargetId": null,
+      "menuOpen": false,
+      "ancestorCount": 2,
+      "descendantCount": 59,
+      "visibleCount": 65,
+      "totalCount": 300,
+      "hiddenCount": 235,
+      "visibleEdgeCount": 64,
+      "focusedCenterError": 0,
+      "framingMode": "fit",
+      "camera": {
+        "zoom": 0.16317810052773327,
+        "panX": 0,
+        "panY": 0
+      },
+      "containment": {
+        "contained": true,
+        "containedCount": 65,
+        "totalCount": 65,
+        "centeredId": "north",
+        "centerError": 0
+      },
+      "generation": 4,
+      "hitActive": true,
+      "labelMetrics": {
+        "candidateCount": 65,
+        "createdCount": 40,
+        "visibleCount": 39,
+        "invalidWebLinkCount": 0,
+        "suppressedCount": 1,
+        "overlapSuppressedCount": 0,
+        "viewportSuppressedCount": 0,
+        "nodeObstacleSuppressedCount": 1,
+        "labelNodeOverlapCount": 0,
+        "placementAttempts": 49,
+        "labelNodeOverlapDefinition": "visible label-node pairs; owner node excluded; exact circle/diamond intersection",
+        "placementObstaclePolicy": "conservative glyph bounds",
+        "priorityVisibleCount": 3,
+        "prioritySuppressedCount": 0,
+        "unmeasurableCount": 0,
+        "measuredCount": 40,
+        "visibleIconCount": 0,
+        "leadingIconCount": 0,
+        "rootProtection": true,
+        "rootProtectionRect": {
+          "left": 132.12347887005836,
+          "top": 190.16228673257052,
+          "right": 266.05965106868155,
+          "bottom": 262.59713112981694
+        },
+        "rootLabelVisible": true,
+        "selectedLabelVisible": true,
+        "textMismatchCount": 0,
+        "measurement": "getBoundingClientRect/offsetWidth",
+        "dprIndependent": true,
+        "viewport": {
+          "width": 835,
+          "height": 822
+        },
+        "labels": {}
+      },
+      "linkReady": true,
+      "lastEvent": {
+        "kind": "user",
+        "operation": "select-file",
+        "success": true
+      },
+      "lastClickDiagnostic": {
+        "reason": "transition-in-progress",
+        "id": "north",
+        "progress": 1
+      },
+      "drag": null,
+      "feedback": "",
+      "transition": null,
+      "error": null,
+      "installing": false,
+      "fitProjection": {
+        "width": 835,
+        "height": 822,
+        "radius": 2934.54
+      },
+      "lifecycle": {
+        "installing": false,
+        "hitActive": true
+      },
+      "revision": 0,
+      "persistence": {
+        "hasMap": true,
+        "mapId": null,
+        "generation": null,
+        "savedRevision": null,
+        "dirty": true,
+        "busy": null,
+        "guard": false,
+        "unavailable": false,
+        "lastResult": null
+      },
+      "visibleNodeIds": [
+        "root",
+        "north",
+        "north000",
+        "north001",
+        "north002",
+        "north003",
+        "north004",
+        "north005",
+        "north006",
+        "north007",
+        "north008",
+        "north009",
+        "north010",
+        "north011",
+        "north012",
+        "north013",
+        "north014",
+        "north015",
+        "north016",
+        "north017",
+        "north018",
+        "north019",
+        "north020",
+        "north021",
+        "north022",
+        "north023",
+        "north024",
+        "north025",
+        "north026",
+        "north027",
+        "north028",
+        "north029",
+        "north030",
+        "north031",
+        "north032",
+        "north033",
+        "north034",
+        "north035",
+        "north036",
+        "north037",
+        "north038",
+        "north039",
+        "north040",
+        "north041",
+        "north042",
+        "north043",
+        "north044",
+        "north045",
+        "north046",
+        "north047",
+        "north048",
+        "north049",
+        "north050",
+        "north051",
+        "north052",
+        "north053",
+        "north054",
+        "north055",
+        "north056",
+        "north057",
+        "north058",
+        "south",
+        "east",
+        "west",
+        "center"
+      ],
+      "hitNodeIds": [
+        "root",
+        "north",
+        "south",
+        "east",
+        "west",
+        "center"
+      ],
+      "editor": {
+        "mode": "closed",
+        "dirty": false,
+        "saving": false,
+        "inert": false,
+        "creationOwned": false,
+        "limit": 300
+      },
+      "controller": {
+        "camera": {
+          "zoom": 0.16317810052773327,
+          "panX": 0,
+          "panY": 0
+        },
+        "viewport": {
+          "width": 835,
+          "height": 822
+        },
+        "cameraLimits": {
+          "minZoom": 0.02,
+          "maxZoom": 8,
+          "maxPanCss": 1000000,
+          "wheelLineCss": 16,
+          "wheelMaxCss": 1200,
+          "zoomSensitivity": 0.0015
+        },
+        "threshold": 4,
+        "activePointerId": null,
+        "captureOwned": false,
+        "dragging": false,
+        "suppressNextClick": false,
+        "lastEvent": null,
+        "error": null
+      }
+    },
+    "metrics": {
+      "registration": true,
+      "rootProtection": true,
+      "rootProtectionRect": {
+        "left": 132.12347887005836,
+        "top": 190.16228673257052,
+        "right": 266.05965106868155,
+        "bottom": 262.59713112981694
+      },
+      "rootLabelVisible": true,
+      "selectedLabelVisible": true,
+      "visibleCount": 39
+    },
+    "labels": [
+      {
+        "id": "root",
+        "text": "Distributed 300",
+        "display": "flex",
+        "left": 185.341,
+        "top": 219.786,
+        "right": 260.05975,
+        "bottom": 232.9735,
+        "selected": false,
+        "badge": null
+      },
+      {
+        "id": "north",
+        "text": "North",
+        "display": "flex",
+        "left": 432.1,
+        "top": 404.406,
+        "right": 460.553125,
+        "bottom": 417.5935,
+        "selected": false,
+        "badge": null
+      },
+      {
+        "id": "north029",
+        "text": "north-030.txtTXT",
+        "display": "flex",
+        "left": 463.656,
+        "top": 431.938,
+        "right": 551.077875,
+        "bottom": 445.1255,
+        "selected": true,
+        "badge": "TXT"
+      },
+      {
+        "id": "south",
+        "text": "South",
+        "display": "flex",
+        "left": 138.842,
+        "top": 276.561,
+        "right": 167.31075,
+        "bottom": 289.7485,
+        "selected": false,
+        "badge": null
+      },
+      {
+        "id": "east",
+        "text": "East",
+        "display": "flex",
+        "left": 52.8532,
+        "top": 195.365,
+        "right": 72.4157,
+        "bottom": 208.5525,
+        "selected": false,
+        "badge": null
+      },
+      {
+        "id": "west",
+        "text": "West",
+        "display": "flex",
+        "left": 143.792,
+        "top": 165.686,
+        "right": 167.792,
+        "bottom": 178.8735,
+        "selected": false,
+        "badge": null
+      },
+      {
+        "id": "center",
+        "text": "Center",
+        "display": "flex",
+        "left": 273.344,
+        "top": 56.5031,
+        "right": 305.43775,
+        "bottom": 69.6906,
+        "selected": false,
+        "badge": null
+      },
+      {
+        "id": "north000",
+        "text": "north-001.txtTXT",
+        "display": "flex",
+        "left": 509.916,
+        "top": 21.4062,
+        "right": 597.3378749999999,
+        "bottom": 34.5937,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north001",
+        "text": "north-002.txtTXT",
+        "display": "flex",
+        "left": 447.647,
+        "top": 120.597,
+        "right": 535.0688749999999,
+        "bottom": 133.78449999999998,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north002",
+        "text": "north-003.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north003",
+        "text": "north-004.txtTXT",
+        "display": "flex",
+        "left": 354.308,
+        "top": 134.876,
+        "right": 441.729875,
+        "bottom": 148.0635,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north004",
+        "text": "north-005.txtTXT",
+        "display": "flex",
+        "left": 557.886,
+        "top": 51.3272,
+        "right": 645.307875,
+        "bottom": 64.5147,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north005",
+        "text": "north-006.txtTXT",
+        "display": "flex",
+        "left": 471.189,
+        "top": 150.788,
+        "right": 558.6108750000001,
+        "bottom": 163.9755,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north006",
+        "text": "north-007.txtTXT",
+        "display": "flex",
+        "left": 582.393,
+        "top": 71.1225,
+        "right": 669.814875,
+        "bottom": 84.31,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north007",
+        "text": "north-008.txtTXT",
+        "display": "flex",
+        "left": 481.784,
+        "top": 168.375,
+        "right": 569.205875,
+        "bottom": 181.5625,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north008",
+        "text": "north-009.txtTXT",
+        "display": "flex",
+        "left": 606.704,
+        "top": 94.6838,
+        "right": 694.125875,
+        "bottom": 107.8713,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north009",
+        "text": "north-010.txtTXT",
+        "display": "flex",
+        "left": 491.247,
+        "top": 187.64,
+        "right": 578.6688750000001,
+        "bottom": 200.8275,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north010",
+        "text": "north-011.txtTXT",
+        "display": "flex",
+        "left": 630.231,
+        "top": 122.39,
+        "right": 717.652875,
+        "bottom": 135.5775,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north011",
+        "text": "north-012.txtTXT",
+        "display": "flex",
+        "left": 499.284,
+        "top": 208.543,
+        "right": 586.705875,
+        "bottom": 221.7305,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north012",
+        "text": "north-013.txtTXT",
+        "display": "flex",
+        "left": 652.227,
+        "top": 154.545,
+        "right": 739.648875,
+        "bottom": 167.7325,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north013",
+        "text": "north-014.txtTXT",
+        "display": "flex",
+        "left": 505.588,
+        "top": 230.984,
+        "right": 593.009875,
+        "bottom": 244.1715,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north014",
+        "text": "north-015.txtTXT",
+        "display": "flex",
+        "left": 671.774,
+        "top": 191.324,
+        "right": 759.195875,
+        "bottom": 204.5115,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north015",
+        "text": "north-016.txtTXT",
+        "display": "flex",
+        "left": 509.846,
+        "top": 254.798,
+        "right": 597.267875,
+        "bottom": 267.9855,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north016",
+        "text": "north-017.txtTXT",
+        "display": "flex",
+        "left": 687.801,
+        "top": 232.696,
+        "right": 775.222875,
+        "bottom": 245.8835,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north017",
+        "text": "north-018.txtTXT",
+        "display": "flex",
+        "left": 511.758,
+        "top": 279.751,
+        "right": 599.179875,
+        "bottom": 292.9385,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north018",
+        "text": "north-019.txtTXT",
+        "display": "flex",
+        "left": 699.13,
+        "top": 278.351,
+        "right": 786.551875,
+        "bottom": 291.5385,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north019",
+        "text": "north-020.txtTXT",
+        "display": "flex",
+        "left": 511.057,
+        "top": 305.531,
+        "right": 598.478875,
+        "bottom": 318.7185,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north020",
+        "text": "north-021.txtTXT",
+        "display": "flex",
+        "left": 704.554,
+        "top": 327.626,
+        "right": 791.975875,
+        "bottom": 340.8135,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north021",
+        "text": "north-022.txtTXT",
+        "display": "flex",
+        "left": 507.526,
+        "top": 331.761,
+        "right": 594.9478750000001,
+        "bottom": 344.9485,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north022",
+        "text": "north-023.txtTXT",
+        "display": "flex",
+        "left": 702.967,
+        "top": 379.468,
+        "right": 790.388875,
+        "bottom": 392.6555,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north023",
+        "text": "north-024.txtTXT",
+        "display": "flex",
+        "left": 501.021,
+        "top": 358.001,
+        "right": 588.442875,
+        "bottom": 371.1885,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north024",
+        "text": "north-025.txtTXT",
+        "display": "flex",
+        "left": 693.508,
+        "top": 432.435,
+        "right": 780.929875,
+        "bottom": 445.6225,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north025",
+        "text": "north-026.txtTXT",
+        "display": "flex",
+        "left": 491.49,
+        "top": 383.773,
+        "right": 578.911875,
+        "bottom": 396.9605,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north026",
+        "text": "north-027.txtTXT",
+        "display": "flex",
+        "left": 675.719,
+        "top": 484.779,
+        "right": 763.140875,
+        "bottom": 497.9665,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north027",
+        "text": "north-028.txtTXT",
+        "display": "flex",
+        "left": 478.982,
+        "top": 408.58,
+        "right": 566.403875,
+        "bottom": 421.7675,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north028",
+        "text": "north-029.txtTXT",
+        "display": "flex",
+        "left": 649.673,
+        "top": 534.593,
+        "right": 737.094875,
+        "bottom": 547.7805,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north030",
+        "text": "north-031.txtTXT",
+        "display": "flex",
+        "left": 616.018,
+        "top": 580.012,
+        "right": 703.439875,
+        "bottom": 593.1995,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north031",
+        "text": "north-032.txtTXT",
+        "display": "flex",
+        "left": 445.772,
+        "top": 453.4,
+        "right": 533.1938749999999,
+        "bottom": 466.5875,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north032",
+        "text": "north-033.txtTXT",
+        "display": "flex",
+        "left": 575.944,
+        "top": 619.433,
+        "right": 663.365875,
+        "bottom": 632.6205,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north033",
+        "text": "north-034.txtTXT",
+        "display": "flex",
+        "left": 425.68,
+        "top": 472.588,
+        "right": 513.1018750000001,
+        "bottom": 485.7755,
+        "selected": false,
+        "badge": "TXT"
+      }
+    ],
+    "rootOverlaps": [],
+    "visibleOverlaps": [],
+    "leaders": 0,
+    "highlight": {
+      "query": "north-030",
+      "ids": [
+        "north",
+        "root"
+      ],
+      "colors": {
+        "north": {
+          "fill": "#E74C3C",
+          "stroke": "#FCA5A5"
+        },
+        "root": {
+          "fill": "#E74C3C",
+          "stroke": "#FCA5A5"
+        }
+      },
+      "folderColors": {
+        "root": {
+          "fill": "#E74C3C",
+          "stroke": "#FCA5A5"
+        },
+        "north": {
+          "fill": "#E74C3C",
+          "stroke": "#FCA5A5"
+        },
+        "south": {
+          "fill": "#D1D5DB",
+          "stroke": "#D1D5DB"
+        },
+        "east": {
+          "fill": "#D1D5DB",
+          "stroke": "#D1D5DB"
+        },
+        "west": {
+          "fill": "#D1D5DB",
+          "stroke": "#D1D5DB"
+        },
+        "center": {
+          "fill": "#D1D5DB",
+          "stroke": "#D1D5DB"
+        }
+      },
+      "selectedId": "north029",
+      "status": "Search highlights 2 folders containing matching results.",
+      "scenePresent": true
+    }
+  },
+  "narrow": {
+    "url": "http://127.0.0.1:8099/tests/harness/m5-exploration/?r153=1",
+    "status": {
+      "hasMap": true,
+      "structuralRootId": "root",
+      "datasetToken": 1,
+      "focusedFolderId": "north",
+      "focusedStructuralDepth": 1,
+      "contextCount": 6,
+      "subtreeCount": 60,
+      "contextOverlapCount": 1,
+      "displayRootId": "north",
+      "selectedId": "north029",
+      "detailsTargetId": "north029",
+      "editorTargetId": null,
+      "editorAction": "rename",
+      "idCounter": 0,
+      "menuTargetId": null,
+      "menuOpen": false,
+      "ancestorCount": 2,
+      "descendantCount": 59,
+      "visibleCount": 65,
+      "totalCount": 300,
+      "hiddenCount": 235,
+      "visibleEdgeCount": 64,
+      "focusedCenterError": 0,
+      "framingMode": "fit",
+      "camera": {
+        "zoom": 0.14038749015488963,
+        "panX": 0,
+        "panY": 0
+      },
+      "containment": {
+        "contained": true,
+        "containedCount": 65,
+        "totalCount": 65,
+        "centeredId": "north",
+        "centerError": 0
+      },
+      "generation": 5,
+      "hitActive": true,
+      "labelMetrics": {
+        "candidateCount": 65,
+        "createdCount": 40,
+        "visibleCount": 10,
+        "invalidWebLinkCount": 0,
+        "suppressedCount": 30,
+        "overlapSuppressedCount": 0,
+        "viewportSuppressedCount": 0,
+        "nodeObstacleSuppressedCount": 30,
+        "labelNodeOverlapCount": 0,
+        "placementAttempts": 144,
+        "labelNodeOverlapDefinition": "visible label-node pairs; owner node excluded; exact circle/diamond intersection",
+        "placementObstaclePolicy": "conservative glyph bounds",
+        "priorityVisibleCount": 3,
+        "prioritySuppressedCount": 0,
+        "unmeasurableCount": 0,
+        "measuredCount": 40,
+        "visibleIconCount": 0,
+        "leadingIconCount": 0,
+        "rootProtection": true,
+        "rootProtectionRect": {
+          "left": 59.986270171365845,
+          "top": 251.0070785569274,
+          "right": 175.70502017136585,
+          "bottom": 287.0070785569274
+        },
+        "rootLabelVisible": true,
+        "selectedLabelVisible": true,
+        "textMismatchCount": 0,
+        "measurement": "getBoundingClientRect/offsetWidth",
+        "dprIndependent": true,
+        "viewport": {
+          "width": 326,
+          "height": 664
+        },
+        "labels": {}
+      },
+      "linkReady": true,
+      "lastEvent": {
+        "kind": "programmatic",
+        "operation": "resize",
+        "success": true
+      },
+      "lastClickDiagnostic": {
+        "reason": "transition-in-progress",
+        "id": "north",
+        "progress": 1
+      },
+      "drag": null,
+      "feedback": "",
+      "transition": null,
+      "error": null,
+      "installing": false,
+      "fitProjection": {
+        "width": 326,
+        "height": 664,
+        "radius": 1163.82
+      },
+      "lifecycle": {
+        "installing": false,
+        "hitActive": true
+      },
+      "revision": 0,
+      "persistence": {
+        "hasMap": true,
+        "mapId": null,
+        "generation": null,
+        "savedRevision": null,
+        "dirty": true,
+        "busy": null,
+        "guard": false,
+        "unavailable": false,
+        "lastResult": null
+      },
+      "visibleNodeIds": [
+        "root",
+        "north",
+        "north000",
+        "north001",
+        "north002",
+        "north003",
+        "north004",
+        "north005",
+        "north006",
+        "north007",
+        "north008",
+        "north009",
+        "north010",
+        "north011",
+        "north012",
+        "north013",
+        "north014",
+        "north015",
+        "north016",
+        "north017",
+        "north018",
+        "north019",
+        "north020",
+        "north021",
+        "north022",
+        "north023",
+        "north024",
+        "north025",
+        "north026",
+        "north027",
+        "north028",
+        "north029",
+        "north030",
+        "north031",
+        "north032",
+        "north033",
+        "north034",
+        "north035",
+        "north036",
+        "north037",
+        "north038",
+        "north039",
+        "north040",
+        "north041",
+        "north042",
+        "north043",
+        "north044",
+        "north045",
+        "north046",
+        "north047",
+        "north048",
+        "north049",
+        "north050",
+        "north051",
+        "north052",
+        "north053",
+        "north054",
+        "north055",
+        "north056",
+        "north057",
+        "north058",
+        "south",
+        "east",
+        "west",
+        "center"
+      ],
+      "hitNodeIds": [
+        "root",
+        "north",
+        "south",
+        "east",
+        "west",
+        "center"
+      ],
+      "editor": {
+        "mode": "closed",
+        "dirty": false,
+        "saving": false,
+        "inert": false,
+        "creationOwned": false,
+        "limit": 300
+      },
+      "controller": {
+        "camera": {
+          "zoom": 0.14038749015488963,
+          "panX": 0,
+          "panY": 0
+        },
+        "viewport": {
+          "width": 326,
+          "height": 664
+        },
+        "cameraLimits": {
+          "minZoom": 0.02,
+          "maxZoom": 8,
+          "maxPanCss": 1000000,
+          "wheelLineCss": 16,
+          "wheelMaxCss": 1200,
+          "zoomSensitivity": 0.0015
+        },
+        "threshold": 4,
+        "activePointerId": null,
+        "captureOwned": false,
+        "dragging": false,
+        "suppressNextClick": false,
+        "lastEvent": null,
+        "error": null
+      }
+    },
+    "metrics": {
+      "registration": true,
+      "rootProtection": true,
+      "rootProtectionRect": {
+        "left": 59.986270171365845,
+        "top": 251.0070785569274,
+        "right": 175.70502017136585,
+        "bottom": 287.0070785569274
+      },
+      "rootLabelVisible": true,
+      "selectedLabelVisible": true,
+      "visibleCount": 10
+    },
+    "labels": [
+      {
+        "id": "root",
+        "text": "Distributed 300",
+        "display": "flex",
+        "left": 94.9863,
+        "top": 262.413,
+        "right": 169.70505,
+        "bottom": 275.6005,
+        "selected": false,
+        "badge": null
+      },
+      {
+        "id": "north",
+        "text": "North",
+        "display": "flex",
+        "left": 119.947,
+        "top": 325.406,
+        "right": 148.400125,
+        "bottom": 338.5935,
+        "selected": false,
+        "badge": null
+      },
+      {
+        "id": "north029",
+        "text": "north-030.txtTXT",
+        "display": "flex",
+        "left": 131.967,
+        "top": 382.394,
+        "right": 219.388875,
+        "bottom": 395.5815,
+        "selected": true,
+        "badge": "TXT"
+      },
+      {
+        "id": "south",
+        "text": "South",
+        "display": "flex",
+        "left": 58.5436,
+        "top": 295.747,
+        "right": 87.01235,
+        "bottom": 308.9345,
+        "selected": false,
+        "badge": null
+      },
+      {
+        "id": "east",
+        "text": "East",
+        "display": "flex",
+        "left": 23.8187,
+        "top": 232.887,
+        "right": 43.3812,
+        "bottom": 246.0745,
+        "selected": false,
+        "badge": null
+      },
+      {
+        "id": "west",
+        "text": "West",
+        "display": "flex",
+        "left": 61.7047,
+        "top": 229.992,
+        "right": 85.7047,
+        "bottom": 243.1795,
+        "selected": false,
+        "badge": null
+      },
+      {
+        "id": "center",
+        "text": "Center",
+        "display": "flex",
+        "left": 123.432,
+        "top": 206.701,
+        "right": 155.52575000000002,
+        "bottom": 219.8885,
+        "selected": false,
+        "badge": null
+      },
+      {
+        "id": "north000",
+        "text": "north-001.txtTXT",
+        "display": "flex",
+        "left": 147.751,
+        "top": 179.132,
+        "right": 235.172875,
+        "bottom": 192.3195,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north001",
+        "text": "north-002.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north002",
+        "text": "north-003.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north003",
+        "text": "north-004.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north004",
+        "text": "north-005.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north005",
+        "text": "north-006.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north006",
+        "text": "north-007.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north007",
+        "text": "north-008.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north008",
+        "text": "north-009.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north009",
+        "text": "north-010.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north010",
+        "text": "north-011.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north011",
+        "text": "north-012.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north012",
+        "text": "north-013.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north013",
+        "text": "north-014.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north014",
+        "text": "north-015.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north015",
+        "text": "north-016.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north016",
+        "text": "north-017.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north017",
+        "text": "north-018.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north018",
+        "text": "north-019.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north019",
+        "text": "north-020.txtTXT",
+        "display": "flex",
+        "left": 95.4291,
+        "top": 291.67,
+        "right": 182.850975,
+        "bottom": 304.8575,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north020",
+        "text": "north-021.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north021",
+        "text": "north-022.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north022",
+        "text": "north-023.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north023",
+        "text": "north-024.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north024",
+        "text": "north-025.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north025",
+        "text": "north-026.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north026",
+        "text": "north-027.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north027",
+        "text": "north-028.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north028",
+        "text": "north-029.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north030",
+        "text": "north-031.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north031",
+        "text": "north-032.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north032",
+        "text": "north-033.txtTXT",
+        "display": "flex",
+        "left": 222.991,
+        "top": 398.774,
+        "right": 310.412875,
+        "bottom": 411.9615,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north033",
+        "text": "north-034.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      }
+    ],
+    "rootOverlaps": [],
+    "visibleOverlaps": [],
+    "leaders": 1,
+    "highlight": {
+      "query": "north-030",
+      "ids": [
+        "north",
+        "root"
+      ],
+      "colors": {
+        "north": {
+          "fill": "#E74C3C",
+          "stroke": "#FCA5A5"
+        },
+        "root": {
+          "fill": "#E74C3C",
+          "stroke": "#FCA5A5"
+        }
+      },
+      "folderColors": {
+        "root": {
+          "fill": "#E74C3C",
+          "stroke": "#FCA5A5"
+        },
+        "north": {
+          "fill": "#E74C3C",
+          "stroke": "#FCA5A5"
+        },
+        "south": {
+          "fill": "#D1D5DB",
+          "stroke": "#D1D5DB"
+        },
+        "east": {
+          "fill": "#D1D5DB",
+          "stroke": "#D1D5DB"
+        },
+        "west": {
+          "fill": "#D1D5DB",
+          "stroke": "#D1D5DB"
+        },
+        "center": {
+          "fill": "#D1D5DB",
+          "stroke": "#D1D5DB"
+        }
+      },
+      "selectedId": "north029",
+      "status": "Search highlights 2 folders containing matching results.",
+      "scenePresent": true
+    }
+  },
+  "clear": {
+    "highlight": {
+      "query": "",
+      "ids": [],
+      "colors": {},
+      "folderColors": {
+        "root": {
+          "fill": "#F8FAFC",
+          "stroke": "#F8FAFC"
+        },
+        "north": {
+          "fill": "#D1D5DB",
+          "stroke": "#D1D5DB"
+        },
+        "south": {
+          "fill": "#D1D5DB",
+          "stroke": "#D1D5DB"
+        },
+        "east": {
+          "fill": "#D1D5DB",
+          "stroke": "#D1D5DB"
+        },
+        "west": {
+          "fill": "#D1D5DB",
+          "stroke": "#D1D5DB"
+        },
+        "center": {
+          "fill": "#D1D5DB",
+          "stroke": "#D1D5DB"
+        }
+      },
+      "selectedId": "north029",
+      "status": "",
+      "scenePresent": true
+    },
+    "state": {
+      "hasMap": true,
+      "structuralRootId": "root",
+      "datasetToken": 1,
+      "focusedFolderId": "north",
+      "focusedStructuralDepth": 1,
+      "contextCount": 6,
+      "subtreeCount": 60,
+      "contextOverlapCount": 1,
+      "displayRootId": "north",
+      "selectedId": "north029",
+      "detailsTargetId": "north029",
+      "editorTargetId": null,
+      "editorAction": "rename",
+      "idCounter": 0,
+      "menuTargetId": null,
+      "menuOpen": false,
+      "ancestorCount": 2,
+      "descendantCount": 59,
+      "visibleCount": 65,
+      "totalCount": 300,
+      "hiddenCount": 235,
+      "visibleEdgeCount": 64,
+      "focusedCenterError": 0,
+      "framingMode": "fit",
+      "camera": {
+        "zoom": 0.14038749015488963,
+        "panX": 0,
+        "panY": 0
+      },
+      "containment": {
+        "contained": true,
+        "containedCount": 65,
+        "totalCount": 65,
+        "centeredId": "north",
+        "centerError": 0
+      },
+      "generation": 5,
+      "hitActive": true,
+      "labelMetrics": {
+        "candidateCount": 65,
+        "createdCount": 40,
+        "visibleCount": 10,
+        "invalidWebLinkCount": 0,
+        "suppressedCount": 30,
+        "overlapSuppressedCount": 0,
+        "viewportSuppressedCount": 0,
+        "nodeObstacleSuppressedCount": 30,
+        "labelNodeOverlapCount": 0,
+        "placementAttempts": 144,
+        "labelNodeOverlapDefinition": "visible label-node pairs; owner node excluded; exact circle/diamond intersection",
+        "placementObstaclePolicy": "conservative glyph bounds",
+        "priorityVisibleCount": 3,
+        "prioritySuppressedCount": 0,
+        "unmeasurableCount": 0,
+        "measuredCount": 40,
+        "visibleIconCount": 0,
+        "leadingIconCount": 0,
+        "rootProtection": true,
+        "rootProtectionRect": {
+          "left": 59.986270171365845,
+          "top": 251.0070785569274,
+          "right": 175.70502017136585,
+          "bottom": 287.0070785569274
+        },
+        "rootLabelVisible": true,
+        "selectedLabelVisible": true,
+        "textMismatchCount": 0,
+        "measurement": "getBoundingClientRect/offsetWidth",
+        "dprIndependent": true,
+        "viewport": {
+          "width": 326,
+          "height": 664
+        },
+        "labels": {}
+      },
+      "linkReady": true,
+      "lastEvent": {
+        "kind": "programmatic",
+        "operation": "resize",
+        "success": true
+      },
+      "lastClickDiagnostic": {
+        "reason": "transition-in-progress",
+        "id": "north",
+        "progress": 1
+      },
+      "drag": null,
+      "feedback": "",
+      "transition": null,
+      "error": null,
+      "installing": false,
+      "fitProjection": {
+        "width": 326,
+        "height": 664,
+        "radius": 1163.82
+      },
+      "lifecycle": {
+        "installing": false,
+        "hitActive": true
+      },
+      "revision": 0,
+      "persistence": {
+        "hasMap": true,
+        "mapId": null,
+        "generation": null,
+        "savedRevision": null,
+        "dirty": true,
+        "busy": null,
+        "guard": false,
+        "unavailable": false,
+        "lastResult": null
+      },
+      "visibleNodeIds": [
+        "root",
+        "north",
+        "north000",
+        "north001",
+        "north002",
+        "north003",
+        "north004",
+        "north005",
+        "north006",
+        "north007",
+        "north008",
+        "north009",
+        "north010",
+        "north011",
+        "north012",
+        "north013",
+        "north014",
+        "north015",
+        "north016",
+        "north017",
+        "north018",
+        "north019",
+        "north020",
+        "north021",
+        "north022",
+        "north023",
+        "north024",
+        "north025",
+        "north026",
+        "north027",
+        "north028",
+        "north029",
+        "north030",
+        "north031",
+        "north032",
+        "north033",
+        "north034",
+        "north035",
+        "north036",
+        "north037",
+        "north038",
+        "north039",
+        "north040",
+        "north041",
+        "north042",
+        "north043",
+        "north044",
+        "north045",
+        "north046",
+        "north047",
+        "north048",
+        "north049",
+        "north050",
+        "north051",
+        "north052",
+        "north053",
+        "north054",
+        "north055",
+        "north056",
+        "north057",
+        "north058",
+        "south",
+        "east",
+        "west",
+        "center"
+      ],
+      "hitNodeIds": [
+        "root",
+        "north",
+        "south",
+        "east",
+        "west",
+        "center"
+      ],
+      "editor": {
+        "mode": "closed",
+        "dirty": false,
+        "saving": false,
+        "inert": false,
+        "creationOwned": false,
+        "limit": 300
+      },
+      "controller": {
+        "camera": {
+          "zoom": 0.14038749015488963,
+          "panX": 0,
+          "panY": 0
+        },
+        "viewport": {
+          "width": 326,
+          "height": 664
+        },
+        "cameraLimits": {
+          "minZoom": 0.02,
+          "maxZoom": 8,
+          "maxPanCss": 1000000,
+          "wheelLineCss": 16,
+          "wheelMaxCss": 1200,
+          "zoomSensitivity": 0.0015
+        },
+        "threshold": 4,
+        "activePointerId": null,
+        "captureOwned": false,
+        "dragging": false,
+        "suppressNextClick": false,
+        "lastEvent": null,
+        "error": null
+      }
+    }
+  },
+  "afterClear": {
+    "url": "http://127.0.0.1:8099/tests/harness/m5-exploration/?r153=1",
+    "status": {
+      "hasMap": true,
+      "structuralRootId": "root",
+      "datasetToken": 1,
+      "focusedFolderId": "north",
+      "focusedStructuralDepth": 1,
+      "contextCount": 6,
+      "subtreeCount": 60,
+      "contextOverlapCount": 1,
+      "displayRootId": "north",
+      "selectedId": "north029",
+      "detailsTargetId": "north029",
+      "editorTargetId": null,
+      "editorAction": "rename",
+      "idCounter": 0,
+      "menuTargetId": null,
+      "menuOpen": false,
+      "ancestorCount": 2,
+      "descendantCount": 59,
+      "visibleCount": 65,
+      "totalCount": 300,
+      "hiddenCount": 235,
+      "visibleEdgeCount": 64,
+      "focusedCenterError": 0,
+      "framingMode": "fit",
+      "camera": {
+        "zoom": 0.14038749015488963,
+        "panX": 0,
+        "panY": 0
+      },
+      "containment": {
+        "contained": true,
+        "containedCount": 65,
+        "totalCount": 65,
+        "centeredId": "north",
+        "centerError": 0
+      },
+      "generation": 5,
+      "hitActive": true,
+      "labelMetrics": {
+        "candidateCount": 65,
+        "createdCount": 40,
+        "visibleCount": 10,
+        "invalidWebLinkCount": 0,
+        "suppressedCount": 30,
+        "overlapSuppressedCount": 0,
+        "viewportSuppressedCount": 0,
+        "nodeObstacleSuppressedCount": 30,
+        "labelNodeOverlapCount": 0,
+        "placementAttempts": 144,
+        "labelNodeOverlapDefinition": "visible label-node pairs; owner node excluded; exact circle/diamond intersection",
+        "placementObstaclePolicy": "conservative glyph bounds",
+        "priorityVisibleCount": 3,
+        "prioritySuppressedCount": 0,
+        "unmeasurableCount": 0,
+        "measuredCount": 40,
+        "visibleIconCount": 0,
+        "leadingIconCount": 0,
+        "rootProtection": true,
+        "rootProtectionRect": {
+          "left": 59.986270171365845,
+          "top": 251.0070785569274,
+          "right": 175.70502017136585,
+          "bottom": 287.0070785569274
+        },
+        "rootLabelVisible": true,
+        "selectedLabelVisible": true,
+        "textMismatchCount": 0,
+        "measurement": "getBoundingClientRect/offsetWidth",
+        "dprIndependent": true,
+        "viewport": {
+          "width": 326,
+          "height": 664
+        },
+        "labels": {}
+      },
+      "linkReady": true,
+      "lastEvent": {
+        "kind": "programmatic",
+        "operation": "resize",
+        "success": true
+      },
+      "lastClickDiagnostic": {
+        "reason": "transition-in-progress",
+        "id": "north",
+        "progress": 1
+      },
+      "drag": null,
+      "feedback": "",
+      "transition": null,
+      "error": null,
+      "installing": false,
+      "fitProjection": {
+        "width": 326,
+        "height": 664,
+        "radius": 1163.82
+      },
+      "lifecycle": {
+        "installing": false,
+        "hitActive": true
+      },
+      "revision": 0,
+      "persistence": {
+        "hasMap": true,
+        "mapId": null,
+        "generation": null,
+        "savedRevision": null,
+        "dirty": true,
+        "busy": null,
+        "guard": false,
+        "unavailable": false,
+        "lastResult": null
+      },
+      "visibleNodeIds": [
+        "root",
+        "north",
+        "north000",
+        "north001",
+        "north002",
+        "north003",
+        "north004",
+        "north005",
+        "north006",
+        "north007",
+        "north008",
+        "north009",
+        "north010",
+        "north011",
+        "north012",
+        "north013",
+        "north014",
+        "north015",
+        "north016",
+        "north017",
+        "north018",
+        "north019",
+        "north020",
+        "north021",
+        "north022",
+        "north023",
+        "north024",
+        "north025",
+        "north026",
+        "north027",
+        "north028",
+        "north029",
+        "north030",
+        "north031",
+        "north032",
+        "north033",
+        "north034",
+        "north035",
+        "north036",
+        "north037",
+        "north038",
+        "north039",
+        "north040",
+        "north041",
+        "north042",
+        "north043",
+        "north044",
+        "north045",
+        "north046",
+        "north047",
+        "north048",
+        "north049",
+        "north050",
+        "north051",
+        "north052",
+        "north053",
+        "north054",
+        "north055",
+        "north056",
+        "north057",
+        "north058",
+        "south",
+        "east",
+        "west",
+        "center"
+      ],
+      "hitNodeIds": [
+        "root",
+        "north",
+        "south",
+        "east",
+        "west",
+        "center"
+      ],
+      "editor": {
+        "mode": "closed",
+        "dirty": false,
+        "saving": false,
+        "inert": false,
+        "creationOwned": false,
+        "limit": 300
+      },
+      "controller": {
+        "camera": {
+          "zoom": 0.14038749015488963,
+          "panX": 0,
+          "panY": 0
+        },
+        "viewport": {
+          "width": 326,
+          "height": 664
+        },
+        "cameraLimits": {
+          "minZoom": 0.02,
+          "maxZoom": 8,
+          "maxPanCss": 1000000,
+          "wheelLineCss": 16,
+          "wheelMaxCss": 1200,
+          "zoomSensitivity": 0.0015
+        },
+        "threshold": 4,
+        "activePointerId": null,
+        "captureOwned": false,
+        "dragging": false,
+        "suppressNextClick": false,
+        "lastEvent": null,
+        "error": null
+      }
+    },
+    "metrics": {
+      "registration": true,
+      "rootProtection": true,
+      "rootProtectionRect": {
+        "left": 59.986270171365845,
+        "top": 251.0070785569274,
+        "right": 175.70502017136585,
+        "bottom": 287.0070785569274
+      },
+      "rootLabelVisible": true,
+      "selectedLabelVisible": true,
+      "visibleCount": 10
+    },
+    "labels": [
+      {
+        "id": "root",
+        "text": "Distributed 300",
+        "display": "flex",
+        "left": 94.9863,
+        "top": 262.413,
+        "right": 169.70505,
+        "bottom": 275.6005,
+        "selected": false,
+        "badge": null
+      },
+      {
+        "id": "north",
+        "text": "North",
+        "display": "flex",
+        "left": 119.947,
+        "top": 325.406,
+        "right": 148.400125,
+        "bottom": 338.5935,
+        "selected": false,
+        "badge": null
+      },
+      {
+        "id": "north029",
+        "text": "north-030.txtTXT",
+        "display": "flex",
+        "left": 131.967,
+        "top": 382.394,
+        "right": 219.388875,
+        "bottom": 395.5815,
+        "selected": true,
+        "badge": "TXT"
+      },
+      {
+        "id": "south",
+        "text": "South",
+        "display": "flex",
+        "left": 58.5436,
+        "top": 295.747,
+        "right": 87.01235,
+        "bottom": 308.9345,
+        "selected": false,
+        "badge": null
+      },
+      {
+        "id": "east",
+        "text": "East",
+        "display": "flex",
+        "left": 23.8187,
+        "top": 232.887,
+        "right": 43.3812,
+        "bottom": 246.0745,
+        "selected": false,
+        "badge": null
+      },
+      {
+        "id": "west",
+        "text": "West",
+        "display": "flex",
+        "left": 61.7047,
+        "top": 229.992,
+        "right": 85.7047,
+        "bottom": 243.1795,
+        "selected": false,
+        "badge": null
+      },
+      {
+        "id": "center",
+        "text": "Center",
+        "display": "flex",
+        "left": 123.432,
+        "top": 206.701,
+        "right": 155.52575000000002,
+        "bottom": 219.8885,
+        "selected": false,
+        "badge": null
+      },
+      {
+        "id": "north000",
+        "text": "north-001.txtTXT",
+        "display": "flex",
+        "left": 147.751,
+        "top": 179.132,
+        "right": 235.172875,
+        "bottom": 192.3195,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north001",
+        "text": "north-002.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north002",
+        "text": "north-003.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north003",
+        "text": "north-004.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north004",
+        "text": "north-005.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north005",
+        "text": "north-006.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north006",
+        "text": "north-007.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north007",
+        "text": "north-008.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north008",
+        "text": "north-009.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north009",
+        "text": "north-010.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north010",
+        "text": "north-011.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north011",
+        "text": "north-012.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north012",
+        "text": "north-013.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north013",
+        "text": "north-014.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north014",
+        "text": "north-015.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north015",
+        "text": "north-016.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north016",
+        "text": "north-017.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north017",
+        "text": "north-018.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north018",
+        "text": "north-019.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north019",
+        "text": "north-020.txtTXT",
+        "display": "flex",
+        "left": 95.4291,
+        "top": 291.67,
+        "right": 182.850975,
+        "bottom": 304.8575,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north020",
+        "text": "north-021.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north021",
+        "text": "north-022.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north022",
+        "text": "north-023.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north023",
+        "text": "north-024.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north024",
+        "text": "north-025.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north025",
+        "text": "north-026.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north026",
+        "text": "north-027.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north027",
+        "text": "north-028.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north028",
+        "text": "north-029.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north030",
+        "text": "north-031.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north031",
+        "text": "north-032.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north032",
+        "text": "north-033.txtTXT",
+        "display": "flex",
+        "left": 222.991,
+        "top": 398.774,
+        "right": 310.412875,
+        "bottom": 411.9615,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north033",
+        "text": "north-034.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      }
+    ],
+    "rootOverlaps": [],
+    "visibleOverlaps": [],
+    "leaders": 1,
+    "highlight": {
+      "query": "",
+      "ids": [],
+      "colors": {},
+      "folderColors": {
+        "root": {
+          "fill": "#F8FAFC",
+          "stroke": "#F8FAFC"
+        },
+        "north": {
+          "fill": "#D1D5DB",
+          "stroke": "#D1D5DB"
+        },
+        "south": {
+          "fill": "#D1D5DB",
+          "stroke": "#D1D5DB"
+        },
+        "east": {
+          "fill": "#D1D5DB",
+          "stroke": "#D1D5DB"
+        },
+        "west": {
+          "fill": "#D1D5DB",
+          "stroke": "#D1D5DB"
+        },
+        "center": {
+          "fill": "#D1D5DB",
+          "stroke": "#D1D5DB"
+        }
+      },
+      "selectedId": "north029",
+      "status": "",
+      "scenePresent": true
+    }
+  },
+  "change": {
+    "selected": "north039",
+    "highlight": {
+      "query": "north-040",
+      "ids": [
+        "north",
+        "root"
+      ],
+      "colors": {
+        "north": {
+          "fill": "#E74C3C",
+          "stroke": "#FCA5A5"
+        },
+        "root": {
+          "fill": "#E74C3C",
+          "stroke": "#FCA5A5"
+        }
+      },
+      "folderColors": {
+        "root": {
+          "fill": "#E74C3C",
+          "stroke": "#FCA5A5"
+        },
+        "north": {
+          "fill": "#E74C3C",
+          "stroke": "#FCA5A5"
+        },
+        "south": {
+          "fill": "#D1D5DB",
+          "stroke": "#D1D5DB"
+        },
+        "east": {
+          "fill": "#D1D5DB",
+          "stroke": "#D1D5DB"
+        },
+        "west": {
+          "fill": "#D1D5DB",
+          "stroke": "#D1D5DB"
+        },
+        "center": {
+          "fill": "#D1D5DB",
+          "stroke": "#D1D5DB"
+        }
+      },
+      "selectedId": "north039",
+      "status": "Search highlights 2 folders containing matching results.",
+      "scenePresent": true
+    }
+  },
+  "afterChange": {
+    "url": "http://127.0.0.1:8099/tests/harness/m5-exploration/?r153=1",
+    "status": {
+      "hasMap": true,
+      "structuralRootId": "root",
+      "datasetToken": 1,
+      "focusedFolderId": "north",
+      "focusedStructuralDepth": 1,
+      "contextCount": 6,
+      "subtreeCount": 60,
+      "contextOverlapCount": 1,
+      "displayRootId": "north",
+      "selectedId": "north039",
+      "detailsTargetId": "north039",
+      "editorTargetId": null,
+      "editorAction": "rename",
+      "idCounter": 0,
+      "menuTargetId": null,
+      "menuOpen": false,
+      "ancestorCount": 2,
+      "descendantCount": 59,
+      "visibleCount": 65,
+      "totalCount": 300,
+      "hiddenCount": 235,
+      "visibleEdgeCount": 64,
+      "focusedCenterError": 0,
+      "framingMode": "fit",
+      "camera": {
+        "zoom": 0.14038749015488963,
+        "panX": 0,
+        "panY": 0
+      },
+      "containment": {
+        "contained": true,
+        "containedCount": 65,
+        "totalCount": 65,
+        "centeredId": "north",
+        "centerError": 0
+      },
+      "generation": 8,
+      "hitActive": true,
+      "labelMetrics": {
+        "candidateCount": 65,
+        "createdCount": 40,
+        "visibleCount": 10,
+        "invalidWebLinkCount": 0,
+        "suppressedCount": 30,
+        "overlapSuppressedCount": 0,
+        "viewportSuppressedCount": 0,
+        "nodeObstacleSuppressedCount": 30,
+        "labelNodeOverlapCount": 0,
+        "placementAttempts": 144,
+        "labelNodeOverlapDefinition": "visible label-node pairs; owner node excluded; exact circle/diamond intersection",
+        "placementObstaclePolicy": "conservative glyph bounds",
+        "priorityVisibleCount": 3,
+        "prioritySuppressedCount": 0,
+        "unmeasurableCount": 0,
+        "measuredCount": 40,
+        "visibleIconCount": 0,
+        "leadingIconCount": 0,
+        "rootProtection": true,
+        "rootProtectionRect": {
+          "left": 59.986270171365845,
+          "top": 148.0070785569274,
+          "right": 175.70502017136585,
+          "bottom": 184.0070785569274
+        },
+        "rootLabelVisible": true,
+        "selectedLabelVisible": true,
+        "textMismatchCount": 0,
+        "measurement": "getBoundingClientRect/offsetWidth",
+        "dprIndependent": true,
+        "viewport": {
+          "width": 326,
+          "height": 458
+        },
+        "labels": {}
+      },
+      "linkReady": true,
+      "lastEvent": {
+        "kind": "programmatic",
+        "operation": "resize",
+        "success": true
+      },
+      "lastClickDiagnostic": {
+        "reason": "transition-in-progress",
+        "id": "north",
+        "progress": 1
+      },
+      "drag": null,
+      "feedback": "",
+      "transition": null,
+      "error": null,
+      "installing": false,
+      "fitProjection": {
+        "width": 326,
+        "height": 458,
+        "radius": 1163.82
+      },
+      "lifecycle": {
+        "installing": false,
+        "hitActive": true
+      },
+      "revision": 0,
+      "persistence": {
+        "hasMap": true,
+        "mapId": null,
+        "generation": null,
+        "savedRevision": null,
+        "dirty": true,
+        "busy": null,
+        "guard": false,
+        "unavailable": false,
+        "lastResult": null
+      },
+      "visibleNodeIds": [
+        "root",
+        "north",
+        "north000",
+        "north001",
+        "north002",
+        "north003",
+        "north004",
+        "north005",
+        "north006",
+        "north007",
+        "north008",
+        "north009",
+        "north010",
+        "north011",
+        "north012",
+        "north013",
+        "north014",
+        "north015",
+        "north016",
+        "north017",
+        "north018",
+        "north019",
+        "north020",
+        "north021",
+        "north022",
+        "north023",
+        "north024",
+        "north025",
+        "north026",
+        "north027",
+        "north028",
+        "north029",
+        "north030",
+        "north031",
+        "north032",
+        "north033",
+        "north034",
+        "north035",
+        "north036",
+        "north037",
+        "north038",
+        "north039",
+        "north040",
+        "north041",
+        "north042",
+        "north043",
+        "north044",
+        "north045",
+        "north046",
+        "north047",
+        "north048",
+        "north049",
+        "north050",
+        "north051",
+        "north052",
+        "north053",
+        "north054",
+        "north055",
+        "north056",
+        "north057",
+        "north058",
+        "south",
+        "east",
+        "west",
+        "center"
+      ],
+      "hitNodeIds": [
+        "root",
+        "north",
+        "south",
+        "east",
+        "west",
+        "center"
+      ],
+      "editor": {
+        "mode": "closed",
+        "dirty": false,
+        "saving": false,
+        "inert": false,
+        "creationOwned": false,
+        "limit": 300
+      },
+      "controller": {
+        "camera": {
+          "zoom": 0.14038749015488963,
+          "panX": 0,
+          "panY": 0
+        },
+        "viewport": {
+          "width": 326,
+          "height": 458
+        },
+        "cameraLimits": {
+          "minZoom": 0.02,
+          "maxZoom": 8,
+          "maxPanCss": 1000000,
+          "wheelLineCss": 16,
+          "wheelMaxCss": 1200,
+          "zoomSensitivity": 0.0015
+        },
+        "threshold": 4,
+        "activePointerId": null,
+        "captureOwned": false,
+        "dragging": false,
+        "suppressNextClick": false,
+        "lastEvent": null,
+        "error": null
+      }
+    },
+    "metrics": {
+      "registration": true,
+      "rootProtection": true,
+      "rootProtectionRect": {
+        "left": 59.986270171365845,
+        "top": 148.0070785569274,
+        "right": 175.70502017136585,
+        "bottom": 184.0070785569274
+      },
+      "rootLabelVisible": true,
+      "selectedLabelVisible": true,
+      "visibleCount": 10
+    },
+    "labels": [
+      {
+        "id": "root",
+        "text": "Distributed 300",
+        "display": "flex",
+        "left": 94.9863,
+        "top": 159.413,
+        "right": 169.70505,
+        "bottom": 172.6005,
+        "selected": false,
+        "badge": null
+      },
+      {
+        "id": "north",
+        "text": "North",
+        "display": "flex",
+        "left": 119.947,
+        "top": 222.406,
+        "right": 148.400125,
+        "bottom": 235.5935,
+        "selected": false,
+        "badge": null
+      },
+      {
+        "id": "north039",
+        "text": "north-040.txtTXT",
+        "display": "flex",
+        "left": 95.4131,
+        "top": 291.423,
+        "right": 182.834975,
+        "bottom": 304.6105,
+        "selected": true,
+        "badge": "TXT"
+      },
+      {
+        "id": "south",
+        "text": "South",
+        "display": "flex",
+        "left": 58.5436,
+        "top": 192.747,
+        "right": 87.01235,
+        "bottom": 205.9345,
+        "selected": false,
+        "badge": null
+      },
+      {
+        "id": "east",
+        "text": "East",
+        "display": "flex",
+        "left": 23.8187,
+        "top": 129.887,
+        "right": 43.3812,
+        "bottom": 143.0745,
+        "selected": false,
+        "badge": null
+      },
+      {
+        "id": "west",
+        "text": "West",
+        "display": "flex",
+        "left": 61.7047,
+        "top": 126.992,
+        "right": 85.7047,
+        "bottom": 140.17950000000002,
+        "selected": false,
+        "badge": null
+      },
+      {
+        "id": "center",
+        "text": "Center",
+        "display": "flex",
+        "left": 123.432,
+        "top": 103.701,
+        "right": 155.52575000000002,
+        "bottom": 116.8885,
+        "selected": false,
+        "badge": null
+      },
+      {
+        "id": "north000",
+        "text": "north-001.txtTXT",
+        "display": "flex",
+        "left": 147.751,
+        "top": 76.1319,
+        "right": 235.172875,
+        "bottom": 89.3194,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north001",
+        "text": "north-002.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north002",
+        "text": "north-003.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north003",
+        "text": "north-004.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north004",
+        "text": "north-005.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north005",
+        "text": "north-006.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north006",
+        "text": "north-007.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north007",
+        "text": "north-008.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north008",
+        "text": "north-009.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north009",
+        "text": "north-010.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north010",
+        "text": "north-011.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north011",
+        "text": "north-012.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north012",
+        "text": "north-013.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north013",
+        "text": "north-014.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north014",
+        "text": "north-015.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north015",
+        "text": "north-016.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north016",
+        "text": "north-017.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north017",
+        "text": "north-018.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north018",
+        "text": "north-019.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north019",
+        "text": "north-020.txtTXT",
+        "display": "flex",
+        "left": 95.4291,
+        "top": 188.67,
+        "right": 182.850975,
+        "bottom": 201.8575,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north020",
+        "text": "north-021.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north021",
+        "text": "north-022.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north022",
+        "text": "north-023.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north023",
+        "text": "north-024.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north024",
+        "text": "north-025.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north025",
+        "text": "north-026.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north026",
+        "text": "north-027.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north027",
+        "text": "north-028.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north028",
+        "text": "north-029.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north029",
+        "text": "north-030.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north030",
+        "text": "north-031.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north031",
+        "text": "north-032.txtTXT",
+        "display": "none",
+        "left": 0,
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "selected": false,
+        "badge": "TXT"
+      },
+      {
+        "id": "north032",
+        "text": "north-033.txtTXT",
+        "display": "flex",
+        "left": 222.991,
+        "top": 295.774,
+        "right": 310.412875,
+        "bottom": 308.9615,
+        "selected": false,
+        "badge": "TXT"
+      }
+    ],
+    "rootOverlaps": [],
+    "visibleOverlaps": [],
+    "leaders": 1,
+    "highlight": {
+      "query": "north-040",
+      "ids": [
+        "north",
+        "root"
+      ],
+      "colors": {
+        "north": {
+          "fill": "#E74C3C",
+          "stroke": "#FCA5A5"
+        },
+        "root": {
+          "fill": "#E74C3C",
+          "stroke": "#FCA5A5"
+        }
+      },
+      "folderColors": {
+        "root": {
+          "fill": "#E74C3C",
+          "stroke": "#FCA5A5"
+        },
+        "north": {
+          "fill": "#E74C3C",
+          "stroke": "#FCA5A5"
+        },
+        "south": {
+          "fill": "#D1D5DB",
+          "stroke": "#D1D5DB"
+        },
+        "east": {
+          "fill": "#D1D5DB",
+          "stroke": "#D1D5DB"
+        },
+        "west": {
+          "fill": "#D1D5DB",
+          "stroke": "#D1D5DB"
+        },
+        "center": {
+          "fill": "#D1D5DB",
+          "stroke": "#D1D5DB"
+        }
+      },
+      "selectedId": "north039",
+      "status": "Search highlights 2 folders containing matching results.",
+      "scenePresent": true
+    }
+  },
+  "errors": [],
+  "capturedAt": "2026-11-02T03:11:15.188Z"
+}

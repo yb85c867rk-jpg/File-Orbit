@@ -1,0 +1,22 @@
+{
+  "connected": {
+    "hidden": false,
+    "name": "Demo Orbit",
+    "ariaExpanded": "false",
+    "ariaControls": "orbit-panel",
+    "iconW": 20,
+    "iconH": 20,
+    "color": "rgb(129, 140, 248)",
+    "mask": "url(\"http://127.0.0.1:8099/tests/harness/m5-exploration/assets/hdr_weak_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png\")",
+    "panelOrder": [
+      "orbit-actions",
+      "orbit-empty",
+      "orbit-list",
+      "orbit-status"
+    ],
+    "status": "Updated 04:50 PM.",
+    "empty": false,
+    "list": 0
+  },
+  "capturedAt": "2026-11-01T03:50:47.262Z"
+}

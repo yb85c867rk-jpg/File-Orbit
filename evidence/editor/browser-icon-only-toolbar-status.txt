@@ -1,0 +1,5 @@
+﻿FileOrbit icon-only toolbar browser verification: NOT RUN.
+No browser executable/automation was available without installing dependencies.
+Node tests use SVG-only desktop controls and text mobile controls, covering initialization, repeated theme toggles,
+fullscreen enter/exit/change/rejection/unsupported states, accessible names, mobile synchronization, and cleanup.
+Native browser visual/fullscreen checks were not executed.

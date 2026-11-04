@@ -1,0 +1,58 @@
+{
+  "hook": {
+    "hooks": true,
+    "choose": "function",
+    "title": "FileOrbit"
+  },
+  "state": {
+    "counts": "",
+    "status": "",
+    "snapshot": {
+      "blocked": false,
+      "creationOwned": false,
+      "unavailable": false,
+      "hasMap": false,
+      "mapId": null,
+      "generation": null,
+      "savedRevision": null,
+      "dataRevision": 0,
+      "dirty": false,
+      "busy": null,
+      "guard": false
+    },
+    "tree": null,
+    "attachments": {
+      "size": 0,
+      "totalBytes": 0,
+      "entries": []
+    },
+    "document": {
+      "active": false,
+      "name": null,
+      "handle": null,
+      "mode": "none",
+      "savedRevision": null,
+      "origin": null,
+      "documentIdentity": null,
+      "baseline": null,
+      "handleName": null
+    },
+    "error": "",
+    "dialogs": [
+      {
+        "cls": "unsaved-map-dialog",
+        "text": "Unsaved map changesThis map has changes that are not saved in this browser.Save and continueDiscard changesCancel"
+      },
+      {
+        "cls": "save-conflict-dialog",
+        "text": "Save conflictA newer saved version exists. Local changes were not overwritten.Reload the saved version and discard local committed changes?Discard and reloadKeep editingReload saved versionSave as new"
+      },
+      {
+        "cls": "recovery-dialog",
+        "text": "Recover unsaved work?FileOrbit found a recovery copy of this map. Recover it to continue editing. Your original file will not be changed.Discard recovery permanently removes the selected recovery copy"
+      }
+    ]
+  },
+  "exceptions": [],
+  "downloadEvents": []
+}

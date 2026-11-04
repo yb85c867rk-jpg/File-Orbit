@@ -1,0 +1,6 @@
+﻿FileOrbit visual-hierarchy browser verification: NOT RUN.
+No browser executable/automation was available without installing dependencies.
+Node tests cover exact depth radii, original-depth focus invariance, root/folder/edge colors,
+PDF-red classification exception, green non-PDF icons/badges, scene/hit/fit radius consistency,
+containment, and F20 frame. Visual inspection of F20/F200 at DPR 1/1.25 was not executed.
+Historical refinement clearance diagnostics used fixed 6px glyphs and are not treated as variable-radius clearance evidence.

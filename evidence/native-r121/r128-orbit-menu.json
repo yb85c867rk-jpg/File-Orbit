@@ -1,0 +1,96 @@
+{
+  "revision": "r128",
+  "change": "connected Orbit menu between Save As and Settings",
+  "cancelledRequirement": "header X / Close FileOrbit button, exit dialog, window.close(), and exit controller were not implemented",
+  "environment": {
+    "platform": "Windows",
+    "node": "v24.12.0",
+    "time": "2026-11-01T11:10:00+13:00",
+    "cwd": "C:/Users/openw/Documents/Projects/visual-directory"
+  },
+  "application": {
+    "url": "http://127.0.0.1:8099/tests/harness/m5-exploration/",
+    "mainSha256": "6E5907299149FEC75F5792B5D745F10EFFA224C5E1BB971A5F0E7B02EB4CB4A7",
+    "indexSha256": "120C29FC9C12098EF8EFDA74FDD260478962C57CA56CC6382DC3AC49EDFFE133",
+    "orbitPanelSha256": "F15562018D7C9FE4C5C500F55E5A01B719309E2B1C0F31FDEC3DA2B3C084E561",
+    "runnerSha256": "B684F97AC7C820472E3A8F6C7B5C8F4B62ED759E159BB9D10DD50779B64045BC"
+  },
+  "behavior": {
+    "placement": "between Save As and Settings",
+    "connected": [
+      "folder icon",
+      "actual directory name",
+      "aria-expanded",
+      "aria-controls",
+      "list toggle",
+      "current marker",
+      "Refresh",
+      "Close Orbit",
+      "Add to Orbit"
+    ],
+    "collapsedRail": [
+      "icon",
+      "accessible name",
+      "full-name tooltip"
+    ],
+    "expandedRail": [
+      "icon",
+      "truncated directory name with full accessible name"
+    ],
+    "disconnected": "section and toggle hidden; no inert folder icon",
+    "sharedState": "integrated Open File and sidebar use one Orbit state",
+    "preserved": [
+      "header",
+      "integrated Open",
+      "automatic saving",
+      "theme-only Settings",
+      "destination protection",
+      "editor draft/focus/selection"
+    ]
+  },
+  "verification": {
+    "focused": "141/141 passed",
+    "fullEngine": "1089 tests, 1088 passed, 1 skipped, 0 failed",
+    "markers": [
+      "ORBIT_MENU_COMPLETE",
+      "ORBIT_MENU_WATCHDOG"
+    ],
+    "browser": [
+      "browser-orbit-menu-expanded-r128.png",
+      "browser-orbit-menu-collapsed-r128.png",
+      "browser-orbit-menu-narrow-expanded-r128.png",
+      "browser-orbit-menu-narrow-collapsed-r128.png"
+    ],
+    "browserChecks": {
+      "longNameClientWidth": 121,
+      "longNameScrollWidth": 410,
+      "fullAriaName": true,
+      "overflow": false,
+      "narrowNoHorizontalOverflow": true
+    },
+    "native": "NOT RUN",
+    "syntheticOnly": true,
+    "exactArchiveRun": "orbit-menu main test 1/1 passed; archive main/index hashes match disk"
+  },
+  "scopeBoundaries": [
+    "current session only",
+    "no persisted handles",
+    "no multiple-Orbit management",
+    "no recursion/watching",
+    "no rename/delete/sync",
+    "no database changes"
+  ],
+  "evidence": [
+    "evidence/native-r121/orbit-menu-focused-r128.txt",
+    "evidence/native-r121/orbit-menu-full-r128.txt",
+    "evidence/native-r121/browser-orbit-menu-r128.json",
+    "evidence/native-r121/browser-orbit-menu-expanded-r128.png",
+    "evidence/native-r121/orbit-menu-r128-archive-run.txt"
+  ],
+  "archive": {
+    "path": "review/fileorbit-orbit-menu-r128.zip",
+    "sha256": "5EFD530D60F9709157E7C8123BB2C23F209B5CA6EF1E5BDFF452A8685118CD43",
+    "entries": 1101,
+    "manifestMismatches": 0
+  }
+}

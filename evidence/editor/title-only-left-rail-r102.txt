@@ -1,0 +1,38 @@
+﻿FileOrbit title-only maps / left rail / minimal header r102
+
+Implemented:
+- Title-only Create Map: valid title alone installs exactly one root folder, zero attachments, no placeholder child.
+- Root name equals validated title; root label visible, hit test true; root Add Folder/Add Data remain available.
+- Empty/whitespace title shows inline validation; files/folders clearly optional in dialog and empty state.
+- One-root Save As/.map reopen and immediate recovery checkpoint verified; zero-attachment checkpoint tree has no children.
+- Navigation rail moved to the LEFT of graph workspace; desktop order nav -> graph -> Details.
+- Desktop rail reserves 64px collapsed/204px expanded; graph resize uses existing viewport pipeline.
+- Phone rail fixed to left; layout reserves 64px left; expanded rail overlays from left, scrollable, 210px max.
+- Chevron direction: collapsed points right (expand), expanded points left (collapse).
+- Header reduced to brand FileOrbit only; no document name/status, storage help, fixture, Fit, counts, or shell status row.
+- Save state/document name moved to Settings; Save action has dirty/error dot and aria/title description.
+- Storage help and Fit graph moved to Settings; Previous local maps remains there.
+- Fixed non-layout-shifting feedback host with shell status and Cancel download.
+- Developer fixture/Fit hooks retained in hidden #dev-controls; no normal UI rendering.
+- Download stays in toolbar after Fullscreen; unified Open/legacy behavior preserved.
+
+Tests:
+- title-only actual main: one root, zero attachments, label/hit, Add Folder/Add Data, Save/reopen, checkpoint, replacement cancel.
+- create-map candidate title-only stats/root.
+- left rail static/actual, header-only static, save feedback, Details/editor draft, drag Undo/Redo.
+- full tests/engine: 935 tests, 934 passed, 0 failed, 1 skipped, 0 todo.
+- syntax 18/18; served 104 files 200/no-store byte-match.
+
+Native:
+- Created a real title-only map in headless Edge: total=1, visible=1, hit=true, one visible label.
+- Header text exactly FileOrbit; rail x=0..64; graph x=64; Details right.
+- Phone 375: rail x=8..64, graph/Details x=64, doc scrollWidth 375.
+- 320x480: rail left, graph x=64 w256, toolbar wraps, Details 45 high, no horizontal overflow.
+- Screenshots: evidence/native/title-only-desktop-r102.png, title-only-phone-r102.png, title-only-320-r102.png, nav-settings-r102.png, nav-phone-expanded-r102.png.
+- Native file chooser/Open/Download/fullscreen/physical drag remain NOT RUN.
+
+Limitations:
+- Expanded phone rail overlays workspace by design.
+- Recovery install from a title-only checkpoint is covered by shared recovery paths/checkpoint assertion; not independently restarted natively.
+- Native file chooser/download/fullscreen/pointer interactions NOT RUN.
+- Existing FakeIndexedDB cross-tab skip retained.

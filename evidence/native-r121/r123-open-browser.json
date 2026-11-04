@@ -1,0 +1,51 @@
+﻿{
+  "slice": 6,
+  "change": "r123 integrated Open map browser",
+  "status": "IMPLEMENTED - focused 237/237 and full 1082 tests passing",
+  "application": {
+    "url": "http://127.0.0.1:8099/tests/harness/m5-exploration/",
+    "indexBytes": 50449,
+    "indexSha256": "7F9B430AB1021F258C72194B0B2DD3536E9966852F10BE6A33741C0F61413BDB",
+    "mainSha256": "BA2D68EABED46312C0B365982E6D8C54950D520A9B1F1041A3A3E6DBA5DEBB0D",
+    "servedMatchesDisk": true
+  },
+  "browser": {
+    "oneDialog": true,
+    "controls": ["Choose folder/Change folder", "Refresh", "Open file elsewhere…", "Close"],
+    "folderOnlyReplacesMap": false,
+    "autoOpenFirstMap": false,
+    "listedMapUsesProtectedOrbitOpen": true,
+    "standaloneMapSupported": true,
+    "legacyFileorbitSupported": true,
+    "unsupportedDirectoryFallback": "Open file elsewhere remains available"
+  },
+  "lifecycle": {
+    "requestOwned": true,
+    "sessionDatasetOwned": true,
+    "staleAfterCloseReopen": "tested",
+    "staleAfterSessionReplacement": "tested",
+    "staleAfterDestroy": "tested",
+    "dirtyPromptCoordination": "browser closes before existing prompt"
+  },
+  "verification": {
+    "focusedSuites": "237/237 passed",
+    "fullEngine": "1082 tests, 1081 passed, 1 skipped, 0 failed",
+    "screenshots": ["browser-open-browser-current.png", "browser-open-browser-narrow.png"],
+    "browserEvidence": "browser-open-browser-current.json",
+    "nativePicker": "BLOCKED in headless harness; not claimed"
+  },
+  "userReportedPcAcceptance": {
+    "status": "USER REPORTED PASS",
+    "independentlyVerified": false,
+    "statement": "User reports all functions tested on their PC work correctly.",
+    "limitations": "No per-scenario log, browser/version, screenshots, or hashes; not complete cross-platform acceptance."
+  },
+  "limitations": [
+    "No independent native picker/write verification in this environment.",
+    "Preflight-to-write race; empty/partial leftovers; no automatic cleanup.",
+    "Stale Open Orbit selection may remain in the controller.",
+    "No persisted Orbit handle, watching, recursion, rename/delete, or synchronization.",
+    "No atomic/exclusive creation, compare-and-write, rollback, or crash durability claim.",
+    "Android/iPhone/Firefox/Safari not run."
+  ]
+}

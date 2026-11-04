@@ -1,0 +1,31 @@
+﻿FileOrbit creation lifecycle ownership r104
+
+Confirmed defect:
+- installCreatedMap captured createMapOperation after awaiting pickCreationDestination. After pagehide/destroy, an obsolete picker result could acquire the current identity and install late.
+
+Correction:
+- Capture immutable creationOwner before picker:
+  - operation token, persistenceSessionSeq, datasetToken, dialog identity, terminal/destroying state.
+- creationOwnerCurrent() revalidates operation/session/dataset/dialog eligibility, creation ownership, and destroying state immediately after picker resolution/rejection and before preparation.
+- Stale picker results return {stale:true}; dialog ignores stale outcomes without status/draft/UI mutation.
+- destroy() increments createMapOperation, sets creationTerminalHandled, releases pending create candidate.
+- Post-commit owner captures persistence session, dataset, exploration session, tree, model, attachment registry, dialog, captured revision.
+- committedMatches() revalidates exact map/session/dataset/runtime/dialog after recovery establishment, before closing the creation dialog, and before/after Save.
+- The dialog is closed only for the exact committed creation; save starts only after that validation and never uses the outgoing destination.
+- Operation token is checked against the committed operation; intentional dialog close records its close token so stale newer operations cannot publish/close/save.
+- Added try/catch around saveDocument so an unexpected save exception leaves the live new map unsaved rather than escaping.
+
+Controlled production-handler tests:
+- deferred picker -> pagehide -> picker success: no hasMap, no write, no active document, no unhandled rejection.
+- deferred picker -> pagehide -> picker rejection: same.
+- picker pending -> dialog cancel: no late install/write.
+- picker pending -> replaceSession (newer session/dataset): no late install; NEW SESSION status preserved.
+- deferred post-install recovery checkpoint -> pagehide: no close/save/write/destination adoption.
+- deferred post-install recovery -> replaceSession: status NEW SESSION, exact tree/attachments retained, no write, creation dialog not closed.
+- close gate: one write; activeDocument remains inactive until close resolves; then Saved/clean, still one write.
+- normal title/fallback/editor suites preserve prior flows.
+
+Full tests/engine: 944 tests, 943 passed, 0 failed, 1 skipped.
+Controlled tests only; no native lifecycle event evidence.
+
+CORRECTION r105: The r104 "dialog-cancel" lifecycle pass was invalid (no branch handling; unresolved createPromise; exit-0 false pass). See dialog-cancel-correction-r105.txt. Replaced by an actual Cancel click + picker resolve + completion marker/watchdog.

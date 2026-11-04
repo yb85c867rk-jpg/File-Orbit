@@ -1,0 +1,10 @@
+{
+  "harness": "m5-navigation",
+  "browserVerification": "NOT_RUN",
+  "note": "Desktop mouse pan/zoom only. Runtime status is exposed as window.__M5_NAVIGATION_STATUS__.",
+  "fixtures": ["f20", "f200"],
+  "phases": ["current", "start", "end"],
+  "syntheticDprCases": [1, 1.25, 2, 3],
+  "camera": { "minZoom": 0.25, "maxZoom": 8, "maxPanCss": 1000000, "dragThresholdCss": 4 },
+  "observed": null
+}

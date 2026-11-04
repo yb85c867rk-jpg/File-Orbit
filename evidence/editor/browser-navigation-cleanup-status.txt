@@ -1,0 +1,5 @@
+﻿FileOrbit navigation cleanup browser verification: NOT RUN.
+No browser executable/automation was available without installing dependencies.
+Node integration tests exercise the real label overlay beginTransition/updateTransition/completeTransition,
+cleanup failure with recovery, startup failure diagnostics, controller ownership release, and both viewports.
+The exact browser n6 failure is still not reproduced; equivalent F20 transitions pass in Node.

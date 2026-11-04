@@ -1,0 +1,6 @@
+﻿FileOrbit Slice 3 search browser verification: NOT RUN.
+No browser executable/automation was available without installing dependencies.
+Node tests cover whole-map matching/ranking/caps, safe cards, web action, hidden-branch search,
+actual main-entry input/card/activation, hidden data reveal/selection, clear-state preservation,
+search activation identity validation, and navigation waiter completion/cancellation.
+Native browser search/focus/viewer/fullscreen checks were not executed.

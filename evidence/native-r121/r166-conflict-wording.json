@@ -1,0 +1,66 @@
+{
+  "dialog": {
+    "title": "This file has a newer saved version",
+    "description": "Another window or app saved changes to this file. Keep both versions by saving your changes as a copy, or replace the saved version with your changes. Cancel keeps your changes open without saving.",
+    "file": "ontology.orbit",
+    "buttons": [
+      {
+        "text": "Replace Saved File",
+        "id": "file-conflict-replace",
+        "action": "replace",
+        "hidden": false,
+        "disabled": false
+      },
+      {
+        "text": "Save a Copy",
+        "id": "file-conflict-copy",
+        "action": "copy",
+        "hidden": false,
+        "disabled": false
+      },
+      {
+        "text": "Cancel",
+        "id": "file-conflict-cancel",
+        "action": "cancel",
+        "hidden": false,
+        "disabled": false
+      }
+    ],
+    "focused": "Cancel"
+  },
+  "unverified": {
+    "title": "This file could not be verified",
+    "description": "FileOrbit could not verify the destination contents. Overwriting is unavailable; save a copy or cancel instead.",
+    "buttons": [
+      {
+        "text": "Replace Saved File",
+        "hidden": true,
+        "disabled": true
+      },
+      {
+        "text": "Save a Copy",
+        "hidden": false,
+        "disabled": false
+      },
+      {
+        "text": "Cancel",
+        "hidden": false,
+        "disabled": false
+      }
+    ]
+  },
+  "picker": {
+    "options": {
+      "description": "Orbit files (*.orbit)",
+      "multiple": false,
+      "accept": {
+        "application/x-orbit": [
+          ".orbit"
+        ]
+      },
+      "excludeAcceptAllOption": true
+    },
+    "status": "Open cancelled. The current map and edits were preserved."
+  },
+  "errors": []
+}

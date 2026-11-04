@@ -1,0 +1,46 @@
+{
+  "initial": {
+    "host": "Local read-only preview loaded · 10 nodes",
+    "state": "ready",
+    "iframe": {
+      "w": 978,
+      "h": 612
+    },
+    "viewer": {
+      "title": "Orbit Research Preview — FileOrbit embed",
+      "readonly": "Read-only · No attachments",
+      "highlight": "0",
+      "canvas": "978px",
+      "hasEditor": false,
+      "hasEmbedInput": true
+    }
+  },
+  "folderSearch": {
+    "before": {
+      "count": "2",
+      "results": 1,
+      "status": "2 folders highlighted"
+    },
+    "focused": "field-notes",
+    "backHidden": false,
+    "countAfter": "2"
+  },
+  "searchColor": {
+    "count": "2",
+    "status": "2 folders highlighted",
+    "result": "Coastal Survey.txt\nResearch Orbit / Field Notes"
+  },
+  "narrow": {
+    "iframe": {
+      "w": 454,
+      "h": 532
+    },
+    "canvas": {
+      "cssW": "454px",
+      "cssH": "363px"
+    },
+    "overflow": false
+  },
+  "exceptions": [],
+  "capturedAt": "2026-11-01T20:51:36.722Z"
+}

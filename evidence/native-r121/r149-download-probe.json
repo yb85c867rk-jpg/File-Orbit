@@ -1,0 +1,78 @@
+{
+  "imported": {
+    "ok": true,
+    "ms": 303.19999998807907
+  },
+  "state": {
+    "counts": "300 visible / 300 total",
+    "snapshot": {
+      "blocked": false,
+      "creationOwned": false,
+      "unavailable": false,
+      "hasMap": true,
+      "mapId": null,
+      "generation": null,
+      "savedRevision": null,
+      "dataRevision": 0,
+      "dirty": true,
+      "busy": null,
+      "guard": false
+    },
+    "downloadDisabled": false,
+    "downloadAvailable": "true"
+  },
+  "files": [],
+  "elapsedMs": 8643,
+  "downloads": [
+    {
+      "method": "Browser.downloadWillBegin",
+      "frameId": "5C0BDDC4C32DEA735D9B4BE778115D4B",
+      "guid": "a97c41aa-6707-4703-9a40-95faa7adcd2a",
+      "url": "blob:http://127.0.0.1:8099/f29330ef-0042-458e-94be-20a921c10ab4",
+      "suggestedFilename": "R149 300 Node Map.orbit"
+    },
+    {
+      "method": "Browser.downloadProgress",
+      "guid": "a97c41aa-6707-4703-9a40-95faa7adcd2a",
+      "totalBytes": 36942,
+      "receivedBytes": 0,
+      "state": "inProgress"
+    },
+    {
+      "method": "Browser.downloadProgress",
+      "guid": "a97c41aa-6707-4703-9a40-95faa7adcd2a",
+      "totalBytes": 36942,
+      "receivedBytes": 36942,
+      "state": "inProgress"
+    },
+    {
+      "method": "Browser.downloadProgress",
+      "guid": "a97c41aa-6707-4703-9a40-95faa7adcd2a",
+      "totalBytes": 36942,
+      "receivedBytes": 36942,
+      "state": "inProgress"
+    },
+    {
+      "method": "Browser.downloadProgress",
+      "guid": "a97c41aa-6707-4703-9a40-95faa7adcd2a",
+      "totalBytes": 36942,
+      "receivedBytes": 36942,
+      "state": "inProgress"
+    },
+    {
+      "method": "Browser.downloadProgress",
+      "guid": "a97c41aa-6707-4703-9a40-95faa7adcd2a",
+      "totalBytes": 36942,
+      "receivedBytes": 36942,
+      "state": "inProgress"
+    },
+    {
+      "method": "Browser.downloadProgress",
+      "guid": "a97c41aa-6707-4703-9a40-95faa7adcd2a",
+      "totalBytes": 36942,
+      "receivedBytes": 0,
+      "state": "canceled"
+    }
+  ],
+  "exceptions": []
+}

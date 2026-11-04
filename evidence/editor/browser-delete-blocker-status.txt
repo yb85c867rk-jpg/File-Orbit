@@ -1,0 +1,5 @@
+﻿FileOrbit Delete runtime browser verification: NOT RUN.
+No browser executable/automation was available without installing dependencies.
+The missing findNodeWithParent runtime ReferenceError was fixed by a shared resolver import.
+Node E2E covers folder and data menu Delete -> real confirmation -> installer -> frame/hit -> Undo/Redo.
+Syntax checks do not detect undefined runtime identifiers; the new E2E executes the request path.

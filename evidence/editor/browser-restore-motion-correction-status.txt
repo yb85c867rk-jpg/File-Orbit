@@ -1,0 +1,7 @@
+﻿FileOrbit r29 correction evidence.
+Actual main.mjs entry: unchanged cancel, theme Dark->Light and Light->Dark canvas colors, resize cancel,
+repeated Cancel, linkReady/hitActive, restore draw failure inert, no-map cancel.
+Normal-motion controlled RAF: PDF 780ms success, intermediate draw failure, resize cancellation,
+dataset replacement during reveal.
+Shared tests: label/hit failure, stale identity/revision, waiter settle-once.
+Native browser verification: NOT RUN.

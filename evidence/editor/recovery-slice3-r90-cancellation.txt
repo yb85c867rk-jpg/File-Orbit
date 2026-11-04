@@ -1,0 +1,36 @@
+﻿FileOrbit Recovery Slice 3 cancellation/ownership corrections r90
+
+Confirmed failures:
+A. Recover work started; Create Map invoked before recovery completed. Create form opened, outgoing recovery still installed Alpha, state hasMap:true and creationOwned:true.
+B. Discard started; Create invoked while claim pending. Outgoing discard completed and candidate count became 0.
+
+Root cause: cancelStartupRecovery invalidated only startupRecoveryToken/dialog state, not recoveryOperationToken or the active Recover/Discard request. liveOwned checked only operation token, destroying, and hasMap, not exact committed session/dataset/runtime/child.
+
+Correction:
+- One explicit recovery request object per Recover/Discard, capturing request ID, initial session/dataset, selected workspace ID/token, checkpoint ID/generation, claim, runtime, child workspace, installed flag, committed session/dataset, and destructive-started boundary.
+- cancelRecoveryRequest marks the request cancelled, clears active ownership, invalidates operation token, closes the recovery dialog, and lets the async path release only its own claim/runtime. cancelStartupRecovery invokes it.
+- Create Map, Open File, Previous local maps, Import Backup, and destroy cancel outgoing recovery before incoming work.
+- Pre-install checks require exact request + initial session/dataset + empty map. Post-install checks require exact active request + committed session/dataset + runtime + child. Adoption, child checkpoint, supersession, status, dialog closure, and candidate refresh all use captured identities.
+- Recover cancellation before commit: no install, request runtime disposed, request claim released, source bytes/rows preserved, Create/Open workflow remains active.
+- Recover cancellation after commit: live work is not rolled back; adoption/supersession/status/dialog publication is skipped. If adoption already landed but request became stale, only that exact child scheduler owner is invalidated.
+- Discard checks ownership after claim and immediately before the destructive call. Before `destructiveStarted`, cancellation preserves source and releases the claim. After the repository discard call starts, cancellation does not claim rollback; deletion may complete. Tested and documented.
+- Discovery failure publication is guarded by discovery token/empty state. Refresh checks request identity before changing dialog/list.
+
+Executed results:
+- recovery-slice3 actual main: 21/21 passed.
+  Includes Recover→Create, Discard→Create before transaction, Open File and Import cancellation, post-install replacement/adoption cancellation, destroy, failed child checkpoint, failed draw/label/hit, exact recovery/PDF/viewer, later child edit, confirmed Save, fallback, multi-selection/discard, claimed discard.
+- recovery-slice2 actual main: 2/2.
+- P1b legacy main: 70/70.
+- scheduler: 16/16; recovery repository: 31 (30 pass,1 skip); persistence/upgrade/lifecycle: 90 (89 pass,1 skip); codec/adapter 18/18; attachment 9/9.
+- full tests/engine: 909 tests, 908 passed, 0 failed, 1 skipped, 0 todo.
+- syntax: 9 changed modules passed.
+
+Note: one earlier historical main-entry run was 69/70; isolated failing scenario and full rerun passed. Preserved as historical evidence; not claiming every historical execution passed.
+
+Remaining limitations:
+- Native IndexedDB upgrade/quota/cross-tab and PC/mobile recovery acceptance NOT RUN.
+- Fake-IDB cross-tab concurrency case remains skipped; not native evidence.
+- Cancellation during an already-started destructive discard transaction follows the documented policy: operation may complete, no false rollback claim.
+- No automatic pruning/Discard all/cloud recovery.
+- Slice 3 not accepted solely from Node/mock tests.
+

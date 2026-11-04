@@ -1,0 +1,27 @@
+﻿FileOrbit P3 correction r56
+
+R1:
+- Preserved all node.data metadata via shared cloneMetadata; custom nested metadata round-trips.
+- Encoder validates node attachment metadata against registry instead of silently replacing contradictions.
+- Decoder preserves all data fields, validates originalName/size/MIME/classification against manifest, permits repeated references, allows supported null classification, validates fresh allocated attachment IDs/collisions.
+- Regression: encode → decode → isolated registry → buildSaveSnapshot succeeds with matching MIME/name/size/classification.
+- Actual main-entry branch: export current live package → import → installed total 2/labels/hits → explicit Save → new durable map ID distinct from source → Open works.
+
+R2:
+- Decoder uses shared loadTree validation, limits, safe ranges, strict UTF-8, canonical contiguous ranges, no trailing bytes, SHA-256.
+- Export enforces 2 MiB manifest, package-size fixed point with exact final check.
+
+R3:
+- Still INCOMPLETE: no user-visible cancel action, no cooperative cancellation between hashes, backupOperation not yet replaced by full session-scoped record/invalidation on destroy.
+
+R4:
+- Still INCOMPLETE: dirty map import remains blocked; no Continue/Save/Discard/Cancel import workflow; import still routes through create-map candidate helper.
+
+Actual test:
+- Backup codec 4/4.
+- P1b 28/28 (includes real export/import/save/open branch).
+- Full 780/780.
+- Native browser download/picker/mobile NOT RUN.
+
+Limitations:
+- File-picker path, UI Download handoff, cancellation during hashing, replacement/destroy during delayed completion, candidate draw/label/hit failure recovery, dirty editor/map decisions still unverified/unimplemented.

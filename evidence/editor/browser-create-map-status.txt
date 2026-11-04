@@ -1,0 +1,5 @@
+﻿FileOrbit Create Map browser verification: NOT RUN.
+No browser executable/automation was available without installing dependencies.
+Node tests cover synthetic File/directory fixtures, multiple batches, conflicts/paths, limits, stale/cancel,
+candidate frame installation and failure, dialog preview/confirm/double-submit, and imported metadata.
+Native picker/folder-drop/PDF-open/Delete-Undo browser flows were not executed.

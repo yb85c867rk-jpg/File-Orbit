@@ -1,0 +1,28 @@
+﻿FileOrbit Save As permission/stage correction r81
+
+Confirmed source defect:
+- document-adapter pickOpen/pickSave called handle.queryPermission() without await. The Promise was compared with 'granted', so requestPermission() was called even when permission was already granted.
+- The entire pickSave try block collapsed any AbortError to reason=cancelled, losing whether failure occurred in picker, permission query, or permission request.
+- This is a confirmed async-permission defect. It is a plausible explanation for a native Save-confirmed-then-cancelled result if requestPermission rejected after the picker, but native stage was not reproduced.
+
+Changes:
+- queryPermission is awaited; requestPermission runs only when queried permission is not granted; granted handles never re-request.
+- pickOpen/pickSave track stages: picker, permission-query, permission-request, file-read/ready, and retain error name/message.
+- write tracks createWritable, write, close stages.
+- saveDocument tracks destination, picker, encoding, download, write/close(adapter stage), adoption; lastDocumentFailure exposes {stage, reason, errorName, errorMessage, code}; UI status names failing stage and preserves old destination/revision.
+- Picker AbortError now reports “cancelled at picker stage”; permission AbortError reports permission stage; encoding/write/close report their stages.
+
+Tests:
+- async query granted -> requestPermission not called (unit).
+- prompt -> one readwrite request; denied permission stage.
+- picker AbortError stage picker vs permission-query AbortError stage permission-query, both errorName preserved.
+- write failure stages createWritable/write/close.
+- actual main Save/Save As: query granted no request; second handle prompt one request; denied permission preserves old handle/revision with stage permission-request; picker abort preserves old handle with stage picker; zero IDB.
+- r80 source detachment and all prior ownership regressions pass.
+
+Results: P1b70/70, backup11+adapter7=18/18, full838/838. Native NOT RUN.
+
+Native retest instruction:
+- Open legacy .fileorbit, edit/add PDF, Save As, enter test-r81.map, click Save.
+- If still fails, report exact status text. It now names the stage/error; no bytes/paths are logged.
+- If success, confirm test-r81.map exists and app adopts it only after Saved.

@@ -1,0 +1,76 @@
+{
+  "result": {
+    "initial": {
+      "hidden": true,
+      "text": "",
+      "menuHidden": true,
+      "title": null,
+      "label": "More graph actions"
+    },
+    "focused": {
+      "hidden": false,
+      "text": "More graph actions",
+      "menuHidden": true,
+      "title": null,
+      "label": "More graph actions"
+    },
+    "afterDelay": {
+      "hidden": true,
+      "text": "",
+      "menuHidden": true,
+      "title": null,
+      "label": "More graph actions"
+    },
+    "beforeMenu": {
+      "hidden": true,
+      "text": "",
+      "menuHidden": true,
+      "title": null,
+      "label": "More graph actions"
+    },
+    "menuOpen": {
+      "hidden": true,
+      "text": "",
+      "menuHidden": false,
+      "title": null,
+      "label": "More graph actions"
+    },
+    "menuAfterDelay": {
+      "hidden": true,
+      "text": "",
+      "menuHidden": false,
+      "title": null,
+      "label": "More graph actions"
+    },
+    "itemSelected": {
+      "hidden": true,
+      "text": "",
+      "menuHidden": true,
+      "title": null,
+      "label": "More graph actions",
+      "embedDialog": true
+    },
+    "outsideBefore": {
+      "hidden": false,
+      "text": "Download",
+      "menuHidden": true,
+      "title": null,
+      "label": "More graph actions"
+    },
+    "outsideAfter": {
+      "hidden": true,
+      "text": "",
+      "menuHidden": true,
+      "title": null,
+      "label": "More graph actions"
+    },
+    "orientationAfter": {
+      "hidden": true,
+      "text": "",
+      "menuHidden": true,
+      "title": null,
+      "label": "More graph actions"
+    }
+  },
+  "errs": []
+}

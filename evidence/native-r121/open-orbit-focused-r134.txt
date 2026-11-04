@@ -1,0 +1,36 @@
+﻿ORBIT_MENU_COMPLETE
+SIDEBAR_TOOLTIPS_COMPLETE
+✔ integrated browser shows the Orbit folder, current map, list, and controls (1.9971ms)
+✔ no Orbit state explains folder selection; elsewhere and close remain available (0.3476ms)
+✔ unsupported directory access disables folder choice but keeps standalone Open (0.2108ms)
+✔ browser has request identity and updates only while the same dialog is open (0.2301ms)
+✔ browser contains focus, closes on Escape, and restores the Open File trigger (0.268ms)
+✔ browser exposes loading, blocked/error, empty, and truncated states (0.3423ms)
+✔ populated-list focus trap follows actual DOM order and preserves row focus across Refresh (0.4794ms)
+✔ production navigation removes primary Save/Open Orbit and keeps Settings theme-only (1.5169ms)
+✔ unified Open supports Orbit, standalone Open, cancel, and unsupported directory access (1781.5586ms)
+✔ primary actions live once in the left rail; header/menu copies are gone (0.6991ms)
+✔ rail collapses to icons, expands labels, and overlays on phones with touch targets (0.2335ms)
+✔ header is brand-only; feedback and save state live outside it (0.2796ms)
+✔ download is the final toolbar action, Open accepts both containers, no duplicate install controls (0.3173ms)
+✔ Settings contains only the theme control; document/save feedback is outside it (0.4594ms)
+✔ connected Orbit menu sits between Save As and Settings with accessible toggle and retained actions (0.4437ms)
+✔ approved logo asset is unavailable, so the accessible text fallback remains without an exit control (0.2416ms)
+✔ sidebar Create Map and connected Orbit use the supplied local theme-masked assets (2.2545ms)
+✔ Orbit refresh precedes empty/list content and status follows the list in DOM order (0.1587ms)
+✔ actual main Orbit navigation lists, opens with exact bytes, and protects saves (1500.1432ms)
+✔ actual connected Orbit menu toggles, preserves drafts, and opens a listed map without a close action (854.6186ms)
+✔ closed Orbit is hidden with no list or primary Open Orbit action (0.7958ms)
+✔ active Orbit lists top-level entries, marks current, and selects (15.3233ms)
+✔ loading preserves entries and honestly marks busy/truncated/stale/empty states (1.1771ms)
+✔ blocked errors and unsupported capability are represented (0.3364ms)
+✔ Refresh callback is wired only for active Orbit; focus survives rerender (0.562ms)
+✔ sidebar tooltips only show while the rail is collapsed (392.9038ms)
+ℹ tests 26
+ℹ suites 0
+ℹ pass 26
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4596.4027

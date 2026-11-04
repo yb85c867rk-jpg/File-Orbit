@@ -1,0 +1,12 @@
+{
+  "harness": "m5-adaptive-layout",
+  "browserVerification": "NOT_RUN",
+  "experimental": true,
+  "modes": ["baseline", "v1", "v2"],
+  "presentationPolicies": ["fixed6", "native"],
+  "note": "EXPERIMENTAL opt-in v1/v2. Baseline remains default. Runtime compact status is window.__M5_ADAPTIVE_LAYOUT_STATUS__; full detail is window.__M5_ADAPTIVE_LAYOUT_FULL__.",
+  "fixtures": ["f20", "f200", "crowdedFolder", "denseNeighbors", "mixedDeepWide", "longLabels", "infeasible"],
+  "defaults": { "minStep": 0.01, "radialFlex": 0.65, "branchWeight": 0.75, "demandCompression": 0.6, "bandCount": 2 },
+  "metrics": "shape-aware node overlap; fixed glyph radius 6; DOM label measurement; O(N^2) bounded",
+  "observed": null
+}

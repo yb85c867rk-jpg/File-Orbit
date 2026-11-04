@@ -1,0 +1,45 @@
+{
+  "revision": "r147",
+  "reviewCorrections": {
+    "utf8ByteLimit": 524288,
+    "hostHandshakeStates": [
+      "idle",
+      "loading-iframe",
+      "loading-snapshot",
+      "loaded",
+      "timeout",
+      "error",
+      "destroyed"
+    ],
+    "wildcardOriginRemoved": true,
+    "startupNoticeRemoved": true,
+    "dialogKeyboardTrap": true,
+    "backgroundInert": true,
+    "focusRestore": true
+  },
+  "verification": {
+    "focused": "80/80",
+    "full": "1114 tests, 1113 passed, 1 skipped, 0 failed",
+    "native": "NOT RUN",
+    "archiveFocused": "80/80"
+  },
+  "browser": {
+    "hostSuccessBeyond15s": true,
+    "noticeHiddenStartup": true,
+    "dialogKeyboard": true,
+    "searchHighlight": "#E74C3C",
+    "exceptions": []
+  },
+  "preserved": {
+    "r146": "9F4914564F317F9A6F251A53E831438C3C556B1EB530F09C66837646B22D7953"
+  },
+  "archive": {
+    "path": "review/fileorbit-review-r147.zip",
+    "sha256": "4993FAC1A439BB46C330A47CA9B108599611BC22BA4F9ABB18CB5EDFBA2AB908",
+    "entries": 1403,
+    "manifestMismatches": 0
+  },
+  "application": {
+    "mainSha256": "A59AEEDA2D8F111BC01673F66A543AEFE491B9D4A07336B411EFA3AA11259DB2"
+  }
+}

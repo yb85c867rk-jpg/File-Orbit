@@ -1,0 +1,74 @@
+{
+  "revision": "r131",
+  "change": "Copy Map toolbar workflow and sidebar Orbit simplification",
+  "toolbarOrder": [
+    "search-toggle",
+    "undo-history",
+    "redo-history",
+    "embed-action",
+    "fullscreen-action",
+    "copy-map",
+    "download-backup"
+  ],
+  "copyMap": {
+    "accessibleName": "Copy Map",
+    "destination": "native authorized directory picker",
+    "changesConnectedOrbit": false,
+    "adoptsCopy": false,
+    "changesActiveDocument": false,
+    "sanitizedFilename": true,
+    "collision": "existing and zero-byte files rejected before creation",
+    "overwrite": false,
+    "autoSuffix": false,
+    "staleCompletionPublishes": false,
+    "success": "Map copied to <folder name>.",
+    "refreshRule": "only when destination matches connected Orbit by handle identity/isSameEntry"
+  },
+  "sidebar": {
+    "closeVisible": false,
+    "addVisible": false,
+    "refreshLabel": "Refresh list",
+    "toggleList": true,
+    "protectedListedOpen": true
+  },
+  "verification": {
+    "focused": "48/48 passed",
+    "fullEngine": "1093 tests, 1092 passed, 1 skipped, 0 failed",
+    "native": "NOT RUN",
+    "markers": [
+      "COPY_MAP_COMPLETE",
+      "COPY_MAP_UNSUPPORTED_COMPLETE",
+      "COPY_MAP_STALE_COMPLETE"
+    ],
+    "archiveFocused": "4/4 passed; archive/disk main hashes match"
+  },
+  "application": {
+    "url": "http://127.0.0.1:8099/tests/harness/m5-exploration/",
+    "mainSha256": "A81F2C846F02F5186C938421D3873527A4C20B46B2D7947E27538513DC4BE4FF",
+    "indexSha256": "E8AE1534C9E3F8B185CFD61E28183E2FB6B0E0861AD04D318B3564BE2D24A4D8",
+    "orbitPanelSha256": "67F5F01BF16BC386A6AAD199E1EA8BCF35C67FF7C6DF743D79FB7F0873E59211",
+    "runnerSha256": "D6997CEBC5154854115766A52A881F5525EA463F67D33F105BBF3F032855C925"
+  },
+  "browser": [
+    "browser-copy-toolbar-r131.png",
+    "browser-copy-toolbar-narrow-r131.png",
+    "browser-copy-toolbar-r131.json"
+  ],
+  "limitations": [
+    "native picker/write/keyboard/responsive checks NOT RUN",
+    "non-atomic destination creation and incomplete-file limitation retained",
+    "leftovers are not automatically removed"
+  ],
+  "archive": {
+    "path": "review/fileorbit-copy-map-r131.zip",
+    "sha256": "6D784194EF3C44D75B708AA890534640238CC37F796420BBF1E65CA9CD425DA3",
+    "entries": 1141,
+    "manifestMismatches": 0
+  },
+  "evidence": [
+    "evidence/native-r121/copy-focused-r131.txt",
+    "evidence/native-r121/copy-toolbar-full-r131-final3.txt",
+    "evidence/native-r121/r131-archive-focused.txt",
+    "evidence/native-r121/browser-copy-toolbar-r131.json"
+  ]
+}

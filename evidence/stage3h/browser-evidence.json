@@ -1,0 +1,289 @@
+{
+  "initial": {
+    "revision": 0,
+    "dirty": false,
+    "undo": 0,
+    "redo": 0,
+    "mode": "folder",
+    "folder": "root",
+    "page": 1,
+    "pages": 1,
+    "items": [
+      "folder-big",
+      "folder-docs",
+      "folder-empty",
+      "root-file",
+      "folder-40"
+    ],
+    "details": null,
+    "canvas": 1,
+    "stages": 1,
+    "status": "Mounted editable LOD runtime"
+  },
+  "renamed": {
+    "revision": 1,
+    "dirty": true,
+    "undo": 1,
+    "redo": 0,
+    "mode": "folder",
+    "folder": "folder-docs",
+    "page": 1,
+    "pages": 1,
+    "items": [
+      "doc-0",
+      "doc-1",
+      "doc-2",
+      "doc-3"
+    ],
+    "details": {
+      "kind": "document",
+      "id": "doc-1",
+      "name": "편집된-문서.txt",
+      "nodeKind": "file",
+      "path": "Stage 3D 문서 / 문서-모음 / 편집된-문서.txt",
+      "depth": 2,
+      "proxy": false,
+      "canPreview": true,
+      "canEdit": false,
+      "attachmentId": "att_9f6e2872-45e9-45ef-b7cc-ef283db0b4e9"
+    },
+    "canvas": 1,
+    "stages": 1,
+    "status": "rename committed"
+  },
+  "undone": {
+    "revision": 2,
+    "dirty": true,
+    "undo": 0,
+    "redo": 1,
+    "mode": "folder",
+    "folder": "folder-docs",
+    "page": 1,
+    "pages": 1,
+    "items": [
+      "doc-0",
+      "doc-1",
+      "doc-2",
+      "doc-3"
+    ],
+    "details": {
+      "kind": "document",
+      "id": "doc-1",
+      "name": "이미지-그림.png",
+      "nodeKind": "file",
+      "path": "Stage 3D 문서 / 문서-모음 / 이미지-그림.png",
+      "depth": 2,
+      "proxy": false,
+      "canPreview": true,
+      "canEdit": false,
+      "attachmentId": "att_9f6e2872-45e9-45ef-b7cc-ef283db0b4e9"
+    },
+    "canvas": 1,
+    "stages": 1,
+    "status": "Undo committed"
+  },
+  "redone": {
+    "revision": 3,
+    "dirty": true,
+    "undo": 1,
+    "redo": 0,
+    "mode": "folder",
+    "folder": "folder-docs",
+    "page": 1,
+    "pages": 1,
+    "items": [
+      "doc-0",
+      "doc-1",
+      "doc-2",
+      "doc-3"
+    ],
+    "details": {
+      "kind": "document",
+      "id": "doc-1",
+      "name": "편집된-문서.txt",
+      "nodeKind": "file",
+      "path": "Stage 3D 문서 / 문서-모음 / 편집된-문서.txt",
+      "depth": 2,
+      "proxy": false,
+      "canPreview": true,
+      "canEdit": false,
+      "attachmentId": "att_9f6e2872-45e9-45ef-b7cc-ef283db0b4e9"
+    },
+    "canvas": 1,
+    "stages": 1,
+    "status": "Redo committed"
+  },
+  "metadata": {
+    "revision": 4,
+    "dirty": true,
+    "undo": 2,
+    "redo": 0,
+    "mode": "folder",
+    "folder": "folder-docs",
+    "page": 1,
+    "pages": 1,
+    "items": [
+      "doc-0",
+      "doc-1",
+      "doc-2",
+      "doc-3"
+    ],
+    "details": {
+      "kind": "document",
+      "id": "doc-1",
+      "name": "편집된-문서.txt",
+      "nodeKind": "file",
+      "path": "Stage 3D 문서 / 문서-모음 / 편집된-문서.txt",
+      "depth": 2,
+      "proxy": false,
+      "canPreview": true,
+      "canEdit": false,
+      "attachmentId": "att_9f6e2872-45e9-45ef-b7cc-ef283db0b4e9"
+    },
+    "canvas": 1,
+    "stages": 1,
+    "status": "metadata committed"
+  },
+  "deleted": {
+    "revision": 6,
+    "dirty": true,
+    "undo": 2,
+    "redo": 0,
+    "mode": "folder",
+    "folder": "folder-docs",
+    "page": 1,
+    "pages": 1,
+    "items": [
+      "doc-1",
+      "doc-2",
+      "doc-3"
+    ],
+    "details": null,
+    "canvas": 1,
+    "stages": 1,
+    "status": "delete committed"
+  },
+  "restored": {
+    "revision": 7,
+    "dirty": true,
+    "undo": 1,
+    "redo": 1,
+    "mode": "folder",
+    "folder": "folder-docs",
+    "page": 1,
+    "pages": 1,
+    "items": [
+      "doc-0",
+      "doc-1",
+      "doc-2",
+      "doc-3"
+    ],
+    "details": {
+      "kind": "document",
+      "id": "doc-0",
+      "name": "텍스트-문서.txt",
+      "nodeKind": "file",
+      "path": "Stage 3D 문서 / 문서-모음 / 텍스트-문서.txt",
+      "depth": 2,
+      "proxy": false,
+      "canPreview": true,
+      "canEdit": false,
+      "attachmentId": "att_94d31db4-2a7a-414f-90fa-ac1251d13aae"
+    },
+    "canvas": 1,
+    "stages": 1,
+    "status": "Undo committed"
+  },
+  "deletedAgain": {
+    "revision": 8,
+    "dirty": true,
+    "undo": 2,
+    "redo": 0,
+    "mode": "folder",
+    "folder": "folder-docs",
+    "page": 1,
+    "pages": 1,
+    "items": [
+      "doc-1",
+      "doc-2",
+      "doc-3"
+    ],
+    "details": null,
+    "canvas": 1,
+    "stages": 1,
+    "status": "delete committed"
+  },
+  "preview": "텍스트 첨부",
+  "added": {
+    "revision": 9,
+    "dirty": true,
+    "undo": 3,
+    "redo": 0,
+    "mode": "folder",
+    "folder": "root",
+    "page": 1,
+    "pages": 1,
+    "items": [
+      "folder-big",
+      "folder-docs",
+      "folder-empty",
+      "root-file",
+      "folder-40",
+      "fo-7-0"
+    ],
+    "details": {
+      "kind": "document",
+      "id": "fo-7-0",
+      "name": "새-폴더",
+      "nodeKind": "folder",
+      "path": "Stage 3D 문서 / 새-폴더",
+      "depth": 1,
+      "proxy": false,
+      "canPreview": false,
+      "canEdit": false,
+      "attachmentId": null
+    },
+    "canvas": 1,
+    "stages": 1,
+    "status": "add committed"
+  },
+  "searched": {
+    "revision": 9,
+    "dirty": true,
+    "undo": 3,
+    "redo": 0,
+    "mode": "folder",
+    "folder": "folder-docs",
+    "page": 1,
+    "pages": 1,
+    "items": [
+      "doc-1",
+      "doc-2",
+      "doc-3"
+    ],
+    "details": {
+      "kind": "document",
+      "id": "doc-1",
+      "name": "편집된-문서.txt",
+      "nodeKind": "file",
+      "path": "Stage 3D 문서 / 문서-모음 / 편집된-문서.txt",
+      "depth": 2,
+      "proxy": false,
+      "canPreview": true,
+      "canEdit": false,
+      "attachmentId": "att_9f6e2872-45e9-45ef-b7cc-ef283db0b4e9"
+    },
+    "canvas": 1,
+    "stages": 1,
+    "status": "add committed"
+  },
+  "beforeDispose": {
+    "frameChildren": 1,
+    "preview": 2
+  },
+  "afterUnmount": {
+    "frameChildren": 0,
+    "preview": 0
+  },
+  "errors": []
+}

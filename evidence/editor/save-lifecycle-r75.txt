@@ -1,0 +1,23 @@
+﻿FileOrbit document-save lifecycle r75
+
+Concrete defects corrected:
+- saveDocument catch/finally and picker/encode/download/write-failure paths published status/sync even after session/dataset/destroy invalidation.
+- document save had no destroy invalidation; destroy now increments documentOperation, clears owner/inFlight/saving.
+- in-flight ownership was boolean only; added documentSaveOwner operation token so stale finally cannot clear a newer save.
+- lifecycle replacement invalidates old save and permits a newer save while old async completion is still pending.
+- owns() now requires !destroying, exact operation token, session, dataset, replacement token where applicable at every async boundary and terminal path.
+- Save As active destination adoption remains only after close and owned completion.
+
+Tests (__M5_LEGACY_PERSISTENCE_HARNESS__=false):
+A. Deferred new-map save A → replaceSession lifecycle invalidation → start B save → reject A close failure while B pending. A cannot clear B owner/inFlight/status/destination; B completes once, adopts B, decodes expected tree, no IDB.
+B. Destroy during deferred close success and failure (separate processes); destroy invoked twice; late completion cannot adopt/active/status/owner; one write; no unhandled rejection; save count unchanged.
+C. Applied form save A pending → actual Open File control blocked by real editor-owned guard (no picker activation); after release A, Open File B succeeds and adopts B.
+D. Newer B overlap after lifecycle invalidation covered in A.
+
+Results: P1b59/59, codec+adapter11/11, full820/820. Native NOT RUN.
+
+Limitations:
+- UI does not permit starting a newer save without lifecycle invalidation because open editor/form/guard policy blocks it; D covers post-invalidation overlap only.
+- Destroy test uses actual pagehide listeners; browser close semantics native NOT RUN.
+- External write may still finish after destroy; no rollback claimed.
+- Form A vs B simultaneous forms blocked by policy; stale callback isolation covered via lifecycle invalidate/save ownership, not a fabricated UI path.

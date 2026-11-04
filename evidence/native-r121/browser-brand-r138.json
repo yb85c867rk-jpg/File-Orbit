@@ -1,0 +1,55 @@
+{
+  "favicon": {
+    "title": "FileOrbit",
+    "favicons": [
+      {
+        "href": "http://127.0.0.1:8099/tests/harness/m5-exploration/assets/fileorbit-favicon.ico",
+        "sizes": "any",
+        "status": 200,
+        "bytes": 6070
+      },
+      {
+        "href": "http://127.0.0.1:8099/tests/harness/m5-exploration/assets/fileorbit-favicon-32.png",
+        "sizes": "32x32",
+        "status": 200,
+        "bytes": 1767
+      },
+      {
+        "href": "http://127.0.0.1:8099/tests/harness/m5-exploration/assets/fileorbit-favicon-16.png",
+        "sizes": "16x16",
+        "status": 200,
+        "bytes": 623
+      }
+    ]
+  },
+  "desktop": {
+    "headerHeight": 32,
+    "headerWidth": 1365,
+    "brandHeight": 26,
+    "logo": {
+      "w": 27.828125,
+      "h": 26,
+      "complete": true,
+      "naturalW": 514,
+      "naturalH": 480,
+      "alt": "FileOrbit"
+    },
+    "workspaceTop": 32,
+    "graphTop": 32,
+    "overflow": false,
+    "theme": "dark"
+  },
+  "narrow": {
+    "headerHeight": 32,
+    "headerWidth": 390,
+    "logo": {
+      "w": 27.828125,
+      "h": 26,
+      "right": 35.828125
+    },
+    "viewport": 390,
+    "overflow": false,
+    "graphTop": 32
+  },
+  "capturedAt": "2026-11-01T07:15:46.692Z"
+}

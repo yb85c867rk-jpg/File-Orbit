@@ -1,0 +1,101 @@
+{
+  "prep": {
+    "hasMap": true,
+    "root": {
+      "id": "cm-1-0",
+      "kind": "folder",
+      "name": "Hit State"
+    }
+  },
+  "portrait": {
+    "viewport": [
+      375,
+      812
+    ],
+    "graph": {
+      "left": 64,
+      "top": 86,
+      "width": 311,
+      "height": 681
+    },
+    "root": {
+      "id": "cm-1-0",
+      "kind": "folder",
+      "name": "Hit State"
+    },
+    "center": {
+      "x": 219.5,
+      "y": 426.5
+    },
+    "hit": "cm-1-0",
+    "scene": {
+      "id": "cm-1-0",
+      "center": {
+        "x": 155.5,
+        "y": 340.5
+      },
+      "radius": 12
+    }
+  },
+  "landscape": {
+    "viewport": [
+      844,
+      390
+    ],
+    "graph": {
+      "left": 64,
+      "top": 90,
+      "width": 651,
+      "height": 300
+    },
+    "root": {
+      "id": "cm-1-0",
+      "kind": "folder",
+      "name": "Hit State"
+    },
+    "center": {
+      "x": 389.5,
+      "y": 240
+    },
+    "hit": "cm-1-0",
+    "scene": {
+      "id": "cm-1-0",
+      "center": {
+        "x": 325.5,
+        "y": 150
+      },
+      "radius": 12
+    }
+  },
+  "portraitAgain": {
+    "viewport": [
+      390,
+      844
+    ],
+    "graph": {
+      "left": 64,
+      "top": 86,
+      "width": 326,
+      "height": 713
+    },
+    "root": {
+      "id": "cm-1-0",
+      "kind": "folder",
+      "name": "Hit State"
+    },
+    "center": {
+      "x": 227,
+      "y": 442.5
+    },
+    "hit": "cm-1-0",
+    "scene": {
+      "id": "cm-1-0",
+      "center": {
+        "x": 163,
+        "y": 356.5
+      },
+      "radius": 12
+    }
+  },
+  "errs": []
+}

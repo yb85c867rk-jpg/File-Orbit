@@ -1,0 +1,5 @@
+﻿FileOrbit attachment-viewer correction browser verification: NOT RUN.
+No browser executable/automation was available without installing dependencies.
+Node tests cover file-name vs icon activation, PDF URL/focus/deferred destroy cleanup,
+UTF-8 boundary, text/image/race/error states, and viewer guards/static harness wiring.
+Native PDF rendering, native image decode, and browser focus remain NOT RUN.

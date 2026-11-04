@@ -1,0 +1,29 @@
+﻿STALE_STAGE_1
+STALE_STAGE_3
+✔ browser ignores stale folder results after session replacement, close/reopen, and destroy (537.7946ms)
+✔ integrated browser shows the Orbit folder, current map, list, and controls (1.6532ms)
+✔ no Orbit state explains folder selection; elsewhere and close remain available (0.3679ms)
+✔ unsupported directory access disables folder choice but keeps standalone Open (0.1926ms)
+✔ browser has request identity and updates only while the same dialog is open (0.2234ms)
+✔ browser contains focus, closes on Escape, and restores the Open File trigger (0.2742ms)
+✔ browser exposes loading, blocked/error, empty, and truncated states (0.2474ms)
+✔ populated-list focus trap follows actual DOM order and preserves row focus across Refresh (0.3117ms)
+✔ production navigation removes primary Save/Open Orbit and keeps Settings Save changes (0.8899ms)
+✔ unified Open supports Orbit, standalone Open, cancel, and unsupported directory access (870.1615ms)
+✔ actual rail expand/settings/theme/local maps, .map download, unified Open preserve lifecycle (2667.8583ms)
+✔ primary actions live once in the left rail; header/menu copies are gone (0.6465ms)
+✔ rail collapses to icons, expands labels, and overlays on phones with touch targets (0.166ms)
+✔ header is brand-only; feedback and save state live outside it (0.2702ms)
+✔ download is the final toolbar action, Open accepts both containers, no duplicate install controls (0.2442ms)
+✔ actual main Orbit navigation lists, opens with exact bytes, and protects saves (1402.2347ms)
+✔ obsolete Open Orbit choice cannot publish status or reopen Create Map after session replacement (520.175ms)
+✔ late Orbit Open cannot replace a newer standalone document, creation prompt, or destroyed app (674.5367ms)
+✔ Save a Copy cannot bypass disabled overwrite protection or impersonate a distinct copy (827.8755ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7536.3604

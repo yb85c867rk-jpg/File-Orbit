@@ -1,0 +1,7 @@
+﻿FileOrbit web-link enhancement browser verification: NOT RUN.
+No browser executable or browser automation was available without installing dependencies.
+Mocked DOM/Canvas tests verify anchor attributes, pointer-events ownership, transition inertness,
+and CSS focus rules, but do NOT establish native new-tab behavior, keyboard activation,
+real focusability, or dirty-draft preservation in a browser.
+R3 link ownership and canonical URL behavior were verified with mocked DOM/Canvas and static harness wiring only; native browser activation remains NOT RUN.
+

@@ -1,0 +1,22 @@
+﻿FileOrbit Retry guard restoration r79
+
+Documentation correction:
+- r78 DID change production code by removing the preflight appliedOperationOwns(operation) check in retryAppliedEditorPersistence; the r78 claim that only test-support changed was wrong.
+- r79 restores that preflight before operation.persisting/saveCurrentDocument and retains the post-await check.
+- Stale retry now rejects before picker/write/download/IDB side effects; clears only the exact obsolete owner; never alters a newer owner.
+
+Invariant regression (controlled stale form token, not a native user workflow):
+- Fallback edit reaches appliedPending with valid owner and one download.
+- staleAppliedOwner() injects stale captured form identity.
+- Retry form submission: downloads remain 1, owner becomes null, revision/history/IDs/attachment bytes unchanged, zero IDB; Close retains edit and dirty state.
+
+Commit-count assertions (both fallback origins):
+- Capture importCommitCount before incoming Open File.
+- After Save-and-continue handoff and after Cancel: commit count unchanged.
+- Second attempt Discard click: count +1; second queued Discard: unchanged.
+- Incoming tree has incoming-root/Incoming Map, incoming.bin exact bytes INCOMING-EXACT, labels/hits coherent.
+
+Valid Retry coverage retained for Import Backup and Previous local fallback (one extra handoff, same owner, no replay).
+
+Results: P1b68/68, codec+adapter11/11, full829/829. Native NOT RUN.
+Bounded automated fallback matrix complete within Node/mock scope. Full file-document transition/recovery-store conversion remains pending.

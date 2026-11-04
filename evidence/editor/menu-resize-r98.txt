@@ -1,0 +1,31 @@
+﻿FileOrbit open-menu resize correction r98
+
+Confirmed cause:
+- createPopupMenu clamped position/max height only in show().
+- No resize/orientation/fullscreen listener re-clamped an already-open menu.
+- max-width/border-box coverage was incomplete, and closed menus could retain stale measurements.
+- If the trigger became hidden, close could restore focus to an invisible control.
+
+Correction:
+- Shared createPopupMenu path now installs viewport listeners only while open:
+  - window resize;
+  - orientationchange;
+  - visualViewport resize when available;
+  - document fullscreenchange.
+- On each open-state change: recompute viewport width/height, maxWidth/maxHeight (no minimum exceeding viewport), left/top, preserve focused item and scrollTop.
+- Menu max dimensions use complete border-box (box-sizing: border-box); maxHeight is available viewport minus 16px, including 0 on extremely short viewports.
+- If the trigger becomes hidden (responsive breakpoint/hidden state), the menu closes safely with no hidden-focus restoration.
+- Listeners are removed on close and destroy; no resize work while closed.
+- Outside-click, Escape, aria-expanded, action guards, and contents preserved.
+
+Tests:
+- shell popup unit: 640x600 -> 320x240, narrow->wide, short 60px, focus/scroll preservation, hidden trigger, fullscreenchange, closed no-op, destroy listener removal.
+- actual main Map/More menu resize: 1/1 through real header controls; Map open at 640x600, shrink to 320x240, trigger-hidden close, More fullscreen-style 800x700; maxHeight/left/top/focus/scroll asserted.
+- full tests/engine: 928 tests, 927 passed, 0 failed, 1 skipped, 0 todo.
+- syntax 17/17; served 104 files 200/no-store byte-match.
+
+Limitations:
+- Native visual clipping/scroll reachability NOT RUN.
+- No screenshots.
+- Mock measurements/CSS assertions do not prove browser layout.
+- FakeIndexedDB cross-tab skip retained.

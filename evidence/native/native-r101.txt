@@ -1,0 +1,38 @@
+﻿FileOrbit native layout verification r101 (isolated headless Edge 156, 2026-10-31)
+
+Desktop 1440x900, collapsed:
+- document client/scroll width 1440/1440.
+- rail x=1376..1440 (64px), details x=1075..1376, graph toolbar centered in remaining graph.
+- download button x=611.5..643.5, after fullscreen in the toolbar.
+- Screenshot nav-desktop-r101.png.
+
+Desktop Settings expanded:
+- rail x=1236..1440 (204px); graph/toolbar shifted left through the viewport pipeline.
+- Settings panel shows Theme: Light and Previous local maps.
+- Screenshot nav-settings-r101.png.
+
+Phone 375x667 collapsed:
+- document/header/layout client/scroll widths all 375.
+- rail x=311..367 (56px); graph/Details content ends at x=311, so collapsed rail does not cover the empty state.
+- toolbar x=11..300 (289px), six 44px controls.
+- Details bar 311x44 at bottom.
+- Screenshot nav-phone-r101.png.
+
+Phone 375x667 expanded + Settings:
+- rail x=157..367 (210px), within viewport, max height/scroll.
+- Settings panel x=163..361, 198x104.
+- Expanded rail overlays the graph by design; Details bar remains visible.
+- Screenshot nav-phone-expanded-r101.png.
+
+Native width sweep 320/375/420/560:
+- document, header, layout scrollWidth === clientWidth at all widths.
+- rail right edge < viewport right at all widths.
+- at 320x480, toolbar wraps to two rows (h=99), empty region x=0..256, rail x=256..312, Details 256x44; vertical content remains accessible/scrollable.
+- measurements in nav-r101-widths.txt.
+
+Native interaction checks NOT RUN:
+- native file-picker/writable/fallback Open,
+- native Download handoff,
+- native fullscreen with expanded rail,
+- native physical pointer drag after rail resize.
+These are covered by production-handler/main-entry tests and remain NOT RUN natively.

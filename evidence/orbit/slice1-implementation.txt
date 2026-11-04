@@ -1,0 +1,28 @@
+﻿FileOrbit Orbit Slice 1 implementation — isolated primitives
+
+Status: Slice 1 implemented; Orbit unavailable to users; Slice 2–6 planned.
+
+Files:
+- src/engine/hypertree/orbit/names.js
+- tests/harness/m5-exploration/orbit-directory-adapter.js
+- tests/engine/exploration/orbit-names.test.mjs
+- tests/engine/exploration/orbit-directory-adapter.test.mjs
+
+Not integrated:
+- no main.mjs import or Orbit UI/navigation;
+- no document Open/Save/Create routing;
+- no activeDocument/recovery/editor/viewer/schema changes;
+- no persistent handles/index/manifest/watching/recursion;
+- no real user directory/file operations by tests.
+
+Tests:
+- focused new suites + document-adapter + backup/filename compatibility: 88/88 passed.
+- New Orbit tests: 70 (names 6, adapter 37, state 27).
+- Existing compatibility: 18.
+- No full suite or unrelated application suite rerun; documentation/implementation scope bounded.
+- Native filesystem checks: NOT RUN.
+
+Known limitations:
+- synthetic handles only; not native filesystem proof;
+- create/map creation helpers are preflight best-effort, atomic:false; no atomic exclusive-create or rollback claim;
+- directory capability only; no Orbit UI, list, open/save integration.

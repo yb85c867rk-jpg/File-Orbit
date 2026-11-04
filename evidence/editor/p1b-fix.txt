@@ -1,0 +1,27 @@
+﻿FileOrbit P1b integration defect corrections (r40)
+
+R1:
+- Fixed saved-maps dialog close to honor notify:false. Choosing Open no longer calls onCancel.
+- Open now acquires replacement ownership at selection when no guard exists, retains it through load/install/recovery, and releases by captured token.
+- Guard is published (state guard false) when released.
+- Delayed loading test observes busy=loading, guard=true, Undo/Redo disabled, Save/Open disabled; Create blocked; tree/revision/count unchanged.
+- Ordinary Open also guarded.
+- Load, label, hit, draw failures preserve the old map and release ownership.
+- Forced recovery failure leaves creation suspension/editor inert with the original Open error.
+- Empty-startup failure remains empty.
+
+R2:
+- Open availability uses a separate request gate that allows a dirty editor form while still blocking ownership/drag/transition/install/save/delete.
+- Dirty Open routes through the existing editor prompt; Continue preserves draft/focus; Discard resumes exactly once; clean forms clear coherently.
+- Save remains disabled while a draft is open.
+
+R3:
+- Unavailable IDB branch is reachable independently.
+- Draw-failure test is top-level, not nested.
+- Added top-level tests for ownership, ordinary ownership, editor dispatch/clean, load/label/hit/recovery failures, empty failure, unavailable IDB, and restored filename viewer activation.
+
+Executed:
+- Persistence: 31/31.
+- P1b actual main-entry integration: 12/12.
+- Full tests/engine: 748/748.
+- Native browser IndexedDB: NOT RUN.

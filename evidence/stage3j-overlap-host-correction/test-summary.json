@@ -1,0 +1,30 @@
+{
+  "generatedAt": "2026-11-04T08:47:27.211Z",
+  "sources": [
+    {
+      "file": "../p1b.txt",
+      "tests": 69,
+      "passed": 69,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "file": "../remainder.txt",
+      "tests": 1211,
+      "passed": 1210,
+      "failed": 0,
+      "skipped": 1
+    }
+  ],
+  "totals": {
+    "tests": 1280,
+    "passed": 1279,
+    "failed": 0,
+    "skipped": 1
+  },
+  "report": {
+    "file": "docs/engine/FILEORBIT-STAGE-3J-OVERLAP-HOST-CORRECTION.md",
+    "expected": "1,280 tests, 1,279 pass, 1 skip",
+    "matched": true
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "before": {
+    "tipHidden": false,
+    "tipText": "Download"
+  },
+  "visible": {
+    "tipHidden": false,
+    "tipText": "Download"
+  },
+  "afterRotation": {
+    "tipHidden": true,
+    "tipText": "",
+    "details": "true",
+    "viewport": [
+      844,
+      390
+    ]
+  },
+  "menuOpenBefore": {
+    "menuHidden": true
+  },
+  "menuAfterRotation": {
+    "menuHidden": false,
+    "menuUsable": true,
+    "details": "true",
+    "viewport": [
+      390,
+      844
+    ]
+  },
+  "errs": []
+}

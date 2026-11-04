@@ -1,0 +1,50 @@
+{
+  "revision": "r140",
+  "change": "Feedback corrections from r139 review",
+  "r1": {
+    "unconditionalRoutineForce": false,
+    "scopeModel": "beginShellFeedback operation + document ownership; resolveShellFeedback requires current scope",
+    "criticalPreserved": [
+      "Open browser Close cancellation",
+      "Copy completion",
+      "fullscreen",
+      "unrelated cancellation"
+    ],
+    "criticalClear": "owning successful resolution or lifecycle invalidation"
+  },
+  "r2": {
+    "downloadPreparationKind": "progress",
+    "downloadHandoffKind": "routine",
+    "downloadHandoffTtlMs": 4000,
+    "downloadFailureKind": "actionable",
+    "handoffWording": "Download prepared. Browser download handoff started; saving the file is not guaranteed.",
+    "cancelResolvesOwnedProgress": true
+  },
+  "permanentDocumentInfo": {
+    "visible": false,
+    "hidden": true,
+    "ariaHidden": true,
+    "layout": "0x0"
+  },
+  "settings": "Theme-only",
+  "verification": {
+    "p1b": "69/69 passed",
+    "focused": "91/91 passed",
+    "full": "1103 tests, 1102 passed, 1 skipped, 0 failed",
+    "native": "NOT RUN",
+    "archiveFocused": "17/17 passed"
+  },
+  "browser": {
+    "layout": "hidden document box 0x0; dark/light desktop/narrow; no overflow"
+  },
+  "preserved": "r139 archive 3824373A9CE390234C1BCC80AC19E1DD1BCAE24DAFFB853999887DE3C2A15E7A",
+  "archive": {
+    "path": "review/fileorbit-feedback-r140.zip",
+    "sha256": "F20E1345FAF4A6713C693AD50236E2E5C0CED70D3BD27C7459F643D354886935",
+    "entries": 1280,
+    "manifestMismatches": 0
+  },
+  "application": {
+    "mainSha256": "B6D20FCBFADB0A49C4C4D093B5617C16B7561452D0BF593D5B9DE209E352D304"
+  }
+}

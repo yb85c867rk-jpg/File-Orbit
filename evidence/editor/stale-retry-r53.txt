@@ -1,0 +1,26 @@
+﻿FileOrbit stale Retry completion fix (r53)
+
+Policy: block Close and form replacement while Retry is in flight; additionally validate panel/form/controller/disposed ownership after every await so forced replacement/destroy invalidates stale completion.
+
+Actual-main-entry deferred test:
+- Add PDF applies; maps write fails.
+- Retry attempt is deferred by a controlled gate.
+- While retry in flight, Close button is disabled; activating it leaves the applied form open.
+- Old retry failure: form retained, applied pending, Close re-enabled after the attempt.
+- Second retry is deferred again; Close stays disabled; desktop/narrow toolbar Save cannot duplicate the request.
+- Release: one persistence attempt completes; only the originating form closes.
+- Revision stays 1, total nodes 3, attachments 2, dirty -> clean.
+- A subsequently opened form keeps its own dirty draft.
+- No mutation replay/node allocation/attachment allocation on Retry.
+
+Ownership implementation:
+- Panel captures formToken/controller before initial Save and Retry awaits; validates disposed/formToken/controller/appliedPending after await.
+- Retry disables Close; setFormBusy respects retryInFlight so publish cannot re-enable.
+- Panel destroy increments formToken and sets disposed.
+- Harness operation record identifies session, dataset, revision, form token, target/action, persisting.
+- Conflict Save-as-copy validates session/dataset/form token before completion.
+- Retry persisting flag plus panel retryInFlight ensure one attempt.
+
+Executed: P1b 27/27, editor184, persistence31, lifecycle9, upgrade3, full775. Native NOT RUN.
+
+Limitations: forced session replacement/destroy during deferred completion and unified conflict completion lack dedicated end-to-end assertions; code guards are in place.

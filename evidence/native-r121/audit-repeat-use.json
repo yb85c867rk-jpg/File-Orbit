@@ -1,0 +1,31 @@
+{
+  "initial": {
+    "heap": 2340480,
+    "domNodes": 715,
+    "documents": 1,
+    "listeners": 205
+  },
+  "final": {
+    "heap": 2872156,
+    "domNodes": 716,
+    "documents": 1,
+    "listeners": 205
+  },
+  "heapDelta": 531676,
+  "domDelta": 1,
+  "scenario": {
+    "searchCycles": 30,
+    "embedCycles": 10,
+    "failures": [],
+    "searchMedian": 208.5,
+    "searchP95": 215.19999998807907,
+    "searchMax": 215.5,
+    "embedMax": 60.200000047683716,
+    "counts": "20 visible / 20 total",
+    "canvas": 1,
+    "backdrops": 0,
+    "status": ""
+  },
+  "exceptions": [],
+  "capturedAt": "2026-11-01T21:12:52.784Z"
+}

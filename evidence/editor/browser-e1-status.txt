@@ -1,0 +1,2 @@
+﻿browser native context-menu/IME/focus verification for E1: NOT RUN
+Mocked Node DOM tests do not establish native browser context-menu, IME, caret, or focus behavior.

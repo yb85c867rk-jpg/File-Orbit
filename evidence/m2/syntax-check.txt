@@ -1,0 +1,1 @@
+﻿all M2 modules parse: OK

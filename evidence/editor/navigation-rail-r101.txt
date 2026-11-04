@@ -1,0 +1,42 @@
+﻿FileOrbit navigation rail / unified Open / Download r101
+
+Implemented:
+- Right-side collapsible nav rail, collapsed icons-only; expanded labels.
+- Rail actions order: Create Map, Open File, Save, Save As, Settings.
+- Settings contains existing Dark/Light theme and Previous local maps.
+- Header/Mobile menu copies of primary actions removed; header retains document name, save status, storage help, fixture controls.
+- Desktop rail reserves 64px collapsed/204px expanded and graph resizes through existing ResizeObserver/scheduleViewportResize pipeline.
+- Phone <=560: rail fixed compact 56px, layout reserves 64px so collapsed rail does not cover graph; expanded rail is a fixed overlay (max 210px), scrollable and inside viewport.
+- Rail has 44px targets, aria-expanded/controls, focus-visible, tooltips via shared tooltip controller, reduced-motion transition guard.
+- Download moved after Fullscreen in graph toolbar; local SVG; accessible name "Download map copy"; title/tooltip Download.
+- Download exports authoritative map/attachments as .map (safeDocumentFilename), does not change active destination or dirty state; handoff feedback and cleanup retained.
+
+Behavior differences documented:
+- Writable .map Open: active writable handle, clean baseline, Save can overwrite.
+- Fallback Open: no handle, mode download, clean baseline, Save is unconfirmed download.
+- Legacy .fileorbit: readable via Open; writable handle intentionally not adopted; mode download, Save prompts .map copy; never auto-rewrites source.
+- Import Backup internal decode/install path remains for compatibility tests/fallback, but separate user-facing Import action removed.
+- .map/.fileorbit validation uses decodeBackup magic/content, not extension alone.
+- Previous local maps remain IndexedDB-backed and accessible in Settings; startup recovery untouched.
+
+Tests:
+- navigation-rail static 3/3; navigation-rail actual main 1/1.
+- editor visibility with rail expansion/draft focus 1/1.
+- drag history after rail layout change 1/1.
+- YAML viewer/main 1/1.
+- full tests/engine: 933 tests, 932 passed, 0 failed, 1 skipped, 0 todo.
+- syntax 16/16; served 104 files 200/no-store byte-match.
+
+Native verification:
+- Captured desktop collapsed, desktop Settings expanded, phone 375 collapsed, phone Settings expanded.
+- Native 320/375/420/560 measurements: document/header/layout scrollWidth equals clientWidth; rail inside viewport; phone empty region ends at rail start; toolbar within width; 320 short screen toolbar wraps to 2 rows and content remains above Details.
+- Screenshots: evidence/native/nav-desktop-r101.png, nav-settings-r101.png, nav-phone-r101.png, nav-phone-expanded-r101.png.
+- Native Download handoff, native file picker Open/legacy .fileorbit, native fullscreen, and native physical drag were NOT RUN in this slice.
+- Mock/main-entry tests exercise production controls but are not native proof.
+
+Limitations:
+- Expanded phone rail overlays graph/workspace by design.
+- Import Backup remains an internal path, not a separate UI action.
+- Legacy .fileorbit writable source is read-only from FileOrbit's perspective (Save creates .map).
+- Native file chooser/download/fullscreen interactions remain unverified.
+- Existing FakeIndexedDB cross-tab skip retained.

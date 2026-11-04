@@ -1,0 +1,29 @@
+﻿<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>FileOrbit file-type icons</title>
+<style>body{background:#0b0e14;color:#e5e7eb;font:13px system-ui;padding:20px}.row{display:flex;gap:28px;flex-wrap:wrap}.item{display:flex;align-items:center;gap:6px;background:#111827;border:1px solid #334155;border-radius:6px;padding:8px 10px}.badge{font-size:9px;opacity:.85}.meta{color:#94a3b8;font-size:11px;margin-top:6px}</style></head>
+<body><h1>FileOrbit file-type icons</h1><p class="meta">Development evidence only. Production icon builder; label-size 12px at current DPR.</p><p class="meta">Exploration palette: PDF icon is red and its badge neutral; all other data icons/badges are green. Folder icons remain blue-gray, never green. Scene folder circles use the depth/root palette.</p><div id="grid" class="row"></div>
+<script type="module">
+import { createIcon } from '../../../src/engine/hypertree/render/icons.js';
+import { classifyLabelPresentation, EXPLORATION_LABEL_PALETTE } from '../../../src/engine/hypertree/render/label-classification.js';
+const samples = [
+  ['Folder', { kind: 'folder', name: 'Folder' }],\n  ['PDF', { kind: 'file', name: 'Report', dataType: 'file', classification: { format: 'pdf', badge: 'PDF', mime: 'application/pdf' } }],
+  ['Markdown', { kind: 'file', name: 'Notes', dataType: 'file', classification: { format: 'markdown', badge: 'MD', mime: 'text/markdown' } }],
+  ['Text', { kind: 'file', name: 'Readme', dataType: 'file', classification: { format: 'text', badge: 'TXT', mime: 'text/plain' } }],
+  ['Image', { kind: 'file', name: 'Photo', dataType: 'file', classification: { format: 'generic', badge: 'PNG', mime: 'image/png' } }],
+  ['Web', { kind: 'file', name: 'Site', dataType: 'web-link' }],
+  ['Generic', { kind: 'file', name: 'Bundle', dataType: 'file', classification: { format: 'generic', badge: 'ZIP', mime: 'application/zip' } }],
+  ['Review', { kind: 'file', name: 'Unknown', dataType: 'file', classification: { format: 'unknown', badge: '?', needsReview: true } }]
+];
+const grid = document.querySelector('#grid');
+for (const [label, input] of samples) {
+  const p = classifyLabelPresentation(input, { palette: EXPLORATION_LABEL_PALETTE });
+  const item = document.createElement('div'); item.className = 'item';
+  const icon = createIcon(document, p.icon); icon.style.color = p.color;
+  const name = document.createElement('span'); name.textContent = label;
+  const badge = document.createElement('span'); badge.className = 'badge'; badge.textContent = p.badge || '';
+  item.append(icon, name, badge); grid.appendChild(item);
+}
+</script></body></html>
+
+
+

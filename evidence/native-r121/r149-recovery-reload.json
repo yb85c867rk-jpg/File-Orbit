@@ -1,0 +1,116 @@
+{
+  "imp": true,
+  "checkpoint": {
+    "workspace": {
+      "workspaceId": "ws_556c0902-8342-403b-8119-3249a5b56f21",
+      "workspaceToken": "wst_26e8c899-005b-4afd-a478-ea1479bc9063",
+      "controlVersion": 2,
+      "session": 3,
+      "dataset": 1,
+      "active": true,
+      "documentName": null,
+      "origin": "test",
+      "sourceMapId": null
+    },
+    "scheduled": true,
+    "flushed": {
+      "workspaceId": "ws_556c0902-8342-403b-8119-3249a5b56f21",
+      "lastError": null,
+      "lastCheckpoint": {
+        "generation": 1,
+        "capturedRevision": 0,
+        "at": "2026-11-01T23:51:54.438Z"
+      },
+      "lastRetirement": null,
+      "lastAbandon": null,
+      "writesStarted": 2,
+      "writesCompleted": 2,
+      "maxConcurrentWrites": 1,
+      "activeWrites": 0
+    },
+    "state": {
+      "workspace": {
+        "workspaceId": "ws_556c0902-8342-403b-8119-3249a5b56f21",
+        "workspaceToken": "wst_26e8c899-005b-4afd-a478-ea1479bc9063",
+        "session": 3,
+        "dataset": 1,
+        "controlVersion": 2
+      },
+      "diagnostics": {
+        "workspaceId": "ws_556c0902-8342-403b-8119-3249a5b56f21",
+        "lastError": null,
+        "lastCheckpoint": {
+          "generation": 1,
+          "capturedRevision": 0,
+          "at": "2026-11-01T23:51:54.438Z"
+        },
+        "lastRetirement": null,
+        "lastAbandon": null,
+        "writesStarted": 2,
+        "writesCompleted": 2,
+        "maxConcurrentWrites": 1,
+        "activeWrites": 0
+      },
+      "diagnostic": null,
+      "pending": false
+    },
+    "candidates": [
+      {},
+      {},
+      {},
+      {}
+    ],
+    "counts": "300 visible / 300 total"
+  },
+  "after": {
+    "counts": "",
+    "dialogs": [
+      {
+        "cls": "recovery-backdrop",
+        "hidden": false,
+        "text": "Recover unsaved work?\n\nFileOrbit found a recovery copy of this map. Recover it to continue editing. Your original file will not be changed.\n\nR149 300 Node Map\n11/2/2026, 12:51:54 PM · 38 folders · 262 files\nR149 300 Node Map\n11/2/2026, 12:51:54 PM · 38 folders · 262 files\nR149 300 Node Map\n11/2/2026"
+      },
+      {
+        "cls": "recovery-dialog",
+        "hidden": false,
+        "text": "Recover unsaved work?\n\nFileOrbit found a recovery copy of this map. Recover it to continue editing. Your original file will not be changed.\n\nR149 300 Node Map\n11/2/2026, 12:51:54 PM · 38 folders · 262 files\nR149 300 Node Map\n11/2/2026, 12:51:54 PM · 38 folders · 262 files\nR149 300 Node Map\n11/2/2026"
+      }
+    ],
+    "state": {
+      "workspace": null,
+      "diagnostics": {
+        "workspaceId": null,
+        "lastError": null,
+        "lastCheckpoint": null,
+        "lastRetirement": null,
+        "lastAbandon": null,
+        "writesStarted": 0,
+        "writesCompleted": 0,
+        "maxConcurrentWrites": 0,
+        "activeWrites": 0
+      },
+      "diagnostic": null,
+      "pending": false
+    },
+    "candidates": null,
+    "hasMap": false
+  },
+  "clickRecover": {
+    "buttons": [
+      "Recover work"
+    ],
+    "counts": "300 visible / 300 total",
+    "hasMap": true
+  },
+  "dialogs": [
+    {
+      "url": "http://127.0.0.1:8099/tests/harness/m5-exploration/",
+      "frameId": "EC6F61730AD5C308EC478076091C9B49",
+      "message": "",
+      "type": "beforeunload",
+      "hasBrowserHandler": true,
+      "defaultPrompt": ""
+    }
+  ],
+  "exceptions": []
+}

@@ -1,0 +1,34 @@
+﻿FEEDBACK_IMPORT_SCOPE {"feedbackScope":{"operation":1,"ownership":2,"session":2,"dataset":0},"ownership":2,"own":2,"session":2,"dataset":0}
+FEEDBACK_IMPORT_SCOPE {"feedbackScope":{"operation":2,"ownership":3,"session":3,"dataset":1},"ownership":3,"own":3,"session":3,"dataset":1}
+AUTO_CONFLICT_R2_COMPLETE
+FEEDBACK_IMPORT_SCOPE {"feedbackScope":{"operation":1,"ownership":2,"session":2,"dataset":0},"ownership":2,"own":2,"session":2,"dataset":0}
+FEEDBACK_IMPORT_SCOPE {"feedbackScope":{"operation":2,"ownership":4,"session":3,"dataset":1},"ownership":4,"own":4,"session":3,"dataset":1}
+COPY_MAP_COMPLETE
+FEEDBACK_EXPIRY_COMPLETE
+FEEDBACK_IMPORT_SCOPE {"feedbackScope":{"operation":1,"ownership":3,"session":2,"dataset":0},"ownership":3,"own":3,"session":2,"dataset":0}
+R1_STATUS {"text":"Opened alpha-copy.orbit","state":{"message":"Opened alpha-copy.orbit","kind":"routine","token":6,"timer":true},"open":{"open":false,"busy":false,"requestId":2,"block":null,"editorApplied":false,"editorSaving":false,"persistenceBusy":null,"replacementGuard":false,"pendingImport":false,"installingImport":false,"navigatorBusy":false,"sessionInstalling":false,"documentSaving":false,"documentSaveInFlight":false},"pending":{"pending":false,"installing":false,"registrySize":null},"disabled":false}
+FEEDBACK_IMPORT_SCOPE {"feedbackScope":{"operation":2,"ownership":5,"session":3,"dataset":1},"ownership":5,"own":5,"session":3,"dataset":1}
+FEEDBACK_IMPORT_SCOPE {"feedbackScope":{"operation":3,"ownership":6,"session":4,"dataset":2},"ownership":6,"own":6,"session":4,"dataset":2}
+FEEDBACK_IMPORT_SCOPE {"feedbackScope":{"operation":4,"ownership":7,"session":4,"dataset":2},"ownership":7,"own":7,"session":4,"dataset":2}
+FEEDBACK_IMPORT_SCOPE {"feedbackScope":{"operation":1,"ownership":1,"session":2,"dataset":0},"ownership":1,"own":1,"session":2,"dataset":0}
+HELP_DEBUG_AFTER true false
+FEEDBACK_IMPORT_SCOPE {"feedbackScope":{"operation":4,"ownership":2,"session":3,"dataset":1},"ownership":2,"own":2,"session":3,"dataset":1}
+FEEDBACK_IMPORT_SCOPE {"feedbackScope":{"operation":5,"ownership":3,"session":4,"dataset":2},"ownership":3,"own":3,"session":4,"dataset":2}
+FEEDBACK_IMPORT_SCOPE {"feedbackScope":{"operation":7,"ownership":7,"session":5,"dataset":3},"ownership":7,"own":7,"session":5,"dataset":3}
+FEEDBACK_IMPORT_SCOPE {"feedbackScope":{"operation":8,"ownership":8,"session":6,"dataset":4},"ownership":8,"own":8,"session":6,"dataset":4}
+✔ Settings contains only Theme and document/save feedback is outside it (0.8645ms)
+✔ automatic save without a writable destination requires explicit Save As and does not auto-download (2269.5558ms)
+✔ automatic external conflict Cancel keeps feedback, Retry resolves, replacement invalidates (5477.7146ms)
+✔ Copy Map writes an exact copy without adopting it or changing the connected Orbit (896.5327ms)
+✔ routine feedback expires with identity-safe ownership and critical feedback remains (173.5526ms)
+✔ production navigation removes primary Save/Open Orbit and keeps Settings theme-only (1.0887ms)
+✔ unified Open supports Orbit, standalone Open, cancel, and unsupported directory access (9156.5966ms)
+✔ actual rail expand/settings/theme/local maps, .orbit download, unified Open and help preserve lifecycle (2748.9618ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 20745.1977

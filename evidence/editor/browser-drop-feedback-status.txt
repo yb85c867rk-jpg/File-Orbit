@@ -1,0 +1,5 @@
+﻿FileOrbit invalid-drop feedback browser verification: NOT RUN.
+No browser executable/automation was available without installing dependencies.
+Mocked tests verify exact wording, one 2000ms owned timer with replacement/cleanup,
+data-target rejection before candidate preparation, empty-target distinction, and centered CSS.
+They do not establish real pointerup behavior or visual centering in a browser.

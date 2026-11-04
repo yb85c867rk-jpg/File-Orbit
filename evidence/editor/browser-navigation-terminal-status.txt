@@ -1,0 +1,5 @@
+﻿FileOrbit navigation terminal-recovery browser verification: NOT RUN.
+No browser executable/automation was available without installing dependencies.
+Node tests cover real overlay lifecycle, retained recovery frame/hits, failed recovery inertness,
+cleanup failure ownership release, and error-then-settled idempotence.
+The exact browser n6 failure remains unreproduced; equivalent F20 transitions pass in Node.

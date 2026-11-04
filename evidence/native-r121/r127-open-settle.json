@@ -1,0 +1,83 @@
+{
+  "revision": "r127",
+  "change": "integrated Open install-settling regression correction",
+  "environment": {
+    "platform": "Windows",
+    "node": "v24.12.0",
+    "time": "2026-11-01T10:31:09+13:00",
+    "cwd": "C:/Users/openw/Documents/Projects/visual-directory"
+  },
+  "exactR126Archive": {
+    "path": "review/fileorbit-orbit-slice6-autosave-fix-r126.zip",
+    "sha256": "76CE53C76538448846E620142243F384A3577E917CA37FF01D8BB401941CE19C",
+    "standalone": "passed in this environment",
+    "parallelReproduction": "failed at main-harness-init-runner.mjs:1770 under concurrent loops",
+    "evidence": [
+      "evidence/native-r121/file-open-nav-r126-archive-repro.txt",
+      "evidence/native-r121/file-open-nav-r126-old-debug.txt"
+    ]
+  },
+  "cause": {
+    "classification": "asynchronous test settling / stale expectation, not production Open behavior",
+    "detail": "Standalone Open set the handle while installingBackupImport remained true. The test waited for persistence busy and pendingBackupImport, but not installingBackupImport. openFileBrowser correctly refused another Open with 'Finish the current save, open, or backup operation first.'",
+    "instrumentedState": {
+      "openControlDisabled": false,
+      "clickCount": 2,
+      "shell": "Finish the current save, open, or backup operation first.",
+      "handle": "alpha-copy.map",
+      "persistenceBusy": null,
+      "documentSaving": false
+    }
+  },
+  "fix": {
+    "productionOpenChanged": false,
+    "testWaits": [
+      "Opened status",
+      "pendingImportState().pending false",
+      "pendingImportState().installing false",
+      "openState().block null",
+      "Open control enabled",
+      "reopened browser with enabled Refresh"
+    ],
+    "arbitrarySleepAdded": false,
+    "obsoleteWordingRemoved": "keeps Settings Save changes -> keeps Settings theme-only"
+  },
+  "verification": {
+    "alone": "2/2 passed",
+    "parallelStress": "72/72 passed",
+    "relevantCombined": "106/106 passed",
+    "fullEngine": "1087 tests, 1086 passed, 1 skipped, 0 failed",
+    "r1R2Markers": [
+      "AUTO_EDITOR_R1_COMPLETE",
+      "AUTO_CONFLICT_R2_COMPLETE"
+    ],
+    "native": "NOT RUN",
+    "syntheticOnly": true,
+    "allExploration": "449/449 passed",
+    "archiveFinal": "exact r127 archive suite 2/2, parallel stress 72/72, main/runner hashes match disk"
+  },
+  "previousDiscrepancy": "The earlier zero-failure full suite ran a different, pre-r127 test file set in one process. It did not exercise the missing install-lifecycle wait under focused load. It is not evidence for the final files; the full suite was rerun above.",
+  "application": {
+    "url": "http://127.0.0.1:8099/tests/harness/m5-exploration/",
+    "mainSha256": "82105C678D61DA70A04B04FF98D36E1C1C5B7963F4E33907AABE4613066F31BD",
+    "indexSha256": "B46804A24AF62DB60C7741572459137A28301F6D8066F9B7E3FA42CF4005FE91",
+    "runnerSha256": "8049F4DD46F5F340F442A40A1EB433A97BA8CE252676E934FB86424F6BC9028C",
+    "fileOpenNavigationTestSha256": "4CB1CF5EC6A5ACD40CFF7E458B31F413F634C40A68EE5BFDF88EC1A6080856A0"
+  },
+  "commands": [
+    "node --test --test-isolation=none tests/engine/exploration/file-open-navigation-main.test.mjs",
+    "Extract review/fileorbit-orbit-slice6-autosave-fix-r126.zip; run node --test --test-isolation=none tests/engine/exploration/file-open-navigation-main.test.mjs under concurrent loops",
+    "node --test --test-isolation=none <relevant combined suites>",
+    "node --test --test-isolation=none <all tests/engine *.test.mjs>"
+  ],
+  "evidence": [
+    "evidence/native-r121/file-open-nav-r127-final-alone.txt",
+    "evidence/native-r121/file-open-nav-r127-stress2.txt",
+    "evidence/native-r121/autosave-regression-r127.txt",
+    "evidence/native-r121/autosave-full-r127-final2.txt",
+    "evidence/native-r121/file-open-nav-r127-archive-final.txt",
+    "evidence/native-r121/file-open-nav-r127-archive-stress.txt",
+    "evidence/native-r121/file-open-nav-r127-all-exploration.txt"
+  ],
+  "reviewerFocusedCount": "161-test reviewer selection differs from the recorded 106 relevant / 449 all-exploration sets; final authoritative full engine is 1087 tests"
+}

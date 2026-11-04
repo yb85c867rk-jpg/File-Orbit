@@ -1,0 +1,17 @@
+{
+  "before": {
+    "status": "Search highlights 4 folders containing matching results.",
+    "query": "Node 15"
+  },
+  "cleared": {
+    "status": "",
+    "query": "",
+    "cards": 0
+  },
+  "replaced": {
+    "status": "",
+    "query": ""
+  },
+  "exceptions": [],
+  "capturedAt": "2026-11-01T20:26:46.137Z"
+}

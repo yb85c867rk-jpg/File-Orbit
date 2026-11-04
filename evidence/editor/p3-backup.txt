@@ -1,0 +1,23 @@
+﻿FileOrbit P3 backup codec and control wiring (r55)
+
+Format (frozen v1):
+- Magic "FILEORBIT" 9 ASCII bytes; containerVersion uint16 BE; manifestLength uint32 BE; header 15 bytes.
+- Manifest strict UTF-8 JSON, limit 2 MiB.
+- Attachment offsets relative to payload section at 15 + manifestLength; raw bytes concatenated, no gaps, no trailing bytes.
+- packageSize = 15 + manifestLength + totalAttachmentBytes.
+- Manifest: versions, exportedAt, mapName, optional sourceMapId provenance, nodeCount, canonical tree, attachment ids/offsets/lengths/names/sizes/mime/classification/SHA-256, total bytes, packageSize.
+- Limits: 300 nodes, 20 MiB/file, 100 MiB/map; safe-integer offsets; exact membership.
+- Import allocates fresh attachment IDs and returns imported tree; unsaved map identity is assigned by first explicit Save.
+
+Implemented:
+- src/engine/hypertree/persistence/backup.js encode/decode with strict validation, SHA-256 per attachment, contiguous ranges, canonical count/totals.
+- Main Download/Upload controls enabled; Download gathers current committed live tree/registry (including unsaved committed changes), blocks editor form open, uses one object URL and revokes after handoff.
+- Upload opens explicit .fileorbit file picker, validates package/hashes, adopts isolated registry, and routes installation through the existing create-map candidate path; dirty committed maps and open editor forms are blocked with status explanations.
+
+Executed: pure backup tests 4/4, P1b 27/27, full 779/779. Native browser download/file-picker and actual import UI were NOT RUN.
+
+Limitations:
+- Actual main-entry Download/Upload round trip, picker cancellation, import Save/reload/viewer, replacement prompt workflows, and candidate draw/label/hit failure recovery are NOT RUN.
+- Current import blocks dirty maps rather than offering Save/Discard/Cancel prompts.
+- No hashing-cancellation UI/progress beyond operation token; no per-read cancellation hook was exercised.
+- Browser download completion is not claimed.

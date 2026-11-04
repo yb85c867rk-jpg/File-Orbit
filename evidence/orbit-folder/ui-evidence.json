@@ -1,0 +1,1928 @@
+{
+  "environment": {
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36 Edg/156.0.0.0",
+    "product": "Edg/156.0.4314.58",
+    "viewport": {
+      "width": 1500,
+      "height": 900
+    }
+  },
+  "loadMs": 810,
+  "initial": {
+    "ready": true,
+    "hasMap": false,
+    "status": "",
+    "initError": null,
+    "hasBrowser": null
+  },
+  "setup": {
+    "pickerCalls": 0
+  },
+  "errors": [],
+  "menuState": {
+    "hidden": false,
+    "html": "<div id=\"open-orbit-menu\" class=\"popup-menu\" role=\"menu\" aria-label=\"Open Orbit options\" style=\"position: fixed; max-width: 1484px; max-height: 884px; overflow-y: auto; left: 8px; top: 184px;\"><button type=\"button\" role=\"menuitem\" data-open-kind=\"file\">Orbit File</button><button type=\"button\" role=\"menuitem\" data-open-kind=\"folder\">Orbit Folder</button></div>",
+    "runChoice": null,
+    "attempt": null,
+    "component": false,
+    "elementParent": null,
+    "hostHtml": "<div id=\"overlay-host\" aria-live=\"polite\"><div class=\"create-map-backdrop\" hidden=\"\"><section class=\"create-map-dialog\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"create-map-title\"><h2 id=\"create-map-title\">Create Map</h2><p class=\"create-map-note\">Files and folders are optional. Add them now ",
+    "hostId": null,
+    "hostConnected": null,
+    "hostChildren": null,
+    "elementConnected": null
+  },
+  "openInitial": {
+    "text": "Open Orbit FolderNo folder selectedParentChoose FolderRefreshChoose a folder to inspect its subfolders and .orbit files.No folder selected.Open file elsewhere…Connect This FolderOpenCancel",
+    "rect": {
+      "left": 0,
+      "top": 0,
+      "right": 1500,
+      "bottom": 900,
+      "width": 1500,
+      "height": 900
+    },
+    "rows": [],
+    "breadcrumb": [],
+    "buttons": [
+      {
+        "text": "Parent",
+        "disabled": true,
+        "action": "up"
+      },
+      {
+        "text": "Choose Folder",
+        "disabled": false,
+        "action": "choose-folder"
+      },
+      {
+        "text": "Refresh",
+        "disabled": true,
+        "action": "refresh"
+      },
+      {
+        "text": "Open file elsewhere…",
+        "disabled": false,
+        "action": "elsewhere"
+      },
+      {
+        "text": "Connect This Folder",
+        "disabled": true,
+        "action": "connect"
+      },
+      {
+        "text": "Open",
+        "disabled": true,
+        "action": "open"
+      },
+      {
+        "text": "Cancel",
+        "disabled": false,
+        "action": "cancel"
+      }
+    ],
+    "current": "No folder selected",
+    "status": "Choose a folder to inspect its subfolders and .orbit files."
+  },
+  "afterChoose": {
+    "text": "Open Orbit FolderCurrent folder: Orbit RootOrbit RootParentChoose Another FolderRefresh2 folders, 1 Orbit file.This folder is empty.EmptyFolderProjectsFolderroot.orbitOrbit fileSelect a .orbit file, then choose Open.Open file elsewhere…Connect This FolderOpenCancel",
+    "rect": {
+      "left": 0,
+      "top": 0,
+      "right": 1500,
+      "bottom": 900,
+      "width": 1500,
+      "height": 900
+    },
+    "rows": [
+      {
+        "name": "EmptyFolder",
+        "kind": "folder",
+        "key": "folder:Empty"
+      },
+      {
+        "name": "ProjectsFolder",
+        "kind": "folder",
+        "key": "folder:Projects"
+      },
+      {
+        "name": "root.orbitOrbit file",
+        "kind": "file",
+        "key": "file:root.orbit"
+      }
+    ],
+    "breadcrumb": [
+      "Orbit Root"
+    ],
+    "buttons": [
+      {
+        "text": "Orbit Root",
+        "disabled": false,
+        "action": null
+      },
+      {
+        "text": "Parent",
+        "disabled": true,
+        "action": "up"
+      },
+      {
+        "text": "Choose Another Folder",
+        "disabled": false,
+        "action": "choose-folder"
+      },
+      {
+        "text": "Refresh",
+        "disabled": false,
+        "action": "refresh"
+      },
+      {
+        "text": "EmptyFolder",
+        "disabled": false,
+        "action": null
+      },
+      {
+        "text": "ProjectsFolder",
+        "disabled": false,
+        "action": null
+      },
+      {
+        "text": "root.orbitOrbit file",
+        "disabled": false,
+        "action": null
+      },
+      {
+        "text": "Open file elsewhere…",
+        "disabled": false,
+        "action": "elsewhere"
+      },
+      {
+        "text": "Connect This Folder",
+        "disabled": false,
+        "action": "connect"
+      },
+      {
+        "text": "Open",
+        "disabled": true,
+        "action": "open"
+      },
+      {
+        "text": "Cancel",
+        "disabled": false,
+        "action": "cancel"
+      }
+    ],
+    "current": "Current folder: Orbit Root",
+    "status": "2 folders, 1 Orbit file."
+  },
+  "projects": {
+    "text": "Open Orbit FolderCurrent folder: ProjectsOrbit Root›ProjectsParentChoose Another FolderRefresh1 folder, 1 Orbit file.This folder is empty.NestedFolderteam.orbitOrbit fileSelect a .orbit file, then choose Open.Open file elsewhere…Connect This FolderOpenCancel",
+    "rect": {
+      "left": 0,
+      "top": 0,
+      "right": 1500,
+      "bottom": 900,
+      "width": 1500,
+      "height": 900
+    },
+    "rows": [
+      {
+        "name": "NestedFolder",
+        "kind": "folder",
+        "key": "folder:Nested"
+      },
+      {
+        "name": "team.orbitOrbit file",
+        "kind": "file",
+        "key": "file:team.orbit"
+      }
+    ],
+    "breadcrumb": [
+      "Orbit Root",
+      "Projects"
+    ],
+    "buttons": [
+      {
+        "text": "Orbit Root",
+        "disabled": false,
+        "action": null
+      },
+      {
+        "text": "Projects",
+        "disabled": false,
+        "action": null
+      },
+      {
+        "text": "Parent",
+        "disabled": false,
+        "action": "up"
+      },
+      {
+        "text": "Choose Another Folder",
+        "disabled": false,
+        "action": "choose-folder"
+      },
+      {
+        "text": "Refresh",
+        "disabled": false,
+        "action": "refresh"
+      },
+      {
+        "text": "NestedFolder",
+        "disabled": false,
+        "action": null
+      },
+      {
+        "text": "team.orbitOrbit file",
+        "disabled": false,
+        "action": null
+      },
+      {
+        "text": "Open file elsewhere…",
+        "disabled": false,
+        "action": "elsewhere"
+      },
+      {
+        "text": "Connect This Folder",
+        "disabled": false,
+        "action": "connect"
+      },
+      {
+        "text": "Open",
+        "disabled": true,
+        "action": "open"
+      },
+      {
+        "text": "Cancel",
+        "disabled": false,
+        "action": "cancel"
+      }
+    ],
+    "current": "Current folder: Projects",
+    "status": "1 folder, 1 Orbit file."
+  },
+  "nested": {
+    "text": "Open Orbit FolderCurrent folder: NestedOrbit Root›Projects›NestedParentChoose Another FolderRefresh0 folders, 1 Orbit file.This folder is empty.deep.orbitOrbit fileSelect a .orbit file, then choose Open.Open file elsewhere…Connect This FolderOpenCancel",
+    "rect": {
+      "left": 0,
+      "top": 0,
+      "right": 1500,
+      "bottom": 900,
+      "width": 1500,
+      "height": 900
+    },
+    "rows": [
+      {
+        "name": "deep.orbitOrbit file",
+        "kind": "file",
+        "key": "file:deep.orbit"
+      }
+    ],
+    "breadcrumb": [
+      "Orbit Root",
+      "Projects",
+      "Nested"
+    ],
+    "buttons": [
+      {
+        "text": "Orbit Root",
+        "disabled": false,
+        "action": null
+      },
+      {
+        "text": "Projects",
+        "disabled": false,
+        "action": null
+      },
+      {
+        "text": "Nested",
+        "disabled": false,
+        "action": null
+      },
+      {
+        "text": "Parent",
+        "disabled": false,
+        "action": "up"
+      },
+      {
+        "text": "Choose Another Folder",
+        "disabled": false,
+        "action": "choose-folder"
+      },
+      {
+        "text": "Refresh",
+        "disabled": false,
+        "action": "refresh"
+      },
+      {
+        "text": "deep.orbitOrbit file",
+        "disabled": false,
+        "action": null
+      },
+      {
+        "text": "Open file elsewhere…",
+        "disabled": false,
+        "action": "elsewhere"
+      },
+      {
+        "text": "Connect This Folder",
+        "disabled": false,
+        "action": "connect"
+      },
+      {
+        "text": "Open",
+        "disabled": true,
+        "action": "open"
+      },
+      {
+        "text": "Cancel",
+        "disabled": false,
+        "action": "cancel"
+      }
+    ],
+    "current": "Current folder: Nested",
+    "status": "0 folders, 1 Orbit file."
+  },
+  "up": {
+    "text": "Open Orbit FolderCurrent folder: ProjectsOrbit Root›ProjectsParentChoose Another FolderRefresh1 folder, 1 Orbit file.This folder is empty.NestedFolderteam.orbitOrbit fileSelect a .orbit file, then choose Open.Open file elsewhere…Connect This FolderOpenCancel",
+    "rect": {
+      "left": 0,
+      "top": 0,
+      "right": 1500,
+      "bottom": 900,
+      "width": 1500,
+      "height": 900
+    },
+    "rows": [
+      {
+        "name": "NestedFolder",
+        "kind": "folder",
+        "key": "folder:Nested"
+      },
+      {
+        "name": "team.orbitOrbit file",
+        "kind": "file",
+        "key": "file:team.orbit"
+      }
+    ],
+    "breadcrumb": [
+      "Orbit Root",
+      "Projects"
+    ],
+    "buttons": [
+      {
+        "text": "Orbit Root",
+        "disabled": false,
+        "action": null
+      },
+      {
+        "text": "Projects",
+        "disabled": false,
+        "action": null
+      },
+      {
+        "text": "Parent",
+        "disabled": false,
+        "action": "up"
+      },
+      {
+        "text": "Choose Another Folder",
+        "disabled": false,
+        "action": "choose-folder"
+      },
+      {
+        "text": "Refresh",
+        "disabled": false,
+        "action": "refresh"
+      },
+      {
+        "text": "NestedFolder",
+        "disabled": false,
+        "action": null
+      },
+      {
+        "text": "team.orbitOrbit file",
+        "disabled": false,
+        "action": null
+      },
+      {
+        "text": "Open file elsewhere…",
+        "disabled": false,
+        "action": "elsewhere"
+      },
+      {
+        "text": "Connect This Folder",
+        "disabled": false,
+        "action": "connect"
+      },
+      {
+        "text": "Open",
+        "disabled": true,
+        "action": "open"
+      },
+      {
+        "text": "Cancel",
+        "disabled": false,
+        "action": "cancel"
+      }
+    ],
+    "current": "Current folder: Projects",
+    "status": "1 folder, 1 Orbit file."
+  },
+  "refresh": {
+    "text": "Open Orbit FolderCurrent folder: ProjectsOrbit Root›ProjectsParentChoose Another FolderRefresh1 folder, 1 Orbit file.This folder is empty.NestedFolderteam.orbitOrbit fileSelect a .orbit file, then choose Open.Open file elsewhere…Connect This FolderOpenCancel",
+    "rect": {
+      "left": 0,
+      "top": 0,
+      "right": 1500,
+      "bottom": 900,
+      "width": 1500,
+      "height": 900
+    },
+    "rows": [
+      {
+        "name": "NestedFolder",
+        "kind": "folder",
+        "key": "folder:Nested"
+      },
+      {
+        "name": "team.orbitOrbit file",
+        "kind": "file",
+        "key": "file:team.orbit"
+      }
+    ],
+    "breadcrumb": [
+      "Orbit Root",
+      "Projects"
+    ],
+    "buttons": [
+      {
+        "text": "Orbit Root",
+        "disabled": false,
+        "action": null
+      },
+      {
+        "text": "Projects",
+        "disabled": false,
+        "action": null
+      },
+      {
+        "text": "Parent",
+        "disabled": false,
+        "action": "up"
+      },
+      {
+        "text": "Choose Another Folder",
+        "disabled": false,
+        "action": "choose-folder"
+      },
+      {
+        "text": "Refresh",
+        "disabled": false,
+        "action": "refresh"
+      },
+      {
+        "text": "NestedFolder",
+        "disabled": false,
+        "action": null
+      },
+      {
+        "text": "team.orbitOrbit file",
+        "disabled": false,
+        "action": null
+      },
+      {
+        "text": "Open file elsewhere…",
+        "disabled": false,
+        "action": "elsewhere"
+      },
+      {
+        "text": "Connect This Folder",
+        "disabled": false,
+        "action": "connect"
+      },
+      {
+        "text": "Open",
+        "disabled": true,
+        "action": "open"
+      },
+      {
+        "text": "Cancel",
+        "disabled": false,
+        "action": "cancel"
+      }
+    ],
+    "current": "Current folder: Projects",
+    "status": "1 folder, 1 Orbit file."
+  },
+  "connected": {
+    "name": "Projects",
+    "sectionHidden": false,
+    "list": [
+      "team.orbit11/4/2026"
+    ],
+    "mapId": null,
+    "status": "Connected Projects. The current map was not changed."
+  },
+  "reopenedConnected": {
+    "text": "Open Orbit FolderCurrent folder: ProjectsProjectsParentChoose Another FolderRefresh1 folder, 1 Orbit file.This folder is empty.NestedFolderteam.orbitOrbit fileSelect a .orbit file, then choose Open.Open file elsewhere…Connect This FolderOpenCancel",
+    "rect": {
+      "left": 0,
+      "top": 0,
+      "right": 1500,
+      "bottom": 900,
+      "width": 1500,
+      "height": 900
+    },
+    "rows": [
+      {
+        "name": "NestedFolder",
+        "kind": "folder",
+        "key": "folder:Nested"
+      },
+      {
+        "name": "team.orbitOrbit file",
+        "kind": "file",
+        "key": "file:team.orbit"
+      }
+    ],
+    "breadcrumb": [
+      "Projects"
+    ],
+    "buttons": [
+      {
+        "text": "Projects",
+        "disabled": false,
+        "action": null
+      },
+      {
+        "text": "Parent",
+        "disabled": true,
+        "action": "up"
+      },
+      {
+        "text": "Choose Another Folder",
+        "disabled": false,
+        "action": "choose-folder"
+      },
+      {
+        "text": "Refresh",
+        "disabled": false,
+        "action": "refresh"
+      },
+      {
+        "text": "NestedFolder",
+        "disabled": false,
+        "action": null
+      },
+      {
+        "text": "team.orbitOrbit file",
+        "disabled": false,
+        "action": null
+      },
+      {
+        "text": "Open file elsewhere…",
+        "disabled": false,
+        "action": "elsewhere"
+      },
+      {
+        "text": "Connect This Folder",
+        "disabled": false,
+        "action": "connect"
+      },
+      {
+        "text": "Open",
+        "disabled": true,
+        "action": "open"
+      },
+      {
+        "text": "Cancel",
+        "disabled": false,
+        "action": "cancel"
+      }
+    ],
+    "current": "Current folder: Projects",
+    "status": "1 folder, 1 Orbit file."
+  },
+  "cancelClosed": true,
+  "pickerCancel": {
+    "text": "Open Orbit FolderCurrent folder: ProjectsProjectsParentChoose Another FolderRefreshFolder selection cancelled. The current folder and map were preserved.This folder is empty.NestedFolderteam.orbitOrbit fileSelect a .orbit file, then choose Open.Open file elsewhere…Connect This FolderOpenCancel",
+    "rect": {
+      "left": 0,
+      "top": 0,
+      "right": 1500,
+      "bottom": 900,
+      "width": 1500,
+      "height": 900
+    },
+    "rows": [
+      {
+        "name": "NestedFolder",
+        "kind": "folder",
+        "key": "folder:Nested"
+      },
+      {
+        "name": "team.orbitOrbit file",
+        "kind": "file",
+        "key": "file:team.orbit"
+      }
+    ],
+    "breadcrumb": [
+      "Projects"
+    ],
+    "buttons": [
+      {
+        "text": "Projects",
+        "disabled": false,
+        "action": null
+      },
+      {
+        "text": "Parent",
+        "disabled": true,
+        "action": "up"
+      },
+      {
+        "text": "Choose Another Folder",
+        "disabled": false,
+        "action": "choose-folder"
+      },
+      {
+        "text": "Refresh",
+        "disabled": false,
+        "action": "refresh"
+      },
+      {
+        "text": "NestedFolder",
+        "disabled": false,
+        "action": null
+      },
+      {
+        "text": "team.orbitOrbit file",
+        "disabled": false,
+        "action": null
+      },
+      {
+        "text": "Open file elsewhere…",
+        "disabled": false,
+        "action": "elsewhere"
+      },
+      {
+        "text": "Connect This Folder",
+        "disabled": false,
+        "action": "connect"
+      },
+      {
+        "text": "Open",
+        "disabled": true,
+        "action": "open"
+      },
+      {
+        "text": "Cancel",
+        "disabled": false,
+        "action": "cancel"
+      }
+    ],
+    "current": "Current folder: Projects",
+    "status": "Folder selection cancelled. The current folder and map were preserved."
+  },
+  "denied": {
+    "text": "Open Orbit FolderCurrent folder: ProjectsProjectsParentChoose Another FolderRefreshFolder permission was denied. The current folder and map were preserved.This folder is empty.NestedFolderteam.orbitOrbit fileSelect a .orbit file, then choose Open.Open file elsewhere…Connect This FolderOpenCancel",
+    "rect": {
+      "left": 0,
+      "top": 0,
+      "right": 1500,
+      "bottom": 900,
+      "width": 1500,
+      "height": 900
+    },
+    "rows": [
+      {
+        "name": "NestedFolder",
+        "kind": "folder",
+        "key": "folder:Nested"
+      },
+      {
+        "name": "team.orbitOrbit file",
+        "kind": "file",
+        "key": "file:team.orbit"
+      }
+    ],
+    "breadcrumb": [
+      "Projects"
+    ],
+    "buttons": [
+      {
+        "text": "Projects",
+        "disabled": false,
+        "action": null
+      },
+      {
+        "text": "Parent",
+        "disabled": true,
+        "action": "up"
+      },
+      {
+        "text": "Choose Another Folder",
+        "disabled": false,
+        "action": "choose-folder"
+      },
+      {
+        "text": "Refresh",
+        "disabled": false,
+        "action": "refresh"
+      },
+      {
+        "text": "NestedFolder",
+        "disabled": false,
+        "action": null
+      },
+      {
+        "text": "team.orbitOrbit file",
+        "disabled": false,
+        "action": null
+      },
+      {
+        "text": "Open file elsewhere…",
+        "disabled": false,
+        "action": "elsewhere"
+      },
+      {
+        "text": "Connect This Folder",
+        "disabled": false,
+        "action": "connect"
+      },
+      {
+        "text": "Open",
+        "disabled": true,
+        "action": "open"
+      },
+      {
+        "text": "Cancel",
+        "disabled": false,
+        "action": "cancel"
+      }
+    ],
+    "current": "Current folder: Projects",
+    "status": "Folder permission was denied. The current folder and map were preserved."
+  },
+  "projectsAgain": {
+    "text": "Open Orbit FolderCurrent folder: ProjectsProjectsParentChoose Another FolderRefresh1 folder, 1 Orbit file.This folder is empty.NestedFolderteam.orbitOrbit fileSelect a .orbit file, then choose Open.Open file elsewhere…Connect This FolderOpenCancel",
+    "rect": {
+      "left": 0,
+      "top": 0,
+      "right": 1500,
+      "bottom": 900,
+      "width": 1500,
+      "height": 900
+    },
+    "rows": [
+      {
+        "name": "NestedFolder",
+        "kind": "folder",
+        "key": "folder:Nested"
+      },
+      {
+        "name": "team.orbitOrbit file",
+        "kind": "file",
+        "key": "file:team.orbit"
+      }
+    ],
+    "breadcrumb": [
+      "Projects"
+    ],
+    "buttons": [
+      {
+        "text": "Projects",
+        "disabled": false,
+        "action": null
+      },
+      {
+        "text": "Parent",
+        "disabled": true,
+        "action": "up"
+      },
+      {
+        "text": "Choose Another Folder",
+        "disabled": false,
+        "action": "choose-folder"
+      },
+      {
+        "text": "Refresh",
+        "disabled": false,
+        "action": "refresh"
+      },
+      {
+        "text": "NestedFolder",
+        "disabled": false,
+        "action": null
+      },
+      {
+        "text": "team.orbitOrbit file",
+        "disabled": false,
+        "action": null
+      },
+      {
+        "text": "Open file elsewhere…",
+        "disabled": false,
+        "action": "elsewhere"
+      },
+      {
+        "text": "Connect This Folder",
+        "disabled": false,
+        "action": "connect"
+      },
+      {
+        "text": "Open",
+        "disabled": true,
+        "action": "open"
+      },
+      {
+        "text": "Cancel",
+        "disabled": false,
+        "action": "cancel"
+      }
+    ],
+    "current": "Current folder: Projects",
+    "status": "1 folder, 1 Orbit file."
+  },
+  "selected": {
+    "text": "Open Orbit FolderCurrent folder: ProjectsProjectsParentChoose Another FolderRefresh1 folder, 1 Orbit file.This folder is empty.NestedFolderteam.orbitOrbit fileSelected document: team.orbitOpen file elsewhere…Connect This FolderOpenCancel",
+    "rect": {
+      "left": 0,
+      "top": 0,
+      "right": 1500,
+      "bottom": 900,
+      "width": 1500,
+      "height": 900
+    },
+    "rows": [
+      {
+        "name": "NestedFolder",
+        "kind": "folder",
+        "key": "folder:Nested"
+      },
+      {
+        "name": "team.orbitOrbit file",
+        "kind": "file",
+        "key": "file:team.orbit"
+      }
+    ],
+    "breadcrumb": [
+      "Projects"
+    ],
+    "buttons": [
+      {
+        "text": "Projects",
+        "disabled": false,
+        "action": null
+      },
+      {
+        "text": "Parent",
+        "disabled": true,
+        "action": "up"
+      },
+      {
+        "text": "Choose Another Folder",
+        "disabled": false,
+        "action": "choose-folder"
+      },
+      {
+        "text": "Refresh",
+        "disabled": false,
+        "action": "refresh"
+      },
+      {
+        "text": "NestedFolder",
+        "disabled": false,
+        "action": null
+      },
+      {
+        "text": "team.orbitOrbit file",
+        "disabled": false,
+        "action": null
+      },
+      {
+        "text": "Open file elsewhere…",
+        "disabled": false,
+        "action": "elsewhere"
+      },
+      {
+        "text": "Connect This Folder",
+        "disabled": false,
+        "action": "connect"
+      },
+      {
+        "text": "Open",
+        "disabled": false,
+        "action": "open"
+      },
+      {
+        "text": "Cancel",
+        "disabled": false,
+        "action": "cancel"
+      }
+    ],
+    "current": "Current folder: Projects",
+    "status": "1 folder, 1 Orbit file."
+  },
+  "openedDocument": {
+    "browser": false,
+    "document": {
+      "active": true,
+      "name": "team.orbit",
+      "mode": "writable",
+      "handleName": "team.orbit"
+    },
+    "status": "Opened team.orbit.",
+    "mapId": null
+  },
+  "sidebarRefresh": {
+    "name": "Projects",
+    "list": [
+      "●team.orbit11/4/2026"
+    ],
+    "status": "Updated 11:15 AM."
+  },
+  "unsavedPrompt": {
+    "text": "Unsaved map changesThis map has changes that are not saved in this browser. Save before importing the backup?Save and continueDiscard changesCancel",
+    "buttons": [
+      "Save and continue",
+      "Discard changes",
+      "Cancel"
+    ]
+  },
+  "unsavedCancel": {
+    "clicked": true,
+    "name": "team.orbit",
+    "handleName": "team.orbit",
+    "dirty": true,
+    "browser": false
+  },
+  "discardPrompt": {
+    "text": "Unsaved map changesThis map has changes that are not saved in this browser. Save before importing the backup?Save and continueDiscard changesCancel",
+    "clicked": true
+  },
+  "discardResult": {
+    "dirty": false,
+    "name": "team.orbit",
+    "handleName": "team.orbit",
+    "status": "Finish the current map/editor decision to open the Orbit map."
+  },
+  "searchQueryState": {
+    "panelHidden": false,
+    "value": "자료",
+    "tree": true,
+    "status": "1 match.",
+    "cards": [
+      "자료No descriptionFolder한국어 PDF Orbit"
+    ]
+  },
+  "searchDirect": {
+    "value": "자료"
+  },
+  "searchAfterEvent": {
+    "status": "1 match.",
+    "cards": [
+      "자료No descriptionFolder한국어 PDF Orbit"
+    ]
+  },
+  "searchPath": {
+    "state": {
+      "query": "자료",
+      "ids": [
+        "folder-node",
+        "root"
+      ],
+      "colors": {
+        "folder-node": {
+          "fill": "#D1D5DB",
+          "stroke": "#60A5FA"
+        },
+        "root": {
+          "fill": "#F8FAFC",
+          "stroke": "#60A5FA"
+        }
+      },
+      "folderColors": {
+        "root": {
+          "fill": "#F8FAFC",
+          "stroke": "#60A5FA"
+        },
+        "folder-node": {
+          "fill": "#D1D5DB",
+          "stroke": "#60A5FA"
+        }
+      },
+      "edges": [
+        {
+          "fromId": "root",
+          "toId": "folder-node",
+          "stroke": "#60A5FA",
+          "opacity": 0.55
+        }
+      ],
+      "activeId": null,
+      "selectedId": null,
+      "status": "Search highlights 2 folders containing matching results.",
+      "scenePresent": true
+    },
+    "strokes": [
+      {
+        "strokeStyle": "#454b54",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#454b54",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#454b54",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#f8fafc",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#22c55e",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#d1d5db",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#22c55e",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#454b54",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#454b54",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#454b54",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#f8fafc",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#22c55e",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#d1d5db",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#22c55e",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#454b54",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#454b54",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#454b54",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#f8fafc",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#22c55e",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#d1d5db",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#22c55e",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#454b54",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#60a5fa",
+        "globalAlpha": 0.55,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#454b54",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#60a5fa",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#22c55e",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#60a5fa",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#22c55e",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#60a5fa",
+        "globalAlpha": 1,
+        "lineWidth": 1.5
+      },
+      {
+        "strokeStyle": "#60a5fa",
+        "globalAlpha": 1,
+        "lineWidth": 1.5
+      }
+    ]
+  },
+  "searchPathActive": "folder-node",
+  "searchPathActiveState": {
+    "state": {
+      "query": "자료",
+      "ids": [
+        "folder-node",
+        "root"
+      ],
+      "colors": {
+        "folder-node": {
+          "fill": "#D1D5DB",
+          "stroke": "#60A5FA"
+        },
+        "root": {
+          "fill": "#F8FAFC",
+          "stroke": "#60A5FA"
+        }
+      },
+      "folderColors": {
+        "root": {
+          "fill": "#F8FAFC",
+          "stroke": "#60A5FA"
+        },
+        "folder-node": {
+          "fill": "#D1D5DB",
+          "stroke": "#60A5FA"
+        }
+      },
+      "edges": [
+        {
+          "fromId": "root",
+          "toId": "folder-node",
+          "stroke": "#60A5FA",
+          "opacity": 0.55
+        }
+      ],
+      "activeId": "folder-node",
+      "selectedId": null,
+      "status": "Search highlights 2 folders containing matching results.",
+      "scenePresent": true
+    },
+    "strokes": [
+      {
+        "strokeStyle": "#454b54",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#454b54",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#454b54",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#f8fafc",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#22c55e",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#d1d5db",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#22c55e",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#454b54",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#454b54",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#454b54",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#f8fafc",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#22c55e",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#d1d5db",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#22c55e",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#454b54",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#454b54",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#454b54",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#f8fafc",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#22c55e",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#d1d5db",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#22c55e",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#454b54",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#60a5fa",
+        "globalAlpha": 0.55,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#454b54",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#60a5fa",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#22c55e",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#60a5fa",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#22c55e",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#60a5fa",
+        "globalAlpha": 1,
+        "lineWidth": 1.5
+      },
+      {
+        "strokeStyle": "#60a5fa",
+        "globalAlpha": 1,
+        "lineWidth": 1.5
+      },
+      {
+        "strokeStyle": "#454b54",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#60a5fa",
+        "globalAlpha": 0.55,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#454b54",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#60a5fa",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#22c55e",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#60a5fa",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#22c55e",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#60a5fa",
+        "globalAlpha": 1,
+        "lineWidth": 1.5
+      },
+      {
+        "strokeStyle": "#60a5fa",
+        "globalAlpha": 1,
+        "lineWidth": 1.5
+      },
+      {
+        "strokeStyle": "#60a5fa",
+        "globalAlpha": 1,
+        "lineWidth": 3.5
+      }
+    ]
+  },
+  "pdfPreviewOpen": true,
+  "pdfSearch": {
+    "label": true,
+    "labelColor": "rgb(248, 113, 113)",
+    "badgeText": "PDF",
+    "badgeColor": "rgb(248, 113, 113)",
+    "viewer": true,
+    "viewerText": "보고서.pdfClose보고서.pdfPDF preview uses the browser’s native viewer when available.O",
+    "state": {
+      "query": "보고서",
+      "ids": [
+        "root"
+      ],
+      "colors": {
+        "root": {
+          "fill": "#F8FAFC",
+          "stroke": "#60A5FA"
+        }
+      },
+      "folderColors": {
+        "root": {
+          "fill": "#F8FAFC",
+          "stroke": "#60A5FA"
+        },
+        "folder-node": {
+          "fill": "#D1D5DB",
+          "stroke": "#D1D5DB"
+        }
+      },
+      "edges": [],
+      "activeId": "pdf-node",
+      "selectedId": "pdf-node",
+      "status": "Search highlights 1 folder containing matching results.",
+      "scenePresent": true
+    },
+    "strokes": [
+      {
+        "strokeStyle": "#454b54",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#454b54",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#454b54",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#f8fafc",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#22c55e",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#d1d5db",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#22c55e",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#454b54",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#454b54",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#454b54",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#f8fafc",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#22c55e",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#d1d5db",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#22c55e",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#454b54",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#454b54",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#454b54",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#f8fafc",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#22c55e",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#d1d5db",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#22c55e",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#454b54",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#60a5fa",
+        "globalAlpha": 0.55,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#454b54",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#60a5fa",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#22c55e",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#60a5fa",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#22c55e",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#60a5fa",
+        "globalAlpha": 1,
+        "lineWidth": 1.5
+      },
+      {
+        "strokeStyle": "#60a5fa",
+        "globalAlpha": 1,
+        "lineWidth": 1.5
+      },
+      {
+        "strokeStyle": "#454b54",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#60a5fa",
+        "globalAlpha": 0.55,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#454b54",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#60a5fa",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#22c55e",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#60a5fa",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#22c55e",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#60a5fa",
+        "globalAlpha": 1,
+        "lineWidth": 1.5
+      },
+      {
+        "strokeStyle": "#60a5fa",
+        "globalAlpha": 1,
+        "lineWidth": 1.5
+      },
+      {
+        "strokeStyle": "#60a5fa",
+        "globalAlpha": 1,
+        "lineWidth": 3.5
+      },
+      {
+        "strokeStyle": "#454b54",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#454b54",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#454b54",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#60a5fa",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#22c55e",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#d1d5db",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#22c55e",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#60a5fa",
+        "globalAlpha": 1,
+        "lineWidth": 1.5
+      },
+      {
+        "strokeStyle": "#60a5fa",
+        "globalAlpha": 1,
+        "lineWidth": 3.5
+      },
+      {
+        "strokeStyle": "#454b54",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#454b54",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#454b54",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#60a5fa",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#22c55e",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#d1d5db",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#22c55e",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#60a5fa",
+        "globalAlpha": 1,
+        "lineWidth": 1.5
+      },
+      {
+        "strokeStyle": "#818cf8",
+        "globalAlpha": 1,
+        "lineWidth": 2
+      },
+      {
+        "strokeStyle": "#454b54",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#454b54",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#454b54",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#60a5fa",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#22c55e",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#d1d5db",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#22c55e",
+        "globalAlpha": 1,
+        "lineWidth": 1
+      },
+      {
+        "strokeStyle": "#60a5fa",
+        "globalAlpha": 1,
+        "lineWidth": 1.5
+      },
+      {
+        "strokeStyle": "#60a5fa",
+        "globalAlpha": 1,
+        "lineWidth": 3.5
+      },
+      {
+        "strokeStyle": "#818cf8",
+        "globalAlpha": 1,
+        "lineWidth": 2
+      }
+    ]
+  },
+  "pdfAfterPreview": {
+    "closed": true,
+    "labelColor": "rgb(248, 113, 113)",
+    "badgeColor": "rgb(248, 113, 113)",
+    "classification": true
+  },
+  "viewerClose": true,
+  "searchCleared": {
+    "state": {
+      "query": "",
+      "ids": [],
+      "colors": {},
+      "folderColors": {
+        "root": {
+          "fill": "#F8FAFC",
+          "stroke": "#F8FAFC"
+        },
+        "folder-node": {
+          "fill": "#D1D5DB",
+          "stroke": "#D1D5DB"
+        }
+      },
+      "edges": [],
+      "activeId": null,
+      "selectedId": "pdf-node",
+      "status": "",
+      "scenePresent": true
+    },
+    "labelColor": "rgb(248, 113, 113)",
+    "badgeColor": "rgb(248, 113, 113)",
+    "redLabels": 0
+  },
+  "lightTheme": {
+    "theme": "light",
+    "labelColor": "rgb(248, 113, 113)",
+    "badgeColor": "rgb(248, 113, 113)"
+  },
+  "smallViewport": {
+    "text": "Open Orbit FolderCurrent folder: ProjectsProjectsParentChoose Another FolderRefresh1 folder, 1 Orbit file.This folder is empty.NestedFolderteam.orbitOrbit fileSelect a .orbit file, then choose Open.Open file elsewhere…Connect This FolderOpenCancel",
+    "rect": {
+      "left": 0,
+      "top": 0,
+      "right": 800,
+      "bottom": 600,
+      "width": 800,
+      "height": 600
+    },
+    "rows": [
+      {
+        "name": "NestedFolder",
+        "kind": "folder",
+        "key": "folder:Nested"
+      },
+      {
+        "name": "team.orbitOrbit file",
+        "kind": "file",
+        "key": "file:team.orbit"
+      }
+    ],
+    "breadcrumb": [
+      "Projects"
+    ],
+    "buttons": [
+      {
+        "text": "Projects",
+        "disabled": false,
+        "action": null
+      },
+      {
+        "text": "Parent",
+        "disabled": true,
+        "action": "up"
+      },
+      {
+        "text": "Choose Another Folder",
+        "disabled": false,
+        "action": "choose-folder"
+      },
+      {
+        "text": "Refresh",
+        "disabled": false,
+        "action": "refresh"
+      },
+      {
+        "text": "NestedFolder",
+        "disabled": false,
+        "action": null
+      },
+      {
+        "text": "team.orbitOrbit file",
+        "disabled": false,
+        "action": null
+      },
+      {
+        "text": "Open file elsewhere…",
+        "disabled": false,
+        "action": "elsewhere"
+      },
+      {
+        "text": "Connect This Folder",
+        "disabled": false,
+        "action": "connect"
+      },
+      {
+        "text": "Open",
+        "disabled": true,
+        "action": "open"
+      },
+      {
+        "text": "Cancel",
+        "disabled": false,
+        "action": "cancel"
+      }
+    ],
+    "current": "Current folder: Projects",
+    "status": "1 folder, 1 Orbit file."
+  },
+  "focus": {
+    "before": "choose-folder",
+    "after": "open-orbit-action",
+    "open": false
+  },
+  "pickerCalls": 3,
+  "pickerMode": "read",
+  "events": []
+}

@@ -1,0 +1,51 @@
+{
+  "revision": "r146",
+  "stageA": {
+    "color": "#E74C3C",
+    "rgb": [
+      231,
+      76,
+      60
+    ],
+    "sharedModule": "src/engine/hypertree/exploration/search-highlight.js"
+  },
+  "stageB": {
+    "snapshotSchema": "fileorbit.embed.snapshot",
+    "version": 1,
+    "nodeLimit": 300,
+    "attachments": false,
+    "localIframe": true,
+    "externalHosting": false,
+    "copyCodeEnabled": false
+  },
+  "verification": {
+    "focused": "77/77",
+    "full": "1111 tests, 1110 passed, 1 skipped, 0 failed",
+    "native": "NOT RUN",
+    "archiveFocused": "77/77"
+  },
+  "browser": {
+    "stageAColor": "#E74C3C",
+    "embedHost": "10 nodes loaded",
+    "folderNavigation": "field-notes",
+    "searchHighlightedFolders": 2,
+    "narrow": "454x532 iframe / 454x363 canvas",
+    "exceptions": []
+  },
+  "limits": {
+    "nodes": 300,
+    "attachments": "unchanged"
+  },
+  "preserved": {
+    "r145": "CB4590093B54E1FB7258813B59D6272DECF5E0EF180EB9F2B507254FE1C70692"
+  },
+  "archive": {
+    "path": "review/fileorbit-stage-ab-r146.zip",
+    "sha256": "9F4914564F317F9A6F251A53E831438C3C556B1EB530F09C66837646B22D7953",
+    "entries": 1391,
+    "manifestMismatches": 0
+  },
+  "application": {
+    "mainSha256": "58156EB76BF6E5026DB2DD4CC5B2ED5C25C08B56EE9AA7BD146912CED3FF72AD"
+  }
+}

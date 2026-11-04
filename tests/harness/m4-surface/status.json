@@ -1,0 +1,13 @@
+{
+  "harness": "m4-surface",
+  "browserVerification": "NOT_RUN",
+  "note": "Static checkpoint. Runtime status is exposed as window.__M4_SURFACE_STATUS__ when served locally.",
+  "operations": ["create", "resize", "recreate", "destroy"],
+  "canvasIdentityPreserved": null,
+  "coordinateBoundary": "toClient/fromClient translation-only; origin is drawable content origin; CSS transforms and canvas border/padding are not inferred",
+  "syntheticDprCases": [1, 1.25, 2, 3],
+  "actualDpr": null,
+  "css": null,
+  "backing": null,
+  "projectionObservations": []
+}

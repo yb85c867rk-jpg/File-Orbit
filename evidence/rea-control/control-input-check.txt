@@ -1,0 +1,5 @@
+﻿resolved_project=C:\Users\openw\Documents\Projects\visual-directory
+control_items=1 names=app.js
+control_reparse=False
+normalized_exact=True
+normalized_length=25

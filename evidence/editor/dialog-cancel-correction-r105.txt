@@ -1,0 +1,33 @@
+﻿FileOrbit dialog-cancel regression correction r105
+
+Prior evidence invalid:
+- r104 lifecycle test listed "dialog-cancel", but the runner branch had no dialog-cancel case.
+- It did not click Cancel, did not resolve/reject the picker, and awaited a createPromise that the fake click did not actually keep pending.
+- The child exited 0 with no event-loop work; the parent's status-only assertion falsely passed.
+
+Corrected scenario:
+- Deferred Save picker.
+- Actual Create Map dialog Cancel click.
+- Assert dialog hidden, no map, creation ownership false.
+- Capture status after Cancel.
+- Resolve old picker with writable handle.
+- Await completion; assert status unchanged, no map, no write, no active destination, no unhandled rejection.
+
+Completion/watchdog:
+- Each CREATE_PICKER_MODE scenario writes LIFECYCLE_COMPLETE:<mode> only after all assertions; parent requires the marker and successful exit.
+- Close gate writes CLOSE_GATE_COMPLETE and parent requires it.
+- Each scenario has a 15s watchdog that writes a watchdog marker and exits 70 if unresolved; cleared only after completion.
+- Parent no longer relies solely on exit status.
+
+r103 comparison:
+- Extracted r103 archive temporarily and inserted the same dialog-cancel scenario into its production-handler runner.
+- Result: R103_DIALOG_CANCEL_RESULT hasMap=true writes=1 active=true.
+- Corrected r104 production code: LIFECYCLE_COMPLETE:dialog-cancel; no map, no write, no active destination, status preserved.
+
+Executed focused:
+- create-picker-lifecycle-main: 6/6 and close-gate 1/1.
+- title-only, fallback, editor visibility.
+Full tests/engine: 944, 943 passed, 1 skipped, 0 failed.
+Syntax 22/22; served 104 files 200/no-store byte-match.
+
+Native browser lifecycle/picker: NOT RUN. Controlled production-handler evidence only.

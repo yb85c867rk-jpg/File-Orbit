@@ -1,0 +1,28 @@
+﻿FileOrbit Add Data attachment-registry lifecycle fix (r43)
+
+Cause:
+- createEditorPanel captured attachmentRegistry. Create Map/Open replaced live registry, leaving panel bound to old registry.
+- File reservation used old registry; save looked up ID in new registry.
+
+Fix:
+- Panel resolves current registry via accessor.
+- Pending reservations retain {id, owner} for reservation, classification, save lookup, cancel/type switch/destroy release.
+- Successful Create Map/Open recreate editor panel bound to installed registry; failed replacement retains/restores previous panel binding.
+- Failed editor Save returns controller to editing, retains draft/file reservation for retry, and shows "Save failed. Retry when ready." instead of Saving.
+
+Executed actual main-entry regressions:
+1. Add Data PDF after Open -> new node, revision increment, label, viewer.
+2. Add Data PDF after Create Map -> new node, revision increment, label.
+3. Failed Add Data save via draw failure -> form remains open, revision unchanged, retry succeeds without double count.
+4. Add Data after failed Open recovery -> succeeds.
+5. Cancel and type switch release pending reservation; registry size/bytes return to baseline.
+6. P1b lifecycle/Open/narrow-menu/recovery tests remain passing.
+
+Results:
+- Persistence: 31/31.
+- P1b main-entry: 17/17.
+- Full tests/engine: 753/753.
+- Native browser: NOT RUN.
+
+Limitations:
+- Native quota/cross-tab/crash/eviction and manual browser Add Data still NOT RUN.

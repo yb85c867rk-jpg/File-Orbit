@@ -1,0 +1,3562 @@
+{
+  "initial": {
+    "mounted": true,
+    "nodeCount": 1000,
+    "ids": 1000,
+    "proxyIds": 25,
+    "mode": "folder",
+    "folder": "Stage 3D 문서",
+    "crumb": [
+      "Stage 3D 문서"
+    ],
+    "render": {
+      "scene": {
+        "phase": "current",
+        "projection": {
+          "width": 900,
+          "height": 600,
+          "radius": 252,
+          "centerX": 450,
+          "centerY": 300,
+          "toCss": {},
+          "fromCss": {},
+          "toClient": {},
+          "fromClient": {}
+        },
+        "presentation": {
+          "background": "#0b0e14",
+          "edgeStroke": "#344054",
+          "edgeWidth": 1,
+          "folderFill": "#2f3f56",
+          "folderStroke": "#7c8ca8",
+          "fileFill": "#8793a6",
+          "fileStroke": "#c3ccda",
+          "rootFill": "#6366f1",
+          "rootStroke": "#c7d2fe",
+          "nodeStrokeWidth": 1,
+          "defaultNodeRadius": 3,
+          "minNodeRadius": 0.2,
+          "transformNodes": true,
+          "maxArcRadiusCss": 1000000
+        },
+        "nodes": {},
+        "edges": [
+          {
+            "fromId": "root",
+            "toId": "folder-big",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 450,
+              "y": 138.72
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "root",
+            "toId": "folder-docs",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 611.28,
+              "y": 300
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "root",
+            "toId": "folder-empty",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 450,
+              "y": 461.28
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "root",
+            "toId": "root-file",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 288.72,
+              "y": 300
+            },
+            "stroke": "#344054",
+            "width": 1
+          }
+        ],
+        "nodeCount": 5,
+        "edgeCount": 4,
+        "limits": {
+          "maxNodes": 1500,
+          "maxEdges": 1499
+        }
+      },
+      "snapshot": {
+        "nodes": [
+          {
+            "id": "root",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 450,
+              "y": 300
+            },
+            "radius": 3
+          },
+          {
+            "id": "folder-big",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 450,
+              "y": 138.72
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "folder-docs",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 611.28,
+              "y": 300
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "folder-empty",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 450,
+              "y": 461.28
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "root-file",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 288.72,
+              "y": 300
+            },
+            "radius": 1.7712
+          }
+        ],
+        "padding": 0
+      },
+      "metrics": {
+        "candidateCount": 5,
+        "viewportEligibleCount": 5,
+        "viewportIneligibleCount": 0,
+        "budgetExcludedCount": 0,
+        "createdCount": 5,
+        "visibleCount": 5,
+        "invalidWebLinkCount": 0,
+        "suppressedCount": 0,
+        "overlapSuppressedCount": 0,
+        "viewportSuppressedCount": 0,
+        "nodeObstacleSuppressedCount": 0,
+        "labelNodeOverlapCount": 0,
+        "placementAttempts": 6,
+        "labelNodeOverlapDefinition": "visible label-node pairs; owner node excluded; exact circle/diamond intersection",
+        "placementObstaclePolicy": "conservative glyph bounds",
+        "priorityVisibleCount": 0,
+        "prioritySuppressedCount": 0,
+        "unmeasurableCount": 0,
+        "measuredCount": 5,
+        "visibleIconCount": 0,
+        "leadingIconCount": 0,
+        "rootProtection": true,
+        "rootProtectionRect": {
+          "left": 348,
+          "top": 198,
+          "right": 552,
+          "bottom": 402
+        },
+        "rootLabelVisible": true,
+        "selectedLabelVisible": null,
+        "selectedLabelOpacity": null,
+        "textMismatchCount": 0,
+        "measurement": "getBoundingClientRect/offsetWidth",
+        "dprIndependent": true,
+        "viewport": {
+          "width": 828,
+          "height": 600
+        },
+        "labels": {}
+      },
+      "nodeCount": 5,
+      "edgeCount": 4,
+      "proxyCount": 0,
+      "labelCount": 5,
+      "mode": "folder",
+      "folderId": "root",
+      "searchTargetId": null
+    },
+    "labels": {
+      "labels": 5,
+      "priority": 0,
+      "clipped": [],
+      "priorityCollisions": [],
+      "fontSizes": [
+        "11px / 13.2px system-ui, sans-serif"
+      ],
+      "host": {
+        "width": 828,
+        "height": 600
+      }
+    },
+    "hostChildren": 2,
+    "status": "Mounted folder Stage 3D 문서"
+  },
+  "clustered": {
+    "mounted": true,
+    "nodeCount": 1000,
+    "ids": 1000,
+    "proxyIds": 25,
+    "mode": "overview",
+    "folder": "큰-폴더",
+    "crumb": [
+      "Stage 3D 문서",
+      "큰-폴더"
+    ],
+    "render": {
+      "scene": {
+        "phase": "current",
+        "projection": {
+          "width": 900,
+          "height": 600,
+          "radius": 252,
+          "centerX": 450,
+          "centerY": 300,
+          "toCss": {},
+          "fromCss": {},
+          "toClient": {},
+          "fromClient": {}
+        },
+        "presentation": {
+          "background": "#0b0e14",
+          "edgeStroke": "#344054",
+          "edgeWidth": 1,
+          "folderFill": "#2f3f56",
+          "folderStroke": "#7c8ca8",
+          "fileFill": "#8793a6",
+          "fileStroke": "#c3ccda",
+          "rootFill": "#6366f1",
+          "rootStroke": "#c7d2fe",
+          "nodeStrokeWidth": 1,
+          "defaultNodeRadius": 3,
+          "minNodeRadius": 0.2,
+          "transformNodes": true,
+          "maxArcRadiusCss": 1000000
+        },
+        "nodes": {},
+        "edges": [
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:0:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 450,
+              "y": 138.72
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:40:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 490.1087050019478,
+              "y": 143.7869077731744
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:80:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 527.6972325591247,
+              "y": 158.66925864252568
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:120:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 560.4037572441789,
+              "y": 182.43193976947475
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:160:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 586.173207824965,
+              "y": 213.58185450578742
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:200:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 603.3863949480824,
+              "y": 250.1617391472085
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:240:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 610.9617507609116,
+              "y": 289.8731450103123
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:280:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 608.4232877975229,
+              "y": 330.2208584163857
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:320:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 595.9305070217197,
+              "y": 368.669684143615
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:360:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 574.2683757948793,
+              "y": 402.8037410666687
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:400:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 544.79800548973,
+              "y": 430.47826085279155
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:440:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 509.3711278569849,
+              "y": 449.95435164405717
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:480:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 470.21374390925104,
+              "y": 460.008259027999
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:520:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 429.78625609074896,
+              "y": 460.008259027999
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:560:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 390.6288721430151,
+              "y": 449.95435164405717
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:600:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 355.20199451026997,
+              "y": 430.47826085279155
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:640:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 325.7316242051207,
+              "y": 402.80374106666864
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:680:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 304.0694929782803,
+              "y": 368.66968414361486
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:720:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 291.5767122024771,
+              "y": 330.2208584163857
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:760:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 289.0382492390884,
+              "y": 289.87314501031244
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:800:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 296.6136050519176,
+              "y": 250.1617391472085
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:840:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 313.82679217503494,
+              "y": 213.5818545057875
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:880:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 339.59624275582104,
+              "y": 182.43193976947478
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:920:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 372.30276744087536,
+              "y": 158.66925864252568
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:folder-big:960:31",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 409.89129499805216,
+              "y": 143.7869077731744
+            },
+            "stroke": "#344054",
+            "width": 1
+          }
+        ],
+        "nodeCount": 26,
+        "edgeCount": 25,
+        "limits": {
+          "maxNodes": 1500,
+          "maxEdges": 1499
+        }
+      },
+      "snapshot": {
+        "nodes": [
+          {
+            "id": "folder-big",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 450,
+              "y": 300
+            },
+            "radius": 3
+          },
+          {
+            "id": "proxy:folder-big:0:40",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 450,
+              "y": 138.72
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "proxy:folder-big:40:40",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 490.1087050019478,
+              "y": 143.7869077731744
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "proxy:folder-big:80:40",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 527.6972325591247,
+              "y": 158.66925864252568
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "proxy:folder-big:120:40",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 560.4037572441789,
+              "y": 182.43193976947475
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "proxy:folder-big:160:40",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 586.173207824965,
+              "y": 213.58185450578742
+            },
+            "radius": 1.7711999999999999
+          },
+          {
+            "id": "proxy:folder-big:200:40",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 603.3863949480824,
+              "y": 250.1617391472085
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "proxy:folder-big:240:40",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 610.9617507609116,
+              "y": 289.8731450103123
+            },
+            "radius": 1.7711999999999999
+          },
+          {
+            "id": "proxy:folder-big:280:40",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 608.4232877975229,
+              "y": 330.2208584163857
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "proxy:folder-big:320:40",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 595.9305070217197,
+              "y": 368.669684143615
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "proxy:folder-big:360:40",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 574.2683757948793,
+              "y": 402.8037410666687
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "proxy:folder-big:400:40",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 544.79800548973,
+              "y": 430.47826085279155
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "proxy:folder-big:440:40",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 509.3711278569849,
+              "y": 449.95435164405717
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "proxy:folder-big:480:40",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 470.21374390925104,
+              "y": 460.008259027999
+            },
+            "radius": 1.7711999999999999
+          },
+          {
+            "id": "proxy:folder-big:520:40",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 429.78625609074896,
+              "y": 460.008259027999
+            },
+            "radius": 1.7711999999999999
+          },
+          {
+            "id": "proxy:folder-big:560:40",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 390.6288721430151,
+              "y": 449.95435164405717
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "proxy:folder-big:600:40",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 355.20199451026997,
+              "y": 430.47826085279155
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "proxy:folder-big:640:40",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 325.7316242051207,
+              "y": 402.80374106666864
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "proxy:folder-big:680:40",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 304.0694929782803,
+              "y": 368.66968414361486
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "proxy:folder-big:720:40",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 291.5767122024771,
+              "y": 330.2208584163857
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "proxy:folder-big:760:40",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 289.0382492390884,
+              "y": 289.87314501031244
+            },
+            "radius": 1.7711999999999999
+          },
+          {
+            "id": "proxy:folder-big:800:40",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 296.6136050519176,
+              "y": 250.1617391472085
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "proxy:folder-big:840:40",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 313.82679217503494,
+              "y": 213.5818545057875
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "proxy:folder-big:880:40",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 339.59624275582104,
+              "y": 182.43193976947478
+            },
+            "radius": 1.7711999999999999
+          },
+          {
+            "id": "proxy:folder-big:920:40",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 372.30276744087536,
+              "y": 158.66925864252568
+            },
+            "radius": 1.7712
+          },
+          {
+            "id": "proxy:folder-big:960:31",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 409.89129499805216,
+              "y": 143.7869077731744
+            },
+            "radius": 1.7711999999999999
+          }
+        ],
+        "padding": 0
+      },
+      "metrics": {
+        "candidateCount": 26,
+        "viewportEligibleCount": 26,
+        "viewportIneligibleCount": 0,
+        "budgetExcludedCount": 8,
+        "createdCount": 18,
+        "visibleCount": 18,
+        "invalidWebLinkCount": 0,
+        "suppressedCount": 0,
+        "overlapSuppressedCount": 0,
+        "viewportSuppressedCount": 0,
+        "nodeObstacleSuppressedCount": 0,
+        "labelNodeOverlapCount": 0,
+        "placementAttempts": 30,
+        "labelNodeOverlapDefinition": "visible label-node pairs; owner node excluded; exact circle/diamond intersection",
+        "placementObstaclePolicy": "conservative glyph bounds",
+        "priorityVisibleCount": 0,
+        "prioritySuppressedCount": 0,
+        "unmeasurableCount": 0,
+        "measuredCount": 18,
+        "visibleIconCount": 0,
+        "leadingIconCount": 0,
+        "rootProtection": true,
+        "rootProtectionRect": {
+          "left": 348,
+          "top": 198,
+          "right": 552,
+          "bottom": 402
+        },
+        "rootLabelVisible": true,
+        "selectedLabelVisible": null,
+        "selectedLabelOpacity": null,
+        "textMismatchCount": 0,
+        "measurement": "getBoundingClientRect/offsetWidth",
+        "dprIndependent": true,
+        "viewport": {
+          "width": 813,
+          "height": 600
+        },
+        "labels": {}
+      },
+      "nodeCount": 26,
+      "edgeCount": 25,
+      "proxyCount": 25,
+      "labelCount": 18,
+      "mode": "overview",
+      "folderId": "folder-big",
+      "searchTargetId": null
+    },
+    "labels": {
+      "labels": 18,
+      "priority": 0,
+      "clipped": [],
+      "priorityCollisions": [],
+      "fontSizes": [
+        "11px / 13.2px system-ui, sans-serif"
+      ],
+      "host": {
+        "width": 813,
+        "height": 600
+      }
+    },
+    "hostChildren": 2,
+    "status": "Mounted overview 큰-폴더"
+  },
+  "expanded": {
+    "mounted": true,
+    "nodeCount": 1000,
+    "ids": 1000,
+    "proxyIds": 25,
+    "mode": "cluster",
+    "folder": "큰-폴더",
+    "crumb": [
+      "Stage 3D 문서",
+      "큰-폴더",
+      "묶음 1 (40개)"
+    ],
+    "render": {
+      "scene": {
+        "phase": "current",
+        "projection": {
+          "width": 900,
+          "height": 600,
+          "radius": 252,
+          "centerX": 450,
+          "centerY": 300,
+          "toCss": {},
+          "fromCss": {},
+          "toClient": {},
+          "fromClient": {}
+        },
+        "presentation": {
+          "background": "#0b0e14",
+          "edgeStroke": "#344054",
+          "edgeWidth": 1,
+          "folderFill": "#2f3f56",
+          "folderStroke": "#7c8ca8",
+          "fileFill": "#8793a6",
+          "fileStroke": "#c3ccda",
+          "rootFill": "#6366f1",
+          "rootStroke": "#c7d2fe",
+          "nodeStrokeWidth": 1,
+          "defaultNodeRadius": 3,
+          "minNodeRadius": 0.2,
+          "transformNodes": true,
+          "maxArcRadiusCss": 1000000
+        },
+        "nodes": {},
+        "edges": [
+          {
+            "fromId": "folder-big",
+            "toId": "big-0",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 450,
+              "y": 199.2
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-1",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 481.1489130329947,
+              "y": 204.1335031574485
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-2",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 509.2487534310813,
+              "y": 218.45108696700527
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-3",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 531.5489130329947,
+              "y": 240.7512465689187
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-4",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 545.8664968425514,
+              "y": 268.8510869670053
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-5",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 550.8,
+              "y": 300
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-6",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 545.8664968425514,
+              "y": 331.1489130329947
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-7",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 531.5489130329947,
+              "y": 359.2487534310813
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-8",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 509.2487534310813,
+              "y": 381.54891303299473
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:root:0:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 481.1489130329947,
+              "y": 395.8664968425515
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-10",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 450,
+              "y": 400.8
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-11",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 418.85108696700524,
+              "y": 395.86649684255144
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-12",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 390.7512465689187,
+              "y": 381.54891303299473
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-13",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 368.45108696700527,
+              "y": 359.2487534310813
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-14",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 354.1335031574485,
+              "y": 331.1489130329947
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-15",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 349.2,
+              "y": 300
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-16",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 354.1335031574485,
+              "y": 268.8510869670053
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-17",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 368.45108696700527,
+              "y": 240.7512465689187
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-18",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 390.7512465689187,
+              "y": 218.4510869670053
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-19",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 418.8510869670053,
+              "y": 204.1335031574485
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-20",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 450,
+              "y": 113.52000000000001
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-21",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 507.6254891110402,
+              "y": 122.6469808412798
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-22",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 559.6101938475003,
+              "y": 149.1345108889598
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-23",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 600.8654891110402,
+              "y": 190.3898061524996
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-24",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 627.3530191587201,
+              "y": 242.3745108889598
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-25",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 636.48,
+              "y": 300
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-26",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 627.3530191587201,
+              "y": 357.62548911104017
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-27",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 600.8654891110402,
+              "y": 409.6101938475004
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-28",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 559.6101938475003,
+              "y": 450.86548911104023
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-29",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 507.6254891110402,
+              "y": 477.3530191587202
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-30",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 450,
+              "y": 486.48
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-31",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 392.3745108889597,
+              "y": 477.3530191587202
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-32",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 340.38980615249966,
+              "y": 450.86548911104023
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-33",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 299.1345108889598,
+              "y": 409.6101938475004
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-34",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 272.6469808412798,
+              "y": 357.6254891110402
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-35",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 263.52,
+              "y": 300
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-36",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 272.64698084127974,
+              "y": 242.37451088895983
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-37",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 299.13451088895977,
+              "y": 190.38980615249963
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-38",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 340.3898061524996,
+              "y": 149.13451088895982
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-39",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 392.3745108889598,
+              "y": 122.6469808412798
+            },
+            "stroke": "#344054",
+            "width": 1
+          }
+        ],
+        "nodeCount": 41,
+        "edgeCount": 40,
+        "limits": {
+          "maxNodes": 1500,
+          "maxEdges": 1499
+        }
+      },
+      "snapshot": {
+        "nodes": [
+          {
+            "id": "folder-big",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 450,
+              "y": 300
+            },
+            "radius": 3
+          },
+          {
+            "id": "big-0",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 450,
+              "y": 199.2
+            },
+            "radius": 2.52
+          },
+          {
+            "id": "big-1",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 481.1489130329947,
+              "y": 204.1335031574485
+            },
+            "radius": 2.52
+          },
+          {
+            "id": "big-2",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 509.2487534310813,
+              "y": 218.45108696700527
+            },
+            "radius": 2.52
+          },
+          {
+            "id": "big-3",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 531.5489130329947,
+              "y": 240.7512465689187
+            },
+            "radius": 2.52
+          },
+          {
+            "id": "big-4",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 545.8664968425514,
+              "y": 268.8510869670053
+            },
+            "radius": 2.52
+          },
+          {
+            "id": "big-5",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 550.8,
+              "y": 300
+            },
+            "radius": 2.52
+          },
+          {
+            "id": "big-6",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 545.8664968425514,
+              "y": 331.1489130329947
+            },
+            "radius": 2.52
+          },
+          {
+            "id": "big-7",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 531.5489130329947,
+              "y": 359.2487534310813
+            },
+            "radius": 2.52
+          },
+          {
+            "id": "big-8",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 509.2487534310813,
+              "y": 381.54891303299473
+            },
+            "radius": 2.52
+          },
+          {
+            "id": "proxy:root:0:40",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 481.1489130329947,
+              "y": 395.8664968425515
+            },
+            "radius": 2.52
+          },
+          {
+            "id": "big-10",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 450,
+              "y": 400.8
+            },
+            "radius": 2.52
+          },
+          {
+            "id": "big-11",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 418.85108696700524,
+              "y": 395.86649684255144
+            },
+            "radius": 2.5200000000000005
+          },
+          {
+            "id": "big-12",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 390.7512465689187,
+              "y": 381.54891303299473
+            },
+            "radius": 2.52
+          },
+          {
+            "id": "big-13",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 368.45108696700527,
+              "y": 359.2487534310813
+            },
+            "radius": 2.52
+          },
+          {
+            "id": "big-14",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 354.1335031574485,
+              "y": 331.1489130329947
+            },
+            "radius": 2.52
+          },
+          {
+            "id": "big-15",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 349.2,
+              "y": 300
+            },
+            "radius": 2.52
+          },
+          {
+            "id": "big-16",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 354.1335031574485,
+              "y": 268.8510869670053
+            },
+            "radius": 2.52
+          },
+          {
+            "id": "big-17",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 368.45108696700527,
+              "y": 240.7512465689187
+            },
+            "radius": 2.52
+          },
+          {
+            "id": "big-18",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 390.7512465689187,
+              "y": 218.4510869670053
+            },
+            "radius": 2.52
+          },
+          {
+            "id": "big-19",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 418.8510869670053,
+              "y": 204.1335031574485
+            },
+            "radius": 2.52
+          },
+          {
+            "id": "big-20",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 450,
+              "y": 113.52000000000001
+            },
+            "radius": 1.3572000000000002
+          },
+          {
+            "id": "big-21",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 507.6254891110402,
+              "y": 122.6469808412798
+            },
+            "radius": 1.3572000000000004
+          },
+          {
+            "id": "big-22",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 559.6101938475003,
+              "y": 149.1345108889598
+            },
+            "radius": 1.3571999999999997
+          },
+          {
+            "id": "big-23",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 600.8654891110402,
+              "y": 190.3898061524996
+            },
+            "radius": 1.3571999999999997
+          },
+          {
+            "id": "big-24",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 627.3530191587201,
+              "y": 242.3745108889598
+            },
+            "radius": 1.3572000000000004
+          },
+          {
+            "id": "big-25",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 636.48,
+              "y": 300
+            },
+            "radius": 1.3572000000000002
+          },
+          {
+            "id": "big-26",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 627.3530191587201,
+              "y": 357.62548911104017
+            },
+            "radius": 1.3572000000000004
+          },
+          {
+            "id": "big-27",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 600.8654891110402,
+              "y": 409.6101938475004
+            },
+            "radius": 1.3571999999999997
+          },
+          {
+            "id": "big-28",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 559.6101938475003,
+              "y": 450.86548911104023
+            },
+            "radius": 1.3571999999999997
+          },
+          {
+            "id": "big-29",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 507.6254891110402,
+              "y": 477.3530191587202
+            },
+            "radius": 1.3572000000000004
+          },
+          {
+            "id": "big-30",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 450,
+              "y": 486.48
+            },
+            "radius": 1.3572000000000002
+          },
+          {
+            "id": "big-31",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 392.3745108889597,
+              "y": 477.3530191587202
+            },
+            "radius": 1.3572000000000002
+          },
+          {
+            "id": "big-32",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 340.38980615249966,
+              "y": 450.86548911104023
+            },
+            "radius": 1.3572000000000002
+          },
+          {
+            "id": "big-33",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 299.1345108889598,
+              "y": 409.6101938475004
+            },
+            "radius": 1.3572000000000002
+          },
+          {
+            "id": "big-34",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 272.6469808412798,
+              "y": 357.6254891110402
+            },
+            "radius": 1.3572000000000004
+          },
+          {
+            "id": "big-35",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 263.52,
+              "y": 300
+            },
+            "radius": 1.3572000000000002
+          },
+          {
+            "id": "big-36",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 272.64698084127974,
+              "y": 242.37451088895983
+            },
+            "radius": 1.3572000000000002
+          },
+          {
+            "id": "big-37",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 299.13451088895977,
+              "y": 190.38980615249963
+            },
+            "radius": 1.3572000000000002
+          },
+          {
+            "id": "big-38",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 340.3898061524996,
+              "y": 149.13451088895982
+            },
+            "radius": 1.3572000000000002
+          },
+          {
+            "id": "big-39",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 392.3745108889598,
+              "y": 122.6469808412798
+            },
+            "radius": 1.3572000000000002
+          }
+        ],
+        "padding": 0
+      },
+      "metrics": {
+        "candidateCount": 41,
+        "viewportEligibleCount": 41,
+        "viewportIneligibleCount": 0,
+        "budgetExcludedCount": 23,
+        "createdCount": 18,
+        "visibleCount": 4,
+        "invalidWebLinkCount": 0,
+        "suppressedCount": 14,
+        "overlapSuppressedCount": 13,
+        "viewportSuppressedCount": 0,
+        "nodeObstacleSuppressedCount": 1,
+        "labelNodeOverlapCount": 0,
+        "placementAttempts": 66,
+        "labelNodeOverlapDefinition": "visible label-node pairs; owner node excluded; exact circle/diamond intersection",
+        "placementObstaclePolicy": "conservative glyph bounds",
+        "priorityVisibleCount": 0,
+        "prioritySuppressedCount": 0,
+        "unmeasurableCount": 0,
+        "measuredCount": 18,
+        "visibleIconCount": 0,
+        "leadingIconCount": 0,
+        "rootProtection": true,
+        "rootProtectionRect": {
+          "left": 348.20000000000005,
+          "top": 198.20000000000005,
+          "right": 551.8,
+          "bottom": 401.79999999999995
+        },
+        "rootLabelVisible": true,
+        "selectedLabelVisible": null,
+        "selectedLabelOpacity": null,
+        "textMismatchCount": 0,
+        "measurement": "getBoundingClientRect/offsetWidth",
+        "dprIndependent": true,
+        "viewport": {
+          "width": 813,
+          "height": 600
+        },
+        "labels": {}
+      },
+      "nodeCount": 41,
+      "edgeCount": 40,
+      "proxyCount": 0,
+      "labelCount": 4,
+      "mode": "cluster",
+      "folderId": "folder-big",
+      "searchTargetId": null
+    },
+    "labels": {
+      "labels": 4,
+      "priority": 0,
+      "clipped": [],
+      "priorityCollisions": [],
+      "fontSizes": [
+        "11px / 13.2px system-ui, sans-serif"
+      ],
+      "host": {
+        "width": 813,
+        "height": 600
+      }
+    },
+    "hostChildren": 2,
+    "status": "Mounted cluster 큰-폴더"
+  },
+  "preview": {
+    "text": {
+      "url": "blob:http://127.0.0.1:8145/e9afc2a5-09cd-446c-a058-cfbef64cef7d",
+      "content": "텍스트 첨부"
+    },
+    "image1": {
+      "url": "blob:http://127.0.0.1:8145/9a188b12-0bd2-47f0-b713-4ea4c12c164b",
+      "src": "blob:http://127.0.0.1:8145/9a188b12-0bd2-47f0-b713-4ea4c12c164b",
+      "complete": true,
+      "naturalWidth": 1
+    },
+    "image2": {
+      "url": "blob:http://127.0.0.1:8145/9a188b12-0bd2-47f0-b713-4ea4c12c164b",
+      "src": "blob:http://127.0.0.1:8145/9a188b12-0bd2-47f0-b713-4ea4c12c164b",
+      "complete": true,
+      "naturalWidth": 1
+    },
+    "imageAgain": {
+      "url": "blob:http://127.0.0.1:8145/9a188b12-0bd2-47f0-b713-4ea4c12c164b",
+      "src": "blob:http://127.0.0.1:8145/9a188b12-0bd2-47f0-b713-4ea4c12c164b",
+      "complete": true,
+      "naturalWidth": 1
+    },
+    "pdf": {
+      "url": "blob:http://127.0.0.1:8145/efcbb14a-afed-4f5d-b892-bcfe38c28ba7",
+      "prefix": "%PDF-1.7"
+    },
+    "bytes": [
+      68,
+      68,
+      68
+    ],
+    "naturalWidth": 1
+  },
+  "unmounted": {
+    "mounted": false,
+    "labels": null,
+    "hostChildren": 0,
+    "status": "Unmounted"
+  },
+  "remounted": {
+    "search": null,
+    "page": 1,
+    "results": 0,
+    "input": "",
+    "preview": 0
+  },
+  "search1": {
+    "info": "1/20 of 985",
+    "count": 50,
+    "status": "Mounted folder Stage 3D 문서"
+  },
+  "search2": {
+    "info": "2/20 of 985",
+    "count": 50
+  },
+  "search3": "1/20 of 985",
+  "revealed": {
+    "mounted": true,
+    "nodeCount": 1000,
+    "ids": 1000,
+    "proxyIds": 25,
+    "mode": "cluster",
+    "folder": "큰-폴더",
+    "crumb": [
+      "Stage 3D 문서",
+      "큰-폴더",
+      "묶음 1 (40개)"
+    ],
+    "render": {
+      "scene": {
+        "phase": "current",
+        "projection": {
+          "width": 900,
+          "height": 600,
+          "radius": 252,
+          "centerX": 450,
+          "centerY": 300,
+          "toCss": {},
+          "fromCss": {},
+          "toClient": {},
+          "fromClient": {}
+        },
+        "presentation": {
+          "background": "#0b0e14",
+          "edgeStroke": "#344054",
+          "edgeWidth": 1,
+          "folderFill": "#2f3f56",
+          "folderStroke": "#7c8ca8",
+          "fileFill": "#8793a6",
+          "fileStroke": "#c3ccda",
+          "rootFill": "#6366f1",
+          "rootStroke": "#c7d2fe",
+          "nodeStrokeWidth": 1,
+          "defaultNodeRadius": 3,
+          "minNodeRadius": 0.2,
+          "transformNodes": true,
+          "maxArcRadiusCss": 1000000
+        },
+        "nodes": {},
+        "edges": [
+          {
+            "fromId": "folder-big",
+            "toId": "big-0",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 450,
+              "y": 199.2
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-1",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 481.1489130329947,
+              "y": 204.1335031574485
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-2",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 509.2487534310813,
+              "y": 218.45108696700527
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-3",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 531.5489130329947,
+              "y": 240.7512465689187
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-4",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 545.8664968425514,
+              "y": 268.8510869670053
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-5",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 550.8,
+              "y": 300
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-6",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 545.8664968425514,
+              "y": 331.1489130329947
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-7",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 531.5489130329947,
+              "y": 359.2487534310813
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-8",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 509.2487534310813,
+              "y": 381.54891303299473
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "proxy:root:0:40",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 481.1489130329947,
+              "y": 395.8664968425515
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-10",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 450,
+              "y": 400.8
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-11",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 418.85108696700524,
+              "y": 395.86649684255144
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-12",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 390.7512465689187,
+              "y": 381.54891303299473
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-13",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 368.45108696700527,
+              "y": 359.2487534310813
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-14",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 354.1335031574485,
+              "y": 331.1489130329947
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-15",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 349.2,
+              "y": 300
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-16",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 354.1335031574485,
+              "y": 268.8510869670053
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-17",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 368.45108696700527,
+              "y": 240.7512465689187
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-18",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 390.7512465689187,
+              "y": 218.4510869670053
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-19",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 418.8510869670053,
+              "y": 204.1335031574485
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-20",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 450,
+              "y": 113.52000000000001
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-21",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 507.6254891110402,
+              "y": 122.6469808412798
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-22",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 559.6101938475003,
+              "y": 149.1345108889598
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-23",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 600.8654891110402,
+              "y": 190.3898061524996
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-24",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 627.3530191587201,
+              "y": 242.3745108889598
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-25",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 636.48,
+              "y": 300
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-26",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 627.3530191587201,
+              "y": 357.62548911104017
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-27",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 600.8654891110402,
+              "y": 409.6101938475004
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-28",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 559.6101938475003,
+              "y": 450.86548911104023
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-29",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 507.6254891110402,
+              "y": 477.3530191587202
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-30",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 450,
+              "y": 486.48
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-31",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 392.3745108889597,
+              "y": 477.3530191587202
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-32",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 340.38980615249966,
+              "y": 450.86548911104023
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-33",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 299.1345108889598,
+              "y": 409.6101938475004
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-34",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 272.6469808412798,
+              "y": 357.6254891110402
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-35",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 263.52,
+              "y": 300
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-36",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 272.64698084127974,
+              "y": 242.37451088895983
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-37",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 299.13451088895977,
+              "y": 190.38980615249963
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-38",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 340.3898061524996,
+              "y": 149.13451088895982
+            },
+            "stroke": "#344054",
+            "width": 1
+          },
+          {
+            "fromId": "folder-big",
+            "toId": "big-39",
+            "kind": "line",
+            "fallback": "collinear",
+            "fromCss": {
+              "x": 450,
+              "y": 300
+            },
+            "toCss": {
+              "x": 392.3745108889598,
+              "y": 122.6469808412798
+            },
+            "stroke": "#344054",
+            "width": 1
+          }
+        ],
+        "nodeCount": 41,
+        "edgeCount": 40,
+        "limits": {
+          "maxNodes": 1500,
+          "maxEdges": 1499
+        }
+      },
+      "snapshot": {
+        "nodes": [
+          {
+            "id": "folder-big",
+            "kind": "folder",
+            "shape": "circle",
+            "visible": true,
+            "center": {
+              "x": 450,
+              "y": 300
+            },
+            "radius": 3
+          },
+          {
+            "id": "big-0",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 450,
+              "y": 199.2
+            },
+            "radius": 2.52
+          },
+          {
+            "id": "big-1",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 481.1489130329947,
+              "y": 204.1335031574485
+            },
+            "radius": 2.52
+          },
+          {
+            "id": "big-2",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 509.2487534310813,
+              "y": 218.45108696700527
+            },
+            "radius": 2.52
+          },
+          {
+            "id": "big-3",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 531.5489130329947,
+              "y": 240.7512465689187
+            },
+            "radius": 2.52
+          },
+          {
+            "id": "big-4",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 545.8664968425514,
+              "y": 268.8510869670053
+            },
+            "radius": 2.52
+          },
+          {
+            "id": "big-5",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 550.8,
+              "y": 300
+            },
+            "radius": 2.52
+          },
+          {
+            "id": "big-6",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 545.8664968425514,
+              "y": 331.1489130329947
+            },
+            "radius": 2.52
+          },
+          {
+            "id": "big-7",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 531.5489130329947,
+              "y": 359.2487534310813
+            },
+            "radius": 2.52
+          },
+          {
+            "id": "big-8",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 509.2487534310813,
+              "y": 381.54891303299473
+            },
+            "radius": 2.52
+          },
+          {
+            "id": "proxy:root:0:40",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 481.1489130329947,
+              "y": 395.8664968425515
+            },
+            "radius": 2.52
+          },
+          {
+            "id": "big-10",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 450,
+              "y": 400.8
+            },
+            "radius": 2.52
+          },
+          {
+            "id": "big-11",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 418.85108696700524,
+              "y": 395.86649684255144
+            },
+            "radius": 2.5200000000000005
+          },
+          {
+            "id": "big-12",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 390.7512465689187,
+              "y": 381.54891303299473
+            },
+            "radius": 2.52
+          },
+          {
+            "id": "big-13",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 368.45108696700527,
+              "y": 359.2487534310813
+            },
+            "radius": 2.52
+          },
+          {
+            "id": "big-14",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 354.1335031574485,
+              "y": 331.1489130329947
+            },
+            "radius": 2.52
+          },
+          {
+            "id": "big-15",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 349.2,
+              "y": 300
+            },
+            "radius": 2.52
+          },
+          {
+            "id": "big-16",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 354.1335031574485,
+              "y": 268.8510869670053
+            },
+            "radius": 2.52
+          },
+          {
+            "id": "big-17",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 368.45108696700527,
+              "y": 240.7512465689187
+            },
+            "radius": 2.52
+          },
+          {
+            "id": "big-18",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 390.7512465689187,
+              "y": 218.4510869670053
+            },
+            "radius": 2.52
+          },
+          {
+            "id": "big-19",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 418.8510869670053,
+              "y": 204.1335031574485
+            },
+            "radius": 2.52
+          },
+          {
+            "id": "big-20",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 450,
+              "y": 113.52000000000001
+            },
+            "radius": 1.3572000000000002
+          },
+          {
+            "id": "big-21",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 507.6254891110402,
+              "y": 122.6469808412798
+            },
+            "radius": 1.3572000000000004
+          },
+          {
+            "id": "big-22",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 559.6101938475003,
+              "y": 149.1345108889598
+            },
+            "radius": 1.3571999999999997
+          },
+          {
+            "id": "big-23",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 600.8654891110402,
+              "y": 190.3898061524996
+            },
+            "radius": 1.3571999999999997
+          },
+          {
+            "id": "big-24",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 627.3530191587201,
+              "y": 242.3745108889598
+            },
+            "radius": 1.3572000000000004
+          },
+          {
+            "id": "big-25",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 636.48,
+              "y": 300
+            },
+            "radius": 1.3572000000000002
+          },
+          {
+            "id": "big-26",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 627.3530191587201,
+              "y": 357.62548911104017
+            },
+            "radius": 1.3572000000000004
+          },
+          {
+            "id": "big-27",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 600.8654891110402,
+              "y": 409.6101938475004
+            },
+            "radius": 1.3571999999999997
+          },
+          {
+            "id": "big-28",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 559.6101938475003,
+              "y": 450.86548911104023
+            },
+            "radius": 1.3571999999999997
+          },
+          {
+            "id": "big-29",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 507.6254891110402,
+              "y": 477.3530191587202
+            },
+            "radius": 1.3572000000000004
+          },
+          {
+            "id": "big-30",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 450,
+              "y": 486.48
+            },
+            "radius": 1.3572000000000002
+          },
+          {
+            "id": "big-31",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 392.3745108889597,
+              "y": 477.3530191587202
+            },
+            "radius": 1.3572000000000002
+          },
+          {
+            "id": "big-32",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 340.38980615249966,
+              "y": 450.86548911104023
+            },
+            "radius": 1.3572000000000002
+          },
+          {
+            "id": "big-33",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 299.1345108889598,
+              "y": 409.6101938475004
+            },
+            "radius": 1.3572000000000002
+          },
+          {
+            "id": "big-34",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 272.6469808412798,
+              "y": 357.6254891110402
+            },
+            "radius": 1.3572000000000004
+          },
+          {
+            "id": "big-35",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 263.52,
+              "y": 300
+            },
+            "radius": 1.3572000000000002
+          },
+          {
+            "id": "big-36",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 272.64698084127974,
+              "y": 242.37451088895983
+            },
+            "radius": 1.3572000000000002
+          },
+          {
+            "id": "big-37",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 299.13451088895977,
+              "y": 190.38980615249963
+            },
+            "radius": 1.3572000000000002
+          },
+          {
+            "id": "big-38",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 340.3898061524996,
+              "y": 149.13451088895982
+            },
+            "radius": 1.3572000000000002
+          },
+          {
+            "id": "big-39",
+            "kind": "file",
+            "shape": "diamond",
+            "visible": true,
+            "center": {
+              "x": 392.3745108889598,
+              "y": 122.6469808412798
+            },
+            "radius": 1.3572000000000002
+          }
+        ],
+        "padding": 0
+      },
+      "metrics": {
+        "candidateCount": 41,
+        "viewportEligibleCount": 41,
+        "viewportIneligibleCount": 0,
+        "budgetExcludedCount": 23,
+        "createdCount": 18,
+        "visibleCount": 4,
+        "invalidWebLinkCount": 0,
+        "suppressedCount": 14,
+        "overlapSuppressedCount": 13,
+        "viewportSuppressedCount": 0,
+        "nodeObstacleSuppressedCount": 1,
+        "labelNodeOverlapCount": 0,
+        "placementAttempts": 66,
+        "labelNodeOverlapDefinition": "visible label-node pairs; owner node excluded; exact circle/diamond intersection",
+        "placementObstaclePolicy": "conservative glyph bounds",
+        "priorityVisibleCount": 1,
+        "prioritySuppressedCount": 0,
+        "unmeasurableCount": 0,
+        "measuredCount": 18,
+        "visibleIconCount": 0,
+        "leadingIconCount": 0,
+        "rootProtection": true,
+        "rootProtectionRect": {
+          "left": 348.20000000000005,
+          "top": 198.20000000000005,
+          "right": 551.8,
+          "bottom": 401.79999999999995
+        },
+        "rootLabelVisible": true,
+        "selectedLabelVisible": true,
+        "selectedLabelOpacity": 1,
+        "textMismatchCount": 0,
+        "measurement": "getBoundingClientRect/offsetWidth",
+        "dprIndependent": true,
+        "viewport": {
+          "width": 813,
+          "height": 600
+        },
+        "labels": {}
+      },
+      "nodeCount": 41,
+      "edgeCount": 40,
+      "proxyCount": 0,
+      "labelCount": 4,
+      "mode": "cluster",
+      "folderId": "folder-big",
+      "searchTargetId": "big-8"
+    },
+    "labels": {
+      "labels": 4,
+      "priority": 1,
+      "clipped": [],
+      "priorityCollisions": [],
+      "fontSizes": [
+        "11px / 13.2px system-ui, sans-serif"
+      ],
+      "host": {
+        "width": 813,
+        "height": 600
+      }
+    },
+    "hostChildren": 2,
+    "status": "Mounted cluster 큰-폴더"
+  },
+  "cleared": {
+    "target": null,
+    "rendered": null,
+    "info": "No results",
+    "results": 0,
+    "details": "아주-긴-한국어-파일-이름-아주-긴-한국어-파일-이름-8.txt{\n  \"kind\": \"document\",\n  \"id\": \"big-8\",\n  \"path\": \"Stage 3D 문서 / 큰-폴더 / 아주-긴-한국어-파일-이름-아주-긴-한국어-파일-이름-8.txt\",\n  \"canPreview\": true,\n  \"proxy\": false,\n  \"attachmentId\": null\n}Preview"
+  },
+  "changed": {
+    "target": null,
+    "rendered": null,
+    "info": "1/20 of 985",
+    "page": 1
+  },
+  "invariants": {
+    "allIdsReachable": true,
+    "proxyNotDoc": true,
+    "treeRoot": "root",
+    "treeChildren": 4,
+    "mapId": "map_bbfea698-3c0f-423e-8120-0c4386412cad",
+    "liveSentinel": {
+      "untouched": true
+    }
+  },
+  "cleanupImmediate": {
+    "hostChildren": 0,
+    "canvas": 0,
+    "domNodes": 0,
+    "previewOutput": 0,
+    "disposed": true
+  },
+  "errors": []
+}

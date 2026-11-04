@@ -1,0 +1,44 @@
+[
+  {
+    "file": "r156-after-technical-narrow.png",
+    "width": 390,
+    "height": 844,
+    "bytes": 34479,
+    "sha256": "DC77A77EAB2E81567B916A042ACA85A6C3981E217534F43DA02F72B035BEA18A"
+  },
+  {
+    "file": "r156-after-technical-selected.png",
+    "width": 1200,
+    "height": 900,
+    "bytes": 268823,
+    "sha256": "E1D3C49987F6CC72727C64C85BBDEBF959DF4B11598F853DBA4B2E98B2ABA968"
+  },
+  {
+    "file": "r156-after-technical-zoom.png",
+    "width": 1200,
+    "height": 900,
+    "bytes": 82969,
+    "sha256": "34F3733F2B9ABC7B57A357A3875E09FE95B889CDC36DB6597BECF2AB0DC75916"
+  },
+  {
+    "file": "r156-after-technical.png",
+    "width": 1200,
+    "height": 900,
+    "bytes": 81784,
+    "sha256": "3A09F8C15D5CD0F05EF9DA11175607A0A6041CCCA7D5952858816E47581609C9"
+  },
+  {
+    "file": "r156-before-root.png",
+    "width": 1200,
+    "height": 900,
+    "bytes": 256366,
+    "sha256": "2A0EE9E798170CC0F5B7FF03F180D791991D1CF6E3156A3D2C46F459F1D9D85A"
+  },
+  {
+    "file": "r156-before-technical.png",
+    "width": 1200,
+    "height": 900,
+    "bytes": 84575,
+    "sha256": "FD8BB8BB69B13A0EF6378F790B5F9F94D9444D6E7888A8440918DEF7585CED67"
+  }
+]

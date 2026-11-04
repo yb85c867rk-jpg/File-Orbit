@@ -1,0 +1,29 @@
+﻿✔ actual main startup: no candidate leaves normal empty startup (177.6684ms)
+✔ actual main startup: candidate shows startup recovery dialog (2029.0188ms)
+✔ actual main startup: Recover cancelled by Create preserves source and claim (692.3068ms)
+✔ actual main startup: Discard cancelled before transaction preserves source and claim (710.1783ms)
+✔ actual main startup: Discard cancelled after transaction start may complete (documented boundary) (718.8945ms)
+✔ actual main startup: Recover cancelled by Open File preserves source and claim (680.0866ms)
+✔ actual main startup: Recover cancelled by Import preserves source and claim (2044.4291ms)
+✔ actual main startup: Later preserves candidates and accounting (272.8186ms)
+✔ actual main startup: Escape preserves candidates and accounting (282.1356ms)
+✔ actual main startup: Discard removes only the selected copy (570.9777ms)
+✔ actual main startup: Discard leaves another candidate intact (547.0455ms)
+✔ actual main startup: claimed candidate discard preserves data (454.9126ms)
+✔ actual main startup: multiple candidates exact selection (2017.6719ms)
+✔ actual main startup: failed child checkpoint preserves source and live work (421.2915ms)
+✔ actual main startup: replacement during adoption preserves B workspace and later checkpoint (1817.3048ms)
+✔ actual main startup: destroy during recovery does not publish late (536.2598ms)
+✔ actual main startup: recovered PDF opens in real viewer (570.1589ms)
+✔ actual main startup: draw failure preserves source and releases resources (536.5577ms)
+✔ actual main startup: label failure preserves source and releases resources (543.5812ms)
+✔ actual main startup: hit failure preserves source and releases resources (557.0711ms)
+✔ actual main startup: starting Create prevents startup dialog interruption (250.5978ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 16445.9709

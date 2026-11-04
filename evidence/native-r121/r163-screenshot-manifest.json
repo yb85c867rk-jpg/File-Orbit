@@ -1,0 +1,51 @@
+[
+  {
+    "file": "r160-dialog-desktop.png",
+    "width": 1200,
+    "height": 800,
+    "bytes": 30525,
+    "sha256": "D75673CCD24802CF2D01D98D9F76127BA6DDE863262C35FD6691DB7F3CA225A8"
+  },
+  {
+    "file": "r160-dialog-narrow.png",
+    "width": 390,
+    "height": 700,
+    "bytes": 26879,
+    "sha256": "D3F15DE4575F91B41B9B0DB6EBC329DF354BE862430EDA77278CCC1F745B1640"
+  },
+  {
+    "file": "r162-open-desktop.png",
+    "width": 1200,
+    "height": 800,
+    "bytes": 32558,
+    "sha256": "5AA6712461D4287346489498D5EB419985AAE91BB5A73CD1D904FA9715482A9A"
+  },
+  {
+    "file": "r162-open-narrow.png",
+    "width": 390,
+    "height": 700,
+    "bytes": 25760,
+    "sha256": "E85C65CEB53004B0BF4F366EEA865D8576762830D7DE2EEA4F35EC8814B0C8DE"
+  },
+  {
+    "file": "r163-open-collapsed.png",
+    "width": 1200,
+    "height": 800,
+    "bytes": 28265,
+    "sha256": "B0EB5EC723981EFBA435CCADE93C1167DD344C9254BDA60BF58DEAA5BD26DBF2"
+  },
+  {
+    "file": "r163-open-expanded.png",
+    "width": 1200,
+    "height": 800,
+    "bytes": 31204,
+    "sha256": "10557BB814821B68B82462B3DFD7D5029BD007F7BDF596F3275FD09C9F72CFD8"
+  },
+  {
+    "file": "r163-open-narrow.png",
+    "width": 390,
+    "height": 700,
+    "bytes": 22248,
+    "sha256": "482EB6868D2D5580EC5E6AA72EB311D13202FF24F579D6EB66290EA0CC828C4C"
+  }
+]

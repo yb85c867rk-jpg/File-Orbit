@@ -1,0 +1,28 @@
+﻿FileOrbit P3 resource/ownership correction r59
+
+R1 FIXED:
+- Added tests/harness/m5-exploration/backup-resources.js shared download resource manager.
+- Each download owns separate URL/anchor/timer record; timer closes over its record only.
+- Consecutive downloads supported. Resource tests prove A timer revokes only A, B remains, then B timer revokes B.
+- cleanup idempotent; late timers no-op; cleanupAll for cancel/destroy.
+- Download handoff uses try/finally anchor removal; failure cleanup revokes record.
+- No global URL/timer variables remain.
+
+R2 FIXED core:
+- Explicit owner object (operation/session/dataset) used by backupOwnerActive and finishBackupOwner.
+- Terminal finish only clears persistenceBusy if operation owner, global owner fields, current session/dataset, and exact busy string still match; import may pass committed=true for intentional successful dataset replacement.
+- Stale session replacement test using production Download button: replacement sets busy='loading'/NEW SESSION; old completion leaves them unchanged.
+- Cancel A during deferred export: actual Cancel button click, no handoff after release, status remains cancelled.
+- Production Download event path and Upload input event path continue tested.
+
+R3:
+- Actual Cancel control test and production Download button test added.
+- Handoff exception cleanup and consecutive download resource cleanup covered by manager unit + code; actual handoff exception branch not executed.
+
+Results:
+- Backup codec 6/6.
+- Backup resources 2/2.
+- P1b 30/30.
+- Full 786/786.
+- Native browser NOT RUN.
+- Stale import session replacement, destroy multiple resources, old/new concurrent operations remain not individually executed; code uses same owner/finish path.

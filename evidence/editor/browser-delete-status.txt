@@ -1,0 +1,5 @@
+﻿FileOrbit Delete workflow browser verification: NOT RUN.
+No browser executable/automation was available without installing dependencies.
+Node tests cover delete command/history Undo/Redo, stable subtree restoration, root rejection,
+attachment retention, confirmation dialog open/cancel/confirm, and existing resize/navigation.
+The full actual browser menu -> confirmation -> delete -> Undo/Redo path was NOT executed.

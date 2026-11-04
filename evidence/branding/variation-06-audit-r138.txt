@@ -1,0 +1,17 @@
+﻿Variation 06 approved logo audit — r138
+
+Source supplied in conversation:
+  filename: exec-dc0bcb66-4c68-412f-97a3-e0c3e4fa6228.png
+  dimensions: 1254x1254
+  SHA-256: 8B82AE4114D6F99D81A5A3E5797500A1E7D70B5E1A4D8AC510066E245FF4A23E
+  local reference copy: evidence/branding/variation-06-reference.png (byte-identical)
+
+Identification:
+  The image is labeled "06"; it contains the indigo F at upper left, open navy O at lower right, and two lavender connection nodes at upper right and lower left, followed by the FileOrbit wordmark. This matches the approved variation 06 FO connected-orbit design. No later app-icon alternative was used.
+
+Assets derived without redrawing or recoloring the mark:
+  fileorbit-mark.png — crop of the symbol only (source box x=373..886, y=296..775), exact source colors and opaque off-white source background; 514x480.
+  fileorbit-favicon-16/32/48/64.png — centered proportional derivatives of the mark.
+  fileorbit-favicon.ico — 16/32/48 ICO derivative.
+
+The supplied PNG is RGB with an opaque off-white background, not transparent alpha. The exact crop retains that supplied background rather than inventing a transparency treatment.

@@ -1,0 +1,22 @@
+{
+  "target": {
+    "description": "",
+    "devtoolsFrontendUrl": "https://chrome-devtools-frontend.appspot.com/serve_rev/@93ce6b54af3fee27e384d1f30346e80db47a14da/inspector.html?ws=127.0.0.1:9227/devtools/page/A453EF7AD5D55C0A34190C365F4A9148",
+    "id": "A453EF7AD5D55C0A34190C365F4A9148",
+    "title": "68e67a04-fc0f-403b-9c94-ca07eb2e36d7",
+    "type": "page",
+    "url": "blob:http://127.0.0.1:8099/68e67a04-fc0f-403b-9c94-ca07eb2e36d7",
+    "webSocketDebuggerUrl": "ws://127.0.0.1:9227/devtools/page/A453EF7AD5D55C0A34190C365F4A9148"
+  },
+  "value": {
+    "title": "",
+    "url": "blob:http://127.0.0.1:8099/68e67a04-fc0f-403b-9c94-ca07eb2e36d7",
+    "text": "",
+    "embeds": 0,
+    "iframes": 0,
+    "pdfApp": "undefined",
+    "plugin": "undefined",
+    "html": "\n    \n  \n\n"
+  },
+  "axNames": []
+}

@@ -1,0 +1,55 @@
+{
+  "desktop": {
+    "visible": true,
+    "text": "Open map\nNo Orbit selected\nChoose folder\nRefresh\n\nChoose a folder to browse its top-level .map files.\n\nNo Orbit folder selected.\n\nOpen file elsewhere…\nClose",
+    "buttons": [
+      {
+        "text": "Choose folder",
+        "disabled": false
+      },
+      {
+        "text": "Refresh",
+        "disabled": true
+      },
+      {
+        "text": "Open file elsewhere…",
+        "disabled": false
+      },
+      {
+        "text": "Close",
+        "disabled": false
+      }
+    ],
+    "active": "Choose folder",
+    "rect": {
+      "left": 422.5,
+      "top": 307.203125,
+      "width": 520,
+      "height": 285.59375
+    },
+    "overflow": false
+  },
+  "narrow": {
+    "visible": true,
+    "innerWidth": 390,
+    "scrollWidth": 390,
+    "overflow": false,
+    "rect": {
+      "left": 12,
+      "top": 260.703125,
+      "width": 374,
+      "height": 322.59375
+    },
+    "list": {
+      "scrollHeight": 64,
+      "clientHeight": 64,
+      "overflowY": "auto"
+    }
+  },
+  "capturedAt": "2026-10-31T09:25:17.966Z",
+  "application": {
+    "url": "http://127.0.0.1:8099/tests/harness/m5-exploration/",
+    "indexSha256": "7F9B430AB1021F258C72194B0B2DD3536E9966852F10BE6A33741C0F61413BDB",
+    "mainSha256": "BA2D68EABED46312C0B365982E6D8C54950D520A9B1F1041A3A3E6DBA5DEBB0D"
+  }
+}

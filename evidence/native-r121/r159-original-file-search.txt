@@ -1,0 +1,4 @@
+﻿Workspace-only search for original test file:
+- `Get-ChildItem -Recurse -File -Filter ontology.orbit` within C:\Users\openw\Documents\Projects\visual-directory: no files.
+- `Get-ChildItem -Recurse -File -Filter *.orbit` matching ontology/conflict: no files.
+No path or SHA-256 could be recorded. The original Chrome session was not accessed or modified.

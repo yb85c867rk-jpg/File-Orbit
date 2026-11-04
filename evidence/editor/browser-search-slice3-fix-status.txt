@@ -1,0 +1,5 @@
+﻿FileOrbit search correction browser verification: NOT RUN.
+No browser executable/automation was available without installing dependencies.
+Node tests cover rendered card type labels, stored-classification precedence, legacy fallback, and actual
+main-entry create-map → hidden Markdown search → parent reveal → selection → viewer open/close.
+Native browser checks were not executed.

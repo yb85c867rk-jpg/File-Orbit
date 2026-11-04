@@ -1,0 +1,31 @@
+{
+  "before": {
+    "rowDisplay": "flex",
+    "hidden": true,
+    "expanded": "false",
+    "label": "About Open Orbit",
+    "controls": "open-orbit-help-text",
+    "text": "An .orbit file contains your visual map and its attached files. An Orbit folder is a regular folder where you keep these files. Choose a folder to browse and open your saved maps.",
+    "dataAction": null
+  },
+  "open": {
+    "hidden": false,
+    "expanded": "true",
+    "role": "tooltip",
+    "text": "An .orbit file contains your visual map and its attached files. An Orbit folder is a regular folder where you keep these files. Choose a folder to browse and open your saved maps.",
+    "width": 191,
+    "right": 197,
+    "viewport": 1365,
+    "openDialog": false
+  },
+  "escape": {
+    "hidden": true,
+    "expanded": "false"
+  },
+  "collapsed": {
+    "rowDisplay": "none",
+    "hidden": true,
+    "expanded": "false"
+  },
+  "capturedAt": "2026-11-01T06:06:36.295Z"
+}

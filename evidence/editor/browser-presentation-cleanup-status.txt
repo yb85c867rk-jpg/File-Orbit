@@ -1,0 +1,6 @@
+﻿FileOrbit presentation-cleanup browser verification: NOT RUN.
+No browser executable or automation was available without installing dependencies.
+Mocked Canvas/DOM tests verify no data glyph drawing, no data-node hit geometry, folder hit geometry,
+label pointer ownership, details-row removal, and shared input/label lifecycle wiring.
+They do NOT establish real cursor appearance, icon/name click/drag behavior, native link activation,
+or transition inertness in a browser.

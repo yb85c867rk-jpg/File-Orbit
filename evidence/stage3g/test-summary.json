@@ -1,0 +1,30 @@
+{
+  "generatedAt": "2026-11-04T05:17:31.376Z",
+  "sources": [
+    {
+      "file": "../p1b.txt",
+      "tests": 69,
+      "passed": 69,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "file": "../remainder-final.txt",
+      "tests": 1190,
+      "passed": 1189,
+      "failed": 0,
+      "skipped": 1
+    }
+  ],
+  "totals": {
+    "tests": 1259,
+    "passed": 1258,
+    "failed": 0,
+    "skipped": 1
+  },
+  "report": {
+    "file": "docs/engine/FILEORBIT-STAGE-3G-CREATION-EDITOR.md",
+    "expected": "1,259 tests, 1,258 pass, 1 skip",
+    "matched": true
+  }
+}

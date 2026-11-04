@@ -1,0 +1,49 @@
+{
+  "pdf": [
+    {
+      "hasBackdrop": true,
+      "hasIframe": true,
+      "src": true,
+      "external": {
+        "text": "Open PDF in new tab",
+        "href": "blob:http://127.0.0.1:8099/b16cbf06-8bf0-45ee-804c-990e7a66ed23",
+        "target": "_blank"
+      },
+      "leftOver": false
+    },
+    {
+      "hasBackdrop": true,
+      "hasIframe": true,
+      "src": true,
+      "external": {
+        "text": "Open PDF in new tab",
+        "href": "blob:http://127.0.0.1:8099/cb62d8d7-5d94-44bf-84cd-10d39c1639bb",
+        "target": "_blank"
+      },
+      "leftOver": false
+    },
+    {
+      "hasBackdrop": true,
+      "hasIframe": true,
+      "src": true,
+      "external": {
+        "text": "Open PDF in new tab",
+        "href": "blob:http://127.0.0.1:8099/56e27a81-d669-40c2-b0e8-9993f1ec6193",
+        "target": "_blank"
+      },
+      "leftOver": false
+    }
+  ],
+  "image": {
+    "complete": true,
+    "naturalWidth": 1,
+    "naturalHeight": 1,
+    "src": "blob:http://127.0.0.1:8099/f11c28d0-4c4d-401a-b55d-6cbcf1ce874d"
+  },
+  "text": {
+    "notes.md": "# Field Notes\n\n한글 문서입니다.\n\n- one\n- two\n",
+    "plain.txt": "Plain text preview\n한글 줄\n"
+  },
+  "exceptions": [],
+  "capturedAt": "2026-11-02T00:45:48.730Z"
+}

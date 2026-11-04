@@ -1,0 +1,5 @@
+﻿FileOrbit visual-hierarchy correction browser verification: NOT RUN.
+No browser executable/automation was available without installing dependencies.
+Node tests cover overlapping folder hit order, variable radii in hit snapshots, default vs exploration label colors,
+PDF-red/neutral badge, green non-PDF icons/badges, stored-classification precedence, and transition label consistency.
+Native browser overlap/right-click/drag/drop/PDF color checks were not executed.

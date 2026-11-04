@@ -1,0 +1,12 @@
+{
+  "file": "evidence\\native-r121\\r150-fixtures\\report-r150.pdf",
+  "bytes": 1068,
+  "sha256": "d282cf216a332cab9a7f18456450ac6cf26d641f10b48790515bea664f3ef749",
+  "startxref": 845,
+  "pageCount": 2,
+  "pageTexts": [
+    "FILEORBIT PDF PAGE ONE - recognizable synthetic content Alpha page text: 300-node lifecycle preview.",
+    "FILEORBIT PDF PAGE TWO - second page content Beta page text: page navigation target."
+  ],
+  "parser": "independent minimal PDF xref/page/content-stream parser (Python stdlib)"
+}

@@ -1,0 +1,33 @@
+﻿FileOrbit narrow-menu and collapsed-Details correction r97
+
+Root causes:
+- Map/More popup menus had no viewport max-height or vertical overflow, so taller menus could extend beyond short/narrow viewports; clamp positioned the top but did not cap height.
+- Header controls had no narrow-specific wrap/status sizing and popup menus needed explicit viewport width/height bounds.
+- Collapsed Details was a tiny generic "Show" button in a 40px side/bottom rail with no clear panel label.
+
+Changes:
+- .popup-menu now has max-width calc(100vw - 16px), max-height calc(100dvh - 16px), overflow-y:auto, overscroll-behavior:contain; items min-height36 and wrap.
+- createPopupMenu clamp sets maxHeight from documentElement.clientHeight and overflowY auto before measuring/clamping left/top.
+- Narrow header media rules allow save-state wrapping, compact gaps/padding, and keep Map/More grouping.
+- Collapsed Details is now a labelled "Details" bar with a chevron icon:
+  - desktop collapsed rail 120px;
+  - narrow collapsed bar 44px high, full width, entire bar is the toggle;
+  - aria-expanded/controls preserved; expanded label Hide details; icon rotates;
+  - active editor disables the hide action with aria-disabled/title explanation;
+  - content scrolls when expanded.
+- r96 explicit grid areas and drawable viewport unchanged.
+
+Tests:
+- narrow-menus-details static: 3/3 (320/375/420/560 structural grouping, 7 Map items + More theme, viewport clamp/scroll, labelled 44px Details bar).
+- shell menu clamp test now asserts maxHeight/overflowY.
+- actual layout-empty main at 320: labelled Details, full-bar expand/collapse, Map/More visible with actions, fullscreen, Create Map.
+- editor visibility, search, drag history, geometry, main init all pass.
+- full tests/engine: 926 tests, 925 passed, 0 failed, 1 skipped, 0 todo.
+- syntax: 16/16 JS modules.
+- served source: 104 files 200/no-store byte-match; root 302/trailing 200.
+
+Limitations:
+- Native browser clipping/overflow and reachability not visually verified.
+- No screenshots captured.
+- CSS media/layout assertions are structural/mock; not native proof.
+- FakeIndexedDB cross-tab skip retained.

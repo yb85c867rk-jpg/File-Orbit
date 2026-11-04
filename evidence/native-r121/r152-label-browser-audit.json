@@ -1,0 +1,7811 @@
+[
+  {
+    "out": "evidence/native-r121/r152-label-before-flat-dark.png",
+    "origin": "http://127.0.0.1:8100/tests/harness/m5-exploration/",
+    "theme": "dark",
+    "width": 1200,
+    "height": 900,
+    "importResult": {
+      "ok": true
+    },
+    "search": {
+      "cards": 1,
+      "status": "Search highlights 1 folder containing matching results.",
+      "selected": "f017",
+      "focused": "root"
+    },
+    "audit": {
+      "labels": [
+        {
+          "id": "root",
+          "text": "Flat 300",
+          "display": "flex",
+          "rect": {
+            "left": 434.5,
+            "top": 404.406,
+            "right": 487.671875,
+            "bottom": 417.5935,
+            "width": 53.171875,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "f017",
+          "text": "file-018.txt",
+          "display": "flex",
+          "rect": {
+            "left": 501.309,
+            "top": 433.741,
+            "right": 567.918375,
+            "bottom": 446.9285,
+            "width": 66.609375,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "f000",
+          "text": "file-001.txt",
+          "display": "flex",
+          "rect": {
+            "left": 724.834,
+            "top": 411.006,
+            "right": 791.443375,
+            "bottom": 424.1935,
+            "width": 66.609375,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "f001",
+          "text": "file-002.txt",
+          "display": "flex",
+          "rect": {
+            "left": 506.796,
+            "top": 407.475,
+            "right": 573.405375,
+            "bottom": 420.6625,
+            "width": 66.609375,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "f002",
+          "text": "file-003.txt",
+          "display": "flex",
+          "rect": {
+            "left": 724.221,
+            "top": 427.055,
+            "right": 790.830375,
+            "bottom": 440.2425,
+            "width": 66.609375,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "f003",
+          "text": "file-004.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "f004",
+          "text": "file-005.txt",
+          "display": "flex",
+          "rect": {
+            "left": 722.935,
+            "top": 443.065,
+            "right": 789.544375,
+            "bottom": 456.2525,
+            "width": 66.609375,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "f005",
+          "text": "file-006.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "f006",
+          "text": "file-007.txt",
+          "display": "flex",
+          "rect": {
+            "left": 720.979,
+            "top": 459.006,
+            "right": 787.588375,
+            "bottom": 472.1935,
+            "width": 66.609375,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "f007",
+          "text": "file-008.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "f008",
+          "text": "file-009.txt",
+          "display": "flex",
+          "rect": {
+            "left": 718.357,
+            "top": 474.852,
+            "right": 784.966375,
+            "bottom": 488.0395,
+            "width": 66.609375,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "f009",
+          "text": "file-010.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "f010",
+          "text": "file-011.txt",
+          "display": "flex",
+          "rect": {
+            "left": 715.073,
+            "top": 490.573,
+            "right": 781.682375,
+            "bottom": 503.7605,
+            "width": 66.609375,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "f011",
+          "text": "file-012.txt",
+          "display": "flex",
+          "rect": {
+            "left": 419.789,
+            "top": 424.122,
+            "right": 486.398375,
+            "bottom": 437.3095,
+            "width": 66.609375,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "f012",
+          "text": "file-013.txt",
+          "display": "flex",
+          "rect": {
+            "left": 711.132,
+            "top": 506.143,
+            "right": 777.741375,
+            "bottom": 519.3305,
+            "width": 66.609375,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "f013",
+          "text": "file-014.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "f014",
+          "text": "file-015.txt",
+          "display": "flex",
+          "rect": {
+            "left": 706.542,
+            "top": 521.535,
+            "right": 773.151375,
+            "bottom": 534.7225,
+            "width": 66.609375,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "f015",
+          "text": "file-016.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "f016",
+          "text": "file-017.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "f018",
+          "text": "file-019.txt",
+          "display": "flex",
+          "rect": {
+            "left": 695.447,
+            "top": 551.672,
+            "right": 762.056375,
+            "bottom": 564.8595,
+            "width": 66.609375,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "f019",
+          "text": "file-020.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "f020",
+          "text": "file-021.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "f021",
+          "text": "file-022.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "f022",
+          "text": "file-023.txt",
+          "display": "flex",
+          "rect": {
+            "left": 681.867,
+            "top": 580.774,
+            "right": 748.476375,
+            "bottom": 593.9615,
+            "width": 66.609375,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "f023",
+          "text": "file-024.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "f024",
+          "text": "file-025.txt",
+          "display": "flex",
+          "rect": {
+            "left": 758.783,
+            "top": 594.873,
+            "right": 825.392375,
+            "bottom": 608.0605,
+            "width": 66.609375,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "f025",
+          "text": "file-026.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "f026",
+          "text": "file-027.txt",
+          "display": "flex",
+          "rect": {
+            "left": 665.896,
+            "top": 608.637,
+            "right": 732.505375,
+            "bottom": 621.8245,
+            "width": 66.609375,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "f027",
+          "text": "file-028.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "f028",
+          "text": "file-029.txt",
+          "display": "flex",
+          "rect": {
+            "left": 741.658,
+            "top": 622.041,
+            "right": 808.267375,
+            "bottom": 635.2285,
+            "width": 66.609375,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "f029",
+          "text": "file-030.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "f030",
+          "text": "file-031.txt",
+          "display": "flex",
+          "rect": {
+            "left": 647.647,
+            "top": 635.063,
+            "right": 714.256375,
+            "bottom": 648.2505,
+            "width": 66.609375,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "f031",
+          "text": "file-032.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "f032",
+          "text": "file-033.txt",
+          "display": "flex",
+          "rect": {
+            "left": 722.317,
+            "top": 647.679,
+            "right": 788.926375,
+            "bottom": 660.8665,
+            "width": 66.609375,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "f033",
+          "text": "file-034.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "f034",
+          "text": "file-035.txt",
+          "display": "flex",
+          "rect": {
+            "left": 627.248,
+            "top": 659.867,
+            "right": 693.857375,
+            "bottom": 673.0545,
+            "width": 66.609375,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "f035",
+          "text": "file-036.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "f036",
+          "text": "file-037.txt",
+          "display": "flex",
+          "rect": {
+            "left": 700.897,
+            "top": 671.607,
+            "right": 767.506375,
+            "bottom": 684.7945,
+            "width": 66.609375,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "f037",
+          "text": "file-038.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "f038",
+          "text": "file-039.txt",
+          "display": "flex",
+          "rect": {
+            "left": 604.843,
+            "top": 682.876,
+            "right": 671.452375,
+            "bottom": 696.0635,
+            "width": 66.609375,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        }
+      ],
+      "root": {
+        "id": "root",
+        "text": "Flat 300",
+        "display": "flex",
+        "rect": {
+          "left": 434.5,
+          "top": 404.406,
+          "right": 487.671875,
+          "bottom": 417.5935,
+          "width": 53.171875,
+          "height": 13.1875
+        },
+        "svg": 1,
+        "badge": null
+      },
+      "othersCount": 21,
+      "rootOverlaps": [],
+      "rootProtection": null,
+      "rootLabelVisible": null,
+      "rootProtectionRect": null,
+      "leadingIconCount": null,
+      "visibleCount": 22,
+      "theme": "dark",
+      "selected": "f017",
+      "counts": "300 visible / 300 total"
+    },
+    "exceptions": [],
+    "capturedAt": "2026-11-02T02:05:10.967Z"
+  },
+  {
+    "out": "evidence/native-r121/r152-label-before-distributed-dark.png",
+    "origin": "http://127.0.0.1:8100/tests/harness/m5-exploration/",
+    "theme": "dark",
+    "width": 1200,
+    "height": 900,
+    "importResult": {
+      "ok": true
+    },
+    "search": {
+      "cards": 1,
+      "status": "Search highlights 2 folders containing matching results.",
+      "selected": "north029",
+      "focused": "root"
+    },
+    "audit": {
+      "labels": [
+        {
+          "id": "root",
+          "text": "Distributed 300",
+          "display": "flex",
+          "rect": {
+            "left": 434.5,
+            "top": 404.406,
+            "right": 524.21875,
+            "bottom": 417.5935,
+            "width": 89.71875,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "north029",
+          "text": "north-030.txt",
+          "display": "flex",
+          "rect": {
+            "left": 675.754,
+            "top": 589.097,
+            "right": 754.28525,
+            "bottom": 602.2845,
+            "width": 78.53125,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "north",
+          "text": "North",
+          "display": "flex",
+          "rect": {
+            "left": 589.92,
+            "top": 575.18,
+            "right": 633.373125,
+            "bottom": 588.3675,
+            "width": 43.453125,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "south",
+          "text": "South",
+          "display": "flex",
+          "rect": {
+            "left": 413.19,
+            "top": 461.564,
+            "right": 456.65875,
+            "bottom": 474.7515,
+            "width": 43.46875,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "east",
+          "text": "East",
+          "display": "flex",
+          "rect": {
+            "left": 145.253,
+            "top": 404.033,
+            "right": 179.8155,
+            "bottom": 417.2205,
+            "width": 34.5625,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "west",
+          "text": "West",
+          "display": "flex",
+          "rect": {
+            "left": 413.339,
+            "top": 347.2,
+            "right": 452.339,
+            "bottom": 360.3875,
+            "width": 39,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "center",
+          "text": "Center",
+          "display": "flex",
+          "rect": {
+            "left": 586.501,
+            "top": 233.932,
+            "right": 633.59475,
+            "bottom": 247.1195,
+            "width": 47.09375,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "north000",
+          "text": "north-001.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "north001",
+          "text": "north-002.txt",
+          "display": "flex",
+          "rect": {
+            "left": 639.978,
+            "top": 415.901,
+            "right": 718.50925,
+            "bottom": 429.0885,
+            "width": 78.53125,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "north002",
+          "text": "north-003.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "north003",
+          "text": "north-004.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "north004",
+          "text": "north-005.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "north005",
+          "text": "north-006.txt",
+          "display": "flex",
+          "rect": {
+            "left": 637.852,
+            "top": 442.426,
+            "right": 716.38325,
+            "bottom": 455.6135,
+            "width": 78.53125,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "north006",
+          "text": "north-007.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "north007",
+          "text": "north-008.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "north008",
+          "text": "north-009.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "north009",
+          "text": "north-010.txt",
+          "display": "flex",
+          "rect": {
+            "left": 633.461,
+            "top": 468.672,
+            "right": 711.99225,
+            "bottom": 481.8595,
+            "width": 78.53125,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "north010",
+          "text": "north-011.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "north011",
+          "text": "north-012.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "north012",
+          "text": "north-013.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "north013",
+          "text": "north-014.txt",
+          "display": "flex",
+          "rect": {
+            "left": 626.837,
+            "top": 494.445,
+            "right": 705.36825,
+            "bottom": 507.6325,
+            "width": 78.53125,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "north014",
+          "text": "north-015.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "north015",
+          "text": "north-016.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "north016",
+          "text": "north-017.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "north017",
+          "text": "north-018.txt",
+          "display": "flex",
+          "rect": {
+            "left": 618.029,
+            "top": 519.555,
+            "right": 696.56025,
+            "bottom": 532.7425,
+            "width": 78.53125,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "north018",
+          "text": "north-019.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "north019",
+          "text": "north-020.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "north020",
+          "text": "north-021.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "north021",
+          "text": "north-022.txt",
+          "display": "flex",
+          "rect": {
+            "left": 607.101,
+            "top": 543.819,
+            "right": 685.63225,
+            "bottom": 557.0065,
+            "width": 78.53125,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "north022",
+          "text": "north-023.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "north023",
+          "text": "north-024.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "north024",
+          "text": "north-025.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "north025",
+          "text": "north-026.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "north026",
+          "text": "north-027.txt",
+          "display": "flex",
+          "rect": {
+            "left": 657.224,
+            "top": 615.714,
+            "right": 735.75525,
+            "bottom": 628.9015,
+            "width": 78.53125,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "north027",
+          "text": "north-028.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "north028",
+          "text": "north-029.txt",
+          "display": "flex",
+          "rect": {
+            "left": 744.391,
+            "top": 629.556,
+            "right": 822.92225,
+            "bottom": 642.7435,
+            "width": 78.53125,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "north030",
+          "text": "north-031.txt",
+          "display": "flex",
+          "rect": {
+            "left": 637.911,
+            "top": 642.983,
+            "right": 716.44225,
+            "bottom": 656.1705,
+            "width": 78.53125,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "north031",
+          "text": "north-032.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "north032",
+          "text": "north-033.txt",
+          "display": "flex",
+          "rect": {
+            "left": 723.926,
+            "top": 655.971,
+            "right": 802.45725,
+            "bottom": 669.1585,
+            "width": 78.53125,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "north033",
+          "text": "north-034.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        }
+      ],
+      "root": {
+        "id": "root",
+        "text": "Distributed 300",
+        "display": "flex",
+        "rect": {
+          "left": 434.5,
+          "top": 404.406,
+          "right": 524.21875,
+          "bottom": 417.5935,
+          "width": 89.71875,
+          "height": 13.1875
+        },
+        "svg": 1,
+        "badge": null
+      },
+      "othersCount": 16,
+      "rootOverlaps": [],
+      "rootProtection": null,
+      "rootLabelVisible": null,
+      "rootProtectionRect": null,
+      "leadingIconCount": null,
+      "visibleCount": 17,
+      "theme": "dark",
+      "selected": "north029",
+      "counts": "300 visible / 300 total"
+    },
+    "exceptions": [],
+    "capturedAt": "2026-11-02T02:05:14.593Z"
+  },
+  {
+    "out": "evidence/native-r121/r152-label-before-mixed-dark.png",
+    "origin": "http://127.0.0.1:8100/tests/harness/m5-exploration/",
+    "theme": "dark",
+    "width": 1200,
+    "height": 900,
+    "importResult": {
+      "ok": true
+    },
+    "search": {
+      "cards": 1,
+      "status": "Search highlights 2 folders containing matching results.",
+      "selected": "w057",
+      "focused": "n0"
+    },
+    "audit": {
+      "labels": [
+        {
+          "id": "n0",
+          "text": "R150 300 Node Map",
+          "display": "flex",
+          "rect": {
+            "left": 359.977,
+            "top": 428,
+            "right": 475.023875,
+            "bottom": 441.1875,
+            "width": 115.046875,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "w057",
+          "text": "wide-057.txt",
+          "display": "flex",
+          "rect": {
+            "left": 431.039,
+            "top": 629.31,
+            "right": 505.960875,
+            "bottom": 642.4975,
+            "width": 74.921875,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "wide",
+          "text": "Wide",
+          "display": "flex",
+          "rect": {
+            "left": 551.584,
+            "top": 529.286,
+            "right": 591.755875,
+            "bottom": 542.4735,
+            "width": 40.171875,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "deep01",
+          "text": "Deep 01",
+          "display": "flex",
+          "rect": {
+            "left": 432.1,
+            "top": 452.143,
+            "right": 487.6625,
+            "bottom": 465.3305,
+            "width": 55.5625,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "b0",
+          "text": "Branch 0",
+          "display": "flex",
+          "rect": {
+            "left": 248.04,
+            "top": 536.252,
+            "right": 305.24312499999996,
+            "bottom": 549.4395,
+            "width": 57.203125,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "b1",
+          "text": "Branch 1",
+          "display": "flex",
+          "rect": {
+            "left": 389.24,
+            "top": 383.388,
+            "right": 446.443125,
+            "bottom": 396.5755,
+            "width": 57.203125,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "b2",
+          "text": "Branch 2",
+          "display": "flex",
+          "rect": {
+            "left": 423.645,
+            "top": 178.154,
+            "right": 480.848125,
+            "bottom": 191.3415,
+            "width": 57.203125,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "b3",
+          "text": "Branch 3",
+          "display": "flex",
+          "rect": {
+            "left": 430.07,
+            "top": 401.442,
+            "right": 487.273125,
+            "bottom": 414.6295,
+            "width": 57.203125,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "w000",
+          "text": "report.pdfPDF",
+          "display": "flex",
+          "rect": {
+            "left": 734.12,
+            "top": 408.575,
+            "right": 822.6825,
+            "bottom": 421.7625,
+            "width": 88.5625,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": "PDF"
+        },
+        {
+          "id": "w001",
+          "text": "notes.mdMD",
+          "display": "flex",
+          "rect": {
+            "left": 569.911,
+            "top": 412.664,
+            "right": 653.4735,
+            "bottom": 425.8515,
+            "width": 83.5625,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": "MD"
+        },
+        {
+          "id": "w002",
+          "text": "pixel.pngIMG",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": "IMG"
+        },
+        {
+          "id": "w003",
+          "text": "plain.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": "TXT"
+        },
+        {
+          "id": "w004",
+          "text": "wide-004.txt",
+          "display": "flex",
+          "rect": {
+            "left": 732.786,
+            "top": 433.324,
+            "right": 807.707875,
+            "bottom": 446.5115,
+            "width": 74.921875,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "w005",
+          "text": "wide-005.txt",
+          "display": "flex",
+          "rect": {
+            "left": 577.092,
+            "top": 432.357,
+            "right": 652.013875,
+            "bottom": 445.5445,
+            "width": 74.921875,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "w006",
+          "text": "wide-006.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "w007",
+          "text": "wide-007.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "w008",
+          "text": "wide-008.txt",
+          "display": "flex",
+          "rect": {
+            "left": 729.464,
+            "top": 457.885,
+            "right": 804.385875,
+            "bottom": 471.0725,
+            "width": 74.921875,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "w009",
+          "text": "wide-009.txt",
+          "display": "flex",
+          "rect": {
+            "left": 574.051,
+            "top": 451.868,
+            "right": 648.972875,
+            "bottom": 465.0555,
+            "width": 74.921875,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "w010",
+          "text": "wide-010.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "w011",
+          "text": "wide-011.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "w012",
+          "text": "wide-012.txt",
+          "display": "flex",
+          "rect": {
+            "left": 724.176,
+            "top": 482.1,
+            "right": 799.097875,
+            "bottom": 495.2875,
+            "width": 74.921875,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "w013",
+          "text": "wide-013.txt",
+          "display": "flex",
+          "rect": {
+            "left": 569.45,
+            "top": 471.072,
+            "right": 644.371875,
+            "bottom": 484.2595,
+            "width": 74.921875,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "w014",
+          "text": "wide-014.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "w015",
+          "text": "wide-015.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "w016",
+          "text": "wide-016.txt",
+          "display": "flex",
+          "rect": {
+            "left": 716.956,
+            "top": 505.81,
+            "right": 791.877875,
+            "bottom": 518.9975,
+            "width": 74.921875,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "w017",
+          "text": "wide-017.txt",
+          "display": "flex",
+          "rect": {
+            "left": 563.318,
+            "top": 489.843,
+            "right": 638.239875,
+            "bottom": 503.0305,
+            "width": 74.921875,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "w018",
+          "text": "wide-018.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "w019",
+          "text": "wide-019.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "w020",
+          "text": "wide-020.txt",
+          "display": "flex",
+          "rect": {
+            "left": 707.851,
+            "top": 528.861,
+            "right": 782.772875,
+            "bottom": 542.0485,
+            "width": 74.921875,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "w021",
+          "text": "wide-021.txt",
+          "display": "flex",
+          "rect": {
+            "left": 555.696,
+            "top": 508.059,
+            "right": 630.617875,
+            "bottom": 521.2465,
+            "width": 74.921875,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "w022",
+          "text": "wide-022.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "w023",
+          "text": "wide-023.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "w024",
+          "text": "wide-024.txt",
+          "display": "flex",
+          "rect": {
+            "left": 696.919,
+            "top": 551.106,
+            "right": 771.840875,
+            "bottom": 564.2935,
+            "width": 74.921875,
+            "height": 13.1875
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "w025",
+          "text": "wide-025.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "w026",
+          "text": "wide-026.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "w027",
+          "text": "wide-027.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "w028",
+          "text": "wide-028.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "w029",
+          "text": "wide-029.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "w030",
+          "text": "wide-030.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        },
+        {
+          "id": "w031",
+          "text": "wide-031.txt",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 1,
+          "badge": null
+        }
+      ],
+      "root": {
+        "id": "n0",
+        "text": "R150 300 Node Map",
+        "display": "flex",
+        "rect": {
+          "left": 359.977,
+          "top": 428,
+          "right": 475.023875,
+          "bottom": 441.1875,
+          "width": 115.046875,
+          "height": 13.1875
+        },
+        "svg": 1,
+        "badge": null
+      },
+      "othersCount": 20,
+      "rootOverlaps": [],
+      "rootProtection": null,
+      "rootLabelVisible": null,
+      "rootProtectionRect": null,
+      "leadingIconCount": null,
+      "visibleCount": 21,
+      "theme": "dark",
+      "selected": "w057",
+      "counts": "300 visible / 300 total"
+    },
+    "exceptions": [],
+    "capturedAt": "2026-11-02T02:05:18.186Z"
+  },
+  {
+    "out": "evidence/native-r121/r152-after-flat-dark.png",
+    "origin": "http://127.0.0.1:8099/tests/harness/m5-exploration/",
+    "theme": "dark",
+    "width": 1200,
+    "height": 900,
+    "importResult": {
+      "ok": true
+    },
+    "search": {
+      "cards": 1,
+      "status": "Search highlights 1 folder containing matching results.",
+      "selected": "f017",
+      "focused": "root"
+    },
+    "audit": {
+      "labels": [
+        {
+          "id": "root",
+          "text": "Flat 300",
+          "display": "flex",
+          "rect": {
+            "left": 434.5,
+            "top": 404.406,
+            "right": 472.671875,
+            "bottom": 417.5935,
+            "width": 38.171875,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": null
+        },
+        {
+          "id": "f017",
+          "text": "file-018.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 501.309,
+            "top": 433.741,
+            "right": 576.809,
+            "bottom": 446.9285,
+            "width": 75.5,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f000",
+          "text": "file-001.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 715.944,
+            "top": 411.006,
+            "right": 791.444,
+            "bottom": 424.1935,
+            "width": 75.5,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f001",
+          "text": "file-002.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 506.796,
+            "top": 407.475,
+            "right": 582.296,
+            "bottom": 420.6625,
+            "width": 75.5,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f002",
+          "text": "file-003.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 715.33,
+            "top": 427.055,
+            "right": 790.83,
+            "bottom": 440.2425,
+            "width": 75.5,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f003",
+          "text": "file-004.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f004",
+          "text": "file-005.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 714.045,
+            "top": 443.065,
+            "right": 789.545,
+            "bottom": 456.2525,
+            "width": 75.5,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f005",
+          "text": "file-006.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f006",
+          "text": "file-007.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 712.089,
+            "top": 459.006,
+            "right": 787.589,
+            "bottom": 472.1935,
+            "width": 75.5,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f007",
+          "text": "file-008.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f008",
+          "text": "file-009.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 709.466,
+            "top": 474.852,
+            "right": 784.966,
+            "bottom": 488.0395,
+            "width": 75.5,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f009",
+          "text": "file-010.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f010",
+          "text": "file-011.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 706.182,
+            "top": 490.573,
+            "right": 781.682,
+            "bottom": 503.7605,
+            "width": 75.5,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f011",
+          "text": "file-012.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f012",
+          "text": "file-013.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 702.241,
+            "top": 506.143,
+            "right": 777.741,
+            "bottom": 519.3305,
+            "width": 75.5,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f013",
+          "text": "file-014.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f014",
+          "text": "file-015.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 697.651,
+            "top": 521.535,
+            "right": 773.151,
+            "bottom": 534.7225,
+            "width": 75.5,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f015",
+          "text": "file-016.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f016",
+          "text": "file-017.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f018",
+          "text": "file-019.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 686.557,
+            "top": 551.672,
+            "right": 762.057,
+            "bottom": 564.8595,
+            "width": 75.5,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f019",
+          "text": "file-020.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f020",
+          "text": "file-021.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f021",
+          "text": "file-022.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f022",
+          "text": "file-023.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 672.976,
+            "top": 580.774,
+            "right": 748.476,
+            "bottom": 593.9615,
+            "width": 75.5,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f023",
+          "text": "file-024.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f024",
+          "text": "file-025.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f025",
+          "text": "file-026.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f026",
+          "text": "file-027.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 750.505,
+            "top": 608.637,
+            "right": 826.005,
+            "bottom": 621.8245,
+            "width": 75.5,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f027",
+          "text": "file-028.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f028",
+          "text": "file-029.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 648.158,
+            "top": 622.041,
+            "right": 723.658,
+            "bottom": 635.2285,
+            "width": 75.5,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f029",
+          "text": "file-030.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f030",
+          "text": "file-031.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 732.256,
+            "top": 635.063,
+            "right": 807.756,
+            "bottom": 648.2505,
+            "width": 75.5,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f031",
+          "text": "file-032.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f032",
+          "text": "file-033.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 628.817,
+            "top": 647.679,
+            "right": 704.317,
+            "bottom": 660.8665,
+            "width": 75.5,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f033",
+          "text": "file-034.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f034",
+          "text": "file-035.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 711.858,
+            "top": 659.867,
+            "right": 787.358,
+            "bottom": 673.0545,
+            "width": 75.5,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f035",
+          "text": "file-036.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f036",
+          "text": "file-037.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 607.397,
+            "top": 671.607,
+            "right": 682.897,
+            "bottom": 684.7945,
+            "width": 75.5,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f037",
+          "text": "file-038.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f038",
+          "text": "file-039.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 689.453,
+            "top": 682.876,
+            "right": 764.953,
+            "bottom": 696.0635,
+            "width": 75.5,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        }
+      ],
+      "root": {
+        "id": "root",
+        "text": "Flat 300",
+        "display": "flex",
+        "rect": {
+          "left": 434.5,
+          "top": 404.406,
+          "right": 472.671875,
+          "bottom": 417.5935,
+          "width": 38.171875,
+          "height": 13.1875
+        },
+        "svg": 0,
+        "badge": null
+      },
+      "othersCount": 19,
+      "rootOverlaps": [],
+      "rootProtection": true,
+      "rootLabelVisible": true,
+      "rootProtectionRect": {
+        "left": 336.1449541031284,
+        "top": 329.6449541031284,
+        "right": 498.8550458968716,
+        "bottom": 492.3550458968716
+      },
+      "leadingIconCount": 0,
+      "visibleCount": 20,
+      "theme": "dark",
+      "selected": "f017",
+      "counts": "300 visible / 300 total"
+    },
+    "exceptions": [],
+    "capturedAt": "2026-11-02T02:05:21.857Z"
+  },
+  {
+    "out": "evidence/native-r121/r152-after-flat-light.png",
+    "origin": "http://127.0.0.1:8099/tests/harness/m5-exploration/",
+    "theme": "light",
+    "width": 1200,
+    "height": 900,
+    "importResult": {
+      "ok": true
+    },
+    "search": {
+      "cards": 1,
+      "status": "Search highlights 1 folder containing matching results.",
+      "selected": "f017",
+      "focused": "root"
+    },
+    "audit": {
+      "labels": [
+        {
+          "id": "root",
+          "text": "Flat 300",
+          "display": "flex",
+          "rect": {
+            "left": 434.5,
+            "top": 404.406,
+            "right": 472.671875,
+            "bottom": 417.5935,
+            "width": 38.171875,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": null
+        },
+        {
+          "id": "f017",
+          "text": "file-018.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 501.309,
+            "top": 433.741,
+            "right": 576.809,
+            "bottom": 446.9285,
+            "width": 75.5,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f000",
+          "text": "file-001.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 715.944,
+            "top": 411.006,
+            "right": 791.444,
+            "bottom": 424.1935,
+            "width": 75.5,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f001",
+          "text": "file-002.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 506.796,
+            "top": 407.475,
+            "right": 582.296,
+            "bottom": 420.6625,
+            "width": 75.5,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f002",
+          "text": "file-003.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 715.33,
+            "top": 427.055,
+            "right": 790.83,
+            "bottom": 440.2425,
+            "width": 75.5,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f003",
+          "text": "file-004.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f004",
+          "text": "file-005.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 714.045,
+            "top": 443.065,
+            "right": 789.545,
+            "bottom": 456.2525,
+            "width": 75.5,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f005",
+          "text": "file-006.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f006",
+          "text": "file-007.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 712.089,
+            "top": 459.006,
+            "right": 787.589,
+            "bottom": 472.1935,
+            "width": 75.5,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f007",
+          "text": "file-008.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f008",
+          "text": "file-009.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 709.466,
+            "top": 474.852,
+            "right": 784.966,
+            "bottom": 488.0395,
+            "width": 75.5,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f009",
+          "text": "file-010.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f010",
+          "text": "file-011.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 706.182,
+            "top": 490.573,
+            "right": 781.682,
+            "bottom": 503.7605,
+            "width": 75.5,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f011",
+          "text": "file-012.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f012",
+          "text": "file-013.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 702.241,
+            "top": 506.143,
+            "right": 777.741,
+            "bottom": 519.3305,
+            "width": 75.5,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f013",
+          "text": "file-014.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f014",
+          "text": "file-015.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 697.651,
+            "top": 521.535,
+            "right": 773.151,
+            "bottom": 534.7225,
+            "width": 75.5,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f015",
+          "text": "file-016.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f016",
+          "text": "file-017.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f018",
+          "text": "file-019.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 686.557,
+            "top": 551.672,
+            "right": 762.057,
+            "bottom": 564.8595,
+            "width": 75.5,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f019",
+          "text": "file-020.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f020",
+          "text": "file-021.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f021",
+          "text": "file-022.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f022",
+          "text": "file-023.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 672.976,
+            "top": 580.774,
+            "right": 748.476,
+            "bottom": 593.9615,
+            "width": 75.5,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f023",
+          "text": "file-024.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f024",
+          "text": "file-025.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f025",
+          "text": "file-026.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f026",
+          "text": "file-027.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 750.505,
+            "top": 608.637,
+            "right": 826.005,
+            "bottom": 621.8245,
+            "width": 75.5,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f027",
+          "text": "file-028.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f028",
+          "text": "file-029.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 648.158,
+            "top": 622.041,
+            "right": 723.658,
+            "bottom": 635.2285,
+            "width": 75.5,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f029",
+          "text": "file-030.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f030",
+          "text": "file-031.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 732.256,
+            "top": 635.063,
+            "right": 807.756,
+            "bottom": 648.2505,
+            "width": 75.5,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f031",
+          "text": "file-032.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f032",
+          "text": "file-033.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 628.817,
+            "top": 647.679,
+            "right": 704.317,
+            "bottom": 660.8665,
+            "width": 75.5,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f033",
+          "text": "file-034.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f034",
+          "text": "file-035.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 711.858,
+            "top": 659.867,
+            "right": 787.358,
+            "bottom": 673.0545,
+            "width": 75.5,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f035",
+          "text": "file-036.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f036",
+          "text": "file-037.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 607.397,
+            "top": 671.607,
+            "right": 682.897,
+            "bottom": 684.7945,
+            "width": 75.5,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f037",
+          "text": "file-038.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f038",
+          "text": "file-039.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 689.453,
+            "top": 682.876,
+            "right": 764.953,
+            "bottom": 696.0635,
+            "width": 75.5,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        }
+      ],
+      "root": {
+        "id": "root",
+        "text": "Flat 300",
+        "display": "flex",
+        "rect": {
+          "left": 434.5,
+          "top": 404.406,
+          "right": 472.671875,
+          "bottom": 417.5935,
+          "width": 38.171875,
+          "height": 13.1875
+        },
+        "svg": 0,
+        "badge": null
+      },
+      "othersCount": 19,
+      "rootOverlaps": [],
+      "rootProtection": true,
+      "rootLabelVisible": true,
+      "rootProtectionRect": {
+        "left": 336.1449541031284,
+        "top": 329.6449541031284,
+        "right": 498.8550458968716,
+        "bottom": 492.3550458968716
+      },
+      "leadingIconCount": 0,
+      "visibleCount": 20,
+      "theme": "light",
+      "selected": "f017",
+      "counts": "300 visible / 300 total"
+    },
+    "exceptions": [],
+    "capturedAt": "2026-11-02T02:05:25.808Z"
+  },
+  {
+    "out": "evidence/native-r121/r152-after-flat-narrow.png",
+    "origin": "http://127.0.0.1:8099/tests/harness/m5-exploration/",
+    "theme": "dark",
+    "width": 390,
+    "height": 844,
+    "importResult": {
+      "ok": true
+    },
+    "search": {
+      "cards": 1,
+      "status": "Search highlights 1 folder containing matching results.",
+      "selected": "f017",
+      "focused": "root"
+    },
+    "audit": {
+      "labels": [
+        {
+          "id": "root",
+          "text": "Flat 300",
+          "display": "flex",
+          "rect": {
+            "left": 180,
+            "top": 222.406,
+            "right": 218.171875,
+            "bottom": 235.5935,
+            "width": 38.171875,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": null
+        },
+        {
+          "id": "f017",
+          "text": "file-018.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 151.623,
+            "top": 264.341,
+            "right": 227.123,
+            "bottom": 277.5285,
+            "width": 75.5,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f000",
+          "text": "file-001.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f001",
+          "text": "file-002.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f002",
+          "text": "file-003.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f003",
+          "text": "file-004.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f004",
+          "text": "file-005.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f005",
+          "text": "file-006.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f006",
+          "text": "file-007.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f007",
+          "text": "file-008.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f008",
+          "text": "file-009.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f009",
+          "text": "file-010.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f010",
+          "text": "file-011.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f011",
+          "text": "file-012.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f012",
+          "text": "file-013.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f013",
+          "text": "file-014.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f014",
+          "text": "file-015.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f015",
+          "text": "file-016.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f016",
+          "text": "file-017.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f018",
+          "text": "file-019.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f019",
+          "text": "file-020.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f020",
+          "text": "file-021.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f021",
+          "text": "file-022.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f022",
+          "text": "file-023.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f023",
+          "text": "file-024.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f024",
+          "text": "file-025.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f025",
+          "text": "file-026.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f026",
+          "text": "file-027.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f027",
+          "text": "file-028.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f028",
+          "text": "file-029.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f029",
+          "text": "file-030.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f030",
+          "text": "file-031.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f031",
+          "text": "file-032.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f032",
+          "text": "file-033.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f033",
+          "text": "file-034.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f034",
+          "text": "file-035.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f035",
+          "text": "file-036.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f036",
+          "text": "file-037.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f037",
+          "text": "file-038.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "f038",
+          "text": "file-039.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        }
+      ],
+      "root": {
+        "id": "root",
+        "text": "Flat 300",
+        "display": "flex",
+        "rect": {
+          "left": 180,
+          "top": 222.406,
+          "right": 218.171875,
+          "bottom": 235.5935,
+          "width": 38.171875,
+          "height": 13.1875
+        },
+        "svg": 0,
+        "badge": null
+      },
+      "othersCount": 1,
+      "rootOverlaps": [],
+      "rootProtection": true,
+      "rootLabelVisible": true,
+      "rootProtectionRect": {
+        "left": 133.67226311677177,
+        "top": 199.67226311677177,
+        "right": 224.171875,
+        "bottom": 258.3277368832282
+      },
+      "leadingIconCount": 0,
+      "visibleCount": 2,
+      "theme": "dark",
+      "selected": "f017",
+      "counts": "300 visible / 300 total"
+    },
+    "exceptions": [],
+    "capturedAt": "2026-11-02T02:05:29.385Z"
+  },
+  {
+    "out": "evidence/native-r121/r152-after-distributed-dark.png",
+    "origin": "http://127.0.0.1:8099/tests/harness/m5-exploration/",
+    "theme": "dark",
+    "width": 1200,
+    "height": 900,
+    "importResult": {
+      "ok": true
+    },
+    "search": {
+      "cards": 1,
+      "status": "Search highlights 2 folders containing matching results.",
+      "selected": "north029",
+      "focused": "root"
+    },
+    "audit": {
+      "labels": [
+        {
+          "id": "root",
+          "text": "Distributed 300",
+          "display": "flex",
+          "rect": {
+            "left": 434.5,
+            "top": 404.406,
+            "right": 509.21875,
+            "bottom": 417.5935,
+            "width": 74.71875,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": null
+        },
+        {
+          "id": "north029",
+          "text": "north-030.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 675.754,
+            "top": 589.097,
+            "right": 763.175875,
+            "bottom": 602.2845,
+            "width": 87.421875,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north",
+          "text": "North",
+          "display": "flex",
+          "rect": {
+            "left": 604.92,
+            "top": 575.18,
+            "right": 633.373125,
+            "bottom": 588.3675,
+            "width": 28.453125,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": null
+        },
+        {
+          "id": "south",
+          "text": "South",
+          "display": "flex",
+          "rect": {
+            "left": 384.356,
+            "top": 482.758,
+            "right": 412.82475,
+            "bottom": 495.9455,
+            "width": 28.46875,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": null
+        },
+        {
+          "id": "east",
+          "text": "East",
+          "display": "flex",
+          "rect": {
+            "left": 145.253,
+            "top": 404.033,
+            "right": 164.8155,
+            "bottom": 417.2205,
+            "width": 19.5625,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": null
+        },
+        {
+          "id": "west",
+          "text": "West",
+          "display": "flex",
+          "rect": {
+            "left": 386.739,
+            "top": 326.006,
+            "right": 410.739,
+            "bottom": 339.1935,
+            "width": 24,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": null
+        },
+        {
+          "id": "center",
+          "text": "Center",
+          "display": "flex",
+          "rect": {
+            "left": 601.501,
+            "top": 233.932,
+            "right": 633.59475,
+            "bottom": 247.1195,
+            "width": 32.09375,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": null
+        },
+        {
+          "id": "north000",
+          "text": "north-001.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north001",
+          "text": "north-002.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 631.087,
+            "top": 415.901,
+            "right": 718.508875,
+            "bottom": 429.0885,
+            "width": 87.421875,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north002",
+          "text": "north-003.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north003",
+          "text": "north-004.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north004",
+          "text": "north-005.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north005",
+          "text": "north-006.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 628.962,
+            "top": 442.426,
+            "right": 716.383875,
+            "bottom": 455.6135,
+            "width": 87.421875,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north006",
+          "text": "north-007.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north007",
+          "text": "north-008.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north008",
+          "text": "north-009.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north009",
+          "text": "north-010.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 624.571,
+            "top": 468.672,
+            "right": 711.992875,
+            "bottom": 481.8595,
+            "width": 87.421875,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north010",
+          "text": "north-011.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north011",
+          "text": "north-012.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north012",
+          "text": "north-013.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north013",
+          "text": "north-014.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 617.947,
+            "top": 494.445,
+            "right": 705.368875,
+            "bottom": 507.6325,
+            "width": 87.421875,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north014",
+          "text": "north-015.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north015",
+          "text": "north-016.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north016",
+          "text": "north-017.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north017",
+          "text": "north-018.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 609.138,
+            "top": 519.555,
+            "right": 696.559875,
+            "bottom": 532.7425,
+            "width": 87.421875,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north018",
+          "text": "north-019.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north019",
+          "text": "north-020.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north020",
+          "text": "north-021.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north021",
+          "text": "north-022.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 598.21,
+            "top": 543.819,
+            "right": 685.631875,
+            "bottom": 557.0065,
+            "width": 87.421875,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north022",
+          "text": "north-023.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north023",
+          "text": "north-024.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north024",
+          "text": "north-025.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north025",
+          "text": "north-026.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north026",
+          "text": "north-027.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north027",
+          "text": "north-028.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north028",
+          "text": "north-029.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north030",
+          "text": "north-031.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 734.442,
+            "top": 642.983,
+            "right": 821.863875,
+            "bottom": 656.1705,
+            "width": 87.421875,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north031",
+          "text": "north-032.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north032",
+          "text": "north-033.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 618.505,
+            "top": 655.971,
+            "right": 705.926875,
+            "bottom": 669.1585,
+            "width": 87.421875,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north033",
+          "text": "north-034.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        }
+      ],
+      "root": {
+        "id": "root",
+        "text": "Distributed 300",
+        "display": "flex",
+        "rect": {
+          "left": 434.5,
+          "top": 404.406,
+          "right": 509.21875,
+          "bottom": 417.5935,
+          "width": 74.71875,
+          "height": 13.1875
+        },
+        "svg": 0,
+        "badge": null
+      },
+      "othersCount": 14,
+      "rootOverlaps": [],
+      "rootProtection": true,
+      "rootLabelVisible": true,
+      "rootProtectionRect": {
+        "left": 356.29567869691175,
+        "top": 349.79567869691175,
+        "right": 515.21875,
+        "bottom": 472.20432130308825
+      },
+      "leadingIconCount": 0,
+      "visibleCount": 15,
+      "theme": "dark",
+      "selected": "north029",
+      "counts": "300 visible / 300 total"
+    },
+    "exceptions": [],
+    "capturedAt": "2026-11-02T02:05:33.018Z"
+  },
+  {
+    "out": "evidence/native-r121/r152-after-distributed-light.png",
+    "origin": "http://127.0.0.1:8099/tests/harness/m5-exploration/",
+    "theme": "light",
+    "width": 1200,
+    "height": 900,
+    "importResult": {
+      "ok": true
+    },
+    "search": {
+      "cards": 1,
+      "status": "Search highlights 2 folders containing matching results.",
+      "selected": "north029",
+      "focused": "root"
+    },
+    "audit": {
+      "labels": [
+        {
+          "id": "root",
+          "text": "Distributed 300",
+          "display": "flex",
+          "rect": {
+            "left": 434.5,
+            "top": 404.406,
+            "right": 509.21875,
+            "bottom": 417.5935,
+            "width": 74.71875,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": null
+        },
+        {
+          "id": "north029",
+          "text": "north-030.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 675.754,
+            "top": 589.097,
+            "right": 763.175875,
+            "bottom": 602.2845,
+            "width": 87.421875,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north",
+          "text": "North",
+          "display": "flex",
+          "rect": {
+            "left": 604.92,
+            "top": 575.18,
+            "right": 633.373125,
+            "bottom": 588.3675,
+            "width": 28.453125,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": null
+        },
+        {
+          "id": "south",
+          "text": "South",
+          "display": "flex",
+          "rect": {
+            "left": 384.356,
+            "top": 482.758,
+            "right": 412.82475,
+            "bottom": 495.9455,
+            "width": 28.46875,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": null
+        },
+        {
+          "id": "east",
+          "text": "East",
+          "display": "flex",
+          "rect": {
+            "left": 145.253,
+            "top": 404.033,
+            "right": 164.8155,
+            "bottom": 417.2205,
+            "width": 19.5625,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": null
+        },
+        {
+          "id": "west",
+          "text": "West",
+          "display": "flex",
+          "rect": {
+            "left": 386.739,
+            "top": 326.006,
+            "right": 410.739,
+            "bottom": 339.1935,
+            "width": 24,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": null
+        },
+        {
+          "id": "center",
+          "text": "Center",
+          "display": "flex",
+          "rect": {
+            "left": 601.501,
+            "top": 233.932,
+            "right": 633.59475,
+            "bottom": 247.1195,
+            "width": 32.09375,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": null
+        },
+        {
+          "id": "north000",
+          "text": "north-001.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north001",
+          "text": "north-002.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 631.087,
+            "top": 415.901,
+            "right": 718.508875,
+            "bottom": 429.0885,
+            "width": 87.421875,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north002",
+          "text": "north-003.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north003",
+          "text": "north-004.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north004",
+          "text": "north-005.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north005",
+          "text": "north-006.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 628.962,
+            "top": 442.426,
+            "right": 716.383875,
+            "bottom": 455.6135,
+            "width": 87.421875,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north006",
+          "text": "north-007.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north007",
+          "text": "north-008.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north008",
+          "text": "north-009.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north009",
+          "text": "north-010.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 624.571,
+            "top": 468.672,
+            "right": 711.992875,
+            "bottom": 481.8595,
+            "width": 87.421875,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north010",
+          "text": "north-011.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north011",
+          "text": "north-012.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north012",
+          "text": "north-013.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north013",
+          "text": "north-014.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 617.947,
+            "top": 494.445,
+            "right": 705.368875,
+            "bottom": 507.6325,
+            "width": 87.421875,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north014",
+          "text": "north-015.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north015",
+          "text": "north-016.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north016",
+          "text": "north-017.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north017",
+          "text": "north-018.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 609.138,
+            "top": 519.555,
+            "right": 696.559875,
+            "bottom": 532.7425,
+            "width": 87.421875,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north018",
+          "text": "north-019.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north019",
+          "text": "north-020.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north020",
+          "text": "north-021.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north021",
+          "text": "north-022.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 598.21,
+            "top": 543.819,
+            "right": 685.631875,
+            "bottom": 557.0065,
+            "width": 87.421875,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north022",
+          "text": "north-023.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north023",
+          "text": "north-024.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north024",
+          "text": "north-025.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north025",
+          "text": "north-026.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north026",
+          "text": "north-027.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north027",
+          "text": "north-028.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north028",
+          "text": "north-029.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north030",
+          "text": "north-031.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 734.442,
+            "top": 642.983,
+            "right": 821.863875,
+            "bottom": 656.1705,
+            "width": 87.421875,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north031",
+          "text": "north-032.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north032",
+          "text": "north-033.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 618.505,
+            "top": 655.971,
+            "right": 705.926875,
+            "bottom": 669.1585,
+            "width": 87.421875,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north033",
+          "text": "north-034.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        }
+      ],
+      "root": {
+        "id": "root",
+        "text": "Distributed 300",
+        "display": "flex",
+        "rect": {
+          "left": 434.5,
+          "top": 404.406,
+          "right": 509.21875,
+          "bottom": 417.5935,
+          "width": 74.71875,
+          "height": 13.1875
+        },
+        "svg": 0,
+        "badge": null
+      },
+      "othersCount": 14,
+      "rootOverlaps": [],
+      "rootProtection": true,
+      "rootLabelVisible": true,
+      "rootProtectionRect": {
+        "left": 356.29567869691175,
+        "top": 349.79567869691175,
+        "right": 515.21875,
+        "bottom": 472.20432130308825
+      },
+      "leadingIconCount": 0,
+      "visibleCount": 15,
+      "theme": "light",
+      "selected": "north029",
+      "counts": "300 visible / 300 total"
+    },
+    "exceptions": [],
+    "capturedAt": "2026-11-02T02:05:36.949Z"
+  },
+  {
+    "out": "evidence/native-r121/r152-after-distributed-narrow.png",
+    "origin": "http://127.0.0.1:8099/tests/harness/m5-exploration/",
+    "theme": "dark",
+    "width": 390,
+    "height": 844,
+    "importResult": {
+      "ok": true
+    },
+    "search": {
+      "cards": 1,
+      "status": "Search highlights 2 folders containing matching results.",
+      "selected": "north029",
+      "focused": "root"
+    },
+    "audit": {
+      "labels": [
+        {
+          "id": "root",
+          "text": "Distributed 300",
+          "display": "flex",
+          "rect": {
+            "left": 180,
+            "top": 222.406,
+            "right": 254.71875,
+            "bottom": 235.5935,
+            "width": 74.71875,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": null
+        },
+        {
+          "id": "north029",
+          "text": "north-030.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 158.75,
+            "top": 267.239,
+            "right": 246.171875,
+            "bottom": 280.4265,
+            "width": 87.421875,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north",
+          "text": "North",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": null
+        },
+        {
+          "id": "south",
+          "text": "South",
+          "display": "flex",
+          "rect": {
+            "left": 138.456,
+            "top": 340.724,
+            "right": 166.92475,
+            "bottom": 353.9115,
+            "width": 28.46875,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": null
+        },
+        {
+          "id": "east",
+          "text": "East",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": null
+        },
+        {
+          "id": "west",
+          "text": "West",
+          "display": "flex",
+          "rect": {
+            "left": 138.765,
+            "top": 103.987,
+            "right": 162.765,
+            "bottom": 117.1745,
+            "width": 24,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": null
+        },
+        {
+          "id": "center",
+          "text": "Center",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": null
+        },
+        {
+          "id": "north000",
+          "text": "north-001.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north001",
+          "text": "north-002.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north002",
+          "text": "north-003.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north003",
+          "text": "north-004.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north004",
+          "text": "north-005.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north005",
+          "text": "north-006.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north006",
+          "text": "north-007.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north007",
+          "text": "north-008.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north008",
+          "text": "north-009.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north009",
+          "text": "north-010.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north010",
+          "text": "north-011.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north011",
+          "text": "north-012.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north012",
+          "text": "north-013.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north013",
+          "text": "north-014.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north014",
+          "text": "north-015.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north015",
+          "text": "north-016.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north016",
+          "text": "north-017.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north017",
+          "text": "north-018.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north018",
+          "text": "north-019.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north019",
+          "text": "north-020.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north020",
+          "text": "north-021.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north021",
+          "text": "north-022.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north022",
+          "text": "north-023.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north023",
+          "text": "north-024.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north024",
+          "text": "north-025.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north025",
+          "text": "north-026.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north026",
+          "text": "north-027.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north027",
+          "text": "north-028.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north028",
+          "text": "north-029.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north030",
+          "text": "north-031.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north031",
+          "text": "north-032.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north032",
+          "text": "north-033.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "north033",
+          "text": "north-034.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        }
+      ],
+      "root": {
+        "id": "root",
+        "text": "Distributed 300",
+        "display": "flex",
+        "rect": {
+          "left": 180,
+          "top": 222.406,
+          "right": 254.71875,
+          "bottom": 235.5935,
+          "width": 74.71875,
+          "height": 13.1875
+        },
+        "svg": 0,
+        "badge": null
+      },
+      "othersCount": 3,
+      "rootOverlaps": [],
+      "rootProtection": true,
+      "rootLabelVisible": true,
+      "rootProtectionRect": {
+        "left": 135.84350513009733,
+        "top": 201.84350513009733,
+        "right": 260.71875,
+        "bottom": 256.15649486990264
+      },
+      "leadingIconCount": 0,
+      "visibleCount": 4,
+      "theme": "dark",
+      "selected": "north029",
+      "counts": "300 visible / 300 total"
+    },
+    "exceptions": [],
+    "capturedAt": "2026-11-02T02:05:40.532Z"
+  },
+  {
+    "out": "evidence/native-r121/r152-after-mixed-dark.png",
+    "origin": "http://127.0.0.1:8099/tests/harness/m5-exploration/",
+    "theme": "dark",
+    "width": 1200,
+    "height": 900,
+    "importResult": {
+      "ok": true
+    },
+    "search": {
+      "cards": 1,
+      "status": "Search highlights 2 folders containing matching results.",
+      "selected": "w057",
+      "focused": "n0"
+    },
+    "audit": {
+      "labels": [
+        {
+          "id": "n0",
+          "text": "R150 300 Node Map",
+          "display": "flex",
+          "rect": {
+            "left": 434.5,
+            "top": 404.406,
+            "right": 534.546875,
+            "bottom": 417.5935,
+            "width": 100.046875,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": null
+        },
+        {
+          "id": "w057",
+          "text": "wide-057.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 422.148,
+            "top": 629.31,
+            "right": 505.9605,
+            "bottom": 642.4975,
+            "width": 83.8125,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "wide",
+          "text": "Wide",
+          "display": "flex",
+          "rect": {
+            "left": 566.584,
+            "top": 529.286,
+            "right": 591.755875,
+            "bottom": 542.4735,
+            "width": 25.171875,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": null
+        },
+        {
+          "id": "deep01",
+          "text": "Deep 01",
+          "display": "flex",
+          "rect": {
+            "left": 397.219,
+            "top": 473.336,
+            "right": 437.7815,
+            "bottom": 486.5235,
+            "width": 40.5625,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": null
+        },
+        {
+          "id": "b0",
+          "text": "Branch 0",
+          "display": "flex",
+          "rect": {
+            "left": 248.04,
+            "top": 536.252,
+            "right": 290.24312499999996,
+            "bottom": 549.4395,
+            "width": 42.203125,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": null
+        },
+        {
+          "id": "b1",
+          "text": "Branch 1",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": null
+        },
+        {
+          "id": "b2",
+          "text": "Branch 2",
+          "display": "flex",
+          "rect": {
+            "left": 423.645,
+            "top": 178.154,
+            "right": 465.848125,
+            "bottom": 191.3415,
+            "width": 42.203125,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": null
+        },
+        {
+          "id": "b3",
+          "text": "Branch 3",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": null
+        },
+        {
+          "id": "w000",
+          "text": "report.pdfPDF",
+          "display": "flex",
+          "rect": {
+            "left": 734.12,
+            "top": 408.575,
+            "right": 807.6825,
+            "bottom": 421.7625,
+            "width": 73.5625,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "PDF"
+        },
+        {
+          "id": "w001",
+          "text": "notes.mdMD",
+          "display": "flex",
+          "rect": {
+            "left": 584.911,
+            "top": 412.664,
+            "right": 653.4735,
+            "bottom": 425.8515,
+            "width": 68.5625,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "MD"
+        },
+        {
+          "id": "w002",
+          "text": "pixel.pngIMG",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "IMG"
+        },
+        {
+          "id": "w003",
+          "text": "plain.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w004",
+          "text": "wide-004.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 732.786,
+            "top": 433.324,
+            "right": 816.5985,
+            "bottom": 446.5115,
+            "width": 83.8125,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w005",
+          "text": "wide-005.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 568.201,
+            "top": 432.357,
+            "right": 652.0135,
+            "bottom": 445.5445,
+            "width": 83.8125,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w006",
+          "text": "wide-006.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w007",
+          "text": "wide-007.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w008",
+          "text": "wide-008.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 729.464,
+            "top": 457.885,
+            "right": 813.2765,
+            "bottom": 471.0725,
+            "width": 83.8125,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w009",
+          "text": "wide-009.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 565.161,
+            "top": 451.868,
+            "right": 648.9735,
+            "bottom": 465.0555,
+            "width": 83.8125,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w010",
+          "text": "wide-010.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w011",
+          "text": "wide-011.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w012",
+          "text": "wide-012.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 724.176,
+            "top": 482.1,
+            "right": 807.9885,
+            "bottom": 495.2875,
+            "width": 83.8125,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w013",
+          "text": "wide-013.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 560.56,
+            "top": 471.072,
+            "right": 644.3725,
+            "bottom": 484.2595,
+            "width": 83.8125,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w014",
+          "text": "wide-014.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w015",
+          "text": "wide-015.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w016",
+          "text": "wide-016.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 716.956,
+            "top": 505.81,
+            "right": 800.7685,
+            "bottom": 518.9975,
+            "width": 83.8125,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w017",
+          "text": "wide-017.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 554.428,
+            "top": 489.843,
+            "right": 638.2405,
+            "bottom": 503.0305,
+            "width": 83.8125,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w018",
+          "text": "wide-018.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w019",
+          "text": "wide-019.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w020",
+          "text": "wide-020.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 707.851,
+            "top": 528.861,
+            "right": 791.6635,
+            "bottom": 542.0485,
+            "width": 83.8125,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w021",
+          "text": "wide-021.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 546.805,
+            "top": 508.059,
+            "right": 630.6175,
+            "bottom": 521.2465,
+            "width": 83.8125,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w022",
+          "text": "wide-022.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w023",
+          "text": "wide-023.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w024",
+          "text": "wide-024.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 696.919,
+            "top": 551.106,
+            "right": 780.7315,
+            "bottom": 564.2935,
+            "width": 83.8125,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w025",
+          "text": "wide-025.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w026",
+          "text": "wide-026.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w027",
+          "text": "wide-027.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w028",
+          "text": "wide-028.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w029",
+          "text": "wide-029.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w030",
+          "text": "wide-030.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w031",
+          "text": "wide-031.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        }
+      ],
+      "root": {
+        "id": "n0",
+        "text": "R150 300 Node Map",
+        "display": "flex",
+        "rect": {
+          "left": 434.5,
+          "top": 404.406,
+          "right": 534.546875,
+          "bottom": 417.5935,
+          "width": 100.046875,
+          "height": 13.1875
+        },
+        "svg": 0,
+        "badge": null
+      },
+      "othersCount": 18,
+      "rootOverlaps": [],
+      "rootProtection": true,
+      "rootLabelVisible": true,
+      "rootProtectionRect": {
+        "left": 368.7636081311177,
+        "top": 362.2636081311177,
+        "right": 540.546875,
+        "bottom": 459.7363918688823
+      },
+      "leadingIconCount": 0,
+      "visibleCount": 19,
+      "theme": "dark",
+      "selected": "w057",
+      "counts": "300 visible / 300 total"
+    },
+    "exceptions": [],
+    "capturedAt": "2026-11-02T02:05:44.140Z"
+  },
+  {
+    "out": "evidence/native-r121/r152-after-mixed-light.png",
+    "origin": "http://127.0.0.1:8099/tests/harness/m5-exploration/",
+    "theme": "light",
+    "width": 1200,
+    "height": 900,
+    "importResult": {
+      "ok": true
+    },
+    "search": {
+      "cards": 1,
+      "status": "Search highlights 2 folders containing matching results.",
+      "selected": "w057",
+      "focused": "n0"
+    },
+    "audit": {
+      "labels": [
+        {
+          "id": "n0",
+          "text": "R150 300 Node Map",
+          "display": "flex",
+          "rect": {
+            "left": 434.5,
+            "top": 404.406,
+            "right": 534.546875,
+            "bottom": 417.5935,
+            "width": 100.046875,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": null
+        },
+        {
+          "id": "w057",
+          "text": "wide-057.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 422.148,
+            "top": 629.31,
+            "right": 505.9605,
+            "bottom": 642.4975,
+            "width": 83.8125,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "wide",
+          "text": "Wide",
+          "display": "flex",
+          "rect": {
+            "left": 566.584,
+            "top": 529.286,
+            "right": 591.755875,
+            "bottom": 542.4735,
+            "width": 25.171875,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": null
+        },
+        {
+          "id": "deep01",
+          "text": "Deep 01",
+          "display": "flex",
+          "rect": {
+            "left": 397.219,
+            "top": 473.336,
+            "right": 437.7815,
+            "bottom": 486.5235,
+            "width": 40.5625,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": null
+        },
+        {
+          "id": "b0",
+          "text": "Branch 0",
+          "display": "flex",
+          "rect": {
+            "left": 248.04,
+            "top": 536.252,
+            "right": 290.24312499999996,
+            "bottom": 549.4395,
+            "width": 42.203125,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": null
+        },
+        {
+          "id": "b1",
+          "text": "Branch 1",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": null
+        },
+        {
+          "id": "b2",
+          "text": "Branch 2",
+          "display": "flex",
+          "rect": {
+            "left": 423.645,
+            "top": 178.154,
+            "right": 465.848125,
+            "bottom": 191.3415,
+            "width": 42.203125,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": null
+        },
+        {
+          "id": "b3",
+          "text": "Branch 3",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": null
+        },
+        {
+          "id": "w000",
+          "text": "report.pdfPDF",
+          "display": "flex",
+          "rect": {
+            "left": 734.12,
+            "top": 408.575,
+            "right": 807.6825,
+            "bottom": 421.7625,
+            "width": 73.5625,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "PDF"
+        },
+        {
+          "id": "w001",
+          "text": "notes.mdMD",
+          "display": "flex",
+          "rect": {
+            "left": 584.911,
+            "top": 412.664,
+            "right": 653.4735,
+            "bottom": 425.8515,
+            "width": 68.5625,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "MD"
+        },
+        {
+          "id": "w002",
+          "text": "pixel.pngIMG",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "IMG"
+        },
+        {
+          "id": "w003",
+          "text": "plain.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w004",
+          "text": "wide-004.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 732.786,
+            "top": 433.324,
+            "right": 816.5985,
+            "bottom": 446.5115,
+            "width": 83.8125,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w005",
+          "text": "wide-005.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 568.201,
+            "top": 432.357,
+            "right": 652.0135,
+            "bottom": 445.5445,
+            "width": 83.8125,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w006",
+          "text": "wide-006.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w007",
+          "text": "wide-007.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w008",
+          "text": "wide-008.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 729.464,
+            "top": 457.885,
+            "right": 813.2765,
+            "bottom": 471.0725,
+            "width": 83.8125,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w009",
+          "text": "wide-009.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 565.161,
+            "top": 451.868,
+            "right": 648.9735,
+            "bottom": 465.0555,
+            "width": 83.8125,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w010",
+          "text": "wide-010.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w011",
+          "text": "wide-011.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w012",
+          "text": "wide-012.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 724.176,
+            "top": 482.1,
+            "right": 807.9885,
+            "bottom": 495.2875,
+            "width": 83.8125,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w013",
+          "text": "wide-013.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 560.56,
+            "top": 471.072,
+            "right": 644.3725,
+            "bottom": 484.2595,
+            "width": 83.8125,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w014",
+          "text": "wide-014.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w015",
+          "text": "wide-015.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w016",
+          "text": "wide-016.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 716.956,
+            "top": 505.81,
+            "right": 800.7685,
+            "bottom": 518.9975,
+            "width": 83.8125,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w017",
+          "text": "wide-017.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 554.428,
+            "top": 489.843,
+            "right": 638.2405,
+            "bottom": 503.0305,
+            "width": 83.8125,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w018",
+          "text": "wide-018.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w019",
+          "text": "wide-019.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w020",
+          "text": "wide-020.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 707.851,
+            "top": 528.861,
+            "right": 791.6635,
+            "bottom": 542.0485,
+            "width": 83.8125,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w021",
+          "text": "wide-021.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 546.805,
+            "top": 508.059,
+            "right": 630.6175,
+            "bottom": 521.2465,
+            "width": 83.8125,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w022",
+          "text": "wide-022.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w023",
+          "text": "wide-023.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w024",
+          "text": "wide-024.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 696.919,
+            "top": 551.106,
+            "right": 780.7315,
+            "bottom": 564.2935,
+            "width": 83.8125,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w025",
+          "text": "wide-025.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w026",
+          "text": "wide-026.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w027",
+          "text": "wide-027.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w028",
+          "text": "wide-028.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w029",
+          "text": "wide-029.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w030",
+          "text": "wide-030.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w031",
+          "text": "wide-031.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        }
+      ],
+      "root": {
+        "id": "n0",
+        "text": "R150 300 Node Map",
+        "display": "flex",
+        "rect": {
+          "left": 434.5,
+          "top": 404.406,
+          "right": 534.546875,
+          "bottom": 417.5935,
+          "width": 100.046875,
+          "height": 13.1875
+        },
+        "svg": 0,
+        "badge": null
+      },
+      "othersCount": 18,
+      "rootOverlaps": [],
+      "rootProtection": true,
+      "rootLabelVisible": true,
+      "rootProtectionRect": {
+        "left": 368.7636081311177,
+        "top": 362.2636081311177,
+        "right": 540.546875,
+        "bottom": 459.7363918688823
+      },
+      "leadingIconCount": 0,
+      "visibleCount": 19,
+      "theme": "light",
+      "selected": "w057",
+      "counts": "300 visible / 300 total"
+    },
+    "exceptions": [],
+    "capturedAt": "2026-11-02T02:05:48.105Z"
+  },
+  {
+    "out": "evidence/native-r121/r152-after-mixed-narrow.png",
+    "origin": "http://127.0.0.1:8099/tests/harness/m5-exploration/",
+    "theme": "dark",
+    "width": 390,
+    "height": 844,
+    "importResult": {
+      "ok": true
+    },
+    "search": {
+      "cards": 1,
+      "status": "Search highlights 2 folders containing matching results.",
+      "selected": "w057",
+      "focused": "n0"
+    },
+    "audit": {
+      "labels": [
+        {
+          "id": "n0",
+          "text": "R150 300 Node Map",
+          "display": "flex",
+          "rect": {
+            "left": 180,
+            "top": 222.406,
+            "right": 280.046875,
+            "bottom": 235.5935,
+            "width": 100.046875,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": null
+        },
+        {
+          "id": "w057",
+          "text": "wide-057.txtTXT",
+          "display": "flex",
+          "rect": {
+            "left": 213.612,
+            "top": 318.431,
+            "right": 297.42449999999997,
+            "bottom": 331.6185,
+            "width": 83.8125,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "wide",
+          "text": "Wide",
+          "display": "flex",
+          "rect": {
+            "left": 203.862,
+            "top": 275.725,
+            "right": 229.033875,
+            "bottom": 288.9125,
+            "width": 25.171875,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": null
+        },
+        {
+          "id": "deep01",
+          "text": "Deep 01",
+          "display": "flex",
+          "rect": {
+            "left": 142.719,
+            "top": 263.982,
+            "right": 183.2815,
+            "bottom": 277.1695,
+            "width": 40.5625,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": null
+        },
+        {
+          "id": "b0",
+          "text": "Branch 0",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": null
+        },
+        {
+          "id": "b1",
+          "text": "Branch 1",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": null
+        },
+        {
+          "id": "b2",
+          "text": "Branch 2",
+          "display": "flex",
+          "rect": {
+            "left": 138.288,
+            "top": 146.999,
+            "right": 180.491125,
+            "bottom": 160.1865,
+            "width": 42.203125,
+            "height": 13.1875
+          },
+          "svg": 0,
+          "badge": null
+        },
+        {
+          "id": "b3",
+          "text": "Branch 3",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": null
+        },
+        {
+          "id": "w000",
+          "text": "report.pdfPDF",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "PDF"
+        },
+        {
+          "id": "w001",
+          "text": "notes.mdMD",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "MD"
+        },
+        {
+          "id": "w002",
+          "text": "pixel.pngIMG",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "IMG"
+        },
+        {
+          "id": "w003",
+          "text": "plain.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w004",
+          "text": "wide-004.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w005",
+          "text": "wide-005.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w006",
+          "text": "wide-006.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w007",
+          "text": "wide-007.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w008",
+          "text": "wide-008.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w009",
+          "text": "wide-009.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w010",
+          "text": "wide-010.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w011",
+          "text": "wide-011.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w012",
+          "text": "wide-012.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w013",
+          "text": "wide-013.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w014",
+          "text": "wide-014.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w015",
+          "text": "wide-015.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w016",
+          "text": "wide-016.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w017",
+          "text": "wide-017.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w018",
+          "text": "wide-018.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w019",
+          "text": "wide-019.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w020",
+          "text": "wide-020.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w021",
+          "text": "wide-021.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w022",
+          "text": "wide-022.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w023",
+          "text": "wide-023.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w024",
+          "text": "wide-024.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w025",
+          "text": "wide-025.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w026",
+          "text": "wide-026.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w027",
+          "text": "wide-027.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w028",
+          "text": "wide-028.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w029",
+          "text": "wide-029.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w030",
+          "text": "wide-030.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        },
+        {
+          "id": "w031",
+          "text": "wide-031.txtTXT",
+          "display": "none",
+          "rect": {
+            "left": 0,
+            "top": 0,
+            "right": 0,
+            "bottom": 0,
+            "width": 0,
+            "height": 0
+          },
+          "svg": 0,
+          "badge": "TXT"
+        }
+      ],
+      "root": {
+        "id": "n0",
+        "text": "R150 300 Node Map",
+        "display": "flex",
+        "rect": {
+          "left": 180,
+          "top": 222.406,
+          "right": 280.046875,
+          "bottom": 235.5935,
+          "width": 100.046875,
+          "height": 13.1875
+        },
+        "svg": 0,
+        "badge": null
+      },
+      "othersCount": 4,
+      "rootOverlaps": [],
+      "rootProtection": true,
+      "rootLabelVisible": true,
+      "rootProtectionRect": {
+        "left": 141.61840151669486,
+        "top": 207.61840151669486,
+        "right": 286.046875,
+        "bottom": 250.38159848330514
+      },
+      "leadingIconCount": 0,
+      "visibleCount": 5,
+      "theme": "dark",
+      "selected": "w057",
+      "counts": "300 visible / 300 total"
+    },
+    "exceptions": [],
+    "capturedAt": "2026-11-02T02:05:51.691Z"
+  }
+]

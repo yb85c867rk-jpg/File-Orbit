@@ -1,0 +1,29 @@
+{
+  "archive": "r150-300.orbit",
+  "bytes": 37984,
+  "sha256": "3b1eb3c7b562c0746377b688d82d9752ea68ad8d825a9e6a378906a89996cf6b",
+  "nodeCount": 300,
+  "treeRoot": "R150 300 Node Map",
+  "attachments": [
+    {
+      "name": "report.pdf",
+      "size": 1068,
+      "sha256": "d282cf216a332cab9a7f18456450ac6cf26d641f10b48790515bea664f3ef749"
+    },
+    {
+      "name": "notes.md",
+      "size": 52,
+      "sha256": "63571c33b3ed004f05b2ab43ed4a85ec029d253af2b264308e8e2840b2c08eb4"
+    },
+    {
+      "name": "pixel.png",
+      "size": 68,
+      "sha256": "431ced6916a2a21a156e38701afe55bbd7f88969fbbfc56d7fe099d47f265460"
+    },
+    {
+      "name": "plain.txt",
+      "size": 30,
+      "sha256": "2f497badebdd68b1720a8b352345b1b619daeb709d1c808bfa4647ef0c67a3c9"
+    }
+  ]
+}

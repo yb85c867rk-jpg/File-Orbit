@@ -1,0 +1,1602 @@
+﻿{
+  "f20": {
+    "workspaceScale": 1,
+    "before": {
+      "totalNodes": 20,
+      "visibleNodes": 20,
+      "hiddenNodes": 0,
+      "viewportIntersectingNodes": 20,
+      "visibleIds": [
+        "n0",
+        "n1",
+        "n3",
+        "n7",
+        "n15",
+        "n16",
+        "n8",
+        "n17",
+        "n18",
+        "n4",
+        "n9",
+        "n19",
+        "n10",
+        "n2",
+        "n5",
+        "n11",
+        "n12",
+        "n6",
+        "n13",
+        "n14"
+      ],
+      "hiddenIds": [],
+      "overlapPairs": 0,
+      "minCenterSeparation": 30.037630984032514,
+      "minimumShapeBoundarySeparationCss": 18.037630984032514,
+      "bounds": {
+        "minX": 362.8656169275837,
+        "minY": 24,
+        "maxX": 737.1343830724161,
+        "maxY": 449
+      },
+      "radiusStats": {
+        "all": {
+          "count": 20,
+          "min": 6,
+          "max": 6,
+          "mean": 6,
+          "median": 6,
+          "p90": 6
+        },
+        "visible": {
+          "count": 20,
+          "min": 6,
+          "max": 6,
+          "mean": 6,
+          "median": 6,
+          "p90": 6
+        }
+      },
+      "minimumGlyphBoundarySeparationCss": 18.037630984032514,
+      "displacementFromBase": {
+        "meanCss": 43.872536782215484,
+        "maxCss": 94.06162137618536,
+        "changedNodes": 20
+      }
+    },
+    "crowding": {
+      "requested": true,
+      "applied": false,
+      "outcome": "no-crowding",
+      "attempts": 1,
+      "candidateLimit": 5,
+      "maxNodes": 400,
+      "phase": "current",
+      "selectedPattern": null,
+      "before": {
+        "metrics": {
+          "totalNodes": 20,
+          "visibleNodes": 20,
+          "hiddenNodes": 0,
+          "overlapPairs": 0,
+          "minCenterSeparation": 30.037630984032514,
+          "minimumShapeBoundarySeparationCss": 18.037630984032514
+        },
+        "fit": {
+          "ok": true,
+          "eligibleCount": 20,
+          "containedCount": 20,
+          "clippedCount": 0,
+          "zoom": 1.1297171984710501
+        },
+        "displacement": {
+          "meanCss": 0,
+          "maxCss": 0,
+          "changedNodes": 0
+        }
+      },
+      "after": {
+        "metrics": {
+          "totalNodes": 20,
+          "visibleNodes": 20,
+          "hiddenNodes": 0,
+          "overlapPairs": 0,
+          "minCenterSeparation": 30.037630984032514,
+          "minimumShapeBoundarySeparationCss": 18.037630984032514
+        },
+        "fit": {
+          "ok": true,
+          "eligibleCount": 20,
+          "containedCount": 20,
+          "clippedCount": 0,
+          "zoom": 1.1297171984710501
+        },
+        "displacement": {
+          "meanCss": 0,
+          "maxCss": 0,
+          "changedNodes": 0
+        }
+      },
+      "minimumBoundaryGainCss": 0.25,
+      "candidates": [],
+      "scope": "final fitted fixed-glyph node geometry; labels separate"
+    },
+    "after": {
+      "metrics": {
+        "totalNodes": 20,
+        "visibleNodes": 20,
+        "hiddenNodes": 0,
+        "overlapPairs": 0,
+        "minCenterSeparation": 30.037630984032514,
+        "minimumShapeBoundarySeparationCss": 18.037630984032514
+      },
+      "fit": {
+        "ok": true,
+        "eligibleCount": 20,
+        "containedCount": 20,
+        "clippedCount": 0,
+        "zoom": 1.1297171984710501
+      },
+      "displacement": {
+        "meanCss": 0,
+        "maxCss": 0,
+        "changedNodes": 0
+      }
+    }
+  },
+  "f200": {
+    "workspaceScale": 9.5,
+    "before": {
+      "totalNodes": 200,
+      "visibleNodes": 200,
+      "hiddenNodes": 0,
+      "viewportIntersectingNodes": 200,
+      "visibleIds": [
+        "n0",
+        "n1",
+        "n6",
+        "n31",
+        "n156",
+        "n157",
+        "n158",
+        "n159",
+        "n160",
+        "n32",
+        "n161",
+        "n162",
+        "n163",
+        "n164",
+        "n165",
+        "n33",
+        "n166",
+        "n167",
+        "n168",
+        "n169",
+        "n170",
+        "n34",
+        "n171",
+        "n172",
+        "n173",
+        "n174",
+        "n175",
+        "n35",
+        "n176",
+        "n177",
+        "n178",
+        "n179",
+        "n180",
+        "n7",
+        "n36",
+        "n181",
+        "n182",
+        "n183",
+        "n184",
+        "n185",
+        "n37",
+        "n186",
+        "n187",
+        "n188",
+        "n189",
+        "n190",
+        "n38",
+        "n191",
+        "n192",
+        "n193",
+        "n194",
+        "n195",
+        "n39",
+        "n196",
+        "n197",
+        "n198",
+        "n199",
+        "n40",
+        "n8",
+        "n41",
+        "n42",
+        "n43",
+        "n44",
+        "n45",
+        "n9",
+        "n46",
+        "n47",
+        "n48",
+        "n49",
+        "n50",
+        "n10",
+        "n51",
+        "n52",
+        "n53",
+        "n54",
+        "n55",
+        "n2",
+        "n11",
+        "n56",
+        "n57",
+        "n58",
+        "n59",
+        "n60",
+        "n12",
+        "n61",
+        "n62",
+        "n63",
+        "n64",
+        "n65",
+        "n13",
+        "n66",
+        "n67",
+        "n68",
+        "n69",
+        "n70",
+        "n14",
+        "n71",
+        "n72",
+        "n73",
+        "n74",
+        "n75",
+        "n15",
+        "n76",
+        "n77",
+        "n78",
+        "n79",
+        "n80",
+        "n3",
+        "n16",
+        "n81",
+        "n82",
+        "n83",
+        "n84",
+        "n85",
+        "n17",
+        "n86",
+        "n87",
+        "n88",
+        "n89",
+        "n90",
+        "n18",
+        "n91",
+        "n92",
+        "n93",
+        "n94",
+        "n95",
+        "n19",
+        "n96",
+        "n97",
+        "n98",
+        "n99",
+        "n100",
+        "n20",
+        "n101",
+        "n102",
+        "n103",
+        "n104",
+        "n105",
+        "n4",
+        "n21",
+        "n106",
+        "n107",
+        "n108",
+        "n109",
+        "n110",
+        "n22",
+        "n111",
+        "n112",
+        "n113",
+        "n114",
+        "n115",
+        "n23",
+        "n116",
+        "n117",
+        "n118",
+        "n119",
+        "n120",
+        "n24",
+        "n121",
+        "n122",
+        "n123",
+        "n124",
+        "n125",
+        "n25",
+        "n126",
+        "n127",
+        "n128",
+        "n129",
+        "n130",
+        "n5",
+        "n26",
+        "n131",
+        "n132",
+        "n133",
+        "n134",
+        "n135",
+        "n27",
+        "n136",
+        "n137",
+        "n138",
+        "n139",
+        "n140",
+        "n28",
+        "n141",
+        "n142",
+        "n143",
+        "n144",
+        "n145",
+        "n29",
+        "n146",
+        "n147",
+        "n148",
+        "n149",
+        "n150",
+        "n30",
+        "n151",
+        "n152",
+        "n153",
+        "n154",
+        "n155"
+      ],
+      "hiddenIds": [],
+      "overlapPairs": 104,
+      "minCenterSeparation": 4.075511595755296,
+      "minimumShapeBoundarySeparationCss": -6.382913430683626,
+      "bounds": {
+        "minX": 324.0880274292251,
+        "minY": 24,
+        "maxX": 775.911972570775,
+        "maxY": 449
+      },
+      "radiusStats": {
+        "all": {
+          "count": 200,
+          "min": 6,
+          "max": 6,
+          "mean": 6,
+          "median": 6,
+          "p90": 6
+        },
+        "visible": {
+          "count": 200,
+          "min": 6,
+          "max": 6,
+          "mean": 6,
+          "median": 6,
+          "p90": 6
+        }
+      },
+      "minimumGlyphBoundarySeparationCss": -6.382913430683626,
+      "displacementFromBase": {
+        "meanCss": 63.259015102211094,
+        "maxCss": 144.97329963712446,
+        "changedNodes": 200
+      }
+    },
+    "crowding": {
+      "requested": true,
+      "applied": true,
+      "outcome": "accepted",
+      "attempts": 5,
+      "candidateLimit": 5,
+      "maxNodes": 400,
+      "phase": "current",
+      "selectedPattern": {
+        "lanes": 6,
+        "angularPower": 16
+      },
+      "before": {
+        "metrics": {
+          "totalNodes": 200,
+          "visibleNodes": 200,
+          "hiddenNodes": 0,
+          "overlapPairs": 104,
+          "minCenterSeparation": 4.075511595755296,
+          "minimumShapeBoundarySeparationCss": -6.382913430683626
+        },
+        "fit": {
+          "ok": true,
+          "eligibleCount": 200,
+          "containedCount": 200,
+          "clippedCount": 0,
+          "zoom": 0.12045033923251104
+        },
+        "displacement": {
+          "meanCss": 0,
+          "maxCss": 0,
+          "changedNodes": 0
+        }
+      },
+      "after": {
+        "metrics": {
+          "totalNodes": 200,
+          "visibleNodes": 200,
+          "hiddenNodes": 0,
+          "overlapPairs": 54,
+          "minCenterSeparation": 4.455938711326606,
+          "minimumShapeBoundarySeparationCss": -4.775783302717326
+        },
+        "fit": {
+          "ok": true,
+          "eligibleCount": 200,
+          "containedCount": 200,
+          "clippedCount": 0,
+          "zoom": 0.11405424776743298
+        },
+        "displacement": {
+          "meanCss": 172.70787851975322,
+          "maxCss": 364.3732640588881,
+          "changedNodes": 200
+        }
+      },
+      "minimumBoundaryGainCss": 0.25,
+      "candidates": [
+        {
+          "pattern": {
+            "lanes": 4,
+            "angularPower": 4
+          },
+          "overlapPairs": 80,
+          "fit": {
+            "ok": true,
+            "eligibleCount": 200,
+            "containedCount": 200,
+            "clippedCount": 0,
+            "zoom": 0.12302326250328185
+          }
+        },
+        {
+          "pattern": {
+            "lanes": 6,
+            "angularPower": 8
+          },
+          "overlapPairs": 59,
+          "fit": {
+            "ok": true,
+            "eligibleCount": 200,
+            "containedCount": 200,
+            "clippedCount": 0,
+            "zoom": 0.12054786868962943
+          }
+        },
+        {
+          "pattern": {
+            "lanes": 8,
+            "angularPower": 8
+          },
+          "overlapPairs": 90,
+          "fit": {
+            "ok": true,
+            "eligibleCount": 200,
+            "containedCount": 200,
+            "clippedCount": 0,
+            "zoom": 0.12260052400825285
+          }
+        },
+        {
+          "pattern": {
+            "lanes": 6,
+            "angularPower": 16
+          },
+          "overlapPairs": 54,
+          "fit": {
+            "ok": true,
+            "eligibleCount": 200,
+            "containedCount": 200,
+            "clippedCount": 0,
+            "zoom": 0.11405424776743298
+          }
+        }
+      ],
+      "scope": "final fitted fixed-glyph node geometry; labels separate",
+      "residualPairCount": 54,
+      "residualPairs": [
+        [
+          "n31",
+          "n158"
+        ],
+        [
+          "n33",
+          "n168"
+        ],
+        [
+          "n35",
+          "n178"
+        ],
+        [
+          "n37",
+          "n189"
+        ],
+        [
+          "n8",
+          "n45"
+        ],
+        [
+          "n41",
+          "n42"
+        ],
+        [
+          "n42",
+          "n43"
+        ],
+        [
+          "n43",
+          "n44"
+        ],
+        [
+          "n9",
+          "n50"
+        ],
+        [
+          "n46",
+          "n47"
+        ],
+        [
+          "n47",
+          "n48"
+        ],
+        [
+          "n48",
+          "n49"
+        ],
+        [
+          "n10",
+          "n55"
+        ],
+        [
+          "n51",
+          "n52"
+        ],
+        [
+          "n52",
+          "n53"
+        ],
+        [
+          "n53",
+          "n54"
+        ],
+        [
+          "n13",
+          "n70"
+        ],
+        [
+          "n15",
+          "n80"
+        ],
+        [
+          "n76",
+          "n77"
+        ],
+        [
+          "n77",
+          "n78"
+        ],
+        [
+          "n78",
+          "n79"
+        ],
+        [
+          "n81",
+          "n82"
+        ],
+        [
+          "n82",
+          "n83"
+        ],
+        [
+          "n83",
+          "n84"
+        ],
+        [
+          "n86",
+          "n87"
+        ],
+        [
+          "n87",
+          "n88"
+        ],
+        [
+          "n88",
+          "n89"
+        ],
+        [
+          "n91",
+          "n92"
+        ],
+        [
+          "n92",
+          "n93"
+        ],
+        [
+          "n93",
+          "n94"
+        ],
+        [
+          "n96",
+          "n97"
+        ],
+        [
+          "n97",
+          "n98"
+        ],
+        [
+          "n101",
+          "n102"
+        ],
+        [
+          "n102",
+          "n103"
+        ],
+        [
+          "n103",
+          "n104"
+        ],
+        [
+          "n23",
+          "n120"
+        ],
+        [
+          "n25",
+          "n130"
+        ],
+        [
+          "n126",
+          "n127"
+        ],
+        [
+          "n127",
+          "n128"
+        ],
+        [
+          "n128",
+          "n129"
+        ],
+        [
+          "n131",
+          "n132"
+        ],
+        [
+          "n132",
+          "n133"
+        ],
+        [
+          "n133",
+          "n134"
+        ],
+        [
+          "n136",
+          "n137"
+        ],
+        [
+          "n137",
+          "n138"
+        ],
+        [
+          "n138",
+          "n139"
+        ],
+        [
+          "n141",
+          "n142"
+        ],
+        [
+          "n142",
+          "n143"
+        ],
+        [
+          "n143",
+          "n144"
+        ],
+        [
+          "n146",
+          "n147"
+        ],
+        [
+          "n147",
+          "n148"
+        ],
+        [
+          "n151",
+          "n152"
+        ],
+        [
+          "n152",
+          "n153"
+        ],
+        [
+          "n153",
+          "n154"
+        ]
+      ],
+      "residualByDepth": {
+        "2": 7,
+        "3": 97,
+        "4": 4
+      },
+      "residualSample": [
+        {
+          "a": "n31",
+          "b": "n158",
+          "depthA": 3,
+          "depthB": 4,
+          "aCenter": {
+            "x": 748.0119455241575,
+            "y": 265.70651627430993
+          },
+          "bCenter": {
+            "x": 754.9627671598789,
+            "y": 266.85412397745927
+          }
+        },
+        {
+          "a": "n33",
+          "b": "n168",
+          "depthA": 3,
+          "depthB": 4,
+          "aCenter": {
+            "x": 686.0068676791101,
+            "y": 381.7072309802612
+          },
+          "bCenter": {
+            "x": 690.8226413943169,
+            "y": 386.8491419456383
+          }
+        },
+        {
+          "a": "n35",
+          "b": "n178",
+          "depthA": 3,
+          "depthB": 4,
+          "aCenter": {
+            "x": 566.1974898400915,
+            "y": 435.98898180583046
+          },
+          "bCenter": {
+            "x": 566.8878149323226,
+            "y": 443
+          }
+        },
+        {
+          "a": "n37",
+          "b": "n189",
+          "depthA": 3,
+          "depthB": 4,
+          "aCenter": {
+            "x": 462.2372088098045,
+            "y": 366.64395133879225
+          },
+          "bCenter": {
+            "x": 450.84303239182566,
+            "y": 364.66398719219455
+          }
+        },
+        {
+          "a": "n8",
+          "b": "n45",
+          "depthA": 2,
+          "depthB": 3,
+          "aCenter": {
+            "x": 368.579478074481,
+            "y": 288.68174133878273
+          },
+          "bCenter": {
+            "x": 363.69700970519386,
+            "y": 283.1580059546181
+          }
+        },
+        {
+          "a": "n41",
+          "b": "n42",
+          "depthA": 3,
+          "depthB": 3,
+          "aCenter": {
+            "x": 362.5631749885531,
+            "y": 297.86774348081707
+          },
+          "bCenter": {
+            "x": 358.80602151236315,
+            "y": 295.472083330576
+          }
+        },
+        {
+          "a": "n42",
+          "b": "n43",
+          "depthA": 3,
+          "depthB": 3,
+          "aCenter": {
+            "x": 358.80602151236315,
+            "y": 295.472083330576
+          },
+          "bCenter": {
+            "x": 355.0768118619209,
+            "y": 292.96314032022246
+          }
+        },
+        {
+          "a": "n43",
+          "b": "n44",
+          "depthA": 3,
+          "depthB": 3,
+          "aCenter": {
+            "x": 355.0768118619209,
+            "y": 292.96314032022246
+          },
+          "bCenter": {
+            "x": 351.3783932404737,
+            "y": 290.3411649740152
+          }
+        },
+        {
+          "a": "n9",
+          "b": "n50",
+          "depthA": 2,
+          "depthB": 3,
+          "aCenter": {
+            "x": 401.30182869440614,
+            "y": 264.47182691859916
+          },
+          "bCenter": {
+            "x": 395.1781880403423,
+            "y": 260.2316987401934
+          }
+        },
+        {
+          "a": "n46",
+          "b": "n47",
+          "depthA": 3,
+          "depthB": 3,
+          "aCenter": {
+            "x": 384.2354336355437,
+            "y": 274.35130095044025
+          },
+          "bCenter": {
+            "x": 376.8308709213951,
+            "y": 273.06866007022904
+          }
+        }
+      ]
+    },
+    "after": {
+      "metrics": {
+        "totalNodes": 200,
+        "visibleNodes": 200,
+        "hiddenNodes": 0,
+        "overlapPairs": 54,
+        "minCenterSeparation": 4.455938711326606,
+        "minimumShapeBoundarySeparationCss": -4.775783302717326
+      },
+      "fit": {
+        "ok": true,
+        "eligibleCount": 200,
+        "containedCount": 200,
+        "clippedCount": 0,
+        "zoom": 0.11405424776743298
+      },
+      "displacement": {
+        "meanCss": 172.70787851975322,
+        "maxCss": 364.3732640588881,
+        "changedNodes": 200
+      }
+    },
+    "secondViewport": {
+      "small": {
+        "viewport": {
+          "width": 800,
+          "height": 600
+        },
+        "outcome": "accepted",
+        "before": {
+          "totalNodes": 200,
+          "visibleNodes": 200,
+          "hiddenNodes": 0,
+          "overlapPairs": 72,
+          "minCenterSeparation": 5.3287560816170165,
+          "minimumShapeBoundarySeparationCss": -5.196023935363236
+        },
+        "after": {
+          "totalNodes": 200,
+          "visibleNodes": 200,
+          "hiddenNodes": 0,
+          "overlapPairs": 18,
+          "minCenterSeparation": 5.826166838054164,
+          "minimumShapeBoundarySeparationCss": -2.796719706300962
+        },
+        "fit": {
+          "ok": true,
+          "eligibleCount": 200,
+          "containedCount": 200,
+          "clippedCount": 0,
+          "zoom": 0.14912661935693416
+        }
+      },
+      "wide": {
+        "viewport": {
+          "width": 1600,
+          "height": 900
+        },
+        "outcome": "accepted",
+        "before": {
+          "totalNodes": 200,
+          "visibleNodes": 200,
+          "hiddenNodes": 0,
+          "overlapPairs": 20,
+          "minCenterSeparation": 8.289176126959761,
+          "minimumShapeBoundarySeparationCss": -2.392347962165314
+        },
+        "after": {
+          "totalNodes": 200,
+          "visibleNodes": 200,
+          "hiddenNodes": 0,
+          "overlapPairs": 0,
+          "minCenterSeparation": 14.56203735230721,
+          "minimumShapeBoundarySeparationCss": 2.592613857873565
+        },
+        "fit": {
+          "ok": true,
+          "eligibleCount": 200,
+          "containedCount": 200,
+          "clippedCount": 0,
+          "zoom": 0.24518210580941574
+        }
+      }
+    }
+  },
+  "crowdedFolder": {
+    "workspaceScale": 2,
+    "before": {
+      "totalNodes": 34,
+      "visibleNodes": 34,
+      "hiddenNodes": 0,
+      "viewportIntersectingNodes": 34,
+      "visibleIds": [
+        "r",
+        "dense",
+        "dense-0",
+        "dense-1",
+        "dense-2",
+        "dense-3",
+        "dense-4",
+        "dense-5",
+        "dense-6",
+        "dense-7",
+        "dense-8",
+        "dense-9",
+        "dense-10",
+        "dense-11",
+        "dense-12",
+        "dense-13",
+        "dense-14",
+        "dense-15",
+        "dense-16",
+        "dense-17",
+        "dense-18",
+        "dense-19",
+        "dense-20",
+        "dense-21",
+        "dense-22",
+        "dense-23",
+        "small-a",
+        "a-0",
+        "a-1",
+        "small-b",
+        "b-0",
+        "small-c",
+        "c-0",
+        "c-1"
+      ],
+      "hiddenIds": [],
+      "overlapPairs": 0,
+      "minCenterSeparation": 15.234048368617678,
+      "minimumShapeBoundarySeparationCss": 3.408331918620061,
+      "bounds": {
+        "minX": 270.0323158579366,
+        "minY": 24,
+        "maxX": 829.9676841420633,
+        "maxY": 449
+      },
+      "radiusStats": {
+        "all": {
+          "count": 34,
+          "min": 6,
+          "max": 6,
+          "mean": 6,
+          "median": 6,
+          "p90": 6
+        },
+        "visible": {
+          "count": 34,
+          "min": 6,
+          "max": 6,
+          "mean": 6,
+          "median": 6,
+          "p90": 6
+        }
+      },
+      "minimumGlyphBoundarySeparationCss": 3.408331918620061,
+      "displacementFromBase": {
+        "meanCss": 0,
+        "maxCss": 0,
+        "changedNodes": 0
+      }
+    },
+    "crowding": {
+      "requested": true,
+      "applied": false,
+      "outcome": "no-crowding",
+      "attempts": 1,
+      "candidateLimit": 5,
+      "maxNodes": 400,
+      "phase": "current",
+      "selectedPattern": null,
+      "before": {
+        "metrics": {
+          "totalNodes": 34,
+          "visibleNodes": 34,
+          "hiddenNodes": 0,
+          "overlapPairs": 0,
+          "minCenterSeparation": 15.234048368617678,
+          "minimumShapeBoundarySeparationCss": 3.408331918620061
+        },
+        "fit": {
+          "ok": true,
+          "eligibleCount": 34,
+          "containedCount": 34,
+          "clippedCount": 0,
+          "zoom": 0.8078428324285858
+        },
+        "displacement": {
+          "meanCss": 0,
+          "maxCss": 0,
+          "changedNodes": 0
+        }
+      },
+      "after": {
+        "metrics": {
+          "totalNodes": 34,
+          "visibleNodes": 34,
+          "hiddenNodes": 0,
+          "overlapPairs": 0,
+          "minCenterSeparation": 15.234048368617678,
+          "minimumShapeBoundarySeparationCss": 3.408331918620061
+        },
+        "fit": {
+          "ok": true,
+          "eligibleCount": 34,
+          "containedCount": 34,
+          "clippedCount": 0,
+          "zoom": 0.8078428324285858
+        },
+        "displacement": {
+          "meanCss": 0,
+          "maxCss": 0,
+          "changedNodes": 0
+        }
+      },
+      "minimumBoundaryGainCss": 0.25,
+      "candidates": [],
+      "scope": "final fitted fixed-glyph node geometry; labels separate"
+    },
+    "after": {
+      "metrics": {
+        "totalNodes": 34,
+        "visibleNodes": 34,
+        "hiddenNodes": 0,
+        "overlapPairs": 0,
+        "minCenterSeparation": 15.234048368617678,
+        "minimumShapeBoundarySeparationCss": 3.408331918620061
+      },
+      "fit": {
+        "ok": true,
+        "eligibleCount": 34,
+        "containedCount": 34,
+        "clippedCount": 0,
+        "zoom": 0.8078428324285858
+      },
+      "displacement": {
+        "meanCss": 0,
+        "maxCss": 0,
+        "changedNodes": 0
+      }
+    }
+  },
+  "denseNeighbors": {
+    "workspaceScale": 1.25,
+    "before": {
+      "totalNodes": 53,
+      "visibleNodes": 53,
+      "hiddenNodes": 0,
+      "viewportIntersectingNodes": 53,
+      "visibleIds": [
+        "r",
+        "a",
+        "a-0",
+        "a-1",
+        "a-2",
+        "a-3",
+        "a-4",
+        "a-5",
+        "a-6",
+        "a-7",
+        "a-8",
+        "a-9",
+        "a-10",
+        "a-11",
+        "b",
+        "b-0",
+        "b-1",
+        "b-2",
+        "b-3",
+        "b-4",
+        "b-5",
+        "b-6",
+        "b-7",
+        "b-8",
+        "b-9",
+        "b-10",
+        "b-11",
+        "c",
+        "c-0",
+        "c-1",
+        "c-2",
+        "c-3",
+        "c-4",
+        "c-5",
+        "c-6",
+        "c-7",
+        "c-8",
+        "c-9",
+        "c-10",
+        "c-11",
+        "d",
+        "d-0",
+        "d-1",
+        "d-2",
+        "d-3",
+        "d-4",
+        "d-5",
+        "d-6",
+        "d-7",
+        "d-8",
+        "d-9",
+        "d-10",
+        "d-11"
+      ],
+      "hiddenIds": [],
+      "overlapPairs": 0,
+      "minCenterSeparation": 16.82646502309886,
+      "minimumShapeBoundarySeparationCss": 4.8264659295161145,
+      "bounds": {
+        "minX": 325.52548183320937,
+        "minY": 23.99999999999997,
+        "maxX": 774.4745181667906,
+        "maxY": 449
+      },
+      "radiusStats": {
+        "all": {
+          "count": 53,
+          "min": 6,
+          "max": 6,
+          "mean": 6,
+          "median": 6,
+          "p90": 6
+        },
+        "visible": {
+          "count": 53,
+          "min": 6,
+          "max": 6,
+          "mean": 6,
+          "median": 6,
+          "p90": 6
+        }
+      },
+      "minimumGlyphBoundarySeparationCss": 4.8264659295161145,
+      "displacementFromBase": {
+        "meanCss": 0,
+        "maxCss": 0,
+        "changedNodes": 0
+      }
+    },
+    "crowding": {
+      "requested": true,
+      "applied": false,
+      "outcome": "no-crowding",
+      "attempts": 1,
+      "candidateLimit": 5,
+      "maxNodes": 400,
+      "phase": "current",
+      "selectedPattern": null,
+      "before": {
+        "metrics": {
+          "totalNodes": 53,
+          "visibleNodes": 53,
+          "hiddenNodes": 0,
+          "overlapPairs": 0,
+          "minCenterSeparation": 16.82646502309886,
+          "minimumShapeBoundarySeparationCss": 4.8264659295161145
+        },
+        "fit": {
+          "ok": true,
+          "eligibleCount": 53,
+          "containedCount": 53,
+          "clippedCount": 0,
+          "zoom": 1.0018975180569196
+        },
+        "displacement": {
+          "meanCss": 0,
+          "maxCss": 0,
+          "changedNodes": 0
+        }
+      },
+      "after": {
+        "metrics": {
+          "totalNodes": 53,
+          "visibleNodes": 53,
+          "hiddenNodes": 0,
+          "overlapPairs": 0,
+          "minCenterSeparation": 16.82646502309886,
+          "minimumShapeBoundarySeparationCss": 4.8264659295161145
+        },
+        "fit": {
+          "ok": true,
+          "eligibleCount": 53,
+          "containedCount": 53,
+          "clippedCount": 0,
+          "zoom": 1.0018975180569196
+        },
+        "displacement": {
+          "meanCss": 0,
+          "maxCss": 0,
+          "changedNodes": 0
+        }
+      },
+      "minimumBoundaryGainCss": 0.25,
+      "candidates": [],
+      "scope": "final fitted fixed-glyph node geometry; labels separate"
+    },
+    "after": {
+      "metrics": {
+        "totalNodes": 53,
+        "visibleNodes": 53,
+        "hiddenNodes": 0,
+        "overlapPairs": 0,
+        "minCenterSeparation": 16.82646502309886,
+        "minimumShapeBoundarySeparationCss": 4.8264659295161145
+      },
+      "fit": {
+        "ok": true,
+        "eligibleCount": 53,
+        "containedCount": 53,
+        "clippedCount": 0,
+        "zoom": 1.0018975180569196
+      },
+      "displacement": {
+        "meanCss": 0,
+        "maxCss": 0,
+        "changedNodes": 0
+      }
+    }
+  },
+  "mixedDeepWide": {
+    "workspaceScale": 1,
+    "before": {
+      "totalNodes": 50,
+      "visibleNodes": 50,
+      "hiddenNodes": 0,
+      "viewportIntersectingNodes": 50,
+      "visibleIds": [
+        "r",
+        "deep-0",
+        "deep-1",
+        "deep-2",
+        "deep-3",
+        "deep-4",
+        "deep-5",
+        "deep-leaf",
+        "wide",
+        "wide-0",
+        "wide-1",
+        "wide-2",
+        "wide-3",
+        "wide-4",
+        "wide-5",
+        "wide-6",
+        "wide-7",
+        "wide-8",
+        "wide-9",
+        "wide-10",
+        "wide-11",
+        "wide-12",
+        "wide-13",
+        "wide-14",
+        "wide-15",
+        "wide-16",
+        "wide-17",
+        "wide-18",
+        "wide-19",
+        "medium",
+        "medium-0",
+        "medium-0-0",
+        "medium-0-1",
+        "medium-0-2",
+        "medium-1",
+        "medium-1-0",
+        "medium-1-1",
+        "medium-1-2",
+        "medium-2",
+        "medium-2-0",
+        "medium-2-1",
+        "medium-2-2",
+        "medium-3",
+        "medium-3-0",
+        "medium-3-1",
+        "medium-3-2",
+        "medium-4",
+        "medium-4-0",
+        "medium-4-1",
+        "medium-4-2"
+      ],
+      "hiddenIds": [],
+      "overlapPairs": 0,
+      "minCenterSeparation": 15.719506510702832,
+      "minimumShapeBoundarySeparationCss": 5.074634100346408,
+      "bounds": {
+        "minX": 346.6872396127466,
+        "minY": 23.99999999999997,
+        "maxX": 753.3127603872534,
+        "maxY": 449
+      },
+      "radiusStats": {
+        "all": {
+          "count": 50,
+          "min": 6,
+          "max": 6,
+          "mean": 6,
+          "median": 6,
+          "p90": 6
+        },
+        "visible": {
+          "count": 50,
+          "min": 6,
+          "max": 6,
+          "mean": 6,
+          "median": 6,
+          "p90": 6
+        }
+      },
+      "minimumGlyphBoundarySeparationCss": 5.074634100346408,
+      "displacementFromBase": {
+        "meanCss": 0,
+        "maxCss": 0,
+        "changedNodes": 0
+      }
+    },
+    "crowding": {
+      "requested": true,
+      "applied": false,
+      "outcome": "no-crowding",
+      "attempts": 1,
+      "candidateLimit": 5,
+      "maxNodes": 400,
+      "phase": "current",
+      "selectedPattern": null,
+      "before": {
+        "metrics": {
+          "totalNodes": 50,
+          "visibleNodes": 50,
+          "hiddenNodes": 0,
+          "overlapPairs": 0,
+          "minCenterSeparation": 15.719506510702832,
+          "minimumShapeBoundarySeparationCss": 5.074634100346408
+        },
+        "fit": {
+          "ok": true,
+          "eligibleCount": 50,
+          "containedCount": 50,
+          "clippedCount": 0,
+          "zoom": 1.292628741854481
+        },
+        "displacement": {
+          "meanCss": 0,
+          "maxCss": 0,
+          "changedNodes": 0
+        }
+      },
+      "after": {
+        "metrics": {
+          "totalNodes": 50,
+          "visibleNodes": 50,
+          "hiddenNodes": 0,
+          "overlapPairs": 0,
+          "minCenterSeparation": 15.719506510702832,
+          "minimumShapeBoundarySeparationCss": 5.074634100346408
+        },
+        "fit": {
+          "ok": true,
+          "eligibleCount": 50,
+          "containedCount": 50,
+          "clippedCount": 0,
+          "zoom": 1.292628741854481
+        },
+        "displacement": {
+          "meanCss": 0,
+          "maxCss": 0,
+          "changedNodes": 0
+        }
+      },
+      "minimumBoundaryGainCss": 0.25,
+      "candidates": [],
+      "scope": "final fitted fixed-glyph node geometry; labels separate"
+    },
+    "after": {
+      "metrics": {
+        "totalNodes": 50,
+        "visibleNodes": 50,
+        "hiddenNodes": 0,
+        "overlapPairs": 0,
+        "minCenterSeparation": 15.719506510702832,
+        "minimumShapeBoundarySeparationCss": 5.074634100346408
+      },
+      "fit": {
+        "ok": true,
+        "eligibleCount": 50,
+        "containedCount": 50,
+        "clippedCount": 0,
+        "zoom": 1.292628741854481
+      },
+      "displacement": {
+        "meanCss": 0,
+        "maxCss": 0,
+        "changedNodes": 0
+      }
+    }
+  },
+  "longLabels": {
+    "workspaceScale": 1,
+    "before": {
+      "totalNodes": 11,
+      "visibleNodes": 11,
+      "hiddenNodes": 0,
+      "viewportIntersectingNodes": 11,
+      "visibleIds": [
+        "r",
+        "long-folder",
+        "long-pdf",
+        "long-md",
+        "long-txt",
+        "long-img",
+        "types",
+        "type-1",
+        "type-2",
+        "type-3",
+        "type-4"
+      ],
+      "hiddenIds": [],
+      "overlapPairs": 0,
+      "minCenterSeparation": 40.95763202351493,
+      "minimumShapeBoundarySeparationCss": 28.957632023514932,
+      "bounds": {
+        "minX": 321.3710614692195,
+        "minY": 23.99999999999997,
+        "maxX": 778.6289385307805,
+        "maxY": 449
+      },
+      "radiusStats": {
+        "all": {
+          "count": 11,
+          "min": 6,
+          "max": 6,
+          "mean": 6,
+          "median": 6,
+          "p90": 6
+        },
+        "visible": {
+          "count": 11,
+          "min": 6,
+          "max": 6,
+          "mean": 6,
+          "median": 6,
+          "p90": 6
+        }
+      },
+      "minimumGlyphBoundarySeparationCss": 28.957632023514932,
+      "displacementFromBase": {
+        "meanCss": 95.40848401799167,
+        "maxCss": 184.04957005016783,
+        "changedNodes": 11
+      }
+    },
+    "crowding": {
+      "requested": true,
+      "applied": false,
+      "outcome": "no-crowding",
+      "attempts": 1,
+      "candidateLimit": 5,
+      "maxNodes": 400,
+      "phase": "current",
+      "selectedPattern": null,
+      "before": {
+        "metrics": {
+          "totalNodes": 11,
+          "visibleNodes": 11,
+          "hiddenNodes": 0,
+          "overlapPairs": 0,
+          "minCenterSeparation": 40.95763202351493,
+          "minimumShapeBoundarySeparationCss": 28.957632023514932
+        },
+        "fit": {
+          "ok": true,
+          "eligibleCount": 11,
+          "containedCount": 11,
+          "clippedCount": 0,
+          "zoom": 1.5168458867642094
+        },
+        "displacement": {
+          "meanCss": 0,
+          "maxCss": 0,
+          "changedNodes": 0
+        }
+      },
+      "after": {
+        "metrics": {
+          "totalNodes": 11,
+          "visibleNodes": 11,
+          "hiddenNodes": 0,
+          "overlapPairs": 0,
+          "minCenterSeparation": 40.95763202351493,
+          "minimumShapeBoundarySeparationCss": 28.957632023514932
+        },
+        "fit": {
+          "ok": true,
+          "eligibleCount": 11,
+          "containedCount": 11,
+          "clippedCount": 0,
+          "zoom": 1.5168458867642094
+        },
+        "displacement": {
+          "meanCss": 0,
+          "maxCss": 0,
+          "changedNodes": 0
+        }
+      },
+      "minimumBoundaryGainCss": 0.25,
+      "candidates": [],
+      "scope": "final fitted fixed-glyph node geometry; labels separate"
+    },
+    "after": {
+      "metrics": {
+        "totalNodes": 11,
+        "visibleNodes": 11,
+        "hiddenNodes": 0,
+        "overlapPairs": 0,
+        "minCenterSeparation": 40.95763202351493,
+        "minimumShapeBoundarySeparationCss": 28.957632023514932
+      },
+      "fit": {
+        "ok": true,
+        "eligibleCount": 11,
+        "containedCount": 11,
+        "clippedCount": 0,
+        "zoom": 1.5168458867642094
+      },
+      "displacement": {
+        "meanCss": 0,
+        "maxCss": 0,
+        "changedNodes": 0
+      }
+    }
+  }
+}

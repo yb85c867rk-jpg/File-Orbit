@@ -1,0 +1,37 @@
+﻿✔ drawing failure leaves selection interaction invalidated and inert (1.8336ms)
+✔ hit-snapshot update failure after drawing also leaves interaction invalidated (0.2189ms)
+✔ successful frame installation draws before installing the hit snapshot (1.3484ms)
+✔ successful replacement can restore an explicit selection without click evidence (0.3378ms)
+✔ circle and diamond hit boundaries are inclusive; outside is not hit (0.2019ms)
+✔ hidden/zero-radius nodes are not hittable; padding is zero (0.1022ms)
+✔ reverse drawing order resolves overlapping nodes (0.1054ms)
+✔ modern transformed radius differs from oversized legacy hit region (0.0734ms)
+✔ caller mutation after snapshot does not alter installed hit geometry (0.106ms)
+✔ invalid hit scenes/points reject without coercion (0.3541ms)
+✔ non-string IDs and scene node limits are rejected (0.6084ms)
+✔ data files never retain interactive hit geometry even with internal diamond bounds (0.1365ms)
+✔ selection harness owns canvas/controller and explicit invalidation controls (0.1747ms)
+✔ selection harness separates numerical probes from user clicks and remains NOT_RUN (0.1486ms)
+✔ primary click selects, empty click clears, same selection is deterministic (0.359ms)
+✔ unsupported buttons and invalid event coordinates are ignored (0.1524ms)
+✔ DPR is never applied; nonzero origin and page scrolling are handled (0.1492ms)
+✔ diamond geometry is exact in hit testing (0.2206ms)
+✔ clear is notification-aware and update can clear a disappeared selection (0.2182ms)
+✔ invalid replacement preserves prior snapshot, selection, and generation (0.2052ms)
+✔ invalidate makes stale clicks inert until a new snapshot is installed (0.0869ms)
+✔ zero-sized viewport clears selection and refuses hits (0.0814ms)
+✔ callback errors are recorded after coherent state and do not break the controller (0.1464ms)
+✔ destroy is idempotent, removes exactly its listener, and isolates instances (0.149ms)
+✔ CSS coordinate conversion is invariant across DPR values and page scroll (0.091ms)
+✔ scene phase/projection are authoritative; duplicate args must agree (0.1623ms)
+✔ generation must strictly increase; stale/same replacements preserve installed frame (0.2161ms)
+✔ invalid frame metadata preserves callback history (0.2285ms)
+✔ explicit selection restoration preserves state without fabricating a click (0.2182ms)
+ℹ tests 29
+ℹ suites 0
+ℹ pass 29
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 40.4187

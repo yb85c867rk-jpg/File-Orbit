@@ -1,0 +1,72 @@
+[
+  {
+    "file": "r167-after-375-menu.png",
+    "width": 375,
+    "height": 812,
+    "bytes": 28114,
+    "sha256": "82C2924C56B7683D9F53FB79523B0951A862587478C29533C7E8DE5638ADE35B"
+  },
+  {
+    "file": "r167-after-375-panels.png",
+    "width": 375,
+    "height": 812,
+    "bytes": 25320,
+    "sha256": "C9808465EB70F0D3D63297ED08D4C9603A1EAE653C7F12E7C57184F46DA0570A"
+  },
+  {
+    "file": "r167-after-375.png",
+    "width": 375,
+    "height": 812,
+    "bytes": 18957,
+    "sha256": "2E58203DE900E7C5D99C45A452BEAEEAE5D174146ECEA07B66AF2331F93E1033"
+  },
+  {
+    "file": "r167-after-390.png",
+    "width": 390,
+    "height": 844,
+    "bytes": 19159,
+    "sha256": "0844F087E909F6396499620B6E2DDFAA5523EB24419D45F78AA9FD472C78611B"
+  },
+  {
+    "file": "r167-after-430.png",
+    "width": 430,
+    "height": 932,
+    "bytes": 19733,
+    "sha256": "F8485F9D14A1E68633D497A5D50DFA12D30C1E9E2CD1852262122826579FC912"
+  },
+  {
+    "file": "r167-after-desktop.png",
+    "width": 1200,
+    "height": 800,
+    "bytes": 24079,
+    "sha256": "DFE85DC87C9B9A7E74F0F54EC0606674B64061D6573DB58897067A07F214F62C"
+  },
+  {
+    "file": "r167-after-landscape-667.png",
+    "width": 667,
+    "height": 375,
+    "bytes": 21013,
+    "sha256": "77D247008CBF2AB73913C10741162D82E377736EA16ED72907BE09A548991AF6"
+  },
+  {
+    "file": "r167-before-375.png",
+    "width": 375,
+    "height": 812,
+    "bytes": 19849,
+    "sha256": "D6A5A0BC8258D4421D0149E6431933DF3E94BB36B0A5F5882B971067F949D544"
+  },
+  {
+    "file": "r167-before-390.png",
+    "width": 390,
+    "height": 844,
+    "bytes": 20025,
+    "sha256": "B5D02D468FD9D6E5223F4291A0B822CE62D9A1A1D39CADFAF5FA85800964447E"
+  },
+  {
+    "file": "r167-before-430.png",
+    "width": 430,
+    "height": 932,
+    "bytes": 19733,
+    "sha256": "F8485F9D14A1E68633D497A5D50DFA12D30C1E9E2CD1852262122826579FC912"
+  }
+]

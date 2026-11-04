@@ -1,0 +1,93 @@
+﻿AUTO_CONFLICT_R2_COMPLETE
+COPY_MAP_ENCODE_SESSION_COMPLETE
+COPY_MAP_ENCODE_DESTROY_COMPLETE
+COPY_MAP_ENCODE_SUCCESS_COMPLETE
+COPY_MAP_ENCODE_CURRENT_COMPLETE
+COPY_MAP_COMPLETE
+COPY_MAP_STALE_COMPLETE
+COPY_MAP_UNSUPPORTED_COMPLETE
+STALE_STAGE_1
+STALE_STAGE_3
+✔ Settings contains only Theme and document/save feedback is outside it (1.6838ms)
+✔ automatic save without a writable destination requires explicit Save As and does not auto-download (2353.3703ms)
+✔ automatic external conflict Cancel keeps feedback, Retry resolves, replacement invalidates (1862.8365ms)
+✔ each download timer revokes only its own URL (0.8123ms)
+✔ cleanup is idempotent and late timers cannot affect newer records (0.1431ms)
+✔ deferred encoding rejection after session replacement preserves replacement feedback and document (529.3743ms)
+✔ deferred encoding rejection after destroy stays destroyed without publishing copy feedback (478.6428ms)
+✔ deferred encoding success after session replacement creates no destination and preserves replacement document (499.3051ms)
+✔ current-request encoding rejection still reports the copy preparation error (492.3973ms)
+✔ Copy Map writes an exact copy without adopting it or changing the connected Orbit (961.5336ms)
+✔ late Copy Map completion cannot affect a replacement document (550.6287ms)
+✔ Copy Map reports unsupported directory access without changing the map (1351.6894ms)
+✔ writable adapter picks, reads, writes, and confirms close (1.6886ms)
+✔ writable adapter distinguishes cancellation, permission denial, and close failure (1.1652ms)
+✔ download fallback reports handoff and cleans resources idempotently (0.309ms)
+✔ Save As awaits asynchronous permission and never re-requests granted permission (0.1454ms)
+✔ Save As requests permission only when query is not granted and reports permission stages (0.1304ms)
+✔ picker AbortError and permission-stage AbortError retain distinct stages (0.1974ms)
+✔ write failure reports the create/write/close stage that failed (0.2895ms)
+✔ browser ignores stale folder results after session replacement, close/reopen, and destroy (622.9923ms)
+✔ production navigation removes primary Save/Open Orbit and keeps Settings theme-only (1.0929ms)
+✔ unified Open supports Orbit, standalone Open, cancel, and unsupported directory access (1231.9422ms)
+✔ Create Map in active Orbit writes without a per-map picker and rejects collisions (1140.9437ms)
+✔ directory capability is independent of file-picker capability (0.3354ms)
+✔ unsupported pickDirectory does not call a picker (0.3517ms)
+✔ pickDirectory invokes showDirectoryPicker synchronously and then awaits permission (0.4856ms)
+ORBIT_MENU_COMPLETE
+✔ pickDirectory waits for an asynchronous permission query before succeeding (2.5932ms)
+✔ picker cancellation is a typed cancellation (0.3288ms)
+✔ picker permission prompt requests once and granted passes (0.2876ms)
+✔ picker permission denial is typed and does not request again when query is denied (0.2173ms)
+✔ permission request denial is typed (0.1431ms)
+✔ permission query failure is typed without requesting (0.1315ms)
+✔ queryWritePermission never requests; requestWritePermission does (0.0946ms)
+✔ requestWritePermission does not request after a denied query (0.0838ms)
+✔ unknown picker failure is a typed picker failure (1.0984ms)
+✔ createChildDirectory refuses an existing child and does not call create (2.3088ms)
+✔ createChildDirectory conservatively rejects a case-insensitive existing child (0.4749ms)
+✔ createMapFile conservatively rejects a case-insensitive existing file (0.9707ms)
+✔ createChildDirectory creates after an absent preflight and is honest about atomicity (0.8282ms)
+✔ createChildDirectory validates names before touching the parent (0.2406ms)
+✔ enumerateTopLevelMaps filters top-level .map metadata without reading bytes (0.9828ms)
+✔ limit 1 with 10,000 matching maps stops at the first excess match and closes the iterator (0.4943ms)
+✔ limit 1 on an exactly one-entry directory is complete and does not call iterator.return (0.3568ms)
+✔ mixed unrelated entries use the bounded lookahead and do not read their metadata (0.4757ms)
+✔ an incomplete case-insensitive preflight performs zero mutations (0.3526ms)
+✔ a stale case-insensitive preflight performs zero mutations (0.2301ms)
+✔ an ownership loss after a complete preflight still performs zero mutations (0.3035ms)
+✔ an incomplete filename preflight performs zero mutations (0.3505ms)
+✔ enumeration caps at the entry limit and reports truncation (0.3721ms)
+✔ an exactly full list is not falsely reported as truncated (0.2702ms)
+✔ enumeration reports time-bound truncation (0.2451ms)
+✔ enumeration returns stale without results when ownership is lost (0.3076ms)
+✔ enumeration skips a file that disappears between listing and metadata (0.3487ms)
+✔ enumeration maps directory permission failure and generic failure (0.387ms)
+✔ getFileMetadata reads metadata only (0.2879ms)
+✔ createMapFile refuses an existing zero-byte file instead of inferring ownership (0.3324ms)
+✔ createMapFile normalizes and creates only after an absent preflight (0.4206ms)
+✔ createMapFile rejects traversal before touching the directory (0.1564ms)
+✔ writeFile awaits write and close and reports close failure with abort (0.3805ms)
+✔ writeFile success closes exactly once (0.2419ms)
+✔ actual main Orbit navigation lists, opens with exact bytes, and protects saves (1424.972ms)
+✔ actual connected Orbit menu toggles, preserves drafts, and opens a listed map without a close action (709.4677ms)
+✔ Save a Copy cannot bypass disabled overwrite protection or impersonate a distinct copy (900.2346ms)
+✔ backup round trip preserves tree metadata and attachments with fresh ids (8.8729ms)
+✔ empty attachment maps and zero-byte files are accepted (1.952ms)
+✔ unsupported version and truncated headers are rejected (0.8609ms)
+✔ hash mismatch, trailing bytes, and oversized manifest are rejected (1.4176ms)
+✔ export uses an owned snapshot during deferred hashing (1.9189ms)
+✔ pre-cancelled encode/decode reject without hashing (1.385ms)
+✔ document filenames use .map and avoid duplicate suffixes (0.2306ms)
+✔ unrelated .map content is rejected by container magic, not extension (0.4422ms)
+✔ decoded attachments own readable bytes after the source file is invalidated (2.2975ms)
+✔ attachment read failure during encoding identifies the attachment and preserves its error (0.8306ms)
+✔ decode read failure reports stage, attachment id and filename without exposing bytes (2.051ms)
+ℹ tests 74
+ℹ suites 0
+ℹ pass 74
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15233.2462

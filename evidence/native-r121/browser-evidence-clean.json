@@ -1,0 +1,61 @@
+{
+  "target": {
+    "id": "5C19C1131A9C0616B8200AC3B80109CF",
+    "url": "http://127.0.0.1:8099/tests/harness/m5-exploration/"
+  },
+  "browserContext": "39C2162A8F8F1016EA14C126C6256D2E",
+  "desktop": {
+    "title": "FileOrbit — M5 Exploration",
+    "url": "http://127.0.0.1:8099/tests/harness/m5-exploration/",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36 Edg/156.0.0.0",
+    "secureContext": true,
+    "directoryPicker": "function",
+    "openPicker": "function",
+    "savePicker": "function",
+    "orbitAction": true,
+    "orbitPanel": true,
+    "createAction": true,
+    "recoveryOverlay": false,
+    "bodyText": "FileOrbit\nCreate a map to get started\n\nEnter a title to create an empty map, or select files and folders to build one.\n\nCreate Map\nDetails\nHide details\nNo map loaded\nSearch results\n\nCreate a map to se",
+    "headerText": "FileOrbit",
+    "status": "Create a map to get started.",
+    "innerWidth": 1414,
+    "scrollWidth": 1414,
+    "navWidth": 64,
+    "detailsWidth": 301,
+    "horizontalOverflow": false,
+    "recoveryOverlayNote": "The initial selector matched a non-visible element; the clean-context screenshot and body text show no recovery prompt."
+  },
+  "narrow": {
+    "innerWidth": 390,
+    "scrollWidth": 390,
+    "horizontalOverflow": false,
+    "navRect": {
+      "left": 8,
+      "top": 245,
+      "width": 56,
+      "height": 354
+    },
+    "detailsRect": {
+      "left": 64,
+      "top": 799,
+      "width": 326,
+      "height": 45
+    },
+    "headerText": "FileOrbit"
+  },
+  "choice": {
+    "visible": true,
+    "buttons": [
+      "Create Orbit",
+      "Open Orbit",
+      "Save standalone",
+      "Cancel",
+      "Choose Parent Folder",
+      "Back"
+    ],
+    "status": "Create a map to get started."
+  },
+  "userAgentFromVersion": "Edg/156.0.4314.50",
+  "capturedAt": "2026-10-31T06:50:05.583Z"
+}

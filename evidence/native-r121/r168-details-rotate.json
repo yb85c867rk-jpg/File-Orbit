@@ -1,0 +1,81 @@
+{
+  "initial": {
+    "viewport": [
+      375,
+      812
+    ],
+    "collapsed": "true",
+    "contentHidden": true,
+    "expanded": "false",
+    "label": "Details",
+    "width": 311,
+    "height": 45,
+    "graphHeight": 681
+  },
+  "landscape": {
+    "viewport": [
+      844,
+      390
+    ],
+    "collapsed": "true",
+    "contentHidden": true,
+    "expanded": "false",
+    "label": "Details",
+    "width": 129,
+    "height": 358,
+    "graphHeight": 300
+  },
+  "landscapeExpanded": {
+    "viewport": [
+      844,
+      390
+    ],
+    "collapsed": "false",
+    "contentHidden": false,
+    "expanded": "true",
+    "label": "Hide details",
+    "width": 301,
+    "height": 358,
+    "graphHeight": 300
+  },
+  "afterChromeResize": {
+    "viewport": [
+      820,
+      390
+    ],
+    "collapsed": "false",
+    "contentHidden": false,
+    "expanded": "true",
+    "label": "Hide details",
+    "width": 301,
+    "height": 358,
+    "graphHeight": 300
+  },
+  "portrait": {
+    "viewport": [
+      390,
+      844
+    ],
+    "collapsed": "true",
+    "contentHidden": true,
+    "expanded": "false",
+    "label": "Details",
+    "width": 326,
+    "height": 45,
+    "graphHeight": 713
+  },
+  "reenteredLandscape": {
+    "viewport": [
+      844,
+      390
+    ],
+    "collapsed": "true",
+    "contentHidden": true,
+    "expanded": "false",
+    "label": "Details",
+    "width": 129,
+    "height": 358,
+    "graphHeight": 300
+  },
+  "errs": []
+}

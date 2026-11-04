@@ -1,0 +1,11 @@
+﻿FileOrbit Create Map async preparation ownership evidence.
+Real createCreateMapDialog with deferred promises:
+- picker A pending -> drop B current -> A late ignored -> B submitted once.
+- reverse picker/drop completion.
+- directory drop both completion orders; stale rejection/status isolated.
+- concurrent name changes latest-wins; invalid latest blocks.
+- close/reopen session isolation and B installable.
+- cancel/destroy late completion no UI/submit.
+- actual lifecycle still passes.
+Full tests/engine: 704/704.
+Native browser verification: NOT RUN.

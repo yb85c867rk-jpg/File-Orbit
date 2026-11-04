@@ -1,0 +1,33 @@
+{
+  "before": {
+    "recovery": true,
+    "text": "Recover unsaved work?\n\nFileOrbit found a recovery copy of this map. Recover it to continue editing. Your original file will not be changed.\n\nR149 300 Node Map\n11/2/2026, 12:57:03 PM · 38 folders · 262 files\nR149 300 Node Map\n11/2/2026, 12:51:54 PM · 38 folders · 262 files\nR149 300 Node Map\n11/2/2026",
+    "hook": true
+  },
+  "recovery": {
+    "clicked": true,
+    "ms": 6481.5,
+    "counts": "",
+    "snapshot": {
+      "blocked": false,
+      "creationOwned": false,
+      "unavailable": false,
+      "hasMap": false,
+      "mapId": null,
+      "generation": null,
+      "savedRevision": null,
+      "dataRevision": 0,
+      "dirty": false,
+      "busy": null,
+      "guard": false
+    },
+    "treeEqual": false,
+    "expectedHash": "1d17702f152c45bd58b5bc21630ad6935c83efe8b6148b91ba055b0ba78dfc62",
+    "actualHash": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "attachmentNames": [],
+    "bytesEqual": false,
+    "attachmentHashes": {}
+  },
+  "exceptions": [],
+  "capturedAt": "2026-11-01T23:57:41.610Z"
+}

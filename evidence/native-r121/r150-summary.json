@@ -1,0 +1,10 @@
+﻿{
+  "revision": "r150",
+  "baseline": {"r149Sha256": "337A25F0928D84A003D5ECBAEBB3C9233D45E4FA3BB9F1B00645D32BEE09782E", "r149Archive": "review/fileorbit-desktop-data-safety-r149.zip"},
+  "pdf": {"old": {"bytes": 69, "sha256": "cfa3181c1ee36e8bce5e39f84959f4558ea7ba32c0e4539a8ab3c8ce8c716ec6", "parser": "startxref not found"}, "new": {"bytes": 1068, "sha256": "d282cf216a332cab9a7f18456450ac6cf26d641f10b48790515bea664f3ef749", "pages": 2, "pageTexts": ["FILEORBIT PDF PAGE ONE - recognizable synthetic content Alpha page text: 300-node lifecycle preview.", "FILEORBIT PDF PAGE TWO - second page content Beta page text: page navigation target."]}, "parser": "independent Python stdlib xref/page/content parser"},
+  "orbit": {"r150Bytes": 37984, "r150Sha256": "3b1eb3c7b562c0746377b688d82d9752ea68ad8d825a9e6a378906a89996cf6b", "nodes": 300},
+  "preview": {"inAppPdfRendering": "PASS", "inAppPdfPageNavigation": "PASS", "externalFallback": "PASS", "shellCycles": 3, "image": "1x1 natural dimensions", "textUnicode": "PASS"},
+  "nativeDesktop": "NOT RUN",
+  "fullSuite": "r149 serial 1119/1118/1 retained; not rerun for evidence-only r150",
+  "focusedTests": "12/12"
+}

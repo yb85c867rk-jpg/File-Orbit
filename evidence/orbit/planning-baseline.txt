@@ -1,0 +1,17 @@
+﻿FileOrbit Orbit planning source check (PLAN ONLY)
+
+Baseline corrections:
+- r102 is the historical earlier reviewed baseline.
+- r103 editor-save, r104 create-ownership, r105 dialog-cancel are historical archives in review/.
+- r105's bounded creation-ownership/test correction was subsequently review-accepted: reviewer reran 11 relevant tests successfully.
+- Native OS-picker/pagehide acceptance remains unverified.
+- Current source includes automatic Create-and-Save, creation lifecycle ownership, editor presentation cleanup, and dialog-cancel completion markers.
+- README reports full tests/engine 943/944 passed, 1 skipped. This planning task did not rerun application suites.
+- docs/engine/FILEORBIT-FILE-DOCUMENTS.md is historical and still contains an outdated Create Map destination matrix; the linked Orbit plan records current behavior.
+
+Planning deliverables:
+- docs/engine/FILEORBIT-ORBIT-IMPLEMENTATION-PLAN.md (PLANNED — NOT IMPLEMENTED; r106 write-safety revision)
+- Link added in docs/engine/FILEORBIT-FILE-DOCUMENTS.md and README.md
+- Markdown link validation: 0 broken links.
+
+No production code, schema, dependencies, DB, user files, commit, push, or deployment changed.

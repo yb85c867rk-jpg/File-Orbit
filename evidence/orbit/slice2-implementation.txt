@@ -1,0 +1,30 @@
+﻿FileOrbit Orbit Slice 2 implementation — isolated state controller
+
+Status: Slice 1–2 primitives implemented; Orbit unavailable; later slices planned.
+
+Implemented:
+- tests/harness/m5-exploration/orbit-state.js
+  - createOrbitStateController({adapter, now})
+  - openDirectory/refresh/matchEntry/close/destroy/snapshot
+  - closed/opening/listing/ready/blocked phases plus settled phase
+  - active handle/name, session/request identities, entries, permission, last refresh, truncation/errors
+  - synchronous adapter picker invocation and request ownership
+  - adoption after picker+permission, before initial enumeration
+  - initial enumeration failure represented as blocked with active handle/name and empty entries
+  - bounded metadata enumeration through r110 adapter, sorted lastModified desc then case-insensitive name
+  - retained last successful list on refresh failure, stale marking, permission revocation/retry
+  - handle-only membership using identity/isSameEntry, stale-token checks, comparison-failure isolation
+  - frozen snapshots and session-scoped entry keys
+- tests/engine/exploration/orbit-state.test.mjs (33 tests)
+
+Not integrated:
+- no main.mjs/UI/navigation/document routing/activeDocument/recovery/editor/viewer/schema
+- no create:true/createWritable/deletion in state; no real filesystem operations
+- no persistent handles/index file/manifest/watching/recursion
+- Orbit unavailable.
+
+Tests:
+- Focused new + document-adapter/backup compatibility: 94/94 passed.
+- New Orbit tests: 76 (names6, adapter37, state33).
+- No unrelated/full suite rerun.
+- Native filesystem verification: NOT RUN.

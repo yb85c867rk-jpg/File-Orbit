@@ -1,0 +1,222 @@
+﻿node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+System.Management.Automation.RemoteException
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+System.Management.Automation.RemoteException
++ null
+- 'legacy.orbit'
+System.Management.Automation.RemoteException
+    at run (file:///C:/Users/openw/Documents/Projects/visual-directory/tests/engine/exploration/main-harness-init-runner.mjs:1111:514)
+    at async file:///C:/Users/openw/Documents/Projects/visual-directory/tests/engine/exploration/main-harness-init-runner.mjs:4688:1 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: null,
+  expected: 'legacy.orbit',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+System.Management.Automation.RemoteException
+Node.js v24.12.0
+✔ writable adapter picks, reads, writes, and confirms close (2.674ms)
+✔ writable adapter distinguishes cancellation, permission denial, and close failure (0.3634ms)
+✔ download fallback reports handoff and cleans resources idempotently (0.6416ms)
+✔ Save As awaits asynchronous permission and never re-requests granted permission (0.1227ms)
+✔ Save As requests permission only when query is not granted and reports permission stages (0.1797ms)
+✔ picker AbortError and permission-stage AbortError retain distinct stages (0.1913ms)
+✔ write failure reports the create/write/close stage that failed (0.2291ms)
+✔ integrated browser shows the Orbit folder, current map, list, and controls (0.8022ms)
+✔ no Orbit state explains folder selection; elsewhere and close remain available (0.3293ms)
+✔ unsupported directory access disables folder choice but keeps standalone Open (0.2476ms)
+✔ browser has request identity and updates only while the same dialog is open (0.2142ms)
+✔ browser contains focus, closes on Escape, and restores the Open File trigger (0.225ms)
+✔ browser exposes loading, blocked/error, empty, and truncated states (0.2828ms)
+✔ populated-list focus trap follows actual DOM order and preserves row focus across Refresh (0.2979ms)
+✖ actual rail expand/settings/theme/local maps, .orbit download, unified Open and help preserve lifecycle (2616.8963ms)
+✔ primary actions live once in the left rail; header/menu copies are gone (0.561ms)
+✔ rail collapses to icons, expands labels, and overlays on phones with touch targets (0.1603ms)
+✔ header is brand-only; feedback and save state live outside it (0.2258ms)
+✔ download is the final toolbar action, Open accepts both containers, no duplicate install controls (0.232ms)
+✔ Settings contains only the theme control; document/save feedback is outside it (0.1398ms)
+✔ connected Orbit menu sits between Save As and Settings with accessible toggle and retained actions (0.2652ms)
+✔ approved logo asset is unavailable, so the accessible text fallback remains without an exit control (0.0926ms)
+✔ sidebar Create Map and connected Orbit use the supplied local theme-masked assets (1.5424ms)
+✔ Orbit refresh precedes empty/list content and status follows the list in DOM order (0.2092ms)
+✔ expanded sidebar exposes the independent circular Open Orbit help control (0.2321ms)
+✔ directory capability is independent of file-picker capability (0.2366ms)
+✔ unsupported pickDirectory does not call a picker (0.1652ms)
+✔ pickDirectory invokes showDirectoryPicker synchronously and then awaits permission (0.2445ms)
+✔ pickDirectory waits for an asynchronous permission query before succeeding (3.1139ms)
+✔ picker cancellation is a typed cancellation (0.1713ms)
+✔ picker permission prompt requests once and granted passes (0.1285ms)
+✔ picker permission denial is typed and does not request again when query is denied (0.086ms)
+✔ permission request denial is typed (0.0737ms)
+✔ permission query failure is typed without requesting (0.0907ms)
+✔ queryWritePermission never requests; requestWritePermission does (0.076ms)
+✔ requestWritePermission does not request after a denied query (0.0608ms)
+✔ unknown picker failure is a typed picker failure (0.0747ms)
+✔ createChildDirectory refuses an existing child and does not call create (0.5201ms)
+✔ createChildDirectory conservatively rejects a case-insensitive existing child (0.245ms)
+✔ createMapFile conservatively rejects a case-insensitive existing file (0.318ms)
+✔ createChildDirectory creates after an absent preflight and is honest about atomicity (0.1536ms)
+✔ createChildDirectory validates names before touching the parent (0.0755ms)
+✔ enumerateTopLevelMaps filters top-level .map metadata without reading bytes (0.5211ms)
+✔ limit 1 with 10,000 matching maps stops at the first excess match and closes the iterator (0.2374ms)
+✔ limit 1 on an exactly one-entry directory is complete and does not call iterator.return (0.1419ms)
+✔ mixed unrelated entries use the bounded lookahead and do not read their metadata (0.1994ms)
+✔ an incomplete case-insensitive preflight performs zero mutations (0.1528ms)
+✔ a stale case-insensitive preflight performs zero mutations (0.1015ms)
+✔ an ownership loss after a complete preflight still performs zero mutations (0.1104ms)
+✔ an incomplete filename preflight performs zero mutations (0.1353ms)
+✔ enumeration caps at the entry limit and reports truncation (0.1311ms)
+✔ an exactly full list is not falsely reported as truncated (0.0846ms)
+✔ enumeration reports time-bound truncation (0.1017ms)
+✔ enumeration returns stale without results when ownership is lost (0.1335ms)
+✔ enumeration skips a file that disappears between listing and metadata (0.7857ms)
+✔ enumeration maps directory permission failure and generic failure (0.1506ms)
+✔ getFileMetadata reads metadata only (0.1271ms)
+✔ createMapFile refuses an existing zero-byte file instead of inferring ownership (0.1302ms)
+✔ createMapFile normalizes and creates only after an absent preflight (0.1235ms)
+✔ createMapFile rejects traversal before touching the directory (0.0593ms)
+✔ writeFile awaits write and close and reports close failure with abort (0.1776ms)
+✔ writeFile success closes exactly once (0.0976ms)
+✔ Orbit directory names accept ordinary and Unicode names (0.2094ms)
+✔ Orbit directory names reject traversal, separators, reserved and invalid names (0.1574ms)
+✖ Orbit map filenames normalize .map/.fileorbit and reserved punctuation (0.3464ms)
+✔ Orbit map filenames reject traversal, separators, reserved and empty names (0.1025ms)
+✖ Orbit collision keys are NFKC case-insensitive and conservative (0.1869ms)
+✖ Orbit map extension detection is case-insensitive and rejects legacy extension (0.1565ms)
+✔ initial snapshot is closed and empty (0.3806ms)
+✔ successful open adopts the directory and lists sorted top-level .map metadata (0.5657ms)
+✔ Open cancellation preserves the active Orbit and entries (0.2318ms)
+✔ Open permission denial preserves the active Orbit (0.3188ms)
+✔ selection pending keeps the current Orbit and activates the picker synchronously (0.3956ms)
+✔ Open A pending, Open B succeeds, then late A success cannot alter B (0.2576ms)
+✔ Open A pending, Open B succeeds, then late A failure cannot alter B (0.1803ms)
+✔ refresh A pending then switching to B ignores late A success (0.2999ms)
+✔ refresh A pending then switching to B ignores late A failure (0.2159ms)
+✔ two refreshes completing out of order apply only the newer list (0.2164ms)
+✔ refresh failure preserves the last successful list (0.2183ms)
+✔ permission revocation blocks refresh and a successful retry recovers (0.2226ms)
+✔ empty successful enumeration replaces the prior list with an empty list (0.1195ms)
+✔ unrelated files and subdirectories are excluded by the real adapter (0.0951ms)
+✔ state sorts by modification descending then deterministic case-insensitive filename (0.1631ms)
+✔ truncated refresh publishes honest truncation metadata (0.1393ms)
+✔ close during picker invalidates adoption and preserves no Orbit (0.1106ms)
+✔ close during enumeration ignores the late list (0.1192ms)
+✔ destroy during isSameEntry rejects the stale membership result (0.2118ms)
+✔ same filename with different handles does not match (0.093ms)
+✔ equivalent handles match through isSameEntry (0.1054ms)
+✔ a comparison failure does not fabricate membership or discard the list (0.1315ms)
+✔ a stale isSameEntry result after refresh is rejected (0.1416ms)
+✔ late first-refresh rejection does not clear the newer refresh state (0.1619ms)
+✔ Open B invalidates A initial enumeration; late A success is ignored and B cancellation leaves refresh usable (0.7743ms)
+✔ Open B invalidates A initial enumeration; late A rejection changes nothing (0.2735ms)
+✔ Open B invalidates a deferred refresh A while preserving the committed list (0.2136ms)
+✔ Open B invalidates a deferred refresh A rejection; B denial leaves committed content and refresh usable (0.1851ms)
+✔ membership comparison started before a new Open becomes stale (0.139ms)
+✔ returned truncation, entries, and state metadata are isolated from mutation (0.3798ms)
+✔ snapshots are isolated from caller mutation (0.1488ms)
+✔ close and destroy are idempotent (0.0965ms)
+✔ open enumeration failure adopts the Orbit but represents it as blocked (0.1258ms)
+ℹ tests 101
+ℹ suites 0
+ℹ pass 97
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2698.0857
+
+✖ failing tests:
+
+test at tests\engine\exploration\navigation-rail-main.test.mjs:6:1
+✖ actual rail expand/settings/theme/local maps, .orbit download, unified Open and help preserve lifecycle (2616.8963ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (file:///C:/Users/openw/Documents/Projects/visual-directory/tests/engine/exploration/navigation-rail-main.test.mjs:8:10)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\engine\exploration\orbit-names.test.mjs:38:1
+✖ Orbit map filenames normalize .map/.fileorbit and reserved punctuation (0.3464ms)
+  AssertionError [ERR_ASSERTION]: Report.fileorbit.orbit
+  + actual - expected
+  
+  + 'Report.fileorbit.orbit'
+  - 'Report.orbit'
+            ^
+  
+      at TestContext.<anonymous> (file:///C:/Users/openw/Documents/Projects/visual-directory/tests/engine/exploration/orbit-names.test.mjs:53:12)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'Report.fileorbit.orbit',
+    expected: 'Report.orbit',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\engine\exploration\orbit-names.test.mjs:72:1
+✖ Orbit collision keys are NFKC case-insensitive and conservative (0.1869ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'maps.map'
+  - 'maps.orbit'
+          ^
+  
+      at TestContext.<anonymous> (file:///C:/Users/openw/Documents/Projects/visual-directory/tests/engine/exploration/orbit-names.test.mjs:73:10)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'maps.map',
+    expected: 'maps.orbit',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\engine\exploration\orbit-names.test.mjs:79:1
+✖ Orbit map extension detection is case-insensitive and rejects legacy extension (0.1565ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///C:/Users/openw/Documents/Projects/visual-directory/tests/engine/exploration/orbit-names.test.mjs:82:10)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

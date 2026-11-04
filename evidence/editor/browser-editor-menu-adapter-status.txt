@@ -1,0 +1,5 @@
+﻿FileOrbit editor menu-form browser verification: NOT RUN.
+No browser executable/automation was available without installing dependencies.
+Node tests execute the shared menu adapter with the real coordinator for Add Folder/Data, Edit Folder/Data,
+current identity success, and stale dataset/revision rejection. Dirty Continue/Discard resume is covered
+by existing e2-flow/draft tests. Native browser menu/form flow was not executed.

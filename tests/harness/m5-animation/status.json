@@ -1,0 +1,13 @@
+{
+  "harness": "m5-animation",
+  "browserVerification": "NOT_RUN",
+  "note": "Animated focus only from the explicit button. Runtime status is exposed as window.__M5_ANIMATION_STATUS__.",
+  "fixtures": ["f20", "f200"],
+  "phases": ["current", "start", "end"],
+  "syntheticDprCases": [1, 1.25, 2, 3],
+  "defaultDurationMs": 300,
+  "maxDurationMs": 10000,
+  "durationControl": true,
+  "reducedMotion": "prefers-reduced-motion media query at transition start",
+  "observed": null
+}

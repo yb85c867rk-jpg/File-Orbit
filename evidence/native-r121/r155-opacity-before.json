@@ -1,0 +1,93 @@
+{
+  "states": [
+    {
+      "step": "update-1",
+      "leaderCount": 1,
+      "leaderOpacity": "0.7",
+      "labelOpacity": "1",
+      "labelDisplay": "flex",
+      "metrics": {
+        "visible": true,
+        "root": true
+      }
+    },
+    {
+      "step": "update-.5",
+      "leaderCount": 1,
+      "leaderOpacity": "0.7",
+      "labelOpacity": "0.5",
+      "labelDisplay": "flex",
+      "metrics": {
+        "visible": true,
+        "root": true
+      }
+    },
+    {
+      "step": "update-0",
+      "leaderCount": 1,
+      "leaderOpacity": "0.7",
+      "labelOpacity": "0",
+      "labelDisplay": "flex",
+      "metrics": {
+        "visible": true,
+        "root": true
+      }
+    },
+    {
+      "step": "update-1-again",
+      "leaderCount": 1,
+      "leaderOpacity": "0.7",
+      "labelOpacity": "1",
+      "labelDisplay": "flex",
+      "metrics": {
+        "visible": true,
+        "root": true
+      }
+    },
+    {
+      "step": "begin-1",
+      "leaderCount": 1,
+      "leaderOpacity": "0.7",
+      "labelOpacity": "1",
+      "labelDisplay": "flex",
+      "metrics": {
+        "visible": true,
+        "root": true
+      }
+    },
+    {
+      "step": "updateTransition-.5",
+      "leaderCount": 1,
+      "leaderOpacity": "0.7",
+      "labelOpacity": "0.5",
+      "labelDisplay": "flex",
+      "metrics": {
+        "visible": true,
+        "root": true
+      }
+    },
+    {
+      "step": "updateTransition-0",
+      "leaderCount": 1,
+      "leaderOpacity": "0.7",
+      "labelOpacity": "0",
+      "labelDisplay": "flex",
+      "metrics": {
+        "visible": true,
+        "root": true
+      }
+    },
+    {
+      "step": "complete-0",
+      "leaderCount": 1,
+      "leaderOpacity": "0.7",
+      "labelOpacity": "0",
+      "labelDisplay": "flex",
+      "metrics": {
+        "visible": true,
+        "root": true
+      }
+    }
+  ],
+  "errors": []
+}

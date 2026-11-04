@@ -1,0 +1,27 @@
+{
+  "collapsed": {
+    "label": "Open Orbit",
+    "aria": "Open Orbit",
+    "title": "Open Orbit",
+    "titleProp": "Open Orbit",
+    "ariaHidden": "true",
+    "iconW": 20,
+    "iconH": 20,
+    "mask": "url(\"http://127.0.0.1:8099/tests/harness/m5-exploration/assets/folder_supervised_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png\")",
+    "buttonH": 44,
+    "theme": "dark"
+  },
+  "expanded": {
+    "rail": "true",
+    "label": "Open Orbit",
+    "title": null,
+    "tipHidden": true
+  },
+  "dialog": {
+    "heading": "Open Orbit Folder",
+    "ariaLabelledby": "file-open-browser-title",
+    "titleId": "file-open-browser-title",
+    "text": true
+  },
+  "capturedAt": "2026-11-01T04:22:39.370Z"
+}

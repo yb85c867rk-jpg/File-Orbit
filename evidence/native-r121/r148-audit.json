@@ -1,0 +1,9 @@
+﻿{
+  "revision": "r148",
+  "baseline": {"candidate": "r147", "archiveSha256": "4993FAC1A439BB46C330A47CA9B108599611BC22BA4F9ABB18CB5EDFBA2AB908", "mainSha256": "A59AEEDA2D8F111BC01673F66A543AEFE491B9D4A07336B411EFA3AA11259DB2", "indexSha256": "7F7D2B5A4E01EDED877A27C3C52B63984AB87BF6EF63E46E2A3128E3CC4B2BA2", "git": "not a repository"},
+  "fullSuite": {"tests": 1118, "pass": 1117, "fail": 0, "skipped": 1},
+  "groups": {"create": "37/37", "edits": "76/76", "persistence": "197 (196 pass, 1 skip)", "navigationPreview": "61/61", "auditBoundaries": "3/3", "previewRepeat": "11/11", "copyEncoding": "4/4"},
+  "browser": {"success": true, "device": "headless Chromium 156 Windows", "actualMobile": "NOT RUN", "repeatHeapDeltaBytes": 531676, "repeatDomDelta": 1, "repeatListenerDelta": 0},
+  "defects": {"functional": 0, "fixed": ["D-01 test timeout flake", "D-02 superseded r146 guidance", "D-03 stale README count"]},
+  "readiness": "NOT READY for free-edition release; limited local desktop evaluation only"
+}

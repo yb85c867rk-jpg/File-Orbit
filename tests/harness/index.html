@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FileOrbit — T2 minimal Hypertree harness</title>
+<style>
+  :root { color-scheme: light; }
+  body {
+    margin: 0;
+    padding: 16px;
+    font: 13px/1.45 "Segoe UI", Arial, sans-serif;
+    color: #16202b;
+    background: #f4f7fa;
+  }
+  h1 { font-size: 16px; margin: 0 0 4px; }
+  h2 { font-size: 13px; margin: 14px 0 6px; text-transform: uppercase; letter-spacing: .04em; color: #44566a; }
+  h3 { font-size: 12px; margin: 12px 0 4px; color: #44566a; }
+  .sub { margin: 0 0 12px; color: #5a6b7d; }
+  .panel {
+    background: #fff;
+    border: 1px solid #d3dde7;
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-bottom: 14px;
+  }
+  dl { display: grid; grid-template-columns: max-content 1fr; gap: 2px 14px; margin: 0; }
+  dt { color: #44566a; }
+  dd { margin: 0; font-family: Consolas, "Courier New", monospace; word-break: break-word; }
+  ul { margin: 0; padding-left: 18px; }
+  li { margin: 2px 0; }
+  #status-json {
+    margin: 0;
+    max-height: 300px;
+    overflow: auto;
+    background: #f7f9fb;
+    border: 1px dashed #c6d2df;
+    padding: 8px;
+    font: 11px/1.4 Consolas, "Courier New", monospace;
+    white-space: pre-wrap;
+  }
+  #controls {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 0 0 10px;
+  }
+  #controls button {
+    font: 12px/1 "Segoe UI", Arial, sans-serif;
+    padding: 6px 10px;
+    border: 1px solid #b9c7d5;
+    border-radius: 6px;
+    background: #f7fafc;
+    cursor: pointer;
+  }
+  #controls button:hover { background: #eef4f9; }
+  #viz-host, .viz-host {
+    position: relative;
+    width: 960px;
+    height: 560px;
+    background: #fff;
+    border: 1px solid #d3dde7;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .vd-label {
+    font: 12px/1.2 "Segoe UI", Arial, sans-serif;
+    color: #16202b;
+    background: #ffffff;
+    border: 1px solid #c9d6e2;
+    border-radius: 4px;
+    padding: 2px 6px;
+    max-width: 140px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    box-sizing: border-box;
+    cursor: pointer;
+  }
+  .vd-label--folder {
+    font-weight: 600;
+    background: #eef5fd;
+    border-color: #7ea6cf;
+    color: #17395c;
+  }
+  .vd-label--file {
+    background: #ffffff;
+    border-color: #c9d6e2;
+    color: #22303d;
+  }
+</style>
+</head>
+<body data-harness-status="pending" data-visualization="hypertree">
+
+<header>
+  <h1>FileOrbit V2 — T2 minimal Hypertree harness</h1>
+  <p class="sub">
+    Framework-free baseline harness for the untouched <code>vendor/jit/jit.2.0.1.js</code>
+    using <code>$jit.Hypertree</code> only. Not the product UI. No dispose is implemented.
+    Query: <code>?nodes=20&amp;instance=1</code>.
+  </p>
+</header>
+
+<section class="panel" id="status" aria-live="polite">
+  <h2>Status</h2>
+  <dl id="status-list">
+    <dt>state</dt><dd>pending</dd>
+  </dl>
+
+  <h3>Limitations (by design)</h3>
+  <ul id="limitations">
+    <li>Harness has not run yet.</li>
+  </ul>
+
+  <h3>Report JSON</h3>
+  <pre id="status-json">{ "state": "pending" }</pre>
+</section>
+
+<main class="panel">
+  <h2>Hypertree</h2>
+  <div id="controls">
+    <button type="button" id="focus-root">Focus root</button>
+    <button type="button" id="focus-last">Focus last node</button>
+    <button type="button" id="resize-toggle">Resize canvas</button>
+  </div>
+  <div id="viz-host" class="viz-host"></div>
+</main>
+
+<!-- Classic scripts, fixed order: instrumentation must wrap APIs before jit.js runs. -->
+<script src="instrumentation.js"></script>
+<script src="../../vendor/jit/jit.2.0.1.js"></script>
+<script src="minimal-hypertree.js"></script>
+</body>
+</html>
+

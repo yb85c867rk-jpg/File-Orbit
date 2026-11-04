@@ -1,0 +1,36 @@
+﻿FileOrbit Recovery Slice 2 implementation r87
+
+Scope: production checkpoint scheduler, workspace lifecycle ownership, and confirmed document-Save retirement. Startup recovery prompt/install, candidate UX, retention pruning, and native browser acceptance are not implemented.
+
+Production wiring:
+- New recovery-scheduler.js: one active random workspace; 600 ms debounce; one serialized writer; coalesce to latest captured tree; temporary attachment retain/release; stale-owner handling; bounded diagnostics.
+- Main commit points: editor Add/Edit Folder/Data and legacy rename/metadata schedule after successful commit and dirty check; reparent schedules after successful installation and attachment sweep; Delete schedules after successful commit/sweep; Undo/Redo schedule after successful history replay.
+- Create Map and Import Backup establish a new editing workspace and await an immediate baseline checkpoint. Open File/Previous local maps establish a workspace without a baseline checkpoint. Save As retains workspace. Successful replacement starts a new workspace and invalidates outgoing scheduler ownership; destroy invalidates it.
+- Draft typing, navigation, selection, details, pan/zoom/resize, failed/cancelled/no-op mutations do not schedule.
+- Document Save reserves recovery after destination acquisition and before encoding; reservation binds operation/session/dataset. Only successful owned write+close retires. Cancellation/failure/fallback abandon; dirty state is rescheduled for recovery. Retirement failure is separate from file-Save success.
+
+Ordering rules exercised:
+A checkpoint followed by confirmed Save retires covered checkpoint.
+B later checkpoint during pending Save has a generation above the save sequence and survives retirement.
+C delayed pre-Save writer is fenced by the reservation controlVersion and cannot recreate obsolete content.
+D later dirty state after Save reschedules from fresh control and obtains a checkpoint.
+E failed/abandoned Save preserves/recreates complete recovery data. Scheduler unit tests cover A-E; real main-entry tests cover baseline scheduling, mutations, retirement, Save As workspace retention, fallback preservation, and Import baseline.
+
+Recovery isolation:
+- Checkpoint/scheduler failures are reported through diagnostics only; they do not alter graph/history/document handle/name/mode/dirty/savedRevision/editor retry/replacement guards/viewer.
+- A successful file write+close remains successful if retirement fails; cleanup failure is recorded separately.
+- Existing complete checkpoints are never deleted by an abandoned Save.
+
+Tests executed:
+- recovery-scheduler.test.mjs: 4/4 passed.
+- recovery.test.mjs: 31 tests, 30 passed, 0 failed, 1 skipped.
+- persistence + upgrade + lifecycle + recovery + scheduler: 78 tests, 77 passed, 1 skipped.
+- codec/adapter: 18/18 passed.
+- P1b legacy actual main-entry: 70/70 passed.
+- Recovery actual main-entry: 2/2 passed (Create baseline/edit/draft/reparent/delete/undo/redo/Save retirement/Save As/fallback; Import baseline).
+- full tests/engine: 875 tests, 874 passed, 0 failed, 1 skipped, 0 todo.
+- syntax: 11 modules passed.
+
+Skipped test remains the fake-IndexedDB cross-tab concurrency case. Native IndexedDB concurrency is NOT RUN and is not claimed. Native IndexedDB upgrade/quota/multi-tab behavior also remains NOT RUN.
+
+Remaining gaps: startup recovery dialog/install, recovery candidate UX, source fork orchestration; native acceptance; some main-entry Save ordering B-E is covered by scheduler-level tests rather than separate main-entry scenarios.

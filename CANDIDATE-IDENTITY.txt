@@ -1,0 +1,6 @@
+﻿FileOrbit Stage 3J-2A manual Save execution correction (separate candidate)
+Baseline preserved exact: .stage3j2af-baseline/fileorbit-stage3j2a-final-execution-r169.BASELINE.zip (4FFE42287B7B524389D5DF005D968ACDA6C0DB7C4B8DBA7D497C2ACAF777EA4B).
+Toolbar Save now requires dirty precondition, new write+close, serialization counter and decoded content, then clean state. Save As cancellation invokes picker while dirty and preserves destination/identity/bytes/dirty. Download/history/Save As execution retained.
+No LOD/paid activation. Native picker/disk acceptance NOT RUN.
+No Upload/cloud/payments/Tauri/enterprise/deployment/OntoMap.
+Vendor: vendor/jit/jit.2.0.1.js, LICENSE, MANIFEST.json.

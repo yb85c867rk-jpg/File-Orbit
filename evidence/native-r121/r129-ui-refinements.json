@@ -1,0 +1,83 @@
+{
+  "revision": "r129",
+  "change": "simplified Create Map, collapsed-only sidebar tooltips, branding audit",
+  "cancelledRequirements": [
+    "application-managed Create Orbit",
+    "Create Map/Create Orbit tabs",
+    "preliminary destination-choice screen",
+    "header X/Close FileOrbit exit control"
+  ],
+  "branding": {
+    "approvedVariation06Asset": "UNAVAILABLE",
+    "fallback": "accessible FileOrbit text retained",
+    "substituteUsed": false,
+    "audit": "evidence/native-r121/branding-audit-r129.txt"
+  },
+  "behavior": {
+    "createMapDirect": true,
+    "defaultLocation": "connected Orbit when available",
+    "noOrbitAction": "Choose map folder",
+    "standaloneAction": "Save elsewhere…",
+    "folderSelectionCreatesMap": false,
+    "folderSelectionReplacesLiveMap": false,
+    "reusesConnectedFolder": true,
+    "tooltipsExpanded": false,
+    "tooltipsCollapsed": true,
+    "graphToolbarTooltipsUnchanged": true,
+    "nativeTitleSuppression": "sidebar only",
+    "preserved": [
+      "connected Orbit menu",
+      "integrated Open",
+      "automatic saving",
+      "editor Save",
+      "Save As/conflict protection",
+      "exact bytes/IDs",
+      "recovery ownership",
+      "theme-only Settings"
+    ]
+  },
+  "verification": {
+    "focused": "166/166 passed",
+    "fullEngine": "1090 tests, 1089 passed, 1 skipped, 0 failed",
+    "markers": [
+      "CREATE_LOCATION_COMPLETE",
+      "CREATE_LOCATION_UNSUPPORTED_COMPLETE",
+      "CREATE_LOCATION_STALE_COMPLETE",
+      "SIDEBAR_TOOLTIPS_COMPLETE"
+    ],
+    "browser": [
+      "browser-create-location-r129.png",
+      "browser-create-location-narrow-r129.png",
+      "browser-sidebar-tooltips-r129.json"
+    ],
+    "native": "NOT RUN",
+    "syntheticOnly": true,
+    "archiveFocused": "3/3 passed; archive main hash matches disk"
+  },
+  "application": {
+    "url": "http://127.0.0.1:8099/tests/harness/m5-exploration/",
+    "mainSha256": "F2132B329335A7B48F02A7224D013C7A906539152A44B6E10D481F68A0AFA777",
+    "indexSha256": "F9FB0BD6C62253ED491E009F5A0B7DA573A2C96906DB95CD4F5E5E440CB620BD",
+    "createMapDialogSha256": "627A914D99D15BF2F77BCC9A224139D511C92491EB797854D9DC3590393FC751",
+    "shellControlsSha256": "53CB479F258BCAAFDA29BE91577C03E16178C21DDB07C4E77DC4D91904815FFD",
+    "runnerSha256": "77F2FC8754441F350A7B23EAACE0A63C436A57664368651F0F4287897F6319CF"
+  },
+  "limitations": [
+    "approved logo unavailable",
+    "native picker/write/keyboard/responsive acceptance NOT RUN",
+    "no persisted Orbit handles/multiple Orbit management/recursion/watching/rename-delete/sync/database changes"
+  ],
+  "archive": {
+    "path": "review/fileorbit-ui-refinements-r129.zip",
+    "sha256": "A5FD451E3E21261EF54359001F6053B69723D5D9420CA1E14A5EBE4683250232",
+    "entries": 1117,
+    "manifestMismatches": 0
+  },
+  "evidence": [
+    "evidence/native-r121/create-tooltip-focused-r129.txt",
+    "evidence/native-r121/ui-refinements-full-r129.txt",
+    "evidence/native-r121/browser-create-location-r129.json",
+    "evidence/native-r121/browser-sidebar-tooltips-r129.json",
+    "evidence/native-r121/r129-archive-focused.txt"
+  ]
+}

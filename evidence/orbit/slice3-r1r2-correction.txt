@@ -1,0 +1,27 @@
+﻿FileOrbit Orbit Slice 3 r115 — unverifiable approval and stale failure correction
+
+R1:
+- preflightOverwrite now returns an explicit unverifiable result when a conflict cannot capture a content digest. It returns allowedDecisions ['copy','cancel'], no conflict, no approval, no actionable overwrite.
+- createOverwriteApproval requires a valid 64-hex content digest; null/missing digest approval is refused.
+- A forged approval without digest cannot authorize: a readable file produces a fresh conflict with requiresNewDecision true and its fresh digest; a hash failure remains unverifiable.
+- Approved digest is rechecked against actual content; material changes return approval-stale.
+- Conflict dialog supports allowOverwrite:false, hides/disables overwrite, and offers Save a Copy/Cancel.
+- Destination/document/operation binding and non-atomic race limitation preserved.
+
+R2:
+- Added ownership revalidation after deferred read/hash rejection in createOpenedContentBaseline, verifyOpenedContentBaseline, createConfirmedWriteBaseline, and preflightOverwrite.
+- Stale failures return {reason:'stale',stale:true} with no baseline, conflict, approval, or actionable failure.
+- Successful-write semantics remain independent from post-close verification failure.
+
+Tests added:
+- null/missing-digest approval refusal;
+- forged approval against same-size/same-time changed content;
+- fresh readable observation requiring new decision;
+- known-digest approval detecting changed content;
+- stale getFile/hash rejection for initial open hashing, opened verification, confirmed-write verification, preflight;
+- no stale baseline/conflict/approval;
+- unverifiable dialog copy/cancel.
+- Existing baseline/dialog/state/adapter/name/size/metadata tests retained.
+
+Focused Orbit + document-adapter/backup compatibility: 130/130 passed.
+Native filesystem verification: NOT RUN.

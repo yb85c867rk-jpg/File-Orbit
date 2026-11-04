@@ -1,0 +1,21 @@
+﻿FileOrbit native verification r99 (isolated headless Edge 156, 2026-10-31)
+
+Viewport: 320 x 600 CSS px, deviceScaleFactor 2, mobile emulation, viewport meta present.
+Header: clientWidth=320, scrollWidth=320 (no horizontal overflow).
+Header menu cluster: x=196.4..312, height=44; Map and More visible and grouped.
+Graph toolbar: width=242, height=52; Undo/Redo buttons 44x44.
+Details collapsed bar: full width 320, height 44.
+Map menu: hidden=false, rect x=152..320, y=56..352, width 168, height 296; max-height=584px; overflow-y=auto; scrollHeight=294, clientHeight=294. Complete menu inside viewport.
+Screenshots: app-320-r99.png, app-map-320-r99.png.
+
+Desktop physical-pointer drag + Undo/Redo:
+- Fixture F20, 1440x900.
+- Mouse drag n10 (file) onto n1 (folder) through Input.dispatchMouseEvent.
+- After drop: Undo enabled=false (available), Redo disabled=true, revision increased.
+- Undo click: Undo disabled=true, Redo disabled=false, history "Undid: Move".
+- Redo click: Undo disabled=false, Redo disabled=true, history "Redid: Move".
+- Screenshot: undo-redo-native.png.
+
+Narrow physical drag attempt:
+- At 320, node/label hit regions overlap; test coordinates produced "empty canvas" drop rejection, so narrow reparent/Undo is NOT confirmed natively.
+- The Undo/Redo buttons are present at 44x44 and enabled-state logic is covered by actual-main pointer tests.

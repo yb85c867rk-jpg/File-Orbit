@@ -1,0 +1,331 @@
+{
+  "initial": {
+    "label": "desktop-initial",
+    "map": {
+      "left": 64,
+      "top": 78,
+      "right": 899,
+      "bottom": 800,
+      "width": 835,
+      "height": 722
+    },
+    "dialog": {
+      "left": 171.5,
+      "top": 343.4140625,
+      "right": 791.5,
+      "bottom": 534.5859375,
+      "width": 620,
+      "height": 191.171875
+    },
+    "buttons": [
+      {
+        "text": "Overwrite this file",
+        "box": {
+          "left": 498.3125,
+          "top": 481.5859375,
+          "right": 612.921875,
+          "bottom": 515.5859375,
+          "width": 114.609375,
+          "height": 34
+        },
+        "hidden": false,
+        "disabled": false
+      },
+      {
+        "text": "Save a Copy",
+        "box": {
+          "left": 620.921875,
+          "top": 481.5859375,
+          "right": 707.4375,
+          "bottom": 515.5859375,
+          "width": 86.515625,
+          "height": 34
+        },
+        "hidden": false,
+        "disabled": false
+      },
+      {
+        "text": "Cancel",
+        "box": {
+          "left": 715.4375,
+          "top": 481.5859375,
+          "right": 772.5,
+          "bottom": 515.5859375,
+          "width": 57.0625,
+          "height": 34
+        },
+        "hidden": false,
+        "disabled": false
+      }
+    ],
+    "focused": "Cancel",
+    "overlayDisplay": "block",
+    "insideMap": true
+  },
+  "tabResult": {
+    "before": "Cancel",
+    "after": "Overwrite this file"
+  },
+  "navExpanded": {
+    "label": "desktop-nav-expanded",
+    "map": {
+      "left": 204,
+      "top": 78,
+      "right": 899,
+      "bottom": 800,
+      "width": 695,
+      "height": 722
+    },
+    "dialog": {
+      "left": 241.5,
+      "top": 343.4140625,
+      "right": 861.5,
+      "bottom": 534.5859375,
+      "width": 620,
+      "height": 191.171875
+    },
+    "buttons": [
+      {
+        "text": "Overwrite this file",
+        "box": {
+          "left": 568.3125,
+          "top": 481.5859375,
+          "right": 682.921875,
+          "bottom": 515.5859375,
+          "width": 114.609375,
+          "height": 34
+        },
+        "hidden": false,
+        "disabled": false
+      },
+      {
+        "text": "Save a Copy",
+        "box": {
+          "left": 690.921875,
+          "top": 481.5859375,
+          "right": 777.4375,
+          "bottom": 515.5859375,
+          "width": 86.515625,
+          "height": 34
+        },
+        "hidden": false,
+        "disabled": false
+      },
+      {
+        "text": "Cancel",
+        "box": {
+          "left": 785.4375,
+          "top": 481.5859375,
+          "right": 842.5,
+          "bottom": 515.5859375,
+          "width": 57.0625,
+          "height": 34
+        },
+        "hidden": false,
+        "disabled": false
+      }
+    ],
+    "focused": "Overwrite this file",
+    "overlayDisplay": "block",
+    "insideMap": true
+  },
+  "detailsCollapsed": {
+    "label": "desktop-details-collapsed",
+    "map": {
+      "left": 204,
+      "top": 78,
+      "right": 1071,
+      "bottom": 800,
+      "width": 867,
+      "height": 722
+    },
+    "dialog": {
+      "left": 327.5,
+      "top": 343.4140625,
+      "right": 947.5,
+      "bottom": 534.5859375,
+      "width": 620,
+      "height": 191.171875
+    },
+    "buttons": [
+      {
+        "text": "Overwrite this file",
+        "box": {
+          "left": 654.3125,
+          "top": 481.5859375,
+          "right": 768.921875,
+          "bottom": 515.5859375,
+          "width": 114.609375,
+          "height": 34
+        },
+        "hidden": false,
+        "disabled": false
+      },
+      {
+        "text": "Save a Copy",
+        "box": {
+          "left": 776.921875,
+          "top": 481.5859375,
+          "right": 863.4375,
+          "bottom": 515.5859375,
+          "width": 86.515625,
+          "height": 34
+        },
+        "hidden": false,
+        "disabled": false
+      },
+      {
+        "text": "Cancel",
+        "box": {
+          "left": 871.4375,
+          "top": 481.5859375,
+          "right": 928.5,
+          "bottom": 515.5859375,
+          "width": 57.0625,
+          "height": 34
+        },
+        "hidden": false,
+        "disabled": false
+      }
+    ],
+    "focused": "Overwrite this file",
+    "overlayDisplay": "block",
+    "insideMap": true
+  },
+  "closeDesktop": {
+    "hidden": true,
+    "display": "none",
+    "overlayCount": 2
+  },
+  "narrowInitial": {
+    "label": "narrow-initial",
+    "map": {
+      "left": 64,
+      "top": 135,
+      "right": 390,
+      "bottom": 655,
+      "width": 326,
+      "height": 520
+    },
+    "dialog": {
+      "left": 80,
+      "top": 244.828125,
+      "right": 374,
+      "bottom": 545.171875,
+      "width": 294,
+      "height": 300.34375
+    },
+    "buttons": [
+      {
+        "text": "Overwrite this file",
+        "box": {
+          "left": 145.875,
+          "top": 450.171875,
+          "right": 260.484375,
+          "bottom": 484.171875,
+          "width": 114.609375,
+          "height": 34
+        },
+        "hidden": false,
+        "disabled": false
+      },
+      {
+        "text": "Save a Copy",
+        "box": {
+          "left": 268.484375,
+          "top": 450.171875,
+          "right": 355,
+          "bottom": 484.171875,
+          "width": 86.515625,
+          "height": 34
+        },
+        "hidden": false,
+        "disabled": false
+      },
+      {
+        "text": "Cancel",
+        "box": {
+          "left": 297.9375,
+          "top": 492.171875,
+          "right": 355,
+          "bottom": 526.171875,
+          "width": 57.0625,
+          "height": 34
+        },
+        "hidden": false,
+        "disabled": false
+      }
+    ],
+    "focused": "Cancel",
+    "overlayDisplay": "block",
+    "insideMap": true
+  },
+  "narrowNav": {
+    "label": "narrow-nav-expanded",
+    "map": {
+      "left": 64,
+      "top": 135,
+      "right": 390,
+      "bottom": 655,
+      "width": 326,
+      "height": 520
+    },
+    "dialog": {
+      "left": 80,
+      "top": 244.828125,
+      "right": 374,
+      "bottom": 545.171875,
+      "width": 294,
+      "height": 300.34375
+    },
+    "buttons": [
+      {
+        "text": "Overwrite this file",
+        "box": {
+          "left": 145.875,
+          "top": 450.171875,
+          "right": 260.484375,
+          "bottom": 484.171875,
+          "width": 114.609375,
+          "height": 34
+        },
+        "hidden": false,
+        "disabled": false
+      },
+      {
+        "text": "Save a Copy",
+        "box": {
+          "left": 268.484375,
+          "top": 450.171875,
+          "right": 355,
+          "bottom": 484.171875,
+          "width": 86.515625,
+          "height": 34
+        },
+        "hidden": false,
+        "disabled": false
+      },
+      {
+        "text": "Cancel",
+        "box": {
+          "left": 297.9375,
+          "top": 492.171875,
+          "right": 355,
+          "bottom": 526.171875,
+          "width": 57.0625,
+          "height": 34
+        },
+        "hidden": false,
+        "disabled": false
+      }
+    ],
+    "focused": "Cancel",
+    "overlayDisplay": "block",
+    "insideMap": true
+  },
+  "closeNarrow": {
+    "hidden": true,
+    "display": "none"
+  },
+  "errors": []
+}

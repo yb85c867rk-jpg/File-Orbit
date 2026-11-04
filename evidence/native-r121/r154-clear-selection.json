@@ -1,0 +1,17 @@
+{
+  "candidate": {
+    "x": 74,
+    "y": 88,
+    "tag": "CANVAS"
+  },
+  "result": {
+    "selected": "north029",
+    "leaders": 0,
+    "diagnostic": {
+      "reason": "backup-import-complete",
+      "id": "root",
+      "requestId": 1
+    },
+    "details": "north029"
+  }
+}

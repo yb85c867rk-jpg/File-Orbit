@@ -1,0 +1,604 @@
+﻿{
+  "f20": {
+    "primary": {
+      "workspaceScale": 1,
+      "off": {
+        "overlapPairs": 0,
+        "boundary": 18.037630984032514,
+        "visible": 20
+      },
+      "local": {
+        "outcome": "no-crowding",
+        "applied": false,
+        "affectedCount": 0,
+        "regionCount": 0,
+        "attempts": 1,
+        "before": {
+          "overlapPairs": 0,
+          "boundary": 18.037630984032514,
+          "visible": 20
+        },
+        "after": {
+          "overlapPairs": 0,
+          "boundary": 18.037630984032514,
+          "visible": 20
+        },
+        "pattern": null
+      },
+      "global": {
+        "outcome": "no-crowding",
+        "applied": false,
+        "attempts": 1,
+        "before": {
+          "overlapPairs": 0,
+          "boundary": 18.037630984032514,
+          "visible": 20
+        },
+        "after": {
+          "overlapPairs": 0,
+          "boundary": 18.037630984032514,
+          "visible": 20
+        },
+        "displacement": {
+          "meanCss": 0,
+          "maxCss": 0,
+          "changedNodes": 0
+        },
+        "pattern": null
+      }
+    },
+    "secondary": {
+      "workspaceScale": 1,
+      "off": {
+        "overlapPairs": 0,
+        "boundary": 27.274384337475908,
+        "visible": 20
+      },
+      "local": {
+        "outcome": "no-crowding",
+        "applied": false,
+        "affectedCount": 0,
+        "regionCount": 0,
+        "attempts": 1,
+        "before": {
+          "overlapPairs": 0,
+          "boundary": 27.274384337475908,
+          "visible": 20
+        },
+        "after": {
+          "overlapPairs": 0,
+          "boundary": 27.274384337475908,
+          "visible": 20
+        },
+        "pattern": null
+      },
+      "global": {
+        "outcome": "no-crowding",
+        "applied": false,
+        "attempts": 1,
+        "before": {
+          "overlapPairs": 0,
+          "boundary": 27.274384337475908,
+          "visible": 20
+        },
+        "after": {
+          "overlapPairs": 0,
+          "boundary": 27.274384337475908,
+          "visible": 20
+        },
+        "displacement": {
+          "meanCss": 0,
+          "maxCss": 0,
+          "changedNodes": 0
+        },
+        "pattern": null
+      }
+    }
+  },
+  "f200": {
+    "primary": {
+      "workspaceScale": 9.5,
+      "off": {
+        "overlapPairs": 104,
+        "boundary": -6.382913430683626,
+        "visible": 200
+      },
+      "local": {
+        "outcome": "no-improving-candidate",
+        "applied": false,
+        "affectedCount": 52,
+        "regionCount": 11,
+        "attempts": 6,
+        "before": {
+          "overlapPairs": 104,
+          "boundary": -6.382913430683626,
+          "visible": 200
+        },
+        "after": {
+          "overlapPairs": 104,
+          "boundary": -6.382913430683626,
+          "visible": 200
+        },
+        "displacement": {
+          "meanCss": 0,
+          "maxCss": 0,
+          "changedNodes": 0
+        },
+        "unrelated": {
+          "meanCss": 0,
+          "maxCss": 0,
+          "changedNodes": 0
+        },
+        "pattern": null
+      },
+      "global": {
+        "outcome": "accepted",
+        "applied": true,
+        "attempts": 5,
+        "before": {
+          "overlapPairs": 104,
+          "boundary": -6.382913430683626,
+          "visible": 200
+        },
+        "after": {
+          "overlapPairs": 54,
+          "boundary": -4.775783302717326,
+          "visible": 200
+        },
+        "displacement": {
+          "meanCss": 172.70787851975322,
+          "maxCss": 364.3732640588881,
+          "changedNodes": 200
+        },
+        "pattern": {
+          "lanes": 6,
+          "angularPower": 16
+        }
+      }
+    },
+    "secondary": {
+      "workspaceScale": 9.5,
+      "off": {
+        "overlapPairs": 48,
+        "boundary": -5.652060973717539,
+        "visible": 200
+      },
+      "local": {
+        "outcome": "no-improving-candidate",
+        "applied": false,
+        "affectedCount": 49,
+        "regionCount": 12,
+        "attempts": 6,
+        "before": {
+          "overlapPairs": 48,
+          "boundary": -5.652060973717539,
+          "visible": 200
+        },
+        "after": {
+          "overlapPairs": 48,
+          "boundary": -5.652060973717539,
+          "visible": 200
+        },
+        "displacement": {
+          "meanCss": 0,
+          "maxCss": 0,
+          "changedNodes": 0
+        },
+        "unrelated": {
+          "meanCss": 0,
+          "maxCss": 0,
+          "changedNodes": 0
+        },
+        "pattern": null
+      },
+      "global": {
+        "outcome": "accepted",
+        "applied": true,
+        "attempts": 5,
+        "before": {
+          "overlapPairs": 48,
+          "boundary": -5.652060973717539,
+          "visible": 200
+        },
+        "after": {
+          "overlapPairs": 10,
+          "boundary": -1.71906565916413,
+          "visible": 200
+        },
+        "displacement": {
+          "meanCss": 99.2558857470589,
+          "maxCss": 221.74400652945127,
+          "changedNodes": 200
+        },
+        "pattern": {
+          "lanes": 8,
+          "angularPower": 8
+        }
+      }
+    }
+  },
+  "crowdedFolder": {
+    "primary": {
+      "workspaceScale": 2,
+      "off": {
+        "overlapPairs": 0,
+        "boundary": 3.408331918620061,
+        "visible": 34
+      },
+      "local": {
+        "outcome": "no-crowding",
+        "applied": false,
+        "affectedCount": 0,
+        "regionCount": 0,
+        "attempts": 1,
+        "before": {
+          "overlapPairs": 0,
+          "boundary": 3.408331918620061,
+          "visible": 34
+        },
+        "after": {
+          "overlapPairs": 0,
+          "boundary": 3.408331918620061,
+          "visible": 34
+        },
+        "pattern": null
+      },
+      "global": {
+        "outcome": "no-crowding",
+        "applied": false,
+        "attempts": 1,
+        "before": {
+          "overlapPairs": 0,
+          "boundary": 3.408331918620061,
+          "visible": 34
+        },
+        "after": {
+          "overlapPairs": 0,
+          "boundary": 3.408331918620061,
+          "visible": 34
+        },
+        "displacement": {
+          "meanCss": 0,
+          "maxCss": 0,
+          "changedNodes": 0
+        },
+        "pattern": null
+      }
+    },
+    "secondary": {
+      "workspaceScale": 2,
+      "off": {
+        "overlapPairs": 0,
+        "boundary": 8.013615658580015,
+        "visible": 34
+      },
+      "local": {
+        "outcome": "no-crowding",
+        "applied": false,
+        "affectedCount": 0,
+        "regionCount": 0,
+        "attempts": 1,
+        "before": {
+          "overlapPairs": 0,
+          "boundary": 8.013615658580015,
+          "visible": 34
+        },
+        "after": {
+          "overlapPairs": 0,
+          "boundary": 8.013615658580015,
+          "visible": 34
+        },
+        "pattern": null
+      },
+      "global": {
+        "outcome": "no-crowding",
+        "applied": false,
+        "attempts": 1,
+        "before": {
+          "overlapPairs": 0,
+          "boundary": 8.013615658580015,
+          "visible": 34
+        },
+        "after": {
+          "overlapPairs": 0,
+          "boundary": 8.013615658580015,
+          "visible": 34
+        },
+        "displacement": {
+          "meanCss": 0,
+          "maxCss": 0,
+          "changedNodes": 0
+        },
+        "pattern": null
+      }
+    }
+  },
+  "denseNeighbors": {
+    "primary": {
+      "workspaceScale": 1.25,
+      "off": {
+        "overlapPairs": 0,
+        "boundary": 4.8264659295161145,
+        "visible": 53
+      },
+      "local": {
+        "outcome": "no-crowding",
+        "applied": false,
+        "affectedCount": 0,
+        "regionCount": 0,
+        "attempts": 1,
+        "before": {
+          "overlapPairs": 0,
+          "boundary": 4.8264659295161145,
+          "visible": 53
+        },
+        "after": {
+          "overlapPairs": 0,
+          "boundary": 4.8264659295161145,
+          "visible": 53
+        },
+        "pattern": null
+      },
+      "global": {
+        "outcome": "no-crowding",
+        "applied": false,
+        "attempts": 1,
+        "before": {
+          "overlapPairs": 0,
+          "boundary": 4.8264659295161145,
+          "visible": 53
+        },
+        "after": {
+          "overlapPairs": 0,
+          "boundary": 4.8264659295161145,
+          "visible": 53
+        },
+        "displacement": {
+          "meanCss": 0,
+          "maxCss": 0,
+          "changedNodes": 0
+        },
+        "pattern": null
+      }
+    },
+    "secondary": {
+      "workspaceScale": 1.25,
+      "off": {
+        "overlapPairs": 0,
+        "boundary": 10.000705674715455,
+        "visible": 53
+      },
+      "local": {
+        "outcome": "no-crowding",
+        "applied": false,
+        "affectedCount": 0,
+        "regionCount": 0,
+        "attempts": 1,
+        "before": {
+          "overlapPairs": 0,
+          "boundary": 10.000705674715455,
+          "visible": 53
+        },
+        "after": {
+          "overlapPairs": 0,
+          "boundary": 10.000705674715455,
+          "visible": 53
+        },
+        "pattern": null
+      },
+      "global": {
+        "outcome": "no-crowding",
+        "applied": false,
+        "attempts": 1,
+        "before": {
+          "overlapPairs": 0,
+          "boundary": 10.000705674715455,
+          "visible": 53
+        },
+        "after": {
+          "overlapPairs": 0,
+          "boundary": 10.000705674715455,
+          "visible": 53
+        },
+        "displacement": {
+          "meanCss": 0,
+          "maxCss": 0,
+          "changedNodes": 0
+        },
+        "pattern": null
+      }
+    }
+  },
+  "mixedDeepWide": {
+    "primary": {
+      "workspaceScale": 1,
+      "off": {
+        "overlapPairs": 0,
+        "boundary": 5.074634100346408,
+        "visible": 50
+      },
+      "local": {
+        "outcome": "no-crowding",
+        "applied": false,
+        "affectedCount": 0,
+        "regionCount": 0,
+        "attempts": 1,
+        "before": {
+          "overlapPairs": 0,
+          "boundary": 5.074634100346408,
+          "visible": 50
+        },
+        "after": {
+          "overlapPairs": 0,
+          "boundary": 5.074634100346408,
+          "visible": 50
+        },
+        "pattern": null
+      },
+      "global": {
+        "outcome": "no-crowding",
+        "applied": false,
+        "attempts": 1,
+        "before": {
+          "overlapPairs": 0,
+          "boundary": 5.074634100346408,
+          "visible": 50
+        },
+        "after": {
+          "overlapPairs": 0,
+          "boundary": 5.074634100346408,
+          "visible": 50
+        },
+        "displacement": {
+          "meanCss": 0,
+          "maxCss": 0,
+          "changedNodes": 0
+        },
+        "pattern": null
+      }
+    },
+    "secondary": {
+      "workspaceScale": 1,
+      "off": {
+        "overlapPairs": 0,
+        "boundary": 9.935322437296062,
+        "visible": 50
+      },
+      "local": {
+        "outcome": "no-crowding",
+        "applied": false,
+        "affectedCount": 0,
+        "regionCount": 0,
+        "attempts": 1,
+        "before": {
+          "overlapPairs": 0,
+          "boundary": 9.935322437296062,
+          "visible": 50
+        },
+        "after": {
+          "overlapPairs": 0,
+          "boundary": 9.935322437296062,
+          "visible": 50
+        },
+        "pattern": null
+      },
+      "global": {
+        "outcome": "no-crowding",
+        "applied": false,
+        "attempts": 1,
+        "before": {
+          "overlapPairs": 0,
+          "boundary": 9.935322437296062,
+          "visible": 50
+        },
+        "after": {
+          "overlapPairs": 0,
+          "boundary": 9.935322437296062,
+          "visible": 50
+        },
+        "displacement": {
+          "meanCss": 0,
+          "maxCss": 0,
+          "changedNodes": 0
+        },
+        "pattern": null
+      }
+    }
+  },
+  "longLabels": {
+    "primary": {
+      "workspaceScale": 1,
+      "off": {
+        "overlapPairs": 0,
+        "boundary": 28.957632023514932,
+        "visible": 11
+      },
+      "local": {
+        "outcome": "no-crowding",
+        "applied": false,
+        "affectedCount": 0,
+        "regionCount": 0,
+        "attempts": 1,
+        "before": {
+          "overlapPairs": 0,
+          "boundary": 28.957632023514932,
+          "visible": 11
+        },
+        "after": {
+          "overlapPairs": 0,
+          "boundary": 28.957632023514932,
+          "visible": 11
+        },
+        "pattern": null
+      },
+      "global": {
+        "outcome": "no-crowding",
+        "applied": false,
+        "attempts": 1,
+        "before": {
+          "overlapPairs": 0,
+          "boundary": 28.957632023514932,
+          "visible": 11
+        },
+        "after": {
+          "overlapPairs": 0,
+          "boundary": 28.957632023514932,
+          "visible": 11
+        },
+        "displacement": {
+          "meanCss": 0,
+          "maxCss": 0,
+          "changedNodes": 0
+        },
+        "pattern": null
+      }
+    },
+    "secondary": {
+      "workspaceScale": 1,
+      "off": {
+        "overlapPairs": 0,
+        "boundary": 41.552351798300386,
+        "visible": 11
+      },
+      "local": {
+        "outcome": "no-crowding",
+        "applied": false,
+        "affectedCount": 0,
+        "regionCount": 0,
+        "attempts": 1,
+        "before": {
+          "overlapPairs": 0,
+          "boundary": 41.552351798300386,
+          "visible": 11
+        },
+        "after": {
+          "overlapPairs": 0,
+          "boundary": 41.552351798300386,
+          "visible": 11
+        },
+        "pattern": null
+      },
+      "global": {
+        "outcome": "no-crowding",
+        "applied": false,
+        "attempts": 1,
+        "before": {
+          "overlapPairs": 0,
+          "boundary": 41.552351798300386,
+          "visible": 11
+        },
+        "after": {
+          "overlapPairs": 0,
+          "boundary": 41.552351798300386,
+          "visible": 11
+        },
+        "displacement": {
+          "meanCss": 0,
+          "maxCss": 0,
+          "changedNodes": 0
+        },
+        "pattern": null
+      }
+    }
+  }
+}

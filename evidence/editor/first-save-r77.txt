@@ -1,0 +1,31 @@
+﻿FileOrbit first-Save destination verification r77
+
+No production Save routing defect found. Added actual-path evidence; only test-support hooks (saveRepositoryFixture/repositoryRecord; attachment name in decodeDocument) changed.
+
+Import Backup writable:
+- Open writable A; actual Import Backup restores synthetic B package (distinct root b-root, b.pdf bytes).
+- Assert A handle cleared, B active=false/no handle, B tree installed, A writes 0.
+- First toolbar Save picker cancelled: B remains installed/unsaved, no destination, no write.
+- Retry Save picker selects handleB; close deferred; B not adopted before close.
+- After close B handle active, Saved, savedRevision captured, decoded B tree b-root and b.pdf nonempty bytes.
+- Real Edit Folder form Save writes same handle without another picker; A writes 0; IndexedDB saveCount unchanged.
+
+Previous local maps writable:
+- Synthetic record created directly through repository fixture boundary (not legacy toolbar Save). Original tree/attachment bytes captured.
+- Actual Previous local maps dialog opens exact mapId; legacy content and note.txt bytes reconstructed; no inherited handle.
+- Real Edit Folder form Save invokes one .map picker, writes handleL, decoded edit+note bytes; original repository record tree/bytes unchanged; saveCount unchanged.
+- Subsequent toolbar Save uses handleL without picker (test dirties? no, actual edit already clean; toolbar Save after touch test hook; note limitation).
+
+Fallback Previous local:
+- No writable APIs; open legacy record; toolbar Save starts .map download, active handle null, dirty remains, status Download started, saveCount unchanged.
+Fallback Save-and-continue (new-map no-handle origin):
+- Download handoff leaves prompt open; Cancel keeps map; second run Discard proceeds once.
+
+Tests: P1b65/65, codec+adapter11/11, full826/826. Native NOT RUN.
+
+Not covered:
+- Import Backup fallback first Save/form/Retry handoff (only writable Import covered).
+- Previous local fallback form/Retry handoff (toolbar only).
+- Save-and-continue fallback for Import/Previous-local origins (new-map origin covered).
+- Stable node-ID assertion for previous local (content/attachment/repository tree compared, IDs not explicit).
+- Native.

@@ -1,0 +1,50 @@
+{
+  "schema": "fileorbit.embed.snapshot",
+  "version": 1,
+  "title": "Orbit Research Preview",
+  "tree": {
+    "id": "root",
+    "name": "Research Orbit",
+    "kind": "folder",
+    "data": { "description": "Synthetic read-only map for the local embed preview." },
+    "children": [
+      {
+        "id": "field-notes",
+        "name": "Field Notes",
+        "kind": "folder",
+        "data": { "description": "Observations and interview notes." },
+        "children": [
+          { "id": "coastal", "name": "Coastal Survey.txt", "kind": "file", "data": { "description": "Synthetic coastal observations." } },
+          { "id": "weather", "name": "Weather Log.txt", "kind": "file", "data": { "description": "Synthetic weather notes." } }
+        ]
+      },
+      {
+        "id": "sources",
+        "name": "Sources",
+        "kind": "folder",
+        "data": { "description": "Reference material for the synthetic preview." },
+        "children": [
+          { "id": "brief", "name": "Project Brief.md", "kind": "file", "data": { "description": "A short synthetic project brief." } },
+          {
+            "id": "archive",
+            "name": "Archive",
+            "kind": "folder",
+            "data": { "description": "Older synthetic material." },
+            "children": [
+              { "id": "old-map", "name": "Old Map.txt", "kind": "file", "data": { "description": "Archived synthetic map notes." } }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "outputs",
+        "name": "Outputs",
+        "kind": "folder",
+        "data": { "description": "Synthetic deliverables." },
+        "children": [
+          { "id": "summary", "name": "Summary.txt", "kind": "file", "data": { "description": "Synthetic summary of findings." } }
+        ]
+      }
+    ]
+  }
+}

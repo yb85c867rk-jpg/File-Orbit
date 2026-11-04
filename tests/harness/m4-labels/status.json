@@ -1,0 +1,22 @@
+{
+  "harness": "m4-labels",
+  "browserVerification": "NOT_RUN",
+  "note": "Static labels/icons only. Runtime status is exposed as window.__M4_LABELS_STATUS__.",
+  "fixtures": ["f20", "f200"],
+  "syntheticDprCases": [1, 1.25, 2, 3],
+  "maxLabels": 40,
+  "fileNames": [
+    "readme.md",
+    "manual.PDF",
+    "notes.txt",
+    "photo.png",
+    "archive.tar.gz",
+    "mystery.bin",
+    "résumé.md",
+    "<img src=x onerror=alert(1)>.md",
+    "LICENSE",
+    "settings.JSON"
+  ],
+  "measurement": "getBoundingClientRect/offsetWidth",
+  "observed": null
+}

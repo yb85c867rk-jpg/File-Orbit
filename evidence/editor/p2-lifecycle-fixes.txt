@@ -1,0 +1,28 @@
+﻿FileOrbit P2 duplicate-Save + blocked-open fixes (r47)
+
+R1:
+- persistenceBlockedReason checks persistenceBusy again; Save disabled desktop/narrow during save.
+- saveActiveMap still checks busy inside shared action for direct/narrow activation.
+- stale save completion only clears busy if its operation token is current.
+- Actual main-entry delayed-Save test: busy=saving, both Save buttons disabled, repeated clicks do not invoke repository save; saveCount increments once; later edit remains dirty; no false conflict.
+
+R2:
+- Repository now accepts/invokes onOpenSuccess only for current owned connection.
+- onOpenSuccess clears recoverable blocked state and refreshes controls; permanent versionchange/unavailable untouched.
+- Pending open canceled via repository.close; late connection closed and no success.
+- Blocked test uses real FakeIndexedDB block event, cancel, late release, retry; versionchange repository test separate.
+- Still missing native blocked arbitration; marked NOT RUN.
+
+Executed:
+- Persistence 31/31.
+- P2 lifecycle 9/9.
+- P2 upgrade 3/3.
+- P1b main-entry 24/24.
+- Full 772/772.
+- Native browser: NOT RUN.
+FileOrbit r47 focused addendum:
+- Duplicate Save actual main-entry: delayed Save busy; desktop/narrow Save disabled; repeated clicks one repo save; later edit dirty; no false conflict.
+- Blocked open: real FakeIndexedDB blocked event; onOpenSuccess clears blocked state; library Close cancels; late success closes/no publication; retry succeeds; versionchange separate.
+- UI close enabled during blocked state.
+- Non-destructive beforeunload preserved; pagehide non-persisted teardown only.
+Results: persistence31, lifecycle9, upgrade3, P1b24, full772. Native blocked/upgrade rollback NOT RUN.

@@ -1,0 +1,5 @@
+﻿FileOrbit shell Slice 1 correction browser verification: NOT RUN.
+No browser executable/automation was available without installing dependencies.
+Node tests cover one-listener Undo/Redo semantics, blocked activation, listener non-accumulation,
+SVG/label DOM preservation, theme/fullscreen accessible labels, and actual canvas fill/stroke colors.
+Native browser visual/fullscreen/responsive behavior was not executed.

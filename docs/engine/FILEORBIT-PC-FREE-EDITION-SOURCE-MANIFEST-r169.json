@@ -1,0 +1,1910 @@
+﻿{
+    "candidate":  "FileOrbit PC free edition r169",
+    "generated":  "2026-11-03 (Pacific/Auckland)",
+    "sourceRoot":  "C:/Users/openw/Documents/Projects/visual-directory",
+    "projectIsGitRepository":  false,
+    "baselineArchive":  "review/fileorbit-encoding-failure-r169.zip",
+    "baselineArchiveSha256":  "43311D3D4818EE9F91607F1797F224DBA9E37DD646FAEB97A4282F9BED5D0CB9",
+    "packagingNote":  "r169 archive omitted vendor/jit; final PC packet adds the unchanged vendor dependency so the suite can run from the extracted archive.",
+    "aggregateSourceTreeSha256":  "B383D2061D81BDAFEC4B9FD5865929164C77E4A1D338E838F4A81BC749CDD39F",
+    "fileCount":  378,
+    "runtime":  {
+                    "node":  "v24.12.0",
+                    "powershell":  "5.1.26100.9818",
+                    "python":  "3.14.2",
+                    "chrome":  "156.0.8078.76",
+                    "os":  "Microsoft Windows NT 10.0.26300.0"
+                },
+    "files":  [
+                  {
+                      "path":  "README.md",
+                      "sha256":  "22D38FB7B3181C5C0FE764E31EC1E6AE16125134743435CEECC9DEA030AC7D1A",
+                      "bytes":  5781
+                  },
+                  {
+                      "path":  "src/engine/hypertree/data/errors.js",
+                      "sha256":  "0989A9D6C6172C5FF49A795814F443D976B6CA53BF105C47877881D9B8FC3803",
+                      "bytes":  600
+                  },
+                  {
+                      "path":  "src/engine/hypertree/data/index.js",
+                      "sha256":  "77E18F896A36EEA0B020A3A68CB90149DD20BCE103A0F62979D4F2154E19FE8E",
+                      "bytes":  162
+                  },
+                  {
+                      "path":  "src/engine/hypertree/data/metadata.js",
+                      "sha256":  "C7D20CA23C36A1857B1A88C819B58E8AE565830C4CE40A08615FF5895C019348",
+                      "bytes":  4580
+                  },
+                  {
+                      "path":  "src/engine/hypertree/data/tree-loader.js",
+                      "sha256":  "4851DC6ECC14FF3780BBFF8BBE18C7C48D8BEEB63DA65ABB75D00308E0DE5549",
+                      "bytes":  9774
+                  },
+                  {
+                      "path":  "src/engine/hypertree/editor/action.js",
+                      "sha256":  "0C551CB004C6AB9E98FB13224E4F89E9D80C746B0EA6E20473EFB21DC92EA095",
+                      "bytes":  11907
+                  },
+                  {
+                      "path":  "src/engine/hypertree/editor/activation.js",
+                      "sha256":  "1DEDC7DF72D8B8E9B602A0F9F60E4F86D702FE8BCD31D77694D444C339B2E8F4",
+                      "bytes":  2236
+                  },
+                  {
+                      "path":  "src/engine/hypertree/editor/activation-flow.js",
+                      "sha256":  "DEC81FBFA4F8CDD0FAD2DA9111028BF1F0AE02CB154027C57CD2BCF8C4D48FA1",
+                      "bytes":  3863
+                  },
+                  {
+                      "path":  "src/engine/hypertree/editor/attachment-classification.js",
+                      "sha256":  "D1A71BED71EDF5C199AE22EDAE188E173051D4A88395DE9B6511F99EC4979B4A",
+                      "bytes":  5815
+                  },
+                  {
+                      "path":  "src/engine/hypertree/editor/attachments.js",
+                      "sha256":  "EB9A00CD18C6904ED80BA8FA60785BCDBED2D379D315FD0FBB344A1C197375E8",
+                      "bytes":  9074
+                  },
+                  {
+                      "path":  "src/engine/hypertree/editor/attachment-viewer.js",
+                      "sha256":  "EDE35367AC94D5D0E70FE640C7F3DA488C86E12B3B1D56570855BBA0E3D62230",
+                      "bytes":  11734
+                  },
+                  {
+                      "path":  "src/engine/hypertree/editor/commands.js",
+                      "sha256":  "64EB790EF9094F90F563558357A0725B27E1CFAD86DAA761B61A9DC4512348B2",
+                      "bytes":  10317
+                  },
+                  {
+                      "path":  "src/engine/hypertree/editor/context-menu.js",
+                      "sha256":  "ED1A85D06C8C54C578CD8956E9B137B78BE4E7F2E3B6ACD7BC3D1B54E7E6AF86",
+                      "bytes":  640
+                  },
+                  {
+                      "path":  "src/engine/hypertree/editor/controller.js",
+                      "sha256":  "4E89EB5C4ACCDA67BDA9C1069FBD0634430149E456CDEB93A756D316281E735A",
+                      "bytes":  5703
+                  },
+                  {
+                      "path":  "src/engine/hypertree/editor/delete-target.js",
+                      "sha256":  "B5F66D6519BB90F92AC3E24435758053AFAB703BC4401DD91B98E6F61C25BBB8",
+                      "bytes":  1191
+                  },
+                  {
+                      "path":  "src/engine/hypertree/editor/details-policy.js",
+                      "sha256":  "ECAF56855725005175B6C5C0326BA2B592CA9C74E5160308FBB17CE7846ACE60",
+                      "bytes":  1397
+                  },
+                  {
+                      "path":  "src/engine/hypertree/editor/editor-menu-adapter.js",
+                      "sha256":  "23C3974B2A3C4A089B5A02733647BEE68CC4FA0D0DDF5F0DE086E34576D0F525",
+                      "bytes":  604
+                  },
+                  {
+                      "path":  "src/engine/hypertree/editor/history.js",
+                      "sha256":  "3F1531F03AF614655F4E4B032B2D9206DDE2A7DDB2570AEC75D1D2B631BCE481",
+                      "bytes":  2188
+                  },
+                  {
+                      "path":  "src/engine/hypertree/editor/history-commands.js",
+                      "sha256":  "981072A6C1CBE1C1965D6DC17552A240A99E9A0DDE7933CA644A4E4E6B1F6F9B",
+                      "bytes":  13458
+                  },
+                  {
+                      "path":  "src/engine/hypertree/editor/history-replay.js",
+                      "sha256":  "C6119DD4116855313C776B6B07D933BD8DCF62FCF1C708DAE2D74323B2312EA6",
+                      "bytes":  2478
+                  },
+                  {
+                      "path":  "src/engine/hypertree/editor/history-ui-visibility.js",
+                      "sha256":  "0775DC03E9C5B3715693B742C9B50BCF836BA1F7367EC04DB5A8B16132C7E46F",
+                      "bytes":  853
+                  },
+                  {
+                      "path":  "src/engine/hypertree/editor/index.js",
+                      "sha256":  "DC0BF8F9B8522A7C42114C92D5447353B578DDE68FDF5BB8F01820A15FC822EB",
+                      "bytes":  1622
+                  },
+                  {
+                      "path":  "src/engine/hypertree/editor/intent.js",
+                      "sha256":  "2FF178EF9CDFDE1C49A168AB46ED4631E211C0145B19D526E634E08229CEB136",
+                      "bytes":  1150
+                  },
+                  {
+                      "path":  "src/engine/hypertree/editor/label-context-menu.js",
+                      "sha256":  "008438F170CEEF904ED4013C6E125B7599A9CE132B0653ED7AA602AD64F043A1",
+                      "bytes":  1990
+                  },
+                  {
+                      "path":  "src/engine/hypertree/editor/label-selection.js",
+                      "sha256":  "D6691CEFECF26BE78A2C8B478307072366DB0CE34804EF80EF85A1782E857DC4",
+                      "bytes":  1640
+                  },
+                  {
+                      "path":  "src/engine/hypertree/editor/menu-dispatch.js",
+                      "sha256":  "040C1E7F9377F15FA5E1C270994895CC5CBB785237EDE5A26A0315A298A7BCF5",
+                      "bytes":  1078
+                  },
+                  {
+                      "path":  "src/engine/hypertree/editor/target.js",
+                      "sha256":  "4177612E08DFEF6248B3E30693D79E54BF7A260E8D6118078EE4ED5134427406",
+                      "bytes":  2513
+                  },
+                  {
+                      "path":  "src/engine/hypertree/editor/validation.js",
+                      "sha256":  "ADE3518A43F049B82A0F384AAC907D097B65AA152B60AB95F2FB76E2EA06C58A",
+                      "bytes":  15260
+                  },
+                  {
+                      "path":  "src/engine/hypertree/editor/viewer-guards.js",
+                      "sha256":  "1831B99C0F559D4D30B89F04371D29F239E1094C4358C26E86EB0CE63E36BA07",
+                      "bytes":  247
+                  },
+                  {
+                      "path":  "src/engine/hypertree/exploration/click-action.js",
+                      "sha256":  "65B2724F8C5BCC9A927DB30B128931E73EF5ADA07F1EA2929853398CD28E005A",
+                      "bytes":  3207
+                  },
+                  {
+                      "path":  "src/engine/hypertree/exploration/create-map.js",
+                      "sha256":  "646E570164CF355297C830FF72AE626C22A67B64ADA4DA0617194372C16DB634",
+                      "bytes":  9157
+                  },
+                  {
+                      "path":  "src/engine/hypertree/exploration/directory-selection.js",
+                      "sha256":  "10CA9D242F768BB1A36D815C098B483F0EB11A0EEE17FB8BFB67C3A55BAA072D",
+                      "bytes":  4255
+                  },
+                  {
+                      "path":  "src/engine/hypertree/exploration/drag-gesture.js",
+                      "sha256":  "296F9179CA876F428234D8E7D0496BBEDD2D279D1ADC732A8365E8C8FBB5D614",
+                      "bytes":  4262
+                  },
+                  {
+                      "path":  "src/engine/hypertree/exploration/drop-action.js",
+                      "sha256":  "7BE0EE134A070BAEBC6D0B6E96684C807ABE1E9CB06A492E56A9771C3BDA8F68",
+                      "bytes":  2336
+                  },
+                  {
+                      "path":  "src/engine/hypertree/exploration/drop-controller.js",
+                      "sha256":  "3FC02D925197C79A7C878684F899BBFD7F2967FAFE0ECA882B13FA6C88D47E7E",
+                      "bytes":  1143
+                  },
+                  {
+                      "path":  "src/engine/hypertree/exploration/drop-feedback.js",
+                      "sha256":  "DAE25D5936786AC216B862CBF55DEAF3BC1509FDB43164CA77FBBADA5BCB9195",
+                      "bytes":  1177
+                  },
+                  {
+                      "path":  "src/engine/hypertree/exploration/frame.js",
+                      "sha256":  "67571318F3BEBEBA0B604194ACE6365B4A1C5050A75850313848D35055F4A7BD",
+                      "bytes":  5773
+                  },
+                  {
+                      "path":  "src/engine/hypertree/exploration/index.js",
+                      "sha256":  "EE7988BE65DBF53CDC5F4FBE7BDB24C766B62B61C8DBDAFD0AA5C09D6B99565C",
+                      "bytes":  1053
+                  },
+                  {
+                      "path":  "src/engine/hypertree/exploration/label-priority.js",
+                      "sha256":  "2DF50529D802C7BC30DD042A356F661000E38CF7B2C3F684FD612D4FBA73D79F",
+                      "bytes":  1698
+                  },
+                  {
+                      "path":  "src/engine/hypertree/exploration/navigation-cleanup.js",
+                      "sha256":  "DFF6612BCDC62C06DC5C7F814CD07EFD4E86043160837AE26D996B2F8F2761E7",
+                      "bytes":  1032
+                  },
+                  {
+                      "path":  "src/engine/hypertree/exploration/navigation-model.js",
+                      "sha256":  "45410EDBC72C24F1A92E6FC9EED437068CD38CC3ADA661AF10D99885ECD84195",
+                      "bytes":  9923
+                  },
+                  {
+                      "path":  "src/engine/hypertree/exploration/navigator.js",
+                      "sha256":  "FCF73A2AE086F9C37FF967EFBA1429FDE507AC19760C40BD7A0013DC9105303C",
+                      "bytes":  4112
+                  },
+                  {
+                      "path":  "src/engine/hypertree/exploration/presentation.js",
+                      "sha256":  "4C11CF8AD8FE3C2AB898782C27178993BB9F4D837ABE399E05209C133D484BAE",
+                      "bytes":  1575
+                  },
+                  {
+                      "path":  "src/engine/hypertree/exploration/reparent.js",
+                      "sha256":  "F6C5A2D8126F6F9311A97091389FE02C8689BC72A2D341F8959CC63AA30919CE",
+                      "bytes":  3880
+                  },
+                  {
+                      "path":  "src/engine/hypertree/exploration/reparent-action.js",
+                      "sha256":  "E06105256DDF6F8C584690FCD5FA2896E5EA1352E5BFE598CD3870FC0BEE439A",
+                      "bytes":  8388
+                  },
+                  {
+                      "path":  "src/engine/hypertree/exploration/resize-action.js",
+                      "sha256":  "C9DB3FB9353AAD000C12124C6205FB2676CCA00684E644203B8D9AC60B68D1E0",
+                      "bytes":  1271
+                  },
+                  {
+                      "path":  "src/engine/hypertree/exploration/search.js",
+                      "sha256":  "7579BDEBCFDF973BF8F50035846C3BB7B9E520C0F6400E022A84093569CD41DE",
+                      "bytes":  3126
+                  },
+                  {
+                      "path":  "src/engine/hypertree/exploration/search-activation.js",
+                      "sha256":  "EACDC654D97A7F791FA69FB2293D680FC3BBA347C0DD04323B531458B3DA0202",
+                      "bytes":  2376
+                  },
+                  {
+                      "path":  "src/engine/hypertree/exploration/search-highlight.js",
+                      "sha256":  "D079A8F36872988DCC231D2F3C7E9E6A74A4092940F76F52434948B44640F888",
+                      "bytes":  1066
+                  },
+                  {
+                      "path":  "src/engine/hypertree/exploration/session.js",
+                      "sha256":  "478ED465CDDBC010FDFB21AE404B6F08716E49923C17B7356E3DDB48E6E1902C",
+                      "bytes":  3229
+                  },
+                  {
+                      "path":  "src/engine/hypertree/exploration/transition.js",
+                      "sha256":  "2D1F6B481528DAAF58686AE49897B56D260B87E5C7366331FA56F32094EAA66F",
+                      "bytes":  4793
+                  },
+                  {
+                      "path":  "src/engine/hypertree/focus/focus-animator.js",
+                      "sha256":  "6E678C51C1E971BD4DEC6FC1537F21769A0C3C4AA21EF8A13B224F3DA1E95D11",
+                      "bytes":  12756
+                  },
+                  {
+                      "path":  "src/engine/hypertree/focus/focus-transition.js",
+                      "sha256":  "9F15969E13C01AAD991D7F288C7DEAFEBD23E88BBCD583AA0386003243ED44C8",
+                      "bytes":  2279
+                  },
+                  {
+                      "path":  "src/engine/hypertree/focus/focus-view.js",
+                      "sha256":  "620A063E337121E137790737BFF9ED1D1DEF0E74F58E3CFAFC1464367F246EE2",
+                      "bytes":  9819
+                  },
+                  {
+                      "path":  "src/engine/hypertree/focus/index.js",
+                      "sha256":  "E853631BAA3688DAD0EB1C7F775AF26436B7E6F4D466B0B211A7D1EDEA0B704B",
+                      "bytes":  378
+                  },
+                  {
+                      "path":  "src/engine/hypertree/graph/adjacence.js",
+                      "sha256":  "9A43F35F1DBBBC403DD62C8798B7931B53809ABD369BEA45F6A8168646E4E0BE",
+                      "bytes":  507
+                  },
+                  {
+                      "path":  "src/engine/hypertree/graph/graph.js",
+                      "sha256":  "A94C1365EF0C407F8D65E106C51E93DD01580E7F8FF6DD6E847A572F1F58C100",
+                      "bytes":  7909
+                  },
+                  {
+                      "path":  "src/engine/hypertree/graph/index.js",
+                      "sha256":  "1184A3400656332E0ADDF5ECB6E86C117AB6540A0EF5B8E64655D01F9C655495",
+                      "bytes":  119
+                  },
+                  {
+                      "path":  "src/engine/hypertree/graph/node.js",
+                      "sha256":  "FB461E75D90B091A27E236AADB2EDFAE4395DF12E2B4EB6117FB132FCD1A8806",
+                      "bytes":  4742
+                  },
+                  {
+                      "path":  "src/engine/hypertree/graph/traversal.js",
+                      "sha256":  "94776B8C9954EA1DEEEBEA673F0809B83B3E873C4B7CEE73AC96FE79EC9C256C",
+                      "bytes":  3209
+                  },
+                  {
+                      "path":  "src/engine/hypertree/interaction/frame-install.js",
+                      "sha256":  "56425B342C7B2A74B643A21BF6D7284920CB74688DEBC4A3AE416E6960AFB7E5",
+                      "bytes":  1465
+                  },
+                  {
+                      "path":  "src/engine/hypertree/interaction/hit-test.js",
+                      "sha256":  "47A9FF87A939483E120C96A95F61835FACB4A45473B152278D6D57E56BE63978",
+                      "bytes":  3772
+                  },
+                  {
+                      "path":  "src/engine/hypertree/interaction/index.js",
+                      "sha256":  "A8031FB82ECEC3CFCCCB9B9CA711EFE0A4904BBFDC16F2AC4DDE1928F007B6B8",
+                      "bytes":  421
+                  },
+                  {
+                      "path":  "src/engine/hypertree/interaction/pointer.js",
+                      "sha256":  "C8D5403C4819D5B51FCAC4E476541B8A602D6916E5AF5CDF59CA7658A57833D7",
+                      "bytes":  2160
+                  },
+                  {
+                      "path":  "src/engine/hypertree/interaction/selection-controller.js",
+                      "sha256":  "14BD2D6EC4DDB5A385F3D14FB849B83646378AEFC8EE61838247635E551D71A7",
+                      "bytes":  8326
+                  },
+                  {
+                      "path":  "src/engine/hypertree/interaction/selection-redraw.js",
+                      "sha256":  "E316C74668E636CA139009EB8F1100595B00C57CFEDD829751668EC2B369A489",
+                      "bytes":  1332
+                  },
+                  {
+                      "path":  "src/engine/hypertree/layout/angular-width.js",
+                      "sha256":  "F9751A92D498DD80CE96BB1FC0BCA5A1A2896E6B91BBCC69ADABF9D8D6FFD30E",
+                      "bytes":  6705
+                  },
+                  {
+                      "path":  "src/engine/hypertree/layout/commit.js",
+                      "sha256":  "DDEAC893CE6B2CB387FE00C44F0F992536154B41A8C67F84C978C1CBB598228E",
+                      "bytes":  7887
+                  },
+                  {
+                      "path":  "src/engine/hypertree/layout/distance.js",
+                      "sha256":  "51588D1FFCA8EF4FA611976281B3433C7791D2963BEF28383F29237A357855D4",
+                      "bytes":  6602
+                  },
+                  {
+                      "path":  "src/engine/hypertree/layout/errors.js",
+                      "sha256":  "8D643A07087BFA6A464D22E5E1A29DAD4DD6D5654B1D406C484BE2353BE34E89",
+                      "bytes":  404
+                  },
+                  {
+                      "path":  "src/engine/hypertree/layout/experimental.js",
+                      "sha256":  "BE01E35AB3F6C5B328D3837C166B05522DB6F74E8A253CE28EA90CE5829AB8EC",
+                      "bytes":  10884
+                  },
+                  {
+                      "path":  "src/engine/hypertree/layout/experimental-metrics.js",
+                      "sha256":  "4349957BCFA86FA251B9100E0FFAA6E590AE9A5B4750BCF6D8633E5D734651FE",
+                      "bytes":  13266
+                  },
+                  {
+                      "path":  "src/engine/hypertree/layout/experimental-v2.js",
+                      "sha256":  "CCD0C12735DA9389853171F9FD28E96A7016F109FC606D5CE2B8B82B6A190B27",
+                      "bytes":  17273
+                  },
+                  {
+                      "path":  "src/engine/hypertree/layout/experimental-v2-applicability.js",
+                      "sha256":  "07AE060C0B967D3CCF7F614F18F89F7412C80DEA65C0B08E0B370D14587399D9",
+                      "bytes":  2484
+                  },
+                  {
+                      "path":  "src/engine/hypertree/layout/experimental-v2-crowding.js",
+                      "sha256":  "1F9914303001678BC1988FF1E127157546A781A74D695E82FA4EA3E1687FE118",
+                      "bytes":  12299
+                  },
+                  {
+                      "path":  "src/engine/hypertree/layout/experimental-v2-local-crowding.js",
+                      "sha256":  "BA78E7FF7705819CA0C1DFE0AF5C06B6B0716FE0A732F4D6BF6ADE50E3F77A6F",
+                      "bytes":  16528
+                  },
+                  {
+                      "path":  "src/engine/hypertree/layout/experimental-v2-presentation.js",
+                      "sha256":  "6FAD624DD11B45033216BC224283378F1706529925D7BFAFF8FBDF16DC95DD61",
+                      "bytes":  1436
+                  },
+                  {
+                      "path":  "src/engine/hypertree/layout/experimental-v2-refinement.js",
+                      "sha256":  "95DCAA68E1B9C8D0B72308DEC50C59FEAB1480662CD114F4828898E171F46D9B",
+                      "bytes":  10325
+                  },
+                  {
+                      "path":  "src/engine/hypertree/layout/index.js",
+                      "sha256":  "347EE40A4BF021DEB9B4590344FAE6EF90B2CAB817BB848740FE02648AEA2B35",
+                      "bytes":  1598
+                  },
+                  {
+                      "path":  "src/engine/hypertree/layout/radial.js",
+                      "sha256":  "3022479DE11BA7F2168C8E490BB94FD25B7D1FA527D70D384F9F61BF39A7A71A",
+                      "bytes":  9581
+                  },
+                  {
+                      "path":  "src/engine/hypertree/layout/resolve.js",
+                      "sha256":  "04623C8EE2002274D1B66433D7FD70AB66E908BB251841E07E10A1C3803586EB",
+                      "bytes":  6248
+                  },
+                  {
+                      "path":  "src/engine/hypertree/math/complex.js",
+                      "sha256":  "96D9BBA7ACC391592BEFF18A6FD40DD7284E014F2BD3ED8679FEF7D5B6474463",
+                      "bytes":  11634
+                  },
+                  {
+                      "path":  "src/engine/hypertree/math/errors.js",
+                      "sha256":  "57846DFDACF0E3460A3A92EF21BDE10CF790CB691302048B9EBEA7C6CB006C7C",
+                      "bytes":  3952
+                  },
+                  {
+                      "path":  "src/engine/hypertree/math/index.js",
+                      "sha256":  "1B8270DC1EA321C0DE00FC62DF535BFCDFD205C41464946E81695229DE5DD406",
+                      "bytes":  986
+                  },
+                  {
+                      "path":  "src/engine/hypertree/math/mobius.js",
+                      "sha256":  "12B223DD01C0309279B38384158954B2296639278A14935D561EA43D8688757B",
+                      "bytes":  4213
+                  },
+                  {
+                      "path":  "src/engine/hypertree/math/polar.js",
+                      "sha256":  "6FC8F97FE6A45BCF352F5842F312F0903D777C0DD598912DF87987FF7E31A2AB",
+                      "bytes":  7419
+                  },
+                  {
+                      "path":  "src/engine/hypertree/navigation/camera.js",
+                      "sha256":  "005C20199B042872C6F10D522A76FB20D2AC012CF6DCCAD063AEAE4598FAF6CE",
+                      "bytes":  6749
+                  },
+                  {
+                      "path":  "src/engine/hypertree/navigation/camera-scene.js",
+                      "sha256":  "7B13BF49DDB3BA11821D475CA16A523F73C71E3D37E0DB47AFBD58A9BE187283",
+                      "bytes":  2611
+                  },
+                  {
+                      "path":  "src/engine/hypertree/navigation/fit.js",
+                      "sha256":  "354F27EFB26192132063E19BB3AFCC9A3A3DF85EB4FDEBEF6BB775AF31342D91",
+                      "bytes":  7768
+                  },
+                  {
+                      "path":  "src/engine/hypertree/navigation/fit-frame.js",
+                      "sha256":  "7AB353BE3E853AD6A1D01B29FA4FD73B2D8CF09670B924395D1B087F3B5EC833",
+                      "bytes":  4468
+                  },
+                  {
+                      "path":  "src/engine/hypertree/navigation/index.js",
+                      "sha256":  "0136D3B02F5E771C9D43894DCC88DF78066E87CD7B763EE485142B25F854A405",
+                      "bytes":  734
+                  },
+                  {
+                      "path":  "src/engine/hypertree/navigation/navigation-controller.js",
+                      "sha256":  "93330E182E91339E1F9D64ABDCA760334D6F8430CEE389761A1DFF78EEC68F0C",
+                      "bytes":  13761
+                  },
+                  {
+                      "path":  "src/engine/hypertree/orbit/names.js",
+                      "sha256":  "D6951AB5BA641FFF983A9E86E605D6CB14E9E03F1C20F0C3B12F45A58DFC985B",
+                      "bytes":  4586
+                  },
+                  {
+                      "path":  "src/engine/hypertree/package.json",
+                      "sha256":  "8DDD9DBBD79FF99E4D2EDE9068743FA4586ED5292723CB4237DC2039E12401CF",
+                      "bytes":  239
+                  },
+                  {
+                      "path":  "src/engine/hypertree/persistence/backup.js",
+                      "sha256":  "12133EC47FECA1F561587552DEA06A34709E981716CDA4F042E0EEC06E19F92E",
+                      "bytes":  18515
+                  },
+                  {
+                      "path":  "src/engine/hypertree/persistence/codec.js",
+                      "sha256":  "258BB62FCE2B20D22CB933D406DB0EEF000B1F514B214A4E34B57687F5794CA6",
+                      "bytes":  18352
+                  },
+                  {
+                      "path":  "src/engine/hypertree/persistence/idb.js",
+                      "sha256":  "C30AD56FA9D99FDCB26E6E019144A3BA35789773139807E6A448390727CB1055",
+                      "bytes":  6359
+                  },
+                  {
+                      "path":  "src/engine/hypertree/persistence/ids.js",
+                      "sha256":  "C2C182381E85900BAFBDEC907322E63F6FDBC45B2D4372E2C8F478B215BBC6C0",
+                      "bytes":  3049
+                  },
+                  {
+                      "path":  "src/engine/hypertree/persistence/index.js",
+                      "sha256":  "92965BF83F6275981A50D3F99E38BF7CAC115630300CF161E48E20F5C042BDDE",
+                      "bytes":  1587
+                  },
+                  {
+                      "path":  "src/engine/hypertree/persistence/recovery-codec.js",
+                      "sha256":  "E1FB595DD6FE79EE730329EFE6A3845523DCDCD1A0D3D294FE2FBF63043C9D75",
+                      "bytes":  12325
+                  },
+                  {
+                      "path":  "src/engine/hypertree/persistence/recovery-repository.js",
+                      "sha256":  "5235FCD0322D64590BCEC63F70E61E88FA533EF003AFCDAC425B7384DC7BAAB7",
+                      "bytes":  47287
+                  },
+                  {
+                      "path":  "src/engine/hypertree/persistence/recovery-scheduler.js",
+                      "sha256":  "D4180EE3368AC6BCE1FB214C2587BD0FA1AB49482A02A5143085BE1032B3746F",
+                      "bytes":  19209
+                  },
+                  {
+                      "path":  "src/engine/hypertree/persistence/recovery-schema.js",
+                      "sha256":  "D2E87A47ED3D11C7A0DC5375DAC1CB8FDC1F68CEF1898127303F2C8768376A31",
+                      "bytes":  7347
+                  },
+                  {
+                      "path":  "src/engine/hypertree/persistence/repository.js",
+                      "sha256":  "EF5F7CDF310F367385BA90025A099746E5F9223BB4E8B8EECC62630D8095864C",
+                      "bytes":  32106
+                  },
+                  {
+                      "path":  "src/engine/hypertree/persistence/runtime.js",
+                      "sha256":  "12FBFC9B2842C574FE70F8B508B9D56A7FFCCC90575E6DB445E6E793AF102455",
+                      "bytes":  4271
+                  },
+                  {
+                      "path":  "src/engine/hypertree/persistence/schema.js",
+                      "sha256":  "BF38215B9CA1830C4A8FFB7441FA3C704A2553521B0C1FE265D7BC1560DDDCA2",
+                      "bytes":  7604
+                  },
+                  {
+                      "path":  "src/engine/hypertree/render/canvas-surface.js",
+                      "sha256":  "267056AA62EA87C6DB3555408FF2E14028195A6BF7F987DCF880671A8A829085",
+                      "bytes":  6132
+                  },
+                  {
+                      "path":  "src/engine/hypertree/render/colors.js",
+                      "sha256":  "8AB2371087955306FE8C2168114A3E95F3E3AB0EC83F806E0F87F11469833BE3",
+                      "bytes":  526
+                  },
+                  {
+                      "path":  "src/engine/hypertree/render/coordinates.js",
+                      "sha256":  "E690E6D45DA623CEF8D3A08611F5A34D5C00F97B5E4730C533F662D41ACEAC30",
+                      "bytes":  2793
+                  },
+                  {
+                      "path":  "src/engine/hypertree/render/errors.js",
+                      "sha256":  "51FFD5CBD67CA9EE89254A129556ED2DDAF055A49E56F60971BE9CE75EE750CC",
+                      "bytes":  797
+                  },
+                  {
+                      "path":  "src/engine/hypertree/render/geometry.js",
+                      "sha256":  "CD850606A42C82DECAC2C5F7664806813D2C08E1A44A99EF45DA4B3A63DEB6BC",
+                      "bytes":  3994
+                  },
+                  {
+                      "path":  "src/engine/hypertree/render/graph-renderer.js",
+                      "sha256":  "A34017D0A2B1F1C3D256C9AA4B0E00FAFFEA79E8BC21940D74034AADA6299BFB",
+                      "bytes":  14217
+                  },
+                  {
+                      "path":  "src/engine/hypertree/render/icons.js",
+                      "sha256":  "16C6A0243850722C093948053F8F907C0DA0B304F244622F814B139F08446DBB",
+                      "bytes":  1767
+                  },
+                  {
+                      "path":  "src/engine/hypertree/render/index.js",
+                      "sha256":  "2FA713A9BA57730D19C1EC0036EA0FA7DF334E8AC1DCE9AB55563567538270B0",
+                      "bytes":  937
+                  },
+                  {
+                      "path":  "src/engine/hypertree/render/label-classification.js",
+                      "sha256":  "2CA47B4C8061FBBF7FB7B51D17B7729972BCDF8C833CAC5969E8887063B6A294",
+                      "bytes":  5029
+                  },
+                  {
+                      "path":  "src/engine/hypertree/render/label-overlay.js",
+                      "sha256":  "43D7AF083A4871BE7FD983AF88D21CF7909BCD94B09A93A487231C4824073B1C",
+                      "bytes":  53119
+                  },
+                  {
+                      "path":  "src/engine/hypertree/render/scene.js",
+                      "sha256":  "3F8F14C9C27613B75FE0AF413F0A0166431AB9BF108DC1C5AE6AC56DC67BB931",
+                      "bytes":  9853
+                  },
+                  {
+                      "path":  "src/engine/hypertree/shared/web-link.js",
+                      "sha256":  "65D5816C65B49D24C79C01BE218CFA6D04DDBC00A070EDAAC9CCED10EAF6A5A1",
+                      "bytes":  4617
+                  },
+                  {
+                      "path":  "tests/engine/editor/activation.test.mjs",
+                      "sha256":  "E1963B1A581C7D9CFE6979A94C40E39DB1DA33705249CDEA2081B8096452AB76",
+                      "bytes":  7268
+                  },
+                  {
+                      "path":  "tests/engine/editor/attachment-activation.test.mjs",
+                      "sha256":  "A533B46BD0C4C7B375BBB33936B3E85A7EA005E45F45211D6298A1FE1F158FCA",
+                      "bytes":  4844
+                  },
+                  {
+                      "path":  "tests/engine/editor/attachments.test.mjs",
+                      "sha256":  "E791473D6CA4B8C4288DCF5E0E4DF132321AD5DE9C8713CBCB675BCEDEC30111",
+                      "bytes":  5173
+                  },
+                  {
+                      "path":  "tests/engine/editor/attachment-viewer.test.mjs",
+                      "sha256":  "03A0CDCDF0E84AE3BF258063311CC12A3434C5B5D3C12407CD50B36D21997801",
+                      "bytes":  14956
+                  },
+                  {
+                      "path":  "tests/engine/editor/context-menu.test.mjs",
+                      "sha256":  "1FC322DD02A877F03B11D1B60EA782DE69332A4AFBC96DB4FD22047CB380A644",
+                      "bytes":  3781
+                  },
+                  {
+                      "path":  "tests/engine/editor/delete-confirm.test.mjs",
+                      "sha256":  "4A28EB723E2793DB94D22BDAD3CEF1833F4A5FCC12F84182A9B7BDB69DDC4514",
+                      "bytes":  2853
+                  },
+                  {
+                      "path":  "tests/engine/editor/delete-ui-integration.test.mjs",
+                      "sha256":  "156773115BE08C6BC63CF71DCF3FC5E6FB3E4FE51ECFE1ABD26E9FAAB6BAAE24",
+                      "bytes":  5058
+                  },
+                  {
+                      "path":  "tests/engine/editor/delete-workflow-e2e.test.mjs",
+                      "sha256":  "F922A73C996BFB87ED199E201E5A6CD978556ADEAE00E747951A95678B1725CA",
+                      "bytes":  11012
+                  },
+                  {
+                      "path":  "tests/engine/editor/draft.test.mjs",
+                      "sha256":  "C0C2E5FAA550E76FD836C00F022CAD4214FDCCB978D5356E4F1EE8B77F0F496E",
+                      "bytes":  2749
+                  },
+                  {
+                      "path":  "tests/engine/editor/e2-add-metadata.test.mjs",
+                      "sha256":  "8C0A884A8D07E25AA4FC70597CD8C76D01C1B8C927EA5250101E22FEAFCB89F1",
+                      "bytes":  21682
+                  },
+                  {
+                      "path":  "tests/engine/editor/e2-flow.test.mjs",
+                      "sha256":  "96AB8872105712C616AB7FA887BDD4F3AD393F740537AAAE8A92BB47E8FEF1D9",
+                      "bytes":  28736
+                  },
+                  {
+                      "path":  "tests/engine/editor/e3a-details-policy.test.mjs",
+                      "sha256":  "6F0FD2240AD2B0971B23ABF50BC1825D9AB9E2A9A2D79E59631624E972863BC1",
+                      "bytes":  1728
+                  },
+                  {
+                      "path":  "tests/engine/editor/e3a-history.test.mjs",
+                      "sha256":  "3EB08ECB9E780AC512733D93A13F1CD09C738193AD9D65D33AB13EFFA4C7B6AB",
+                      "bytes":  4488
+                  },
+                  {
+                      "path":  "tests/engine/editor/e3a-integration.test.mjs",
+                      "sha256":  "3638D2843764BF0F6FDB56BF00BB7BB761574DD9F74CF95CAF37E7C419F3275B",
+                      "bytes":  18638
+                  },
+                  {
+                      "path":  "tests/engine/editor/e3b-history.test.mjs",
+                      "sha256":  "AE4AD058527CD23EA687CC802D631C05B8FE687B2C906FFE978883CC37CB64CE",
+                      "bytes":  10918
+                  },
+                  {
+                      "path":  "tests/engine/editor/editor-menu-adapter.test.mjs",
+                      "sha256":  "563B724394051B00C5D6910D2022F1F7C0259139134583B4E3B04A2D9488C752",
+                      "bytes":  2432
+                  },
+                  {
+                      "path":  "tests/engine/editor/intent.test.mjs",
+                      "sha256":  "8D6F6C72E09158387056437A00D866B4D826524B1265AE8E116890A6865789C0",
+                      "bytes":  2211
+                  },
+                  {
+                      "path":  "tests/engine/editor/label-context-menu.test.mjs",
+                      "sha256":  "84B9A3E9973E9B537A803CA8EAB4895FE755E88D3DCBB865C8E8A4A21062BC9B",
+                      "bytes":  3345
+                  },
+                  {
+                      "path":  "tests/engine/editor/label-selection-drag.test.mjs",
+                      "sha256":  "FDC26C5804268A153ADFA6E3A703A971EBC9D8406A081CD99793755E3AE682F9",
+                      "bytes":  5856
+                  },
+                  {
+                      "path":  "tests/engine/editor/open-save.test.mjs",
+                      "sha256":  "281F698B8C5696DCD991489175BF03C5AFDACA1D86D42A9C5A52284D71D09E8E",
+                      "bytes":  14913
+                  },
+                  {
+                      "path":  "tests/engine/editor/panel.test.mjs",
+                      "sha256":  "F4A0717FBB43FE70C78552B80D8CCDF33A332A17254AA4FDD4DA2DC3C0E7D9B3",
+                      "bytes":  29897
+                  },
+                  {
+                      "path":  "tests/engine/editor/panel-visibility.test.mjs",
+                      "sha256":  "F365E81064345F1C1F91138007B33F35DE7DB6C7212D60AB14825635106C27D5",
+                      "bytes":  1181
+                  },
+                  {
+                      "path":  "tests/engine/editor/rename-action.test.mjs",
+                      "sha256":  "2952D509980AC4AE637246BB029A3E85D273048B3FCECE3A5F2F2491E5F56A11",
+                      "bytes":  8282
+                  },
+                  {
+                      "path":  "tests/engine/editor/target.test.mjs",
+                      "sha256":  "DD7BF66D5FEE24AA2A2BE8D70B3E999DC2E05FED976E147D4F6E225D0A58B319",
+                      "bytes":  1268
+                  },
+                  {
+                      "path":  "tests/engine/editor/validation.test.mjs",
+                      "sha256":  "69EEA0E5E4E98CD3298C393D5C315FB86334F5BF6A2CF0C82E57779C5AF68A0B",
+                      "bytes":  3573
+                  },
+                  {
+                      "path":  "tests/engine/editor/web-link.test.mjs",
+                      "sha256":  "837F1AA052E4D207B75AD5CBCC0609D185C4C9709D12DCB7C0247A64ADBE63A0",
+                      "bytes":  4669
+                  },
+                  {
+                      "path":  "tests/engine/exploration/attachment-unavailable-feedback.test.mjs",
+                      "sha256":  "1BFC693E60FBEFB3A5719C4158119EB29A71E76884E9E19B8CCE986D0BE1BB2B",
+                      "bytes":  537
+                  },
+                  {
+                      "path":  "tests/engine/exploration/automatic-save-main.test.mjs",
+                      "sha256":  "9C803DBD1D8F5CA6CEED6F4BE9E251D2708A9B81B8AD614971520D9EDBB8E102",
+                      "bytes":  2138
+                  },
+                  {
+                      "path":  "tests/engine/exploration/backup-resources.test.mjs",
+                      "sha256":  "3C2DFCCEE650E678E8EA2046AFD11EF42086D9073E9113DF8AF8EAECB705AC71",
+                      "bytes":  1580
+                  },
+                  {
+                      "path":  "tests/engine/exploration/centered-fit-boundary.test.mjs",
+                      "sha256":  "BF2EDEF47C18D8AD4C330DE29C9013558EB3CC623E94CAECE57A91B39E3D2930",
+                      "bytes":  4527
+                  },
+                  {
+                      "path":  "tests/engine/exploration/click-action.test.mjs",
+                      "sha256":  "1EE23A43DE2060F376BA20B51DE87B9D84CE7FF21C9AEA7F835E32155EF81471",
+                      "bytes":  7550
+                  },
+                  {
+                      "path":  "tests/engine/exploration/copy-map-encoding-main.test.mjs",
+                      "sha256":  "4696D7CA75C2A9B5B9B5FA2A585BD37776ADCA3A7A5F18A2E9466BBCE3BEBFA7",
+                      "bytes":  1465
+                  },
+                  {
+                      "path":  "tests/engine/exploration/copy-map-main.test.mjs",
+                      "sha256":  "387F78083EC38D265A65AD01C51FFEA6599FD4E7161ACD997E16671124ECD274",
+                      "bytes":  954
+                  },
+                  {
+                      "path":  "tests/engine/exploration/copy-map-stale-main.test.mjs",
+                      "sha256":  "AA8588E84804C8F3B3BFD33CC77FE590CCBC6A88AB751865790ED5EBA0EBD5B0",
+                      "bytes":  952
+                  },
+                  {
+                      "path":  "tests/engine/exploration/copy-map-unsupported-main.test.mjs",
+                      "sha256":  "07BCB1479B0AE16F9F02CDA75580696F40285837793AEC1AB4E16CE5291585DD",
+                      "bytes":  979
+                  },
+                  {
+                      "path":  "tests/engine/exploration/create-baseline-main.test.mjs",
+                      "sha256":  "F3B4EF2A05608E9845ADB3BE1CA414C7768C48E6860505060EC04C82BDEC56EB",
+                      "bytes":  564
+                  },
+                  {
+                      "path":  "tests/engine/exploration/create-close-gate-main.test.mjs",
+                      "sha256":  "3F7C4888271F6CF5189F77520E92BE4DD60A917FF0EAC65D7A04B57D891E73CF",
+                      "bytes":  1102
+                  },
+                  {
+                      "path":  "tests/engine/exploration/create-location-main.test.mjs",
+                      "sha256":  "5C1091409578F9834EB17F0F2B05F5BB354F919144577AC8063F83A0E9E1ECBA",
+                      "bytes":  982
+                  },
+                  {
+                      "path":  "tests/engine/exploration/create-location-stale-main.test.mjs",
+                      "sha256":  "57845B0A44BC3519DADFC541EB2B5CB6BCC345EED170AEF49D95ABD2411452B5",
+                      "bytes":  959
+                  },
+                  {
+                      "path":  "tests/engine/exploration/create-location-unsupported-main.test.mjs",
+                      "sha256":  "9297ADE6CE2E15E7A97E4A99A66C41984A6E9D83A39CF554F69CF62BBB3D9FCE",
+                      "bytes":  978
+                  },
+                  {
+                      "path":  "tests/engine/exploration/create-map.test.mjs",
+                      "sha256":  "4F116CDBFDDB91355A1EF584687EA8A2E2679EE9640DF48C080910C452F6CDC9",
+                      "bytes":  6151
+                  },
+                  {
+                      "path":  "tests/engine/exploration/create-map-css.test.mjs",
+                      "sha256":  "35F5843122D18338F6690C39C2F7ADC8C5581CC0A565416676827EFD7AA9389F",
+                      "bytes":  2455
+                  },
+                  {
+                      "path":  "tests/engine/exploration/create-map-dialog.test.mjs",
+                      "sha256":  "57584982162D15ACBA236CE3F56EDB4C90760234BDD08C9DD66E556281F5595B",
+                      "bytes":  15011
+                  },
+                  {
+                      "path":  "tests/engine/exploration/create-map-dialog-preparation.test.mjs",
+                      "sha256":  "DB7EE439BE7780FC66B95AD4B039B426EBF7F0180FAA63B0B42AD934063A04BF",
+                      "bytes":  12345
+                  },
+                  {
+                      "path":  "tests/engine/exploration/create-map-install.test.mjs",
+                      "sha256":  "7F994ABB522A0B44DC292BC983D2CF6F54D17CDCC2F18C89DBEEB30C4C22ECB7",
+                      "bytes":  6137
+                  },
+                  {
+                      "path":  "tests/engine/exploration/create-picker-lifecycle-main.test.mjs",
+                      "sha256":  "3EC5C55C79033E315994AFF42384033B1D6C723555C5F18A784A13DEC9F9CBF2",
+                      "bytes":  1238
+                  },
+                  {
+                      "path":  "tests/engine/exploration/data-circles.test.mjs",
+                      "sha256":  "190235F086C802B1852D9BF53B988852AF40EC3751C03B0BCB2924FAAC04C730",
+                      "bytes":  3860
+                  },
+                  {
+                      "path":  "tests/engine/exploration/depth-context.test.mjs",
+                      "sha256":  "C8E3005E56AB01E85396EDCACF76792B40871502D60D4902F1C92C68BE3D2976",
+                      "bytes":  6652
+                  },
+                  {
+                      "path":  "tests/engine/exploration/directory-selection.test.mjs",
+                      "sha256":  "14E0AE66C35848261B84C978AC5C83A43CA477A1E5B073BDF66E285BDDB88456",
+                      "bytes":  2274
+                  },
+                  {
+                      "path":  "tests/engine/exploration/document-adapter.test.mjs",
+                      "sha256":  "3AF94D2385B6E7B26F61F75BD50891CE485B8B2A997EFEA1D9D4583F45CC5346",
+                      "bytes":  8831
+                  },
+                  {
+                      "path":  "tests/engine/exploration/drag-gesture.test.mjs",
+                      "sha256":  "C163F43010E63E48126D47D7E5C264D0E9E76D3D8C4121A1383128A5EF5BFB1E",
+                      "bytes":  4112
+                  },
+                  {
+                      "path":  "tests/engine/exploration/drag-history-main.test.mjs",
+                      "sha256":  "7E26681E7646D8D543CFDAB2D61F3DB42274BBA3C6B0A4C53EFF49C84F2BB0E2",
+                      "bytes":  956
+                  },
+                  {
+                      "path":  "tests/engine/exploration/drop-action.test.mjs",
+                      "sha256":  "0B85009C2159D950626597E5C4B34964C52753592C90DFDC8FD002BD527F890D",
+                      "bytes":  3701
+                  },
+                  {
+                      "path":  "tests/engine/exploration/drop-controller.test.mjs",
+                      "sha256":  "6B82A6DD138AA41F5879E12F4FFCC92A6289808984A6851AAF47DBA0E412E6A8",
+                      "bytes":  5436
+                  },
+                  {
+                      "path":  "tests/engine/exploration/drop-feedback.test.mjs",
+                      "sha256":  "4DD327AADF186C7ABCAF8B41136317DF72BB8639933050E45163BB15184CEA3F",
+                      "bytes":  4143
+                  },
+                  {
+                      "path":  "tests/engine/exploration/editor-visibility-main.test.mjs",
+                      "sha256":  "611EE5C667EE86FF43421DF54FF8724F549F9F08AA79C6BBFB06F1CEAAD07063",
+                      "bytes":  568
+                  },
+                  {
+                      "path":  "tests/engine/exploration/embed.test.mjs",
+                      "sha256":  "F0B5D90D2F14AA49B86D356496CE302D68EDCBE2111850E5E762AAB09C3764A8",
+                      "bytes":  11192
+                  },
+                  {
+                      "path":  "tests/engine/exploration/exploration-harness-static.test.mjs",
+                      "sha256":  "86811E84B88DBCE26A477774ED20D7F2C46C76C518E3AFB1ADACCB87188CB4AA",
+                      "bytes":  7676
+                  },
+                  {
+                      "path":  "tests/engine/exploration/exploration-presentation.test.mjs",
+                      "sha256":  "33596C8A55127D5B03F6A0A92CE0015F6B66E5E8C1EF14FFF255A002A165A666",
+                      "bytes":  4669
+                  },
+                  {
+                      "path":  "tests/engine/exploration/exploration-session.test.mjs",
+                      "sha256":  "7CABEEC73851990FFFDF198BAF8D4B8F572DDC7ECD75B889CEA3AC634E507B8B",
+                      "bytes":  9064
+                  },
+                  {
+                      "path":  "tests/engine/exploration/feedback-expiry-main.test.mjs",
+                      "sha256":  "24022889606024B94B8A3A9AD1F2FCCD4D6C855599C003937FEA5C78C4291BE7",
+                      "bytes":  975
+                  },
+                  {
+                      "path":  "tests/engine/exploration/file-conflict-dialog.test.mjs",
+                      "sha256":  "0E2506FBFEAB52E63BEA996477F813EE2168FBDE5C15B38381F9B6C9CC0D80B3",
+                      "bytes":  9416
+                  },
+                  {
+                      "path":  "tests/engine/exploration/file-open-browser.test.mjs",
+                      "sha256":  "0CA55E9478872B2911A82D77B9666086CA6AD8CE2AB52D1EFDF9D95459B5A900",
+                      "bytes":  9929
+                  },
+                  {
+                      "path":  "tests/engine/exploration/file-open-navigation-main.test.mjs",
+                      "sha256":  "A393C9CFC988038D1CE9EE81C42481EAD58E27E44D752F62B6948F5A3FFFB69A",
+                      "bytes":  2021
+                  },
+                  {
+                      "path":  "tests/engine/exploration/folder-context-priority.test.mjs",
+                      "sha256":  "923AD766C877A08703633BE945FEB4E5BDC3295777D1216CF01DC13CF4A9F2E5",
+                      "bytes":  4797
+                  },
+                  {
+                      "path":  "tests/engine/exploration/folder-navigation-labels.test.mjs",
+                      "sha256":  "060616D2F22F46DD858081421D675C653708A6153B7ECEFC54198E5989888939",
+                      "bytes":  7999
+                  },
+                  {
+                      "path":  "tests/engine/exploration/folder-navigation-regression.test.mjs",
+                      "sha256":  "D0DBB462EFC2D6A2D9A6D42EC73C4E7C3BA9FD9334D36E9FA0C266A47DA4099A",
+                      "bytes":  8484
+                  },
+                  {
+                      "path":  "tests/engine/exploration/free-edition-audit.test.mjs",
+                      "sha256":  "FCC2F3E3C8893A26CA503A65C196264481F44F4430CBA21ADC4CAE2A1797E625",
+                      "bytes":  4018
+                  },
+                  {
+                      "path":  "tests/engine/exploration/history-ui-visibility.test.mjs",
+                      "sha256":  "EC99BC595636034B757AD99336573D3CB7FEA4465C6118FB38608F447847280E",
+                      "bytes":  3374
+                  },
+                  {
+                      "path":  "tests/engine/exploration/layout-empty-main.test.mjs",
+                      "sha256":  "6013124003E5EC73122B8352BECD2F10633B98048073E0CC4750982676C21230",
+                      "bytes":  554
+                  },
+                  {
+                      "path":  "tests/engine/exploration/layout-ownership.test.mjs",
+                      "sha256":  "A53EA08F40E62FE9DCBB5CEFB18AED83A3C56F5E8ED7D7B4B5A35EED3716225F",
+                      "bytes":  3152
+                  },
+                  {
+                      "path":  "tests/engine/exploration/layout-shell.test.mjs",
+                      "sha256":  "521DAB5FC346897CD66A9E61C27854106A48D2222584D7590FD5F9CBD3FA44AE",
+                      "bytes":  2304
+                  },
+                  {
+                      "path":  "tests/engine/exploration/main-harness-init.test.mjs",
+                      "sha256":  "287532C3796FB5AB4CDC5A8B9EC4FAF08B53AD150865759A011387E86D6B8DBC",
+                      "bytes":  2776
+                  },
+                  {
+                      "path":  "tests/engine/exploration/main-harness-init-runner.mjs",
+                      "sha256":  "8E8F87C20933B51F224B1AD28FFFA1A66A49B0B8B056BEDC30A3BCFBAD2EB4DF",
+                      "bytes":  485780
+                  },
+                  {
+                      "path":  "tests/engine/exploration/menu-resize-main.test.mjs",
+                      "sha256":  "3205C78C6E950DAF2EF0E7BCDEE5F5B18126EFC9797CFF8022BA61B69A9E7BA2",
+                      "bytes":  534
+                  },
+                  {
+                      "path":  "tests/engine/exploration/navigation-model.test.mjs",
+                      "sha256":  "0C7C5AA68513A70314EF66305BD4EEA7128AE86F2AF0028DA7E6201649F739E8",
+                      "bytes":  8168
+                  },
+                  {
+                      "path":  "tests/engine/exploration/navigation-rail.test.mjs",
+                      "sha256":  "9BE70E2FB3EF454B5F5645D8C9CDDED388F3E8B9764ABD337DEAAAA97B177858",
+                      "bytes":  13599
+                  },
+                  {
+                      "path":  "tests/engine/exploration/navigation-rail-main.test.mjs",
+                      "sha256":  "EFBFCA5394D41B9C44BB686F698B908DEDFA44C31B2B3FFF0C67F43A02D515D3",
+                      "bytes":  558
+                  },
+                  {
+                      "path":  "tests/engine/exploration/navigator-integration.test.mjs",
+                      "sha256":  "7F6F6AEA6A67BB1DAD7AB6F5335B593BFD1B36A1810662380BDF26E64D8445AC",
+                      "bytes":  12286
+                  },
+                  {
+                      "path":  "tests/engine/exploration/open-workflow-main.test.mjs",
+                      "sha256":  "008D0554ED50B25DFDEF48DD7CB5AC833C4AFBD60E16227158562C1771476239",
+                      "bytes":  564
+                  },
+                  {
+                      "path":  "tests/engine/exploration/orbit-create-add-main.test.mjs",
+                      "sha256":  "AA0E95E98B383CA316DB8D26E064BA757D3960EB127D82B895FC1AA2F5D5822D",
+                      "bytes":  981
+                  },
+                  {
+                      "path":  "tests/engine/exploration/orbit-create-fail-main.test.mjs",
+                      "sha256":  "032580991DFFB503B73059D6761188A9D3DFEE18F866C0E44DFC7AAC1DC73D5E",
+                      "bytes":  1003
+                  },
+                  {
+                      "path":  "tests/engine/exploration/orbit-directory-adapter.test.mjs",
+                      "sha256":  "C596BF08596EF3A93BDB1D772A01F829C16BECAB6DA3931DF0BDC498BB544B9C",
+                      "bytes":  25343
+                  },
+                  {
+                      "path":  "tests/engine/exploration/orbit-file-baseline.test.mjs",
+                      "sha256":  "2BB24C4749FAEA5D8F0E8B8E2F12EC277E10E85687EA17D57B609C4FA6565711",
+                      "bytes":  26671
+                  },
+                  {
+                      "path":  "tests/engine/exploration/orbit-main.test.mjs",
+                      "sha256":  "034AA62698C6C67E147FC09AB27A10BB20BFED87F581FD81C3599028A615C51E",
+                      "bytes":  546
+                  },
+                  {
+                      "path":  "tests/engine/exploration/orbit-menu-main.test.mjs",
+                      "sha256":  "E14CC0B64C4FD1EEAD476332F1679C2EE7E1064F6692BF9BCD1B18CEECC17B62",
+                      "bytes":  982
+                  },
+                  {
+                      "path":  "tests/engine/exploration/orbit-names.test.mjs",
+                      "sha256":  "63B56E3B3CD02907F9090F7E35A510DD8D216AA6A21A02231B42E29BBFD51D44",
+                      "bytes":  3903
+                  },
+                  {
+                      "path":  "tests/engine/exploration/orbit-only-main.test.mjs",
+                      "sha256":  "EA9F1AE2BF9D33E83368D20D6C7AA14206BD6A6CA565FA49D6DD4B83E8ED894C",
+                      "bytes":  977
+                  },
+                  {
+                      "path":  "tests/engine/exploration/orbit-panel.test.mjs",
+                      "sha256":  "63ED55DF98650B77A258C7D4D4211A47C627D0364358096FF62A5934B70CEB39",
+                      "bytes":  6341
+                  },
+                  {
+                      "path":  "tests/engine/exploration/orbit-r1-ownership.test.mjs",
+                      "sha256":  "E7C2AEDD5C2554940BFF9A8FAA7666161E2CC09EA3FB930DA9C923D710A0975B",
+                      "bytes":  980
+                  },
+                  {
+                      "path":  "tests/engine/exploration/orbit-r2-save-copy.test.mjs",
+                      "sha256":  "97B3B3126BE12DA9733D678B3A557005064FCB0889D85085380913579E2F119C",
+                      "bytes":  973
+                  },
+                  {
+                      "path":  "tests/engine/exploration/orbit-state.test.mjs",
+                      "sha256":  "57DC36EBD06E9FB273190AD29314F3926A656CF0C033B389EA055EE9693023C9",
+                      "bytes":  30097
+                  },
+                  {
+                      "path":  "tests/engine/exploration/p1b-main.test.mjs",
+                      "sha256":  "AEB08633F7A74C9B57EB2632B35CE5586DFACFF0923A6C0EC216C27D4D5F3BF1",
+                      "bytes":  12095
+                  },
+                  {
+                      "path":  "tests/engine/exploration/recovery-slice2-main.test.mjs",
+                      "sha256":  "60468B8BFB8831F24D4580F9937D7A6293685DBE647D45025CB67BFC9F8836C8",
+                      "bytes":  780
+                  },
+                  {
+                      "path":  "tests/engine/exploration/recovery-slice3-main.test.mjs",
+                      "sha256":  "CD1E86DFAB62C5BF27CB4EA50BE61D0D86D1AAB0FB69E1E9D4C4983C63C3CD8D",
+                      "bytes":  2474
+                  },
+                  {
+                      "path":  "tests/engine/exploration/reparent.test.mjs",
+                      "sha256":  "B8D1F2DB71F06A251B3F2A2EF0C8EB547FA63026DE50D2242A86EDB5ADE501B1",
+                      "bytes":  6486
+                  },
+                  {
+                      "path":  "tests/engine/exploration/reparent-action.test.mjs",
+                      "sha256":  "5E1CDFAE2C3E11CA2BD3EAF76B1E5A9DEDF5EA202C7B97DBD860A6CA5B06661C",
+                      "bytes":  9208
+                  },
+                  {
+                      "path":  "tests/engine/exploration/resize-lifecycle.test.mjs",
+                      "sha256":  "DB4813AA6196D82C711CC5E7C0B0FC2D38A62EB8A72AA235778304A8BBE85802",
+                      "bytes":  6667
+                  },
+                  {
+                      "path":  "tests/engine/exploration/search.test.mjs",
+                      "sha256":  "5D617539B7A62CE61EDEF2B24A4187272150FE6131326906D19B6B9DBBBCAD5B",
+                      "bytes":  4343
+                  },
+                  {
+                      "path":  "tests/engine/exploration/search-activation.test.mjs",
+                      "sha256":  "4A55ED579FDC789D23AF9F19089F3B08E94A0A5ADD28980EA261122CA6F88489",
+                      "bytes":  2290
+                  },
+                  {
+                      "path":  "tests/engine/exploration/search-details-main.test.mjs",
+                      "sha256":  "75209D732475B874E220BCE6425D8E7041296A0E4E7208D1E0D76382397E511C",
+                      "bytes":  546
+                  },
+                  {
+                      "path":  "tests/engine/exploration/search-highlight-main.test.mjs",
+                      "sha256":  "81657A8F73012A34BD86CE4F1CC9668BB493B6E37259A37FAC4C6EA711D34A12",
+                      "bytes":  945
+                  },
+                  {
+                      "path":  "tests/engine/exploration/search-results.test.mjs",
+                      "sha256":  "622B86BB70A2378D6370B18B61338C4F5A3ACC80349CC6A8DAE89DCBB665308B",
+                      "bytes":  6905
+                  },
+                  {
+                      "path":  "tests/engine/exploration/shell-controls.test.mjs",
+                      "sha256":  "41ABBF529294FF1B5A4EF3B0502F784793989113024D202E98C7DD1CD48884BF",
+                      "bytes":  26105
+                  },
+                  {
+                      "path":  "tests/engine/exploration/sidebar-tooltips-main.test.mjs",
+                      "sha256":  "E3E8BD15AC1E228C9935009CDDA6E58A1E60DC7FC13ED7072A068141C86C5EC8",
+                      "bytes":  952
+                  },
+                  {
+                      "path":  "tests/engine/exploration/title-only-fallback-main.test.mjs",
+                      "sha256":  "8E86F23AF129BC7831279C0323DDCFDE50487E99BAEC7B158FD9B805C087B0BA",
+                      "bytes":  554
+                  },
+                  {
+                      "path":  "tests/engine/exploration/title-only-main.test.mjs",
+                      "sha256":  "AD124106E1488E717F4C737A09A90528E29126D0B3DA67391991276D03C36917",
+                      "bytes":  557
+                  },
+                  {
+                      "path":  "tests/engine/exploration/transition.test.mjs",
+                      "sha256":  "79729681B3E8885829C82C2B5B03801036A230428E35747C25259E4A507BA5FB",
+                      "bytes":  7933
+                  },
+                  {
+                      "path":  "tests/engine/exploration/ui-geometry-main.test.mjs",
+                      "sha256":  "2C2E832B403283C8616885699E0BF5587F9D5D104E720A5308FE031259420DC7",
+                      "bytes":  554
+                  },
+                  {
+                      "path":  "tests/engine/exploration/ui-refinement.test.mjs",
+                      "sha256":  "35BABA3C1D43C87778C939505CAFDED95F826FE280D589DFC4BF0F064DEEEDDB",
+                      "bytes":  12551
+                  },
+                  {
+                      "path":  "tests/engine/exploration/yaml-viewer-main.test.mjs",
+                      "sha256":  "7892A32C9DCCA4ED33AEC78AB9FE30EA20A6504269C37B93EF5273DCA952FF71",
+                      "bytes":  548
+                  },
+                  {
+                      "path":  "tests/engine/focus/focus-animation-harness-static.test.mjs",
+                      "sha256":  "5E97FB255B917D8EAC10CD7275242965A4375E34E7E8AE65E961088CA7FE293F",
+                      "bytes":  1731
+                  },
+                  {
+                      "path":  "tests/engine/focus/focus-animation-integration.test.mjs",
+                      "sha256":  "6BAE9667480927D219BE985D33712F4954EEBDC2BA2E8E00F26DEA3213D5BB14",
+                      "bytes":  7139
+                  },
+                  {
+                      "path":  "tests/engine/focus/focus-animator.test.mjs",
+                      "sha256":  "884EAA4C50BCDC325C2DE68346EBE17900174D2F5098972BD73156A9DBEB9D0F",
+                      "bytes":  9345
+                  },
+                  {
+                      "path":  "tests/engine/focus/focus-animator-failures.test.mjs",
+                      "sha256":  "62869D9C85D161302F2E3951FED5097FCB5209B4EDAC7CFE211C137250C2CD2B",
+                      "bytes":  8536
+                  },
+                  {
+                      "path":  "tests/engine/focus/focus-coordinates.test.mjs",
+                      "sha256":  "E7EC62C85B7C641494D6BAB63210EBEB7710E408D9D1B4790D3F60BEB8EEA296",
+                      "bytes":  3577
+                  },
+                  {
+                      "path":  "tests/engine/focus/focus-harness-static.test.mjs",
+                      "sha256":  "C59BD3316B26F1B8A5B668B473C9882C2364973442439BAB760AFF3D446BDCE2",
+                      "bytes":  1651
+                  },
+                  {
+                      "path":  "tests/engine/focus/focus-integration.test.mjs",
+                      "sha256":  "E8A17272D000402629CBF75B14B79C05699C9C22DBA99592A4384254CEB88B2C",
+                      "bytes":  3886
+                  },
+                  {
+                      "path":  "tests/engine/focus/focus-transition.test.mjs",
+                      "sha256":  "619B2E27BA6700F36DC5184DD4DF916635731991547EC2B4A4B2F3F9E73EB2EF",
+                      "bytes":  4439
+                  },
+                  {
+                      "path":  "tests/engine/focus/focus-view.test.mjs",
+                      "sha256":  "A4FF249056B635187997960DE1CE1F92C5EFF1246D9A1CF44F90CEB4EB3FCFEE",
+                      "bytes":  13586
+                  },
+                  {
+                      "path":  "tests/engine/focus/legacy-mobius-oracle.mjs",
+                      "sha256":  "7373205BE66081395E79B3BECB37E8A9FB2E1C56D7775514ED7E2EE4F52B1DE8",
+                      "bytes":  583
+                  },
+                  {
+                      "path":  "tests/engine/graph/graph-loader.test.mjs",
+                      "sha256":  "757D21625218F7140317124CC3B172193BFACED3458D86A29C814CA86AAE1B59",
+                      "bytes":  21696
+                  },
+                  {
+                      "path":  "tests/engine/graph/legacy-graph-reference.mjs",
+                      "sha256":  "6193838DB49CFBFFFBC2EA7E6A296254F57F4BD3DCD0DC757C7C4C1933815F54",
+                      "bytes":  4019
+                  },
+                  {
+                      "path":  "tests/engine/graph/LEGACY-REFERENCE.md",
+                      "sha256":  "EB7709B97822961F92DB9B28E3C0BCAE38AD141BBD0AA1152B643F06F845E1A1",
+                      "bytes":  567
+                  },
+                  {
+                      "path":  "tests/engine/interaction/frame-install.test.mjs",
+                      "sha256":  "C8C10879922B143A49E6F5D544D059E0734E8CC72098BDD509330D68AF82033C",
+                      "bytes":  4428
+                  },
+                  {
+                      "path":  "tests/engine/interaction/hit-test.test.mjs",
+                      "sha256":  "6D91A5A71A5ED3ED5B3DF40B2C4107D700AF954925C030EAD6D374C7681D5C5A",
+                      "bytes":  5801
+                  },
+                  {
+                      "path":  "tests/engine/interaction/m5-harness-static.test.mjs",
+                      "sha256":  "70671B8C213A1850FFF4EE4A684A4A0F25F46416722B16A446DDEE3B09BB1F9E",
+                      "bytes":  1535
+                  },
+                  {
+                      "path":  "tests/engine/interaction/selection-controller.test.mjs",
+                      "sha256":  "DA6DDBFF2041C036A153C138A45C67CABC0E97A8379B5E3C2AA92A5A8DF6D243",
+                      "bytes":  13895
+                  },
+                  {
+                      "path":  "tests/engine/layout/angular-width.test.mjs",
+                      "sha256":  "C715C9223466F96D74732A096DB84317273A537C18DED4EDFFFE417E50D723AD",
+                      "bytes":  16329
+                  },
+                  {
+                      "path":  "tests/engine/layout/commit.test.mjs",
+                      "sha256":  "B38EF61043A0C33563EDD6965B7773373B27297ABC23ACCD8D51C43379FE92B5",
+                      "bytes":  16030
+                  },
+                  {
+                      "path":  "tests/engine/layout/crowding-fixtures.mjs",
+                      "sha256":  "6832A5E029E1E28573E865CDCCB0EBAF2C0C4C67409E1AB410AC79EB108197AA",
+                      "bytes":  3545
+                  },
+                  {
+                      "path":  "tests/engine/layout/distance.test.mjs",
+                      "sha256":  "13567BFA26873D3319B6ECD38328AEC7AD88B568E3274C9B7A6C4A0A655AF1C3",
+                      "bytes":  11117
+                  },
+                  {
+                      "path":  "tests/engine/layout/experimental.test.mjs",
+                      "sha256":  "CD1F928953AFF94CCE829A69C92CF41ECF21A20C3AEB7C671F2AA6A99D9E4B6A",
+                      "bytes":  11916
+                  },
+                  {
+                      "path":  "tests/engine/layout/experimental-harness-static.test.mjs",
+                      "sha256":  "158640CDF299ECA6987AA908D2AC7317BB16514DA43438586765499ADF114EE3",
+                      "bytes":  3450
+                  },
+                  {
+                      "path":  "tests/engine/layout/experimental-report.mjs",
+                      "sha256":  "129D0955C2FAFE2F0182A99911CFB1080F6A192D10423B8AB2F1A44C915A0889",
+                      "bytes":  2425
+                  },
+                  {
+                      "path":  "tests/engine/layout/experimental-v2.test.mjs",
+                      "sha256":  "416C1AA1720AD80644A2BFD6F07A59D2C0B36B5BB31D3519651C51DBA851F24D",
+                      "bytes":  11246
+                  },
+                  {
+                      "path":  "tests/engine/layout/experimental-v2-applicability.test.mjs",
+                      "sha256":  "E71A1CB5CABEE21C8114138AC460DC6EAB1365C8E4A79ECB7E828B047D4FC0CA",
+                      "bytes":  2365
+                  },
+                  {
+                      "path":  "tests/engine/layout/experimental-v2-crowding.test.mjs",
+                      "sha256":  "7B2BBAF920564F0E6769CA3472C048A798DC35F6C4C6BF3CFF1BCDA27957A5FC",
+                      "bytes":  9536
+                  },
+                  {
+                      "path":  "tests/engine/layout/experimental-v2-crowding-report.mjs",
+                      "sha256":  "105F7BBA2D5AF3B7DD2021C46845419F63C8FBF168A3FFC776D5AA7EEC7874D8",
+                      "bytes":  2547
+                  },
+                  {
+                      "path":  "tests/engine/layout/experimental-v2-local-crowding.test.mjs",
+                      "sha256":  "0FA5F232A7C2CD7986D0E22597BC4152BF0472E10FF3D1F1CFB93F4CDF816434",
+                      "bytes":  6728
+                  },
+                  {
+                      "path":  "tests/engine/layout/experimental-v2-local-crowding-report.mjs",
+                      "sha256":  "AAFAE51C7929C33A2C655D8CCF28B82A295D9CF7E4A001019AEAB756ED006DAF",
+                      "bytes":  2315
+                  },
+                  {
+                      "path":  "tests/engine/layout/experimental-v2-refinement.test.mjs",
+                      "sha256":  "0AF9A5B20FBDF7AC1261C2CBEE7EFF287D6830199D6D07B114A93E2A4A7ADF51",
+                      "bytes":  11973
+                  },
+                  {
+                      "path":  "tests/engine/layout/experimental-v2-refinement-report.mjs",
+                      "sha256":  "F37158E17E2EFF9E53EB9AB8ADE4F1A26EFB10364472B2D03489ED22B9E3AABD",
+                      "bytes":  1452
+                  },
+                  {
+                      "path":  "tests/engine/layout/experimental-v2-report.mjs",
+                      "sha256":  "7AD33D685320FF4ED506BBA74B0E77475E9E4642D25623D0BEFE1350AF32135F",
+                      "bytes":  5041
+                  },
+                  {
+                      "path":  "tests/engine/layout/fixtures.mjs",
+                      "sha256":  "1631836C4566F4A28F9D4A4E99270B6CE1BC61E037977A6DB982D2530695A6EC",
+                      "bytes":  3517
+                  },
+                  {
+                      "path":  "tests/engine/layout/harness-build-layout.test.mjs",
+                      "sha256":  "B8F72569DD3530568725200C461D268A18D33886B6A1B65D941955538D5E446C",
+                      "bytes":  4699
+                  },
+                  {
+                      "path":  "tests/engine/layout/legacy-layout-oracle.mjs",
+                      "sha256":  "CCFB2C56C28B96876B88177EBE868C30D2E1245B0B278E5476E4CCB6B1D703D6",
+                      "bytes":  6675
+                  },
+                  {
+                      "path":  "tests/engine/layout/radial.test.mjs",
+                      "sha256":  "B508C17A1BE8C6C58B0B4697D20B9A80CD812487BB0A07206638DE4E7CFD9936",
+                      "bytes":  12971
+                  },
+                  {
+                      "path":  "tests/engine/layout/VENDOR-PLACEMENT.md",
+                      "sha256":  "7E3AF426116E4AA9A81231BB54F80BF25E5530B363E629AC9FE258A6D11EFAE1",
+                      "bytes":  1269
+                  },
+                  {
+                      "path":  "tests/engine/math/legacy-reference.mjs",
+                      "sha256":  "9B202EB83CDD2C77DAC0E982CC18629657902F67C20AAB3B37CBC5E8FCEABFAA",
+                      "bytes":  2475
+                  },
+                  {
+                      "path":  "tests/engine/math/math.test.mjs",
+                      "sha256":  "9B7D69B4A4DCF956FA87295D6088BD5738EC2A7F6E1E502D8A3618236C70283E",
+                      "bytes":  18581
+                  },
+                  {
+                      "path":  "tests/engine/math/reproduce-contract.mjs",
+                      "sha256":  "583C2A6DB8FFDFCAD562EDD49520680474220600E101C0373F1F6E71F28772BB",
+                      "bytes":  3979
+                  },
+                  {
+                      "path":  "tests/engine/navigation/camera.test.mjs",
+                      "sha256":  "D18E4B2EE1501F7679927B6A53B266B12384F08BB2AD956019E11CB3B77E86CF",
+                      "bytes":  8007
+                  },
+                  {
+                      "path":  "tests/engine/navigation/fit.test.mjs",
+                      "sha256":  "D19C23818975B9F2CD11EBE9613F4B0045CCBF5C7C0E75446D81695950538148",
+                      "bytes":  26300
+                  },
+                  {
+                      "path":  "tests/engine/navigation/fit-report.mjs",
+                      "sha256":  "F5D1F6A153B95B61698708926685721D72C26109617CF821B88840C024422296",
+                      "bytes":  2265
+                  },
+                  {
+                      "path":  "tests/engine/navigation/m5-navigation-harness-static.test.mjs",
+                      "sha256":  "D5BB3E04D1AA4E4A32D74C63A82344B6976E493BA7181CF5B24EA353387D7AFA",
+                      "bytes":  1803
+                  },
+                  {
+                      "path":  "tests/engine/navigation/navigation-controller.test.mjs",
+                      "sha256":  "8129075A2B02FC7CEFC4D99E7654F7FBCEF72F8C44C3E0D846051BF5EAD611A3",
+                      "bytes":  11181
+                  },
+                  {
+                      "path":  "tests/engine/navigation/reset-focus-action.test.mjs",
+                      "sha256":  "01121EEBB8569068313EA59866E93DFE94586D0CB086A13F657703A43FD97208",
+                      "bytes":  2287
+                  },
+                  {
+                      "path":  "tests/engine/navigation/selection-redraw.test.mjs",
+                      "sha256":  "E5200E239FABD3D4555983A2F2A7E2F63CED548C1E6B861CBCE043A14E2889BE",
+                      "bytes":  4226
+                  },
+                  {
+                      "path":  "tests/engine/persistence/backup.test.mjs",
+                      "sha256":  "4D620D1F4A1208F91DDED86758D742A32B635F62701BE0E53A310902DE1DAB97",
+                      "bytes":  12422
+                  },
+                  {
+                      "path":  "tests/engine/persistence/fake-indexeddb.mjs",
+                      "sha256":  "630171881B6C52E556761286FEB0E40A6B1B58B80225A06F81FC7495730D9BED",
+                      "bytes":  11110
+                  },
+                  {
+                      "path":  "tests/engine/persistence/p2-lifecycle.test.mjs",
+                      "sha256":  "1ECC1868883153C4CCB48F9EFFC1ACB591DAA69B4E82585E9A9EFD9CB42B18E9",
+                      "bytes":  6032
+                  },
+                  {
+                      "path":  "tests/engine/persistence/p2-upgrade.test.mjs",
+                      "sha256":  "2507113169C72CCDD9DBB31DB7ED80532A98DCCA4A5E0B6F788C9A6BAFF3D8F1",
+                      "bytes":  1788
+                  },
+                  {
+                      "path":  "tests/engine/persistence/persistence.test.mjs",
+                      "sha256":  "F74A006E533FCE04B85F2BE3364FFCA82CDA685E815F947C58B72882A163F161",
+                      "bytes":  39091
+                  },
+                  {
+                      "path":  "tests/engine/persistence/recovery.test.mjs",
+                      "sha256":  "5E18110FF40EEDDDF7925D3419CCA6670F3FFCE8CAE20F1C88015880C3B1596A",
+                      "bytes":  60330
+                  },
+                  {
+                      "path":  "tests/engine/persistence/recovery-scheduler.test.mjs",
+                      "sha256":  "9E16FB16A6C6B88F1B35B460D87ACDA7C91CD7121B5803C324C460D4ADC2EF8A",
+                      "bytes":  22111
+                  },
+                  {
+                      "path":  "tests/engine/render/canvas-surface.test.mjs",
+                      "sha256":  "9FC507865355EE50EB22D7835BCCD79364485DFBB98B2393C1CF50CB9E9E1C50",
+                      "bytes":  7807
+                  },
+                  {
+                      "path":  "tests/engine/render/coordinates.test.mjs",
+                      "sha256":  "FD10A21EE6922FF2FABC05AE01CEC23E2D99810E9BADDBFF9DDCE7448A214684",
+                      "bytes":  2222
+                  },
+                  {
+                      "path":  "tests/engine/render/geometry.test.mjs",
+                      "sha256":  "2C8FD1226796519C1D823691B88343E3E0D31F4D168803B3A500A165CDDFDFA3",
+                      "bytes":  4086
+                  },
+                  {
+                      "path":  "tests/engine/render/graph-harness-static.test.mjs",
+                      "sha256":  "AA4E0D89A99048D773B0E9DA6FCAFF5E698BE0F4E5AE7BC4FF530F0202AA78C9",
+                      "bytes":  1559
+                  },
+                  {
+                      "path":  "tests/engine/render/graph-renderer.test.mjs",
+                      "sha256":  "8685F94669C79FB5BE469CB7A379CA32A791FB09CD6CEFA4430F580A64C448BD",
+                      "bytes":  25006
+                  },
+                  {
+                      "path":  "tests/engine/render/harness-static.test.mjs",
+                      "sha256":  "666E6D2BE031359515A7709521E3E85AF761AD843588930AA959FCB0A8505391",
+                      "bytes":  2334
+                  },
+                  {
+                      "path":  "tests/engine/render/label-classification.test.mjs",
+                      "sha256":  "EA6459CFF644470F6585F2361C60A1DC57BF4F9F9E7742FDE252D9164978B353",
+                      "bytes":  6804
+                  },
+                  {
+                      "path":  "tests/engine/render/label-harness-static.test.mjs",
+                      "sha256":  "D5E9693E4C02BB51EA409A86BD83659E3A41726C1B02784A1CE529479F4003C8",
+                      "bytes":  1525
+                  },
+                  {
+                      "path":  "tests/engine/render/label-overlay.test.mjs",
+                      "sha256":  "C6E26A7C2CEB8BB3EBB3DB1B24C9D7F138D2DABECC6526299997BBB75DBE225B",
+                      "bytes":  60190
+                  },
+                  {
+                      "path":  "tests/engine/render/legacy-hyperline-oracle.mjs",
+                      "sha256":  "3E05CB9B7655BFE2935E274180D8D6FD13D4B1FA59320368EE222375A32935CD",
+                      "bytes":  1296
+                  },
+                  {
+                      "path":  "tests/engine/render/viewport-label-eligibility.test.mjs",
+                      "sha256":  "0C03EF92848F3FA19381B8876298ED7A9DB8489CF5AC9FD1AE3F828705D851CF",
+                      "bytes":  9407
+                  },
+                  {
+                      "path":  "tests/harness/icon-preview/index.html",
+                      "sha256":  "344AA0386CB93D78750E716BB0EA97FABDC11403F545AF02A7734425DB969DFC",
+                      "bytes":  2626
+                  },
+                  {
+                      "path":  "tests/harness/index.html",
+                      "sha256":  "1EB147A98A1301A6020EA00BC33289C38ACF1250F0089AE78CB9335CF514FB12",
+                      "bytes":  3700
+                  },
+                  {
+                      "path":  "tests/harness/instrumentation.js",
+                      "sha256":  "4BA4E87459FD7DAE1B29D93E2FA7A237CB07DCBFE316A5D301F32D9C0DB6D15E",
+                      "bytes":  14951
+                  },
+                  {
+                      "path":  "tests/harness/m4-graph/index.html",
+                      "sha256":  "24D22AD8E9B02A7A79F9F72EAEC0A618712A079ED1AE08A7659D597FB9FAC5E1",
+                      "bytes":  2130
+                  },
+                  {
+                      "path":  "tests/harness/m4-graph/main.mjs",
+                      "sha256":  "9BB9DC5BF85162DE95591602E5C9E3EDE1F5B68B14179927D342212A1EEE60FD",
+                      "bytes":  5623
+                  },
+                  {
+                      "path":  "tests/harness/m4-graph/README.md",
+                      "sha256":  "4C05877704471BDF11ABF1E4BE6474A63C5F09E6BDC1F7A86A9DDC16391A3452",
+                      "bytes":  1441
+                  },
+                  {
+                      "path":  "tests/harness/m4-graph/status.json",
+                      "sha256":  "51589E4AB4DA9530CA90FB54EE1E5E0F5689B813D04D5329CF33C8B1BAB98CC6",
+                      "bytes":  404
+                  },
+                  {
+                      "path":  "tests/harness/m4-labels/index.html",
+                      "sha256":  "BDADD76A6EF45BA5BA06EF5577CE60540D795DAFB45145C1ADEE78D4AE95E665",
+                      "bytes":  2198
+                  },
+                  {
+                      "path":  "tests/harness/m4-labels/main.mjs",
+                      "sha256":  "9E090BF237268997786B42D5DFC78E6014D6E3D92FBADA0C212D4930DBB6DF90",
+                      "bytes":  7408
+                  },
+                  {
+                      "path":  "tests/harness/m4-labels/README.md",
+                      "sha256":  "2986CA32FF0B8F609A09BB70B9BA2D027DC9135D4857C1CD0B84F71539636C6B",
+                      "bytes":  1999
+                  },
+                  {
+                      "path":  "tests/harness/m4-labels/status.json",
+                      "sha256":  "AD364DBAA632F424CB1B2BFA40D866C7BF4E784B6D7D017998B41B87A2CAB6EB",
+                      "bytes":  551
+                  },
+                  {
+                      "path":  "tests/harness/m4-surface/index.html",
+                      "sha256":  "D2AAAF77F3153983582D8D7BBDB56199F1CF0A9E947F5BA7794BAA208E817A63",
+                      "bytes":  2027
+                  },
+                  {
+                      "path":  "tests/harness/m4-surface/main.mjs",
+                      "sha256":  "B489C6575A1FE7BA8083FAEF02B665876394AFE310930D852AA42908C8B98ED2",
+                      "bytes":  6512
+                  },
+                  {
+                      "path":  "tests/harness/m4-surface/README.md",
+                      "sha256":  "7FCCBAC5735C9521CAFBAACF6AF2E1A8495427139663187F6D9B8853457DAE54",
+                      "bytes":  2323
+                  },
+                  {
+                      "path":  "tests/harness/m4-surface/status.json",
+                      "sha256":  "480C8C001431320B3641BC22A899E4AABE4BEA54F261EDA9035EDB80FD836271",
+                      "bytes":  558
+                  },
+                  {
+                      "path":  "tests/harness/m5-adaptive-layout/index.html",
+                      "sha256":  "AE74D2B28B9E0357D267D4C9556ED07FD2FE59FC2995DA180A9D0098C87BDCED",
+                      "bytes":  4600
+                  },
+                  {
+                      "path":  "tests/harness/m5-adaptive-layout/layout-builder.mjs",
+                      "sha256":  "7C0F4F04EAAB0580C5A111002ED386B59627A84D71E4C23A612F36A64FF2AE0C",
+                      "bytes":  2814
+                  },
+                  {
+                      "path":  "tests/harness/m5-adaptive-layout/main.mjs",
+                      "sha256":  "30F18E834FC78F76DCA5A97181488B70AA0DE6D269FAA64F354BE9FC56878E44",
+                      "bytes":  38557
+                  },
+                  {
+                      "path":  "tests/harness/m5-adaptive-layout/README.md",
+                      "sha256":  "D83EF434BD1FDF877B5DBB29C34D5D0E2AE8A4256593960CBCE6D41193AD7C3A",
+                      "bytes":  2085
+                  },
+                  {
+                      "path":  "tests/harness/m5-adaptive-layout/reset-focus-action.mjs",
+                      "sha256":  "1C2536C37A72CD9565F289940B53C9B7C4C5E42501F30D19212E0A0688990E7E",
+                      "bytes":  708
+                  },
+                  {
+                      "path":  "tests/harness/m5-adaptive-layout/status.json",
+                      "sha256":  "839C1F99CA73851EBA20DA39B774225EA43838E4CCABFB51D617B4187B80B3FA",
+                      "bytes":  716
+                  },
+                  {
+                      "path":  "tests/harness/m5-animation/index.html",
+                      "sha256":  "6216E6DE2C57BFB38D7A3B7AD009302DBD4C4E2DA2AD422C02435F79E550BA04",
+                      "bytes":  2600
+                  },
+                  {
+                      "path":  "tests/harness/m5-animation/main.mjs",
+                      "sha256":  "B03A4AE2FE2968CDE49BBBF93CBFE9D83981FD4C2B1188BE07789755257D48E3",
+                      "bytes":  20028
+                  },
+                  {
+                      "path":  "tests/harness/m5-animation/README.md",
+                      "sha256":  "5AF549A41FD145BC58A6D89D46BFFE265B698CD7EF32AB57D421A1BF10851AB8",
+                      "bytes":  2036
+                  },
+                  {
+                      "path":  "tests/harness/m5-animation/status.json",
+                      "sha256":  "64E3BFDC1B0C4BC588982970A7207ECFDDC008EC1F1D41A6158F8517342DB92A",
+                      "bytes":  478
+                  },
+                  {
+                      "path":  "tests/harness/m5-exploration/assets/fileorbit-favicon.ico",
+                      "sha256":  "CB24C55D5C5E1A3FCF3A34F1A40BC013D7238C88084065A6F34AB888CFF2D74A",
+                      "bytes":  6070
+                  },
+                  {
+                      "path":  "tests/harness/m5-exploration/assets/fileorbit-favicon-16.png",
+                      "sha256":  "F15633E7086CECC7FE16C93A34D229D9FB4F7F22E82488863221BE7566F2038E",
+                      "bytes":  623
+                  },
+                  {
+                      "path":  "tests/harness/m5-exploration/assets/fileorbit-favicon-32.png",
+                      "sha256":  "2DAA31FB223FFC071B85CB79FDB2D3DDA594309AFF4B65A80703557297BE9966",
+                      "bytes":  1767
+                  },
+                  {
+                      "path":  "tests/harness/m5-exploration/assets/fileorbit-favicon-48.png",
+                      "sha256":  "595463A47140B3DF7871BE1C9618C856168C714D929A0DF3BC86B8251ADB7DAF",
+                      "bytes":  2981
+                  },
+                  {
+                      "path":  "tests/harness/m5-exploration/assets/fileorbit-favicon-64.png",
+                      "sha256":  "E686CBB2695FC67950246C2FE96163120F603C872CA739B037558186537842F1",
+                      "bytes":  4680
+                  },
+                  {
+                      "path":  "tests/harness/m5-exploration/assets/fileorbit-mark.png",
+                      "sha256":  "4DF9850BE98A4D48F058E335C002F2247CED9AC9DA89249B585D75E755939C3B",
+                      "bytes":  166300
+                  },
+                  {
+                      "path":  "tests/harness/m5-exploration/assets/folder_supervised_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png",
+                      "sha256":  "A4F60E231CBFCBD3C33F8898E1241A21B02E9DCFBB9873041BC1E7FA9321A97F",
+                      "bytes":  338
+                  },
+                  {
+                      "path":  "tests/harness/m5-exploration/assets/graph_4_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png",
+                      "sha256":  "F15D48313BBC53934DF28A607B57035E674270780E9D85CFF579F8FD84588020",
+                      "bytes":  525
+                  },
+                  {
+                      "path":  "tests/harness/m5-exploration/assets/hdr_weak_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png",
+                      "sha256":  "DEF08AA09D13073BF689A23F89D7EEAAAE93923C3C57B91E8363A8DA15D327B6",
+                      "bytes":  412
+                  },
+                  {
+                      "path":  "tests/harness/m5-exploration/backup-resources.js",
+                      "sha256":  "D477D04BD5F57B5D11F0C8A068570676F493E013F0B50AAE5141935EBABA8DB6",
+                      "bytes":  1403
+                  },
+                  {
+                      "path":  "tests/harness/m5-exploration/create-map-dialog.js",
+                      "sha256":  "CCFBA93CB0FD847FC86CC1C39C5635BB2CA3E2DAF2F5EC1C3D9F152B367A9775",
+                      "bytes":  21220
+                  },
+                  {
+                      "path":  "tests/harness/m5-exploration/delete-confirm.js",
+                      "sha256":  "CE85D1AC3D8635660ECE26A0232AD9EC03E60DACEF6FC44CEA766C2827C7BB65",
+                      "bytes":  3591
+                  },
+                  {
+                      "path":  "tests/harness/m5-exploration/document-adapter.js",
+                      "sha256":  "B314CCB572DB52FB65A2AE09E02A68F634F38EED1C258CE5E24DA54C6C97B3C0",
+                      "bytes":  5205
+                  },
+                  {
+                      "path":  "tests/harness/m5-exploration/editor-context-menu.js",
+                      "sha256":  "FCD61FF9FFEDA5BDF245233B02951DC62105ADE5C27CE8BE7CD5DD94638A24BB",
+                      "bytes":  5928
+                  },
+                  {
+                      "path":  "tests/harness/m5-exploration/editor-panel.js",
+                      "sha256":  "E85B9124E28A618C26FDE44D914CD46464F1D527540D8B5194B2C44357F7B6A6",
+                      "bytes":  29721
+                  },
+                  {
+                      "path":  "tests/harness/m5-exploration/embed-dialog.js",
+                      "sha256":  "52E379120376C694CF6AEC2ACF0B63CEC52F13D97E63F569D34469FECBE4C772",
+                      "bytes":  5136
+                  },
+                  {
+                      "path":  "tests/harness/m5-exploration/embed-handshake.js",
+                      "sha256":  "6F51F697B7D6A4ACB7BF478A44326DD2AAD0A1D16DA8567B253AF04F0EE08311",
+                      "bytes":  1550
+                  },
+                  {
+                      "path":  "tests/harness/m5-exploration/embed-host.html",
+                      "sha256":  "ACC575791572999F6C2B69EA86D4B9541DB45C7AAE4550CCF9AD1333F0995069",
+                      "bytes":  3284
+                  },
+                  {
+                      "path":  "tests/harness/m5-exploration/embed-host.mjs",
+                      "sha256":  "11983000D074C577F7A5CA7A21692B4B490DDC0FB8FA03281082AA3048E9909F",
+                      "bytes":  2318
+                  },
+                  {
+                      "path":  "tests/harness/m5-exploration/embed-message-security.js",
+                      "sha256":  "BD673103D56017C8A2E053E70345831F8A1DE3BB50B0E8CBC3E6CDE86740B0B9",
+                      "bytes":  2715
+                  },
+                  {
+                      "path":  "tests/harness/m5-exploration/embed-sample.json",
+                      "sha256":  "53DFB03AF3F5C06A73A58C9E93807A814B33C7F49361FD9DB0F06ADE1E3E68F2",
+                      "bytes":  1789
+                  },
+                  {
+                      "path":  "tests/harness/m5-exploration/embed-snapshot.js",
+                      "sha256":  "F075123F64E930637DCD9FD535E475FF3773DE47A6E59C84667CB21D7F5A1974",
+                      "bytes":  6076
+                  },
+                  {
+                      "path":  "tests/harness/m5-exploration/embed-viewer.html",
+                      "sha256":  "0EDE2C6F4FB54FBE87952777D76FDE16EC82592A4CA728946383231FF706F2B8",
+                      "bytes":  5193
+                  },
+                  {
+                      "path":  "tests/harness/m5-exploration/embed-viewer.mjs",
+                      "sha256":  "219DC819E4A7D7372E4F35C45EDF98FF86CE83AF6FE7CA68F4F32D9C13B73508",
+                      "bytes":  13052
+                  },
+                  {
+                      "path":  "tests/harness/m5-exploration/file-conflict-dialog.js",
+                      "sha256":  "5FB4E1D3B2B5D3C8E83497054062B656784B83D77FF41A1BEDDCB2B379790F4C",
+                      "bytes":  9158
+                  },
+                  {
+                      "path":  "tests/harness/m5-exploration/file-open-browser.js",
+                      "sha256":  "431E0CE96E99409095989966A3FC9F3991918D6B652D0D6D54374D6B75FDC2B9",
+                      "bytes":  9224
+                  },
+                  {
+                      "path":  "tests/harness/m5-exploration/index.html",
+                      "sha256":  "8485ADD0E1D30954BAEED0739CFD12FEDBB76899E959F99E0FBC6AB16A76CEF0",
+                      "bytes":  57410
+                  },
+                  {
+                      "path":  "tests/harness/m5-exploration/main.mjs",
+                      "sha256":  "3060780E1FB7F6C60884DA601FD5C48384D3C575DE27B67FC8B73B6F45975CF8",
+                      "bytes":  284463
+                  },
+                  {
+                      "path":  "tests/harness/m5-exploration/native-persistence-audit.mjs",
+                      "sha256":  "E114D2B67964D32D249ADE0AED37D6BC702216DD345BD7312ED056F8AEE9E388",
+                      "bytes":  8159
+                  },
+                  {
+                      "path":  "tests/harness/m5-exploration/orbit-directory-adapter.js",
+                      "sha256":  "570FFD0727544DA07B04965CE355197FA5EF3CC3260F670CBC786863CC9A88AF",
+                      "bytes":  17457
+                  },
+                  {
+                      "path":  "tests/harness/m5-exploration/orbit-file-baseline.js",
+                      "sha256":  "ED84AF2CFE77F5B0B0E3D08BA919AAF13E9CEDBEB2D838CE56E3F6E9D2AA8572",
+                      "bytes":  18262
+                  },
+                  {
+                      "path":  "tests/harness/m5-exploration/orbit-panel.js",
+                      "sha256":  "6FCD0226B3F4ADFC958B116DB43CAEE9DCF177CA3224095854EC1754FBA94ECB",
+                      "bytes":  6679
+                  },
+                  {
+                      "path":  "tests/harness/m5-exploration/orbit-state.js",
+                      "sha256":  "75425D415B990F1CD1CD556782C9ADD821B268139433296572CA2D48F9E6F9E1",
+                      "bytes":  12217
+                  },
+                  {
+                      "path":  "tests/harness/m5-exploration/persistence-check.html",
+                      "sha256":  "F12CC5087B787D4AD5089D92B926D70E5E6EE0FBBEFD426C008DFD92DC9C0218",
+                      "bytes":  2922
+                  },
+                  {
+                      "path":  "tests/harness/m5-exploration/recovery-dialog.js",
+                      "sha256":  "0E61D0CB302B67EBE58ABF54B523F0F55D57402D6AAFF46168AE263BDEC5ECD9",
+                      "bytes":  6417
+                  },
+                  {
+                      "path":  "tests/harness/m5-exploration/save-conflict-dialog.js",
+                      "sha256":  "626287CA0A3747B2B4A27788C361D80027DDD233BEFC795010C41E8DC744C3E1",
+                      "bytes":  4095
+                  },
+                  {
+                      "path":  "tests/harness/m5-exploration/saved-maps-dialog.js",
+                      "sha256":  "599ECEBE4F876DA484FE3D687F17A76B7D7B9BBE9ACCFDD8278E33B5B77DB497",
+                      "bytes":  10151
+                  },
+                  {
+                      "path":  "tests/harness/m5-exploration/search-results.js",
+                      "sha256":  "3D414EFB41237ECF7E5ECCECE46711A9B17FB28080619FF9D887703847C4DD7E",
+                      "bytes":  5565
+                  },
+                  {
+                      "path":  "tests/harness/m5-exploration/shell-controls.js",
+                      "sha256":  "46FA0A56B9DB5AA93F658082C2654FA0956532A84184C795597A711A0B823F1B",
+                      "bytes":  16870
+                  },
+                  {
+                      "path":  "tests/harness/m5-exploration/status.json",
+                      "sha256":  "BCEC313CAFCED5E64D2DE3162449368345D5093A1B8E0718AEBD4ABF60FF6537",
+                      "bytes":  140
+                  },
+                  {
+                      "path":  "tests/harness/m5-exploration/unsaved-map-prompt.js",
+                      "sha256":  "B57DCDD5A08A1E35CB4FBEA13024124CBFF6F12DF9DAD836654166F96DB8DA74",
+                      "bytes":  3668
+                  },
+                  {
+                      "path":  "tests/harness/m5-focus/evidence.mjs",
+                      "sha256":  "71D5D88567CCE461B753DCCBC6EE1DAF1A84A371D3D1492B8CBDEDDC19104BCE",
+                      "bytes":  668
+                  },
+                  {
+                      "path":  "tests/harness/m5-focus/index.html",
+                      "sha256":  "731B98A7B481CE0F5983CEB97BACC9105F72458827290AFF1E2F0DBD40C9B7DD",
+                      "bytes":  2438
+                  },
+                  {
+                      "path":  "tests/harness/m5-focus/main.mjs",
+                      "sha256":  "30F56B14D3654659A7B694F9372D8CD954E45334EB439985F18D0DCB29A21332",
+                      "bytes":  13574
+                  },
+                  {
+                      "path":  "tests/harness/m5-focus/README.md",
+                      "sha256":  "787E0FEC0C2EA25F956536CAAD7B506C69AB5E80B67AD86BDAE19C48E6F4FFAD",
+                      "bytes":  1841
+                  },
+                  {
+                      "path":  "tests/harness/m5-focus/status.json",
+                      "sha256":  "F437A855CF50F5E29C09646916128251D5FD63DA2CD8E106D23DCC5A8EF80001",
+                      "bytes":  441
+                  },
+                  {
+                      "path":  "tests/harness/m5-navigation/index.html",
+                      "sha256":  "C803B6369700E7F8E9DE3B6794D857B18C964A39F1E1145E1C4D5E5E310117C6",
+                      "bytes":  2615
+                  },
+                  {
+                      "path":  "tests/harness/m5-navigation/main.mjs",
+                      "sha256":  "2189835F4BB9F6A2BA1977390BB67ACA787EA2C1576DE74E1452E6E17F7D59F3",
+                      "bytes":  16849
+                  },
+                  {
+                      "path":  "tests/harness/m5-navigation/README.md",
+                      "sha256":  "49B2F09E44A08EF3309ED9CFEB5795D8E187C3E22C1B2D1DAE0686B63DA58494",
+                      "bytes":  1756
+                  },
+                  {
+                      "path":  "tests/harness/m5-navigation/status.json",
+                      "sha256":  "53C60493645A1A31C9792DAD5AF228A93CB90586AC51DD8A77570DD1B23C7844",
+                      "bytes":  397
+                  },
+                  {
+                      "path":  "tests/harness/m5-selection/index.html",
+                      "sha256":  "B6717A88BEF0F37B185A7E61DB0F32B9CC7ECEF76BCCD4DCC8D3313C93F27700",
+                      "bytes":  2274
+                  },
+                  {
+                      "path":  "tests/harness/m5-selection/main.mjs",
+                      "sha256":  "7C37031BDDCBAB566681A84F64F15ADF1143284967B6454FA80B075AC08D9334",
+                      "bytes":  11309
+                  },
+                  {
+                      "path":  "tests/harness/m5-selection/README.md",
+                      "sha256":  "3074CF0D62E996DE2D3BCB4FB8F2B982C2B7ABE5D4645AFECD02716C963294A3",
+                      "bytes":  1616
+                  },
+                  {
+                      "path":  "tests/harness/m5-selection/status.json",
+                      "sha256":  "46D3688293BEC5C81DDD1488BC23A2228EC970505FF48EE9DFFBCE7E5D3F78E3",
+                      "bytes":  438
+                  },
+                  {
+                      "path":  "tests/harness/minimal-hypertree.js",
+                      "sha256":  "6CA812528B77B12A8C00BE2E41524C8F8F685E14657EA4E0A3ED62D2F33DD282",
+                      "bytes":  22818
+                  },
+                  {
+                      "path":  "vendor/jit/jit.2.0.1.js",
+                      "sha256":  "4A413A0A21435AEE893EBE3572CAEB5EA81B14C437FA8BEC3AABB5F7A921546F",
+                      "bytes":  530341
+                  },
+                  {
+                      "path":  "vendor/jit/LICENSE",
+                      "sha256":  "97E60BEC1111052A47019D1E83A7114FC089A9FE6A9AAF634304C986B7EB14D4",
+                      "bytes":  1126
+                  },
+                  {
+                      "path":  "vendor/jit/MANIFEST.json",
+                      "sha256":  "0840E9ABF13A3EA53DE8A8E333EBF78A24BADA82F5DA48C9BC9DA6FA0608ED7F",
+                      "bytes":  3178
+                  }
+              ]
+}

@@ -1,0 +1,79 @@
+{
+  "revision": "r138",
+  "change": "Approved variation 06 FO connected-orbit branding",
+  "source": {
+    "name": "exec-dc0bcb66-4c68-412f-97a3-e0c3e4fa6228.png",
+    "dimensions": "1254x1254",
+    "sha256": "8B82AE4114D6F99D81A5A3E5797500A1E7D70B5E1A4D8AC510066E245FF4A23E",
+    "localReference": "evidence/branding/variation-06-reference.png",
+    "identification": "Image labeled 06 with indigo F, open navy O, lavender upper-right/lower-left nodes and FileOrbit wordmark"
+  },
+  "assets": {
+    "mark": {
+      "path": "tests/harness/m5-exploration/assets/fileorbit-mark.png",
+      "dimensions": "514x480",
+      "sha256": "4DF9850BE98A4D48F058E335C002F2247CED9AC9DA89249B585D75E755939C3B"
+    },
+    "favicons": [
+      {
+        "path": "tests/harness/m5-exploration/assets/fileorbit-favicon-16.png",
+        "dimensions": "16x16",
+        "sha256": "F15633E7086CECC7FE16C93A34D229D9FB4F7F22E82488863221BE7566F2038E"
+      },
+      {
+        "path": "tests/harness/m5-exploration/assets/fileorbit-favicon-32.png",
+        "dimensions": "32x32",
+        "sha256": "2DAA31FB223FFC071B85CB79FDB2D3DDA594309AFF4B65A80703557297BE9966"
+      },
+      {
+        "path": "tests/harness/m5-exploration/assets/fileorbit-favicon-48.png",
+        "dimensions": "48x48",
+        "sha256": "595463A47140B3DF7871BE1C9618C856168C714D929A0DF3BC86B8251ADB7DAF"
+      },
+      {
+        "path": "tests/harness/m5-exploration/assets/fileorbit-favicon-64.png",
+        "dimensions": "64x64",
+        "sha256": "E686CBB2695FC67950246C2FE96163120F603C872CA739B037558186537842F1"
+      },
+      {
+        "path": "tests/harness/m5-exploration/assets/fileorbit-favicon.ico",
+        "dimensions": "16/32/48",
+        "sha256": "CB24C55D5C5E1A3FCF3A34F1A40BC013D7238C88084065A6F34AB888CFF2D74A"
+      }
+    ]
+  },
+  "header": {
+    "element": "img#brand-logo",
+    "alt": "FileOrbit",
+    "declared": "28x26",
+    "rendered": "27.828125x26",
+    "headerHeight": 32,
+    "workspaceTop": 32,
+    "title": "FileOrbit"
+  },
+  "verification": {
+    "focused": "36/36 passed",
+    "full": "1102 tests, 1101 passed, 1 skipped, 0 failed",
+    "native": "NOT RUN",
+    "browser": [
+      "dark/light desktop",
+      "dark/light narrow",
+      "favicon HTTP 200",
+      "no horizontal overflow",
+      "workspace top unchanged"
+    ],
+    "archiveFocused": "34/34 passed"
+  },
+  "evidence": [
+    "evidence/native-r121/branding-focused-r138.txt",
+    "evidence/native-r121/branding-full-r138.txt",
+    "evidence/native-r121/browser-brand-r138.json",
+    "evidence/branding/variation-06-audit-r138.txt"
+  ],
+  "archive": {
+    "path": "review/fileorbit-branding-r138.zip",
+    "sha256": "BBF7389C7D013427B72DB6447F7547A85A00DF0C81F2A738D93774E47D7D074B",
+    "entries": 1245,
+    "manifestMismatches": 0
+  }
+}

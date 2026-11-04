@@ -1,0 +1,16 @@
+{
+  "initial": {
+    "text": "",
+    "host": 0,
+    "doc": 0
+  },
+  "shown": {
+    "text": "Fullscreen request failed: Permissions check failed",
+    "host": 32.1875
+  },
+  "expired": {
+    "text": "",
+    "host": 0
+  },
+  "capturedAt": "2026-11-01T07:44:34.248Z"
+}

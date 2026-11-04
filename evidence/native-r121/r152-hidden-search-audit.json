@@ -1,0 +1,105 @@
+{
+  "imported": true,
+  "before": {
+    "labels": [
+      "root",
+      "f000",
+      "f001",
+      "f002",
+      "f003",
+      "f004",
+      "f005",
+      "f006",
+      "f007",
+      "f008",
+      "f009",
+      "f010",
+      "f011",
+      "f012",
+      "f013",
+      "f014",
+      "f015",
+      "f016",
+      "f017",
+      "f018",
+      "f019",
+      "f020",
+      "f021",
+      "f022",
+      "f023",
+      "f024",
+      "f025",
+      "f026",
+      "f027",
+      "f028",
+      "f029",
+      "f030",
+      "f031",
+      "f032",
+      "f033",
+      "f034",
+      "f035",
+      "f036",
+      "f037",
+      "f038"
+    ],
+    "counts": "300 visible / 300 total",
+    "dirty": true,
+    "metrics": {
+      "root": true,
+      "visible": 20
+    }
+  },
+  "search": {
+    "cards": 1,
+    "selected": "f149",
+    "label": {
+      "display": "flex",
+      "text": "file-150.txtTXT",
+      "badge": "TXT"
+    },
+    "highlight": {
+      "query": "file-150.txt",
+      "ids": [
+        "root"
+      ],
+      "colors": {
+        "root": {
+          "fill": "#E74C3C",
+          "stroke": "#FCA5A5"
+        }
+      },
+      "folderColors": {
+        "root": {
+          "fill": "#E74C3C",
+          "stroke": "#FCA5A5"
+        }
+      },
+      "selectedId": "f149",
+      "status": "Search highlights 1 folder containing matching results.",
+      "scenePresent": true
+    },
+    "dirty": true
+  },
+  "clear": {
+    "selected": "f149",
+    "labelDisplay": "flex",
+    "highlight": {
+      "query": "",
+      "ids": [],
+      "colors": {},
+      "folderColors": {
+        "root": {
+          "fill": "#F8FAFC",
+          "stroke": "#F8FAFC"
+        }
+      },
+      "selectedId": "f149",
+      "status": "",
+      "scenePresent": true
+    },
+    "dirty": true
+  },
+  "errors": [],
+  "capturedAt": "2026-11-02T02:08:00.980Z"
+}

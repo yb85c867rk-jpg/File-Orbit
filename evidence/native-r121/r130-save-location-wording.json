@@ -1,0 +1,64 @@
+{
+  "revision": "r130",
+  "change": "Create Map save-location wording correction",
+  "scope": "wording-only",
+  "labels": {
+    "disconnected": "Choose save location",
+    "connected": "Change save location",
+    "heading": "Save location"
+  },
+  "supportingText": {
+    "disconnected": "Choose the folder where your maps will be saved. Map files may not appear in the folder selection window.",
+    "connected": "New maps will be saved in this folder."
+  },
+  "feedback": {
+    "success": "Save location selected: <folder name>.",
+    "cancelled": "Location selection cancelled. Your map details were kept."
+  },
+  "preserved": [
+    "title",
+    "optional file/folder selections",
+    "previous destination on cancellation",
+    "directory enumeration",
+    "file filters",
+    "Save routing",
+    "lifecycle ownership"
+  ],
+  "existingMaps": [
+    "connected Orbit menu",
+    "integrated Open File browser"
+  ],
+  "verification": {
+    "focused": "24/24 passed",
+    "fullEngine": "NOT RERUN - wording-only; r129 full run remains the last behavioral run and does not validate final wording bytes",
+    "native": "NOT RUN",
+    "syntheticOnly": true,
+    "archiveFocused": "10/10 passed; archive/disk main hashes match"
+  },
+  "application": {
+    "url": "http://127.0.0.1:8099/tests/harness/m5-exploration/",
+    "mainSha256": "40DACEC59797F34DA8E10C3A3F49D7677D896465D28C827943991DB9D53D85E3",
+    "indexSha256": "F9FB0BD6C62253ED491E009F5A0B7DA573A2C96906DB95CD4F5E5E440CB620BD",
+    "createMapDialogSha256": "CCFBA93CB0FD847FC86CC1C39C5635BB2CA3E2DAF2F5EC1C3D9F152B367A9775"
+  },
+  "browser": [
+    "browser-create-location-r129.png",
+    "browser-create-location-narrow-r129.png",
+    "browser-create-location-r129.json"
+  ],
+  "limitations": [
+    "approved logo still unavailable",
+    "native picker/write/keyboard/responsive acceptance NOT RUN"
+  ],
+  "archive": {
+    "path": "review/fileorbit-save-location-wording-r130.zip",
+    "sha256": "17B64E3F8FA2762DD17116AD8CE7C6A39629101B4A70A798F74E2A0D7EDE0B8D",
+    "entries": 1122,
+    "manifestMismatches": 0
+  },
+  "evidence": [
+    "evidence/native-r121/wording-focused-r130.txt",
+    "evidence/native-r121/r130-archive-focused.txt",
+    "evidence/native-r121/browser-create-location-r129.json"
+  ]
+}

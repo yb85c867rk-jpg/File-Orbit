@@ -1,0 +1,102 @@
+{
+  "first": {
+    "open": true,
+    "active": "Close",
+    "inert": [
+      {
+        "id": "app-header",
+        "inert": true
+      },
+      {
+        "id": "error",
+        "inert": true
+      },
+      {
+        "id": "layout",
+        "inert": true
+      },
+      {
+        "id": "feedback-host",
+        "inert": true
+      },
+      {
+        "id": "dev-controls",
+        "inert": true
+      },
+      {
+        "id": "graph-action-tooltip",
+        "inert": true
+      },
+      {
+        "id": "nav-rail-tooltip",
+        "inert": true
+      },
+      {
+        "id": "overlay-host",
+        "inert": false
+      }
+    ],
+    "focusables": [
+      "Close",
+      "Open local iframe preview"
+    ]
+  },
+  "tab1": "Open local iframe preview",
+  "tab2": "Close",
+  "shift": "Open local iframe preview",
+  "closed": {
+    "open": false,
+    "active": "embed-action",
+    "inert": false
+  },
+  "repeat": true,
+  "narrow": {
+    "open": true,
+    "active": "Close",
+    "inert": [
+      {
+        "id": "app-header",
+        "inert": true
+      },
+      {
+        "id": "error",
+        "inert": true
+      },
+      {
+        "id": "layout",
+        "inert": true
+      },
+      {
+        "id": "feedback-host",
+        "inert": true
+      },
+      {
+        "id": "dev-controls",
+        "inert": true
+      },
+      {
+        "id": "graph-action-tooltip",
+        "inert": true
+      },
+      {
+        "id": "nav-rail-tooltip",
+        "inert": true
+      },
+      {
+        "id": "overlay-host",
+        "inert": false
+      }
+    ],
+    "focusables": [
+      "Close",
+      "Open local iframe preview"
+    ]
+  },
+  "narrowTab": "Open local iframe preview",
+  "narrowClosed": {
+    "open": false,
+    "active": "embed-action"
+  },
+  "exceptions": [],
+  "capturedAt": "2026-11-01T20:50:14.995Z"
+}

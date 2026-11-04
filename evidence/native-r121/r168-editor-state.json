@@ -1,0 +1,57 @@
+{
+  "prep": {
+    "hasMap": true
+  },
+  "portrait": {
+    "viewport": [
+      375,
+      812
+    ],
+    "hasMap": true,
+    "formHidden": false,
+    "detailsCollapsed": false,
+    "detailsHidden": false,
+    "token": 1,
+    "value": "draft landscape",
+    "sameInput": true,
+    "active": true,
+    "toggleDisabled": true,
+    "graphHeight": 358.453125,
+    "panelHeight": 367.546875
+  },
+  "landscape": {
+    "viewport": [
+      844,
+      390
+    ],
+    "hasMap": true,
+    "formHidden": false,
+    "detailsCollapsed": false,
+    "detailsHidden": false,
+    "token": 1,
+    "value": "draft landscape",
+    "sameInput": true,
+    "active": true,
+    "toggleDisabled": true,
+    "graphHeight": 300,
+    "panelHeight": 358
+  },
+  "portraitAgain": {
+    "viewport": [
+      390,
+      844
+    ],
+    "hasMap": true,
+    "formHidden": false,
+    "detailsCollapsed": false,
+    "detailsHidden": false,
+    "token": 1,
+    "value": "draft landscape",
+    "sameInput": true,
+    "active": true,
+    "toggleDisabled": true,
+    "graphHeight": 378.28125,
+    "panelHeight": 379.71875
+  },
+  "errs": []
+}

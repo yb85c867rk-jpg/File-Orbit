@@ -1,0 +1,14 @@
+{
+  "before": {
+    "counts": "",
+    "recovery": true,
+    "text": "Recover unsaved work?\n\nFileOrbit found a recovery copy of this map. Recover it to continue editing. Your original file will not be changed.\n\nR149 300 Node Map\n11/2/2026, 12:51:58 PM · 38 folders · 262 files\nR149 300 Node Map\n11/2/2026, 12:51:54 PM · 38 folders · 262 files\nR149 30"
+  },
+  "rec": {
+    "clicked": true,
+    "counts": "300 visible / 300 total",
+    "tree": null
+  },
+  "exceptions": [],
+  "capturedAt": "2026-11-01T23:56:29.438Z"
+}

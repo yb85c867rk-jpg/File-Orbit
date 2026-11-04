@@ -1,0 +1,29 @@
+﻿FileOrbit empty-startup layout correction r96
+
+Confirmed cause:
+- #app-root declared three rows: header, conditional error, flexible workspace.
+- #error:empty { display:none } removed the second grid item from auto-placement.
+- Without explicit areas, #layout auto-placed into the second auto row; the final minmax(0,1fr) row stayed empty.
+- Result: empty-state content overlapped the toolbar and the workspace became a short top strip.
+
+Correction:
+- Added explicit grid areas to #app-root:
+  grid-template-areas: 'header' 'error' 'workspace';
+- Assigned #app-header to header, #error to error, and #layout to workspace.
+- #layout always occupies the final minmax(0,1fr) row even while #error is display:none; visible/wrapping/cleared error text does not change placement.
+- #empty-state now uses border-box, safe center placement, padding 24px, and overflow:auto so short/narrow screens scroll rather than clip the Create Map button.
+- Toolbar/search, responsive Details, fullscreen ownership, and drawable graph viewport measurement are unchanged.
+
+Tests:
+- layout-ownership: 3/3 structural assertions for grid areas, child order, workspace row, empty-state containment/scrolling, responsive/fullscreen contracts.
+- layout-empty actual main: 1/1 (hidden error, visible/cleared error, narrow details collapse, fullscreen enter/exit, Create Map opening, loaded map).
+- main init 9/9; geometry 1/1; editor visibility 1/1; search 1/1; drag history 1/1.
+- full tests/engine: 923 tests, 922 passed, 0 failed, 1 skipped, 0 todo.
+- syntax: 15/15 JS modules.
+- served source: 104 files, 200/no-store, byte SHA match; root 302/trailing 200.
+
+Limitations:
+- Mock DOM does not execute CSS Grid; browser layout was not visually verified.
+- No screenshots captured.
+- Native desktop/narrow/fullscreen visual approval NOT RUN.
+- FakeIndexedDB cross-tab skip retained.

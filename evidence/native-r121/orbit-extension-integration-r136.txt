@@ -1,0 +1,191 @@
+﻿AUTO_CONFLICT_R2_COMPLETE
+COPY_MAP_ENCODE_SESSION_COMPLETE
+COPY_MAP_ENCODE_DESTROY_COMPLETE
+COPY_MAP_ENCODE_SUCCESS_COMPLETE
+COPY_MAP_ENCODE_CURRENT_COMPLETE
+COPY_MAP_COMPLETE
+CREATE_LOCATION_COMPLETE
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+System.Management.Automation.RemoteException
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+System.Management.Automation.RemoteException
+false !== true
+System.Management.Automation.RemoteException
+    at run (file:///C:/Users/openw/Documents/Projects/visual-directory/tests/engine/exploration/main-harness-init-runner.mjs:1557:14)
+    at async file:///C:/Users/openw/Documents/Projects/visual-directory/tests/engine/exploration/main-harness-init-runner.mjs:4688:1 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+System.Management.Automation.RemoteException
+Node.js v24.12.0
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+System.Management.Automation.RemoteException
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+System.Management.Automation.RemoteException
++ {
++   createWritable: [AsyncFunction: createWritable],
++   getFile: [AsyncFunction: getFile],
++   name: 'legacy.orbit'
++ }
+- null
+System.Management.Automation.RemoteException
+    at run (file:///C:/Users/openw/Documents/Projects/visual-directory/tests/engine/exploration/main-harness-init-runner.mjs:2761:14)
+    at async file:///C:/Users/openw/Documents/Projects/visual-directory/tests/engine/exploration/main-harness-init-runner.mjs:4688:1 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: {
+    name: 'legacy.orbit',
+    getFile: [AsyncFunction: getFile],
+    createWritable: [AsyncFunction: createWritable]
+  },
+  expected: null,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+System.Management.Automation.RemoteException
+Node.js v24.12.0
+✔ Settings contains only Theme and document/save feedback is outside it (1.4849ms)
+✔ automatic save without a writable destination requires explicit Save As and does not auto-download (2305.2693ms)
+✔ automatic external conflict Cancel keeps feedback, Retry resolves, replacement invalidates (1865.6135ms)
+✔ deferred encoding rejection after session replacement preserves replacement feedback and document (530.3934ms)
+✔ deferred encoding rejection after destroy stays destroyed without publishing copy feedback (478.61ms)
+✔ deferred encoding success after session replacement creates no destination and preserves replacement document (485.279ms)
+✔ current-request encoding rejection still reports the copy preparation error (470.4879ms)
+✔ Copy Map writes an exact copy without adopting it or changing the connected Orbit (933.5491ms)
+✔ Create Map opens directly with folder default, reuse, and standalone Save elsewhere (909.1049ms)
+✔ production navigation removes primary Save/Open Orbit and keeps Settings theme-only (1.0656ms)
+✖ unified Open supports Orbit, standalone Open, cancel, and unsupported directory access (5899.6776ms)
+✔ actual main Orbit navigation lists, opens with exact bytes, and protects saves (1431.4454ms)
+✔ actual main Save/Open/library/delete wiring works through synthetic IndexedDB (3162.6866ms)
+✔ Open from empty startup reports unavailable IndexedDB honestly (295.5856ms)
+✔ Open draw failure preserves the previous authoritative map (1284.2549ms)
+✔ Save-and-continue Open keeps replacement ownership through delayed loading (1281.743ms)
+✔ Open load failure preserves the old map and releases ownership (1319.4949ms)
+✔ Open label failure preserves the old map and releases ownership (1456.7921ms)
+✔ Open hit failure preserves the old map and releases ownership (1452.8345ms)
+✔ dirty editor Continue editing preserves the draft and Discard resumes Open once (1356.1449ms)
+✔ ordinary Open holds replacement ownership during delayed loading (1308.5664ms)
+✔ failed Open recovery leaves interaction inert and preserves the original error (1284.6617ms)
+✔ empty-startup Open failure returns to a coherent empty state (1283.5834ms)
+✔ clean editor form Open closes coherently and opens the library (1284.08ms)
+✔ narrow Map menu Open works and routes dirty editor prompts (1281.3455ms)
+✔ Add Data PDF after Open uses the active registry and viewer path (1408.7658ms)
+✔ failed Add Data save retains draft/reservation, clears Saving, and retries without double count (1575.428ms)
+✔ Add Data cancel and type switch release the originating pending reservation (1426.9154ms)
+✔ Add Data PDF after Create Map uses the active registry (1301.3687ms)
+✔ repeated Open replacements own exactly one Delete confirmation (1582.175ms)
+✔ stale Save offers Cancel, Save as new copy, and confirmed Reload (1937.1968ms)
+✔ saved-map library shows application usage, origin estimate, and persist grant (1280.8757ms)
+✔ saved-map library shows unknown/ unavailable storage states (1309.9894ms)
+✔ beforeunload warning is registered for committed unsaved changes (1310.7671ms)
+✔ overlapping desktop/narrow Save is blocked and later edits stay dirty (1296.5775ms)
+✔ blocked open clears on success and cancel/late-success does not publish (1301.1741ms)
+✔ desktop and narrow toolbar Save submit open editor forms and persist (1604.7556ms)
+✔ applied Add PDF persists after Close with attachment and viewer intact (1783.2292ms)
+✔ deferred Retry blocks Close, survives old failure, and commits without replay (1498.8117ms)
+✔ backup export/import installs a saveable map with fresh durable identity (1315.959ms)
+✔ production Download and Upload file-input handlers round-trip through install (1764.5803ms)
+✔ production Download cancel and session replacement preserve newer ownership (1308.4355ms)
+✔ backup import validates first and honors dirty editor/map decisions (3335.4082ms)
+✔ backup replacement installs distinct incoming map and preserves source saved map (1531.9293ms)
+✔ production Upload validates while draft open and honors editor prompt (1311.0532ms)
+✔ candidate draw/label/hit failures preserve authoritative map (1295.3533ms)
+✔ imported PDF Save/Open and source membership remain intact (2516.889ms)
+✔ deferred import hash cancellation, preparation failure, and recovery outcomes (1298.1904ms)
+✔ destroy during deferred import cancels without installation (1279.3841ms)
+✔ stale pending import cannot resume after session replacement (1262.2733ms)
+✔ duplicate editor discard resumes import once despite repeated clicks (1284.5143ms)
+✔ old cancelled import cannot affect newer overlapping import (1315.6552ms)
+✔ destroy while dirty-map decision awaits releases pending import (1292.5068ms)
+✔ destroy while dirty-editor decision awaits releases pending import (1313.7143ms)
+✔ distinct A/B package overlap isolates old cancellation from new import (1533.6937ms)
+✔ late failure from cancelled A cannot affect active B import (1279.3286ms)
+✔ repeated dirty-map Save/Discard clicks commit import once (1275.6318ms)
+✔ storage status wording tracks save/restored/dirty lifecycle with accessible help (1335.3281ms)
+✔ file Open and Save routes through writable document adapter with clean baseline (1677.0469ms)
+✔ fallback file Open is clean and Save reports download handoff without clearing dirty (2203.559ms)
+✔ Save and continue writes active document handle before Open replacement commits (1363.4631ms)
+✔ Import Backup clears inherited writable document identity (1299.8021ms)
+✔ deferred applied save owner cannot be recreated for replacement session (2042.9505ms)
+✔ new/previous-local toolbar and form Save request .orbit without IndexedDB (1608.6026ms)
+✔ fallback new Save and Save-and-continue keep dirty and pending replacement (2138.9929ms)
+✔ fallback Open File and Import Backup activate the owned input with intent (1368.8177ms)
+✔ Save As cancellation/write/close failures keep A; deferred close adopts C with dirty later edits (2558.4349ms)
+✔ obsolete deferred save cannot affect replacement session or newer save (1293.0621ms)
+✔ destroy during deferred save suppresses late success adoption/status (1279.1002ms)
+✔ destroy during deferred save suppresses late failure/status (1284.4125ms)
+✔ applied form Save blocks Open File until persistence completes (1557.1436ms)
+✔ actual Open/Discard replacement invalidates pending A; late A success cannot affect B (1582.0283ms)
+✔ actual replacement invalidates pending A; late A close failure cannot affect B (1407ms)
+✔ cancelled Open preserves pending A save ownership and completion (1292.3442ms)
+✔ Import Backup first Save uses .orbit picker before adopting and clears A handle (1857.2066ms)
+✔ Previous local maps first Save uses .orbit picker and preserves legacy record (1673.8381ms)
+✔ Previous local maps fallback first Save downloads without confirmed clean state (2193.4512ms)
+✔ Import Backup fallback applies once, Retry handoff, Close, and Save-and-continue Cancel/Discard (2738.4538ms)
+✔ Previous local fallback applies once, Retry handoff, Close, and Save-and-continue Cancel/Discard (2844.9968ms)
+✔ stale applied-operation Retry preflight rejects before handoff side effects (1806.302ms)
+✖ fallback .orbit document stays read-only until Save; Save creates a .orbit download and preserves PDF attachments (971.4249ms)
+✔ Save As awaits permission, skips redundant request, and reports picker versus permission stages (1574.2669ms)
+✔ actual title-only Create Map installs one visible root, saves/reopens, and recovers zero attachments (2271.2183ms)
+ℹ tests 83
+ℹ suites 0
+ℹ pass 81
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 126754.1165
+
+✖ failing tests:
+
+test at tests\engine\exploration\file-open-navigation-main.test.mjs:43:1
+✖ unified Open supports Orbit, standalone Open, cancel, and unsupported directory access (5899.6776ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 0
+  
+      at run (file:///C:/Users/openw/Documents/Projects/visual-directory/tests/engine/exploration/file-open-navigation-main.test.mjs:20:12)
+      at TestContext.<anonymous> (file:///C:/Users/openw/Documents/Projects/visual-directory/tests/engine/exploration/file-open-navigation-main.test.mjs:44:3)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\engine\exploration\p1b-main.test.mjs:248:1
+✖ fallback .orbit document stays read-only until Save; Save creates a .orbit download and preserves PDF attachments (971.4249ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (file:///C:/Users/openw/Documents/Projects/visual-directory/tests/engine/exploration/p1b-main.test.mjs:249:10)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

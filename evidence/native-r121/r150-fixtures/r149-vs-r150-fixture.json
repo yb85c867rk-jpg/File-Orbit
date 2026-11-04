@@ -1,0 +1,29 @@
+{
+  "historical": {
+    "pdf": {
+      "size": 69,
+      "sha256": "cfa3181c1ee36e8bce5e39f84959f4558ea7ba32c0e4539a8ab3c8ce8c716ec6"
+    },
+    "orbit": "r149-300.orbit"
+  },
+  "new": {
+    "pdf": {
+      "size": 1068,
+      "sha256": "d282cf216a332cab9a7f18456450ac6cf26d641f10b48790515bea664f3ef749"
+    },
+    "orbit": "r150-300.orbit"
+  },
+  "treeEqualIgnoringAttachmentIds": false,
+  "oldAttachments": {
+    "report.pdf": "cfa3181c1ee36e8bce5e39f84959f4558ea7ba32c0e4539a8ab3c8ce8c716ec6",
+    "notes.md": "63571c33b3ed004f05b2ab43ed4a85ec029d253af2b264308e8e2840b2c08eb4",
+    "pixel.png": "431ced6916a2a21a156e38701afe55bbd7f88969fbbfc56d7fe099d47f265460",
+    "plain.txt": "2f497badebdd68b1720a8b352345b1b619daeb709d1c808bfa4647ef0c67a3c9"
+  },
+  "newAttachments": {
+    "report.pdf": "d282cf216a332cab9a7f18456450ac6cf26d641f10b48790515bea664f3ef749",
+    "notes.md": "63571c33b3ed004f05b2ab43ed4a85ec029d253af2b264308e8e2840b2c08eb4",
+    "pixel.png": "431ced6916a2a21a156e38701afe55bbd7f88969fbbfc56d7fe099d47f265460",
+    "plain.txt": "2f497badebdd68b1720a8b352345b1b619daeb709d1c808bfa4647ef0c67a3c9"
+  }
+}

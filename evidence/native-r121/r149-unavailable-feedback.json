@@ -1,0 +1,15 @@
+{
+  "res": {
+    "opened": true,
+    "status": "",
+    "backdrop": false,
+    "diagnostic": {
+      "message": "",
+      "kind": "none",
+      "token": 5,
+      "timer": false
+    }
+  },
+  "exceptions": [],
+  "capturedAt": "2026-11-02T00:04:25.147Z"
+}

@@ -1,0 +1,19 @@
+﻿FileOrbit applied-save ownership r71
+
+Fixed R1:
+- editorAppliedOperation owner is created immediately after successful authoritative edit installation and BEFORE the first persistence await.
+- owner captures session, dataset, applied revision, form token, controller, target/action and active document name/handle.
+- initial Save and Retry both verify exact owner identity before any success/failure/handoff effect.
+- stale completion cannot create/replace an owner, clear a newer owner, close a newer form, or publish current-session errors.
+- replaceSession hook invalidates applied owner; dataset/form/session mismatch blocks.
+- Retry uses captured operation.revision and shared save path; no edit/command replay.
+
+Verified:
+- writable Open, edit, deferred writable write; owner exists during wait; replaceSession clears owner; releasing write leaves owner null and no stale publication; one write only.
+- P1b 51/51, backup8/8, adapter3/3, full812/812. Native NOT RUN.
+
+R2 status — PARTIAL:
+- active file documents and writable-capable environments use document save via toolbar/form/Retry/Save-and-continue.
+- fallback-only new Create Map, Import Backup, Previous local maps still use legacy IndexedDB when no writable APIs are detected. Save As writes .map.
+- fallback replacement for these no-handle docs still uses legacy save.
+Not complete; do not claim all normal Save routes are document-only.

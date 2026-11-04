@@ -1,0 +1,47 @@
+{
+  "revision": "r143",
+  "change": "Complete nonvisual routine feedback paths",
+  "corrections": {
+    "openOrbitEntry": {
+      "success": "routine",
+      "pendingDecision": "actionable",
+      "warningsPreserved": true
+    },
+    "refreshBrowser": {
+      "success": "routine",
+      "failure": "actionable"
+    },
+    "copyPickerCancellation": "routine",
+    "ordinaryCancellations": [
+      "orbit close",
+      "save picker",
+      "blocked storage",
+      "recovery postponed"
+    ],
+    "routineVisual": false,
+    "feedbackHostHidden": false
+  },
+  "verification": {
+    "focused": "91/91",
+    "full": "1103 tests, 1102 passed, 1 skipped, 0 failed",
+    "native": "NOT RUN",
+    "archiveFocused": "17/17"
+  },
+  "browser": {
+    "routine": "clipped live region; host/document 0x0",
+    "screenshots": "dark/light desktop/narrow"
+  },
+  "preserved": {
+    "r142": "64D31175303045113D1835260122D373CEB9098444636DB27AF4F171FE6826AC",
+    "r141": "0EA9292945DCBCAAFC483CA03B9580BC95C17255F3DFAE6FB8BC48C3855EC0C4"
+  },
+  "archive": {
+    "path": "review/fileorbit-feedback-r143.zip",
+    "sha256": "3115355BC79BAC551C80069990F20665A943E4E0C2B5E9BECD7B7AAF6A7CAA47",
+    "entries": 1328,
+    "manifestMismatches": 0
+  },
+  "application": {
+    "mainSha256": "A3524D4CF3BF270ADC3D3B98C4DBDA98E73DDF791C78C146B31D3DDC5BF167CD"
+  }
+}

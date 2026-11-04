@@ -1,0 +1,41 @@
+{
+  "mapName": "R149 300 Node Map",
+  "nodeCount": 300,
+  "orbitBytes": 36951,
+  "attachments": [
+    {
+      "name": "report.pdf",
+      "size": 69,
+      "sha256": "cfa3181c1ee36e8bce5e39f84959f4558ea7ba32c0e4539a8ab3c8ce8c716ec6"
+    },
+    {
+      "name": "notes.md",
+      "size": 52,
+      "sha256": "63571c33b3ed004f05b2ab43ed4a85ec029d253af2b264308e8e2840b2c08eb4"
+    },
+    {
+      "name": "plain.txt",
+      "size": 30,
+      "sha256": "2f497badebdd68b1720a8b352345b1b619daeb709d1c808bfa4647ef0c67a3c9"
+    },
+    {
+      "name": "pixel.png",
+      "size": 68,
+      "sha256": "431ced6916a2a21a156e38701afe55bbd7f88969fbbfc56d7fe099d47f265460"
+    }
+  ],
+  "treeIds": {
+    "wide": "wide",
+    "deepest": "deep12",
+    "hidden": "d007",
+    "marker": "w057"
+  },
+  "treeSummary": {
+    "rootId": "n0",
+    "wideFiles": 58,
+    "deepLevels": 12,
+    "deepFiles": 8,
+    "branchFiles": 140,
+    "branchExtras": 56
+  }
+}

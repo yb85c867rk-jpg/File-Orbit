@@ -1,0 +1,5 @@
+﻿FileOrbit E3-A browser verification: NOT RUN.
+No browser executable/automation was available without installing dependencies.
+Node tests cover history bounds, metadata inverse/redo commands, expected-state/dataset mismatch,
+attachment metadata preservation, and static harness/UI wiring. Actual button click → replay → frame
+installation was not executed in a browser or an equivalent DOM harness.

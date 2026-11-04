@@ -1,0 +1,21 @@
+﻿{
+  "revision": "r151",
+  "os": "Microsoft Windows NT 10.0.26300.0",
+  "browser": "headed Google Chrome 156.0.8078.76",
+  "origin": "http://127.0.0.1:8099",
+  "profile": ".browser-prof-r151-headed",
+  "nativeDialogsObserved": ["Select Folder to Upload", "Open", "Warning: this site can see edits you make / Save"],
+  "nativeSelection": {"selectedFiles": 299, "selectedFolders": 0, "previewStatus": "0 folders, 299 files, 6171 bytes. Review, then choose Create Map.", "syntheticRoot": 1, "candidateTotal": 300},
+  "commit": {"status": "NOT RUN", "saveDialogReached": true, "fileWritten": false},
+  "createCancel": {"status": "NOT RUN", "note": "save-picker cancellation text was observed, but no previous document existed to prove preservation"},
+  "saveAs": "NOT RUN",
+  "nativeOpen": "NOT RUN",
+  "saveCancel": "NOT RUN",
+  "overwriteConflict": "NOT RUN",
+  "native301": "NOT RUN",
+  "restart": "NOT RUN",
+  "appBehaviorChanged": false,
+  "fullSuite": "r149 serial 1119/1118/1 retained; not rerun",
+  "focused": "12/12 attachment viewer/feedback tests",
+  "capturedAt": "2026-11-02T14:10:00+13:00"
+}

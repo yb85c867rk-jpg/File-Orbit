@@ -1,0 +1,46 @@
+﻿# FileOrbit UI refinement r92
+
+Status: automated mock/DOM verification passed; native visual acceptance **NOT RUN**.
+
+## Developer Status block
+
+- Removed the developer-facing `Status` heading, copy-status command, JSON diagnostic instructions, and technical harness/navigation instructions from the normal right panel.
+- Kept Details, editor host, search results, recovery/save/error feedback, and shell status.
+- `window.__M5_EXPLORATION_STATUS__` publication is unchanged.
+
+## Centered graph action toolbar
+
+- Search remains in its own top row.
+- Undo, Redo, Embed, and Fullscreen now live in `#graph-action-toolbar`, inside `#graph-wrap`.
+- Centered with `left: 50%` / `translateX(-50%)`; excludes the right details panel by construction.
+- 56px reserved bar; graph/label hosts start below it. Toolbar container uses `pointer-events: none`; buttons use `pointer-events: auto`.
+- 44×44 CSS-pixel buttons, theme variables, hover/focus/disabled states, local inline SVG icons.
+- Header Embed/Fullscreen and menu/mobile duplicates removed. Theme remains in its existing header location.
+
+## Accessibility and tooltips
+
+- Accessible names, native `title`, and `data-tooltip` for all four controls.
+- Shared tooltip controller shows on pointer hover and keyboard focus, clamps to viewport, repositions on resize/scroll, and hides on blur/leave.
+- Undo/Redo preserve SVG identity while labels/tooltips update with history operation names.
+- Fullscreen updates icon glyph, accessible name, tooltip, native title, pressed state, and enter/exit labels.
+- Embed exposes unavailable state with `aria-disabled` and visible disabled styling while retaining existing explanatory click feedback.
+- Disabled history and action guards remain owned by the existing controllers.
+
+## Verification
+
+- Focused UI tests: 5/5.
+- Shell/history/UI suites: 24/24.
+- Startup recovery actual main: 21/21.
+- Slice 2 actual main: 2/2.
+- P1b actual main: 70/70.
+- Full tests/engine: 915 tests, 914 passed, 0 failed, 1 skipped, 0 todo.
+- Syntax checks: 9/9 changed JS modules.
+- Served source: 104 files, HTTP 200, `Cache-Control: no-store`, byte-for-byte SHA match. `/` and no-slash harness URL redirect 302 to trailing slash.
+- URL: http://127.0.0.1:8099/tests/harness/m5-exploration/
+
+## Limitations
+
+- No screenshots captured. Headless Edge screenshot attempts produced no file under the available sandbox/environment; visual light/dark, narrow, tooltip focus, and fullscreen acceptance are **NOT RUN**.
+- Native PC/Android/iPhone visual checks are **NOT RUN**.
+- Mock DOM tests do not establish visual correctness.
+- FakeIndexedDB cross-tab concurrency skip retained.

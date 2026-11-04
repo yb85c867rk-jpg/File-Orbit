@@ -1,0 +1,47 @@
+﻿import test from 'node:test';
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+const html = readFileSync(new URL('../../harness/m5-exploration/index.html', import.meta.url), 'utf8');
+const css = html.slice(html.indexOf('<style>'), html.indexOf('</style>'));
+const body = html.slice(html.indexOf('<div id="app-root">'), html.indexOf('<pre id="status"'));
+test('workspace layout owns the final grid row regardless of hidden error row', () => {
+  assert.match(css, /#app-root \{[^}]*grid-template-rows:\s*auto auto minmax\(0,\s*1fr\)/);
+  assert.match(css, /#app-root \{[^}]*grid-template-areas:\s*'header'\s*'error'\s*'workspace'/);
+  assert.match(html, /<meta name="viewport" content="width=device-width, initial-scale=1">/);
+  assert.match(css, /#app-header \{[^}]*min-width:\s*0/);
+  assert.match(css, /#dev-controls \{[^}]*min-width:\s*0[^}]*max-width:\s*100%/);
+  assert.match(css, /#app-header \{[^}]*grid-area:\s*header/);
+  assert.match(css, /#error \{[^}]*grid-area:\s*error/);
+  assert.match(css, /#layout \{[^}]*grid-area:\s*workspace/);
+  assert.match(css, /#error:empty \{ display: none; \}/);
+  assert.match(css, /#layout \{[^}]*display:\s*flex[^}]*min-height:\s*0[^}]*overflow:\s*hidden/);
+  assert.doesNotMatch(css, /#layout \{[^}]*min-height:\s*(?:[1-9]\d*px|100vh)/);
+  const header = body.indexOf('id="app-header"');
+  const error = body.indexOf('id="error"');
+  const layout = body.indexOf('id="layout"');
+  assert.ok(header >= 0 && error > header && layout > error);
+  assert.equal((body.match(/id="layout"/g) || []).length, 1);
+  assert.equal((body.match(/id="error"/g) || []).length, 1);
+});
+test('empty state is contained below toolbar and can scroll rather than clip', () => {
+  const toolbar = body.indexOf('id="graph-action-toolbar"');
+  const viewport = body.indexOf('id="graph-viewport"');
+  const empty = body.indexOf('id="empty-state"');
+  assert.ok(toolbar >= 0 && viewport > toolbar && empty > viewport);
+  assert.match(body.slice(empty, empty + 800), /Create a map to get started/);
+  assert.match(body.slice(empty, empty + 800), /data-action="create-map"[^>]*data-available="true"/);
+  assert.match(css, /#empty-state \{[^}]*box-sizing:\s*border-box/);
+  assert.match(css, /#empty-state \{[^}]*place-content:\s*safe center/);
+  assert.match(css, /#empty-state \{[^}]*overflow:\s*auto/);
+  assert.match(css, /#empty-state \{[^}]*padding:\s*24px/);
+  assert.match(css, /#graph-viewport \{[^}]*flex:\s*1 1 auto[^}]*min-height:\s*0/);
+});
+test('responsive details and fullscreen retain the workspace layout contract', () => {
+  assert.match(css, /@media \(max-width: 560px\)[\s\S]*?#layout \{ flex-direction: column; box-sizing: border-box; padding-left: 64px; \}/);
+  assert.match(css, /aside\[data-collapsed="true"\]/);
+  assert.match(css, /#app-root:fullscreen/);
+  assert.match(css, /#error \{ grid-area: error;/);
+  assert.match(css, /@media \(max-width: 560px\)[\s\S]*?\.graph-action-button \{ width: 44px; height: 44px;/);
+  assert.match(body, /<nav id="nav-rail"[\s\S]*?id="settings-panel"[\s\S]*?id="theme-action"/);
+  assert.match(css, /#layout \{ grid-area: workspace;/);
+});

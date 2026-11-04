@@ -1,0 +1,28 @@
+﻿FileOrbit P3 snapshot/cancellation correction r58
+
+R1 FIXED:
+- Attachment and tree classifications are deep-cloned before async work.
+- Mutable registry classification references are no longer stored.
+- Unused post-hash canonicalNode call removed.
+- Deferred-hash test mutates tree nested metadata, classification, registry.get, and clears/changes records; package retains captured values and decodes.
+- Package IDs/tree/count/name captured before first hash.
+
+R2 PARTIAL:
+- encode/decode actually call isCancelled before loops, between attachments, and after each digest/read; pre-cancelled test performs zero hashes.
+- Production download/import pass session/dataset cancellation predicates.
+- Cancel button shown by production handlers and hidden on terminal own-owner outcomes.
+- Admission rejects any persistenceBusy or replacementGuard.
+- Operation/session/dataset owner captured, destroy invalidates, URL/timer/file input cleanup, stale completion guarded.
+- Actual event-path test now covers production Download handler and Upload hidden-input change → install labels/hits.
+- Not yet executed: Cancel button during delayed hash; replacement/destroy delayed completion; old cancel/new op interplay.
+
+R3:
+- Owned resources assigned and cleaned; cancel/destroy revoke URL/timer and input.
+- Import temp registry cleared on cancellation/failure.
+
+R4:
+- Added production Download → Upload file-input event round trip.
+- Full test counts 783/783, P1b 29/29, backup 6/6.
+- Native browser download/picker/viewer NOT RUN.
+
+Pending: dirty editor/map import decisions, import candidate failure/recovery, native end-to-end.

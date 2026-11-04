@@ -1,0 +1,197 @@
+{
+  "result": {
+    "iterations": 5,
+    "repeated": [
+      {
+        "iteration": 0,
+        "fulfilled": 1,
+        "rejected": 1,
+        "usage": {
+          "libraryBytes": 50,
+          "recoveryBytes": 10,
+          "totalBytes": 60,
+          "hardCapBytes": 60,
+          "withinCap": true
+        },
+        "priorIntact": true,
+        "reopen": {
+          "candidates": 1,
+          "nodeCount": 2,
+          "bytes": [
+            "recovery.txt"
+          ],
+          "usage": {
+            "libraryBytes": 50,
+            "recoveryBytes": 10,
+            "totalBytes": 60,
+            "hardCapBytes": 1048576,
+            "withinCap": true
+          }
+        },
+        "errors": [
+          "recovery-capacity"
+        ]
+      },
+      {
+        "iteration": 1,
+        "fulfilled": 1,
+        "rejected": 1,
+        "usage": {
+          "libraryBytes": 50,
+          "recoveryBytes": 10,
+          "totalBytes": 60,
+          "hardCapBytes": 60,
+          "withinCap": true
+        },
+        "priorIntact": true,
+        "reopen": {
+          "candidates": 1,
+          "nodeCount": 2,
+          "bytes": [
+            "recovery.txt"
+          ],
+          "usage": {
+            "libraryBytes": 50,
+            "recoveryBytes": 10,
+            "totalBytes": 60,
+            "hardCapBytes": 1048576,
+            "withinCap": true
+          }
+        },
+        "errors": [
+          "recovery-capacity"
+        ]
+      },
+      {
+        "iteration": 2,
+        "fulfilled": 1,
+        "rejected": 1,
+        "usage": {
+          "libraryBytes": 50,
+          "recoveryBytes": 10,
+          "totalBytes": 60,
+          "hardCapBytes": 60,
+          "withinCap": true
+        },
+        "priorIntact": true,
+        "reopen": {
+          "candidates": 1,
+          "nodeCount": 2,
+          "bytes": [
+            "recovery.txt"
+          ],
+          "usage": {
+            "libraryBytes": 50,
+            "recoveryBytes": 10,
+            "totalBytes": 60,
+            "hardCapBytes": 1048576,
+            "withinCap": true
+          }
+        },
+        "errors": [
+          "recovery-capacity"
+        ]
+      },
+      {
+        "iteration": 3,
+        "fulfilled": 1,
+        "rejected": 1,
+        "usage": {
+          "libraryBytes": 50,
+          "recoveryBytes": 10,
+          "totalBytes": 60,
+          "hardCapBytes": 60,
+          "withinCap": true
+        },
+        "priorIntact": true,
+        "reopen": {
+          "candidates": 1,
+          "nodeCount": 2,
+          "bytes": [
+            "recovery.txt"
+          ],
+          "usage": {
+            "libraryBytes": 50,
+            "recoveryBytes": 10,
+            "totalBytes": 60,
+            "hardCapBytes": 1048576,
+            "withinCap": true
+          }
+        },
+        "errors": [
+          "recovery-capacity"
+        ]
+      },
+      {
+        "iteration": 4,
+        "fulfilled": 1,
+        "rejected": 1,
+        "usage": {
+          "libraryBytes": 50,
+          "recoveryBytes": 10,
+          "totalBytes": 60,
+          "hardCapBytes": 60,
+          "withinCap": true
+        },
+        "priorIntact": true,
+        "reopen": {
+          "candidates": 1,
+          "nodeCount": 2,
+          "bytes": [
+            "recovery.txt"
+          ],
+          "usage": {
+            "libraryBytes": 50,
+            "recoveryBytes": 10,
+            "totalBytes": 60,
+            "hardCapBytes": 1048576,
+            "withinCap": true
+          }
+        },
+        "errors": [
+          "recovery-capacity"
+        ]
+      }
+    ],
+    "abort": {
+      "abortCode": "transaction-failed",
+      "before": {
+        "libraryBytes": 0,
+        "recoveryBytes": 6,
+        "totalBytes": 6,
+        "hardCapBytes": 1048576,
+        "withinCap": true
+      },
+      "after": {
+        "libraryBytes": 0,
+        "recoveryBytes": 6,
+        "totalBytes": 6,
+        "hardCapBytes": 1048576,
+        "withinCap": true
+      },
+      "abortIntact": true
+    },
+    "persist": {
+      "dbName": "r149-native-clean1-persist",
+      "candidates": 1,
+      "nodeCount": 2,
+      "bytes": [
+        {
+          "name": "recovery.txt",
+          "text": "persisted-native-bytes",
+          "sha": "71fef56eee3fb482b0ef21a6d542ba9a8b1bdc19f223e10e8b0c24296ce710d0"
+        }
+      ],
+      "usage": {
+        "libraryBytes": 0,
+        "recoveryBytes": 22,
+        "totalBytes": 22,
+        "hardCapBytes": 1048576,
+        "withinCap": true
+      }
+    },
+    "durationMs": 226.30000001192093
+  },
+  "exceptions": [],
+  "capturedAt": "2026-11-01T23:52:56.981Z"
+}

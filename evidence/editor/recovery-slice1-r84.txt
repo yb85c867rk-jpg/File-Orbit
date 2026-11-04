@@ -1,0 +1,47 @@
+﻿FileOrbit Recovery Slice 1 implementation r84
+
+Status: storage primitives implemented; checkpoint scheduling/startup recovery/document Save integration PLANNED — NOT IMPLEMENTED. No user-visible recovery feature.
+
+Schema (DB_VERSION=2, additive, SCHEMA_VERSION legacy records remains 1):
+- recoveryWorkspaces keyPath workspaceId; index by_state_updatedAt [state,updatedAt]
+- recoveryCheckpoints keyPath [workspaceId,checkpointGeneration]; index by_workspace
+- recoveryAttachments keyPath [workspaceId,checkpointGeneration,attachmentId]; index by_workspace_generation
+- meta recoveryUsage
+Existing maps/mapDocuments/mapAttachments/settings/meta preserved; no migration/deletion.
+
+APIs exposed by createPersistenceRepository:
+createRecoveryWorkspace, loadRecoveryWorkspace, saveRecoveryCheckpoint, loadRecoveryCheckpoint,
+listRecoveryCandidates, beginRecoverySave, abandonRecoverySave, retireRecoveryThrough,
+claimRecoverySource, releaseRecoveryClaim, supersedeRecoverySource, discardRecoveryWorkspace,
+combinedUsage. repairUsage now covers both domains. Implementation module: recovery-repository.js;
+snapshot materialization/digest: recovery-codec.js; validators: recovery-schema.js.
+
+Ordering:
+- workspaceToken + nextSequence + controlVersion.
+- checkpointGeneration and saveSequence allocated from the same durable per-workspace nextSequence.
+- checkpoint write requires expected controlVersion; stale/tombstoned/discarded states rejected.
+- beginRecoverySave records durable pending {saveId,sequence}; retire requires exact workspace/token/saveId/sequence; duplicate completion idempotent; later generations survive.
+- explicit discard writes state=discarded tombstone and deletes content; delayed writers rejected by state/controlVersion.
+- recovery forks a new workspace; source claim is install-only; supersede requires exact source checkpointId+generation and a durable child checkpoint; advanced source generation rejects and leaves rows/accounting unchanged.
+
+Combined capacity:
+- 512 MiB cap unchanged; per-file/per-workspace/node limits unchanged.
+- legacy save transaction scope expanded to recovery stores; reads/mutates actual legacy+recovery rows, checks combined cap, updates both counters in one readwrite tx.
+- recovery save/retire/discard transactions include legacy attachments/meta; actual rows authoritative; missing/corrupt counters repaired/rejected.
+- capacity failure/recovery abort preserves prior checkpoint/rows/counters. No pruning/deletion to make space.
+
+Snapshot:
+- buildRecoverySnapshot reuses canonical buildSaveSnapshot; materializes detached Blob bytes and SHA-256, preserves IDs/metadata/repeated refs/zero-byte, respects cancellation/limits, does not mutate live mapping.
+
+Tests executed:
+- recovery.test.mjs: 21 tests, 20 pass, 1 skipped.
+- persistence+p2 suites: 64 tests, 63 pass, 1 skipped (same skip).
+- P1b actual main-entry: 70/70.
+- backup+adapter: 18/18.
+- full tests/engine: 859 tests, 858 pass, 1 skipped, 0 fail.
+- syntax checks: 9 changed JS/test modules pass.
+Skipped test: concurrent legacy+recovery writers cannot both pass obsolete totals. FakeIndexedDB stages overlapping readwrite transactions and does not model native IndexedDB serialization; invariant is specified and sequential boundary/abort tests pass, but native concurrency is NOT RUN.
+
+Native browser IndexedDB v2 upgrade, quota, multi-tab, crash behavior remain NOT RUN.
+
+No main.mjs, editor, prompts, Save/Open routing, graph, viewer, imported documents, or user records changed.

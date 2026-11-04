@@ -1,0 +1,5 @@
+﻿FileOrbit presentation-cleanup regression browser verification: NOT RUN.
+No browser executable/automation was available without installing dependencies.
+Mocked tests verify per-folder opacity, label click/drag suppression in both registration orders,
+and idempotent label drag teardown. They do not establish real browser cursor, pointer capture,
+or click behavior.

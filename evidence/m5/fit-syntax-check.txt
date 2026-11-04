@@ -1,0 +1,1 @@
+﻿all fit/draw projection JS/MJS parse: OK

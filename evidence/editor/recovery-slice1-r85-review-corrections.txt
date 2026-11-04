@@ -1,0 +1,42 @@
+﻿FileOrbit Recovery Slice 1 review corrections r85
+
+Scope: storage layer only. No scheduler, startup prompt/install, document Save retirement wiring, editor/main.mjs or user-document changes.
+
+R1 — validate actual payload/capacity
+Root cause: saveRecoveryCheckpoint trusted caller-declared totals/counts/nodeCount and attachmentRefs; it checked only aggregate fields before opening the transaction. A snapshot totaling 0 with a 10-byte attachment committed, so combinedUsage reported 10 bytes and withinCap false under an 8-byte cap.
+Correction: ownValidatedRecoverySnapshot() now runs before ensureHandle/transaction. It deep-clones tree/metadata, validates via loadTree, derives node count, validates unique attachment IDs/refs, detaches Blob bytes, derives per-file sizes and SHA-256, compares declared node/attachment counts and totals, checks tree<->attachmentRefs<->payload correspondence and metadata, and rejects duplicate/unreferenced/missing IDs, size mismatches, hash mismatches, and invalid limits. Attachment metadata is copied before awaits so caller mutation cannot alter the admitted snapshot. saveCheckpoint uses only derived values. The in-transaction actual legacy+recovery row capacity check remains.
+
+R2 — stale claims cannot delete newer source content
+Root cause: discardRecoveryWorkspace accepted a claimId without binding it to the expected source generation/checkpoint or claim expiry. A generation-1 claim could discard generation 2.
+Correction: claim records now include checkpointId. Discard requires either:
+- claimId + expectedCheckpointGeneration + expectedCheckpointId, with exact claim identity, unexpired lease, claim generation/checkpoint match, active source generation/checkpoint match; or
+- explicit ownerControlVersion + expected active generation/checkpoint, with no unexpired claim.
+All checks happen before deletion. Stale/expired/replaced claims, wrong expected generation/checkpoint, stale owner version, non-active source, and advanced source reject without modifying rows/control/accounting.
+
+R3 — reject incomplete/inconsistent checkpoints
+Root cause: loadRecoveryCheckpoint returned a checkpoint with state complete even when its attachment row was missing; supersedeSource trusted only a child checkpoint record.
+Correction: loadCheckpoint now reads a coherent workspace/checkpoint/row snapshot, requires active-generation identity, exact attachmentRef/row sets and counts, totals, metadata, sizes and hashes, and rejects missing/extra/mismatched/corrupt payloads. Bytes/hashes are verified outside the transaction after the coherent read. It never deletes corrupt data. supersedeSource preflights complete source and child checkpoints (including hashes), then rechecks workspace/token/state/generations/checkpoint identities atomically before marking the source superseded; incomplete child cannot supersede.
+
+R4 — genuine v1->v2 upgrade test
+Root cause: the old test opened version 1 through the current repository, whose schema creator already created recovery stores, so it did not represent a v1 database.
+Correction: the test now creates a raw v1 database with only maps, mapDocuments, mapAttachments, settings and meta plus original indexes; seeds original-format map/document/attachment/settings/meta records; asserts recovery stores are absent; closes and opens through the production v2 path; asserts additive recovery stores/indexes; verifies legacy ID/tree/metadata/bytes and unrelated settings; then closes/reopens and repeats list/load. The v2 schema creator is not used for the v1 fixture.
+Test-infrastructure note: FakeIndexedDB open() previously failed to apply version upgrades because it assigned version before comparing. It now captures the previous version, assigns the target, and runs onupgradeneeded when target > previous. This is test-only; no product code relies on it.
+
+Focused regressions added:
+- understated total, overstated total, same-total/hash-mismatched payload, duplicate attachment ID, missing attachment payload, declared count mismatch;
+- caller tree/metadata mutation during blocked asynchronous preparation;
+- each R1 rejection preserves prior checkpoint, controlVersion, rows and counters;
+- old claim vs advanced source, expired claim, replaced claim, wrong expected generation/checkpoint, valid claim discard; newer content/accounting preserved after rejects;
+- missing row, extra/unreferenced row, same-size wrong bytes/hash, metadata mismatch, count/total mismatch, invalid generation relationship, incomplete child supersession, exact-byte success;
+- genuine raw-v1 fixture with pre-upgrade absence and post-upgrade indexes, settings, reopening.
+
+Executed results:
+- recovery.test.mjs: 28 tests, 27 passed, 0 failed, 1 skipped.
+- persistence + upgrade + lifecycle + recovery: 71 tests, 70 passed, 0 failed, 1 skipped.
+- backup codec + adapter: 18/18 passed.
+- P1b actual main-entry: 70/70 passed.
+- full tests/engine: 866 tests, 865 passed, 0 failed, 1 skipped, 0 todo.
+- syntax checks: 11 changed JS/test modules passed.
+Skipped: concurrent legacy+recovery fake-IDB test. Reason unchanged: FakeIndexedDB stages overlapping readwrite transactions; native IndexedDB serialization is NOT RUN. This limitation does not explain R1-R4, which were reproduced and fixed independently.
+
+Native browser IndexedDB v2 upgrade, quota, multi-tab/crash behavior remain NOT RUN. Slice 1 is not marked accepted; scheduling and recovery UI remain PLANNED — NOT IMPLEMENTED.

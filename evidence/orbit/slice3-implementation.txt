@@ -1,0 +1,40 @@
+﻿FileOrbit Orbit Slice 3 implementation — file-baseline and conflict foundation
+
+Status: Slice 1–3 primitives implemented and isolated; Orbit unavailable; Slice 4–6 planned.
+
+Implemented:
+- tests/harness/m5-exploration/orbit-file-baseline.js
+  - opened-content/confirmed-write provenance
+  - authoritative SHA-256 digest, actual observed size/lastModified, handle/document identity/revision/session/operation
+  - owned opened-bytes digest and post-install verification; changed/observed/unknown states; no newer digest adoption
+  - confirmed-write actual destination read after close; digest comparison; read/hash failure retains write-success separation
+  - size limits before content reads/hashes
+  - bindBaseline, preflightOverwrite, createOverwriteApproval
+  - missing/metadata/digest/read/hash conflict and stale checks
+  - scope-bound overwrite approval; approval becomes stale on material destination changes
+  - frozen public metadata; native handles retain identity
+- tests/harness/m5-exploration/file-conflict-dialog.js
+  - decision-only Overwrite/Save a Copy/Cancel
+  - accessible name/description, text-only basename, initial Cancel focus, Escape/Tab containment, focus restoration
+  - one terminal result, duplicate-click safety, newer-request supersession, idempotent destroy
+  - no writes/adoption/dirty/recovery action
+- tests/engine/exploration/orbit-file-baseline.test.mjs (20 tests)
+- tests/engine/exploration/file-conflict-dialog.test.mjs (9 tests)
+
+Not integrated:
+- no main.mjs imports/hooks, no writable Orbit Open/Create/Save, no Orbit UI/navigation
+- no document routing/activeDocument/savedRevision/recovery/editor/viewer/schema changes
+- no real file writes; synthetic handles/bytes in tests
+- Orbit unavailable.
+
+Tests:
+- Orbit names/adapter/state/baseline/dialog + existing document-adapter/backup compatibility: 130/130 passed.
+- New Orbit tests: 112 (names6, adapter37, state33, baseline27, dialog9).
+- No unrelated/full suite rerun.
+- Native filesystem verification: NOT RUN.
+
+Limitations:
+- Non-atomic preflight-to-write; no compare-and-write/rollback claim.
+- Size/lastModified fast precheck can miss same-size/time edits; SHA-256 stronger but not atomic.
+- Actual destination metadata only; no fabricated filesystem timestamps.
+- Synthetic tests only; no native File System Access proof.

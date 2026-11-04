@@ -1,0 +1,5 @@
+﻿FileOrbit attachment-viewer browser verification: NOT RUN.
+No browser executable/automation was available without installing dependencies.
+Mocked DOM/Blob tests cover resolution/eligibility, PDF URL/fallback, literal text/Markdown, 1 MiB truncation,
+UTF-8/BOM/error, image load, A->B race, close/destroy cleanup, and file-name vs icon activation.
+Native PDF rendering, image decoding, and browser focus behavior were NOT executed.

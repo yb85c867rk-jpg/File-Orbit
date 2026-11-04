@@ -1,0 +1,5 @@
+﻿FileOrbit file-type icon browser verification: NOT RUN.
+No browser executable/automation was available without installing dependencies.
+Node tests cover stored-format mapping, badges/colors, image MIME mapping, unknown/review,
+display-name extension resistance, legacy fallback, overlay icon/badge tracking, and no layout mutation.
+Visual inspection at label size/DPR 1 and 1.25 was NOT executed.

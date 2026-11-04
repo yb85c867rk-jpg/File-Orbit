@@ -1,0 +1,36 @@
+﻿FileOrbit YAML attachment viewing r100
+
+Confirmed root cause:
+- attachment-classification.js only classified txt/text/log as text.
+- .yaml/.yml were not extension-recognized, and YAML MIME types were not text MIME.
+- A YAML file with empty or application/octet-stream MIME therefore classified as generic.
+- resolveAttachmentViewerTarget() permits generic only for recognized image signatures; YAML fell through to state unsupported.
+- Repro before correction: classifyAttachment({name:'name.yaml',mime:'',prefix:empty}) => format generic; viewer => {ok:false,state:'unsupported'}.
+
+Correction:
+- YAML_EXTENSIONS = yaml, yml (extensionOf is lowercase, so case-insensitive).
+- YAML MIME types recognized as text: application/yaml, application/x-yaml, application/vnd.yaml, text/yaml, text/x-yaml.
+- YAML extension classification is text with badge YAML, regardless of empty/octet-stream MIME; binary MIME conflict remains needs-review.
+- Existing generic classifications from older saved YAML attachments are accepted by extension in the viewer, with no file-byte change.
+- The existing plain-text viewer is used: TextDecoder UTF-8, BOM stripped, pre.textContent literal, 1 MiB truncation, scroll/Close/focus unchanged.
+- PDF/image/text routing unchanged.
+
+Tests:
+- attachments 6/6: .yaml/.yml/uppercase, empty/octet-stream/common YAML MIME, binary conflict.
+- attachment-viewer 10/10: Korean, BOM, indentation, malformed YAML, literal script text, legacy generic YAML.
+- attachment-activation 2/2: actual filename label click to YAML viewer.
+- yaml-viewer-main 1/1: create map with name.yaml, view, Save As .map, reopen, exact bytes, view again.
+- full tests/engine: 932 tests, 931 passed, 0 failed, 1 skipped, 0 todo.
+- syntax 17/17.
+- served 104 files 200/no-store byte-match.
+
+Native verification:
+- Attempted isolated headless Edge YAML file-input injection; Edge returned zero selected files, so the filename-click YAML viewer was NOT RUN natively.
+- No native YAML screenshot captured.
+- Mock/main-entry tests do not establish native browser file-input behavior.
+
+Limitations:
+- Existing saved maps with a conflicting stored/current classification still require review by design.
+- Malformed YAML is shown as text, not parsed.
+- Native file chooser/attachment viewer check NOT RUN.
+- FakeIndexedDB cross-tab skip retained.

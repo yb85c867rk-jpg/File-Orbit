@@ -1,0 +1,23 @@
+﻿FileOrbit P3 import integration correction r61
+
+Fixed:
+- chooseBackupFile allows ordinary open editor; rejects only applied/saving ownership.
+- Import validates before prompts; actual Upload hidden-input change reaches dirty editor prompt; Continue preserves draft; Discard resumes.
+- saveBeforeReplacement/discardAndContinueReplacement explicitly dispatch backupRequest and never open saved-maps library for backup.
+- installCreatedMap now actually accepts importOperation/silent, uses separate operation matching, suppresses Create Map dialog/status; shared mechanics retained.
+- Pending backup request preserved across Save/Discard; cancel releases registry.
+
+Executed:
+- Desktop/narrow production upload dirty-editor path (actual input change): prompt Continue and Discard.
+- Distinct replacement: source 3 nodes incl Old Only Folder; incoming 2 nodes; after Discard total2, Old Only absent, mapId null dirty; Save gives independent ID; reopening source restores 3 nodes/Old Only.
+- Dirty map Save success before import: total2, mapId null dirty, library not needed.
+- Dirty map Save failure prevents install; Discard then installs.
+- Cancel preserves dirty state; invalid package preserves draft.
+- Full 789/789, P1b 33/33, backup6/6, resources2/2.
+
+Pending/NOT RUN:
+- Candidate preparation/draw/label/hit failure and recovery matrix.
+- Cancel during delayed codec/import; stale pending identity.
+- Exact PDF backup imported then Save/Open/viewer activation (existing PDF viewer tests are non-backup; import coverage uses note.txt plus distinct nodes).
+- Source saved-map byte/content equality beyond node/name membership.
+- Native browser.

@@ -1,0 +1,5 @@
+﻿FileOrbit resize-lifecycle browser verification: NOT RUN.
+No browser executable/automation was available without installing dependencies.
+Node tests use the shared resize action with real model/session/navigator/transition at 1100x473,
+874x622, repeated resize, resize during transition, and failed resize installation.
+Browser-native resize and click verification was not executed.

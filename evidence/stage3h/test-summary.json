@@ -1,0 +1,30 @@
+{
+  "generatedAt": "2026-11-04T05:58:12.413Z",
+  "sources": [
+    {
+      "file": "../p1b.txt",
+      "tests": 69,
+      "passed": 69,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "file": "../remainder-final.txt",
+      "tests": 1195,
+      "passed": 1194,
+      "failed": 0,
+      "skipped": 1
+    }
+  ],
+  "totals": {
+    "tests": 1264,
+    "passed": 1263,
+    "failed": 0,
+    "skipped": 1
+  },
+  "report": {
+    "file": "docs/engine/FILEORBIT-STAGE-3H-TRANSACTIONAL-EDITING.md",
+    "expected": "1,264 tests, 1,263 pass, 1 skip",
+    "matched": true
+  }
+}

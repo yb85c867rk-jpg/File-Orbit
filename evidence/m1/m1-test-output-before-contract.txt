@@ -1,0 +1,21 @@
+﻿✔ legacy reference is byte-identical and exposes math (1.2261ms)
+✔ deterministic complex examples (0.8936ms)
+✔ fixed-seed valid-domain parity: Complex arithmetic against legacy (2.7349ms)
+✔ fixed-seed valid-domain parity: Polar methods against legacy (1.5617ms)
+✔ arithmetic identities (1.1528ms)
+✔ polar/cartesian round trips and periodic angles (1.0881ms)
+✔ Möbius deterministic identities (0.8956ms)
+✔ fixed-seed Möbius parity against legacy (valid interior) (1.7013ms)
+✔ near-boundary Möbius parity and finiteness (0.35ms)
+✔ singular and invalid cases are explicit (0.7133ms)
+✔ intentional validation differences are documented by behavior (0.1838ms)
+✔ legacy Möbius mutation is isolated from M1 (0.383ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 49.7916
+

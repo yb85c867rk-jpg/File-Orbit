@@ -1,0 +1,22 @@
+{
+  "secure": {
+    "url": "http://127.0.0.1:8099/tests/harness/m5-exploration/?r169cap=secure",
+    "secure": true,
+    "subtle": true,
+    "digest": "function",
+    "showSave": "function",
+    "showOpen": "function",
+    "textEncoder": "function",
+    "blob": "function"
+  },
+  "insecure": {
+    "url": "http://192.168.1.162:8108/tests/harness/m5-exploration/?r169cap=lan",
+    "secure": false,
+    "subtle": false,
+    "digest": "undefined",
+    "showSave": "undefined",
+    "showOpen": "undefined",
+    "textEncoder": "function",
+    "blob": "function"
+  }
+}

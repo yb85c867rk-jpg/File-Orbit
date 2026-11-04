@@ -1,0 +1,91 @@
+{
+  "pdfValidation": {
+    "file": "evidence\\native-r121\\r150-fixtures\\report-r150.pdf",
+    "bytes": 1068,
+    "sha256": "d282cf216a332cab9a7f18456450ac6cf26d641f10b48790515bea664f3ef749",
+    "startxref": 845,
+    "pageCount": 2,
+    "pageTexts": [
+      "FILEORBIT PDF PAGE ONE - recognizable synthetic content Alpha page text: 300-node lifecycle preview.",
+      "FILEORBIT PDF PAGE TWO - second page content Beta page text: page navigation target."
+    ],
+    "parser": "independent minimal PDF xref/page/content-stream parser (Python stdlib)"
+  },
+  "externalFallback": {
+    "linkText": "Open PDF in new tab",
+    "target": "_blank",
+    "blobUrl": "blob:http://127.0.0.1:8099/b16cbf06-8bf0-45ee-804c-990e7a66ed23",
+    "openedPdfViewerTarget": "blob:http://127.0.0.1:8099/68e67a04-fc0f-403b-9c94-ca07eb2e36d7",
+    "page1Screenshot": {
+      "path": "evidence/native-r121/r150-fixtures/browser-pdf-viewer.png",
+      "sha256": "9cc5b5574060602c783e43b42d47885dfab0e1625eed35688d0583fff4eb5a88",
+      "observed": "FILEORBIT PDF PAGE ONE text; toolbar 1 / 2; page 2 thumbnail"
+    },
+    "page2Screenshot": {
+      "path": "evidence/native-r121/r150-fixtures/browser-pdf-page2.png",
+      "sha256": "d5fc1f0fee14c9ff89eab07ce7d3e27fb508db07bd79ef1c2ca4db25e429b9ac",
+      "observed": "FILEORBIT PDF PAGE TWO text; toolbar 2 / 2"
+    },
+    "pageNavigation": "clicked page 2 thumbnail; viewer changed from 1/2 to 2/2"
+  },
+  "inApp": {
+    "shellCycles": [
+      {
+        "hasBackdrop": true,
+        "hasIframe": true,
+        "src": true,
+        "external": {
+          "text": "Open PDF in new tab",
+          "href": "blob:http://127.0.0.1:8099/b16cbf06-8bf0-45ee-804c-990e7a66ed23",
+          "target": "_blank"
+        },
+        "leftOver": false
+      },
+      {
+        "hasBackdrop": true,
+        "hasIframe": true,
+        "src": true,
+        "external": {
+          "text": "Open PDF in new tab",
+          "href": "blob:http://127.0.0.1:8099/cb62d8d7-5d94-44bf-84cd-10d39c1639bb",
+          "target": "_blank"
+        },
+        "leftOver": false
+      },
+      {
+        "hasBackdrop": true,
+        "hasIframe": true,
+        "src": true,
+        "external": {
+          "text": "Open PDF in new tab",
+          "href": "blob:http://127.0.0.1:8099/56e27a81-d669-40c2-b0e8-9993f1ec6193",
+          "target": "_blank"
+        },
+        "leftOver": false
+      }
+    ],
+    "iframeContent": "PASS",
+    "page1Screenshot": {
+      "path": "evidence/native-r121/r150-fixtures/browser-in-app-pdf.png",
+      "sha256": "46655530bfb6abfd50d7014a238c41848cf15455c8af2d240d0496a1c6d418b7",
+      "observed": "in-app viewer rendered FILEORBIT PDF PAGE ONE; toolbar 1 / 2"
+    },
+    "page2Screenshot": {
+      "path": "evidence/native-r121/r150-fixtures/browser-in-app-pdf-page2.png",
+      "sha256": "230e5165b219d9481fe8de9000a8fcdc17380d4b9f1e07d83d5a957067651956",
+      "observed": "in-app viewer changed to 2 / 2 and rendered FILEORBIT PDF PAGE TWO after thumbnail click"
+    },
+    "pageNavigation": "PASS"
+  },
+  "image": {
+    "complete": true,
+    "naturalWidth": 1,
+    "naturalHeight": 1,
+    "src": "blob:http://127.0.0.1:8099/f11c28d0-4c4d-401a-b55d-6cbcf1ce874d"
+  },
+  "text": {
+    "notes.md": "# Field Notes\n\n한글 문서입니다.\n\n- one\n- two\n",
+    "plain.txt": "Plain text preview\n한글 줄\n"
+  },
+  "capturedAt": "2026-11-02T00:47:02.781Z"
+}
