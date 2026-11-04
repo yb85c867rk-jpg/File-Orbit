@@ -55,6 +55,7 @@ export function buildTree(shape, total, attachmentIds = {}) {
   while (countNodes(root) > total) { if (!removeGeneratedFile(root)) throw new Error(`fixture count ${countNodes(root)} != ${total}`); }
   while (countNodes(root) < total) { root.children.push(file(`채움-${sequence + 1}.txt`)); sequence += 1; }
   if (countNodes(root) !== total) throw new Error(`fixture count ${countNodes(root)} != ${total}`);
+  if (attachmentIds.text) findByName(root, '샘플-텍스트.txt').data.attachmentId = attachmentIds.text;
   if (attachmentIds.image) findByName(root, '샘플-이미지.png').data.attachmentId = attachmentIds.image;
   if (attachmentIds.pdf) findByName(root, '샘플-PDF.pdf').data.attachmentId = attachmentIds.pdf;
   if (attachmentIds.empty) findByName(root, '빈-파일.txt').data.attachmentId = attachmentIds.empty;
