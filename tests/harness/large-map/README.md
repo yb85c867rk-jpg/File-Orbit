@@ -1,83 +1,55 @@
-﻿# FileOrbit large-map prototype (test entry)
+﻿# FileOrbit 그래프 탐색 프로토타입 (Roadmap B)
 
-This is a synthetic large-map test experience, not production paid activation.
+합성 테스트 자료이며 유료 기능이 아닙니다. 루트는 실제 20개 카테고리 샘플의 `map-input`을 표시 루트로 사용합니다. 래퍼 폴더는 문서에 보존됩니다.
 
-## Launch (Windows PowerShell)
+## 실행
 
 ```powershell
 cd C:\Users\openw\Documents\Projects\FileOrbit-git
-python -m http.server 8162 --bind 127.0.0.1 --directory .
+python -m http.server 8163 --bind 127.0.0.1 --directory .
 ```
 
-Chrome or Edge:
+Chrome/Edge: `http://127.0.0.1:8163/tests/harness/large-map/index.html`
 
-`http://127.0.0.1:8162/tests/harness/large-map/index.html`
+## 그래프 중심 탐색
 
-Do not use GitHub Pages or external hosting.
+- 초기: 표시 루트 + 20개 1차 카테고리.
+- 폴더 클릭: 해당 폴더를 현재 초점으로 만들고 즉시 하위 폴더/파일을 표시. 이전 가지는 숨김.
+- 하위 폴더 클릭: 같은 방식으로 다음 단계 진행.
+- 파일 클릭: 폴더 확장이 아니라 선택 + 미리보기만.
+- 그래프가 주 인터페이스이며 목록은 없음. 브레드크럼/뒤로/루트로 보조.
+- 숨겨진 노드는 문서에 그대로 남고 직렬화/삭제되지 않음.
 
-## Working controls
+## 카메라
 
-- Mount/unmount fixture; mount replaces and disposes the previous runtime.
-- List, graph node/label, and breadcrumb navigation.
-- Folder/cluster pagination via Prev/Next.
-- Search with separate Previous/Next/Clear controls.
-- Preview selected file: valid synthetic text, PNG, PDF and zero-byte test attachment.
-- Graph clicks use the renderer adapter’s label hit test and scene hit test.
+- 마우스 휠: 포인터 기준 확대/축소.
+- 폴더 클릭: 새 장면에 맞춰 자동 확대/축소 애니메이션.
+- `+`, `−`, `Fit`.
+- 배경 드래그: 이동. 클릭과 드래그 구분.
+- 자동 이동 중 휠/드래그는 애니메이션 취소.
+- 확대 시 라벨 표시가 늘어나며 선택/검색 대상은 유지.
 
-## Fixture matrix
+## 샘플과 실제 수치
 
-- Shapes: flat, wide, balanced, mixed, deep.
-- Counts: 300 total including root (free context) and 1,000 total including root (explicit internal paid-test context).
-- Long names, Korean names, duplicate `보고서.txt` in separate folders, empty folder, empty file, text/image/PDF sample attachments.
-- Attachment limits remain 20 MiB/file and 100 MiB/map.
+- `20개 카테고리 · depth 3–7`: 전체 246노드, `map-input` 표시 루트 241노드, 20개 카테고리, 첨부 122개. 실제 `.orbit`에서 파생.
+- synthetic flat/wide/balanced/mixed/deep 300/1,000 스트레스 샘플 유지.
+- 1,000 노드는 내부 테스트 문맥이며 유료 활성화가 아님.
 
-## First user scenarios
+## 검색/미리보기
 
-1. Flat 300: find `샘플-텍스트.txt`, preview it.
-2. Balanced 300: navigate groups/pages, return to root.
-3. Mixed 300: search `보고서`, distinguish same-named files by path, clear search.
-4. Deep 300: navigate depth and return; repeat.
-5. Wide 300: page through groups and select a file.
+- 검색 결과 이전/다음 페이지, 검색 지우기.
+- 결과 클릭 시 숨은 가지로 이동하고 대상 선택.
+- TXT/MD/PDF/PNG 유효 미리보기. PDF는 유효한 최소 PDF, PNG는 유효한 PNG.
+- 미리보기 URL은 DOM 제거 후 revoke.
 
-Then optionally:
-6. Flat 1,000.
-7. Deep 1,000.
-8. Mixed 1,000 with search and preview.
-9. Balanced 1,000.
-10. Wide 1,000, repeating navigation/search.
+## 검증
 
-## User checklist
-
-- Identify the current folder and return to root.
-- Navigate groups/pages and find a specified file.
-- Search, reveal a result page later than page 1, and clear search.
-- Distinguish same-named files by location.
-- Understand selection and search-path highlighting.
-- Preview the valid PNG and PDF samples; confirm image visibility/readable PDF page.
-- Click graph nodes/labels and confirm list/breadcrumb/details stay synchronized.
-- Repeat navigation without stale selection or lost context.
-- Mount fixture B after searching/previewing A; confirm no stale results/preview remains.
-- Unmount and confirm page/preview/search controls are disabled.
-
-## Automated browser checks
-
-`node .large-map-corrected.mjs` equivalent is committed as `tests/harness/large-map/browser-check.mjs` (requires local server and Edge). Latest evidence: `evidence/large-map/corrected-execution.json`.
-
-Checked:
-- flat 300 model count 300;
-- search 6 pages, page 2 navigation, result reveal, clear;
-- PNG image naturalWidth > 0;
-- PDF bytes start `%PDF` and embed exists;
-- fixture replacement clears search/preview/details, one stage;
-- graph cluster click expands;
-- unmount disables controls, clears preview, zero stages;
-- deep 1,000 count 1000, 20 search pages, page 2 shows results;
-- browser errors 0.
-
-## Limitations
-
-- Prototype test entry; no production Save/Open, writable handles, editing or paid activation.
-- No native OS picker/disk acceptance.
-- 1,000-node context is internally issued for this test only.
-- Folder Upload/cloud/Tauri/enterprise are outside this delivery.
-- Automated checks are not human usability acceptance; human feedback pending.
+- Edge 실행: `evidence/large-map/graph-execution.json`, `graph-depth.json`.
+- 20개 카테고리 초기 21개 장면 노드.
+- depth 3/7 그래프 전용 클릭, 브레드크럼/뒤로/루트로 확인.
+- 폴더 클릭 자동 zoom-in(0.68→1.125), 뒤로 시 복원.
+- 휠 확대, 배경 팬, 파일 그래프 클릭, PNG/PDF 미리보기.
+- 검색 20페이지(1,000 샘플)와 2페이지 이동, Clear.
+- 1,000 노드 실제 1000, 한 stage, unmount 시 tree null/컨트롤 비활성.
+- 자동 검사는 기능 확인이며 사람 사용성 승인 아님.
+- Native picker/disk acceptance NOT RUN.
