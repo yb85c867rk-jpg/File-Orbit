@@ -1,0 +1,7 @@
+﻿Edge smoke (local test entry)
+- flat 300: mounted, model count 300, 8 root items, status free context.
+- search "보고서": 2 results, duplicate filenames distinguished by path.
+- deep 1000: mounted, model count 1000, one LOD stage, internal paid-test context.
+- browser errors: 0.
+- Screenshots: flat-300.png, deep-1000.png.
+This is technical smoke evidence only, not human usability acceptance and not native picker/disk acceptance.
