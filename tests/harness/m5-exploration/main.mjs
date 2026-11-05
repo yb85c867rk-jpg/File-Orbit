@@ -1317,7 +1317,7 @@ function installFrame({ operation, fit, entry, camera, framing }) {
   const env = candidateEnv || { graph, baseLayout, model };
   const prepared = stageExplorationFrame({
     graph: env.graph, baseLayout: env.baseLayout, view: env.model.view(), viewport: viewport(), baseRadiusCss: baseRadius(),
-    fit, entry, camera, framing, cameraLimits: EXPERIMENTAL_CAMERA_LIMITS, presentation: EXPLORATION_PRESENTATION,
+    fit, entry, camera, framing, fitSubtree: hypertreeComparisonMode, cameraLimits: EXPERIMENTAL_CAMERA_LIMITS, presentation: EXPLORATION_PRESENTATION,
     adapters: {
       draw: (scene) => { frameBoundary(operation, 'draw'); drawCurrentGraphScene(scene, { selectedId: env.model.selectedId, sourceGraph: env.graph }); },
       labels: (scene) => {
@@ -1461,6 +1461,7 @@ function createNavigator() {
     viewport: viewport(),
     baseRadiusCss: baseRadius(),
     cameraLimits: EXPERIMENTAL_CAMERA_LIMITS,
+    fitSubtree: hypertreeComparisonMode,
     presentation: EXPLORATION_PRESENTATION,
     duration: EXPLORATION_TRANSITION_DURATION_MS,
     reducedMotion: typeof window.matchMedia === 'function' && window.matchMedia('(prefers-reduced-motion: reduce)').matches,
@@ -4713,6 +4714,8 @@ startEmptyState();
 void startRecoveryDiscovery();
 syncPersistenceControls();
 syncAutomaticSaveFeedback();
+
+
 
 
 

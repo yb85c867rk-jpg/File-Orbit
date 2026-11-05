@@ -1,4 +1,4 @@
-﻿import { applyFixedGlyphPolicy } from '../layout/index.js';
+import { applyFixedGlyphPolicy } from '../layout/index.js';
 import { createProjection, prepareGraphScene } from '../render/index.js';
 import { createHitSnapshot } from '../interaction/index.js';
 import { applyCameraToScene, createCamera, normalizeCameraLimits } from '../navigation/index.js';
@@ -21,6 +21,7 @@ export function prepareExplorationFrame({
   framing = 'manual',
   cameraLimits,
   padding = 24,
+  fitSubtree = false,
   focusedStaged = null,
   presentation = undefined,
   nodeOpacity = undefined,
@@ -40,8 +41,9 @@ export function prepareExplorationFrame({
   let nextCamera = camera;
   let nextFraming = framing;
   let fitInfo = null;
+  const fitIds = fitSubtree && view.focusedFolderId !== view.structuralRootId ? new Set([...view.ancestorIds, ...view.descendantIds]) : null;
   if (fit) {
-    fitInfo = centeredFit(fitBase, view, viewport, padding, cameraLimits);
+    fitInfo = centeredFit(fitBase, view, viewport, padding, cameraLimits, fitIds);
     nextCamera = fitInfo.camera;
     nextFraming = 'fit';
   } else if (entry?.camera && entry.framingMode === 'manual') {
@@ -53,19 +55,21 @@ export function prepareExplorationFrame({
   const finalScene = applyFixedGlyphPolicy(cameraScene, { radii: resolvedPresentation.radii, styles: resolvedPresentation.styles });
   const focused = finalScene.nodes.get(view.focusedFolderId);
   const center = { x: viewport.width / 2, y: viewport.height / 2 };
-  const centerError = focused ? Math.hypot(focused.center.x - center.x, focused.center.y - center.y) : null;
-  const containedCount = [...finalScene.nodes.values()].filter((node) => withinPadding(node, viewport, padding, CONTAINMENT_TOLERANCE_CSS)).length;
+  const centerError = fitIds ? null : (focused ? Math.hypot(focused.center.x - center.x, focused.center.y - center.y) : null);
+  const containedCount = [...finalScene.nodes.values()].filter((node) => (!fitIds || fitIds.has(node.id)) && withinPadding(node, viewport, padding, CONTAINMENT_TOLERANCE_CSS)).length;
+  const containedTotal = fitIds ? fitIds.size : finalScene.nodes.size;
   const containment = {
-    contained: containedCount === finalScene.nodes.size,
+    contained: containedCount === containedTotal,
     containedCount,
-    totalCount: finalScene.nodes.size,
+    totalCount: containedTotal,
+    scope: fitIds ? 'active-branch' : 'all-visible',
     centeredId: view.focusedFolderId,
     centerError,
     centerToleranceCss: CENTER_TOLERANCE_CSS,
     paddingToleranceCss: CONTAINMENT_TOLERANCE_CSS
   };
-  if (fit && (!containment.contained || centerError > containment.centerToleranceCss)) {
-    throw new Error(`centered-fit-infeasible: contained ${containedCount}/${finalScene.nodes.size}, center ${centerError}`);
+  if (fit && (!containment.contained || (!fitIds && centerError > containment.centerToleranceCss))) {
+    throw new Error(`centered-fit-infeasible: contained ${containedCount}/${containedTotal}, center ${centerError}`);
   }
   const hit = createHitSnapshot(finalScene);
   return { filtered, projection, baseScene: fitBase, scene: finalScene, camera: nextCamera, framing: nextFraming, hit, fit, fitInfo, containment };
@@ -82,33 +86,45 @@ export function stageExplorationFrame(options) {
   adapters.installHit(prepared.hit);
   return prepared;
 }
-function centeredFit(scene, view, viewport, padding, cameraLimits) {
+function centeredFit(scene, view, viewport, padding, cameraLimits, fitIds = null) {
   const limits = normalizeCameraLimits(cameraLimits);
   const halfW = viewport.width / 2 - padding;
   const halfH = viewport.height / 2 - padding;
   if (halfW <= 0 || halfH <= 0) throw new Error('centered-fit-infeasible: viewport too small');
-  let zoom = limits.maxZoom;
   const cx = viewport.width / 2;
   const cy = viewport.height / 2;
-  for (const node of scene.nodes.values()) {
-    if (node.radius > halfW || node.radius > halfH) throw new Error('centered-fit-infeasible: node exceeds viewport');
-    const dx = Math.abs(node.center.x - cx);
-    const dy = Math.abs(node.center.y - cy);
-    if (dx > 0) zoom = Math.min(zoom, (halfW - node.radius) / dx);
-    if (dy > 0) zoom = Math.min(zoom, (halfH - node.radius) / dy);
+  let zoom = limits.maxZoom;
+  let panX = 0;
+  let panY = 0;
+  if (fitIds && fitIds.size > 0) {
+    let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+    for (const node of scene.nodes.values()) {
+      if (!fitIds.has(node.id)) continue;
+      minX = Math.min(minX, node.center.x - node.radius);
+      maxX = Math.max(maxX, node.center.x + node.radius);
+      minY = Math.min(minY, node.center.y - node.radius);
+      maxY = Math.max(maxY, node.center.y + node.radius);
+    }
+    if (!Number.isFinite(minX) || maxX <= minX || maxY <= minY) throw new Error('centered-fit-infeasible: active branch bounds');
+    const spanX = (maxX - minX) / 2;
+    const spanY = (maxY - minY) / 2;
+    zoom = Math.min(limits.maxZoom, (halfW - 16) / spanX, (halfH - 16) / spanY);
+    const bx = (minX + maxX) / 2;
+    const by = (minY + maxY) / 2;
+    panX = -zoom * (bx - cx);
+    panY = -zoom * (by - cy);
+  } else {
+    for (const node of scene.nodes.values()) {
+      if (node.radius > halfW || node.radius > halfH) throw new Error('centered-fit-infeasible: node exceeds viewport');
+      const dx = Math.abs(node.center.x - cx);
+      const dy = Math.abs(node.center.y - cy);
+      if (dx > 0) zoom = Math.min(zoom, (halfW - node.radius) / dx);
+      if (dy > 0) zoom = Math.min(zoom, (halfH - node.radius) / dy);
+    }
   }
-  if (!Number.isFinite(zoom) || zoom < limits.minZoom) {
-    throw new Error(`centered-fit-infeasible: required zoom ${zoom}`);
-  }
-  return {
-    camera: { zoom, panX: 0, panY: 0 },
-    zoom,
-    focusedFolderId: view.focusedFolderId,
-    limits: limits.minZoom,
-    maxZoom: limits.maxZoom
-  };
+  if (!Number.isFinite(zoom) || zoom < limits.minZoom) throw new Error('centered-fit-infeasible: required zoom ' + zoom);
+  return { camera: { zoom, panX, panY }, zoom, focusedFolderId: view.focusedFolderId, limits: limits.minZoom, maxZoom: limits.maxZoom, scope: fitIds ? 'active-branch' : 'all-visible' };
 }
-
 export function withinPadding(node, viewport, padding, tolerance = CONTAINMENT_TOLERANCE_CSS) {
   return node.center.x - node.radius >= padding - tolerance
     && node.center.y - node.radius >= padding - tolerance

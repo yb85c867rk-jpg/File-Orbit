@@ -15,6 +15,7 @@ export function createExplorationNavigator({
   viewport,
   baseRadiusCss,
   cameraLimits,
+  fitSubtree = false,
   presentation = undefined,
   duration = 780,
   reducedMotion = false,
@@ -52,7 +53,7 @@ export function createExplorationNavigator({
       try {
         targetPrepared = prepare({
           graph, baseLayout, view: targetView, viewport, baseRadiusCss,
-          fit: true, camera: null, cameraLimits, presentation
+          fit: true, fitSubtree, camera: null, cameraLimits, presentation
         });
       } catch (cause) {
         return { ok: false, reason: 'target-fit-failed', id, error: String(cause?.message || cause) };
