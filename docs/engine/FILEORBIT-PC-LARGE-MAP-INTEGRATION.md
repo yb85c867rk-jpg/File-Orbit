@@ -288,3 +288,38 @@ Executed comparison results:
   - 61 layout candidates attempted;
 - current 300 document preserved: count 300, focus root, name `FileOrbit-300.orbit`;
 - renderer badges distinct; initial focus root matches.
+
+## Existing-Hypertree 1,000-node capacity experiment (evaluation branch)
+
+Branch: `eval/hypertree-1000-capacity`.
+
+Launch experiment:
+
+`http://127.0.0.1:8164/tests/harness/m5-exploration/index.html?paidTest=1&hypertreeCompare=1&hypertreeProjectionRadius=480`
+
+The base/free-app path receives the same fixture and keeps the full tree; no custom radial presentation is mounted. `hypertreeProjectionRadius=480` changes the existing layout's reference projection radius only, not the workspace scale maximum or admission.
+
+Trace at baseline (`R240`):
+
+- root has a `2π` angle span and allocates `cat-1` **0.320349** of it;
+- `cat-1` immediate children require **0.561221** at workspaceScale 16;
+- required child arc uses `2 * asin((2*glyphRadius + clearance) / (2 * rho * referenceProjectionRadius * workspaceScale))`;
+- branch/demand changes (`demandCompression=1`, `branchWeight=10`, `bandCount=4`, `radialFlex=1`) remained infeasible at `cat-1`; the shortfall is structural, not just a bad demand weight;
+- `referenceProjectionRadiusCss=480` makes staging feasible (scale 14.25 in the offline sweep);
+- full pairwise diagnostics at 1,000 nodes are enabled in comparison mode rather than bypassing validation.
+
+Measured R480 ordinary-app experiment:
+
+- layout-to-count-1,000: **3.64 s**;
+- authoritative count: **1,000**;
+- focus after clicking `12_고객지원`: **`cat-12`**;
+- click-to-focus measurement: **934 ms** (poll interval included);
+- surrounding node displacement: **377.5 px**;
+- camera zoom **0.0890 → 0.1216**;
+- pan changes panX/panY;
+- wheel test did not change camera zoom in this run — NOT VERIFIED;
+- focused label metrics: **9 visible / 71 candidates**; 31 labels budget-excluded; **READABILITY FAIL**;
+- search found 2 `same-name.txt` cards but the first-card activation left `cat-12` selected — search reveal NOT VERIFIED;
+- no browser errors.
+
+Conclusion: the existing layout can be made to load the full 1,000-node hierarchical document by the bounded R480 projection experiment, but the resulting focused view is not sufficiently readable and the existing label budget suppresses most filenames. This is not accepted as successful 1,000-node navigation; it is a loadable experimental path with unresolved readability.
