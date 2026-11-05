@@ -60,13 +60,13 @@ After paid completion and desktop packaging, evaluate collaboration/enterprise r
 - Save As remains the explicit alternative-name/location flow.
 - This supersedes the earlier proposed direct-write sidebar Save behavior.
 
-## Deferred Library navigation (approved, not implemented)
+## Deferred Map Library navigation (approved, not implemented)
 
-- Rename Open Orbit to Library.
+- Rename Open Orbit to Map Library.
 - Remove Orbit File / Orbit Folder submenu and standalone file-picker entry.
-- Move Refresh and the existing .orbit list under expandable Library.
+- Move Refresh and the existing .orbit list under expandable Map Library.
 - Clicking a listed file still opens it through the protected pipeline.
-- Unconfigured Library offers folder selection; configured Library permits changing its folder.
+- Unconfigured Map Library offers folder selection; configured Map Library permits changing its folder.
 - Preserve unsaved decisions when switching documents.
 
 ## Deferred Create Map dialog (approved, not implemented)
@@ -75,9 +75,10 @@ After paid completion and desktop packaging, evaluate collaboration/enterprise r
 - Remove individual file selection from the creation dialog.
 - No source folder selected means an empty map.
 - Individual files can be added later through the applicable root/folder context-menu flow; bulk Folder Upload remains the planned paid feature.
-- Library Setting: selected directory and Choose Directory.
+- Map Library Setting: selected directory and Choose Directory.
 - Use the native directory picker; where supported, users may create a new folder there. Otherwise explain creating it in File Explorer first.
-- Picker cancellation preserves form inputs and existing Library setting.
+- Picker cancellation preserves form inputs and existing Map Library setting.
 - Directory selection alone does not create an .orbit file.
 - Cancel / Create Map remain at the bottom.
 - Prevent silent filename collisions and publish the new map/list entry only after successful creation/save.
+

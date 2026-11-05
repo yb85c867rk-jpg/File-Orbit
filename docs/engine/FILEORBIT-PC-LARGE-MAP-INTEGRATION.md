@@ -177,3 +177,21 @@ Save As cancellation now uses the existing `__M5_DISABLE_AUTOMATIC_SAVE__` test 
 - handle object and dirty state are unchanged.
 
 Separate ordinary-Undo-with-automatic-save-enabled behavior was attempted but the automatic save did not make the state clean within the observation window; that separate assertion is NOT RUN.
+
+## Automatic Undo/Redo saving
+
+Fresh session, automatic saving enabled from startup, deterministic writable handle:
+
+- editor metadata edit wrote with write count 1, savedRevision 1;
+- toolbar Undo wrote undone content with write count 2, savedRevision 2;
+- decoded written bytes contained `중첩-문서.txt`;
+- dirty became false only after the write, with no automatic-save failure/block;
+- toolbar Redo wrote edited content with write count 3, savedRevision 3;
+- decoded written bytes contained `Auto-Save-1000.txt`;
+- dirty false after write completion.
+
+### Cause of the earlier dirty observation
+
+The earlier Save As cancellation test left `automaticSaveBlocked=true` with no failure object. The document had `dataRevision=3`, `savedRevision=1`, dirty true, and writes remained 1. Removing only the `__M5_DISABLE_AUTOMATIC_SAVE__` flag does not clear `automaticSaveBlocked`, so Redo remained dirty.
+
+This is intentional cancellation protection: automatic saving does not resume merely because a test flag is removed. Recovery requires an explicit manual Save/Save As, which clears the block at the start of `saveCurrentDocument`, or a deliberate retry/reload. No application defect was found; the earlier re-enabled test was invalid because it bypassed the required recovery action.

@@ -1,0 +1,47 @@
+﻿import assert from 'node:assert/strict';
+import { spawn } from 'node:child_process';
+import { decodeBackup } from '../../../../src/engine/hypertree/persistence/backup.js';
+import { createInternalPolicyContext } from '../../../../src/engine/hypertree/edition/index.js';
+const EDGE='C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe'; const PORT=9386;
+const browser=spawn(EDGE,['--headless=new',`--remote-debugging-port=${PORT}`,`--user-data-dir=${process.cwd()}/.auto-save-check-profile`,'--no-first-run','--disable-gpu','about:blank'],{stdio:'ignore',windowsHide:true});
+const sleep=(ms)=>new Promise(r=>setTimeout(r,ms)); let ws;
+try {
+  const wait=async(fn,ms=30000)=>{const end=Date.now()+ms;while(Date.now()<end){try{const v=await fn();if(v)return v}catch{}await sleep(100)}throw new Error('timeout')};
+  const target=await wait(async()=>{await(await fetch(`http://127.0.0.1:${PORT}/json/version`)).json();return(await(await fetch(`http://127.0.0.1:${PORT}/json/new?about:blank`,{method:'PUT'})).json())});
+  ws=new WebSocket(target.webSocketDebuggerUrl); await new Promise((r,j)=>{ws.onopen=r;ws.onerror=j});
+  let id=0;const pending=new Map();const browserErrors=[];
+  ws.onmessage=(event)=>{const msg=JSON.parse(event.data);if(msg.id&&pending.has(msg.id)){const p=pending.get(msg.id);pending.delete(msg.id);msg.error?p.reject(msg.error):p.resolve(msg.result)}if(msg.method==='Runtime.exceptionThrown')browserErrors.push(msg.params?.exceptionDetails?.exception?.description||msg.params?.exceptionDetails?.text)};
+  const send=(method,params={})=>new Promise((resolve,reject)=>{const n=++id;pending.set(n,{resolve,reject});ws.send(JSON.stringify({id:n,method,params}))});
+  const ev=async(expression)=>{const r=await send('Runtime.evaluate',{expression,returnByValue:true,awaitPromise:true});if(r.exceptionDetails)throw new Error(r.exceptionDetails.exception?.description||r.exceptionDetails.text);return r.result?.value};
+  const click=async(x,y,button='left')=>{await send('Input.dispatchMouseEvent',{type:'mousePressed',x,y,button,clickCount:1});await send('Input.dispatchMouseEvent',{type:'mouseReleased',x,y,button,clickCount:1});await sleep(400)};
+  await send('Page.enable');await send('Runtime.enable');await send('Network.enable');await send('Network.setCacheDisabled',{cacheDisabled:true});
+  await send('Page.addScriptToEvaluateOnNewDocument',{source:'globalThis.__M5_LARGE_MAP_TEST_HOOK__=true;globalThis.__M5_P1B_TEST_HOOKS__=true;'});
+  await send('Emulation.setDeviceMetricsOverride',{width:1600,height:1000,deviceScaleFactor:1,mobile:false});
+  await send('Page.navigate',{url:'http://127.0.0.1:8164/tests/harness/m5-exploration/index.html?paidTest=1'});
+  await wait(()=>ev('typeof __M5_LARGE_MAP_TEST__==="object"&&!!__M5_P1B_TEST__'));
+  const setup=await ev(`(async()=>{const bytes=new Uint8Array(await (await (await fetch('/tests/fixtures/large-map/FileOrbit-1000.orbit')).blob()).arrayBuffer());globalThis.__HB__=bytes;globalThis.__WRITES__=0;const handle={kind:'file',name:'auto-save.orbit',queryPermission:async()=> 'granted',requestPermission:async()=> 'granted',getFile:async()=>new File([globalThis.__HB__],'auto-save.orbit'),createWritable:async()=>({write:async(b)=>{globalThis.__HB__=new Uint8Array(await b.arrayBuffer());globalThis.__WRITES__+=1},close:async()=>{},abort:async()=>{}})};globalThis.__HANDLE__=handle;const r=await __M5_LARGE_MAP_TEST__.importWritable(new File([bytes],'FileOrbit-1000.orbit'),handle);return {ok:r.ok,size:bytes.length}})()`);
+  assert.equal(setup.ok,true,'writable import must succeed'); await wait(()=>ev('window.__M5_LARGE_MAP_VIEW__')); await sleep(400);
+  await ev('globalThis.__find=id=>{const w=n=>{if(n.id===id)return n;for(const c of n.children||[]){const r=w(c);if(r)return r}return null};return w(__M5_P1B_TEST__.treeSnapshot())}');
+  const cat=await ev(`(()=>{const v=__M5_LARGE_MAP_VIEW__,n=v.scene().find(x=>x.id==='cat-1'),p=v.screenOf(n),r=document.querySelector('[data-large-map] canvas').getBoundingClientRect();return {x:r.left+p.x,y:r.top+p.y}})()`); await click(cat.x,cat.y);
+  const file=await ev(`(()=>{const v=__M5_LARGE_MAP_VIEW__,n=v.scene().find(x=>x.kind==='file'&&x.active),p=v.screenOf(n),r=document.querySelector('[data-large-map] canvas').getBoundingClientRect();return {x:r.left+p.x,y:r.top+p.y}})()`); await click(file.x,file.y,'right'); await sleep(250);
+  await ev(`[...document.querySelectorAll('[role=menuitem]')].find(b=>/Edit Data/.test(b.textContent))?.click();true`); await wait(()=>ev(`!document.querySelector('#editor-form').hidden`));
+  const targetId=await ev(`(()=>{const n=document.querySelector('#editor-name');n.value='Auto-Save-1000.txt';n.dispatchEvent(new Event('input',{bubbles:true}));return __M5_P1B_TEST__.editorState().targetId})()`);
+  await ev(`document.querySelector('#editor-form button[type=submit]').click();true`); await sleep(1800);
+  const saved=await ev(`({writes:__WRITES__,name:__find(${JSON.stringify(targetId)})?.name,dirty:__M5_P1B_TEST__.snapshot().dirty,savedRevision:__M5_P1B_TEST__.documentState().savedRevision,dataRevision:__M5_P1B_TEST__.snapshot().dataRevision,auto:__M5_P1B_TEST__.automaticSaveState()})`);
+  assert.equal(saved.name,'Auto-Save-1000.txt','editor save must apply'); const writesBeforeUndo=saved.writes;
+  await ev(`document.querySelector('#undo-history').click();true`);
+  await wait(()=>ev(`__WRITES__>${writesBeforeUndo} && __M5_P1B_TEST__.snapshot().dirty===false`),15000);
+  const undo=await ev(`({writes:__WRITES__,name:__find(${JSON.stringify(targetId)})?.name,dirty:__M5_P1B_TEST__.snapshot().dirty,savedRevision:__M5_P1B_TEST__.documentState().savedRevision,dataRevision:__M5_P1B_TEST__.snapshot().dataRevision,busy:__M5_P1B_TEST__.snapshot().busy,auto:__M5_P1B_TEST__.automaticSaveState(),bytes:btoa(String.fromCharCode(...globalThis.__HB__))})`);
+  const undone=await decodeBackup(new Blob([Uint8Array.from(Buffer.from(undo.bytes,'base64'))]),{policyContext:createInternalPolicyContext({edition:'paid'})});
+  const find=(n,nodeId)=>n.id===nodeId?n:(n.children||[]).map(c=>find(c,nodeId)).find(Boolean);
+  const undoneNode=find(undone.tree,targetId); assert.equal(undoneNode.name,'중첩-문서.txt','Undo written bytes must contain undone name'); assert.equal(undo.name,'중첩-문서.txt','Undo state must show undone name'); assert.equal(undo.dirty,false,'Undo must be clean after successful write');
+  const writesBeforeRedo=undo.writes;
+  await ev(`document.querySelector('#redo-history').click();true`);
+  await wait(()=>ev(`__WRITES__>${writesBeforeRedo} && __M5_P1B_TEST__.snapshot().dirty===false`),15000);
+  const redo=await ev(`({writes:__WRITES__,name:__find(${JSON.stringify(targetId)})?.name,dirty:__M5_P1B_TEST__.snapshot().dirty,savedRevision:__M5_P1B_TEST__.documentState().savedRevision,dataRevision:__M5_P1B_TEST__.snapshot().dataRevision,busy:__M5_P1B_TEST__.snapshot().busy,auto:__M5_P1B_TEST__.automaticSaveState(),bytes:btoa(String.fromCharCode(...globalThis.__HB__))})`);
+  const redone=await decodeBackup(new Blob([Uint8Array.from(Buffer.from(redo.bytes,'base64'))]),{policyContext:createInternalPolicyContext({edition:'paid'})});
+  const redoneNode=find(redone.tree,targetId); assert.equal(redoneNode.name,'Auto-Save-1000.txt','Redo written bytes must contain edited name'); assert.equal(redo.name,'Auto-Save-1000.txt','Redo state must show edited name'); assert.equal(redo.dirty,false,'Redo must be clean after successful write');
+  assert.deepEqual(browserErrors,[],'no browser errors expected');
+  const { bytes: _undoBytes, ...undoOutput }=undo; const { bytes: _redoBytes, ...redoOutput }=redo; console.log(JSON.stringify({setup,saved,undo:undoOutput,redo:redoOutput,browserErrors},null,2));
+} finally { try{ws?.close()}catch{} try{process.kill(browser.pid)}catch{} }
+

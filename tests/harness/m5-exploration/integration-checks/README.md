@@ -26,3 +26,6 @@ These use test hooks/picker stubs, not native OS acceptance.
 
 
 - Per-node attachment bindings are checked using the node's attachment reference; the 1,000 fixture has two same-named files with different bytes.
+
+- `automatic-save-check.mjs`: fresh writable session; actual Undo/Redo; waits for write count and revision to settle; decodes bytes to verify undone/redone content. Evidence: `integration-automatic-save.json`.
+- `automatic-save-blocked-check.mjs`: proves manual Save As cancellation leaves automatic saving blocked with dirty state and no write resumption until explicit recovery. Evidence: `integration-automatic-save-blocked.json`.
