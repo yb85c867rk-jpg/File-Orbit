@@ -1,0 +1,81 @@
+﻿# FileOrbit PC large-map integration candidate
+
+Integration branch `integration/pc-large-map`, derived from work tip `bbf1ff5`. Baseline source remains `fileorbit-stage3j2a-manual-save-r169.zip` (SHA-256 `B3D0D2C2097247E46E1A40F9E668DDF8C448FDB2FC3D8BC36C939621E48CD997`).
+
+## Ownership
+
+The ordinary PC application remains authoritative for the tree, attachment registry, revisions, history, document identity, writable handle, saved baseline, replacement guards, Save/Save As and conflict/recovery.
+
+The integrated large-map presentation is a presentation layer only. It reads the app's live `tree`, calls ordinary details/preview/editor actions, and never creates a second editable document or serializer. Save always serializes the authoritative complete tree.
+
+## Presentation
+
+- Node count is counted from the complete authoritative tree, including root.
+- `<=300`: existing PC renderer and full-map interactions.
+- `>300`: integrated overview canvas with 20 first-level category labels, active-subtree foreground, dimmed overview, wheel/pan/+/−/Fit, Back/Root/breadcrumb.
+- Free admission: 300. `?paidTest=1` explicitly issues the internal paid-test policy context up to 1,000. It is never inferred from file size or count.
+
+## Launch
+
+Free default:
+
+```powershell
+cd C:\Users\openw\Documents\Projects\FileOrbit-git
+python -m http.server 8164 --bind 127.0.0.1 --directory .
+```
+
+`http://127.0.0.1:8164/tests/harness/m5-exploration/index.html`
+
+Explicit internal paid-test mode:
+
+`http://127.0.0.1:8164/tests/harness/m5-exploration/index.html?paidTest=1`
+
+This is a development bootstrap, not production entitlement.
+
+## Fixtures
+
+`tests/fixtures/large-map/`:
+
+- `FileOrbit-20-categories.orbit` — supplied realistic sample; 246 nodes.
+- `FileOrbit-300.orbit` — exactly 300 nodes.
+- `FileOrbit-301.orbit` — exactly 301 nodes.
+- `FileOrbit-1000.orbit` — exactly 1,000 nodes.
+
+300/301/1,000 fixtures have 20 first-level categories, a root-level `README-root.md`, and synthetic TXT/MD/PDF/PNG data with attachments. `generate.mjs` reproduces them.
+
+## Korean user test
+
+1. 무료 모드 실행: 위 기본 URL. 
+2. `Open Orbit → Orbit File`로 20-category와 300-node `.orbit` 열기. 20-category는 전체 지도, 300-node는 기존 무료 전체 지도.
+3. 같은 무료 화면에서 301-node 파일을 열면 300-node 제한으로 거부되고 기존 문서가 유지되는지 확인.
+4. 유료 테스트 모드: `?paidTest=1` URL로 새로 열기. `Open Orbit → Orbit File`로 301과 1,000-node 열기.
+5. 카테고리 클릭 → 활성 하위 트리가 밝게, 전체 카테고리 개요는 어둡게 유지. 배경 카테고리 클릭으로 전환.
+6. 휠 확대/축소, 배경 드래그, `+`/`−`/`Fit`, `←`/`⌂`/브레드크럼.
+7. 검색에서 `README-root.md`(루트 파일)와 하위 PDF를 찾아 선택/미리보기.
+8. 파일 클릭은 선택만, 더블클릭은 미리보기. 우클릭 `Edit Data`/`Delete Data` 메뉴.
+9. 파일 편집 후 Undo/Redo, Save As, 재열기.
+10. 1,000-node에서 Save As 후 다시 열어 노드/첨부가 유지되는지 확인.
+
+## Validation evidence
+
+- `integration-free-capacity.json`: free 300 open + free 301 rejection preserving 300.
+- `integration-paid-large.json`: paid 301/1,000 custom presentation.
+- `integration-search-active.json`: category activation and root-level search reveal.
+- `integration-saveas.json` + `integration-saveas-decode.json`: 1,000-node Save As, 1,000 IDs/topology/attachments preserved.
+- `integration-editor-preview.json`: editor menu and PDF preview.
+- `integration-replacement.json`: paid 300 existing renderer → 1,000 custom → 300 existing.
+- `integration-20-category.json`: realistic 246-node open.
+- `integration-focused-tests.txt`: 5/5.
+- `integration-p1b-tests.txt`: existing PC main regression.
+
+Screenshots: `integrated-300.png`, `integrated-1000.png`, `integrated-1000-active.png`.
+
+## Limitations / NOT RUN
+
+- Native OS picker/disk acceptance NOT RUN; automated picker/file input stubs used.
+- Human usability acceptance pending.
+- Integrated editor entry menu and preview were executed; a full integrated rename → Undo/Redo round-trip was not separately executed.
+- Automatic camera framing and manual animation cancellation were implemented; not all camera animation edge cases were independently re-executed in the ordinary app.
+- The hidden base canvas remains mounted during >300 presentation for mode switching; only one graph workspace is visible.
+- No Close/Delete, Upload, cloud, payments, Tauri, enterprise or deployment.
+

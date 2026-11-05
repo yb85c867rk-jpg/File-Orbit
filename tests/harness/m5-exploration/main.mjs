@@ -1,4 +1,4 @@
-import { createDownloadResourceManager } from './backup-resources.js';
+﻿import { createDownloadResourceManager } from './backup-resources.js';
 import { encodeBackup, decodeBackup, safeBackupFilename, safeDocumentFilename } from '../../../src/engine/hypertree/persistence/backup.js';
 import { createDocumentAdapter } from './document-adapter.js';
 import { createOrbitDirectoryAdapter } from './orbit-directory-adapter.js';
@@ -14,6 +14,8 @@ import { collectSubtreeIds, fitBlockReason, buildReparentCandidate, isNodeGestur
 import { createCanvasSurface, createLabelOverlay, drawGraphScene, EXPLORATION_LABEL_PALETTE } from '../../../src/engine/hypertree/render/index.js';
 import { createEditorController } from '../../../src/engine/hypertree/editor/controller.js';
 import { createEditorHistory } from '../../../src/engine/hypertree/editor/history.js';
+import { FREE_POLICY_CONTEXT, createInternalPolicyContext, evaluateContextNodeAccess } from '../../../src/engine/hypertree/edition/index.js';
+import { createLargeMapPresentation } from './large-map-presentation.mjs';
 import { performMetadataHistoryReplay } from '../../../src/engine/hypertree/editor/history-replay.js';
 import { makeReparentHistoryEntry } from '../../../src/engine/hypertree/editor/history-commands.js';
 import { resolvePostOperationDetails } from '../../../src/engine/hypertree/editor/details-policy.js';
@@ -798,6 +800,7 @@ const dragTargetEl = document.querySelector('#drag-target');
 
 
 let tree, graph, baseLayout, model, surface, overlay, navigation, session;
+let largeMapView = null; const largeMapPaidTest = new URLSearchParams(globalThis.location?.search || '').get('paidTest') === '1'; const largeMapPolicyContext = largeMapPaidTest ? createInternalPolicyContext({ edition: 'paid' }) : FREE_POLICY_CONTEXT;
 let frameState = null;
 let generation = 0;
 let error = null;
@@ -839,6 +842,61 @@ const FIXTURES = { f20, f200 };
 const EXPLORATION_PRESENTATION = Object.freeze({ rootFill: '#F8FAFC', rootStroke: '#F8FAFC', folderFill: '#B8BEC7', folderStroke: '#D1D5DB', fileFill: '#22C55E', fileStroke: '#22C55E', edgeStroke: '#454B54' });
 let searchHighlightIds = new Set();
 const viewport = () => ({ width: Math.max(0, graphViewport?.clientWidth || 0), height: Math.max(0, graphViewport?.clientHeight || 0) });
+let largeMapContainer = null;
+function countDocumentNodes(node) { return 1 + (node?.children || []).reduce((sum, child) => sum + countDocumentNodes(child), 0); }
+function createLargeMapSession({ initialCamera } = {}) {
+  const state = { camera: initialCamera || { x: 0, y: 0, scale: 1 }, framing: 'fit', hitActive: false, installing: false, lastEvent: null, error: null };
+  return {
+    run(operation, prepare) { try { const result = prepare ? prepare() : { ok: true }; return result && result.ok === false ? { ok: false, error: result.error || new Error('operation-failed') } : { ok: true, ...(result || {}) }; } catch (error) { return { ok: false, error }; } },
+    getState() { return { ...state }; }, cancel() { return true; }, dispose() {}
+  };
+}
+function buildLargeBaseLayout(treeValue) {
+  const nodes = new Map(); const children = new Map(); const depths = new Map();
+  let index = 0;
+  const walk = (node, depth) => {
+    const x = (index % 40) * 32; const y = Math.floor(index / 40) * 32; index += 1;
+    nodes.set(node.id, { id: node.id, x, y, radius: node.kind === 'folder' ? 12 : 7 });
+    depths.set(node.id, depth); children.set(node.id, (node.children || []).map((child) => child.id));
+    for (const child of node.children || []) walk(child, depth + 1);
+  };
+  walk(treeValue, 0);
+  return { rootId: treeValue.id, firstPhase: 'current', phases: ['current'], nodes, children, depths, feasibility: { workspaceScale: 1 } };
+}
+function admitDocument(treeValue) {
+  const nodeCount = countDocumentNodes(treeValue);
+  const admission = evaluateContextNodeAccess(largeMapPolicyContext, nodeCount, null);
+  if (!admission.ok || admission.decision?.allowed !== true) {
+    return { ok: false, nodeCount, message: `This document has ${nodeCount} nodes. Free mode admits up to 300. Launch with ?paidTest=1 for the explicit internal test context (up to 1,000).` };
+  }
+  return { ok: true, nodeCount, edition: admission.decision.edition };
+}
+function syncLargeMapPresentation() {
+  if (!graphViewport || destroying) return;
+  const nodeCount = hasMap && tree ? countDocumentNodes(tree) : 0;
+  if (!hasMap || !tree || nodeCount <= 300) {
+    largeMapView?.destroy(); largeMapView = null; globalThis.__M5_LARGE_MAP_VIEW__ = null; largeMapContainer?.remove(); largeMapContainer = null;
+    if (host) host.style.display = ''; if (labelHost) labelHost.style.display = '';
+    return;
+  }
+  if (!largeMapView) {
+    largeMapContainer = document.createElement('div');
+    largeMapContainer.style.cssText = 'position:absolute;inset:0;z-index:1';
+    graphViewport.appendChild(largeMapContainer);
+    if (host) host.style.display = 'none'; if (labelHost) labelHost.style.display = 'none';
+    largeMapView = createLargeMapPresentation({
+      container: largeMapContainer,
+      getTree: () => tree,
+      getSelectedId: () => detailsTargetId,
+      onSelect: (id) => { detailsTargetId = id; if (id === null) attachmentViewer?.close?.({ restoreFocus: false }); publish(); },
+      onPreview: (id) => { openAttachmentViewer(id); },
+      onEdit: (id, event) => { activateEditorTarget({ id, kind: graph?.nodes?.get(id)?.kind || 'file' }, event); },
+      onFolderChange: () => {},
+      onStatus: (message) => setShellStatus(message)
+    });
+  }
+  largeMapView.refresh(detailsTargetId, [...searchHighlightIds]); globalThis.__M5_LARGE_MAP_VIEW__ = largeMapView;
+}
 const baseRadius = () => Math.max(1, Math.min(viewport().width, viewport().height) * 0.42);
 
 function boot(name = fixtureEl.value) {
@@ -1695,7 +1753,7 @@ function handlePendingIntent(intent) {
 function activateEditorTarget(target, event) {
   const blocked = editorActivationBlockReason({
     editorInert: ownership.blocked(), navigatorBusy: Boolean(navigator?.busy), dragOwned: Boolean(dragState),
-    editorSaving: Boolean(editorController?.isSaving()), frameReady: Boolean(frameState?.hit), replacementPending: Boolean(replacementGuard)
+    editorSaving: Boolean(editorController?.isSaving()), frameReady: Boolean(frameState?.hit) || Boolean(largeMapView?.isActive()), replacementPending: Boolean(replacementGuard)
   });
   if (blocked) {
     lastClickDiagnostic = { reason: 'context-menu-blocked', cause: blocked, id: target?.id ?? null };
@@ -1707,7 +1765,7 @@ function activateEditorTarget(target, event) {
     publish(); return false;
   }
   const details = model.details(target.id);
-  if (!details || details.kind !== target.kind || !model.view().visibleSet.has(target.id) || !graph.nodes.get(target.id)) {
+  if (!details || details.kind !== target.kind || (!model.view().visibleSet.has(target.id) && !largeMapView?.isActive()) || !graph.nodes.get(target.id)) {
     lastClickDiagnostic = { reason: 'context-menu-stale-or-invisible', id: target?.id ?? null };
     publish(); return false;
   }
@@ -1848,6 +1906,7 @@ function publish(state = session?.getState()) {
   errorEl.textContent = status.error || '';
   countsEl.textContent = `${status.visibleCount} visible / ${status.totalCount} total`;
   renderDetails(details);
+  syncLargeMapPresentation();
   if (searchQuery && tree && (lastSearchDataset !== datasetToken || lastSearchRevision !== dataRevision)) runSearch();
 }
 function renderDetails(details) {
@@ -1966,6 +2025,7 @@ async function navigateSearchParent({ folderId, targetId, datasetToken: token, r
 function selectSearchData(result) {
   const checked = validateSearchActivation({ tree, id: result.id, datasetToken, revision: dataRevision, expectedDatasetToken: result.datasetToken, expectedRevision: result.revision });
   if (!checked.ok) { runSearch(); searchView?.showError(checked.message); return false; }
+  if (largeMapView?.isActive()) { detailsTargetId = result.id; searchView?.setActive(result.id); largeMapView.reveal(result.id); publish(); const mapped = model.details(result.id); if (mapped?.dataType === 'file' && mapped.attachment) openAttachmentViewer(result.id); return true; }
   const run = session.run('select-file', () => ({ ...model.select(result.id), fit: false }), { fit: false, eventKind: 'user' });
   if (!run.ok) { searchView?.showError('The result could not be selected.'); return false; }
   detailsTargetId = result.id;
@@ -3039,7 +3099,7 @@ async function downloadBackup() {
   try {
     if (!globalThis.crypto?.subtle) throw new Error('SHA-256 is unavailable in this browser.');
     const source = runtimeAccess.serializationState();
-    const encoded = await encodeBackup({ tree: source.tree, registry: source.registry, mapName: capturedName, sourceMapId: activeMap?.mapId || null, cryptoApi: globalThis.crypto, isCancelled });
+    const encoded = await encodeBackup({ tree: source.tree, registry: source.registry, mapName: capturedName, sourceMapId: activeMap?.mapId || null, cryptoApi: globalThis.crypto, isCancelled, policyContext: largeMapPolicyContext });
     if (isCancelled()) return { ok: false, reason: 'cancelled' };
     if (typeof URL?.createObjectURL !== 'function' || typeof document?.createElement !== 'function') throw new Error('Browser download is unavailable.');
     const anchor = document.createElement('a');
@@ -3325,7 +3385,7 @@ async function runCopyMap() {
   let encoded;
   const encodeGate = copyEncodingGate;
   const encodeCrypto = encodeGate ? { subtle: { digest: async (...args) => { encodeGate.started = true; await encodeGate.promise; return globalThis.crypto.subtle.digest(...args); } } } : globalThis.crypto;
-  try { encoded = await encodeBackup({ tree: snapshot.tree, registry: snapshot.registry, mapName: filename, sourceMapId: activeMap?.mapId || null, cryptoApi: encodeCrypto }); }
+  try { encoded = await encodeBackup({ tree: snapshot.tree, registry: snapshot.registry, mapName: filename, sourceMapId: activeMap?.mapId || null, cryptoApi: encodeCrypto, policyContext: largeMapPolicyContext }); }
   catch (error) {
     if (!current()) return { ok: false, stale: true };
     setShellStatus('Copy Map could not prepare the copy: ' + String(error?.message || error));
@@ -3982,7 +4042,7 @@ async function saveDocument({ saveAs = false, capturedRevision = null, allowEdit
       try {
         if (globalThis.__M5_SAVE_ENCODE_FAILURE__) { const injected = new Error('injected document encoding failure'); injected.code = 'injected-save-encoding-failure'; throw injected; }
         const source = runtimeAccess.serializationState();
-        encoded = await encodeBackup({ tree: source.tree, registry: source.registry, mapName: name, sourceMapId: activeMap?.mapId || null, cryptoApi: globalThis.crypto });
+        encoded = await encodeBackup({ tree: source.tree, registry: source.registry, mapName: name, sourceMapId: activeMap?.mapId || null, cryptoApi: globalThis.crypto, policyContext: largeMapPolicyContext });
       } catch (error) {
         if (!owns()) return { ok: false, reason: 'stale' };
         const preserved = Boolean(hasMap && tree === encodingTree && !destroying);
@@ -4097,7 +4157,7 @@ async function importBackupFile(file, documentMeta = null) {
   try {
     const hashGate = backupImportHashGates.find((gate) => !gate.used);
     const cryptoApi = hashGate ? { subtle: { digest: async (...args) => { hashGate.used = true; hashGate.started = true; await hashGate.promise; return globalThis.crypto.subtle.digest(...args); } } } : globalThis.crypto;
-    const decoded = await decodeBackup(file, { cryptoApi, isCancelled });
+    const decoded = await decodeBackup(file, { cryptoApi, isCancelled, policyContext: largeMapPolicyContext });
     if (isCancelled()) return { ok: false, reason: 'cancelled' };
     registry = createAttachmentRegistry({ datasetToken: nextDataset });
     for (const attachment of decoded.attachments) {
@@ -4216,6 +4276,8 @@ async function resumeBackupImport(request) {
 }
 
 async function installCreatedMap(preview, { request = null, silent = false } = {}) {
+  const admitted = admitDocument(preview.tree);
+  if (!admitted.ok) { setShellStatus(admitted.message); return { ok: false, reason: 'edition-node-limit', message: admitted.message, nodeCount: admitted.nodeCount }; }
   const importing = Boolean(request);
   const operation = importing ? 'import-' + request.id : createMapOperation;
   const orbitSnapshot = !importing && createDraftDestinationMode === 'orbit' ? orbitState.snapshot() : null;
@@ -4270,7 +4332,7 @@ async function installCreatedMap(preview, { request = null, silent = false } = {
       let prepared;
       try {
         if (globalThis.__M5_ORBIT_TEST_ENCODE_FAILURE__) throw new Error('injected Orbit encode failure');
-        prepared = await encodeBackup({ tree: preview.tree, registry: preview.registry, mapName: filename, sourceMapId: null, cryptoApi: globalThis.crypto });
+        prepared = await encodeBackup({ tree: preview.tree, registry: preview.registry, mapName: filename, sourceMapId: null, cryptoApi: globalThis.crypto, policyContext: largeMapPolicyContext });
       } catch (error) {
         return { ok: false, reason: error?.code || 'encoding-failed', keepDraft: true, destination: null, message: 'The Orbit map snapshot could not be prepared. Files and folders were kept.' };
       }
@@ -4300,10 +4362,10 @@ async function installCreatedMap(preview, { request = null, silent = false } = {
   try {
     if (importing && p1bImportPreparationFailure) { p1bImportPreparationFailure = false; throw new Error('injected backup import preparation failure'); }
     const loaded = loadTree(preview.tree);
-    const staged = stageExperimentalV2Layout(loaded.graph, { rootId: preview.tree.id, phases: ['current'], nodeOptions: { overridable: true } });
-    const refined = refineExperimentalV2Layout(staged, loaded.graph, { viewport: viewport(), padding: 24, phase: 'current', projectionBaseRadiusCss: baseRadius() });
-    const candidateModel = createExplorationModel({ graph: loaded.graph, baseLayout: refined.staged, structuralRootId: preview.tree.id, phase: 'current' });
-    candidate = { tree: preview.tree, graph: loaded.graph, baseLayout: refined.staged, model: candidateModel, registry: preview.registry, datasetToken: preview.datasetToken };
+    const largePresentation = countDocumentNodes(preview.tree) > 300;
+    const stagedLayout = largePresentation ? buildLargeBaseLayout(preview.tree) : refineExperimentalV2Layout(stageExperimentalV2Layout(loaded.graph, { rootId: preview.tree.id, phases: ['current'], nodeOptions: { overridable: true } }), loaded.graph, { viewport: viewport(), padding: 24, phase: 'current', projectionBaseRadiusCss: baseRadius() }).staged;
+    const candidateModel = createExplorationModel({ graph: loaded.graph, baseLayout: stagedLayout, structuralRootId: preview.tree.id, phase: 'current' });
+    candidate = { tree: preview.tree, graph: loaded.graph, baseLayout: stagedLayout, model: candidateModel, registry: preview.registry, datasetToken: preview.datasetToken, large: largePresentation };
   } catch (error) {
     const message = `${importing ? 'Backup import' : 'Create Map'} preparation failed: ${String(error?.message || error)}`;
     if (!importing) { lastCreateFailureMessage = message; creationTerminal = 'failure'; createMapDialog.close(); }
@@ -4327,7 +4389,7 @@ async function installCreatedMap(preview, { request = null, silent = false } = {
     detailsTargetId = tree.id; ownership.clearRecoveryFailure(); if (importing) { if (request.documentMeta) { let orbitBaseline = request.documentMeta.openedBaseline || null; if (orbitBaseline && request.documentMeta.origin === 'orbit') { const committed = bindBaseline(orbitBaseline, { handle: request.documentMeta.handle || null, documentIdentity: request.documentMeta.documentIdentity || null, revision: 0, session: persistenceSessionSeq, operation: 'open:' + request.id }); if (committed.ok) orbitBaseline = committed.baseline; } adoptActiveDocument({ active: true, name: request.documentMeta.name || request.manifest?.mapName || 'FileOrbit map', handle: request.documentMeta.handle || null, mode: request.documentMeta.mode || 'download', savedRevision: 0, origin: request.documentMeta.origin || 'file', documentIdentity: request.documentMeta.documentIdentity || null, baseline: orbitBaseline }); restoredMapAwaitingSave = false; } else { resetActiveDocument(); restoredMapAwaitingSave = true; } } else { resetActiveDocument(); restoredMapAwaitingSave = false; }
     if (!importing) { ownership.releaseCreation(); pendingCreateCandidate = null; }
     resetSearchForDataset();
-    navigator = null; createNavigator(); createNavigation();
+    navigator = null; if (!candidateValue.large) { createNavigator(); createNavigation(); }
     old.attachmentRegistry?.clear(); old.history?.clear();
     if (importing) backupImportCommitCount += 1;
     lastClickDiagnostic = importing ? { reason: 'backup-import-complete', id: tree.id, requestId: request.id } : { reason: 'create-map-complete', id: tree.id };
@@ -4356,7 +4418,7 @@ async function installCreatedMap(preview, { request = null, silent = false } = {
     setCandidateEnv: (env) => { candidateEnv = env; },
     beforeCommit: () => (datasetToken === oldToken && dataRevision === oldRevision && operationMatches())
       ? { ok: true } : { ok: false, message: 'The live map changed before replacement.' },
-    commit, recover
+    commit, recover, createSession: candidate.large ? createLargeMapSession : undefined
   });
   if (!installed.ok) {
     if (!importing) {
@@ -4473,6 +4535,7 @@ function destroy() {
   if (detachLabelContextMenu) { detachLabelContextMenu(); detachLabelContextMenu = null; }
   if (detachLabelClick) { detachLabelClick(); detachLabelClick = null; }
   destroying = true;
+  largeMapView?.destroy(); largeMapView = null; globalThis.__M5_LARGE_MAP_VIEW__ = null; largeMapContainer?.remove(); largeMapContainer = null;
   if (attachmentViewer) { attachmentViewer.destroy(); attachmentViewer = null; }
   if (deleteConfirmation) { deleteConfirmation.destroy(); deleteConfirmation = null; }
   if (editorMenu) { editorMenu.destroy(); editorMenu = null; }
@@ -4513,6 +4576,7 @@ window.addEventListener('beforeunload', (event) => {
   }
 });
 startEmptyState();
+if (globalThis.__M5_LARGE_MAP_TEST_HOOK__) { window.__M5_LARGE_MAP_TEST__ = { async importFile(file) { return importBackupFile(file, { name: file.name, mode: 'download', handle: null }); } }; }
 if (globalThis.__M5_P1B_TEST_HOOKS__) { window.__M5_P1B_TEST__ = { runtimeAccessStats() { return runtimeAccess.stats(); }, openState() { try { return { open: Boolean(fileOpenBrowser?.isOpen), busy: Boolean(fileOpenBrowser?.isBusy), requestId: fileOpenBrowser?.requestId ?? null, block: openRequestBlockedReason(), editorApplied: Boolean(editorAppliedOperation), editorSaving: Boolean(editorController?.isSaving?.()), persistenceBusy, replacementGuard: Boolean(replacementGuard), pendingImport: Boolean(pendingBackupImport), installingImport: Boolean(installingBackupImport), navigatorBusy: Boolean(navigator?.busy), sessionInstalling: Boolean(session?.getState?.()?.installing), documentSaving, documentSaveInFlight }; } catch (error) { return { error: String(error?.message || error) }; } }, automaticSaveState() { return { pending: Boolean(automaticSavePending), pendingRevision: automaticSavePending?.revision ?? null, blocked: automaticSaveBlocked, failure: automaticSaveFailure ? { reason: automaticSaveFailure.reason, token: automaticSaveFailure.token } : null, editorOpen: Boolean(editorController?.isOpen()), inFlight: documentSaveInFlight, queueActive: documentSaveQueueActive, persistenceBusy, replacementGuard: Boolean(replacementGuard), pendingImport: Boolean(pendingBackupImport), installingImport: Boolean(installingBackupImport), active: activeDocument.active, mode: activeDocument.mode, hasHandle: Boolean(activeDocument.handle), dataRevision, savedRevision: activeDocument.savedRevision, dirty: mapDirty() }; }, touch() { runtimeAccess.advanceRevision(); publish(); }, delayNextSave(ms) { p1bSaveDelay = Number(ms) || 0; }, deferNextSave() { let release; const promise = new Promise((resolve) => { release = resolve; }); p1bSaveGate = { promise, release }; }, releaseDeferredSave() { p1bSaveGate?.release?.(); }, delayNextOpen(ms) { p1bOpenDelay = Number(ms) || 0; }, failNextOpen(stage) { const next = String(stage || ""); if (next === "label" || next === "hit") p1bFrameFailures.push({ operation: "open-saved-map", boundary: next === "label" ? "labels" : "installHit", remaining: 1 }); else p1bOpenFailStage = next; }, failFrame(operation, boundary, count = 1) { p1bFrameFailures.push({ operation: String(operation), boundary: String(boundary), remaining: Math.max(1, Number(count) || 1) }); }, frameCounts() { return { ...p1bFrameCounts }; }, clearFrameFailures() { p1bFrameFailures.length = 0; }, async saveRepositoryFixture(name = 'Legacy Fixture') { const snap = buildSaveSnapshot({ tree, registry: attachmentRegistry, mapping: attachmentIds, mapId: null, expectedGeneration: null, datasetToken, capturedRevision: dataRevision, allocateAttachmentId: createAttachmentId }); return persistenceRepository.save(snap); }, async recoveryCheckpoint() { const ws = recoveryScheduler?.workspace; if (!ws) return null; try { const loaded = await persistenceRepository.loadRecoveryCheckpoint(ws.workspaceId); if (!loaded?.checkpoint) return { workspace: ws, checkpoint: null, attachments: [] }; return { workspace: ws, checkpoint: loaded.checkpoint, attachments: await Promise.all(loaded.attachments.map(async (entry) => ({ attachmentId: entry.attachmentId, name: entry.metadata.originalName, sizeBytes: entry.metadata.sizeBytes, bytes: Array.from(new Uint8Array(await entry.blob.arrayBuffer())) }))) }; } catch (error) { return { workspace: ws, checkpoint: null, error: String(error?.message || error), code: error?.code || null }; } }, async establishRecoveryForTest() { return establishRecoveryWorkspace({ origin: 'test' }); }, recoveryState() { const ws = recoveryScheduler?.workspace; return { workspace: ws ? { workspaceId: ws.workspaceId, workspaceToken: ws.workspaceToken, session: ws.session, dataset: ws.dataset, controlVersion: ws.controlVersion } : null, diagnostics: recoveryScheduler ? { ...recoveryScheduler.diagnostics } : null, diagnostic: recoveryDiagnostic, pending: Boolean(recoveryScheduler?.pending) }; }, async flushRecovery() { try { await recoveryScheduler?.flush(); } catch {} return recoveryScheduler?.diagnostics || null; }, async recoveryCandidates() { try { return await persistenceRepository.listRecoveryCandidates(); } catch { return []; } }, async recoveryWorkspaceRecord(workspaceId) { try { return await persistenceRepository.loadRecoveryWorkspace(workspaceId); } catch { return null; } }, async recoveryControl() { const ws = recoveryScheduler?.workspace; if (!ws) return null; try { return await persistenceRepository.loadRecoveryWorkspace(ws.workspaceId); } catch { return null; } }, deferAfterRecoveryInstall() { let release; const promise = new Promise((resolve) => { release = resolve; }); recoveryAfterInstallGate = promise; recoveryAfterInstallRelease = release; return true; }, releaseAfterRecoveryInstall() { recoveryAfterInstallRelease?.(); recoveryAfterInstallRelease = null; }, deferRecoveryDiscardStart() { let release; const promise = new Promise((resolve) => { release = resolve; }); recoveryDiscardStartGate = promise; recoveryDiscardStartRelease = release; return true; }, releaseRecoveryDiscardStart() { recoveryDiscardStartRelease?.(); recoveryDiscardStartRelease = null; }, deferAfterRecoveryClaim() { let release; const promise = new Promise((resolve) => { release = resolve; }); recoveryAfterClaimGate = promise; recoveryAfterClaimRelease = release; return true; }, releaseAfterRecoveryClaim() { recoveryAfterClaimRelease?.(); recoveryAfterClaimRelease = null; }, recoveryOperationState() { const request = activeRecoveryRequest; return request ? { kind: request.kind, id: request.id, claimId: request.claim?.claimId || null, installed: Boolean(request.installed), destructiveStarted: Boolean(request.destructiveStarted), childId: request.child?.workspace?.workspaceId || null } : null; }, deferNextRecoveryRetirement() { let release; const promise = new Promise((resolve) => { release = resolve; }); recoveryDeferredRetirement = { release }; recoveryScheduler?.deferNextRetirement(() => promise); return true; }, releaseRecoveryRetirement() { recoveryDeferredRetirement?.release?.(); recoveryDeferredRetirement = null; }, failNextRecoveryCheckpoint() { recoveryScheduler?.deferNextPreparation(() => Promise.reject(Object.assign(new Error('injected child checkpoint failure'), { code: 'injected-checkpoint-failure' }))); return true; }, deferNextRecoveryCheckpoint() { let release; const promise = new Promise((resolve) => { release = resolve; }); recoveryDeferredPreparation = { release }; recoveryScheduler?.deferNextPreparation(() => promise); return true; }, releaseRecoveryCheckpoint() { recoveryDeferredPreparation?.release?.(); recoveryDeferredPreparation = null; }, setRecoveryDebounce(ms) { recoveryScheduler?.setDebounce(Number(ms) || 0); },selectForTest(id) { const node = graph?.nodes?.get(id); if (!node) return false; const result = model.select(id); if (!result.ok) return false; detailsTargetId = id; publish(); refreshLabelPriority(); return true; },
 nodeSceneCenter(name) { const node = [...graph.nodes.values()].find((entry) => entry.name === name); const sceneNode = node ? frameState?.scene?.nodes?.get(node.id) : null; return sceneNode ? { id: node.id, center: { ...sceneNode.center }, radius: sceneNode.radius } : null; }, sceneBounds() { const nodes = [...(frameState?.scene?.nodes?.values?.() || [])]; if (!nodes.length) return null; return { minX: Math.min(...nodes.map((node) => node.center.x - node.radius)), maxX: Math.max(...nodes.map((node) => node.center.x + node.radius)), minY: Math.min(...nodes.map((node) => node.center.y - node.radius)), maxY: Math.max(...nodes.map((node) => node.center.y + node.radius)) }; }, layoutGeometry() { const canvas = surface?.canvas; return { wrapper: { width: graphWrap?.clientWidth || 0, height: graphWrap?.clientHeight || 0 }, barHeight: graphActionToolbar?.offsetHeight || 0, viewport: viewport(), canvas: canvas ? { styleWidth: canvas.style.width, styleHeight: canvas.style.height, width: canvas.width, height: canvas.height } : null, label: overlay?.getMetrics?.()?.viewport || null, fit: { width: viewport().width, height: viewport().height } }; }, resizeViewportTest(width, height) { if (graphWrap) { graphWrap._clientWidth = width; graphWrap._clientHeight = height; } const drawableHeight = Math.max(0, height - (graphActionToolbar?.offsetHeight || 0)); if (graphViewport) { graphViewport._clientWidth = width; graphViewport._clientHeight = drawableHeight; } if (host) { host._clientWidth = width; host._clientHeight = drawableHeight; } if (labelHost) { labelHost._clientWidth = width; labelHost._clientHeight = drawableHeight; } handleViewportResize(); return this.layoutGeometry(); }, hitTestClient(clientX, clientY) { return hitAtEvent({ clientX, clientY })?.id || null; }, setCanvasRect(rect) { if (surface?.canvas && rect) surface.canvas.getBoundingClientRect = () => ({ ...rect }); return Boolean(surface?.canvas); }, contextProbe(clientX, clientY, rect = null) { if (rect && surface?.canvas) surface.canvas.getBoundingClientRect = () => ({ ...rect }); const diagnosed = diagnoseEditorTarget({ event: { button: 2, clientX, clientY }, canvas: surface.canvas, frameState, graph }); return diagnosed?.ok ? diagnosed.target.id : null; }, coordinateProbe(name, clientX, clientY, rect = null) { if (rect && surface?.canvas) surface.canvas.getBoundingClientRect = () => ({ ...rect }); const node = [...graph.nodes.values()].find((entry) => entry.name === name); const sceneNode = node ? frameState?.scene?.nodes?.get(node.id) : null; if (!node || !sceneNode) return null; showTarget(node.id); moveGhost({ clientX, clientY }); const result = { nodeId: node.id, center: { ...sceneNode.center }, radius: sceneNode.radius, targetLeft: Number.parseFloat(dragTargetEl?.style?.left), targetTop: Number.parseFloat(dragTargetEl?.style?.top), ghostLeft: Number.parseFloat(dragGhostEl?.style?.left), ghostTop: Number.parseFloat(dragGhostEl?.style?.top), hit: hitAtEvent({ clientX, clientY })?.id || null }; cleanupDrag(); return result; }, editorState() { const form = editorPanel?.form; return { formHidden: form?.hidden ?? null, action: editorController?.action ?? null, dirty: Boolean(editorController?.dirty), mode: editorController?.mode ?? null, targetId: editorController?.targetId ?? null, input: editorPanel?.input || null, value: editorPanel?.input?.value ?? null, error: form?.querySelector?.('.editor-error')?.textContent ?? null, composing: editorPanel?.isComposing?.() ?? null, formToken: editorPanel?.getFormToken?.() ?? null, detailsCollapsed: detailsPanel?.dataset.collapsed === 'true', detailsHidden: Boolean(detailsContent?.hidden), toggleDisabled: Boolean(detailsToggle?.disabled) }; }, openNodeMenu(name) { const node = [...graph.nodes.values()].find((entry) => entry.name === name); return node ? activateEditorTarget({ id: node.id, kind: node.kind }, { type: 'contextmenu', clientX: 1, clientY: 1 }) : false; }, findNode(name) { const node = [...graph.nodes.values()].find((entry) => entry.name === name); return node ? { id: node.id, kind: node.kind, name: node.name } : null; }, reparentTest(sourceId, targetId) { return performReparent(sourceId, targetId, { sourceId, generation, datasetToken, structuralRootId: model.structuralRootId }); }, historyTest(direction) { return performHistoryMove(direction); }, scheduleRecoveryTest() { return scheduleRecoveryCheckpoint({ immediate: true }); }, syncHistoryTest() { syncHistoryControls(); return { undoDisabled: undoHistoryButton?.disabled ?? null, redoDisabled: redoHistoryButton?.disabled ?? null }; }, historyState() { return { undo: history?.undo?.length || 0, redo: history?.redo?.length || 0, revision: dataRevision, mapId: activeMap?.mapId || null, blocked: historyBlockedReason() }; }, async repositoryRecord(mapId) { const loaded = await persistenceRepository.load(mapId); const map = loaded.map || loaded; const document = loaded.document || map; const attachments = loaded.attachments || map.attachments || []; return { mapId: map.mapId, tree: document.tree, attachments, attachmentBytes: await Promise.all(attachments.map(async (entry) => ({ attachmentId: entry.attachmentId, name: entry.originalName, bytes: Array.from(new Uint8Array(await (entry.blob || entry.file).slice(0, (entry.blob || entry.file).size).arrayBuffer())) }))) }; }, async simulateExternalSave() { const snap = buildSaveSnapshot({ tree, registry: attachmentRegistry, mapping: attachmentIds, mapId: activeMap.mapId, expectedGeneration: activeMap.generation, datasetToken, capturedRevision: dataRevision, allocateAttachmentId: createAttachmentId }); return persistenceRepository.save(snap); }, async listCount() { return (await persistenceRepository.list()).length; }, saveCount() { return saveInvocationCount; }, deferBackupStart() { let release; const promise = new Promise((resolve) => { release = resolve; }); backupStartGate = { promise, release }; }, releaseBackupStart() { backupStartGate?.release?.(); backupStartGate = null; }, deferImportHash() { let release, reject; const promise = new Promise((resolve, rejectFn) => { release = resolve; reject = rejectFn; }); backupImportHashGates.push({ promise, release, reject, started: false, used: false, released: false }); }, importHashStarted() { return backupImportHashGates.some((gate) => gate.started); }, releaseImportHash() { const gate = backupImportHashGates.find((entry) => !entry.released); if (gate) { gate.released = true; gate.release(); } }, deferNextCopyEncode() { let release, reject; const promise = new Promise((resolve, rejectFn) => { release = resolve; reject = rejectFn; }); copyEncodingGate = { promise, release, reject, started: false }; return true; }, copyEncodeStarted() { return Boolean(copyEncodingGate?.started); }, releaseCopyEncode() { const gate = copyEncodingGate; if (gate) { gate.release(); } }, failCopyEncode() { const gate = copyEncodingGate; if (gate) { gate.reject(new Error('injected copy encoding failure')); } }, failImportHash() { const gate = backupImportHashGates.find((entry) => !entry.released); if (gate) { gate.released = true; gate.reject(new Error('injected deferred attachment read failure')); } }, importCommitCount() { return backupImportCommitCount; }, pendingImportState() { return { pending: Boolean(pendingBackupImport), installing: Boolean(installingBackupImport), registrySize: pendingBackupImport?.registry?.size ?? installingBackupImport?.registry?.size ?? null }; }, failNextImportPreparation() { p1bImportPreparationFailure = true; }, replaceSession() { cancelRecoveryRequest('replacement'); invalidateBackup(); persistenceSessionSeq += 1; datasetToken += 1; editorAppliedOperation = null; invalidateDocumentSave(); persistenceBusy = 'loading'; setShellStatus('NEW SESSION'); publish(); }, settleSession() { persistenceBusy = null; syncPersistenceControls(); publish(); }, cancelBackup() { return cancelBackup(); }, backupBusy() { return backupBusy(); }, startDownload() { return downloadBackup(); }, chooseBackup() { chooseBackupFile(); return backupFileInput; }, async exportPackage() { return (await encodeBackup({ tree, registry: attachmentRegistry, mapName: tree.name, sourceMapId: activeMap?.mapId || null })).blob; }, async decodeDocument(blob) { const decoded = await decodeBackup(blob); return { tree: decoded.tree, attachments: await Promise.all(decoded.attachments.map(async (entry) => ({ name: entry.metadata?.originalName || entry.originalName || '', size: entry.blob.size, bytes: Array.from(new Uint8Array(await entry.blob.arrayBuffer())) }))) }; }, async importPackage(blob) { return importBackupFile(blob); }, destroyMain() { destroy(); }, searchHighlightState() { const scene = frameState?.scene; const rendered = scene ? highlightedScene(scene) : null; const colors = {}; const folderColors = {}; if (rendered) for (const [id, node] of rendered.scene.nodes) if (node.kind === 'folder') folderColors[id] = { fill: node.fill, stroke: node.stroke }; for (const id of searchHighlightIds) { const node = rendered?.scene?.nodes?.get(id); colors[id] = node ? { fill: node.fill, stroke: node.stroke } : null; } return { query: searchQuery, ids: [...searchHighlightIds].sort(), colors, folderColors, edges: rendered ? rendered.scene.edges.filter((edge) => searchHighlightIds.has(edge.fromId) && searchHighlightIds.has(edge.toId)).map((edge) => ({ fromId: edge.fromId, toId: edge.toId, stroke: edge.stroke, opacity: edge.opacity })) : [], activeId: searchView?.activeId ?? null, selectedId: model?.selectedId ?? null, status: searchHighlightStatusEl?.textContent || '', scenePresent: Boolean(scene) }; }, clearShellStatusForTest() { if (shellStatusTimer !== null) clearTimeout(shellStatusTimer); shellStatusTimer = null; shellStatusExpiryCallback = null; shellStatusToken += 1; shellStatusKind = 'none'; shellStatusScope = null; shellStatusTransient = false; if (shellStatusEl) { shellStatusEl.textContent = ''; shellStatusEl.dataset.feedbackKind = 'none'; shellStatusEl.hidden = true; } }, setShellStatusForTest(message, options = {}) { setShellStatus(message, options); return this.shellStatusState(); }, shellStatusState() { return { message: shellStatusEl?.textContent || '', kind: shellStatusKind, token: shellStatusToken, timer: Boolean(shellStatusTimer), transient: shellStatusTransient, hidden: Boolean(shellStatusEl?.hidden) }; }, shellStatusExpirePrevious() { const callback = shellStatusPreviousExpiry; if (!callback) return false; callback(); return true; }, shellStatusExpire() { if (!shellStatusExpiryCallback) return false; const callback = shellStatusExpiryCallback; if (shellStatusTimer !== null) clearTimeout(shellStatusTimer); shellStatusTimer = null; callback(); return true; }, closeOrbitTest() { closeOrbit(); }, closeRepository() { persistenceRepository?.close(); }, cancelBlocked() { return cancelBlockedPersistence(); }, operation() { return editorAppliedOperation; }, staleAppliedOwner() { if (editorAppliedOperation) editorAppliedOperation.formToken = -1; }, retryState() { return editorPanel?.getRetryState?.() || null; }, treeSnapshot() { return tree ? structuredClone(tree) : null; }, snapshot() { return { blocked: persistenceBlocked, creationOwned: ownership.creationOwned, unavailable: Boolean(persistenceUnavailable), hasMap, mapId: activeMap?.mapId || null, generation: activeMap?.generation || null, savedRevision: activeMap?.savedRevision ?? null, dataRevision, dirty: mapDirty(), busy: persistenceBusy, guard: Boolean(replacementGuard) }; }, documentState() { return { ...activeDocument, handleName: activeDocument.handle?.name || null }; }, documentSaveState() { return { inFlight: documentSaveInFlight, saving: documentSaving, owner: documentSaveOwner, operation: documentOperation, destroying, lastFailure: lastDocumentFailure }; }, openDraft() { const details = model.details(tree.id); const target = createEditorTarget({ id: tree.id, hitKind: "folder", name: details.name, datasetToken, baseRevision: dataRevision }); return chooseEditorTarget({ ...target, isRoot: true }); }, openAddData() { const details = model.details(tree.id); const target = createEditorTarget({ id: tree.id, hitKind: "folder", name: details.name, datasetToken, baseRevision: dataRevision }); return editorPanel.openAdd(details); }, attachmentSnapshot() { return { size: attachmentRegistry?.size || 0, totalBytes: attachmentRegistry?.totalBytes || 0, entries: attachmentRegistry?.snapshot?.() || [] }; }, destroyViewer() { attachmentViewer?.destroy?.(); attachmentViewer = null; }, async attachmentBytes(name) { const entry = attachmentRegistry?.snapshot?.().find((item) => item.originalName === name); if (!entry) return null; const record = attachmentRegistry.get(entry.attachmentId); return record ? new Uint8Array(await record.file.slice(0, record.file.size).arrayBuffer()) : null; }, openAttachmentByName(name) { const node = [...graph.nodes.values()].find((entry) => entry.name === name); return node ? (openAttachmentViewer(node.id), true) : false; }, openFirstFileMenu() { const fileNode = [...graph.nodes.values()].find((node) => node.kind === "file"); if (!fileNode) return false; return activateEditorTarget({ id: fileNode.id, kind: "file" }, { type: "contextmenu", clientX: 1, clientY: 1 }); }, openFolderMenu() { return activateEditorTarget({ id: tree.id, kind: "folder" }, { type: "contextmenu", clientX: 1, clientY: 1 }); } }; }
 function countSubtree(node) {
@@ -4617,6 +4681,22 @@ startEmptyState();
 void startRecoveryDiscovery();
 syncPersistenceControls();
 syncAutomaticSaveFeedback();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,0 +1,9 @@
+﻿{
+  "nodes": 1000,
+  "idsEqual": true,
+  "topologyEqual": true,
+  "attachmentsA": 3,
+  "attachmentsB": 3,
+  "attachmentNamesEqual": true,
+  "note": "Decoded original FileOrbit-1000.orbit and Save As output; all 1000 IDs and topology preserved."
+}
