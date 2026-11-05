@@ -800,7 +800,7 @@ const dragTargetEl = document.querySelector('#drag-target');
 
 
 let tree, graph, baseLayout, model, surface, overlay, navigation, session;
-let largeMapView = null; const largeMapPaidTest = new URLSearchParams(globalThis.location?.search || '').get('paidTest') === '1'; const largeMapPolicyContext = largeMapPaidTest ? createInternalPolicyContext({ edition: 'paid' }) : FREE_POLICY_CONTEXT;
+let largeMapView = null; const launchParams = new URLSearchParams(globalThis.location?.search || ''); const largeMapPaidTest = launchParams.get('paidTest') === '1'; const hypertreeComparisonMode = launchParams.get('hypertreeCompare') === '1'; const largeMapPolicyContext = largeMapPaidTest ? createInternalPolicyContext({ edition: 'paid' }) : FREE_POLICY_CONTEXT;
 let frameState = null;
 let generation = 0;
 let error = null;
@@ -874,12 +874,23 @@ function admitDocument(treeValue) {
   return { ok: true, nodeCount, edition: admission.decision.edition };
 }
 function editorAdmissionAllowed() { const access = evaluateContextNodeAccess(largeMapPolicyContext, graph?.nodes?.size || 0, null); return Boolean(access.ok && access.decision?.allowed === true); }
+let rendererBadge = null;
+function setRendererBadge(kind) {
+  if (!graphViewport) return;
+  if (!rendererBadge) { rendererBadge = document.createElement('div'); rendererBadge.id = 'renderer-mode-badge'; rendererBadge.style.cssText = 'position:absolute;right:12px;bottom:12px;z-index:8;pointer-events:none;background:rgba(15,23,42,.92);border:1px solid #475569;border-radius:5px;padding:4px 8px;color:#e2e8f0;font:11px system-ui'; graphViewport.appendChild(rendererBadge); }
+  rendererBadge.hidden = kind === 'none';
+  rendererBadge.textContent = kind === 'base' ? 'Hypertree comparison · free-app renderer' : kind === 'custom' ? 'Custom large-map renderer' : 'Hypertree · standard renderer';
+  rendererBadge.dataset.renderer = kind;
+  document.body.dataset.renderer = kind;
+  window.__M5_RENDERER_MODE__ = kind;
+}
 function syncLargeMapPresentation() {
   if (!graphViewport || destroying) return;
   const nodeCount = hasMap && tree ? countDocumentNodes(tree) : 0;
-  if (!hasMap || !tree || nodeCount <= 300) {
+  if (!hasMap || !tree) { largeMapView?.destroy(); largeMapView = null; globalThis.__M5_LARGE_MAP_VIEW__ = null; largeMapContainer?.remove(); largeMapContainer = null; if (host) host.style.display = ''; if (labelHost) labelHost.style.display = ''; setRendererBadge(hypertreeComparisonMode ? 'base' : 'none'); return; }
+  if (nodeCount <= 300 || hypertreeComparisonMode) {
     largeMapView?.destroy(); largeMapView = null; globalThis.__M5_LARGE_MAP_VIEW__ = null; largeMapContainer?.remove(); largeMapContainer = null;
-    if (host) host.style.display = ''; if (labelHost) labelHost.style.display = '';
+    if (host) host.style.display = ''; if (labelHost) labelHost.style.display = ''; setRendererBadge(hypertreeComparisonMode ? 'base' : (nodeCount <= 300 ? 'standard' : 'base'));
     return;
   }
   if (!largeMapView) {
@@ -903,7 +914,7 @@ function syncLargeMapPresentation() {
       onStatus: (message) => setShellStatus(message)
     });
   }
-  largeMapView.refresh(detailsTargetId, { searchTargetId: searchView?.activeId || null, searchFolderIds: [...searchHighlightIds] }); globalThis.__M5_LARGE_MAP_VIEW__ = largeMapView;
+  largeMapView.refresh(detailsTargetId, { searchTargetId: searchView?.activeId || null, searchFolderIds: [...searchHighlightIds] }); globalThis.__M5_LARGE_MAP_VIEW__ = largeMapView; setRendererBadge('custom');
 }
 const baseRadius = () => Math.max(1, Math.min(viewport().width, viewport().height) * 0.42);
 
@@ -4196,7 +4207,7 @@ async function importBackupFile(file, documentMeta = null) {
   } catch (error) {
     registry?.clear();
     if (error?.code === 'backup-cancelled') return { ok: false, reason: 'cancelled' };
-    if (backupOwnerActive(owner)) setShellStatus('Backup import failed: ' + String(error?.message || error));
+    if (backupOwnerActive(owner)) { if (hypertreeComparisonMode && error?.diagnostics) { const d=error.diagnostics, u=d.unsatisfied?.[0]; setShellStatus('Hypertree comparison failed: ' + String(error.code || error.name || 'layout-failure') + (u ? '; parent ' + u.parentId + ' required ' + Number(u.required).toFixed(3) + ' but available ' + Number(u.available).toFixed(3) + ' at workspaceScale ' + d.workspaceScale + '.' : '') + ' The current document was preserved.'); } else setShellStatus('Backup import failed: ' + String(error?.message || error)); }
     return { ok: false, error };
   } finally { finishBackupOwner(owner, 'backup-import', committed); }
 }
@@ -4379,12 +4390,14 @@ async function installCreatedMap(preview, { request = null, silent = false } = {
   try {
     if (importing && p1bImportPreparationFailure) { p1bImportPreparationFailure = false; throw new Error('injected backup import preparation failure'); }
     const loaded = loadTree(preview.tree);
-    const largePresentation = countDocumentNodes(preview.tree) > 300;
+    const largePresentation = countDocumentNodes(preview.tree) > 300 && !hypertreeComparisonMode;
     const stagedLayout = largePresentation ? buildLargeBaseLayout(preview.tree) : refineExperimentalV2Layout(stageExperimentalV2Layout(loaded.graph, { rootId: preview.tree.id, phases: ['current'], nodeOptions: { overridable: true } }), loaded.graph, { viewport: viewport(), padding: 24, phase: 'current', projectionBaseRadiusCss: baseRadius() }).staged;
     const candidateModel = createExplorationModel({ graph: loaded.graph, baseLayout: stagedLayout, structuralRootId: preview.tree.id, phase: 'current' });
     candidate = { tree: preview.tree, graph: loaded.graph, baseLayout: stagedLayout, model: candidateModel, registry: preview.registry, datasetToken: preview.datasetToken, large: largePresentation };
   } catch (error) {
-    const message = `${importing ? 'Backup import' : 'Create Map'} preparation failed: ${String(error?.message || error)}`;
+    let comparisonMessage = null;
+    if (hypertreeComparisonMode && error?.diagnostics) { const d=error.diagnostics, u=d.unsatisfied?.[0]; comparisonMessage = 'Hypertree comparison failed: ' + String(error.code || error.name || 'layout-failure') + (u ? '; parent ' + u.parentId + ' required ' + Number(u.required).toFixed(3) + ' but available ' + Number(u.available).toFixed(3) + ' at workspaceScale ' + d.workspaceScale + '.' : '') + ' The current document was preserved.'; }
+    const message = comparisonMessage || ((importing ? 'Backup import' : 'Create Map') + ' preparation failed: ' + String(error?.message || error));
     if (!importing) { lastCreateFailureMessage = message; creationTerminal = 'failure'; createMapDialog.close(); }
     setShellStatus(message);
     return { ok: false, error, message };
@@ -4698,6 +4711,10 @@ startEmptyState();
 void startRecoveryDiscovery();
 syncPersistenceControls();
 syncAutomaticSaveFeedback();
+
+
+
+
 
 
 
