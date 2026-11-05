@@ -45,3 +45,5 @@ These use test hooks/picker stubs, not native OS acceptance.
 
 - `hypertree-wheel-1600-check.mjs`: real-wheel 300/1,000 at 1600×900. Evidence: `integration-hypertree-wheel-1600.json`.
 - `integration-hypertree-viewport-trace.json`: graph/canvas/controller dimensions through 1600/1900, resize and Details collapse.
+
+- `hypertree-search-check.mjs`: actual same-name result buttons in R480; asserts parent focus, exact selected ID, Details, transition completion. Latest browser startup failure is reported separately.

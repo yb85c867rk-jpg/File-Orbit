@@ -377,3 +377,32 @@ Wheel results:
 - Browser errors: none.
 
 Not executed: real wheel after Details/sidebar toggle and after resize. Those are documented as remaining checks, not claimed.
+
+## Search activation through existing Hypertree R480
+
+Actual UI reproduction: 1,000-node R480, search `same-name.txt`.
+
+Result buttons:
+
+- `f-0` — `20개 카테고리 지도 / 01_기획`
+- `f-1` — `20개 카테고리 지도 / 02_연구`
+
+Before correction, both clicks selected the exact file (Details `f-0`/`f-1`) but left focus at `root`. The first failing stage was parent navigation: the base path only called `navigateSearchParent` when the target was absent from `model.view().visibleSet`. At root all 1,000 nodes were visible, so parent navigation was skipped.
+
+Correction: the base path now also requires `model.focusedFolderId === checked.parent.id`. Stale-result validation and the post-navigation visible/focus check remain unchanged.
+
+Actual result after correction:
+
+| Clicked result | Focus | Selected | Details |
+|---|---|---|---|
+| `f-0` (`01_기획`) | `cat-1` | `f-0` | `f-0` |
+| `f-1` (`02_연구`) | `cat-2` | `f-1` | `f-1` |
+
+Transition completed (`transition:null`), and no stale selection remained after switching from `f-0` to `f-1`.
+
+Screenshots:
+
+- `search-result-f0.png`
+- `search-result-f1.png`
+
+The retained executable test is `hypertree-search-check.mjs`. Its latest invocation could not attach to a fresh Edge debugger (`webSocketDebuggerUrl` null); the successful results above are the actual UI trace captured before that environment failure. Root/nested/300 and dirty/stale search regressions remain to be run.
