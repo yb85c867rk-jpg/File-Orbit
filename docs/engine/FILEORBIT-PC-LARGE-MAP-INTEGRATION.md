@@ -545,3 +545,36 @@ Re-run distributed capacity with the corrected lifecycle:
 Dense-400 and deep-400 still fail layout feasibility. The earlier 300-capacity conclusion is therefore not established; 300 remains the accepted product baseline, while 1,000 remains experimental pending human visual review. Production admission was not changed.
 
 Screenshots: `reflow-A-1900.png`, `reflow-B-1600.png`.
+
+## Search pagination and transition interruption (evaluation branch)
+
+Search now searches the complete authoritative tree and paginates the ordered matches in pages of 50. The result panel shows the actual total, range and page, with Previous/Next disabled at the boundaries.
+
+Measured on FileOrbit-1000.orbit for `보고서`:
+
+- actual total: **198**;
+- pages: **4** (50, 50, 50, 48);
+- union of displayed IDs: **198**, duplicates: **0**;
+- `보고서-606.png` and `보고서-206.png`: present;
+- activation from page 2: `f-212`, parent `cat-13`, page/query retained;
+- activation from page 4: `f-712`, parent `cat-13`;
+- same-name.txt remains two distinct results (`f-0`, `f-1`);
+- query change resets to page 1;
+- Clear Search clears query, cards and pagination;
+- document replacement while on page 2 clears pagination and query;
+- ordinary 300-node search selects `root-file`;
+- browser errors: none.
+
+Search pagination test: `hypertree-search-pagination-check.mjs` (exit 0).
+
+### Transition interruption
+
+A proven jump was reproduced by resizing during an unfinished folder transition: the resize path cancelled the transition, restored the source focus (`root`) and reset the camera, abandoning `cat-12`.
+
+Correction: viewport resize is deferred while a navigation transition owns the frame. After transition completion/error, the pending resize runs against the completed focus. Fresh evidence shows resize during the cat-12 transition ends at `cat-12`, not root.
+
+Rapid second folder activation during a transition remains guarded with `transition-in-progress`; it does not replace the current transition. Wheel during a transition is likewise guarded. These are reported as interaction limitations, not silently claimed as fixed.
+
+Search activation from settled cat-12 reaches cat-1 without browser errors. Post-transition label reflow remains intact (all 49 child labels at 1000 in controlled states).
+
+Animation test: `hypertree-animation-check.mjs` (exit 0 for the measured scenarios); no screen recording was produced.

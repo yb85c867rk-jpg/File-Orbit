@@ -58,3 +58,6 @@ These use test hooks/picker stubs, not native OS acceptance.
 - `hypertree-capacity-check.mjs`: measures 1000→400 distributed fixtures plus wide/dense/deep 400 cases at 1900 and 1600; records child counts, visible child labels, label hits, overlaps and import time. Evidence: `integration-hypertree-capacity.json`.
 
 - `hypertree-reflow-check.mjs`: controlled 1000-node cat-12 comparison for fresh 1900/1600 loads and same-session resize orders; records camera, controller, transition, placement policy, visible/suppressed IDs and label hits.
+
+- `hypertree-search-pagination-check.mjs`: full-tree `보고서` pagination, union/duplicate checks, page activation, clear and replacement.
+- `hypertree-animation-check.mjs`: rapid retarget, resize during transition, wheel during transition, search activation from cat-12.

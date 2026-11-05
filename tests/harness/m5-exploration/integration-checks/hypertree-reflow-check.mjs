@@ -1,5 +1,5 @@
-﻿import { spawn } from 'node:child_process'; import { writeFileSync } from 'node:fs';
-const PORT=9512, EDGE='C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe';
+﻿import { spawn, execSync } from 'node:child_process'; import { writeFileSync } from 'node:fs';
+const sourceSha=execSync('git rev-parse HEAD',{encoding:'utf8'}).trim(); const PORT=9512, EDGE='C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe';
 const browser=spawn(EDGE,['--headless=new',`--remote-debugging-port=${PORT}`,`--user-data-dir=${process.cwd()}/.reflow-profile`,'--no-first-run','--disable-gpu','about:blank'],{stdio:'ignore',windowsHide:true});const sl=ms=>new Promise(r=>setTimeout(r,ms));let ws;
 try{
  const wait=async(fn,label,ms=20000)=>{const end=Date.now()+ms;while(Date.now()<end){try{const v=await fn();if(v)return v}catch{}await sl(50)}throw new Error('timeout: '+label)};
@@ -16,5 +16,5 @@ try{
  await setSize(1600,900);states.B1600={importMs:await load()};await focus();states.B1600=await measure('B-1600');
  await setSize(1900,870);states.C={importMs:await load()};await focus();states.C.c1900=await measure('C-1900');await setSize(1600,900);states.C.c1600=await measure('C-1600');await setSize(1900,870);states.C.c1900back=await measure('C-1900-back');
  await setSize(1600,900);states.D={importMs:await load()};await focus();states.D.d1600=await measure('D-1600');await setSize(1900,870);states.D.d1900=await measure('D-1900');await setSize(1600,900);states.D.d1600back=await measure('D-1600-back');
- console.log(JSON.stringify({sourceSha:'8078e98',states,errors},null,2));
+ const checks={A1900:states.A1900,B1600:states.B1600,c1900:states.C.c1900,c1600:states.C.c1600,c1900back:states.C.c1900back,d1600:states.D.d1600,d1900:states.D.d1900,d1600back:states.D.d1600back}; for(const [k,s] of Object.entries(checks)){checks[k]=s.visibleChildCount===s.childCount&&s.hitsOk===s.visibleChildCount&&s.transition===null;} if(!Object.values(checks).every(Boolean))throw new Error('reflow acceptance failed '+JSON.stringify(checks)); if(errors.length)throw new Error('browser errors'); console.log(JSON.stringify({sourceSha,checks,states,errors},null,2));
 }finally{try{ws?.close()}catch{}try{process.kill(browser.pid)}catch{}}
