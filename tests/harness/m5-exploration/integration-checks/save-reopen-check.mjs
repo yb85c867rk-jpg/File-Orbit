@@ -25,10 +25,13 @@ try {
   await wait(() => ev('!!window.__M5_LARGE_MAP_VIEW__'));
   await sleep(500);
   await ev('globalThis.__find=id=>{const w=n=>{if(n.id===id)return n;for(const c of n.children||[]){const r=w(c);if(r)return r}return null};return w(__M5_P1B_TEST__.treeSnapshot())}');
-  const treeData = async () => ev(`(async()=>{const t=__M5_P1B_TEST__.treeSnapshot();const ids=[],topo=[];const w=(n,pid)=>{ids.push(n.id);topo.push([pid,n.id,n.kind]);for(const c of n.children||[])w(c,n.id)};w(t,null);const att=[];for(const entry of __M5_P1B_TEST__.attachmentSnapshot().entries){const name=entry.originalName||entry.name;const bytes=await __M5_P1B_TEST__.attachmentBytes(name);const hash=bytes?[...new Uint8Array(await crypto.subtle.digest('SHA-256',bytes))].map(x=>x.toString(16).padStart(2,'0')).join(''):null;att.push({attachmentId:entry.attachmentId,name,size:entry.sizeBytes??entry.size??null,mime:entry.mime??null,hash})};return {ids,topo,count:ids.length,attachments:att}})()`);
-  const before = await treeData();
+  const treeData = async () => ev(`(async()=>{const t=__M5_P1B_TEST__.treeSnapshot();const ids=[],topo=[],bindings=[];const snap=__M5_P1B_TEST__.attachmentSnapshot().entries;const byId=new Map(snap.map((entry)=>[entry.attachmentId,entry]));const w=async(n,pid,path)=>{const here=path?path+' / '+n.name:n.name;ids.push(n.id);topo.push([pid,n.id,n.kind]);if(n.data&&n.data.attachmentId){const entry=byId.get(n.data.attachmentId);if(!entry)throw new Error('missing attachment reference '+n.data.attachmentId+' at '+here);const name=entry.originalName||entry.name;const bytes=await __M5_P1B_TEST__.attachmentBytesById(n.data.attachmentId);if(!bytes&&entry.sizeBytes!==0)throw new Error('unreadable attachment '+n.data.attachmentId);const hash=bytes?[...new Uint8Array(await crypto.subtle.digest('SHA-256',bytes))].map(x=>x.toString(16).padStart(2,'0')).join(''):null;bindings.push({nodeId:n.id,nodeName:n.name,path:here,attachmentId:n.data.attachmentId,originalName:name,size:entry.sizeBytes??entry.size??null,mime:entry.mime??null,hash})}for(const c of n.children||[])await w(c,n.id,here)};await w(t,null,'');return {ids,topo,count:ids.length,bindings}})()`);  const before = await treeData();
   assert.equal(before.count, 1000, 'initial document must have 1,000 nodes');
-  assert.ok(before.attachments.length > 0, 'initial attachments must be present');
+  assert.ok(before.bindings.length > 0, 'initial attachment-bearing nodes must be present');
+  const sameName = before.bindings.filter((item) => item.originalName === 'same-name.txt');
+  assert.equal(sameName.length, 2, 'fixture must contain two same-named attachments');
+  assert.notEqual(sameName[0].hash, sameName[1].hash, 'same-named attachments must have different bytes');
+  assert.equal(new Set(sameName.map((item) => item.attachmentId)).size, 2, 'same-named attachments must have distinct references');
   const cat = await ev(`(()=>{const v=__M5_LARGE_MAP_VIEW__,n=v.scene().find(x=>x.id==='cat-1'),p=v.screenOf(n),r=document.querySelector('[data-large-map] canvas').getBoundingClientRect();return {x:r.left+p.x,y:r.top+p.y}})()`);
   await click(cat.x, cat.y);
   const file = await ev(`(()=>{const v=__M5_LARGE_MAP_VIEW__,n=v.scene().find(x=>x.kind==='file'&&x.active),p=v.screenOf(n),r=document.querySelector('[data-large-map] canvas').getBoundingClientRect();return {x:r.left+p.x,y:r.top+p.y}})()`);
@@ -60,10 +63,12 @@ try {
   assert.equal(after.count, 1000, 'reopened document must have 1,000 nodes');
   assert.deepEqual(after.ids, before.ids, 'reopened IDs must match');
   assert.deepEqual(after.topo, before.topo, 'reopened topology must match');
-  const attachmentContent = (items) => items.map(({ name, size, mime, hash }) => ({ name, size, mime, hash })).sort((a, b) => a.name.localeCompare(b.name));
-  assert.deepEqual(attachmentContent(after.attachments), attachmentContent(before.attachments), 'reopened attachment names/metadata/hashes must match');
-  assert.equal(new Set(after.attachments.map((item) => item.attachmentId)).size, after.attachments.length, 'reopened attachment IDs must be unique');
-  assert.ok(after.attachments.every((item) => typeof item.attachmentId === 'string' && item.attachmentId.length > 0), 'reopened attachments must retain runtime IDs');
+  const bindingContent = (items) => items.map(({ nodeId, nodeName, originalName, size, mime, hash }) => ({ nodeId, nodeName, originalName, size, mime, hash })).sort((a, b) => a.nodeId.localeCompare(b.nodeId));
+  assert.deepEqual(bindingContent(after.bindings), bindingContent(before.bindings), 'per-node attachment bindings/metadata/hashes must match');
+  const sameAfter = after.bindings.filter((item) => item.originalName === 'same-name.txt');
+  assert.equal(sameAfter.length, 2, 'reopened same-named attachments must both remain');
+  assert.notEqual(sameAfter[0].hash, sameAfter[1].hash, 'reopened same-named attachments must remain distinct');
+  assert.equal(new Set(sameAfter.map((item) => item.attachmentId)).size, 2, 'reopened same-named attachments must have distinct references');
   assert.equal(final.name, 'Saved-Reopen-1000.txt', 'edited name must reopen');
   assert.equal(final.desc, 'save reopen verified', 'edited description must reopen');
   assert.match(final.details, /Saved-Reopen-1000\.txt/, 'Details must agree');
@@ -72,11 +77,13 @@ try {
   assert.equal(final.handleIdentity, true, 'same writable handle object must be retained');
   assert.equal(final.snap.dirty, false, 'reopened state must be clean');
   assert.deepEqual(browserErrors, [], 'no browser errors expected');
-  console.log(JSON.stringify({ setup, before: { count: before.count, attachments: before.attachments }, afterEdit, undo, redo, saved, reopened, after: { count: after.count, idsEqual: true, topologyEqual: true, attachmentsEqual: true }, final, browserErrors }, null, 2));
+  console.log(JSON.stringify({ setup, before: { count: before.count, bindings: before.bindings }, afterEdit, undo, redo, saved, reopened, after: { count: after.count, idsEqual: true, topologyEqual: true, bindingsEqual: true }, final, browserErrors }, null, 2));
 } finally {
   try { ws?.close(); } catch {}
   try { process.kill(browser.pid); } catch {}
 }
+
+
 
 
 

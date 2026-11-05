@@ -150,3 +150,30 @@ Save As cancellation was also executed with an `AbortError` picker: destination 
 Deterministic handles are not native OS/disk acceptance.
 
 
+
+## Per-node attachment binding verification
+
+The 1,000-node fixture now contains two files named `same-name.txt` in different folders with different bytes. The save/reopen test resolves attachment content through each node's `data.attachmentId`, not by original filename.
+
+Verified before save and after reopen:
+
+- every attachment-bearing node resolves to a runtime attachment registry entry;
+- missing references fail the test;
+- the two same-named nodes retain distinct references and distinct SHA-256 hashes;
+- attachment names, sizes, MIME metadata and hashes match per node;
+- document IDs and topology remain equal;
+- runtime attachment IDs may remap; IDs are not treated as stable storage identifiers.
+
+## Automatic-save cancellation verification
+
+Save As cancellation now uses the existing `__M5_DISABLE_AUTOMATIC_SAVE__` test override:
+
+- a real editor metadata edit is saved through the writable handle;
+- automatic saving is disabled;
+- toolbar Undo restores the prior content; dirty becomes true naturally, with no `touch()`;
+- instrumented handle writes remain unchanged across Undo and cancellation;
+- Save As invokes the picker once and throws AbortError;
+- destination hash before and after cancellation is equal;
+- handle object and dirty state are unchanged.
+
+Separate ordinary-Undo-with-automatic-save-enabled behavior was attempted but the automatic save did not make the state clean within the observation window; that separate assertion is NOT RUN.

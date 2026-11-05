@@ -24,3 +24,5 @@ These use test hooks/picker stubs, not native OS acceptance.
 - `save-reopen-check.mjs`: complete paid-test 1,000 edit, actual toolbar Undo/Redo, current-handle Save and reopen; asserts IDs/topology/attachments/Details. Evidence: `integration-save-reopen.json`.
 - `save-as-cancel-check.mjs`: Save As `AbortError`; asserts destination hash/handle unchanged and dirty edits retained. Evidence: `integration-saveas-cancel.json`.
 
+
+- Per-node attachment bindings are checked using the node's attachment reference; the 1,000 fixture has two same-named files with different bytes.
