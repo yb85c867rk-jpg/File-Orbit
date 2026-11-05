@@ -1338,6 +1338,7 @@ function installFrame({ operation, fit, entry, camera, framing }) {
   };
   linkFrameReady = true;
   generation += 1;
+  syncController();
   return { camera: prepared.camera, framing: prepared.framing, scene: prepared.scene, hit: prepared.hit, containment: prepared.containment };
 }
 
@@ -4711,6 +4712,7 @@ startEmptyState();
 void startRecoveryDiscovery();
 syncPersistenceControls();
 syncAutomaticSaveFeedback();
+
 
 
 
