@@ -29,3 +29,6 @@ These use test hooks/picker stubs, not native OS acceptance.
 
 - `automatic-save-check.mjs`: fresh writable session; actual Undo/Redo; waits for write count and revision to settle; decodes bytes to verify undone/redone content. Evidence: `integration-automatic-save.json`.
 - `automatic-save-blocked-check.mjs`: proves manual Save As cancellation leaves automatic saving blocked with dirty state and no write resumption until explicit recovery. Evidence: `integration-automatic-save-blocked.json`.
+
+- `transition-check.mjs`: 750 ms geometry/camera transition, zoom-in/out, nested, background category, Back/Root/breadcrumb, wheel interruption, repeated clicks, replacement, reduced motion, label hit target. Evidence: `integration-transition.json`.
+- `transition-cat1.gif` plus six intermediate frames: visual transition evidence.

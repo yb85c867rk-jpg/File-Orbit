@@ -195,3 +195,34 @@ Fresh session, automatic saving enabled from startup, deterministic writable han
 The earlier Save As cancellation test left `automaticSaveBlocked=true` with no failure object. The document had `dataRevision=3`, `savedRevision=1`, dirty true, and writes remained 1. Removing only the `__M5_DISABLE_AUTOMATIC_SAVE__` flag does not clear `automaticSaveBlocked`, so Redo remained dirty.
 
 This is intentional cancellation protection: automatic saving does not resume merely because a test flag is removed. Recovery requires an explicit manual Save/Save As, which clears the block at the start of `saveCurrentDocument`, or a deliberate retry/reload. No application defect was found; the earlier re-enabled test was invalid because it bypassed the required recovery action.
+
+## Followable folder expansion (human feedback correction)
+
+The custom large-map presentation now transitions geometry and camera together using a configurable **750 ms** duration and **easeInOutCubic** easing. Reduced-motion preference shortens this to **120 ms**. `setTransitionDuration(ms)` is retained for usability tuning.
+
+- Folder activation captures the currently displayed scene, changes focus, computes the destination layout, and interpolates node positions, edges, labels, selection indicators and camera from that intermediate state.
+- Newly appearing nodes spawn from the clicked folder, fade in with a short per-node stagger, and old background context fades out rather than disappearing abruptly.
+- The clicked folder keeps an amber selection ring and label throughout the transition.
+- Camera framing is calculated from the usable graph viewport (toolbar, navigation and Details insets measured when they overlap) and actual expanded bounds. Small branches zoom in; a larger branch is fitted with a lower scale.
+- Wheel/pan/explicit camera actions freeze the displayed intermediate geometry and cancel camera motion; they do not jump to the destination later.
+- Repeated clicks retarget from the current intermediate frame.
+- Back, Root, breadcrumb and background-category navigation use the same transition path; Back restores its stored camera.
+- Replacement and structural refresh clear geometry/camera transitions.
+
+### Executed transition results
+
+- overview scale **0.08** → category **0.874** (zoom in);
+- nested branch **2.4** (closer);
+- return to the larger category **0.874** (zoom out from 2.4);
+- background category focus `cat-2`, Back restored `nested-1`, middle breadcrumb restored `cat-1`, Root restored `root`;
+- wheel interruption froze world geometry and left no delayed jump;
+- repeated cat-1 → cat-2 clicks ended on `cat-2`;
+- document replacement cleared `anim` and `geom`;
+- reduced-motion duration **120 ms**;
+- label hit target resolved to `cat-1` while moving; no browser errors.
+
+Intermediate frames and GIF: `transition-frame-00.png` through `transition-frame-05.png`, `transition-cat1.gif`.
+
+The 300-node document remains on the ordinary renderer (`custom=false`, count 300); screenshot `transition-300-regression.png`.
+
+These are machine checks, not the human animation usability verdict.
