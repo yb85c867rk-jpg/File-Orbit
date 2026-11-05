@@ -54,3 +54,5 @@ These use test hooks/picker stubs, not native OS acceptance.
 - Active-branch framing: comparison focus fits/centers ancestor+descendant bounds; ordinary framing remains all-visible.
 
 - `hypertree-wheel-1600-check.mjs` records the post-wheel cat-13 target bounds, containment, elementFromPoint and installed hit before clicking.
+
+- `hypertree-capacity-check.mjs`: measures 1000→400 distributed fixtures plus wide/dense/deep 400 cases at 1900 and 1600; records child counts, visible child labels, label hits, overlaps and import time. Evidence: `integration-hypertree-capacity.json`.

@@ -474,7 +474,32 @@ The previous f-0 → f-80 and f-80 → f-160 dot collisions are no longer presen
 
 Cat-1 after search: 60 visible labels; the two same-name results still select f-0/f-1 in cat-1/cat-2.
 
-Automated: search test exit 0, 1900 wheel test exit 0, 1600 wheel test exit 0, navigation/label tests 18/18 pass. The earlier 1600 failure was a test assertion bug: camera zoom moved 0.22732 → 0.28898 and the post-wheel cat-13 target was inside the viewport, returned elementFromPoint=CANVAS, hit cat-13, and focused cat-13. The checks were rewritten to use an explicit ocused local and now pass.
+Automated: search test exit 0, 1900 wheel test exit 0, 1600 wheel test exit 0, navigation/label tests 18/18 pass. The earlier 1600 failure cause remains unconfirmed: the old assertions returned false while the recorded camera values passed, and rewriting the check expression produced a pass. No concrete reproducer established a product cause, so no wheel rewrite was attempted.
 
 Screenshots: `cat12-default-labels.png`, `search-result-f0.png`, `search-result-f1.png`.
 
+
+## Capacity ladder (evaluation branch)
+
+Deterministic fixtures use 20 categories, depths 3–7, distributed files, plus 400-node wide, dense and deep cases. Counts include root, folders and files.
+
+| Fixture | Total | Max immediate children | Import ms | Child labels @1900 | Child labels @1600 | Label hits | Label-node overlaps |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| FileOrbit-1000 | 1000 | 49 | 4212 | 28/49 | 49/49 | all visible | 2 |
+| FileOrbit-900 | 900 | 44 | 1910 | 27/44 | 44/44 | all visible | 2 |
+| FileOrbit-800 | 800 | 39 | 3250 | 24/39 | 39/39 | all visible | 2 |
+| FileOrbit-700 | 700 | 34 | 1418 | 22/34 | 34/34 | all visible | 2 |
+| FileOrbit-600 | 600 | 29 | 940 | 22/29 | 29/29 | all visible | 2 |
+| FileOrbit-500 | 500 | 24 | 667 | 18/24 | 24/24 | all visible | 0 |
+| FileOrbit-400 | 400 | 19 | 471 | 15/19 | 19/19 | all visible | 0 |
+| wide-400 | 400 | 19 | 685 | 16/19 | 19/19 | all visible | 0 |
+| dense-400 | 400 | 280 | — | layout failed | — | — | — |
+| deep-400 | 400 | — | — | layout failed | — | — | — |
+
+Dense-400 failure: `experimental-v2-infeasible; parent cat-1 required 1.559 but available 0.511 at workspaceScale 16`.
+
+Deep-400 failure: `experimental-v2-infeasible; parent depth-2 required 0.300 but available 0.256 at workspaceScale 16`.
+
+At 1900, no level above 300 shows all immediate child labels. At 1600 every distributed fixture shows all immediate child labels. Complete save/reopen and per-capacity search/dot checks were not run.
+
+The original 1,000-node goal remains the target; the measured recommendation is **300 as the supported free baseline**, with 1,000 retained as an experimental R480 case pending human visual review. Production admission was not changed.

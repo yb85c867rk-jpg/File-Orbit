@@ -1,0 +1,281 @@
+﻿{
+  "rows": [
+    {
+      "name": "FileOrbit-1000.orbit",
+      "count": 1000,
+      "importMs": 4212,
+      "at1900": {
+        "focus": "cat-12",
+        "childCount": 49,
+        "visibleChildCount": 28,
+        "labelHits": 28,
+        "labelMisses": [],
+        "metrics": {
+          "candidateCount": 71,
+          "viewportEligibleCount": 62,
+          "viewportIneligibleCount": 9,
+          "budgetExcludedCount": 0,
+          "createdCount": 62,
+          "visibleCount": 34,
+          "invalidWebLinkCount": 0,
+          "suppressedCount": 28,
+          "overlapSuppressedCount": null,
+          "viewportSuppressedCount": null,
+          "nodeObstacleSuppressedCount": null,
+          "suppressionMeasurement": "fixed-transition-policy",
+          "labelNodeOverlapCount": 2,
+          "labelNodeOverlapMeasurement": "measured-visible-label-rectangles",
+          "placementAttempts": 62,
+          "labelNodeOverlapDefinition": "visible label-node pairs; owner node excluded; exact circle/diamond intersection",
+          "placementObstaclePolicy": "fixed transition placement",
+          "priorityVisibleCount": 30,
+          "prioritySuppressedCount": 21,
+          "unmeasurableCount": 0,
+          "measuredCount": 62,
+          "visibleIconCount": 0,
+          "leadingIconCount": 0,
+          "rootProtection": true,
+          "rootProtectionRect": {
+            "left": 1230.2103848064207,
+            "top": 679.8302100039318,
+            "right": 1411.73095703445,
+            "bottom": 819.4026044599905
+          },
+          "rootLabelVisible": true,
+          "selectedLabelVisible": true,
+          "selectedLabelOpacity": 1,
+          "textMismatchCount": 0,
+          "measurement": "getBoundingClientRect/offsetWidth",
+          "dprIndependent": true,
+          "viewport": {
+            "width": 1535,
+            "height": 792
+          },
+          "labels": {}
+        }
+      },
+      "at1600": {
+        "focus": "cat-12",
+        "childCount": 49,
+        "visibleChildCount": 49,
+        "labelHits": 49,
+        "labelMisses": [],
+        "metrics": {
+          "candidateCount": 71,
+          "viewportEligibleCount": 60,
+          "viewportIneligibleCount": 11,
+          "budgetExcludedCount": 0,
+          "createdCount": 60,
+          "visibleCount": 54,
+          "invalidWebLinkCount": 0,
+          "suppressedCount": 6,
+          "overlapSuppressedCount": 5,
+          "viewportSuppressedCount": 1,
+          "nodeObstacleSuppressedCount": 0,
+          "labelNodeOverlapCount": 1,
+          "placementAttempts": 93,
+          "labelNodeOverlapDefinition": "visible label-node pairs; owner node excluded; exact circle/diamond intersection",
+          "placementObstaclePolicy": "conservative glyph bounds",
+          "priorityVisibleCount": 51,
+          "prioritySuppressedCount": 0,
+          "unmeasurableCount": 0,
+          "measuredCount": 60,
+          "visibleIconCount": 0,
+          "leadingIconCount": 0,
+          "rootProtection": true,
+          "rootProtectionRect": {
+            "left": 1060.8195023193514,
+            "top": 706.9100709640326,
+            "right": 1245.2500491959395,
+            "bottom": 852.302414717209
+          },
+          "rootLabelVisible": true,
+          "selectedLabelVisible": true,
+          "selectedLabelOpacity": 1,
+          "textMismatchCount": 0,
+          "measurement": "getBoundingClientRect/offsetWidth",
+          "dprIndependent": true,
+          "viewport": {
+            "width": 1235,
+            "height": 822
+          },
+          "labels": {}
+        }
+      }
+    },
+    {
+      "name": "FileOrbit-900.orbit",
+      "count": 900,
+      "importMs": 1910,
+      "at1900": {
+        "focus": "cat-12",
+        "childCount": 44,
+        "visibleChildCount": 27,
+        "labelHits": 27,
+        "labelMisses": [],
+        "metrics": {
+          "candidateCount": 66,
+          "viewportEligibleCount": 57,
+          "viewportIneligibleCount": 9,
+          "budgetExcludedCount": 0,
+          "createdCount": 57,
+          "visibleCount": 32,
+          "invalidWebLinkCount": 0,
+          "suppressedCount": 25,
+          "overlapSuppressedCount": null,
+          "viewportSuppressedCount": null,
+          "nodeObstacleSuppressedCount": null,
+          "suppressionMeasurement": "fixed-transition-policy",
+          "labelNodeOverlapCount": 2,
+          "labelNodeOverlapMeasurement": "measured-visible-label-rectangles",
+          "placementAttempts": 57,
+          "labelNodeOverlapDefinition": "visible label-node pairs; owner node excluded; exact circle/diamond intersection",
+          "placementObstaclePolicy": "fixed transition placement",
+          "priorityVisibleCount": 29,
+          "prioritySuppressedCount": 17,
+          "unmeasurableCount": 0,
+          "measuredCount": 57,
+          "visibleIconCount": 0,
+          "leadingIconCount": 0,
+          "rootProtection": true,
+          "rootProtectionRect": {
+            "left": 1237.4998680305537,
+            "top": 678.4748166197724,
+            "right": 1420.1053685580312,
+            "bottom": 820.2170676747276
+          },
+          "rootLabelVisible": true,
+          "selectedLabelVisible": true,
+          "selectedLabelOpacity": 1,
+          "textMismatchCount": 0,
+          "measurement": "getBoundingClientRect/offsetWidth",
+          "dprIndependent": true,
+          "viewport": {
+            "width": 1535,
+            "height": 792
+          },
+          "labels": {}
+        }
+      },
+      "at1600": {
+        "focus": "cat-12",
+        "childCount": 44,
+        "visibleChildCount": 44,
+        "labelHits": 44,
+        "labelMisses": [],
+        "metrics": {
+          "candidateCount": 66,
+          "viewportEligibleCount": 53,
+          "viewportIneligibleCount": 13,
+          "budgetExcludedCount": 0,
+          "createdCount": 53,
+          "visibleCount": 48,
+          "invalidWebLinkCount": 0,
+          "suppressedCount": 5,
+          "overlapSuppressedCount": 4,
+          "viewportSuppressedCount": 1,
+          "nodeObstacleSuppressedCount": 0,
+          "labelNodeOverlapCount": 1,
+          "placementAttempts": 76,
+          "labelNodeOverlapDefinition": "visible label-node pairs; owner node excluded; exact circle/diamond intersection",
+          "placementObstaclePolicy": "conservative glyph bounds",
+          "priorityVisibleCount": 46,
+          "prioritySuppressedCount": 0,
+          "unmeasurableCount": 0,
+          "measuredCount": 53,
+          "visibleIconCount": 0,
+          "leadingIconCount": 0,
+          "rootProtection": true,
+          "rootProtectionRect": {
+            "left": 1069.5620432259661,
+            "top": 705.5062310112762,
+            "right": 1255.1247623437755,
+            "bottom": 853.162919246895
+          },
+          "rootLabelVisible": true,
+          "selectedLabelVisible": true,
+          "selectedLabelOpacity": 1,
+          "textMismatchCount": 0,
+          "measurement": "getBoundingClientRect/offsetWidth",
+          "dprIndependent": true,
+          "viewport": {
+            "width": 1235,
+            "height": 822
+          },
+          "labels": {}
+        }
+      }
+    },
+    {
+      "name": "FileOrbit-800.orbit",
+      "count": 800,
+      "error": "timeout: focus cat-12",
+      "status": {
+        "count": 800,
+        "shell": ""
+      }
+    },
+    {
+      "name": "FileOrbit-700.orbit",
+      "count": 700,
+      "error": "timeout: focus cat-12",
+      "status": {
+        "count": 700,
+        "shell": ""
+      }
+    },
+    {
+      "name": "FileOrbit-600.orbit",
+      "count": 600,
+      "error": "timeout: focus cat-12",
+      "status": {
+        "count": 600,
+        "shell": ""
+      }
+    },
+    {
+      "name": "FileOrbit-500.orbit",
+      "count": 500,
+      "error": "timeout: focus cat-12",
+      "status": {
+        "count": 500,
+        "shell": ""
+      }
+    },
+    {
+      "name": "FileOrbit-400.orbit",
+      "count": 400,
+      "error": "timeout: focus cat-12",
+      "status": {
+        "count": 400,
+        "shell": ""
+      }
+    },
+    {
+      "name": "FileOrbit-dense-400.orbit",
+      "count": 400,
+      "error": "timeout: count",
+      "status": {
+        "shell": "Hypertree comparison failed: experimental-v2-infeasible; parent cat-1 required 1.559 but available 0.511 at workspaceScale 16. The current document was preserved."
+      }
+    },
+    {
+      "name": "FileOrbit-wide-400.orbit",
+      "count": 400,
+      "error": "timeout: focus cat-1",
+      "status": {
+        "count": 400,
+        "shell": ""
+      }
+    },
+    {
+      "name": "FileOrbit-deep-400.orbit",
+      "count": 400,
+      "error": "timeout: count",
+      "status": {
+        "shell": "Hypertree comparison failed: experimental-v2-infeasible; parent depth-2 required 0.300 but available 0.256 at workspaceScale 16. The current document was preserved."
+      }
+    }
+  ],
+  "errors": []
+}
