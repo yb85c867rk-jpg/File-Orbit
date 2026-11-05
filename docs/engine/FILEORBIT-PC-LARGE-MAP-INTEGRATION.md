@@ -118,3 +118,16 @@ Executed in this pass:
 
 Not executed: successful middle-breadcrumb click, blocked Back/Root during a dirty draft, replacement during animation, search-path pixel/clear assertions, disposal frame-count assertion.
 
+
+## Final focused verification
+
+- Structural topology change now cancels stale animation/drag before layout rebuild while preserving focus/camera.
+- `activateSearchResult` routes admitted large maps directly to the active presentation after stale-result, ownership and dirty-editor checks. Actual app search results verified:
+  - `README-root.md` → focus root, selected root-file, Details agrees, scene 23;
+  - `01_기획` → focus cat-1, selected cat-1, Details folder;
+  - `하위-폴더` → focus nested-1, selected nested-1;
+  - `중첩-문서.txt` → focus nested-1, selected nested-file-1, Details agrees.
+- Blocked dirty-editor Back/Root executed: focus remained cat-1, selection nested-file-1, history 1, camera unchanged, status explained the block.
+- P1B suite initially reported one transient failure in “Import Backup first Save…”. The failing scenario passed standalone; the full suite then passed 69/69. The original failure and result are recorded honestly.
+- Middle breadcrumb click is retained and passing.
+- Structural-change animation cancellation, replacement-during-animation pixel tests, search-path pixels/clear, disposal frame-count, same-count topology, toolbar save/reopen and pure-flat navigation remain NOT RUN unless separately listed.

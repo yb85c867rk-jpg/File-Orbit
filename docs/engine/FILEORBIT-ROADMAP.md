@@ -34,7 +34,7 @@ Folder Upload at folder nodes including valid root: nested/empty folders/files, 
 
 Cloud import: authorized download into local snapshot, hierarchy/content preservation, no cloud modification, no sync/collaboration initially; provider/permissions chosen before implementation.
 
-Upgrade flow designed alongside paid completion; no premature account/payment/licensing systems.
+Upgrade flow designed alongside paid completion; no premature account/payment/licensing systems.\n\nApproved future requirement (not implemented): when a free addition would exceed 300 nodes, reject the entire addition, preserve existing data, and show a centered application dialog with Cancel / Upgrade information. Do not implement payment or automatic upgrade in the current integration task.
 
 ## F. PC acceptance — pending
 
@@ -47,3 +47,4 @@ After browser paid project accepted, prepare downloadable desktop app reusing JS
 ## H. Enterprise — pending
 
 After paid completion and desktop packaging, evaluate collaboration/enterprise requirements. No invented enterprise node limit.
+

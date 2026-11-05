@@ -2061,6 +2061,15 @@ async function activateSearchResult(result, { skipDirty = false } = {}) {
     if (editorController.isOpen()) editorController.cancel();
   }
   const token = datasetToken; const revision = dataRevision;
+  if (largeMapView?.isActive()) {
+    const revealed = largeMapView.reveal(result.id);
+    if (!revealed) { searchView.showError('The result could not be revealed in the large-map presentation.'); return { ok: false, reason: 'reveal-failed' }; }
+    if (datasetToken !== token || dataRevision !== revision) { searchView.showError('The map changed. Search again.'); runSearch(); return { ok: false, reason: 'stale' }; }
+    detailsTargetId = result.id; searchView.setActive(result.id); publish();
+    const mapped = model.details(result.id);
+    if (mapped?.dataType === 'file' && mapped.attachment) openAttachmentViewer(result.id);
+    return { ok: true, kind: checked.node.kind === 'folder' ? 'folder' : 'data', id: result.id };
+  }
   if (checked.node.kind === 'folder') {
     if (model.focusedFolderId !== result.id) {
       const nav = await navigateSearchParent({ folderId: result.id, targetId: result.id, datasetToken: token, revision });
@@ -4689,6 +4698,7 @@ startEmptyState();
 void startRecoveryDiscovery();
 syncPersistenceControls();
 syncAutomaticSaveFeedback();
+
 
 
 
