@@ -47,6 +47,7 @@ export function createLargeMapPresentation({ container, getTree, getSelectedId, 
     if (!state.searchTarget) state.forced.clear();
     const sig = tree.id + ':' + count(tree) + ':' + topologyHash(tree);
     if (!state.positions.size || replacement || sig !== state.signature) {
+      if (sig !== state.signature) { cancel(); state.drag = null; }
       state.positions = buildPositions(); state.activeLayout = null; state.signature = sig;
       if (!find(state.focusId)) state.focusId = tree.id;
       if (replacement || !state.cameras.has(state.focusId)) state.camera = overviewCamera();
@@ -74,6 +75,7 @@ export function createLargeMapPresentation({ container, getTree, getSelectedId, 
   const ro=new ResizeObserver(()=>render());ro.observe(root);
   return { refresh, reveal, render, screenOf:(n)=>screen(n), fit:fitView, paint:()=>({ paint: state.paint || new Map(), searchTarget: state.searchTarget, searchFolders: [...state.searchFolders] }), sampleNode:(id)=>{const n=scene().find((x)=>x.id===id);if(!n)return null;const p=screen(n),dpr=Math.max(1,window.devicePixelRatio||1);return [...canvas.getContext('2d').getImageData(Math.floor(p.x*dpr),Math.floor(p.y*dpr),1,1).data]}, lifecycle:()=>({ disposed:state.disposed, frameHandle:state.frameHandle, anim:Boolean(state.anim), drag:Boolean(state.drag) }), isActive:()=>Boolean(state.tree), destroy(){state.disposed=true;if(state.frameHandle!==null)cancelAnimationFrame(state.frameHandle);state.frameHandle=null;state.anim=null;state.drag=null;ro.disconnect();root.remove();state.tree=null;state.positions.clear();state.labels=[];state.history=[]},  scene, get focusId(){return state.focusId}, get selected(){return state.selected}, get camera(){return{...state.camera}}, navigateTo(id){const n=find(id);if(n)activate(n,{})}, _state:state };
 }
+
 
 
 

@@ -20,3 +20,6 @@ These use test hooks/picker stubs, not native OS acceptance.
 
 - `search-check.mjs`: actual app search controls for root file, first-level folder, nested folder and nested file; asserts focus, selected ID and Details. Evidence: `integration-search-routing.json`.
 - `blocked-navigation-check.mjs`: dirties an editor form, clicks Back and Root, asserts focus/selection/history/camera unchanged. Evidence: `integration-blocked-navigation.json`.
+
+- `save-reopen-check.mjs`: complete paid-test 1,000 edit, actual toolbar Undo/Redo, current-handle Save and reopen; asserts IDs/topology/attachments/Details. Evidence: `integration-save-reopen.json`.
+- `save-as-cancel-check.mjs`: Save As `AbortError`; asserts destination hash/handle unchanged and dirty edits retained. Evidence: `integration-saveas-cancel.json`.

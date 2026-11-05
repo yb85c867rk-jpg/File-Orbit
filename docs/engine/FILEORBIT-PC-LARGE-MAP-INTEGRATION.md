@@ -116,12 +116,12 @@ Executed in this pass:
 - PDF paint/label color asserted `#F87171`;
 - renderer lifecycle exposed a live frame handle; destroy cancellation is code-reviewed and unit-verified only indirectly.
 
-Not executed: successful middle-breadcrumb click, blocked Back/Root during a dirty draft, replacement during animation, search-path pixel/clear assertions, disposal frame-count assertion.
+Executed: middle-breadcrumb click and dirty-editor blocked Back/Root. Not executed: replacement during animation, search-path pixel/clear assertions, disposal frame-count assertion.
 
 
 ## Final focused verification
 
-- Structural topology change now cancels stale animation/drag before layout rebuild while preserving focus/camera.
+- Structural topology change now cancels stale animation/drag before layout rebuild while preserving focus/camera. The structural/replacement animation assertions are NOT RUN.
 - `activateSearchResult` routes admitted large maps directly to the active presentation after stale-result, ownership and dirty-editor checks. Actual app search results verified:
   - `README-root.md` → focus root, selected root-file, Details agrees, scene 23;
   - `01_기획` → focus cat-1, selected cat-1, Details folder;
@@ -130,4 +130,22 @@ Not executed: successful middle-breadcrumb click, blocked Back/Root during a dir
 - Blocked dirty-editor Back/Root executed: focus remained cat-1, selection nested-file-1, history 1, camera unchanged, status explained the block.
 - P1B suite initially reported one transient failure in “Import Backup first Save…”. The failing scenario passed standalone; the full suite then passed 69/69. The original failure and result are recorded honestly.
 - Middle breadcrumb click is retained and passing.
-- Structural-change animation cancellation, replacement-during-animation pixel tests, search-path pixels/clear, disposal frame-count, same-count topology, toolbar save/reopen and pure-flat navigation remain NOT RUN unless separately listed.
+- Structural/replacement animation assertions, search-path pixels/clear, disposal frame-count, same-count topology and pure-flat navigation remain NOT RUN. The complete current-handle save/reopen and Save As cancellation sequences are executed below.
+
+## Complete save/reopen verification
+
+Executed through the ordinary app editor and toolbar buttons, using deterministic writable handles:
+
+- opened paid-test 1,000 through the writable test adapter;
+- edited a nested file name to `Saved-Reopen-1000.txt` and description to `save reopen verified`;
+- the editor Save wrote through the current handle;
+- clicked actual toolbar `#undo-history`; original `중첩-문서.txt` returned; history undo 0/redo 1;
+- clicked actual toolbar `#redo-history`; edited name returned; history undo 1/redo 0;
+- saved through the existing `saveCurrentDocument` path (programmatic invocation; no visible Save control);
+- reopened the written bytes through the writable import/open pipeline;
+- reopened: 1,000 nodes, IDs equal, topology equal, edited name/description, graph and Details `Saved-Reopen-1000.txt`, attachment hashes unchanged, writable identity `saved-1000.orbit`, savedRevision 0 and dirty false.
+
+Save As cancellation was also executed with an `AbortError` picker: destination bytes hash unchanged, handle identity unchanged, zero writes, dirty state retained.
+
+Deterministic handles are not native OS/disk acceptance.
+

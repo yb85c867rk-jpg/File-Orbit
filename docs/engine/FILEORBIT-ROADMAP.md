@@ -48,3 +48,14 @@ After browser paid project accepted, prepare downloadable desktop app reusing JS
 
 After paid completion and desktop packaging, evaluate collaboration/enterprise requirements. No invented enterprise node limit.
 
+
+## Deferred sidebar Save (approved, not implemented)
+
+- Add Save immediately above Save As in the left sidebar.
+- Save opens a save dialog, preferably starting in the current document's containing folder, with its current filename.
+- User confirms before writing.
+- If the browser cannot restore that folder, allow location selection.
+- Cancellation preserves destination bytes and current edits.
+- Preserve external-change conflict protection.
+- Save As remains the explicit alternative-name/location flow.
+- This supersedes the earlier proposed direct-write sidebar Save behavior.
