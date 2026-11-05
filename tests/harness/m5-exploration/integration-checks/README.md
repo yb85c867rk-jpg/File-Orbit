@@ -50,3 +50,5 @@ These use test hooks/picker stubs, not native OS acceptance.
 
 
 - `hypertree-search-check.mjs` also records focused label counts and the measured f-0/f-80 glyph overlap before activating both same-name results.
+
+- Active-branch framing: comparison focus fits/centers ancestor+descendant bounds; ordinary framing remains all-visible.

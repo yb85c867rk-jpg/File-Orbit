@@ -450,3 +450,30 @@ Measured at the default cat-1 focus:
 This is actual glyph overlap at Fit scale, not a radius-only bug. No forced “selected target wins” ordering was added. The tested disambiguation is the visible filename label: it resolves the exact file ID and remains actionable. Dot-center selection is not reported as passing.
 
 Screenshots: `cat12-default-labels.png`, `search-result-f0.png`, `search-result-f1.png`.
+
+## Active-branch focus framing (evaluation branch)
+
+Measured constraint before correction: `centeredFit()` fitted every visible node, including all distant category context. The active cat-12 branch therefore shared the viewport with unrelated branches, keeping glyph centers close together.
+
+Correction: comparison focus frames now fit and center the focused branch bounds (`ancestorIds + descendantIds`) instead of all visible nodes. Ordinary frames and the 300-node path keep the previous all-visible fit. Context outside the fitted branch is clipped by the camera rather than removed from the hierarchy.
+
+Cat-12 at 1900×870 after settling:
+
+- active-branch fit scope: `active-branch`;
+- visible labels: 34;
+- priority labels visible: 30;
+- priority suppressed: 21;
+- label-node overlaps: 2;
+- f-0/f-80 center distance: **12.06 CSS px**;
+- radius sum: **8**;
+- f-0 dot hit: **f-0**;
+- f-80 dot hit: **f-80**;
+- f-0 filename-label hit: **f-0**.
+
+The previous f-0 → f-80 and f-80 → f-160 dot collisions are no longer present in this focused frame.
+
+Cat-1 after search: 60 visible labels; the two same-name results still select f-0/f-1 in cat-1/cat-2.
+
+Automated: search test exit 0, 1900 wheel test exit 0, navigation/label tests 18/18 pass. Existing 1600 wheel evidence was not refreshed after this framing change and is not claimed.
+
+Screenshots: `cat12-default-labels.png`, `search-result-f0.png`, `search-result-f1.png`.
