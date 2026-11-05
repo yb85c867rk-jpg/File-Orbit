@@ -8,7 +8,8 @@ function build(total){const root={id:'root',kind:'folder',name:'20개 카테고�
 root.children.push({id:'root-file',kind:'file',name:'README-root.md',data:{},children:[]});let remaining=total-22-(total>300?2:0);let idx=0;while(remaining>0){const cat=root.children[idx%20];const n=cat.children.length;const ext=['pdf','txt','md','png'][(n+i0(idx))%4];const name=(n%5===0?'보고서':n%5===1?'본문':n%5===2?'정리':n%5===3?'샘플':'메모')+'-'+String(idx+1).padStart(3,'0')+'.'+ext;const id='f-'+seq++;const data={};if(ext==='pdf'&&seq%7===0)data.attachmentId='att-pdf';if(ext==='png'&&seq%11===0)data.attachmentId='att-image';if(ext==='txt'&&seq===1)data.attachmentId='att-text';if(ext==='txt'&&seq===2)data.attachmentId='att-empty';cat.children.push({id,kind:'file',name,data,children:[]});remaining--;idx++}if(total===1000){const a=root.children[0].children.find(x=>x.kind==='file');const b=root.children[1].children.find(x=>x.kind==='file');a.name='same-name.txt';a.data={attachmentId:'dup-a'};b.name='same-name.txt';b.data={attachmentId:'dup-b'}}return root}
 function i0(x){return x%4}
 const paid=createInternalPolicyContext({edition:'paid'});
-for(const count of [300,301,1000]){const tree=build(count);if(countNodes(tree)!==count)throw Error('count '+countNodes(tree));const enc=await encodeBackup({tree,registry:reg,mapName:'FileOrbit-'+count,policyContext:paid,cryptoApi:globalThis.crypto});const bytes=new Uint8Array(await enc.blob.arrayBuffer());writeFileSync(join(HERE, 'FileOrbit-'+count+'.orbit'), bytes);console.log(count,bytes.length)}
+for(const count of [300,301,400,500,600,700,800,900,1000]){const tree=build(count);if(countNodes(tree)!==count)throw Error('count '+countNodes(tree));const enc=await encodeBackup({tree,registry:reg,mapName:'FileOrbit-'+count,policyContext:paid,cryptoApi:globalThis.crypto});const bytes=new Uint8Array(await enc.blob.arrayBuffer());writeFileSync(join(HERE, 'FileOrbit-'+count+'.orbit'), bytes);console.log(count,bytes.length)}
+
 
 
 
