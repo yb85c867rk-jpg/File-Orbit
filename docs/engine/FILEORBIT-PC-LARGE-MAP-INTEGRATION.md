@@ -98,3 +98,22 @@ Retained admission test: `tests/harness/large-map/admission.test.mjs`.
 - Final focused: 5/5 PASS; final P1B: 69/69 PASS.
 - Final UI: 300 uses existing renderer, 1,000 uses integrated presentation with 20 categories; top `#fit` exists; breadcrumb has 2 ancestor buttons after category activation.
 - Frame loop and observer are explicitly cancelled/disconnected on destroy.
+
+## Navigation correction pass
+
+- Breadcrumb listeners now use a shared lexical `navigateTo` before dispatch, so ancestor clicks resolve to canonical folder nodes instead of throwing.
+- Category label hit boxes resolve to the canonical scene node; label and dot activation both expand folders.
+- Back, Root, breadcrumb, Fit, zoom buttons, wheel and pan now pass through `canInteract`; a blocked action does not mutate focus, selection, history or camera.
+- Dataset replacement and structural layout changes cancel old framing animation and drag state.
+- Search path edges use `#60A5FA` at 0.55 opacity; matching folder outlines and the active result outline use `#60A5FA` with explicit precedence. PDF fill, filename and badge remain `#F87171`; file fill remains green.
+- Renderer frame scheduling is tracked and cancelled on destroy; observers and DOM are removed.
+- Fixtures 301/1000 now include one nested folder for breadcrumb testing while retaining exact counts.
+
+Executed in this pass:
+
+- label click after Fit expanded `cat-1` with 50 active nodes;
+- top-toolbar Fit changed the active camera;
+- PDF paint/label color asserted `#F87171`;
+- renderer lifecycle exposed a live frame handle; destroy cancellation is code-reviewed and unit-verified only indirectly.
+
+Not executed: successful middle-breadcrumb click, blocked Back/Root during a dirty draft, replacement during animation, search-path pixel/clear assertions, disposal frame-count assertion.
