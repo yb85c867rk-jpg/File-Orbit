@@ -30,16 +30,21 @@ export function createExplorationNavigator({
   onSettled = () => {}
 }) {
   let transition = null;
+  let transitionToken = 0;
   const navigator = {
     get busy() { return isTransitionBusy(transition); },
     get transition() { return transition; },
     enterFolder(id) {
-      if (navigator.busy) return { ok: false, busy: true, reason: 'transition-busy', id };
-      if (id === model.focusedFolderId) {
+      const replacing = navigator.busy;
+      const prior = replacing ? transition : null;
+      const displayed = prior?.getDisplayedState?.() || null;
+      if (replacing && !displayed?.parameter) return { ok: false, busy: true, reason: 'transition-busy', id };
+      if (!replacing && id === model.focusedFolderId) {
         const result = session.run('enter-folder', () => ({ ...model.enterFolder(id), fit: false }), { fit: false, eventKind: 'user' });
         return { ...result, mode: 'immediate', changed: false };
       }
       if (!shouldAnimateTransition({ reducedMotion, duration })) {
+        if (replacing) { transitionToken += 1; prior.cancel('retarget-immediate'); transition = null; }
         const result = session.run('enter-folder', () => {
           const entered = model.enterFolder(id);
           return { ...entered, fit: entered.changed === true };
@@ -58,6 +63,7 @@ export function createExplorationNavigator({
       } catch (cause) {
         return { ok: false, reason: 'target-fit-failed', id, error: String(cause?.message || cause) };
       }
+      if (replacing) { transitionToken += 1; prior.cancel('retarget'); transition = null; }
       try {
         onStart({ id, targetView });
       } catch (cause) {
@@ -65,25 +71,30 @@ export function createExplorationNavigator({
         onError({ id, error: cause, reason: 'transition-start-failed' });
         return { ok: false, reason: 'transition-start-failed', id, error: String(cause?.message || cause) };
       }
+      const token = ++transitionToken;
       try {
         transition = createTransition({
-        graph, baseLayout, sourceView: model.view(), targetView,
-        sourceCamera: session.getState().camera, targetCamera: targetPrepared.camera,
+        graph, baseLayout, sourceView: replacing ? prior.union : model.view(), targetView,
+        sourceCamera: replacing ? displayed.camera : session.getState().camera, targetCamera: targetPrepared.camera,
+        sourceParameter: replacing ? displayed.parameter : null,
         viewport, baseRadiusCss, cameraLimits, duration, presentation,
         draw, labels,
         ...transitionOptions,
-        onFrame: (sample) => onFrame({ ...sample, id, targetView }),
+        onFrame: (sample) => { if (token !== transitionToken) return; onFrame({ ...sample, id, targetView }); },
         onComplete: () => {
+          if (token !== transitionToken) return;
           transition = null;
           const result = session.run('enter-folder', () => ({ ...model.enterFolder(id), fit: true }), { fit: false, eventKind: 'user' });
           if (!result.ok) throw result.error || new Error('final installation failed');
           return result;
         },
         onError: (payload) => {
+          if (token !== transitionToken) return;
           transition = null;
           onError({ ...payload, id });
         },
         onSettled: (payload) => {
+          if (token !== transitionToken) return;
           transition = null;
           onSettled({ ...payload, id });
         }
@@ -93,7 +104,7 @@ export function createExplorationNavigator({
         onError({ id, error: cause });
         return { ok: false, reason: 'transition-start-failed', id, error: String(cause?.message || cause) };
       }
-      return { ok: true, mode: 'transition', changed: true, id, transition };
+      return { ok: true, mode: 'transition', changed: true, replaced: replacing, id, transition };
     },
     cancel(reason = 'cancelled') {
       if (!transition) return { ok: false, reason: 'no-transition' };

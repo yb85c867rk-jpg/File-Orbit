@@ -1393,9 +1393,13 @@ function onCanvasClick(event) {
     return;
   }
   if (navigator?.busy) {
-    lastClickDiagnostic = { reason: 'transition-busy', id: null };
-    publish();
-    return;
+    const current = hitAtEvent(event);
+    const kind = current ? graph.nodes.get(current.id)?.kind : null;
+    if (kind !== 'folder') {
+      lastClickDiagnostic = { reason: current ? 'transition-busy' : 'transition-frame-not-ready', id: current?.id || null };
+      publish();
+      return;
+    }
   }
   if (editorController?.mode === 'confirm-replace') return;
   if (editorController?.isOpen() && editorController.dirty) {
@@ -1484,14 +1488,14 @@ function createNavigator() {
       linkFrameReady = false;
       overlay?.deactivateLinks();
       editorMenu?.close({ restoreFocus: false });
+      if (labelHost) labelHost.style.pointerEvents = 'none';
       transitionLabels = false;
-      suspendNavigation();
       frameState = null;
       lastClickDiagnostic = { reason: 'transition-start', id: null };
       publish();
     },
     onFrame: ({ prepared, progress, camera, id }) => {
-      frameState = { scene: prepared.scene, hit: null, filtered: prepared.filtered, camera, framing: 'manual', containment: prepared.containment, progress };
+      frameState = { scene: prepared.scene, hit: prepared.hit, filtered: prepared.filtered, camera, framing: 'manual', containment: prepared.containment, progress };
       lastClickDiagnostic = { reason: 'transition-in-progress', id, progress };
       publish();
     },
@@ -1506,6 +1510,7 @@ function createNavigator() {
       lastClickDiagnostic = { reason: 'transition-frame-failed', id, error: outcome.originalError, cleanupError: outcome.cleanupError, recovered: outcome.recovered };
       transitionTerminal = outcome;
       publish();
+      if (labelHost) labelHost.style.pointerEvents = '';
       searchRevealWaiter.settle(id, { ok: false, error: outcome.originalError });
       if (pendingViewportResize) { pendingViewportResize = false; queueMicrotask(() => handleViewportResize()); }
     },
@@ -1520,6 +1525,7 @@ function createNavigator() {
       if (outcome.cleanupError !== null) lastClickDiagnostic = { reason: 'transition-cleanup-failed', error: outcome.cleanupError, recovered: outcome.recovered };
       transitionTerminal = outcome;
       searchRevealWaiter.settle(id, { ok: outcome.recovered && state?.completionReason === 'completed' });
+      if (labelHost) labelHost.style.pointerEvents = '';
       if (pendingViewportResize) { pendingViewportResize = false; queueMicrotask(() => handleViewportResize()); }
       publish();
     }
@@ -4728,6 +4734,7 @@ startEmptyState();
 void startRecoveryDiscovery();
 syncPersistenceControls();
 syncAutomaticSaveFeedback();
+
 
 
 

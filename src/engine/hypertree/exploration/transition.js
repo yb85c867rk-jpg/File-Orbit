@@ -33,6 +33,7 @@ export function createExplorationTransition({
   targetView,
   sourceCamera,
   targetCamera,
+  sourceParameter = null,
   viewport,
   baseRadiusCss,
   cameraLimits,
@@ -52,7 +53,7 @@ export function createExplorationTransition({
     throw new Error('transition draw, labels, and onComplete are required');
   }
   const union = unionView(sourceView, targetView);
-  const fromParameter = focusParameter(baseLayout, sourceView.focusedFolderId, sourceView.phase);
+  const fromParameter = sourceParameter || focusParameter(baseLayout, sourceView.focusedFolderId, sourceView.phase);
   const targetParameter = focusParameter(baseLayout, targetView.focusedFolderId, targetView.phase);
   let active = true;
   let cancelled = false;
@@ -128,7 +129,9 @@ export function createExplorationTransition({
     get failure() { return failure; },
     cancel(reason = 'cancelled') { const state = animator.cancel(reason); active = false; return state; },
     destroy() { animator.destroy(); active = false; },
-    getState() { return animator.getState(); }
+    getState() { return animator.getState(); },
+    getDisplayedState() { const state = animator.getState(); return { parameter: state.currentParameter, eased: state.easedProgress, view: state.lastFrame?.view || null, camera: interpolateCamera(sourceCamera, targetCamera, state.easedProgress) }; },
+    sourceView, targetView
   };
   return handle;
 }

@@ -67,7 +67,7 @@ export function createSearchResultsView({ document, host, onActivate, onClear, o
     showNoMap() { root.hidden = false; clear.hidden = true; status.textContent = 'Create a map to search.'; list.replaceChildren(); pagination.hidden = true; back.hidden = true; activeId = null; },
     render(payload) {
       root.hidden = false; clear.hidden = false; activeId = null; back.hidden = true;
-      if (!payload.ok) { status.textContent = payload.message || 'Search failed.'; list.replaceChildren(); return; }
+      if (!payload.ok) { status.textContent = payload.message || 'Search failed.'; list.replaceChildren(); pagination.hidden = true; back.hidden = true; activeId = null; return; }
       status.textContent = rangeStatus(payload);
       renderPager(payload);
       renderCards(payload);
@@ -85,6 +85,7 @@ export function createSearchResultsView({ document, host, onActivate, onClear, o
   api.showInitial();
   return api;
 }
+
 
 
 
