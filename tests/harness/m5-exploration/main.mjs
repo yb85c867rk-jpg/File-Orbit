@@ -800,7 +800,7 @@ const dragTargetEl = document.querySelector('#drag-target');
 
 
 let tree, graph, baseLayout, model, surface, overlay, navigation, session;
-let largeMapView = null; const launchParams = new URLSearchParams(globalThis.location?.search || ''); const largeMapPaidTest = launchParams.get('paidTest') === '1'; const hypertreeComparisonMode = launchParams.get('hypertreeCompare') === '1'; const largeMapPolicyContext = largeMapPaidTest ? createInternalPolicyContext({ edition: 'paid' }) : FREE_POLICY_CONTEXT;
+let largeMapView = null; const launchParams = new URLSearchParams(globalThis.location?.search || ''); const largeMapPaidTest = launchParams.get('paidTest') === '1'; const hypertreeComparisonMode = launchParams.get('hypertreeCompare') === '1'; const comparisonProjectionRadius = Math.max(240, Math.min(4096, Number(launchParams.get('hypertreeProjectionRadius')) || 240)); const largeMapPolicyContext = largeMapPaidTest ? createInternalPolicyContext({ edition: 'paid' }) : FREE_POLICY_CONTEXT;
 let frameState = null;
 let generation = 0;
 let error = null;
@@ -879,7 +879,7 @@ function setRendererBadge(kind) {
   if (!graphViewport) return;
   if (!rendererBadge) { rendererBadge = document.createElement('div'); rendererBadge.id = 'renderer-mode-badge'; rendererBadge.style.cssText = 'position:absolute;right:12px;bottom:12px;z-index:8;pointer-events:none;background:rgba(15,23,42,.92);border:1px solid #475569;border-radius:5px;padding:4px 8px;color:#e2e8f0;font:11px system-ui'; graphViewport.appendChild(rendererBadge); }
   rendererBadge.hidden = kind === 'none';
-  rendererBadge.textContent = kind === 'base' ? 'Hypertree comparison · free-app renderer' : kind === 'custom' ? 'Custom large-map renderer' : 'Hypertree · standard renderer';
+  rendererBadge.textContent = kind === 'base' ? ('Hypertree comparison · free-app renderer' + (comparisonProjectionRadius !== 240 ? ' · R' + comparisonProjectionRadius : '')) : kind === 'custom' ? 'Custom large-map renderer' : 'Hypertree · standard renderer';
   rendererBadge.dataset.renderer = kind;
   document.body.dataset.renderer = kind;
   window.__M5_RENDERER_MODE__ = kind;
@@ -4391,7 +4391,7 @@ async function installCreatedMap(preview, { request = null, silent = false } = {
     if (importing && p1bImportPreparationFailure) { p1bImportPreparationFailure = false; throw new Error('injected backup import preparation failure'); }
     const loaded = loadTree(preview.tree);
     const largePresentation = countDocumentNodes(preview.tree) > 300 && !hypertreeComparisonMode;
-    const stagedLayout = largePresentation ? buildLargeBaseLayout(preview.tree) : refineExperimentalV2Layout(stageExperimentalV2Layout(loaded.graph, { rootId: preview.tree.id, phases: ['current'], nodeOptions: { overridable: true } }), loaded.graph, { viewport: viewport(), padding: 24, phase: 'current', projectionBaseRadiusCss: baseRadius() }).staged;
+    const stagedLayout = largePresentation ? buildLargeBaseLayout(preview.tree) : refineExperimentalV2Layout(stageExperimentalV2Layout(loaded.graph, { rootId: preview.tree.id, phases: ['current'], nodeOptions: { overridable: true }, ...(hypertreeComparisonMode ? { experimentV2: { referenceProjectionRadiusCss: comparisonProjectionRadius } } : {}) }), loaded.graph, { viewport: viewport(), padding: 24, phase: 'current', projectionBaseRadiusCss: baseRadius(), ...(hypertreeComparisonMode ? { diagnosticMaxNodes: countDocumentNodes(preview.tree) } : {}) }).staged;
     const candidateModel = createExplorationModel({ graph: loaded.graph, baseLayout: stagedLayout, structuralRootId: preview.tree.id, phase: 'current' });
     candidate = { tree: preview.tree, graph: loaded.graph, baseLayout: stagedLayout, model: candidateModel, registry: preview.registry, datasetToken: preview.datasetToken, large: largePresentation };
   } catch (error) {
@@ -4711,6 +4711,8 @@ startEmptyState();
 void startRecoveryDiscovery();
 syncPersistenceControls();
 syncAutomaticSaveFeedback();
+
+
 
 
 
