@@ -1491,6 +1491,7 @@ function createNavigator() {
       if (labelHost) labelHost.style.pointerEvents = 'none';
       transitionLabels = false;
       frameState = null;
+      suspendNavigation();
       lastClickDiagnostic = { reason: 'transition-start', id: null };
       publish();
     },
