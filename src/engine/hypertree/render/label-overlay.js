@@ -152,7 +152,7 @@ class LabelOverlay {
       }
 
       const layout = this.#config.placement === 'around'
-        ? placeLabels(measured, this.#viewport(), this.#config, snapshot.nodes, snapshot.rootId, input.selectedId)
+        ? placeLabels(measured, this.#viewport(), this.#config, snapshot.nodes, snapshot.rootId, input.selectedId, priorityIds)
         : placeLabelsLegacy(measured, this.#viewport(), this.#config);
       const labelNodeOverlapCount = countLabelNodeOverlaps(layout.visible, snapshot.nodes);
       for (const item of measured) {
@@ -259,7 +259,7 @@ class LabelOverlay {
         measured.push({ node, data, group, width: measureDimension(group, 'width'), height: measureDimension(group, 'height') });
       }
       const layout = this.#config.placement === 'around'
-        ? placeLabels(measured, this.#viewport(), this.#config, snapshot.nodes, snapshot.rootId, input.selectedId)
+        ? placeLabels(measured, this.#viewport(), this.#config, snapshot.nodes, snapshot.rootId, input.selectedId, priorityIds)
         : placeLabelsLegacy(measured, this.#viewport(), this.#config);
       const anchors = new Map();
       const visible = new Set(layout.visible.keys());
@@ -370,7 +370,7 @@ class LabelOverlay {
     }
     for (const [id, group] of this.#transition.labels) if (!labels.has(id)) removeElement(group);
     const layout = this.#config.placement === 'around'
-      ? placeLabels(measured, this.#viewport(), this.#config, snapshot.nodes, snapshot.rootId, effectiveSelectedId)
+      ? placeLabels(measured, this.#viewport(), this.#config, snapshot.nodes, snapshot.rootId, effectiveSelectedId, priorityIds)
       : placeLabelsLegacy(measured, this.#viewport(), this.#config);
     const retainedVisible = new Set([...this.#transition.visible].filter((id) => labels.has(id)));
     const displayed = new Map();
@@ -802,7 +802,8 @@ function placeLabelsLegacy(measured, viewport, config) {
   }
   return { visible, overlapSuppressed, viewportSuppressed, nodeObstacleSuppressed: 0, unmeasurable, placementAttempts, rootProtection: false, rootLabelVisible: false };
 }
-function placeLabels(measured, viewport, config, nodes, rootId = null, selectedId = null) {
+function placeLabels(measured, viewport, config, nodes, rootId = null, selectedId = null, priorityIds = []) {
+  const prioritySet = new Set(priorityIds);
   const visible = new Map();
   const occupied = [];
   const padding = config.padding;
@@ -820,6 +821,7 @@ function placeLabels(measured, viewport, config, nodes, rootId = null, selectedI
   for (const item of ordered) {
     const isRoot = rootId !== null && item.node.id === rootId;
     const isSelected = selectedId !== null && item.node.id === selectedId;
+    const isPriority = prioritySet.has(item.node.id);
     const { node, width, height } = item;
     if (width === 0 || height === 0) {
       unmeasurable += 1;
@@ -875,8 +877,9 @@ function placeLabels(measured, viewport, config, nodes, rootId = null, selectedI
     // A selected label is promoted in orderCandidates, so lower-priority labels
     // are placed later and yield to it. Every fallback candidate still obeys all
     // collision rules; never allow the fallback to duplicate another label.
-    if (!selected && isSelected && !isRoot) {
-      for (const offset of [0, 16, 32, 48, 64, 80, 96, 128, 160, 192, 224, 256, 320]) {
+    if (!selected && (isSelected || isPriority) && !isRoot) {
+      const offsets = isSelected ? [0, 16, 32, 48, 64, 80, 96, 128, 160, 192, 224, 256, 320] : [0, 16, 32, 48, 64, 80, 96];
+      for (const offset of offsets) {
         for (const placement of placements) {
           const dx = placement.name === 'right' ? offset : placement.name === 'left' ? -offset : 0;
           const dy = placement.name === 'below' ? offset : placement.name === 'above' ? -offset : 0;
@@ -1136,6 +1139,10 @@ function transitionMetrics(candidateCount, measured, displayed, priorityIds, vie
     viewport
   };
 }
+
+
+
+
 
 
 
