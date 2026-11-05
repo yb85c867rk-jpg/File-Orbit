@@ -353,3 +353,27 @@ Verified at 1900×870 on a point where `document.elementFromPoint` returns `CANV
 The earlier no-change observation was not a controller rejection: at a verified canvas point the controller reported wheel handling and the camera changed. The earlier run used an unverified point/viewport state; the retained regression now pins the point to the canvas and asserts both directions plus hit testing.
 
 No application wheel code was changed; the correction is test/evidence fidelity for the existing controller path.
+
+## Controller viewport synchronization (evaluation branch)
+
+The previously observed 1600×900 failure was a real controller/graph dimension mismatch: controller viewport height 82px while the graph CSS viewport was 822px. The exact pre-fix initialization trigger was not captured, so the timing cause is not claimed.
+
+Correction: `syncController()` now runs immediately after every installed frame. It updates the existing navigation controller from the session camera and the current CSS graph viewport; it does not recreate layers, force dimensions, or bypass ownership guards.
+
+Post-fix dimension trace (device pixel ratio 1):
+
+| Stage | Graph CSS | Canvas CSS/backing | Controller |
+|---|---|---|---|
+| 1600×900 startup/import | 1235×822 | 1235×822 | 1235×822 |
+| 1900×870 | 1535×792 | 1535×792 | 1535×792 |
+| resize back to 1600×900 | 1235×822 | 1235×822 | 1235×822 |
+| Details collapsed | 1407×822 | 1407×822 | 1407×822 |
+
+Wheel results:
+
+- 300-node ordinary renderer: wheel-in/out PASS.
+- 1,000-node R480 at 1600×900: wheel-in/out, spacing and post-wheel `cat-13` hit PASS.
+- 1,000-node R480 at 1900×870: root and `cat-12` wheel-in/out, spacing and hit PASS.
+- Browser errors: none.
+
+Not executed: real wheel after Details/sidebar toggle and after resize. Those are documented as remaining checks, not claimed.

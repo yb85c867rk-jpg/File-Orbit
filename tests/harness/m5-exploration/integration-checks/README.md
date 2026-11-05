@@ -42,3 +42,6 @@ These use test hooks/picker stubs, not native OS acceptance.
 - `hypertree-r480-check.mjs`: existing Hypertree comparison at 1,000 nodes with projection radius 480; records layout time, focus, displacement, camera, label budget, wheel/pan and search behavior.
 
 - `hypertree-wheel-check.mjs`: real wheel at 300 and R480 1,000 root/cat-12, both zoom directions, spacing, and post-wheel hit focus. Evidence: `integration-hypertree-wheel.json`.
+
+- `hypertree-wheel-1600-check.mjs`: real-wheel 300/1,000 at 1600×900. Evidence: `integration-hypertree-wheel-1600.json`.
+- `integration-hypertree-viewport-trace.json`: graph/canvas/controller dimensions through 1600/1900, resize and Details collapse.
