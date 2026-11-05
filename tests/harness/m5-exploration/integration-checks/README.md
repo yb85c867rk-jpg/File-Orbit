@@ -15,3 +15,5 @@ node --test --test-isolation=none tests/harness/large-map/admission.test.mjs
 ```
 
 These use test hooks/picker stubs, not native OS acceptance.
+
+- `breadcrumb-check.mjs`: paid-test 1,000, expands `cat-1`, opens nested folder, clicks middle ancestor `01_기획`; asserts focus returns to `cat-1`. Evidence: `integration-breadcrumb.json`.

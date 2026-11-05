@@ -117,3 +117,4 @@ Executed in this pass:
 - renderer lifecycle exposed a live frame handle; destroy cancellation is code-reviewed and unit-verified only indirectly.
 
 Not executed: successful middle-breadcrumb click, blocked Back/Root during a dirty draft, replacement during animation, search-path pixel/clear assertions, disposal frame-count assertion.
+
