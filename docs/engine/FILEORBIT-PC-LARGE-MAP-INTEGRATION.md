@@ -323,3 +323,33 @@ Measured R480 ordinary-app experiment:
 - no browser errors.
 
 Conclusion: the existing layout can be made to load the full 1,000-node hierarchical document by the bounded R480 projection experiment, but the resulting focused view is not sufficiently readable and the existing label budget suppresses most filenames. This is not accepted as successful 1,000-node navigation; it is a loadable experimental path with unresolved readability.
+
+## Wheel navigation trace (evaluation branch)
+
+Verified at 1900×870 on a point where `document.elementFromPoint` returns `CANVAS`.
+
+300-node ordinary renderer:
+
+- wheel listener target: `CANVAS`;
+- deltaY `-120`, deltaMode `0`, no modifiers;
+- camera zoom **0.16277 → 0.19488**;
+- wheel-out returned to the prior camera;
+- no browser errors.
+
+1,000-node R480 base renderer, root:
+
+- controller viewport **1535×792**;
+- camera zoom **0.08899 → 0.11312** on wheel-in;
+- wheel-out returned to **0.08899**;
+- pair spacing increased on zoom-in and decreased on zoom-out.
+
+1,000-node R480 after `cat-12` focus:
+
+- camera zoom **0.12159 → 0.15457**;
+- wheel-out returned to **0.12159**;
+- node spacing **323.69 → 411.49 → 323.69**;
+- click on `13_교육` after wheel changed focus to **`cat-13`**.
+
+The earlier no-change observation was not a controller rejection: at a verified canvas point the controller reported wheel handling and the camera changed. The earlier run used an unverified point/viewport state; the retained regression now pins the point to the canvas and asserts both directions plus hit testing.
+
+No application wheel code was changed; the correction is test/evidence fidelity for the existing controller path.

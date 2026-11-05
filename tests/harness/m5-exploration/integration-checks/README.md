@@ -40,3 +40,5 @@ These use test hooks/picker stubs, not native OS acceptance.
 - `renderer-comparison-check.mjs`: custom 1,000 renderer vs `?paidTest=1&hypertreeCompare=1` base renderer; verifies identical 1,000-byte hash, custom count/focus, renderer badges, base 300 preservation and the exact base 1,000 layout failure. Evidence: `integration-renderer-comparison.json`.
 
 - `hypertree-r480-check.mjs`: existing Hypertree comparison at 1,000 nodes with projection radius 480; records layout time, focus, displacement, camera, label budget, wheel/pan and search behavior.
+
+- `hypertree-wheel-check.mjs`: real wheel at 300 and R480 1,000 root/cat-12, both zoom directions, spacing, and post-wheel hit focus. Evidence: `integration-hypertree-wheel.json`.
