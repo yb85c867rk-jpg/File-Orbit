@@ -32,3 +32,5 @@ These use test hooks/picker stubs, not native OS acceptance.
 
 - `transition-check.mjs`: 750 ms geometry/camera transition, zoom-in/out, nested, background category, Back/Root/breadcrumb, wheel interruption, repeated clicks, replacement, reduced motion, label hit target. Evidence: `integration-transition.json`.
 - `transition-cat1.gif` plus six intermediate frames: visual transition evidence.
+
+- `transition-check.mjs` also asserts normalized endpoint opacity/positions, final painted pixels, global 22/22 folder visibility, direct larger/background click, and pan interruption.

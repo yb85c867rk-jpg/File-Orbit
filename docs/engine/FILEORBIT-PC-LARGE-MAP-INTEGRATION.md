@@ -209,13 +209,22 @@ The custom large-map presentation now transitions geometry and camera together u
 - Back, Root, breadcrumb and background-category navigation use the same transition path; Back restores its stored camera.
 - Replacement and structural refresh clear geometry/camera transitions.
 
-### Final animation corrections\n\n- Stagger progress is normalized so every new node reaches opacity/position 1 at the endpoint; no endpoint snap.\n- Completion clears geometry, paints the final base scene, updates labels/hit targets, then marks animation complete.\n- Active subtree and dimmed global folder overview use separate presentation transforms within the same workspace: global folders use the overview camera, active nodes use the active camera, and hit testing follows the layer.\n- Initial viewport is measured before the initial camera; the previous 0.08 placeholder result is gone (initial scale 0.739).\n\n### Executed transition results
+### Final animation corrections
+
+- Stagger progress is normalized so every new node reaches opacity/position 1 at the endpoint; no endpoint snap.
+- Completion clears geometry, paints the final base scene, updates labels/hit targets, then marks animation complete.
+- Active subtree and dimmed global folder overview use separate presentation transforms within the same workspace: global folders use the overview camera, active nodes use the active camera, and hit testing follows the layer.
+- Initial viewport is measured before the initial camera; the previous 0.08 placeholder result is gone (initial scale 0.739).
+
+### Executed transition results
 
 - measured overview scale **0.739** → category **1.016** (zoom in; initial scale no longer comes from a placeholder viewport);
 - nested branch **2.4** (closer);
 
 - background category focus `cat-2`, Back restored `nested-1`, middle breadcrumb restored `cat-1`, Root restored `root`;
-- wheel and pan interruption froze world geometry and left no delayed jump;\n- endpoint test: at 749 ms geometry still active, minimum late-node opacity **1.0**, maximum position distance to final **0 px**; at 750 ms nim=false, geom=false, final sample pixel green [34,197,94,255];\n- all 22 folders visible after category framing; direct larger/background click from nested to cat-2 zoomed out to **1.043**, then Back restored nested.
+- wheel and pan interruption froze world geometry and left no delayed jump;
+- endpoint test: at 749 ms geometry still active, minimum late-node opacity **1.0**, maximum position distance to final **0 px**; at 750 ms anim=false, geom=false, final sample pixel green [34,197,94,255];
+- all 22 folders visible after category framing; direct larger/background click from nested to cat-2 zoomed out to **1.043**, then Back restored nested.
 - repeated cat-1 → cat-2 clicks ended on `cat-2`;
 - document replacement cleared `anim` and `geom`;
 - reduced-motion duration **120 ms**;
@@ -226,5 +235,8 @@ Intermediate frames and GIF: `transition-frame-00.png` through `transition-frame
 The 300-node document remains on the ordinary renderer (`custom=false`, count 300); screenshot `transition-300-regression.png`.
 
 These are machine checks, not the human animation usability verdict.
+
+
+
 
 
