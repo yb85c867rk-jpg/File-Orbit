@@ -2095,7 +2095,7 @@ async function activateSearchResult(result, { skipDirty = false } = {}) {
     return { ok: true, kind: 'folder', id: result.id };
   }
   if (!checked.parent) { searchView.showError('The data node has no parent scope.'); return { ok: false, reason: 'missing-parent' }; }
-  if (!model.view().visibleSet.has(result.id)) {
+  if (model.focusedFolderId !== checked.parent.id || !model.view().visibleSet.has(result.id)) {
     const nav = await navigateSearchParent({ folderId: checked.parent.id, targetId: result.id, datasetToken: token, revision });
     if (!nav.ok) { searchView.showError(nav.message || 'The parent folder could not be opened.'); return nav; }
     if (datasetToken !== token || dataRevision !== revision) { searchView.showError('The map changed. Search again.'); runSearch(); return { ok: false, reason: 'stale' }; }
@@ -4712,6 +4712,7 @@ startEmptyState();
 void startRecoveryDiscovery();
 syncPersistenceControls();
 syncAutomaticSaveFeedback();
+
 
 
 
