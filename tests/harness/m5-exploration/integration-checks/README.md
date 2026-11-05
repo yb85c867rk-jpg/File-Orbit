@@ -48,3 +48,5 @@ These use test hooks/picker stubs, not native OS acceptance.
 
 - `hypertree-search-check.mjs`: actual same-name result buttons in R480; asserts parent focus, exact selected ID, Details, transition completion. Uses one debugger port, actual result buttons, cat-12 precondition, parent/selection/Details/hit assertions and finally cleanup.
 
+
+- `hypertree-search-check.mjs` also records focused label counts and the measured f-0/f-80 glyph overlap before activating both same-name results.

@@ -407,3 +407,46 @@ Screenshots:
 
 The retained executable test is `hypertree-search-check.mjs`. Its latest invocation could not attach to a fresh Edge debugger (`webSocketDebuggerUrl` null); the successful results above are the actual UI trace captured before that environment failure. Root/nested/300 and dirty/stale search regressions remain to be run.
 
+
+## Focused filename readability and glyph collision (evaluation branch)
+
+Cat-12 at 1900×870, 1,000 nodes, settled:
+
+- immediate children: 50;
+- label candidates: 71;
+- created: 64;
+- visible: 38;
+- budget excluded: 7;
+- priority suppressed: 21;
+- label-node overlaps: 2;
+- selected label visible;
+- transition: null.
+
+Before the change the same settled state produced 9 visible labels out of 71 candidates.
+
+The `fixed-transition-policy` value is an invariant measurement identifier emitted by `transitionMetrics()`, not evidence that a transition is still active. The settled state reports `transition:null`.
+
+Changes:
+
+- focused folder and its immediate children are ordered before distant ancestors/context;
+- the comparison overlay budget is 64 (ordinary remains 40);
+- priority labels can use collision-checked offsets up to 96 CSS px;
+- selected labels retain the full existing offset range;
+- all offsets still obey viewport, label-label and glyph collision checks.
+
+Cat-1 after search: 46 visible of 73 candidates. The ordinary 300-node path still uses the 40-label budget.
+
+### f-0 / f-80 glyph collision
+
+Measured at the default cat-1 focus:
+
+- f-0 radius 4, f-80 radius 4;
+- center distance 3.78 CSS px;
+- radius sum 8;
+- f-0 center hit resolves to f-80;
+- f-80 center hit resolves to f-160;
+- f-0 filename label hit resolves to f-0.
+
+This is actual glyph overlap at Fit scale, not a radius-only bug. No forced “selected target wins” ordering was added. The tested disambiguation is the visible filename label: it resolves the exact file ID and remains actionable. Dot-center selection is not reported as passing.
+
+Screenshots: `cat12-default-labels.png`, `search-result-f0.png`, `search-result-f1.png`.
