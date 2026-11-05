@@ -474,6 +474,7 @@ The previous f-0 → f-80 and f-80 → f-160 dot collisions are no longer presen
 
 Cat-1 after search: 60 visible labels; the two same-name results still select f-0/f-1 in cat-1/cat-2.
 
-Automated: search test exit 0, 1900 wheel test exit 0, navigation/label tests 18/18 pass. Existing 1600 wheel evidence was not refreshed after this framing change and is not claimed.
+Automated: search test exit 0, 1900 wheel test exit 0, 1600 wheel test exit 0, navigation/label tests 18/18 pass. The earlier 1600 failure was a test assertion bug: camera zoom moved 0.22732 → 0.28898 and the post-wheel cat-13 target was inside the viewport, returned elementFromPoint=CANVAS, hit cat-13, and focused cat-13. The checks were rewritten to use an explicit ocused local and now pass.
 
 Screenshots: `cat12-default-labels.png`, `search-result-f0.png`, `search-result-f1.png`.
+
