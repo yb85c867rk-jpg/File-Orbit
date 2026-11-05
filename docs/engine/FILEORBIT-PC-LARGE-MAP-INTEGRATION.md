@@ -503,3 +503,45 @@ Deep-400 failure: `experimental-v2-infeasible; parent depth-2 required 0.300 but
 At 1900, no level above 300 shows all immediate child labels. At 1600 every distributed fixture shows all immediate child labels. Complete save/reopen and per-capacity search/dot checks were not run.
 
 The original 1,000-node goal remains the target; the measured recommendation is **300 as the supported free baseline**, with 1,000 retained as an experimental R480 case pending human visual review. Production admission was not changed.
+
+## Post-transition label reflow (evaluation branch)
+
+The preceding capacity table is superseded where it reports 1900 child-label counts.
+
+Controlled 1,000-node, cat-12 comparison before correction:
+
+| State | Child labels | Camera zoom | Policy | Overlaps |
+|---|---:|---:|---|---:|
+| Fresh 1900 | 28/49 | 0.19863 | fixed-transition-policy | 2 |
+| Fresh 1600 | 30/49 | 0.19948 | fixed-transition-policy | 1 |
+| 1900→1600 | 49/49 | 0.19948 | normal | 1 |
+| 1600→1900 | 49/49 | 0.19863 | normal | 2 |
+| 1900→1600→1900 | 49/49 | 0.19863 | normal | 2 |
+
+The camera barely changed; viewport size was not the cause. The transition-completion path installed the restrictive transition plan and never ran a normal label placement afterwards. Resize called the normal placement path and produced 49/49.
+
+Correction: immediately after `completeTransition()`, the harness calls the normal `overlay.update()` with the same scene, priority IDs, root and selection. This performs one coherent final placement; no label budget, collision rule, root protection or ownership guard was changed.
+
+After correction, fresh and resized states are identical:
+
+- 1900: 49/49 child labels, 49/49 exact label hits, 2 overlaps;
+- 1600: 49/49 child labels, 49/49 exact label hits, 1 overlap;
+- transition is null and policy is normal;
+- camera remains 0.19863 / 0.19948 for the two viewports.
+
+Re-run distributed capacity with the corrected lifecycle:
+
+| Fixture | Total | Child labels @1900 | Child labels @1600 | Import ms |
+|---|---:|---:|---:|---:|
+| 1000 | 1000 | 49/49 | 49/49 | 4162 |
+| 900 | 900 | 44/44 | 44/44 | 1962 |
+| 800 | 800 | 39/39 | 39/39 | 1665 |
+| 700 | 700 | 34/34 | 34/34 | 1175 |
+| 600 | 600 | 29/29 | 29/29 | 922 |
+| 500 | 500 | 24/24 | 24/24 | 801 |
+| 400 | 400 | 19/19 | 19/19 | 528 |
+| wide-400 | 400 | 19/19 | 19/19 | 472 |
+
+Dense-400 and deep-400 still fail layout feasibility. The earlier 300-capacity conclusion is therefore not established; 300 remains the accepted product baseline, while 1,000 remains experimental pending human visual review. Production admission was not changed.
+
+Screenshots: `reflow-A-1900.png`, `reflow-B-1600.png`.

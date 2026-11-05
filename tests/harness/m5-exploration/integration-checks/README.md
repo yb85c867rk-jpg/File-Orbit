@@ -56,3 +56,5 @@ These use test hooks/picker stubs, not native OS acceptance.
 - `hypertree-wheel-1600-check.mjs` records the post-wheel cat-13 target bounds, containment, elementFromPoint and installed hit before clicking.
 
 - `hypertree-capacity-check.mjs`: measures 1000→400 distributed fixtures plus wide/dense/deep 400 cases at 1900 and 1600; records child counts, visible child labels, label hits, overlaps and import time. Evidence: `integration-hypertree-capacity.json`.
+
+- `hypertree-reflow-check.mjs`: controlled 1000-node cat-12 comparison for fresh 1900/1600 loads and same-session resize orders; records camera, controller, transition, placement policy, visible/suppressed IDs and label hits.
