@@ -406,3 +406,4 @@ Screenshots:
 - `search-result-f1.png`
 
 The retained executable test is `hypertree-search-check.mjs`. Its latest invocation could not attach to a fresh Edge debugger (`webSocketDebuggerUrl` null); the successful results above are the actual UI trace captured before that environment failure. Root/nested/300 and dirty/stale search regressions remain to be run.
+
