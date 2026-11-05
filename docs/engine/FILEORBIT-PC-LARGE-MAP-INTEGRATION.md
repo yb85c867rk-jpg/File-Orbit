@@ -267,3 +267,24 @@ Screenshots:
 - `readability-1900-breadcrumb-return.png`
 - `readability-1280-active-12.png`
 - `transition-cat1.gif` (fresh 1900px recording)
+
+## Internal Hypertree renderer comparison
+
+Production free admission remains 300. The internal comparison mode is explicit and paid-test-only for >300:
+
+- custom reference: `http://127.0.0.1:8164/tests/harness/m5-exploration/index.html?paidTest=1`
+- free-app Hypertree comparison: `http://127.0.0.1:8164/tests/harness/m5-exploration/index.html?paidTest=1&hypertreeCompare=1`
+- free production URL: `http://127.0.0.1:8164/tests/harness/m5-exploration/index.html` (301 remains rejected)
+
+`hypertreeCompare=1` bypasses only the custom presentation mount. Admission still uses the paid-test policy context, the same `.orbit` bytes go through the protected import pipeline, and the ordinary base Hypertree layout/navigation path is used. A visible renderer badge identifies `Custom large-map renderer`, `Hypertree comparison · free-app renderer`, or the standard renderer.
+
+Executed comparison results:
+
+- custom 1,000: SHA-256 matches fixture; authoritative count 1,000; focus `cat-12` after category click;
+- comparison base: 1,000-byte SHA matches the same fixture before layout;
+- base 300 loads and reports count 300, focus root, renderer `base`;
+- requesting the identical 1,000 bytes in comparison base fails with `experimental-v2-infeasible`:
+  - parent `cat-1`: required angular clearance **0.561**, available **0.320** at `workspaceScale` **16**;
+  - 61 layout candidates attempted;
+- current 300 document preserved: count 300, focus root, name `FileOrbit-300.orbit`;
+- renderer badges distinct; initial focus root matches.
