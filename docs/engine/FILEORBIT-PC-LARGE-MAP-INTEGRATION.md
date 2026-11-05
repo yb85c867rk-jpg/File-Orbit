@@ -578,3 +578,4 @@ Rapid second folder activation during a transition remains guarded with `transit
 Search activation from settled cat-12 reaches cat-1 without browser errors. Post-transition label reflow remains intact (all 49 child labels at 1000 in controlled states).
 
 Animation test: `hypertree-animation-check.mjs` (exit 0 for the measured scenarios); no screen recording was produced.
+

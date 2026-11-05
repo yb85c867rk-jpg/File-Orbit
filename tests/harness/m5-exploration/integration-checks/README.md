@@ -61,3 +61,6 @@ These use test hooks/picker stubs, not native OS acceptance.
 
 - `hypertree-search-pagination-check.mjs`: full-tree `보고서` pagination, union/duplicate checks, page activation, clear and replacement.
 - `hypertree-animation-check.mjs`: rapid retarget, resize during transition, wheel during transition, search activation from cat-12.
+
+- `hypertree-search-pagination-check.mjs`: 198-match pages, later-page activation, invalid-query stale controls, clear and replacement.
+- `hypertree-animation-check.mjs`: resize deferral, folder retarget from displayed state, search activation; wheel/pan/continuity limitations are recorded separately.
