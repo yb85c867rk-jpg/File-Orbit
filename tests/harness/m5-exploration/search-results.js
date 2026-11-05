@@ -1,7 +1,7 @@
 ﻿import { createIcon, classifyLabelPresentation } from '../../../src/engine/hypertree/render/index.js';
 import { validateWebLink } from '../../../src/engine/hypertree/shared/web-link.js';
 
-export function createSearchResultsView({ document, host, onActivate, onClear }) {
+export function createSearchResultsView({ document, host, onActivate, onClear, onPage }) {
   if (!document || !host) throw new Error('search results view requires document and host');
   const root = document.createElement('section');
   root.id = 'search-results';
@@ -13,13 +13,26 @@ export function createSearchResultsView({ document, host, onActivate, onClear })
   const status = document.createElement('p'); status.className = 'search-status'; status.setAttribute('role', 'status'); status.setAttribute('aria-live', 'polite');
   const back = document.createElement('button'); back.type = 'button'; back.className = 'search-back'; back.textContent = 'Back to results'; back.hidden = true;
   const list = document.createElement('div'); list.className = 'search-results-list';
-  root.append(head, status, list, back);
+  const pagination = document.createElement('div'); pagination.className = 'search-pagination'; pagination.hidden = true;
+  const previous = document.createElement('button'); previous.type = 'button'; previous.className = 'search-page-previous'; previous.textContent = 'Previous';
+  const next = document.createElement('button'); next.type = 'button'; next.className = 'search-page-next'; next.textContent = 'Next';
+  pagination.append(previous, next);
+  root.append(head, status, list, pagination, back);
   host.appendChild(root);
   let activeId = null;
   const descriptionExcerpt = (value) => {
     const text = typeof value === 'string' ? value : '';
     if (text.length === 0) return 'No description';
     return text.length > 180 ? `${text.slice(0, 177)}…` : text;
+  };
+  const rangeStatus = (payload) => {
+    if (payload.total === 0) return `No matches for “${payload.query}”.`;
+    return `${payload.total} match${payload.total === 1 ? '' : 'es'} · ${payload.rangeStart}–${payload.rangeEnd} · Page ${payload.page} of ${payload.pageCount}.`;
+  };
+  const renderPager = (payload) => {
+    pagination.hidden = payload.total === 0 || payload.pageCount <= 1;
+    previous.disabled = payload.page <= 1;
+    next.disabled = payload.page >= payload.pageCount;
   };
   const renderCards = (payload) => {
     list.replaceChildren();
@@ -50,14 +63,13 @@ export function createSearchResultsView({ document, host, onActivate, onClear })
   };
   const api = {
     root, get activeId() { return activeId; },
-    showInitial() { root.hidden = false; clear.hidden = true; status.textContent = 'Type to search names and descriptions across the whole map.'; list.replaceChildren(); back.hidden = true; activeId = null; },
-    showNoMap() { root.hidden = false; clear.hidden = true; status.textContent = 'Create a map to search.'; list.replaceChildren(); back.hidden = true; activeId = null; },
+    showInitial() { root.hidden = false; clear.hidden = true; status.textContent = 'Type to search names and descriptions across the whole map.'; list.replaceChildren(); pagination.hidden = true; back.hidden = true; activeId = null; },
+    showNoMap() { root.hidden = false; clear.hidden = true; status.textContent = 'Create a map to search.'; list.replaceChildren(); pagination.hidden = true; back.hidden = true; activeId = null; },
     render(payload) {
       root.hidden = false; clear.hidden = false; activeId = null; back.hidden = true;
       if (!payload.ok) { status.textContent = payload.message || 'Search failed.'; list.replaceChildren(); return; }
-      if (payload.total === 0) status.textContent = `No matches for “${payload.query}”.`;
-      else if (payload.limited) status.textContent = `Showing ${payload.results.length} of ${payload.total} matches.`;
-      else status.textContent = `${payload.total} match${payload.total === 1 ? '' : 'es'}.`;
+      status.textContent = rangeStatus(payload);
+      renderPager(payload);
       renderCards(payload);
     },
     showError(message) { root.hidden = false; clear.hidden = false; status.textContent = message; },
@@ -66,6 +78,8 @@ export function createSearchResultsView({ document, host, onActivate, onClear })
     focus() { list.querySelector?.('.search-card')?.focus?.(); },
     destroy() { root.remove(); }
   };
+  previous.addEventListener('click', () => onPage?.(-1));
+  next.addEventListener('click', () => onPage?.(1));
   clear.addEventListener('click', () => onClear());
   back.addEventListener('click', () => api.focusActive());
   api.showInitial();

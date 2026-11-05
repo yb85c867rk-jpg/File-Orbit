@@ -25,13 +25,13 @@ function matchBucket(name, description, terms, normalizedQuery) {
 }
 
 /** Search the authoritative tree, including hidden branches. */
-export function searchTree(tree, query, { maxResults = MAX_SEARCH_RESULTS, datasetToken = null, revision = null } = {}) {
+export function searchTree(tree, query, { maxResults = MAX_SEARCH_RESULTS, page = 1, datasetToken = null, revision = null } = {}) {
   const normalizedQuery = normalizeQuery(query);
   if (normalizedQuery.length > MAX_SEARCH_QUERY_CODE_POINTS) {
-    return { ok: false, reason: 'query-too-long', message: `Search is limited to ${MAX_SEARCH_QUERY_CODE_POINTS} characters.`, query: normalizedQuery, results: [], total: 0, limited: false, folderIds: [], datasetToken, revision };
+    return { ok: false, reason: 'query-too-long', message: `Search is limited to ${MAX_SEARCH_QUERY_CODE_POINTS} characters.`, query: normalizedQuery, results: [], total: 0, page: 1, pageCount: 0, pageSize: maxResults, rangeStart: 0, rangeEnd: 0, limited: false, folderIds: [], datasetToken, revision };
   }
   const terms = termsFor(normalizedQuery);
-  if (terms.length === 0) return { ok: true, query: '', results: [], total: 0, limited: false, folderIds: [], datasetToken, revision };
+  if (terms.length === 0) return { ok: true, query: '', results: [], total: 0, page: 1, pageCount: 0, pageSize: maxResults, rangeStart: 0, rangeEnd: 0, limited: false, folderIds: [], datasetToken, revision };
   const matches = [];
   const parentById = new Map();
   const walk = (node, parentPath, parentId) => {
@@ -46,13 +46,19 @@ export function searchTree(tree, query, { maxResults = MAX_SEARCH_RESULTS, datas
     || normalizeSearchText(left.name).localeCompare(normalizeSearchText(right.name))
     || left.id.localeCompare(right.id));
   const total = matches.length;
-  const limited = total > maxResults;
+  const pageSize = Math.max(1, maxResults);
+  const pageCount = total === 0 ? 0 : Math.ceil(total / pageSize);
+  const currentPage = pageCount === 0 ? 1 : Math.min(Math.max(1, Math.trunc(Number(page) || 1)), pageCount);
+  const rangeStart = total === 0 ? 0 : (currentPage - 1) * pageSize + 1;
+  const rangeEnd = total === 0 ? 0 : Math.min(currentPage * pageSize, total);
+  const limited = total > pageSize;
   const folderIds = new Set();
   const addAncestors = (parentId) => { let current = parentId; while (current != null && !folderIds.has(current)) { folderIds.add(current); current = parentById.get(current) ?? null; } };
   for (const match of matches) {
     if (match.kind === 'folder') folderIds.add(match.id);
     addAncestors(match.parentId);
   }
-  return { ok: true, query: normalizedQuery, results: matches.slice(0, maxResults), total, limited, folderIds: [...folderIds].sort(), datasetToken, revision };
+  return { ok: true, query: normalizedQuery, results: matches.slice(rangeStart === 0 ? 0 : rangeStart - 1, rangeEnd), total, page: currentPage, pageCount, pageSize, rangeStart, rangeEnd, limited, folderIds: [...folderIds].sort(), datasetToken, revision };
 }
+
 

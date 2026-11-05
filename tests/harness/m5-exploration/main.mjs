@@ -637,20 +637,22 @@ try {
 let searchQuery = '';
 let searchResultIds = new Set();
 let hoveredId = null;
+let searchPage = 1;
+let searchPageCount = 1;
 let labelPriorityRaf = 0;
 let searchHighlightStatusEl = document.querySelector('#search-highlight-status');
 let searchComposing = false;
 let pendingSearchActivation = null;
 const searchRevealWaiter = createSearchNavigationWaiter();
 try {
-  searchView = createSearchResultsView({ document, host: searchResultsHost, onActivate: (result) => activateSearchResult(result).catch((error) => searchView?.showError(String(error?.message || error))), onClear: () => clearSearch() });
+  searchView = createSearchResultsView({ document, host: searchResultsHost, onActivate: (result) => activateSearchResult(result).catch((error) => searchView?.showError(String(error?.message || error))), onPage: (delta) => goToSearchPage(delta), onClear: () => clearSearch() });
 } catch (error) {
   setShellStatus(`Search failed to initialize: ${String(error?.message || error)}`);
 }
 if (searchInput) {
   searchInput.addEventListener('compositionstart', () => { searchComposing = true; });
-  searchInput.addEventListener('compositionend', () => { searchComposing = false; runSearch(); });
-  searchInput.addEventListener('input', () => { if (!searchComposing) runSearch(); });
+  searchInput.addEventListener('compositionend', () => { searchComposing = false; runSearch({ resetPage: true }); });
+  searchInput.addEventListener('input', () => { if (!searchComposing) runSearch({ resetPage: true }); });
 }
 function setSearchOpen(open, { focus = true } = {}) {
   if (!searchPanel || !searchToggle) return;
@@ -837,6 +839,7 @@ let resizeObserver = null;
 let resizeFrame = null;
 syncResponsiveDetails();
 let lastViewportSize = { width: -1, height: -1 };
+let pendingViewportResize = false;
 
 const FIXTURES = { f20, f200 };
 const EXPLORATION_PRESENTATION = Object.freeze({ rootFill: '#F8FAFC', rootStroke: '#F8FAFC', folderFill: '#B8BEC7', folderStroke: '#D1D5DB', fileFill: '#22C55E', fileStroke: '#22C55E', edgeStroke: '#454B54' });
@@ -1504,6 +1507,7 @@ function createNavigator() {
       transitionTerminal = outcome;
       publish();
       searchRevealWaiter.settle(id, { ok: false, error: outcome.originalError });
+      if (pendingViewportResize) { pendingViewportResize = false; queueMicrotask(() => handleViewportResize()); }
     },
     onSettled: ({ id = null, state = null } = {}) => {
       if (transitionTerminal) return;
@@ -1516,6 +1520,7 @@ function createNavigator() {
       if (outcome.cleanupError !== null) lastClickDiagnostic = { reason: 'transition-cleanup-failed', error: outcome.cleanupError, recovered: outcome.recovered };
       transitionTerminal = outcome;
       searchRevealWaiter.settle(id, { ok: outcome.recovered && state?.completionReason === 'completed' });
+      if (pendingViewportResize) { pendingViewportResize = false; queueMicrotask(() => handleViewportResize()); }
       publish();
     }
   });
@@ -1957,6 +1962,7 @@ function handleViewportResize() {
   if (!baseLayout || !session) return;
   const size = viewport();
   if (size.width <= 0 || size.height <= 0) return;
+  if (navigator?.busy) { pendingViewportResize = true; return; }
   if (size.width === lastViewportSize.width && size.height === lastViewportSize.height) return;
   lastViewportSize = size;
   deleteConfirmation?.close({ restoreFocus: false });
@@ -2001,6 +2007,7 @@ function resetSearchForDataset() {
   pendingSearchActivation = null;
   searchQuery = '';
   searchResultIds = new Set();
+  searchPage = 1; searchPageCount = 1;
   if (searchInput) searchInput.value = '';
   if (searchView) { if (hasMap) searchView.showInitial(); else searchView.showNoMap(); }
   lastSearchDataset = null; lastSearchRevision = null;
@@ -2009,6 +2016,7 @@ function clearSearch() {
   setSearchHighlightIds([]);
   searchQuery = '';
   searchResultIds = new Set();
+  searchPage = 1; searchPageCount = 1;
   if (searchInput) { searchInput.value = ''; searchInput.focus?.(); }
   if (searchView) searchView.showInitial();
   refreshLabelPriority();
@@ -2022,13 +2030,18 @@ function setSearchHighlightIds(ids) {
   if (changed) refreshCanvasTheme();
 }
 
-function runSearch() {
+function goToSearchPage(delta) {
+  if (!searchQuery || !searchView) return;
+  searchPage = Math.max(1, Math.min(searchPageCount || 1, searchPage + Number(delta || 0)));
+  runSearch();
+}
+function runSearch({ resetPage = false } = {}) {
   if (!searchView || !searchInput) return;
   const raw = String(searchInput.value ?? '');
   if (raw.trim() && detailsPanel?.dataset.collapsed === 'true') setDetailsCollapsed(false);
   searchQuery = raw;
-  if (!tree || raw.trim().length === 0) { setSearchHighlightIds([]); searchResultIds = new Set(); searchView.showInitial(); refreshLabelPriority(); lastSearchDataset = datasetToken; lastSearchRevision = dataRevision; return; }
-  const payload = searchTree(tree, raw, { datasetToken, revision: dataRevision });
+  if (resetPage) searchPage = 1; if (!tree || raw.trim().length === 0) { setSearchHighlightIds([]); searchResultIds = new Set(); searchPage = 1; searchPageCount = 1; searchView.showInitial(); refreshLabelPriority(); lastSearchDataset = datasetToken; lastSearchRevision = dataRevision; return; }
+  const payload = searchTree(tree, raw, { page: searchPage, datasetToken, revision: dataRevision }); searchPage = payload.ok ? payload.page : 1; searchPageCount = payload.ok ? payload.pageCount : 0;
   setSearchHighlightIds(payload.ok ? payload.folderIds : []);
   searchResultIds = new Set(payload.ok ? payload.results.map((result) => result.id) : []);
   searchView.render(payload);
