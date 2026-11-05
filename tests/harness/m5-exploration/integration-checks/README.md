@@ -34,3 +34,5 @@ These use test hooks/picker stubs, not native OS acceptance.
 - `transition-cat1.gif` plus six intermediate frames: visual transition evidence.
 
 - `transition-check.mjs` also asserts normalized endpoint opacity/positions, final painted pixels, global 22/22 folder visibility, direct larger/background click, and pan interruption.
+
+- `transition-check.mjs` now also checks default labels for every immediate child, label collision/viewport bounds, PDF label color, no central background nodes, aria-current breadcrumb navigation and same-name path distinction.

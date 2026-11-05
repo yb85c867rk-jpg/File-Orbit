@@ -240,3 +240,30 @@ These are machine checks, not the human animation usability verdict.
 
 
 
+
+## Readable active nodes, peripheral context and top breadcrumb
+
+- Active immediate children receive default 11px filename labels, not only selected nodes.
+- Labels use screen-space collision placement with leader lines, viewport clamping and extension-preserving truncation; full path is exposed as the canvas tooltip.
+- PDF labels remain `#F87171`.
+- The focused folder is selected and retains its label after completion.
+- Dimmed context consists only of root and first-level category folders in a peripheral band; unrelated background edges/descendants are not painted in the central active area.
+- Background/context labels and nodes remain directly clickable; faded nodes below the opacity threshold do not receive hits.
+- A dedicated full-width breadcrumb row sits below the top toolbar with `aria-current="page"`, native buttons, separators, keyboard activation and horizontal scrolling for long paths.
+- Current hierarchy comes from the actual path, not click history. Back remains a secondary history action.
+
+Executed label metrics:
+
+- 1600px test: 50/50 immediate children labeled; overlap 0; outside viewport 0; central background nodes 0; PDF color red;
+- 1900×870 `12_고객지원`: 49/49 immediate labels; overlap 0; outside 0;
+- 1280×800 `12_고객지원`: 49/49 immediate labels; overlap 0; outside 0.
+- Breadcrumb at nested: `20개 카테고리 지도 / 01_기획 / 하위-폴더`, current `하위-폴더`; activating `01_기획` restored `cat-1` and current marker.
+
+Screenshots:
+
+- `readability-1900-overview.png`
+- `readability-1900-active-12.png`
+- `readability-1900-nested.png`
+- `readability-1900-breadcrumb-return.png`
+- `readability-1280-active-12.png`
+- `transition-cat1.gif` (fresh 1900px recording)
