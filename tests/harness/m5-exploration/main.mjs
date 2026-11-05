@@ -726,7 +726,7 @@ globalThis.window?.addEventListener?.('resize', syncResponsiveDetails);
 globalThis.window?.addEventListener?.('orientationchange', syncResponsiveDetails);
 const actionButtons = [...new Set(document.querySelectorAll('[data-action]'))].filter((button) => button.dataset.action !== 'theme' && button.dataset.action !== 'fullscreen');
 const saveAsButtons = [...new Set(document.querySelectorAll('[data-action="save-document-as"]'))];
-fitButton?.addEventListener('click', () => fitGraph());
+fitButton?.addEventListener('click', () => { if (largeMapView?.isActive()) { largeMapView.fit(); return; } fitGraph(); });
 const shellActions = createActionButtonsController({ buttons: actionButtons, onAction: ({ action }) => {
   if (action === 'create-map') { startCreateMap(); return; }
   if (action === 'save-map') { if (editorController?.isOpen()) { if (typeof editorPanel?.submit !== 'function') { setShellStatus('Editor Save API is unavailable.'); return; } editorPanel.submit(); return; } saveCurrentDocument({ context: 'toolbar' }); return; }
@@ -856,12 +856,14 @@ function buildLargeBaseLayout(treeValue) {
   let index = 0;
   const walk = (node, depth) => {
     const x = (index % 40) * 32; const y = Math.floor(index / 40) * 32; index += 1;
-    nodes.set(node.id, { id: node.id, x, y, radius: node.kind === 'folder' ? 12 : 7 });
+    const rho = Math.hypot(x, y); const theta = Math.atan2(y, x); nodes.set(node.id, { id: node.id, depth, x, y, radius: node.kind === 'folder' ? 12 : 7, positions: new Map([['current', { theta, rho }]]), spans: new Map([['current', 1]]), dimQuotients: new Map([['current', 1]]), angleSpan: { start: theta, end: theta + 0.01 } });
     depths.set(node.id, depth); children.set(node.id, (node.children || []).map((child) => child.id));
     for (const child of node.children || []) walk(child, depth + 1);
   };
   walk(treeValue, 0);
-  return { rootId: treeValue.id, firstPhase: 'current', phases: ['current'], nodes, children, depths, feasibility: { workspaceScale: 1 } };
+  let n = 0; const total = nodes.size;
+  for (const record of nodes.values()) { const theta = (Math.PI * 2 * n) / Math.max(1, total); const rho = 0.9 * ((n + 1) / (total + 1)); record.positions = new Map([['current', { theta, rho }]]); record.x = Math.cos(theta) * rho; record.y = Math.sin(theta) * rho; n += 1; }
+  const ids = [...nodes.keys()]; const one = new Map(ids.map((id) => [id, 1])); const zero = new Map(ids.map((id) => [id, 0])); return { rootId: treeValue.id, firstPhase: 'current', phases: ['current'], nodes, children, depths, demandById: one, allocatedSpanById: one, radialById: zero, parentRadialById: zero, placementRadiiById: zero, scales: one, angularWidths: one, treeAngularWidths: one, distances: one, placementDistances: one, feasibility: { workspaceScale: 1 } };
 }
 function admitDocument(treeValue) {
   const nodeCount = countDocumentNodes(treeValue);
@@ -871,6 +873,7 @@ function admitDocument(treeValue) {
   }
   return { ok: true, nodeCount, edition: admission.decision.edition };
 }
+function editorAdmissionAllowed() { const access = evaluateContextNodeAccess(largeMapPolicyContext, graph?.nodes?.size || 0, null); return Boolean(access.ok && access.decision?.allowed === true); }
 function syncLargeMapPresentation() {
   if (!graphViewport || destroying) return;
   const nodeCount = hasMap && tree ? countDocumentNodes(tree) : 0;
@@ -888,6 +891,11 @@ function syncLargeMapPresentation() {
       container: largeMapContainer,
       getTree: () => tree,
       getSelectedId: () => detailsTargetId,
+      getDatasetToken: () => datasetToken,
+      canInteract: (id, kind) => {
+        if (replacementGuard || ownership.blocked() || editorController?.isOpen() || editorController?.isSaving() || deleteConfirmation?.isOpen || attachmentViewer?.isOpen || documentSaving || installingBackupImport || pendingBackupImport) { setShellStatus('Finish the current edit, save, dialog or preview before navigating the large map.'); return false; }
+        return true;
+      },
       onSelect: (id) => { detailsTargetId = id; if (id === null) attachmentViewer?.close?.({ restoreFocus: false }); publish(); },
       onPreview: (id) => { openAttachmentViewer(id); },
       onEdit: (id, event) => { activateEditorTarget({ id, kind: graph?.nodes?.get(id)?.kind || 'file' }, event); },
@@ -895,7 +903,7 @@ function syncLargeMapPresentation() {
       onStatus: (message) => setShellStatus(message)
     });
   }
-  largeMapView.refresh(detailsTargetId, [...searchHighlightIds]); globalThis.__M5_LARGE_MAP_VIEW__ = largeMapView;
+  largeMapView.refresh(detailsTargetId, { searchTargetId: searchView?.activeId || null, searchFolderIds: [...searchHighlightIds] }); globalThis.__M5_LARGE_MAP_VIEW__ = largeMapView;
 }
 const baseRadius = () => Math.max(1, Math.min(viewport().width, viewport().height) * 0.42);
 
@@ -1176,7 +1184,7 @@ function performHistoryMove(direction) {
     direction, history, tree, datasetToken, attachmentRegistry,
     graph, baseLayout, model, session,
     structuralRootId: model.structuralRootId,
-    viewport: viewport(), baseRadiusCss: baseRadius(), phase: 'current', baseRevision: dataRevision,
+    viewport: viewport(), baseRadiusCss: baseRadius(), phase: 'current', baseRevision: dataRevision, policyContext: largeMapPolicyContext,
     frame: installFrame,
     invalidate: () => { frameState = null; },
     setCandidateEnv: (env) => { candidateEnv = env; },
@@ -1234,7 +1242,7 @@ function performReparent(sourceId, targetId, gesture) {
   const result = performReparentInstallation({
     tree, graph, model, session,
     sourceId, targetId, gesture,
-    generation, datasetToken, structuralRootId: model.structuralRootId,
+    generation, datasetToken, structuralRootId: model.structuralRootId, policyContext: largeMapPolicyContext,
     viewport: viewport(), baseRadiusCss: baseRadius(), phase: 'current',
     history, historyEntry, currentDetailsTargetId: detailsTargetId,
     frame: installFrame,
@@ -1544,7 +1552,7 @@ function createEditor() {
   deleteConfirmation = createDeleteConfirmation({ document, host: overlayHost, onConfirm: (value) => executeDeleteConfirmation(value), onCancel: () => { lastClickDiagnostic = { reason: 'delete-cancelled' }; publish(); } });
   editorPanel = createEditorPanel({
     document, summaryHost: detailsEl, editorHost, controller: editorController,
-    canEdit: () => !ownership.blocked() && !destroying && !navigator?.busy && !dragState && graph.nodes.size <= EDITOR_MAX_NODES,
+    canEdit: () => !ownership.blocked() && !destroying && !navigator?.busy && !dragState && editorAdmissionAllowed(),
     attachments: () => attachmentRegistry,
     getIdentity: () => ({ datasetToken, baseRevision: dataRevision }),
     onSave: (value) => saveEditorAction(value),
@@ -1637,7 +1645,7 @@ async function saveEditorAction({ action, name, description, dataType, link, lin
     history, historyViewBefore, historyViewAfter,
     tree, graph, baseLayout, model, session,
     datasetToken: draftToken ?? datasetToken,
-    baseRevision: draftRevision ?? dataRevision,
+    baseRevision: draftRevision ?? dataRevision, policyContext: largeMapPolicyContext,
     expectedDatasetToken: datasetToken, expectedRevision: dataRevision,
     structuralRootId: model.structuralRootId,
     viewport: viewport(), baseRadiusCss: baseRadius(), phase: 'current',
@@ -4681,6 +4689,16 @@ startEmptyState();
 void startRecoveryDiscovery();
 syncPersistenceControls();
 syncAutomaticSaveFeedback();
+
+
+
+
+
+
+
+
+
+
 
 
 

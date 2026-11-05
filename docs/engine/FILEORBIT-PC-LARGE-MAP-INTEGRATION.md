@@ -79,3 +79,22 @@ Screenshots: `integrated-300.png`, `integrated-1000.png`, `integrated-1000-activ
 - The hidden base canvas remains mounted during >300 presentation for mode switching; only one graph workspace is visible.
 - No Close/Delete, Upload, cloud, payments, Tauri, enterprise or deployment.
 
+
+## Correction pass
+
+- Editor admission now uses the explicit policy context through canEdit, command construction, history replay and reparent paths. Free 300 remains editable; free 301 rejected; paid-test 1000 editable; a 1001st child is rejected before commit.
+- Large presentation uses dataset identity plus root/count/topology signature. Metadata-only edits keep layout/camera; structural edits rebuild layout; document replacement resets presentation state.
+- Selection/search synchronization is explicit: null selection clears, empty search target clears forced reveal/styling, PDF fill remains red and search uses a blue stroke.
+- Top-toolbar Fit routes to the active presentation; the duplicate local Fit was removed; breadcrumb ancestors are clickable.
+- Custom navigation is gated by the app's editor/save/replacement/delete/preview ownership checks.
+- Presentation frame loop is cancelled and observers/listeners are removed on destroy.
+
+Retained check: `tests/harness/m5-exploration/integration-checks/paid-edit-check.mjs`.
+Retained admission test: `tests/harness/large-map/admission.test.mjs`.
+## Correction validation summary
+
+- Paid-test 1,000 edit executed through the ordinary editor: name/description applied, form closed, Save As wrote 1,000-node package, tree and presentation names agreed, Undo removed the rename and Redo restored it.
+- `admission.test.mjs`: free 300 rename allowed; free 301 rejected; paid 1,000 rename allowed; paid 1,000 + 1 child rejected.
+- Final focused: 5/5 PASS; final P1B: 69/69 PASS.
+- Final UI: 300 uses existing renderer, 1,000 uses integrated presentation with 20 categories; top `#fit` exists; breadcrumb has 2 ancestor buttons after category activation.
+- Frame loop and observer are explicitly cancelled/disconnected on destroy.

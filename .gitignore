@@ -10,3 +10,4 @@ _stage/
 *.tmp
 .DS_Store
 Thumbs.db
+.*-profile/
