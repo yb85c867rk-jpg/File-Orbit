@@ -615,3 +615,18 @@ backHidden: true
 ```
 
 then `same-name.txt` restores two results on page 1.
+
+## Final manual interruption results (SHA 9f44f94)
+
+Measured at 1900×870:
+
+- rapid retarget target 1 `cat-20`, target 2 `cat-19`, final focus **cat-19**;
+- wheel during cat-12 transition: camera 0.08923/0,0 → 0.20704/-84.33,80.03; transition null; camera unchanged after 500 ms; subsequent cat-12 navigation succeeds;
+- pointer pan during cat-12 transition: camera 0.11963/102.88,89.09; transition null; camera unchanged after 500 ms; subsequent cat-12 navigation succeeds;
+- resize during transition final cat-12;
+- search activation from cat-12 final cat-1;
+- post-transition labels/hit reflow pass.
+
+Opacity handoff is covered by the deterministic `retarget-opacity.test.mjs`; frame-level opacity/position sampling is not run.
+
+Still NOT RUN: retarget while resize pending; document replacement during transition; recordings; frame-level continuity; 1600×900 interruption scenarios.
