@@ -16,7 +16,9 @@ export function createSearchResultsView({ document, host, onActivate, onClear, o
   const pagination = document.createElement('div'); pagination.className = 'search-pagination'; pagination.hidden = true;
   const previous = document.createElement('button'); previous.type = 'button'; previous.className = 'search-page-previous'; previous.textContent = 'Previous';
   const next = document.createElement('button'); next.type = 'button'; next.className = 'search-page-next'; next.textContent = 'Next';
-  pagination.append(previous, next);
+  const pageIndicator = document.createElement('span'); pageIndicator.className = 'search-page-indicator'; pageIndicator.setAttribute('aria-live', 'polite');
+  pagination.setAttribute('aria-label', 'Search result pages');
+  pagination.append(previous, pageIndicator, next);
   root.append(head, status, list, pagination, back);
   host.appendChild(root);
   let activeId = null;
@@ -27,12 +29,14 @@ export function createSearchResultsView({ document, host, onActivate, onClear, o
   };
   const rangeStatus = (payload) => {
     if (payload.total === 0) return `No matches for “${payload.query}”.`;
-    return `${payload.total} match${payload.total === 1 ? '' : 'es'} · ${payload.rangeStart}–${payload.rangeEnd} · Page ${payload.page} of ${payload.pageCount}.`;
+    return `${payload.total} match${payload.total === 1 ? '' : 'es'} · ${payload.rangeStart}–${payload.rangeEnd}`;
   };
   const renderPager = (payload) => {
     pagination.hidden = payload.total === 0 || payload.pageCount <= 1;
     previous.disabled = payload.page <= 1;
     next.disabled = payload.page >= payload.pageCount;
+    pageIndicator.textContent = `${payload.page} / ${payload.pageCount}`;
+    pageIndicator.setAttribute('aria-label', `Page ${payload.page} of ${payload.pageCount}`);
   };
   const renderCards = (payload) => {
     list.replaceChildren();

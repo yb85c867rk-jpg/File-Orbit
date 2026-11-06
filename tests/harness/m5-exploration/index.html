@@ -8,7 +8,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="assets/fileorbit-favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/fileorbit-favicon-16.png">
 <style>
-  :root { color-scheme: dark; font-family: ui-sans-serif, system-ui, sans-serif; --fo-bg: #0b0e14; --fo-panel: #111827; --fo-panel-2: #172033; --fo-border: #263041; --fo-border-strong: #334155; --fo-text: #e5e7eb; --fo-muted: #94a3b8; --fo-accent: #818cf8; --fo-label-text: #c3ccda; --fo-folder-label: #c7d2fe; --fo-label-shadow: 0 1px 2px #000; --fo-link: #93c5fd; --fo-input: #0f172a; }
+  :root { color-scheme: dark; font-family: ui-sans-serif, system-ui, sans-serif; --fo-bg: #0b0e14; --fo-panel: #111827; --fo-panel-2: #172033; --fo-border: #263041; --fo-border-strong: #334155; --fo-text: #e5e7eb; --fo-muted: #94a3b8; --fo-accent: #818cf8; --fo-label-text: #E2E8F0; --fo-folder-label: #c7d2fe; --fo-label-shadow: 0 1px 2px #000; --fo-link: #93c5fd; --fo-input: #0f172a; }
   :root[data-theme="dark"] { color-scheme: dark; }
   :root[data-theme="light"] { color-scheme: light; --fo-bg: #f8fafc; --fo-panel: #ffffff; --fo-panel-2: #f1f5f9; --fo-border: #cbd5e1; --fo-border-strong: #94a3b8; --fo-text: #0f172a; --fo-muted: #475569; --fo-label-text: #1e293b; --fo-folder-label: #334155; --fo-label-shadow: 0 1px 1px rgba(255,255,255,.75); --fo-link: #1d4ed8; --fo-input: #ffffff; }
   html, body { height: 100%; }
@@ -330,7 +330,14 @@
   .search-results-head h2 { margin: 0; font-size: 14px; }
   .search-results-head button, .search-back { background: var(--fo-panel-2); color: var(--fo-text); border: 1px solid var(--fo-border-strong); border-radius: 5px; padding: 4px 7px; font: inherit; cursor: pointer; }
   .search-status { color: var(--fo-muted); font-size: 11px; margin: 5px 0; min-height: 14px; }
-  .search-results-list { display: grid; gap: 6px; max-height: 46vh; overflow: auto; }\n.search-pagination { display: flex; gap: 6px; margin: 6px 0; }\n.search-pagination button { background: var(--fo-panel-2); color: var(--fo-text); border: 1px solid var(--fo-border-strong); border-radius: 5px; padding: 4px 8px; font: inherit; cursor: pointer; }\n.search-pagination button:disabled { opacity: 0.45; cursor: default; }
+  .search-results-list { display: grid; gap: 6px; max-height: 46vh; overflow: auto; }
+.search-pagination { display: grid; grid-template-columns: minmax(72px, 1fr) auto minmax(72px, 1fr); align-items: center; gap: 6px; width: 100%; box-sizing: border-box; margin: 6px 0; }
+.search-pagination[hidden] { display: none; }
+.search-page-previous { justify-self: start; }
+.search-page-next { justify-self: end; }
+.search-page-indicator { justify-self: center; white-space: nowrap; color: var(--fo-muted); font-size: 12px; }
+.search-pagination button { min-width: 64px; background: var(--fo-panel-2); color: var(--fo-text); border: 1px solid var(--fo-border-strong); border-radius: 5px; padding: 4px 8px; font: inherit; cursor: pointer; }
+.search-pagination button:disabled { opacity: 0.45; cursor: default; }
   .search-card-wrap { display: grid; gap: 3px; }
   .search-card { display: flex; gap: 7px; width: 100%; text-align: left; padding: 7px; border: 1px solid var(--fo-border); border-radius: 6px; background: var(--fo-panel-2); color: var(--fo-text); font: inherit; cursor: pointer; }
   .search-card:hover, .search-card:focus-visible, .search-card[aria-current="true"] { border-color: var(--fo-accent); outline: none; }
@@ -531,6 +538,9 @@
 <script type="module" src="./main.mjs"></script>
 </body>
 </html>
+
+
+
 
 
 

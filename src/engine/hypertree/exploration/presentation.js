@@ -2,9 +2,9 @@
 export const FOLDER_RADIUS_RATIO = 0.8;
 export const FOLDER_RADIUS_MIN_CSS = 4;
 export const EXPLORATION_COLORS = Object.freeze({
-  root: '#F8FAFC',
-  folderDepth1: '#D1D5DB',
-  folderDeep: '#B8BEC7',
+  root: '#818CF8',
+  folderDepth1: '#C4B5FD',
+  folderDeep: '#94A3B8',
   data: '#22C55E',
   pdf: '#F87171',
   edge: '#454B54'
@@ -24,7 +24,9 @@ export function buildExplorationPresentation({ baseLayout, graph }) {
       styles.set(id, { fill, stroke: fill });
     } else {
       radii.set(id, 4);
-      styles.set(id, { fill: EXPLORATION_COLORS.data, stroke: EXPLORATION_COLORS.data, shape: 'circle' });
+      const pdf = /\.pdf$/i.test(String(node.name || '')) || String(node.data?.classification?.badge || '').toUpperCase() === 'PDF';
+      const fill = pdf ? EXPLORATION_COLORS.pdf : EXPLORATION_COLORS.data;
+      styles.set(id, { fill, stroke: fill, shape: 'circle' });
     }
   }
   return {
@@ -40,8 +42,3 @@ export function buildExplorationPresentation({ baseLayout, graph }) {
     }
   };
 }
-
-
-
-
-
