@@ -630,3 +630,35 @@ Measured at 1900×870:
 Opacity handoff is covered by the deterministic `retarget-opacity.test.mjs`; frame-level opacity/position sampling is not run.
 
 Still NOT RUN: retarget while resize pending; document replacement during transition; recordings; frame-level continuity; 1600×900 interruption scenarios.
+
+## UI refinement stage (evaluation branch)
+
+Search pagination now uses a full-width three-column row below the card scroller:
+
+- Previous at the left edge;
+- centered indicator `1 / 4` with `aria-label="Page 1 of 4"`;
+- Next at the right edge;
+- status above the list contains only total/range, e.g. `198 matches · 1–50`;
+- row hidden for empty/invalid/single-page states; native disabled buttons.
+
+Verified at 1900 and 1600 widths; page 1/2/4, boundary states, later-page activation, invalid-query cleanup, Clear Search and replacement.
+
+Informational no-attachment feedback is now a routine 3-second notification. It clears immediately on graph navigation and dataset reset. New messages replace old ones and token checks prevent an older timer from clearing a newer message. Actionable save/conflict/dialog feedback remains non-transient.
+
+The renderer badge is hidden in normal UI, including the human testing URL. `rendererDiagnostics=1` explicitly shows it. Programmatic `window.__M5_RENDERER_MODE__` and `document.body.dataset.renderer` remain available.
+
+Approved node colors:
+
+| Role | Color |
+|---|---|
+| Root folder | `#818CF8` |
+| First-level folders | `#C4B5FD` |
+| Deeper folders | `#94A3B8` |
+| Ordinary files | `#22C55E` |
+| PDF files | `#F87171` |
+| Ordinary labels (dark) | `#E2E8F0` |
+| Ordinary labels (light) | `#1e293b` |
+
+Verified root, first-level, deeper focused, ordinary file, PDF, root-level file, search-active fills, light/dark label tokens and clean document state.
+
+Not run: structural edit/Undo/Redo color refresh, explicit selection-ring screenshot, keyboard pagination focus test, actionable-dialog notification regression, and a focused light-theme screenshot.

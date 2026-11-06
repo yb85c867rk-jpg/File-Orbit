@@ -64,3 +64,6 @@ These use test hooks/picker stubs, not native OS acceptance.
 
 - `hypertree-search-pagination-check.mjs`: 198-match pages, later-page activation, invalid-query stale controls, clear and replacement.
 - `hypertree-animation-check.mjs`: resize deferral, folder retarget from displayed state, search activation; wheel/pan/continuity limitations are recorded separately.
+
+- `hypertree-ui-check.mjs`: approved role colors, hidden/dev badge, notification timing/replacement/navigation clearing, light/dark label tokens.
+- `hypertree-search-pagination-check.mjs`: centered pagination geometry, boundary states, invalid-query cleanup and 1600px layout.
