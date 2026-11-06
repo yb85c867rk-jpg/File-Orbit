@@ -878,7 +878,7 @@ function admitDocument(treeValue) {
 }
 function editorAdmissionAllowed() { const access = evaluateContextNodeAccess(largeMapPolicyContext, graph?.nodes?.size || 0, null); return Boolean(access.ok && access.decision?.allowed === true); }
 let rendererBadge = null;
-const rendererDiagnosticsVisible = new URLSearchParams(location.search).get('rendererDiagnostics') === '1';
+const rendererDiagnosticsVisible = typeof location !== 'undefined' && new URLSearchParams(location.search).get('rendererDiagnostics') === '1';
 function setRendererBadge(kind) {
   if (!graphViewport) return;
   if (!rendererBadge) { rendererBadge = document.createElement('div'); rendererBadge.id = 'renderer-mode-badge'; rendererBadge.style.cssText = 'position:absolute;right:12px;bottom:12px;z-index:8;pointer-events:none;background:rgba(15,23,42,.92);border:1px solid #475569;border-radius:5px;padding:4px 8px;color:#e2e8f0;font:11px system-ui'; graphViewport.appendChild(rendererBadge); }
