@@ -69,3 +69,5 @@ These use test hooks/picker stubs, not native OS acceptance.
 - `hypertree-search-pagination-check.mjs`: centered pagination geometry, boundary states, invalid-query cleanup and 1600px layout.
 
 - `hypertree-notification-actual-check.mjs`: actual README-root.md search-result + graph-filename activation, visible message bounds and timed dismissal.
+
+- `hypertree-map-library-check.mjs`: unconnected Map Library visibility/Choose, synthetic connected list, Refresh placement and picker cancellation.

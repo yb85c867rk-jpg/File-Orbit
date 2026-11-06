@@ -664,3 +664,11 @@ Verified root, first-level, deeper focused, ordinary file, PDF, root-level file,
 Not run: structural edit/Undo/Redo color refresh, explicit selection-ring screenshot, keyboard pagination focus test, actionable-dialog notification regression, and a focused light-theme screenshot.
 
 Actual notification interaction: `README-root.md` has no attachment, search-result activation selects/focuses it, and the graph filename label reports `attachment-unavailable`; the visible info message measures 560×34 CSS px and dismisses after three seconds. Screenshot: `notification-actual-visible.png`.
+
+## Map Library navigation (step 1)
+
+The sidebar now has one expandable Map Library section instead of Open Orbit and its File/Folder submenu. It remains visible without a connection and shows Choose Directory; a connected directory shows its name, Change Directory, the .orbit list, and Refresh below the list. Choosing uses the existing Orbit state/directory-adapter/open pipeline.
+
+Cancelling the picker preserves the connected directory, list and current document. Changing directory does not replace the active map. The standalone file-opening menu was removed from the UI; internal open APIs remain.
+
+Automated verification uses a synthetic `showDirectoryPicker` handle with two in-memory .orbit entries. It does not exercise native picker, permission, or disk behavior. Listed-map activation through a real .orbit file and duplicate-section removal are not yet exercised.

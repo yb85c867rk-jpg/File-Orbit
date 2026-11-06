@@ -1,5 +1,5 @@
 /** Connected-Orbit navigation/list presentation. It renders snapshots only. */
-export function createOrbitPanel({ document, onRefresh, onSelect, onExpandRail } = {}) {
+export function createOrbitPanel({ document, onRefresh, onSelect, onChoose, onExpandRail } = {}) {
   const section = document.querySelector('#orbit-section');
   const toggle = document.querySelector('#orbit-toggle');
   const panel = document.querySelector('#orbit-panel');
@@ -8,7 +8,8 @@ export function createOrbitPanel({ document, onRefresh, onSelect, onExpandRail }
   const statusEl = document.querySelector('#orbit-status');
   const emptyEl = document.querySelector('#orbit-empty');
   const listEl = document.querySelector('#orbit-list');
-  if (!section || !toggle || !panel || !nameEl || !refreshButton || !statusEl || !emptyEl || !listEl) {
+  const chooseButton = document.querySelector('#orbit-choose');
+  if (!section || !toggle || !panel || !nameEl || !refreshButton || !statusEl || !emptyEl || !listEl || !chooseButton) {
     throw new TypeError('Orbit panel elements are missing.');
   }
   let last = null;
@@ -23,8 +24,8 @@ export function createOrbitPanel({ document, onRefresh, onSelect, onExpandRail }
   };
   const statusFor = (snapshot) => {
     if (snapshot?.phase === 'opening') return 'Opening Orbit…';
-    if (!snapshot?.handle) return 'No Orbit selected.';
-    if (snapshot.phase === 'listing') return 'Refreshing Orbit…';
+    if (!snapshot?.handle) return 'Choose a directory to show its .orbit maps.';
+    if (snapshot.phase === 'listing') return 'Refreshing Map Library…';
     if (snapshot.phase === 'blocked' || snapshot.error) return snapshot.error?.message || 'This Orbit is unavailable. Refresh after restoring permission.';
     if (snapshot.stale && snapshot.truncated) return 'The map list may be out of date and is truncated. Refresh to update it.';
     if (snapshot.stale) return 'The map list may be out of date. Refresh to update it.';
@@ -78,13 +79,13 @@ export function createOrbitPanel({ document, onRefresh, onSelect, onExpandRail }
   const railExpanded = () => document.querySelector('#nav-rail')?.dataset?.expanded !== 'false';
   const syncToggle = () => {
     const active = Boolean(last?.handle);
-    const name = active ? String(last.name || last.handle?.name || 'Orbit') : 'Orbit maps';
-    const visibleExpanded = Boolean(active && expanded && railExpanded());
-    toggle.hidden = !active;
-    toggle.disabled = !active;
+    const name = active ? String(last.name || last.handle?.name || 'Library directory') : 'No directory connected';
+    const visibleExpanded = Boolean(expanded && railExpanded());
+    toggle.hidden = false;
+    toggle.disabled = false;
     toggle.setAttribute('aria-expanded', String(visibleExpanded));
-    toggle.setAttribute('aria-label', active ? `Orbit: ${name}` : 'Orbit maps');
-    toggle.title = active ? `Orbit: ${name}` : 'Orbit maps';
+    toggle.setAttribute('aria-label', 'Map Library');
+    toggle.title = active ? `Map Library: ${name}` : 'Map Library';
     panel.hidden = !visibleExpanded;
   };
 
@@ -95,15 +96,17 @@ export function createOrbitPanel({ document, onRefresh, onSelect, onExpandRail }
     if (active && !wasActive) expanded = railExpanded();
     if (!active) expanded = false;
     wasActive = active;
-    section.hidden = !active;
-    nameEl.textContent = active ? String(snapshot.name || snapshot.handle?.name || 'Orbit') : 'No Orbit';
+    section.hidden = false;
+    nameEl.textContent = active ? String(snapshot.name || snapshot.handle?.name || 'Library directory') : 'No directory connected';
+    chooseButton.textContent = active ? 'Change Directory' : 'Choose Directory';
+    chooseButton.disabled = Boolean(busy || snapshot?.phase === 'opening' || snapshot?.phase === 'listing');
     panel.setAttribute('aria-busy', String(snapshot?.phase === 'opening' || snapshot?.phase === 'listing'));
     setButton(refreshButton, busy || !active || snapshot.phase === 'opening' || snapshot.phase === 'listing');
     statusEl.textContent = statusFor(snapshot);
     const entries = Array.isArray(snapshot?.entries) ? snapshot.entries : [];
     const empty = Boolean(active) && entries.length === 0 && !['opening', 'listing', 'blocked'].includes(snapshot.phase);
     emptyEl.hidden = !empty;
-    emptyEl.textContent = empty ? 'No .orbit documents in this Orbit.' : '';
+    emptyEl.textContent = empty ? 'No .orbit documents in this directory.' : '';
     if (!active) {
       listEl.replaceChildren();
       syncToggle();
@@ -114,7 +117,6 @@ export function createOrbitPanel({ document, onRefresh, onSelect, onExpandRail }
   }
 
   toggle.addEventListener('click', () => {
-    if (toggle.disabled || !last?.handle) return;
     if (!railExpanded()) {
       onExpandRail?.();
       expanded = true;
@@ -125,14 +127,12 @@ export function createOrbitPanel({ document, onRefresh, onSelect, onExpandRail }
     syncToggle();
     if (!expanded && panel.contains?.(document.activeElement)) toggle.focus?.();
   });
+  chooseButton.addEventListener('click', () => { if (!chooseButton.disabled) onChoose?.(); });
   refreshButton.addEventListener('click', () => { if (!refreshButton.disabled) onRefresh?.(); });
 
   return {
     render,
-    focusAction() {
-      if (section.hidden) { document.querySelector('#open-orbit-action')?.focus?.(); return; }
-      (expanded ? refreshButton : toggle).focus?.();
-    },
+    focusAction() { (expanded ? refreshButton : toggle).focus?.(); },
     get element() { return section; },
     get panel() { return panel; },
     get currentKey() { return currentEntryKey; },

@@ -491,7 +491,7 @@ let automaticSaveFailure = null;
 let automaticSaveActionInFlight = false;
 function claimDocumentOwnership() { documentOwnershipSeq += 1; return documentOwnershipSeq; }
 try {
-  orbitPanel = createOrbitPanel({ document, onRefresh: () => refreshOrbit(), onSelect: (entry) => openOrbitEntry(entry), onExpandRail: () => setRailExpanded(true) });
+  orbitPanel = createOrbitPanel({ document, onRefresh: () => refreshOrbit(), onSelect: (entry) => openOrbitEntry(entry), onChoose: () => openOrbit(), onExpandRail: () => setRailExpanded(true) });
 } catch (error) {
   orbitPanel = null;
 }

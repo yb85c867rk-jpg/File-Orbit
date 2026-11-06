@@ -117,7 +117,7 @@
   #nav-rail[data-expanded="true"] .nav-rail-chevron { transform: rotate(0deg); }
   #settings-panel { display: grid; gap: 4px; margin-top: 2px; padding: 5px; border: 1px solid var(--fo-border); border-radius: 7px; background: var(--fo-bg); }
   #settings-panel[hidden] { display: none; }
-.orbit-section { display: grid; gap: 4px; margin-top: 2px; padding-top: 5px; border-top: 1px solid var(--fo-border); min-width: 0; }
+.orbit-section { display: grid; gap: 4px; margin-top: 2px; padding-top: 5px; border-top: 1px solid var(--fo-border); min-width: 0; }\n.orbit-toggle .nav-label { flex: 1 1 auto; min-width: 0; overflow: visible; text-overflow: clip; white-space: nowrap; }\n.library-directory { display: grid; gap: 5px; min-width: 0; }\n.library-directory-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--fo-text); font-size: 12px; }\n.library-directory button, .orbit-actions button { width: 100%; min-height: 30px; background: var(--fo-panel-2); color: var(--fo-text); border: 1px solid var(--fo-border-strong); border-radius: 5px; font: inherit; font-size: 12px; cursor: pointer; }\n.library-directory button:disabled, .orbit-actions button:disabled { opacity: .5; cursor: default; }
 .orbit-section[hidden] { display: none; }
 .orbit-toggle { gap: 9px; min-width: 0; overflow: hidden; }
 .orbit-toggle[hidden] { display: none; }
@@ -454,21 +454,24 @@
    </button>
    <div id="nav-rail-items">
     <button class="nav-action" type="button" data-action="create-map" data-available="true" aria-label="Create Map" title="Create Map"><span class="nav-icon nav-icon-mask create-map-icon" aria-hidden="true"></span><span class="nav-label">Create Map</span></button>
-    <div class="open-orbit-row"><button id="open-orbit-action" class="nav-action" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="open-orbit-menu" aria-label="Open Orbit" title="Open Orbit: choose Orbit File or Orbit Folder"><span class="nav-icon nav-icon-mask open-orbit-icon" aria-hidden="true"></span><span class="nav-label">Open Orbit</span></button><button id="open-orbit-help" class="open-orbit-help" type="button" aria-label="About Orbit files" aria-expanded="false" aria-controls="open-orbit-help-text" aria-describedby="open-orbit-help-text">?</button><div id="open-orbit-help-text" class="open-orbit-help-text" role="tooltip" hidden>Open Orbit offers Orbit File for one .orbit file, or Orbit Folder to browse subfolders and .orbit files before connecting or opening.</div><div id="open-orbit-menu" class="popup-menu" role="menu" aria-label="Open Orbit options" hidden><button type="button" role="menuitem" data-open-kind="file">Orbit File</button><button type="button" role="menuitem" data-open-kind="folder">Orbit Folder</button></div></div>
     <button class="nav-action" type="button" data-action="save-document-as" data-available="false" aria-label="Save As" title="Save As"><svg class="nav-icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 3h9l2 2v5M4 3v14h6M13 11v6m-3-3h6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-label">Save As</span></button>
-    <div id="orbit-section" class="orbit-section" aria-label="Connected Orbit" hidden>
-      <button id="orbit-toggle" class="nav-action orbit-toggle" type="button" aria-expanded="false" aria-controls="orbit-panel" aria-label="Orbit maps" title="Orbit maps">
+    <div id="orbit-section" class="orbit-section" aria-label="Map Library">
+      <button id="orbit-toggle" class="nav-action orbit-toggle" type="button" aria-expanded="false" aria-controls="orbit-panel" aria-label="Map Library" title="Map Library">
         <span class="nav-icon nav-icon-mask orbit-folder-icon" aria-hidden="true"></span>
-        <span id="orbit-name" class="nav-label orbit-name">No Orbit</span>
+        <span class="nav-label">Map Library</span>
         <svg class="orbit-chevron" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="m6 8 4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
-      <div id="orbit-panel" class="orbit-panel" hidden role="region" aria-label="Orbit map list" tabindex="-1">
-        <div class="orbit-actions">
-          <button id="orbit-refresh" type="button" aria-label="Refresh Orbit list">Refresh list</button>
+      <div id="orbit-panel" class="orbit-panel" hidden role="region" aria-label="Map Library contents" tabindex="-1">
+        <div class="library-directory">
+          <span id="orbit-name" class="library-directory-name">No directory connected</span>
+          <button id="orbit-choose" type="button">Choose Directory</button>
         </div>
-        <p id="orbit-empty" class="orbit-empty" hidden>No .orbit documents in this Orbit.</p>
-        <ul id="orbit-list" class="orbit-list" aria-label="Orbit maps"></ul>
         <p id="orbit-status" class="orbit-status" role="status" aria-live="polite"></p>
+        <p id="orbit-empty" class="orbit-empty" hidden>No .orbit documents in this directory.</p>
+        <ul id="orbit-list" class="orbit-list" aria-label="Library maps"></ul>
+        <div class="orbit-actions">
+          <button id="orbit-refresh" type="button" aria-label="Refresh Map Library list">Refresh</button>
+        </div>
       </div>
     </div>
     <button id="settings-action" class="nav-action" type="button" aria-expanded="false" aria-controls="settings-panel" aria-label="Settings" title="Settings"><svg class="nav-icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 5h12M4 10h12M4 15h12M7 3v4M13 8v4M9 13v4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span class="nav-label">Settings</span></button>
@@ -538,6 +541,8 @@
 <script type="module" src="./main.mjs"></script>
 </body>
 </html>
+
+
 
 
 
