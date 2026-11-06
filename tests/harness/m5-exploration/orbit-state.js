@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Isolated Orbit state controller for Slice 2.
  *
  * It owns directory-selection, metadata-list, permission, and stale-request
@@ -221,6 +221,42 @@ export function createOrbitStateController({ adapter, now = () => Date.now() } =
     return runList(listing);
   }
 
+  function restoreDirectory(nextHandle, { name: nextName = '', permission: nextPermission = 'prompt', enumerate = false } = {}) {
+    if (destroyed) return { ...failure('destroyed', 'restore', 'The Orbit controller was destroyed.'), state: snapshot() };
+    if (!nextHandle || typeof nextHandle.values !== 'function') return { ...failure('invalid-handle', 'restore', 'A directory handle is required.'), state: snapshot() };
+    openRequest = null;
+    listRequest = null;
+    activeSession = ++sessionSeq;
+    handle = nextHandle;
+    name = String(nextName || nextHandle.name || '');
+    permission = String(nextPermission || 'prompt');
+    entries = [];
+    truncated = false;
+    truncation = null;
+    stale = false;
+    lastRefreshedAt = null;
+    hasSuccessfulList = false;
+    if (enumerate && permission === 'granted') {
+      error = null;
+      settledPhase = 'listing';
+      phase = 'listing';
+      const listing = { id: ++requestSeq, kind: 'restore', session: activeSession, handle };
+      listRequest = listing;
+      return runList(listing);
+    }
+    const reason = permission === 'denied' ? 'permission-denied' : 'permission-required';
+    error = {
+      reason,
+      stage: 'restore',
+      message: reason === 'permission-denied'
+        ? 'Map Library access is denied. Reconnect Map Library or choose another directory.'
+        : 'Reconnect Map Library to grant access to this directory.',
+      errorName: '', errorMessage: ''
+    };
+    settledPhase = 'blocked';
+    phase = 'blocked';
+    return { ok: false, reason, stage: 'restore', message: error.message, state: snapshot() };
+  }
   async function adoptDirectory(nextHandle, { name: nextName = '', permission: nextPermission = 'granted' } = {}) {
     if (destroyed) return { ...failure('destroyed', 'open', 'The Orbit controller was destroyed.'), state: snapshot() };
     if (!nextHandle || typeof nextHandle.values !== 'function') return { ...failure('invalid-handle', 'open', 'A directory handle is required.'), state: snapshot() };
@@ -312,5 +348,7 @@ export function createOrbitStateController({ adapter, now = () => Date.now() } =
     return snapshot();
   }
 
-  return { openDirectory, adoptDirectory, refresh, matchEntry, close, destroy, snapshot };
+  return { openDirectory, adoptDirectory, restoreDirectory, refresh, matchEntry, close, destroy, snapshot };
 }
+
+

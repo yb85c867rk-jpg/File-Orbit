@@ -73,3 +73,5 @@ These use test hooks/picker stubs, not native OS acceptance.
 - `hypertree-map-library-check.mjs`: unconnected Map Library visibility/Choose, synthetic connected list, Refresh placement and picker cancellation.
 
 - `hypertree-open-error-check.mjs`: actual Map Library clicks for 300, deep-400, 300, and 1000; fails if deep-400 replaces 300, stale error survives/reappears, or unrelated actionable status is cleared.
+
+- `hypertree-map-library-persistence-check.mjs`: native OPFS handle stored in IndexedDB, same-profile reload, no auto-open/permission request, explicit reconnect, denied state, storage failures, cancellation, and slow-restore/race protection.

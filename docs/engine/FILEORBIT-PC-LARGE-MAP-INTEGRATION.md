@@ -678,3 +678,13 @@ Automated verification uses a synthetic `showDirectoryPicker` handle with two in
 Library/map open errors are now owned by the specific Orbit open request. Starting a newer opening clears only the previous open-owned status, and a successful open clears it before publishing its result. Older failed callbacks cannot restore the message because the request token must still be current. The current document remains installed when a candidate fails.
 
 The retained actual Library-list regression opens 300, attempts deep-400 (failure preserves 300), reopens 300, opens 1000, waits for callbacks, and asserts the deep-400 error does not return. A separate test-hook gesture verifies that an unrelated actionable status is not removed by the scoped clear.
+
+## Map Library directory persistence (step 2)
+
+The adopted directory handle is stored as a structured-cloneable value in a dedicated `settings` record, key `map-library-directory`, in the existing `fileorbit` IndexedDB. It is not JSON and does not share map/document/recovery records. Writes are serialized and latest-wins.
+
+Startup loads the handle and queries read permission without requesting it. Granted access restores the directory and enumerates `.orbit` files; prompt/denied states show the directory and `Reconnect Map Library`. Permission is requested only from an explicit reconnect click. A successful reconnect persists the handle again. Restoration never opens a map or writes a map file.
+
+Failed adoption restores the previous valid connection. Cancellation leaves directory/list/settings unchanged. Storage read/write failures keep the session connection and report the limitation. Restore attempts are token-guarded against newer selections and disposal.
+
+Automated verification uses a native OPFS directory handle (structured-cloneable) for same-profile reload, plus disclosed test hooks for prompt/denied permission, storage failure and delayed restore race.

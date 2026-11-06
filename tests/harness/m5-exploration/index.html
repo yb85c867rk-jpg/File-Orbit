@@ -117,7 +117,12 @@
   #nav-rail[data-expanded="true"] .nav-rail-chevron { transform: rotate(0deg); }
   #settings-panel { display: grid; gap: 4px; margin-top: 2px; padding: 5px; border: 1px solid var(--fo-border); border-radius: 7px; background: var(--fo-bg); }
   #settings-panel[hidden] { display: none; }
-.orbit-section { display: grid; gap: 4px; margin-top: 2px; padding-top: 5px; border-top: 1px solid var(--fo-border); min-width: 0; }\n.orbit-toggle .nav-label { flex: 1 1 auto; min-width: 0; overflow: visible; text-overflow: clip; white-space: nowrap; }\n.library-directory { display: grid; gap: 5px; min-width: 0; }\n.library-directory-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--fo-text); font-size: 12px; }\n.library-directory button, .orbit-actions button { width: 100%; min-height: 30px; background: var(--fo-panel-2); color: var(--fo-text); border: 1px solid var(--fo-border-strong); border-radius: 5px; font: inherit; font-size: 12px; cursor: pointer; }\n.library-directory button:disabled, .orbit-actions button:disabled { opacity: .5; cursor: default; }
+.orbit-section { display: grid; gap: 4px; margin-top: 2px; padding-top: 5px; border-top: 1px solid var(--fo-border); min-width: 0; }
+.orbit-toggle .nav-label { flex: 1 1 auto; min-width: 0; overflow: visible; text-overflow: clip; white-space: nowrap; }
+.library-directory { display: flex; flex-direction: column; align-items: stretch; gap: 5px; min-width: 0; }
+.library-directory-name { overflow-wrap: anywhere; white-space: normal; color: var(--fo-text); font-size: 12px; line-height: 1.3; }
+.library-directory button, .orbit-actions button { width: 100%; min-height: 30px; background: var(--fo-panel-2); color: var(--fo-text); border: 1px solid var(--fo-border-strong); border-radius: 5px; font: inherit; font-size: 12px; cursor: pointer; }
+.library-directory button:disabled, .orbit-actions button:disabled { opacity: .5; cursor: default; }
 .orbit-section[hidden] { display: none; }
 .orbit-toggle { gap: 9px; min-width: 0; overflow: hidden; }
 .orbit-toggle[hidden] { display: none; }
@@ -465,6 +470,7 @@
         <div class="library-directory">
           <span id="orbit-name" class="library-directory-name">No directory connected</span>
           <button id="orbit-choose" type="button">Choose Directory</button>
+          <button id="orbit-reconnect" type="button" hidden>Reconnect Map Library</button>
         </div>
         <p id="orbit-status" class="orbit-status" role="status" aria-live="polite"></p>
         <p id="orbit-empty" class="orbit-empty" hidden>No .orbit documents in this directory.</p>
@@ -541,6 +547,9 @@
 <script type="module" src="./main.mjs"></script>
 </body>
 </html>
+
+
+
 
 
 
