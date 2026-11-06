@@ -67,3 +67,5 @@ These use test hooks/picker stubs, not native OS acceptance.
 
 - `hypertree-ui-check.mjs`: approved role colors, hidden/dev badge, notification timing/replacement/navigation clearing, light/dark label tokens.
 - `hypertree-search-pagination-check.mjs`: centered pagination geometry, boundary states, invalid-query cleanup and 1600px layout.
+
+- `hypertree-notification-actual-check.mjs`: actual README-root.md search-result + graph-filename activation, visible message bounds and timed dismissal.

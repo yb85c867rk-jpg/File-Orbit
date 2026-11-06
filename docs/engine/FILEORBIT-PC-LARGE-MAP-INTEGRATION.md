@@ -643,7 +643,7 @@ Search pagination now uses a full-width three-column row below the card scroller
 
 Verified at 1900 and 1600 widths; page 1/2/4, boundary states, later-page activation, invalid-query cleanup, Clear Search and replacement.
 
-Informational no-attachment feedback is now a routine 3-second notification. It clears immediately on graph navigation and dataset reset. New messages replace old ones and token checks prevent an older timer from clearing a newer message. Actionable save/conflict/dialog feedback remains non-transient.
+Informational no-attachment feedback previously used the outine status kind, whose CSS is screen-reader-only (width:1px, clipped); it also lacked the transient timer flag. Actual graph-label activation therefore produced no readable message. It now uses a distinct visible info kind with a 3-second timer, while routine readouts remain visually hidden. Navigation and dataset reset clear it; newer messages cancel older timers. Actual search-result + graph-filename activation, visible delivery, 3-second dismissal and the visible screenshot are covered by hypertree-notification-actual-check.mjs.
 
 The renderer badge is hidden in normal UI, including the human testing URL. `rendererDiagnostics=1` explicitly shows it. Programmatic `window.__M5_RENDERER_MODE__` and `document.body.dataset.renderer` remain available.
 
@@ -662,3 +662,5 @@ Approved node colors:
 Verified root, first-level, deeper focused, ordinary file, PDF, root-level file, search-active fills, light/dark label tokens and clean document state.
 
 Not run: structural edit/Undo/Redo color refresh, explicit selection-ring screenshot, keyboard pagination focus test, actionable-dialog notification regression, and a focused light-theme screenshot.
+
+Actual notification interaction: `README-root.md` has no attachment, search-result activation selects/focuses it, and the graph filename label reports `attachment-unavailable`; the visible info message measures 560×34 CSS px and dismisses after three seconds. Screenshot: `notification-actual-visible.png`.
