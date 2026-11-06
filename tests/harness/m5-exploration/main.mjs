@@ -27,7 +27,7 @@ import { viewerBlocksInteraction, canApplyViewerGuardedCamera } from '../../../s
 import { finalizeTransitionNavigation } from '../../../src/engine/hypertree/exploration/navigation-cleanup.js';
 import { performViewportResizeAction } from '../../../src/engine/hypertree/exploration/resize-action.js';
 import { performEditorCommandInstallation } from '../../../src/engine/hypertree/editor/action.js';
-import { EDITOR_MAX_NODES, createEditorIdAllocator } from '../../../src/engine/hypertree/editor/validation.js';
+import { EDITOR_MAX_NODES, createEditorIdAllocator, nodeDescription } from '../../../src/engine/hypertree/editor/validation.js';
 import { createAttachmentRegistry, sweepAttachmentOwnership } from '../../../src/engine/hypertree/editor/attachments.js';
 import { performRenameInstallation, performAddChildInstallation, performMetadataInstallation, performEditFolderInstallation, performEditDataInstallation, performDeleteInstallation } from '../../../src/engine/hypertree/editor/action.js';
 import { createSelectionIntent, validateSelectionIntent } from '../../../src/engine/hypertree/editor/intent.js';
@@ -76,6 +76,7 @@ const graphViewport = document.querySelector('#graph-viewport');
 const graphActionToolbar = document.querySelector('#graph-action-toolbar');
 const labelHost = document.querySelector('#label-host');
 const detailsEl = document.querySelector('#details');
+const detailsDescriptionEl = document.querySelector('#details-description');
 const editorHost = document.querySelector('#editor-host');
 const countsEl = document.querySelector('#counts');
 const undoHistoryButton = document.querySelector('#undo-history');
@@ -435,7 +436,7 @@ try {
   createMapDialog = createCreateMapDialog({
     document, host: overlayHost,
     onSelection: (selection) => prepareCreateMapSelection(selection),
-    onNameChange: ({ mapName, selection }) => prepareCreateMapSelection({ mapName, files: selection.files, folders: selection.folders }),
+    onNameChange: ({ mapName, description, selection }) => prepareCreateMapSelection({ mapName, description, files: selection.files, folders: selection.folders }),
     getFallbackFocus: () => resolveFocusFallback({ document, candidates: [...document.querySelectorAll('[data-action="create-map"]')], fallback: document.querySelector('#nav-rail-toggle') || document.body }),
     onCreate: (candidate) => installCreatedMap(candidate),
     hasCurrentMap: () => hasMap,
@@ -1999,6 +2000,9 @@ function publish(state = session?.getState()) {
 }
 function renderDetails(details) {
   if (detailsEl) { const node = detailsTargetId ? graph?.nodes.get(detailsTargetId) : null; detailsEl.textContent = node ? `${node.name} · ${node.kind}` : (hasMap ? 'Select an item to view details' : 'No map loaded'); }
+  if (detailsDescriptionEl) { const detailNode = detailsTargetId === tree?.id ? tree : tree?.children?.find?.((child) => child.id === detailsTargetId);
+    const rootShown = Boolean(tree?.name && detailsEl.textContent.startsWith(`${tree.name} ·`));
+    const description = details?.description ?? nodeDescription(detailNode) ?? (rootShown ? nodeDescription(tree) : null); const value = typeof description === 'string' && description.length ? description : null; detailsDescriptionEl.textContent = value || ''; detailsDescriptionEl.hidden = !value; }
   editorPanel?.setDetails(details);
 }
 function startViewportObserver() {
@@ -3148,10 +3152,10 @@ function startCreateMap({ skipDirty = false, skipUnsaved = false } = {}) {
   createMapDialog.show();
   publish();
 }
-async function prepareCreateMapWithToken({ mapName, files = [], folders = [], token }) {
+async function prepareCreateMapWithToken({ mapName, description = null, files = [], folders = [], token }) {
   const isCurrent = () => token === createMapOperation && Boolean(createMapDialog?.open);
   const result = await prepareCreateMapCandidate({
-    mapName, files, folders, datasetToken: datasetToken + 1, isCurrent
+    mapName, description, files, folders, datasetToken: datasetToken + 1, isCurrent
   });
   if (!isCurrent()) { if (result.ok) result.registry.clear(); return { ok: false, reason: 'stale-selection', message: 'The selection changed.' }; }
   if (!result.ok) { releasePendingCreateCandidate(); return result; }
@@ -3159,10 +3163,10 @@ async function prepareCreateMapWithToken({ mapName, files = [], folders = [], to
   pendingCreateCandidate = result;
   return { ...result, selection: { files, folders } };
 }
-async function prepareCreateMapSelection({ mapName, files, folders, selectionSeq }) {
+async function prepareCreateMapSelection({ mapName, description = null, files, folders, selectionSeq }) {
   const token = ++createMapOperation;
   releasePendingCreateCandidate();
-  return prepareCreateMapWithToken({ mapName, files, folders, token });
+  return prepareCreateMapWithToken({ mapName, description, files, folders, token });
 }
 async function prepareCreateMapDrop({ entries, mapName }) {
   const token = ++createMapOperation;
@@ -4908,6 +4912,7 @@ startEmptyState();
 void startRecoveryDiscovery();
 syncPersistenceControls();
 syncAutomaticSaveFeedback();
+
 
 
 

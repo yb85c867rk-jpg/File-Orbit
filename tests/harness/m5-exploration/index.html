@@ -53,7 +53,8 @@
   aside { width: 280px; flex: 0 0 280px; min-height: 0; overflow: auto; overflow-wrap: anywhere; border-left: 1px solid var(--fo-border); padding: 10px; font-size: 13px; }
   aside[data-collapsed="true"] { width: 120px; flex-basis: 120px; padding: 4px; overflow: hidden; }
   aside[data-collapsed="true"] h2 { display: none; }
-  .details-head { display: flex; align-items: center; justify-content: space-between; gap: 6px; margin-bottom: 6px; }
+  .details-description { margin: 4px 0 0; color: var(--fo-muted); font-size: 12px; line-height: 1.45; white-space: pre-wrap; overflow-wrap: anywhere; }
+.details-head { display: flex; align-items: center; justify-content: space-between; gap: 6px; margin-bottom: 6px; }
   .details-head h2 { margin: 0; }
   #details-toggle { display: inline-flex; align-items: center; justify-content: center; gap: 4px; min-height: 32px; background: var(--fo-panel-2); color: var(--fo-text); border: 1px solid var(--fo-border-strong); border-radius: 5px; padding: 3px 8px; font-size: 12px; cursor: pointer; white-space: nowrap; }
   #details-toggle-label { overflow: hidden; text-overflow: ellipsis; }
@@ -409,7 +410,14 @@
   :root[data-theme="light"] .create-map-name-error { color: #b91c1c; }
   .create-map-form { display: grid; gap: 7px; }
   .create-map-form[hidden], .create-map-actions[hidden], .create-map-preview[hidden], .create-map-confirm[hidden] { display: none; }
-  .create-map-form input[hidden] { display: none; }
+  .create-map-dialog h3 { margin: 8px 0 0; font-size: 14px; }
+.create-map-form label { display: grid; gap: 4px; font-size: 12px; color: var(--fo-muted); }
+.create-map-form .create-map-description { min-height: 84px; resize: vertical; background: var(--fo-input); color: var(--fo-text); border: 1px solid var(--fo-border-strong); border-radius: 6px; padding: 7px; font: inherit; }
+.create-map-source { border: 1px solid var(--fo-border); border-radius: 7px; padding: 7px 9px; }
+.create-map-source summary { cursor: pointer; font-weight: 600; }
+.create-map-source-note, .create-map-location-guidance { margin: 4px 0; color: var(--fo-muted); font-size: 12px; line-height: 1.4; }
+.create-map-source button { margin-top: 5px; }
+.create-map-form input[hidden] { display: none; }
   .create-map-form input { background: var(--fo-input); color: var(--fo-text); border: 1px solid var(--fo-border-strong); border-radius: 6px; padding: 7px; font: inherit; }
   .create-map-form button, .create-map-actions button, .create-map-confirm button { background: var(--fo-panel-2); color: var(--fo-text); border: 1px solid var(--fo-border-strong); border-radius: 6px; padding: 6px 10px; font: inherit; cursor: pointer; }
   .create-map-drop { border: 1px dashed var(--fo-border-strong); border-radius: 7px; padding: 12px; color: var(--fo-muted); font-size: 12px; text-align: center; }
@@ -520,6 +528,7 @@
     <div class="details-head"><h2>Details</h2><button id="details-toggle" type="button" aria-expanded="true" aria-controls="details-content"><span id="details-toggle-label">Hide details</span><svg id="details-toggle-icon" class="details-toggle-icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="m5 8 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
     <div id="details-content">
       <div id="details">No map loaded</div>
+      <div id="details-description" class="details-description" hidden></div>
       <div id="editor-host"></div>
       <div id="search-results-host"></div>
 <p id="search-highlight-status" class="visually-hidden" role="status" aria-live="polite"></p>
@@ -550,6 +559,7 @@
 <script type="module" src="./main.mjs"></script>
 </body>
 </html>
+
 
 
 

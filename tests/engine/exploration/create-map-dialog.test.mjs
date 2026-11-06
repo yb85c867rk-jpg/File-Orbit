@@ -48,7 +48,7 @@ test('dialog opens, previews picks, confirms replacement, and creates once', asy
   const fileInputs = [];
   const walk = (node) => { if (node.tagName === 'INPUT' && node.type === 'file') fileInputs.push(node); for (const child of node.children) walk(child); };
   walk(host.children[0]);
-  const filesInput = fileInputs.find((el) => el.multiple === true && !el.attributes.has('webkitdirectory'));
+  const filesInput = fileInputs.find((el) => el.multiple === true && el.attributes.has('webkitdirectory'));
   filesInput.files = [{ name: 'x.txt', size: 4 }];
   await filesInput.dispatch('change');
   await new Promise((resolve) => setTimeout(resolve, 0));
@@ -67,14 +67,15 @@ test('dialog opens, previews picks, confirms replacement, and creates once', asy
   assert.equal(host.children[0].hidden, true);
   dialog.destroy();
 });
-test('dialog drop delegates directory entries once and escape closes', async () => {
+test('mixed file/drop controls are absent and escape closes', async () => {
   const { document, host, dialog, calls } = setup();
-  let drops = 0; dialog.setDropEntryHandler(async () => { drops += 1; return preview; });
   dialog.show();
-  const drop = findClass(host.children[0], 'create-map-drop');
-  await drop.dispatch('drop', { dataTransfer: { items: [{ kind: 'file', webkitGetAsEntry: () => ({ name: 'Dir', isDirectory: true, createReader() { return { readEntries(ok) { ok([]); } }; } }) }], files: [] } });
-  await new Promise((resolve) => setTimeout(resolve, 0));
-  assert.equal(drops, 1);
+  assert.equal(findClass(host.children[0], 'create-map-drop'), null);
+  const fileInputs = [];
+  const walk = (node) => { if (node.tagName === 'INPUT' && node.type === 'file') fileInputs.push(node); for (const child of node.children) walk(child); };
+  walk(host.children[0]);
+  assert.equal(fileInputs.some((el) => el.multiple && !el.attributes.has('webkitdirectory')), false);
+  assert.equal(findAll(host, (node) => node.tagName === 'BUTTON' && node.textContent === 'Select files (optional)').length, 0);
   await document.keydown({ key: 'Escape' });
   assert.equal(host.children[0].hidden, true);
   assert.equal(calls.cancels, 1);
@@ -83,7 +84,7 @@ function findButton(node, text) { if (node.tagName === 'BUTTON' && node.textCont
 function findClass(node, cls) { if (node.className === cls) return node; for (const child of node.children) { const found = findClass(child, cls); if (found) return found; } return null; }test('map-name changes rebuild from retained selection and never install stale names', async () => {
   const { host, dialog, calls } = setup();
   dialog.show();
-  const filesInput = findAll(host, (node) => node.tagName === 'INPUT' && node.type === 'file' && node.multiple && !node.attributes.has('webkitdirectory'))[0];
+  const filesInput = findAll(host, (node) => node.tagName === 'INPUT' && node.type === 'file' && node.multiple && node.attributes.has('webkitdirectory'))[0];
   filesInput.files = [{ name: 'x.txt', size: 4 }];
   await filesInput.dispatch('change');
   await flush();
@@ -99,7 +100,7 @@ function findClass(node, cls) { if (node.className === cls) return node; for (co
 test('invalid name blocks creation and rapid changes keep only the latest preview', async () => {
   const { host, dialog } = setup();
   dialog.show();
-  const filesInput = findAll(host, (node) => node.tagName === 'INPUT' && node.type === 'file' && node.multiple && !node.attributes.has('webkitdirectory'))[0];
+  const filesInput = findAll(host, (node) => node.tagName === 'INPUT' && node.type === 'file' && node.multiple && node.attributes.has('webkitdirectory'))[0];
   filesInput.files = [{ name: 'x.txt', size: 4 }];
   await filesInput.dispatch('change'); await flush();
   const name = findAll(host, (node) => node.tagName === 'INPUT' && node.type === 'text')[0];
@@ -117,7 +118,7 @@ test('focus trap follows the active stage and back restores creation focus', asy
   assert.equal(document.activeElement, findAll(host, (node) => node.tagName === 'INPUT' && node.type === 'text')[0]);
   await document.keydown({ key: 'Tab', shiftKey: true });
   assert.equal(document.activeElement, cancel);
-  const filesInput = findAll(host, (node) => node.tagName === 'INPUT' && node.type === 'file' && node.multiple && !node.attributes.has('webkitdirectory'))[0];
+  const filesInput = findAll(host, (node) => node.tagName === 'INPUT' && node.type === 'file' && node.multiple && node.attributes.has('webkitdirectory'))[0];
   filesInput.files = [{ name: 'x.txt', size: 4 }]; await filesInput.dispatch('change'); await flush();
   await create.click();
   const replace = findButton(host, 'Replace map'); replace.focus();

@@ -82,3 +82,5 @@ These use test hooks/picker stubs, not native OS acceptance.
 
 - Library connect explanation tests cover Cancel/no picker, Choose Folder/read mode, picker cancellation, and no explanation on Refresh.
 - Reconnect tests cover inline guidance, granted-without-new-request, request denial and preserved directory.
+
+- `hypertree-create-map-form-check.mjs`: actual Create Map controls for Map Information/description, collapsed/expanded source folder, no file/drop controls, destination guidance, Unicode multiline create/save/reopen, Details display, cancel preservation, themes and small height.

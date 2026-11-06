@@ -1,5 +1,5 @@
 import { isFocusableElement } from './shell-controls.js';
-import { validateName } from '../../../src/engine/hypertree/editor/validation.js';
+import { validateName, validateDescription } from '../../../src/engine/hypertree/editor/validation.js';
 export function createCreateMapDialog({ document, host, onSelection, onNameChange = null, onCreate, onCancel, getFallbackFocus = () => null, hasCurrentMap = () => true, getSaveLocation = () => ({ connected: false, name: '', mode: 'standalone', supported: false }), onChooseFolder = null, onSaveElsewhere = null, onUseOrbit = null }) {
   if (!document || !host) throw new Error('create-map dialog requires document and host');
   const backdrop = document.createElement('div');
@@ -12,19 +12,30 @@ export function createCreateMapDialog({ document, host, onSelection, onNameChang
   dialog.setAttribute('aria-labelledby', 'create-map-title');
   const title = document.createElement('h2'); title.id = 'create-map-title'; title.textContent = 'Create Map';
   const note = document.createElement('p'); note.className = 'create-map-note';
-  note.textContent = 'Files and folders are optional. Add them now or create a title-only map. Files are never uploaded; browser storage can be cleared.';
+  note.textContent = 'Add a title, an optional description, and optionally a source folder. Files are never uploaded; browser storage can be cleared.';
   const form = document.createElement('div'); form.className = 'create-map-form';
   const nameLabel = document.createElement('label'); nameLabel.textContent = 'Map title';
   const nameInput = document.createElement('input'); nameInput.type = 'text'; nameInput.maxLength = 200; nameInput.autocomplete = 'off';
   const nameError = document.createElement('p'); nameError.className = 'create-map-name-error'; nameError.setAttribute('role', 'alert');
   nameLabel.appendChild(nameInput);
+  const descriptionLabel = document.createElement('label'); descriptionLabel.textContent = 'Map description (optional)';
+  const descriptionInput = document.createElement('textarea'); descriptionInput.rows = 4; descriptionInput.maxLength = 2000; descriptionInput.className = 'create-map-description';
+  const descriptionError = document.createElement('p'); descriptionError.className = 'create-map-name-error'; descriptionError.setAttribute('role', 'alert');
+  descriptionLabel.appendChild(descriptionInput);
   const fileButton = document.createElement('button'); fileButton.type = 'button'; fileButton.textContent = 'Select files (optional)';
   const folderButton = document.createElement('button'); folderButton.type = 'button'; folderButton.textContent = 'Select folder (optional)';
   const fileInput = document.createElement('input'); fileInput.type = 'file'; fileInput.multiple = true; fileInput.hidden = true;
   const folderInput = document.createElement('input'); folderInput.type = 'file'; folderInput.multiple = true; folderInput.hidden = true; folderInput.setAttribute('webkitdirectory', '');
   const drop = document.createElement('div'); drop.className = 'create-map-drop'; drop.tabIndex = 0;
   drop.textContent = 'Drop files or folders here (optional; browser support varies)';
-  const locationLabel = document.createElement('p'); locationLabel.className = 'create-map-location-label'; locationLabel.textContent = 'Save location';
+  const infoHeading = document.createElement('h3'); infoHeading.textContent = 'Map Information';
+  const sourceDetails = document.createElement('details'); sourceDetails.className = 'create-map-source';
+  const sourceSummary = document.createElement('summary'); sourceSummary.textContent = 'Add a source folder — optional';
+  const sourceNote = document.createElement('p'); sourceNote.className = 'create-map-source-note'; sourceNote.textContent = 'Add the contents of a folder to your map, or leave this empty and add items later.';
+  sourceDetails.append(sourceSummary, sourceNote);
+  const libraryHeading = document.createElement('h3'); libraryHeading.textContent = 'Map Library Setting';
+  const libraryGuidance = document.createElement('p'); libraryGuidance.className = 'create-map-location-guidance'; libraryGuidance.textContent = 'Choose an existing folder. If your system picker offers New Folder, you can create one there. Otherwise, create the folder in your file manager first.';
+  const locationLabel = document.createElement('p'); locationLabel.className = 'create-map-location-label'; locationLabel.textContent = 'Map Library directory';
   const locationRow = document.createElement('div'); locationRow.className = 'create-map-location';
   const locationName = document.createElement('span'); locationName.className = 'create-map-location-name';
   const changeFolderButton = document.createElement('button'); changeFolderButton.type = 'button'; changeFolderButton.textContent = 'Choose save location';
@@ -77,9 +88,10 @@ export function createCreateMapDialog({ document, host, onSelection, onNameChang
     else setStatus(String(result?.message || 'The connected folder is not available.'), 'error');
     syncButtonState();
   });
-  form.append(nameLabel, nameError, fileButton, folderButton, drop, locationLabel, locationRow, locationNote);
+  sourceDetails.append(folderButton);
+  form.append(infoHeading, nameLabel, nameError, descriptionLabel, descriptionError, sourceDetails, preview, libraryHeading, locationLabel, locationRow, locationNote, libraryGuidance);
   actions.append(cancelButton, createButton);
-  dialog.append(title, note, form, fileInput, folderInput, preview, status, actions, confirm);
+  dialog.append(title, note, form, folderInput, status, actions, confirm);
   backdrop.appendChild(dialog); host.appendChild(backdrop);
 
   let open = false;
@@ -128,6 +140,7 @@ export function createCreateMapDialog({ document, host, onSelection, onNameChang
     cancelButton.disabled = !open;
     confirmCancelButton.disabled = !open;
     nameInput.disabled = !open || submitting;
+    descriptionInput.disabled = !open || submitting;
     fileButton.disabled = !open || submitting || preparing;
     folderButton.disabled = !open || submitting || preparing;
     drop.tabIndex = open && !submitting ? 0 : -1;
@@ -154,7 +167,7 @@ export function createCreateMapDialog({ document, host, onSelection, onNameChang
     activePrepare = null;
     syncButtonState();
   }
-  const clearPreview = () => { previewData = null; preview.replaceChildren(); syncButtonState(); };
+  const clearPreview = () => { previewData = null; preview.replaceChildren(); preview.hidden = true; syncButtonState(); };
   const rowFor = (node, depth) => {
     const row = document.createElement('div'); row.className = 'create-map-row'; row.style.paddingLeft = `${Math.min(depth, 12) * 10}px`;
     const icon = document.createElement('span'); icon.textContent = node.kind === 'folder' ? '▸' : '•';
@@ -179,7 +192,7 @@ export function createCreateMapDialog({ document, host, onSelection, onNameChang
     retainedSelection = { files, folders };
     clearPreview(); setStatus('Preparing preview…');
     try {
-      const result = await onSelection({ mapName: nameInput.value, files, folders, selectionSeq: seq });
+      const result = await onSelection({ mapName: nameInput.value, description: descriptionInput.value, files, folders, selectionSeq: seq });
       if (!ownsPrepare(token)) return;
       if (!result?.ok) setStatus(result?.message || 'The selection could not be prepared.', 'error');
       else renderPreview(result);
@@ -206,7 +219,7 @@ export function createCreateMapDialog({ document, host, onSelection, onNameChang
       const selection = retainedSelection || { files: [], folders: [] };
       setStatus('Updating preview…');
       try {
-        const result = await onNameChange({ mapName: checked.name, selection, nameSeq: seq });
+        const result = await onNameChange({ mapName: checked.name, description: descriptionInput.value, selection, nameSeq: seq });
         if (!ownsPrepare(token) || seq !== nameSeq) return;
         if (!result?.ok) setStatus(result?.message || 'The map title could not be applied.', 'error');
         else { retainedSelection = result.selection || retainedSelection; renderPreview(result); }
@@ -216,6 +229,11 @@ export function createCreateMapDialog({ document, host, onSelection, onNameChang
     } finally { endPrepare(token); }
   }
   nameInput.addEventListener('input', (event) => { if (!composing && !event.isComposing) updateName(); });
+  descriptionInput.addEventListener('input', () => {
+    const checked = validateDescription(descriptionInput.value);
+    descriptionError.textContent = checked.ok ? '' : checked.message;
+    if (checked.ok) updateName();
+  });
   nameInput.addEventListener('compositionstart', () => { composing = true; syncButtonState(); });
   nameInput.addEventListener('compositionend', () => { composing = false; syncButtonState(); updateName(); });  const filesFromPicker = (input) => [...input.files].map((file) => ({ file, relativePath: file.webkitRelativePath || file.name }));
   fileInput.addEventListener('change', () => { choose(filesFromPicker(fileInput), []); fileInput.value = ''; });
@@ -259,7 +277,7 @@ export function createCreateMapDialog({ document, host, onSelection, onNameChang
   const isVisible = (el) => isFocusableElement(el, document);
   const focusables = () => {
     const list = confirm.hidden
-      ? [nameInput, fileButton, folderButton, drop, changeFolderButton, saveElsewhereButton, useOrbitButton, cancelButton, createButton]
+      ? [nameInput, descriptionInput, folderButton, changeFolderButton, saveElsewhereButton, useOrbitButton, cancelButton, createButton]
       : [confirmCancelButton, backButton, replaceButton];
     return list.filter((el) => isVisible(el));
   };
@@ -330,10 +348,10 @@ export function createCreateMapDialog({ document, host, onSelection, onNameChang
   function show() {
     if (open) return;
     open = true; sessionSeq += 1; submitting = false; activePrepare = null; composing = false; locationBusy = false; previewData = null; retainedSelection = null; nameSeq += 1; nameInput.value = ''; nameError.textContent = '';
-    fileInput.value = ''; folderInput.value = ''; preview.replaceChildren(); confirm.hidden = true; form.hidden = false; preview.hidden = false; actions.hidden = false;
+    fileInput.value = ''; folderInput.value = ''; preview.replaceChildren(); preview.hidden = true; confirm.hidden = true; form.hidden = false; preview.hidden = false; actions.hidden = false;
     updateLocation();
     syncButtonState();
-    setStatus('Enter a map title. Files and folders are optional.'); backdrop.hidden = false; lastFocus = document.activeElement || null; nameInput.focus();
+    setStatus('Enter a map title. A description and source folder are optional.'); backdrop.hidden = false; lastFocus = document.activeElement || null; nameInput.focus();
   }
   return {
     element: backdrop, show, close, get open() { return open; },

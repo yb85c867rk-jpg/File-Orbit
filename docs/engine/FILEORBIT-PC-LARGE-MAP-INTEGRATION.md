@@ -714,3 +714,11 @@ Startup restoration queries read permission silently. Prompt-required inline gui
 Explicit save uses “Permission to save this map” and destination-specific file/folder wording. Continue triggers the native request; Cancel/denial preserves unsaved state; background saves never prompt or request.
 
 Native browser permission prompts remain intact and outside FileOrbit control. Delete Map File is not implemented or advertised.
+
+## Create Map Step 1: Map Information and optional source folder
+
+The Create Map form is reorganized into Map Information, a collapsed optional source-folder section, and Map Library Setting. Map description is stored on the candidate root as `data.description` using `validateDescription`; empty description is null. Source-folder import still uses the existing candidate/attachment limits and preview. Individual-file selection and the mixed drop target were removed from this modal; engine-level File inputs remain available elsewhere.
+
+The Map Library Setting section retains the existing destination controls and accurately labels standalone versus connected destinations. Create still uses the existing save/creation pipeline and confirmation. Details now renders `data.description` for the root/selected node with pre-wrap text.
+
+Known Step 1 transaction limitation: title-only creation still invokes the existing save-destination picker/transaction; there is no separate draft Library destination or publish-after-success redesign yet. Large source-folder import and collision behavior remain on the existing pipeline.

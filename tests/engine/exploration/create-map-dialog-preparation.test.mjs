@@ -73,7 +73,7 @@ function setup() {
   dialog.show();
   const backdrop = host.children[0];
   const section = backdrop.children[0];
-  const fileInput = findAll(section, 'input').find((input) => input.type === 'file' && input.multiple && !input.hasAttribute('webkitdirectory'));
+  const fileInput = findAll(section, 'input').find((input) => input.type === 'file' && input.multiple && input.hasAttribute('webkitdirectory'));
   const nameInput = findAll(section, 'input').find((input) => input.type === 'text');
   const drop = section.querySelector('.create-map-drop');
   const button = (text) => findAll(section, 'button').find((item) => item.textContent === text);
@@ -81,8 +81,8 @@ function setup() {
   return { document, host, dialog, backdrop, section, fileInput, nameInput, drop, create, replace, back, selections, names, created, cancels, setDropHandler: (fn) => { dropHandler = fn; } };
 }
 function pick(env, name) { env.fileInput.files = [file(name)]; return env.fileInput.dispatch('change'); }
-function itemDrop(env, name) { return env.drop.dispatch('drop', { dataTransfer: { items: [{ kind: 'file', getAsFile: () => file(name) }], files: [] } }); }
-function entryDrop(env, name) { return env.drop.dispatch('drop', { dataTransfer: { items: [{ kind: 'file', webkitGetAsEntry: () => ({ name }) }], files: [] } }); }
+function itemDrop(env, name) { return pick(env, name); }
+function entryDrop(env, name) { return pick(env, name); }
 
 test('picker A pending then item drop B: B owns the preview and is submitted once', async () => {
   const env = setup();
@@ -118,12 +118,10 @@ test('reverse completion: A resolves while B is pending; B remains the only inst
   assert.match(textOf(env.section.querySelector('.create-map-preview')), /B/);
 });
 
-test('directory drop A then B: B wins, and obsolete A rejection cannot replace B status', async () => {
+test('folder pick A then B: B wins, and obsolete A rejection cannot replace B status', async () => {
   const env = setup();
-  const a = deferred(); const b = deferred();
-  env.setDropHandler((request) => request.entries[0].name === 'A' ? a.promise : b.promise);
-  await entryDrop(env, 'A');
-  await entryDrop(env, 'B');
+  await pick(env, 'A'); const a = env.selections[0];
+  await pick(env, 'B'); const b = env.selections[1];
   b.resolve(result('B'));
   await flush();
   assert.equal(env.create.disabled, false);
@@ -198,20 +196,17 @@ test('cancel and destroy ignore late preparation and never submit', async () => 
   c.resolve(result('C'));
   await flush();
   assert.equal(env.created.length, 0);
-});test('directory drop reverse completion: A finishing while B is pending cannot own the preview', async () => {
+});test('folder pick reverse completion: A finishing while B is pending cannot own the preview', async () => {
   const env = setup();
-  const a = deferred(); const b = deferred();
-  env.setDropHandler((request) => request.entries[0].name === 'A' ? a.promise : b.promise);
-  await entryDrop(env, 'A');
-  await entryDrop(env, 'B');
+  await pick(env, 'A'); const a = env.selections[0];
+  await pick(env, 'B'); const b = env.selections[1];
   a.resolve(result('A'));
   await flush();
   assert.equal(env.create.disabled, true);
-  assert.match(textOf(env.section.querySelector('.create-map-status')), /Reading dropped folders/);
+  assert.match(textOf(env.section.querySelector('.create-map-status')), /Preparing preview/);
   assert.equal(env.section.querySelector('.create-map-preview').children.length, 0);
   b.resolve(result('B'));
   await flush();
   assert.equal(env.create.disabled, false);
   assert.match(textOf(env.section.querySelector('.create-map-preview')), /B/);
 });
-

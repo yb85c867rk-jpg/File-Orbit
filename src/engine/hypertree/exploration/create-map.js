@@ -1,4 +1,5 @@
 ﻿import { classifyFile } from '../editor/attachment-classification.js';
+import { validateDescription } from '../editor/validation.js';
 import { createAttachmentRegistry } from '../editor/attachments.js';
 import { EDITOR_MAX_NODES, MAX_ATTACHMENT_BYTES, MAX_ATTACHMENT_TOTAL_BYTES, MAX_NAME_CODE_POINTS, nameKey, validateName } from '../editor/validation.js';
 import { evaluateContextNodeAccess } from '../edition/context.js';
@@ -38,6 +39,7 @@ function compareNames(left, right) {
  */
 export async function prepareCreateMapCandidate({
   mapName,
+  description = null,
   files = [],
   folders = [],
   datasetToken,
@@ -51,6 +53,8 @@ export async function prepareCreateMapCandidate({
 } = {}) {
   const nameResult = validateName(mapName);
   if (!nameResult.ok) return fail(nameResult.reason, nameResult.message, { field: 'name' });
+  const descriptionResult = validateDescription(description);
+  if (!descriptionResult.ok) return fail(descriptionResult.reason, descriptionResult.message, { field: 'description' });
   if (!Number.isSafeInteger(datasetToken) || datasetToken < 0) return fail('dataset-invalid', 'A fresh dataset identity is required.');
   if (!Array.isArray(files) || !Array.isArray(folders)) return fail('selection-invalid', 'The selection is invalid.');
   const budget = evaluateContextNodeAccess(policyContext, 1, maxNodes);
@@ -60,7 +64,7 @@ export async function prepareCreateMapCandidate({
   let counter = 0;
   let nodeCount = 1;
   const idFor = () => `cm-${datasetToken.toString(36)}-${(counter++).toString(36)}`;
-  const root = { id: idFor(), name: nameResult.name, kind: 'folder', data: {}, children: new Map() };
+  const root = { id: idFor(), name: nameResult.name, kind: 'folder', data: { description: descriptionResult.value }, children: new Map() };
   const ensureFolder = (segments, path) => {
     let current = root;
     let walked = '';
@@ -173,7 +177,7 @@ export async function prepareCreateMapCandidate({
     children.push(built);
   }
   if (!isCurrent()) { releaseAll(); return fail('stale-selection', 'The selection changed before preparation completed.'); }
-  const tree = { id: root.id, name: root.name, kind: 'folder', data: {}, children };
+  const tree = { id: root.id, name: root.name, kind: 'folder', data: { ...root.data }, children };
   let folderCount = 0; let fileCount = 0;
   const count = (node) => { if (node.kind === 'folder') folderCount += 1; else fileCount += 1; for (const child of node.children || []) count(child); };
   count(tree);

@@ -567,8 +567,8 @@ globalThis.__M5_LEGACY_PERSISTENCE_HARNESS__ = process.env.RECOVERY_SLICE2 || pr
     const createBackdrop = env.overlayHost.children.find((child) => child.className === 'create-map-backdrop');
     assert.ok(createBackdrop); const createDialog = createBackdrop.children[0];
     const nameInput = findAll(createDialog, 'input').find((input) => input.type === 'text'); nameInput.value = 'Recovery Map';
-    const fileInput = findAll(createDialog, 'input').find((input) => input.type === 'file' && input.multiple && !input.hasAttribute('webkitdirectory'));
-    fileInput.files = [syntheticFile('note.txt', 'text/plain', 'hello')]; await fileInput.dispatch('change'); await settle(20);
+    const createFolderInput = findAll(createDialog, 'input').find((input) => input.type === 'file' && input.multiple && input.hasAttribute('webkitdirectory'));
+    const selectedFile = syntheticFile('note.txt', 'text/plain', 'hello'); selectedFile.webkitRelativePath = 'note.txt'; createFolderInput.files = [selectedFile]; await createFolderInput.dispatch('change'); await settle(20);
     await findAll(createDialog, 'button').find((button) => button.textContent === 'Create Map').click(); await settle(200);
     assert.ok(hooks.recoveryState().workspace);
     let cp = await hooks.recoveryCheckpoint(); assert.equal(cp.checkpoint, null); assert.equal(hooks.snapshot().dirty, false); hooks.scheduleRecoveryTest(); await flush();
@@ -718,8 +718,8 @@ globalThis.__M5_LEGACY_PERSISTENCE_HARNESS__ = process.env.RECOVERY_SLICE2 || pr
     let downloads = 0; const realCreate = URL.createObjectURL.bind(URL); URL.createObjectURL = (blob) => { downloads += 1; return realCreate(blob); };
     await env.desktopCreate.click(); const createBackdrop = env.overlayHost.children.find((child) => child.className === 'create-map-backdrop'); assert.ok(createBackdrop); const createDialog = createBackdrop.children[0];
     const nameInput = findAll(createDialog, 'input').find((input) => input.type === 'text'); nameInput.value = 'No Dest';
-    const fileInput = findAll(createDialog, 'input').find((input) => input.type === 'file' && input.multiple && !input.hasAttribute('webkitdirectory')); fileInput.files = [syntheticFile('note.txt', 'text/plain', 'no-dest-bytes')]; await fileInput.dispatch('change'); await settle(20);
-    await findAll(createDialog, 'button').find((button) => button.textContent === 'Create Map').click(); await settle(250);
+    const createFolderInput = findAll(createDialog, 'input').find((input) => input.type === 'file' && input.multiple && input.hasAttribute('webkitdirectory'));
+    const selectedFile = syntheticFile('note.txt', 'text/plain', 'hello'); selectedFile.webkitRelativePath = 'note.txt'; createFolderInput.files = [selectedFile]; await createFolderInput.dispatch('change'); await settle(20);
     hooks.openFolderMenu(); await settle(20); const menu = env.overlayHost.children.find((child) => child.className === 'editor-context-menu' && child.hidden === false); await findAll(menu, 'button').find((button) => button.textContent === 'Add Folder').click(); await settle(20);
     const form = env.doc.querySelector('#editor-form'); const folderInput = findAll(form, 'input').find((input) => input.type === 'text'); folderInput.value = 'Target'; await folderInput.dispatch('input'); await form.dispatch('submit', { preventDefault() {} }); await settle(300);
     const closeForm = findAll(form, 'button').find((button) => button.textContent === 'Close'); if (form.hidden === false && closeForm) { await closeForm.click(); await settle(80); }
@@ -2722,8 +2722,8 @@ if (process.env.P1B) {
     const createBackdrop = env.overlayHost.children.find((child) => child.className === 'create-map-backdrop');
     assert.ok(createBackdrop); const createDialog = createBackdrop.children[0];
     const nameInput = findAll(createDialog, 'input').find((input) => input.type === 'text'); nameInput.value = 'Browser Map';
-    const fileInput = findAll(createDialog, 'input').find((input) => input.type === 'file' && input.multiple && !input.hasAttribute('webkitdirectory'));
-    fileInput.files = [syntheticFile('note.txt', 'text/plain', 'hello')]; await fileInput.dispatch('change'); await settle(20);
+    const createFolderInput = findAll(createDialog, 'input').find((input) => input.type === 'file' && input.multiple && input.hasAttribute('webkitdirectory'));
+    const selectedFile = syntheticFile('note.txt', 'text/plain', 'hello'); selectedFile.webkitRelativePath = 'note.txt'; createFolderInput.files = [selectedFile]; await createFolderInput.dispatch('change'); await settle(20);
     await findAll(createDialog, 'button').find((button) => button.textContent === 'Create Map').click(); await settle(300);
 assert.equal(globalThis.window.__M5_EXPLORATION_STATUS__.persistence.hasMap, true);
     assert.ok(env.doc.querySelector('#label-host').children.length > 0);
