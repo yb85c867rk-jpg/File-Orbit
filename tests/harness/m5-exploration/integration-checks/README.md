@@ -71,3 +71,5 @@ These use test hooks/picker stubs, not native OS acceptance.
 - `hypertree-notification-actual-check.mjs`: actual README-root.md search-result + graph-filename activation, visible message bounds and timed dismissal.
 
 - `hypertree-map-library-check.mjs`: unconnected Map Library visibility/Choose, synthetic connected list, Refresh placement and picker cancellation.
+
+- `hypertree-open-error-check.mjs`: actual Map Library clicks for 300, deep-400, 300, and 1000; fails if deep-400 replaces 300, stale error survives/reappears, or unrelated actionable status is cleared.

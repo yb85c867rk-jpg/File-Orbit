@@ -672,3 +672,9 @@ The sidebar now has one expandable Map Library section instead of Open Orbit and
 Cancelling the picker preserves the connected directory, list and current document. Changing directory does not replace the active map. The standalone file-opening menu was removed from the UI; internal open APIs remain.
 
 Automated verification uses a synthetic `showDirectoryPicker` handle with two in-memory .orbit entries. It does not exercise native picker, permission, or disk behavior. Listed-map activation through a real .orbit file and duplicate-section removal are not yet exercised.
+
+## Obsolete open-error lifecycle
+
+Library/map open errors are now owned by the specific Orbit open request. Starting a newer opening clears only the previous open-owned status, and a successful open clears it before publishing its result. Older failed callbacks cannot restore the message because the request token must still be current. The current document remains installed when a candidate fails.
+
+The retained actual Library-list regression opens 300, attempts deep-400 (failure preserves 300), reopens 300, opens 1000, waits for callbacks, and asserts the deep-400 error does not return. A separate test-hook gesture verifies that an unrelated actionable status is not removed by the scoped clear.
