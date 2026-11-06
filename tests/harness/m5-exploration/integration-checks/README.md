@@ -77,3 +77,5 @@ These use test hooks/picker stubs, not native OS acceptance.
 - `hypertree-map-library-persistence-check.mjs`: native OPFS handle stored in IndexedDB, same-profile reload, no auto-open/permission request, explicit reconnect, denied state, storage failures, cancellation, and slow-restore/race protection.
 
 - `hypertree-save-permission-check.mjs`: read-only Library picker/open, centered write dialog, deferred Continue request, cancel/deny preservation, already-granted and automatic-save no-prompt behavior.
+
+- `hypertree-permission-startup-check.mjs`: clean startup with computed hidden backdrop, light/dark checks, controls clickable, populated dialog, Cancel/Continue, refresh cleanup.

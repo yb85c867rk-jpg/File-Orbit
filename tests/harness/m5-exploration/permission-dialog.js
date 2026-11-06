@@ -2,7 +2,7 @@
   if (!document || !host) throw new Error('permission dialog requires document and host');
   const backdrop = document.createElement('div');
   host.append(backdrop);
-  backdrop.className = 'embed-dialog-backdrop';
+  backdrop.className = 'embed-dialog-backdrop permission-dialog-backdrop';
   backdrop.hidden = true;
   const dialog = document.createElement('section');
   dialog.className = 'embed-dialog';
@@ -22,7 +22,7 @@
   body.id = 'permission-dialog-body';
   const browserNote = document.createElement('p');
   const actions = document.createElement('div');
-  actions.className = 'embed-dialog-actions';
+  actions.className = 'embed-dialog-actions permission-dialog-actions';
   const cancel = document.createElement('button');
   cancel.type = 'button';
   cancel.textContent = 'Cancel';
@@ -102,4 +102,5 @@
     }
   };
 }
+
 

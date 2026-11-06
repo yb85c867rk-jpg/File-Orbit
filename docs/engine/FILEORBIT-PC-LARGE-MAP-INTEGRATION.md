@@ -698,3 +698,7 @@ Write access is queried separately per save destination. If already granted, sav
 Automatic/background saves never open the dialog and never request permission. They fail with a user-triggered save action available. Cancel/denial preserves content, dirty state, destination and Library connection; no download fallback is used. Legacy synthetic P1B save harnesses retain their prior adapter path unless the dialog-specific test flag is set.
 
 Verification uses a native OPFS file handle for the read-only Library/open path, with simulated query/request outcomes for prompt/granted/denied cases. Native browser security prompts remain separate manual verification.
+
+### Permission dialog startup visibility
+
+The permission backdrop uses a dedicated `.permission-dialog-backdrop` class with an explicit `[hidden] { display: none !important; visibility: hidden; pointer-events: none; }` rule. The author `display:grid` overlay style no longer overrides native hidden presentation. Cancel/Continue use compact application button styling. A clean-startup regression verifies computed display/bounds, pointer hit testing, Create Map/Map Library controls, explicit dialog population, Cancel without request, Continue with request, and no empty backdrop after close/reload in both themes.
