@@ -188,7 +188,7 @@ const shellStatusScopeMatches = (scope) => Boolean(scope && shellStatusScope
   && scope.session === persistenceSessionSeq
   && scope.dataset === datasetToken);
 const setShellStatus = (message, { kind = 'actionable', ttl = ROUTINE_NOTIFICATION_MS, scope = null, resolves = null, transient = false } = {}) => {
-  const nextKind = kind === 'routine' ? 'routine' : kind === 'progress' ? 'progress' : 'actionable';
+  const nextKind = kind === 'routine' ? 'routine' : kind === 'info' ? 'info' : kind === 'progress' ? 'progress' : 'actionable';
   if (nextKind === 'progress' && shellStatusKind === 'actionable') return false;
   const resolving = nextKind === 'routine' && resolves !== null;
   if (resolving && !shellStatusScopeMatches(resolves)) return false;
@@ -199,8 +199,8 @@ const setShellStatus = (message, { kind = 'actionable', ttl = ROUTINE_NOTIFICATI
   shellStatusExpiryCallback = null;
   shellStatusKind = nextKind;
   if (shellStatusEl) shellStatusEl.dataset.feedbackKind = nextKind;
-  shellStatusScope = nextKind === 'routine' ? null : (scope || null);
-  shellStatusTransient = Boolean(transient) || nextKind === 'routine';
+  shellStatusScope = (nextKind === 'routine' || nextKind === 'info') ? null : (scope || null);
+  shellStatusTransient = Boolean(transient) || nextKind === 'routine' || nextKind === 'info';
   if (shellStatusEl) {
     if (shellStatusEl.textContent !== message) shellStatusEl.textContent = message;
     shellStatusEl.hidden = false;
@@ -209,7 +209,7 @@ const setShellStatus = (message, { kind = 'actionable', ttl = ROUTINE_NOTIFICATI
     const session = persistenceSessionSeq;
     const dataset = datasetToken;
     const ownership = documentOwnershipSeq;
-    const timeout = nextKind === 'routine' ? ttl : TRANSIENT_NOTIFICATION_MS;
+    const timeout = (nextKind === 'routine' || nextKind === 'info') ? ttl : TRANSIENT_NOTIFICATION_MS;
     shellStatusExpiryCallback = () => {
       if (destroying || token !== shellStatusToken || !shellStatusTransient) return;
       if (session !== persistenceSessionSeq || dataset !== datasetToken || ownership !== documentOwnershipSeq) return;
@@ -225,6 +225,7 @@ const setShellStatus = (message, { kind = 'actionable', ttl = ROUTINE_NOTIFICATI
   return true;
 };
 const setRoutineStatus = (message, options = {}) => setShellStatus(message, { ...options, kind: 'routine' });
+const setInfoStatus = (message, options = {}) => setShellStatus(message, { ...options, kind: 'info' });
 const showTransientStatus = (message) => setShellStatus(message, { kind: 'actionable', transient: true });
 function clearTransientShellStatus() {
   if (!shellStatusTransient) return false;
@@ -1459,7 +1460,7 @@ function openAttachmentViewer(id) {
   const details = model.details(id);
   if (!details || details.kind !== 'file' || !details.attachment) {
     lastClickDiagnostic = { reason: 'attachment-unavailable', id, activation: 'file-name', viewerRequested: true, viewerOpened: false };
-    setRoutineStatus('This file has no attachment to preview.', { ttl: 3000 });
+    setInfoStatus('This file has no attachment to preview.', { ttl: 3000 });
     publish();
     return false;
   }
