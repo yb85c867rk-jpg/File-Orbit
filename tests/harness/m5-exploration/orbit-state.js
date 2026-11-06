@@ -172,14 +172,14 @@ export function createOrbitStateController({ adapter, now = () => Date.now() } =
     return applyList(request, result);
   };
 
-  async function openDirectory() {
+  async function openDirectory({ mode = 'readwrite' } = {}) {
     if (destroyed) return { ...failure('destroyed', 'open', 'The Orbit controller was destroyed.'), state: snapshot() };
     const request = { id: ++requestSeq, kind: 'open' };
     openRequest = request;
     listRequest = null;
     phase = 'opening';
     // The adapter invokes showDirectoryPicker synchronously before its first await.
-    const pickPromise = adapter.pickDirectory();
+    const pickPromise = adapter.pickDirectory({ mode });
     let picked;
     try { picked = await pickPromise; }
     catch (err) {
@@ -350,5 +350,7 @@ export function createOrbitStateController({ adapter, now = () => Date.now() } =
 
   return { openDirectory, adoptDirectory, restoreDirectory, refresh, matchEntry, close, destroy, snapshot };
 }
+
+
 
 

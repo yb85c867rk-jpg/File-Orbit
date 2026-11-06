@@ -75,3 +75,5 @@ These use test hooks/picker stubs, not native OS acceptance.
 - `hypertree-open-error-check.mjs`: actual Map Library clicks for 300, deep-400, 300, and 1000; fails if deep-400 replaces 300, stale error survives/reappears, or unrelated actionable status is cleared.
 
 - `hypertree-map-library-persistence-check.mjs`: native OPFS handle stored in IndexedDB, same-profile reload, no auto-open/permission request, explicit reconnect, denied state, storage failures, cancellation, and slow-restore/race protection.
+
+- `hypertree-save-permission-check.mjs`: read-only Library picker/open, centered write dialog, deferred Continue request, cancel/deny preservation, already-granted and automatic-save no-prompt behavior.

@@ -688,3 +688,13 @@ Startup loads the handle and queries read permission without requesting it. Gran
 Failed adoption restores the previous valid connection. Cancellation leaves directory/list/settings unchanged. Storage read/write failures keep the session connection and report the limitation. Restore attempts are token-guarded against newer selections and disposal.
 
 Automated verification uses a native OPFS directory handle (structured-cloneable) for same-profile reload, plus disclosed test hooks for prompt/denied permission, storage failure and delayed restore race.
+
+## Map Library read permission and explicit write guidance
+
+Map Library Choose/Change Directory now calls the directory adapter in read mode. Listing and opening maps do not request write access. Restoration and Reconnect remain read-only.
+
+Write access is queried separately per save destination. If already granted, saves proceed. If write permission is missing, an explicit Save shows a centered “Permission to save maps” dialog with destination/file-specific text, Cancel and Continue. Only Continue invokes the browser write-permission request. Ownership, document identity, destination and operation guards are rechecked after the dialog and after the request.
+
+Automatic/background saves never open the dialog and never request permission. They fail with a user-triggered save action available. Cancel/denial preserves content, dirty state, destination and Library connection; no download fallback is used. Legacy synthetic P1B save harnesses retain their prior adapter path unless the dialog-specific test flag is set.
+
+Verification uses a native OPFS file handle for the read-only Library/open path, with simulated query/request outcomes for prompt/granted/denied cases. Native browser security prompts remain separate manual verification.
