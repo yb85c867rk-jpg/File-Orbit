@@ -77,6 +77,7 @@ export function createExplorationNavigator({
         graph, baseLayout, sourceView: replacing ? prior.union : model.view(), targetView,
         sourceCamera: replacing ? displayed.camera : session.getState().camera, targetCamera: targetPrepared.camera,
         sourceParameter: replacing ? displayed.parameter : null,
+        sourceOpacity: replacing ? displayed.opacity : null,
         viewport, baseRadiusCss, cameraLimits, duration, presentation,
         draw, labels,
         ...transitionOptions,

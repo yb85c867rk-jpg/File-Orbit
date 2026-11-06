@@ -34,6 +34,7 @@ export function createExplorationTransition({
   sourceCamera,
   targetCamera,
   sourceParameter = null,
+  sourceOpacity = null,
   viewport,
   baseRadiusCss,
   cameraLimits,
@@ -58,6 +59,7 @@ export function createExplorationTransition({
   let active = true;
   let cancelled = false;
   let failure = null;
+  let displayedOpacity = new Map(sourceOpacity || []);
   const animator = createFocusAnimator({
     duration,
     now,
@@ -66,7 +68,7 @@ export function createExplorationTransition({
     onFrame: (sample) => {
       if (!active) return;
       const camera = interpolateCamera(sourceCamera, targetCamera, sample.eased);
-      const nodeOpacity = transitionOpacity(sourceView, targetView, sample.eased);
+      const nodeOpacity = transitionOpacity(sourceView, targetView, sample.eased, sourceOpacity);
       const prepared = prepareExplorationFrame({
         graph,
         baseLayout,
@@ -82,6 +84,7 @@ export function createExplorationTransition({
         nodeOpacity,
         padding: 24
       });
+      displayedOpacity = new Map([...prepared.scene.nodes].map(([id, node]) => [id, node.opacity ?? 1]));
       draw(prepared.scene);
       labels(prepared.scene, {
         progress: sample.progress,
@@ -130,7 +133,7 @@ export function createExplorationTransition({
     cancel(reason = 'cancelled') { const state = animator.cancel(reason); active = false; return state; },
     destroy() { animator.destroy(); active = false; },
     getState() { return animator.getState(); },
-    getDisplayedState() { const state = animator.getState(); return { parameter: state.currentParameter, eased: state.easedProgress, view: state.lastFrame?.view || null, camera: interpolateCamera(sourceCamera, targetCamera, state.easedProgress) }; },
+    getDisplayedState() { const state = animator.getState(); return { parameter: state.currentParameter, eased: state.easedProgress, view: state.lastFrame?.view || null, opacity: new Map(displayedOpacity), camera: interpolateCamera(sourceCamera, targetCamera, state.easedProgress) }; },
     sourceView, targetView
   };
   return handle;
@@ -147,15 +150,24 @@ function interpolateCamera(from, to, eased) {
  * Opacity partition for union motion:
  * retained=1, exiting=1-eased, entering=eased.
  */
-export function transitionOpacity(sourceView, targetView, eased) {
+export function transitionOpacity(sourceView, targetView, eased, initialOpacity = null) {
   const value = Math.min(1, Math.max(0, eased));
   const map = new Map();
   for (const id of sourceView.visibleSet) {
     if (targetView.visibleSet.has(id)) map.set(id, 1);
     else map.set(id, 1 - value);
   }
-  for (const id of targetView.visibleSet) {
-    if (!sourceView.visibleSet.has(id)) map.set(id, value);
+  if (initialOpacity) {
+    const ids = new Set([...sourceView.visibleSet, ...targetView.visibleSet, ...initialOpacity.keys()]);
+    for (const id of ids) {
+      const from = initialOpacity.has(id) ? initialOpacity.get(id) : (sourceView.visibleSet.has(id) ? 1 : 0);
+      const to = targetView.visibleSet.has(id) ? 1 : 0;
+      map.set(id, from + (to - from) * value);
+    }
+  } else {
+    for (const id of targetView.visibleSet) {
+      if (!sourceView.visibleSet.has(id)) map.set(id, value);
+    }
   }
   return map;
 }

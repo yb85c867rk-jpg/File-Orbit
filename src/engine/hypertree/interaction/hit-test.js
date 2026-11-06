@@ -44,7 +44,8 @@ export function createHitSnapshot(scene) {
       shape: node.shape,
       visible: node.visible,
       center: Object.freeze({ x: node.center.x, y: node.center.y }),
-      radius: node.radius
+      radius: node.radius,
+      opacity: typeof node.opacity === 'number' ? node.opacity : 1
     }));
   }
   return Object.freeze({
@@ -71,7 +72,7 @@ export function hitTestNode(snapshot, point) {
   }
   for (let index = snapshot.nodes.length - 1; index >= 0; index -= 1) {
     const node = snapshot.nodes[index];
-    if (!node.visible || node.radius <= 0) continue;
+    if (!node.visible || node.radius <= 0 || (node.opacity ?? 1) <= 0.05) continue;
     if (node.kind === 'file' && node.shape !== 'circle') continue;
     const dx = point.x - node.center.x;
     const dy = point.y - node.center.y;
@@ -86,7 +87,7 @@ export function hitTestNode(snapshot, point) {
 /** Whether an ID is currently hittable in this snapshot. */
 export function snapshotContainsHittableId(snapshot, id) {
   if (!snapshot || !Array.isArray(snapshot.nodes) || typeof id !== 'string') return false;
-  return snapshot.nodes.some((node) => node.id === id && node.visible && node.radius > 0 && (node.kind === 'folder' || node.shape === 'circle'));
+  return snapshot.nodes.some((node) => node.id === id && node.visible && node.radius > 0 && (node.opacity ?? 1) > 0.05 && (node.kind === 'folder' || node.shape === 'circle'));
 }
 
 
