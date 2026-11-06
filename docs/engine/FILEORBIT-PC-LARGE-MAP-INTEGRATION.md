@@ -579,3 +579,39 @@ Search activation from settled cat-12 reaches cat-1 without browser errors. Post
 
 Animation test: `hypertree-animation-check.mjs` (exit 0 for the measured scenarios); no screen recording was produced.
 
+
+## Retarget opacity and remaining interruption limits (evaluation branch)
+
+Replacement transitions now receive the displayed node-opacity map from the previous transition. `transitionOpacity()` blends each node from its actual visible opacity to the new target membership instead of restarting `prior.union` nodes at full opacity. Hit snapshots now carry opacity and nodes at or below 0.05 are not hit-testable.
+
+Measured at application SHA `4880dd40ae29db119b0b5803d44fda55c4dd54a2`:
+
+- second folder retarget during cat-12 transition reaches the last accepted target (`cat-20`), not cat-12;
+- resize during transition still reaches cat-12 and processes the latest viewport;
+- settled search after cat-12 reaches cat-1;
+- existing search pagination, exact-result activation, wheel and label reflow checks pass;
+- browser errors: none.
+
+Still not implemented or not measured:
+
+- wheel/pan interruption of transition camera (wheel remains guarded; pan NOT RUN);
+- multiple accepted retargets in one transition;
+- retarget while resize is pending;
+- document replacement during transition;
+- frame-level camera/projected-position/opacity continuity sampling;
+- short recordings.
+
+The opacity handoff is a source-level correction; no frame-level opacity continuity acceptance has been established. Human smoothness acceptance remains unproven.
+
+## Invalid-query pagination cleanup
+
+`search-results.js` now clears cards, active-result state, pagination and Back on invalid-query errors. A valid query restores page 1. Verified:
+
+```text
+Search is limited to 200 characters.
+cards: 0
+pagerHidden: true
+backHidden: true
+```
+
+then `same-name.txt` restores two results on page 1.
