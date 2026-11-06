@@ -250,7 +250,7 @@ export function createOrbitStateController({ adapter, now = () => Date.now() } =
       stage: 'restore',
       message: reason === 'permission-denied'
         ? 'Map Library access is denied. Reconnect Map Library or choose another directory.'
-        : 'Reconnect Map Library to grant access to this directory.',
+        : 'Your browser needs permission to reconnect FileOrbit to this folder. Click Reconnect Map Library, then allow access in the browser prompt.',
       errorName: '', errorMessage: ''
     };
     settledPhase = 'blocked';
@@ -350,6 +350,7 @@ export function createOrbitStateController({ adapter, now = () => Date.now() } =
 
   return { openDirectory, adoptDirectory, restoreDirectory, refresh, matchEntry, close, destroy, snapshot };
 }
+
 
 
 

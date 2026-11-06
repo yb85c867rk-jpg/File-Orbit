@@ -79,3 +79,6 @@ These use test hooks/picker stubs, not native OS acceptance.
 - `hypertree-save-permission-check.mjs`: read-only Library picker/open, centered write dialog, deferred Continue request, cancel/deny preservation, already-granted and automatic-save no-prompt behavior.
 
 - `hypertree-permission-startup-check.mjs`: clean startup with computed hidden backdrop, light/dark checks, controls clickable, populated dialog, Cancel/Continue, refresh cleanup.
+
+- Library connect explanation tests cover Cancel/no picker, Choose Folder/read mode, picker cancellation, and no explanation on Refresh.
+- Reconnect tests cover inline guidance, granted-without-new-request, request denial and preserved directory.

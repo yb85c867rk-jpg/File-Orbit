@@ -702,3 +702,15 @@ Verification uses a native OPFS file handle for the read-only Library/open path,
 ### Permission dialog startup visibility
 
 The permission backdrop uses a dedicated `.permission-dialog-backdrop` class with an explicit `[hidden] { display: none !important; visibility: hidden; pointer-events: none; }` rule. The author `display:grid` overlay style no longer overrides native hidden presentation. Cancel/Continue use compact application button styling. A clean-startup regression verifies computed display/bounds, pointer hit testing, Create Map/Map Library controls, explicit dialog population, Cancel without request, Continue with request, and no empty backdrop after close/reload in both themes.
+
+## Permission guidance refinement
+
+Choose/Change Directory now opens a centered explanation before the native read-mode picker:
+
+“Connect a Map Library folder” — explains that the folder stores topic maps, the next browser prompt is for listing/opening maps, saving may need extra permission, and connecting does not change or delete files. Cancel closes without invoking the picker. Choose Folder invokes the existing picker from the explicit action.
+
+Startup restoration queries read permission silently. Prompt-required inline guidance tells the user to click Reconnect Map Library and allow in the browser prompt; no startup modal is shown. Reconnect queries again first: already-granted access refreshes without another request. Denial preserves the directory and Change Directory.
+
+Explicit save uses “Permission to save this map” and destination-specific file/folder wording. Continue triggers the native request; Cancel/denial preserves unsaved state; background saves never prompt or request.
+
+Native browser permission prompts remain intact and outside FileOrbit control. Delete Map File is not implemented or advertised.
