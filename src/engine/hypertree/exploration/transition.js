@@ -133,6 +133,7 @@ export function createExplorationTransition({
     cancel(reason = 'cancelled') { const state = animator.cancel(reason); active = false; return state; },
     destroy() { animator.destroy(); active = false; },
     getState() { return animator.getState(); },
+    prepareAtCamera(camera) { const state = animator.getState(); return prepareExplorationFrame({ graph, baseLayout, view: union, focusedStaged: state.lastFrame?.view?.staged, viewport, baseRadiusCss, fit: false, camera, framing: 'manual', cameraLimits, presentation, nodeOpacity: displayedOpacity, padding: 24 }); },
     getDisplayedState() { const state = animator.getState(); return { parameter: state.currentParameter, eased: state.easedProgress, view: state.lastFrame?.view || null, opacity: new Map(displayedOpacity), camera: interpolateCamera(sourceCamera, targetCamera, state.easedProgress) }; },
     sourceView, targetView
   };

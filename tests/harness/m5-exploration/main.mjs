@@ -1347,6 +1347,17 @@ function installFrame({ operation, fit, entry, camera, framing }) {
   return { camera: prepared.camera, framing: prepared.framing, scene: prepared.scene, hit: prepared.hit, containment: prepared.containment };
 }
 
+function installManualCameraFrame(prepared, camera) {
+  transitionLabels = false;
+  frameState = { scene: prepared.scene, hit: prepared.hit, filtered: prepared.filtered, camera, framing: 'manual', containment: prepared.containment, progress: 1 };
+  drawCurrentGraphScene(prepared.scene, { selectedId: model.selectedId, sourceGraph: graph });
+  overlay.update({ scene: prepared.scene, presentation: presentation(graph), priorityIds: priorityIds(model), rootId: model.structuralRootId, selectedId: model.selectedId });
+  linkFrameReady = true;
+  if (labelHost) labelHost.style.pointerEvents = '';
+  generation += 1;
+  if (navigation) navigation.update({ camera, viewport: viewport(), cameraLimits: EXPERIMENTAL_CAMERA_LIMITS });
+  publish();
+}
 function presentation(sourceGraph = graph) {
   const result = new Map();
   for (const [id, node] of sourceGraph.nodes) result.set(id, {
@@ -1367,7 +1378,14 @@ function createNavigation() {
     viewport: viewport(),
     cameraLimits: EXPERIMENTAL_CAMERA_LIMITS,
     onCameraChange: (next, meta) => {
-      if (!canApplyViewerGuardedCamera({ viewer: attachmentViewer, navigatorBusy: Boolean(navigator?.busy) })) return false;
+      if (!canApplyViewerGuardedCamera({ viewer: attachmentViewer, navigatorBusy: false })) return false;
+      if (navigator?.busy) {
+        const interrupted = navigator.interruptCamera(next);
+        if (!interrupted.ok) return false;
+        session.applyCamera(next, { kind: meta.kind, viewport: viewport() });
+        installManualCameraFrame(interrupted.prepared, next);
+        return true;
+      }
       session.applyCamera(next, { kind: meta.kind, viewport: viewport() });
       queueMicrotask(publish);
       return true;
@@ -1491,12 +1509,12 @@ function createNavigator() {
       if (labelHost) labelHost.style.pointerEvents = 'none';
       transitionLabels = false;
       frameState = null;
-      suspendNavigation();
       lastClickDiagnostic = { reason: 'transition-start', id: null };
       publish();
     },
     onFrame: ({ prepared, progress, camera, id }) => {
       frameState = { scene: prepared.scene, hit: prepared.hit, filtered: prepared.filtered, camera, framing: 'manual', containment: prepared.containment, progress };
+      if (navigation) navigation.update({ camera, viewport: viewport(), cameraLimits: EXPERIMENTAL_CAMERA_LIMITS });
       lastClickDiagnostic = { reason: 'transition-in-progress', id, progress };
       publish();
     },
@@ -1525,6 +1543,7 @@ function createNavigator() {
       if (!outcome.recovered) { frameState = null; linkFrameReady = false; }
       if (outcome.cleanupError !== null) lastClickDiagnostic = { reason: 'transition-cleanup-failed', error: outcome.cleanupError, recovered: outcome.recovered };
       transitionTerminal = outcome;
+      createNavigation();
       searchRevealWaiter.settle(id, { ok: outcome.recovered && state?.completionReason === 'completed' });
       if (labelHost) labelHost.style.pointerEvents = '';
       if (pendingViewportResize) { pendingViewportResize = false; queueMicrotask(() => handleViewportResize()); }

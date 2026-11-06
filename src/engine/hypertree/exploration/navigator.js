@@ -107,6 +107,16 @@ export function createExplorationNavigator({
       }
       return { ok: true, mode: 'transition', changed: true, replaced: replacing, id, transition };
     },
+    interruptCamera(camera) {
+      if (!transition) return { ok: false, reason: 'no-transition' };
+      const current = transition;
+      let prepared;
+      try { prepared = current.prepareAtCamera(camera); } catch (error) { return { ok: false, reason: 'manual-frame-failed', error: String(error?.message || error) }; }
+      transitionToken += 1;
+      current.cancel('manual-camera');
+      transition = null;
+      return { ok: true, prepared, camera };
+    },
     cancel(reason = 'cancelled') {
       if (!transition) return { ok: false, reason: 'no-transition' };
       transition.cancel(reason);
