@@ -1,0 +1,13 @@
+﻿Tested SHA: 253ab77ffa781af88ad42e6f68fa4bae84e7e597
+Command: node --test --test-isolation=none tests/engine/exploration/upload-layout-comparison.test.mjs
+
+✔ synthetic 84-folder/407-file upload reproduces R240 clearance failure and R480 success (34.5096ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 77.9063
+

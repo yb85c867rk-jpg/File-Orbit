@@ -1,35 +1,36 @@
-﻿Tested SHA: d4dc95dc116d083e98437310452e761060fbca8a
+﻿Tested SHA: 253ab77ffa781af88ad42e6f68fa4bae84e7e597
 
-✔ menu opens only and clamps near viewport (1.7795ms)
-✔ folder menu is Edit Folder, Add Folder, Add Data, Upload, disabled Delete Folder (1.3591ms)
-✔ data menu is Edit Data and disabled Delete Data only (0.3487ms)
-✔ outside click and Escape dismiss; destroy removes DOM (0.5223ms)
-✔ one upload history entry undoes and redoes the entire added hierarchy (1.2109ms)
-✔ bulk upload replay rejects a changed subtree and stale dataset (0.169ms)
-✔ multiple local files are added directly beneath the destination (1.6617ms)
-✔ multiple files under a nested destination preserve full hidden tree (0.4852ms)
-✔ a selected source folder remains a child with its hierarchy and empty folders (7.8538ms)
-✔ an explicitly empty source folder is retained (0.3938ms)
-✔ same-named files in different folders keep distinct bytes and attachment IDs (0.5417ms)
-✔ Korean and zero-byte attachments preserve metadata (0.3118ms)
-✔ sibling and case-normalized collisions reject the whole request with paths (0.2322ms)
-✔ node IDs and attachment bindings are unique and exact (0.3473ms)
-✔ free 300-node boundary accepts one file at exactly 300 and rejects a folder that would make 301 (1.5249ms)
-✔ internal paid policy admits 1000 nodes and rejects 1001 (3.0805ms)
-✔ oversized files and combined attachment usage reject atomically (0.6427ms)
-✔ missing, file, and stale destinations are rejected (0.3943ms)
-✔ cancellation during classification releases staging and preserves inputs (0.4962ms)
-✔ source tree and live registry are unchanged on success and failure (0.9519ms)
-✔ dispose is idempotent and releases only the staging registry (0.3446ms)
-✔ empty upload and duplicate paths reject without touching the source (0.2258ms)
-✔ caller-declared incomplete folder listing and classification failures reject atomically (0.3002ms)
-✔ uploads exceeding the editor depth limit reject (0.1812ms)
-ℹ tests 24
+✔ menu opens only and clamps near viewport (2.2835ms)
+✔ folder menu is Edit Folder, Add Folder, Add Data, Upload, disabled Delete Folder (0.8517ms)
+✔ data menu is Edit Data and disabled Delete Data only (0.2491ms)
+✔ outside click and Escape dismiss; destroy removes DOM (0.4911ms)
+✔ one upload history entry undoes and redoes the entire added hierarchy (1.1991ms)
+✔ bulk upload replay rejects a changed subtree and stale dataset (0.1871ms)
+✔ synthetic 84-folder/407-file upload reproduces R240 clearance failure and R480 success (34.3688ms)
+✔ multiple local files are added directly beneath the destination (1.9216ms)
+✔ multiple files under a nested destination preserve full hidden tree (0.377ms)
+✔ a selected source folder remains a child with its hierarchy and empty folders (7.1726ms)
+✔ an explicitly empty source folder is retained (0.3923ms)
+✔ same-named files in different folders keep distinct bytes and attachment IDs (0.4156ms)
+✔ Korean and zero-byte attachments preserve metadata (0.556ms)
+✔ sibling and case-normalized collisions reject the whole request with paths (0.3427ms)
+✔ node IDs and attachment bindings are unique and exact (0.3768ms)
+✔ free 300-node boundary accepts one file at exactly 300 and rejects a folder that would make 301 (0.7172ms)
+✔ internal paid policy admits 1000 nodes and rejects 1001 (2.05ms)
+✔ oversized files and combined attachment usage reject atomically (0.3499ms)
+✔ missing, file, and stale destinations are rejected (0.126ms)
+✔ cancellation during classification releases staging and preserves inputs (0.2467ms)
+✔ source tree and live registry are unchanged on success and failure (0.4074ms)
+✔ dispose is idempotent and releases only the staging registry (0.1655ms)
+✔ empty upload and duplicate paths reject without touching the source (0.2949ms)
+✔ caller-declared incomplete folder listing and classification failures reject atomically (0.3613ms)
+✔ uploads exceeding the editor depth limit reject (0.2476ms)
+ℹ tests 25
 ℹ suites 0
-ℹ pass 24
+ℹ pass 25
 ℹ fail 0
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 64.8435
+ℹ duration_ms 121.9731
 

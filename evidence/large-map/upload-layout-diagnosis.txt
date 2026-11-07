@@ -1,0 +1,79 @@
+{
+  "tree": {
+    "rootId": "cm-1-0",
+    "nodeCount": 492,
+    "rootDepth": 0,
+    "rootChildCount": 491,
+    "maxDepth": 1
+  },
+  "r240": {
+    "ok": false,
+    "code": "experimental-v2-infeasible",
+    "message": "no workspace scale up to 16 satisfies angular clearance (node cm-1-0)",
+    "diagnostics": {
+      "satisfied": false,
+      "workspaceScale": 16,
+      "maxWorkspaceScale": 16,
+      "unsatisfied": [
+        {
+          "parentId": "cm-1-0",
+          "required": 9.048013422611318,
+          "available": 6.283185307179586,
+          "workspaceScale": 16
+        }
+      ],
+      "glyphRadiusCss": 6,
+      "clearanceCss": 4,
+      "referenceProjectionRadiusCss": 240,
+      "attemptCount": 61,
+      "selectedCandidateIndex": 60,
+      "candidateCount": 61
+    },
+    "perChild": {
+      "band0": {
+        "count": 246,
+        "requiredEach": 0.030423709994900093,
+        "arcRadius": 525.9259008
+      },
+      "band1": {
+        "count": 245,
+        "requiredEach": 0.006382778628023994,
+        "arcRadius": 2506.749504
+      },
+      "deficit": 2.7648281154317313
+    }
+  },
+  "r480": {
+    "ok": true,
+    "workspaceScale": 11.75,
+    "satisfied": true,
+    "config": {
+      "minStep": 0.008,
+      "bandCount": 2,
+      "radialFlex": 0.65,
+      "branchWeight": 0.75,
+      "demandCompression": 0.6,
+      "safetyMargin": 0.000001,
+      "glyphRadiusCss": 6,
+      "clearanceCss": 4,
+      "referenceProjectionRadiusCss": 480,
+      "workspaceScaleMin": 1,
+      "workspaceScaleMax": 16,
+      "workspaceScaleStep": 0.25,
+      "radius": 1
+    },
+    "totalRequired": 6.160243167991977,
+    "available": 6.283185307179586,
+    "slack": 0.1229421391876091,
+    "perChild": {
+      "band0": {
+        "requiredEach": 0.0207135867513975,
+        "arcRadius": 772.4536668
+      },
+      "band1": {
+        "requiredEach": 0.004345717661829497,
+        "arcRadius": 3681.788334
+      }
+    }
+  }
+}
