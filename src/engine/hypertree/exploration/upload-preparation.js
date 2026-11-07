@@ -350,6 +350,8 @@ export async function prepareUploadAddition({
         addedFileCount: counts.files,
         addedNodeCount: counts.folders + counts.files,
         resultingNodeCount,
+        nodeLimit: access.decision.effectiveLimit,
+        edition: access.context.edition,
         existingAttachmentBytes,
         addedAttachmentBytes,
         resultingAttachmentBytes: existingAttachmentBytes + addedAttachmentBytes,

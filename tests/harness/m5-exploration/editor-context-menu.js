@@ -21,11 +21,16 @@ export function createEditorContextMenu({
     ['edit-data', 'Edit Data'],
     ['add-folder', 'Add Folder'],
     ['add-data', 'Add Data'],
+    ['upload-files', 'Local Files'],
+    ['upload-folder', 'Local Folder'],
     ['delete-folder', 'Delete Folder'],
     ['delete-data', 'Delete Data']
   ];
   const buttons = new Map();
+  const uploadHeading = document.createElement('div');
+  uploadHeading.className = 'editor-menu-section'; uploadHeading.textContent = 'Upload';
   for (const [action, text] of actionDefs) {
+    if (action === 'upload-files') menu.appendChild(uploadHeading);
     const button = document.createElement('button');
     button.type = 'button';
     button.setAttribute('data-action', action);
@@ -51,11 +56,12 @@ export function createEditorContextMenu({
   function actionsFor(hitKind) {
     return hitKind === 'file'
       ? ['edit-data', 'delete-data']
-      : ['edit-folder', 'add-folder', 'add-data', 'delete-folder'];
+      : ['edit-folder', 'add-folder', 'add-data', 'upload-files', 'upload-folder', 'delete-folder'];
   }
   function renderActions(targetValue) {
     const allowed = new Set(actionsFor(targetValue.hitKind));
     for (const [action, button] of buttons) button.hidden = !allowed.has(action);
+    uploadHeading.hidden = targetValue.hitKind !== 'folder';
     const rootProtected = targetValue.hitKind === 'folder' && Boolean(targetValue.isRoot);
     const deleteFolder = buttons.get('delete-folder');
     deleteFolder.disabled = rootProtected;

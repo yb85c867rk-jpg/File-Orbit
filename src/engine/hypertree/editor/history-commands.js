@@ -67,6 +67,24 @@ export function makeAddHistoryEntry({ action, tree, candidateTree, parentId, nod
     attachmentRefs: collectAttachmentIds(node)
   };
 }
+export function makeUploadHistoryEntry({ action, tree, candidateTree, parentId, addedRootIds = [], viewBefore, viewAfter, datasetToken }) {
+  const parent = findTreeNode(candidateTree, parentId);
+  if (!parent || parent.kind !== 'folder') return null;
+  const nodes = [];
+  for (const id of addedRootIds) {
+    const node = findTreeNode(candidateTree, id);
+    if (!node) return null;
+    const index = parent.children.findIndex((child) => child.id === id);
+    if (index < 0) return null;
+    nodes.push({ id, index, node: jsonClone(node) });
+  }
+  const attachmentRefs = [...new Set(nodes.flatMap((entry) => collectAttachmentIds(entry.node)))];
+  return {
+    kind: 'structural-add-many', action, datasetToken, parentId, nodes,
+    viewBefore: jsonClone(viewBefore), viewAfter: jsonClone(viewAfter), attachmentRefs
+  };
+}
+
 export function makeReparentHistoryEntry({ tree, candidateTree, sourceId, structuralRootId, datasetToken, viewBefore, viewAfter }) {
   const beforeParent = findNodeWithParent(tree, sourceId);
   const afterParent = findNodeWithParent(candidateTree, sourceId);
@@ -83,13 +101,49 @@ export function makeReparentHistoryEntry({ tree, candidateTree, sourceId, struct
   };
 }
 export function buildStructuralReplayCommand({ tree, entry, direction, datasetToken, structuralRootId, policyContext = undefined, maxNodes = undefined }) {
-  if (!entry || (entry.kind !== 'structural-add' && entry.kind !== 'structural-reparent')) return { ok: false, reason: 'history-invalid', message: 'History entry is invalid.' };
+  if (!entry || (entry.kind !== 'structural-add' && entry.kind !== 'structural-add-many' && entry.kind !== 'structural-reparent')) return { ok: false, reason: 'history-invalid', message: 'History entry is invalid.' };
   if (entry.datasetToken !== datasetToken) return { ok: false, reason: 'stale-dataset', message: 'The dataset changed. Undo/Redo was rejected.' };
   if (structuralRootId && entry.structuralRootId && entry.structuralRootId !== structuralRootId) return { ok: false, reason: 'stale-structural-root', message: 'The structural root changed. Undo/Redo was rejected.' };
   if (structuralRootId && tree.id !== structuralRootId) return { ok: false, reason: 'stale-structural-root', message: 'The structural root changed. Undo/Redo was rejected.' };
   const admission = validateEditorAdmission(tree, { policyContext, maxNodes });
   if (!admission.ok) return admission;
   const view = direction === 'undo' ? entry.viewBefore : entry.viewAfter;
+  if (entry.kind === 'structural-add-many') {
+    const parent = findTreeNode(tree, entry.parentId);
+    if (!parent || parent.kind !== 'folder') return { ok: false, reason: 'stale-parent', message: 'The destination folder no longer exists.' };
+    const view = direction === 'undo' ? entry.viewBefore : entry.viewAfter;
+    if (direction === 'undo') {
+      for (const recorded of entry.nodes) {
+        const located = findNodeWithParent(tree, recorded.id);
+        if (!located || located.parent.id !== entry.parentId || stable(located.node) !== stable(recorded.node)) {
+          return { ok: false, reason: 'expected-state-mismatch', message: 'An uploaded node changed since this history entry. Undo was rejected.' };
+        }
+      }
+      const candidateTree = cloneTree(tree);
+      for (const recorded of entry.nodes) {
+        const located = findNodeWithParent(candidateTree, recorded.id);
+        if (located) located.parent.children.splice(located.parent.children.indexOf(located.node), 1);
+      }
+      const admittedUndo = validateEditorAdmission(candidateTree, { policyContext, maxNodes });
+      if (!admittedUndo.ok) return admittedUndo;
+      return { ok: true, candidateTree, targetId: entry.parentId, layoutMode: 'recompute', operation: 'undo-upload', view, actionLabel: entry.action };
+    }
+    let insertedCount = 0;
+    for (const recorded of entry.nodes) {
+      if (findTreeNode(tree, recorded.id)) return { ok: false, reason: 'id-collision', message: 'A recorded upload ID already exists. Redo was rejected.' };
+      for (const id of collectSubtreeIds(recorded.node, recorded.id)) if (findTreeNode(tree, id)) return { ok: false, reason: 'id-collision', message: 'A recorded upload subtree ID already exists. Redo was rejected.' };
+      if (!Number.isSafeInteger(recorded.index) || recorded.index < 0 || recorded.index > parent.children.length + insertedCount) return { ok: false, reason: 'invalid-index', message: 'The recorded sibling position is invalid. Redo was rejected.' };
+      insertedCount += 1;
+    }
+    const candidateTree = cloneTree(tree);
+    const targetParent = findTreeNode(candidateTree, entry.parentId);
+    for (const recorded of [...entry.nodes].sort((left, right) => left.index - right.index)) {
+      targetParent.children.splice(recorded.index, 0, jsonClone(recorded.node));
+    }
+    const admittedRedo = validateEditorAdmission(candidateTree, { policyContext, maxNodes });
+    if (!admittedRedo.ok) return admittedRedo;
+    return { ok: true, candidateTree, targetId: entry.parentId, layoutMode: 'recompute', operation: 'redo-upload', view, actionLabel: entry.action };
+  }
   if (entry.kind === 'structural-add') {
     const parent = findTreeNode(tree, entry.parentId);
     if (!parent || parent.kind !== 'folder') return { ok: false, reason: 'stale-parent', message: 'The destination folder no longer exists.' };

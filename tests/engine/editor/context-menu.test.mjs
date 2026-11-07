@@ -32,11 +32,11 @@ test('menu opens only and clamps near viewport', () => {
   assert.equal(s.menu.element.style.top, '152px');
   assert.equal(s.menu.item.textContent, 'Edit Folder');
 });
-test('folder menu is Edit Folder, Add Folder, Add Data, disabled Delete Folder', () => {
+test('folder menu is Edit Folder, Add Folder, Add Data, Upload, disabled Delete Folder', () => {
   const s = setup();
   const root = { id: 'r', name: 'Root', hitKind: 'folder', isRoot: true };
   s.menu.open({ target: root, x: 10, y: 10 });
-  assert.deepEqual([...s.menu.actions.keys()].filter((key) => !s.menu.actions.get(key).hidden), ['edit-folder', 'add-folder', 'add-data', 'delete-folder']);
+  assert.deepEqual([...s.menu.actions.keys()].filter((key) => !s.menu.actions.get(key).hidden), ['edit-folder', 'add-folder', 'add-data', 'upload-files', 'upload-folder', 'delete-folder']);
   s.menu.actions.get('add-data').dispatchEvent(new Event('click'));
   assert.deepEqual(s.actions, [[root, 'add-data']]);
   assert.equal(s.menu.element.hidden, true);
@@ -46,6 +46,8 @@ test('data menu is Edit Data and disabled Delete Data only', () => {
   const data = { id: 'x', name: 'Data', hitKind: 'file' };
   s.menu.open({ target: data, x: 10, y: 10 });
   assert.deepEqual([...s.menu.actions.keys()].filter((key) => !s.menu.actions.get(key).hidden), ['edit-data', 'delete-data']);
+  assert.equal(s.menu.actions.get('upload-files').hidden, true);
+  assert.equal(s.menu.actions.get('upload-folder').hidden, true);
   s.menu.actions.get('edit-data').dispatchEvent(new Event('click'));
   assert.deepEqual(s.actions.at(-1), [data, 'edit-data']);
 });

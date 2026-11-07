@@ -6,6 +6,7 @@ import { resetCamera, EXPERIMENTAL_CAMERA_LIMITS } from '../navigation/index.js'
 import { buildRenameCommand, buildAddChildCommand, buildMetadataCommand, buildEditFolderCommand, buildEditDataCommand, buildDeleteCommand } from './commands.js';
 import { makeMetadataHistoryEntry, makeAddHistoryEntry, makeReparentHistoryEntry, makeDeleteHistoryEntry } from './history-commands.js';
 import { resolvePostOperationDetails } from './details-policy.js';
+import { validateEditorAdmission } from './validation.js';
 
 /**
  * Shared installation boundary for metadata-preserving and structural editor
@@ -158,6 +159,26 @@ export function performAddChildInstallation(args) {
   return performEditorCommandInstallation({
     ...args, history: args.history,
     command: { ...command, operation: command.kind === 'file' ? 'add-data' : 'add-folder', baseRevision: args.baseRevision, historyEntry, actionLabel }
+  });
+}
+
+export function performUploadInstallation(args) {
+  const admitted = validateEditorAdmission(args.candidateTree, { policyContext: args.policyContext, maxNodes: args.maxNodes });
+  if (!admitted.ok) return admitted;
+  return performEditorCommandInstallation({
+    ...args,
+    history: args.history,
+    command: {
+      ok: true,
+      candidateTree: args.candidateTree,
+      layoutMode: 'recompute',
+      operation: 'upload',
+      parentId: args.parentId,
+      baseRevision: args.baseRevision,
+      actionLabel: 'Upload',
+      historyEntry: args.historyEntry || null,
+      view: args.historyViewAfter || null
+    }
   });
 }
 
