@@ -14,6 +14,7 @@ function normalizeLibrary(record) {
   const id = typeof record.id === 'string' ? record.id.trim() : '';
   if (!id) return null;
   if (!record.handle || typeof record.handle !== 'object') return null;
+  if (record.handle.kind !== 'directory') return null;
   const name = String(record.name || record.handle.name || '').trim();
   if (!name) return null;
   const updatedAt = Number(record.updatedAt);
@@ -55,11 +56,16 @@ function normalizeCollection(value) {
  * migrateLegacyCollection(): explicit operation only. An existing valid
  * collection (including an empty one) is authoritative. If no collection
  * exists and a valid legacy record exists, one Library is written and the
- * legacy record is retained. Repeating migration returns the stored stable ID.
+ * legacy record is retained. Migration is serialized with collection writes
+ * and rechecks collection absence inside its readwrite transaction. Repeating
+ * migration returns the stored stable ID.
  *
  * saveCollection(libraries, selectedId = null): { ok:true } or failure.
- * Libraries are { id, handle, name, updatedAt }. Handles are structured-cloned
- * by IndexedDB. Selected IDs must reference a stored Library or be null.
+ * Libraries are { id, handle, name, updatedAt }; handle.kind must be
+ * 'directory'. All inputs are validated before the instance write sequence is
+ * advanced, so invalid requests cannot supersede accepted queued writes.
+ * Handles are structured-cloned by IndexedDB. Selected IDs must reference a
+ * stored Library or be null.
  *
  * Writes are serialized in this instance with latest-wins ordering. This is
  * not cross-tab conflict protection.
@@ -187,12 +193,14 @@ export function createMapLibrarySettings({
   }
 
   function saveCollection(libraries, selectedId = null) {
-    const sequence = ++writeSeq;
     const list = Array.isArray(libraries) ? libraries : null;
     if (!list) return Promise.resolve(failure('invalid-record', 'Libraries must be an array.'));
     const normalized = [];
     const ids = new Set();
     for (const record of list) {
+      if (record && typeof record === 'object' && record.handle && typeof record.handle === 'object' && record.handle.kind !== 'directory') {
+        return Promise.resolve(failure('invalid-handle', 'Map Library handles must be directory handles.'));
+      }
       const item = normalizeLibrary(record);
       if (!item) return Promise.resolve(failure('invalid-record', 'Every Library needs an id, directory handle, and directory name.'));
       if (ids.has(item.id)) return Promise.resolve(failure('duplicate-id', 'Library IDs must be unique.'));
@@ -201,6 +209,7 @@ export function createMapLibrarySettings({
     }
     const selected = selectedId === null || selectedId === undefined ? null : String(selectedId);
     if (selected !== null && !ids.has(selected)) return Promise.resolve(failure('invalid-selected-id', 'The selected Library must be one of the stored Libraries.'));
+    const sequence = ++writeSeq;
 
     const run = writeQueue.then(async () => {
       if (sequence !== writeSeq) return failure('superseded', 'A newer collection write superseded this request.');
@@ -223,29 +232,42 @@ export function createMapLibrarySettings({
     return run;
   }
 
-  async function migrateLegacyCollection() {
-    const loaded = await loadCollection();
-    if (!loaded.ok) return loaded;
-    if (loaded.initialized) return { ok: true, migrated: false, initialized: true, libraries: loaded.libraries, selectedId: loaded.selectedId };
-    let legacy;
-    try {
-      legacy = await withStore('readonly', async (store) => readSettingsRecord(store, MAP_LIBRARY_SETTINGS_KEY));
-    } catch (error) {
-      return failure('storage-read-failed', error?.message || error);
-    }
-    if (!legacy?.handle || typeof legacy.handle !== 'object') {
-      return { ok: true, migrated: false, initialized: false, libraries: [], selectedId: null };
-    }
-    const record = {
-      id: String(createId()),
-      handle: legacy.handle,
-      name: String(legacy.name || legacy.handle.name || '').trim(),
-      updatedAt: Number(legacy.updatedAt) || now()
-    };
-    if (!record.name) return failure('invalid-legacy-record', 'The legacy Library has no directory name.');
-    const written = await saveCollection([record], record.id);
-    if (!written.ok) return written;
-    return { ok: true, migrated: true, initialized: true, libraries: [record], selectedId: record.id };
+  function migrateLegacyCollection() {
+    const run = writeQueue.then(async () => {
+      try {
+        return await withStore('readwrite', async (store) => {
+          const current = await readSettingsRecord(store, MAP_LIBRARIES_KEY);
+          if (current) {
+            const collection = normalizeCollection(current);
+            if (!collection) return failure('invalid-collection-record', 'The stored Map Library collection is invalid.');
+            return { ok: true, migrated: false, initialized: true, libraries: collection.libraries, selectedId: collection.selectedId };
+          }
+          const legacy = await readSettingsRecord(store, MAP_LIBRARY_SETTINGS_KEY);
+          if (!legacy?.handle || typeof legacy.handle !== 'object') {
+            return { ok: true, migrated: false, initialized: false, libraries: [], selectedId: null };
+          }
+          const record = normalizeLibrary({
+            id: String(createId()),
+            handle: legacy.handle,
+            name: String(legacy.name || legacy.handle.name || '').trim(),
+            updatedAt: Number(legacy.updatedAt) || now()
+          });
+          if (!record) return failure('invalid-legacy-record', 'The legacy Library has no valid directory handle or directory name.');
+          await requestDone(store.put({
+            key: MAP_LIBRARIES_KEY,
+            version: MAP_LIBRARIES_VERSION,
+            libraries: [record],
+            selectedId: record.id,
+            updatedAt: now()
+          }));
+          return { ok: true, migrated: true, initialized: true, libraries: [record], selectedId: record.id };
+        });
+      } catch (error) {
+        return failure('storage-write-failed', error?.message || error);
+      }
+    });
+    writeQueue = run.catch(() => {});
+    return run;
   }
 
   return { load, save, clear, loadCollection, saveCollection, migrateLegacyCollection };

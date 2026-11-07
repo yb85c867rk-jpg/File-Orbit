@@ -59,6 +59,48 @@ test('explicit legacy migration writes one stable record and keeps legacy compat
   assert.equal(loaded.initialized, true); assert.deepEqual(loaded.libraries, migrated.libraries);
 });
 
+test('migration cannot overwrite a collection saved in the same instance before migration', async () => {
+  const indexedDB = new FakeIndexedDB(); const settings = make(indexedDB, ['legacy-id']);
+  await settings.save(handle('Legacy'), 'Legacy');
+  const fresh = { id: 'fresh', handle: handle('Fresh'), name: 'Fresh' };
+  const save = settings.saveCollection([fresh], 'fresh');
+  const migration = settings.migrateLegacyCollection();
+  await Promise.all([save, migration]);
+  const loaded = await settings.loadCollection();
+  assert.deepEqual(loaded.libraries.map((r) => r.id), ['fresh']);
+  assert.equal(loaded.selectedId, 'fresh');
+});
+
+test('migration cannot resurrect legacy over an intentionally empty collection saved concurrently', async () => {
+  const indexedDB = new FakeIndexedDB(); const settings = make(indexedDB, ['legacy-id']);
+  await settings.save(handle('Legacy'), 'Legacy');
+  const save = settings.saveCollection([], null);
+  const migration = settings.migrateLegacyCollection();
+  await Promise.all([save, migration]);
+  const loaded = await settings.loadCollection();
+  assert.equal(loaded.initialized, true); assert.deepEqual(loaded.libraries, []);
+});
+
+test('invalid save validation cannot supersede a valid queued write', async () => {
+  const indexedDB = new FakeIndexedDB(); const settings = make(indexedDB);
+  const valid = settings.saveCollection([{ id: 'a', handle: handle('A'), name: 'A' }], 'a');
+  const invalid = await settings.saveCollection([{ id: 'file', handle: { kind: 'file', name: 'A.orbit' }, name: 'A.orbit' }], null);
+  assert.equal(invalid.ok, false); assert.equal(invalid.reason, 'invalid-handle');
+  const saved = await valid;
+  assert.equal(saved.ok, true);
+  const loaded = await settings.loadCollection();
+  assert.deepEqual(loaded.libraries.map((r) => r.id), ['a']);
+});
+
+test('non-directory handles are rejected on save and invalidate loaded collections', async () => {
+  const indexedDB = new FakeIndexedDB(); const settings = make(indexedDB);
+  const rejected = await settings.saveCollection([{ id: 'file', handle: { kind: 'file', name: 'X.orbit' }, name: 'X.orbit' }], 'file');
+  assert.equal(rejected.ok, false); assert.equal(rejected.reason, 'invalid-handle');
+  await putRaw(indexedDB, STORE_SETTINGS, { key: MAP_LIBRARIES_KEY, version: MAP_LIBRARIES_VERSION, libraries: [{ id: 'file', handle: { kind: 'file', name: 'X.orbit' }, name: 'X.orbit' }], selectedId: 'file' });
+  const loaded = await settings.loadCollection();
+  assert.equal(loaded.ok, false); assert.equal(loaded.reason, 'invalid-collection-record');
+});
+
 test('repeated migration is idempotent and preserves stable ID', async () => {
   const indexedDB = new FakeIndexedDB(); const settings = make(indexedDB, ['stable-2']);
   await settings.save(handle('Legacy'), 'Legacy');
@@ -128,7 +170,7 @@ test('invalid records and duplicate IDs are rejected before writing', async () =
 test('unavailable IndexedDB reports read and write failures', async () => {
   const settings = createMapLibrarySettings({ indexedDB: null });
   assert.equal((await settings.loadCollection()).reason, 'storage-read-failed');
-  assert.equal((await settings.migrateLegacyCollection()).reason, 'storage-read-failed');
+  assert.equal((await settings.migrateLegacyCollection()).reason, 'storage-write-failed');
   const write = await settings.saveCollection([{ id: 'a', handle: handle('A'), name: 'A' }], 'a');
   assert.equal(write.ok, false); assert.equal(write.reason, 'storage-write-failed');
 });
