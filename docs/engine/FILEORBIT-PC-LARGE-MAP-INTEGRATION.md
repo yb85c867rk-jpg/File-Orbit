@@ -767,3 +767,11 @@ Creation now stages the root candidate, obtains write permission, performs the e
 ### Create Map compact Library controls
 
 The Create Map modal omits explanatory/routine copy and provides a compact two-row Library area: “Linked Map Libraries” toggles a collapsed inline list with `aria-expanded`/`aria-controls`, and “+ New” is the right-aligned accessible “Link folder to Map Library” action. Selecting a Library immediately updates `aria-pressed`/selected styling, displays its actual name as the destination, and closes the list without routine status text. Refresh remains inside the expanded list. New-map descriptions use a live 500-code-point counter, reject 501+ at the form and candidate boundary, and preserve Unicode/IME input without truncation.
+
+## Upload preparation service (Phase D1)
+
+`prepareUploadAddition` is a pure preparation API under `src/engine/hypertree/exploration/upload-preparation.js`. It accepts the authoritative tree/registry references, destination folder ID, dataset token/revision, edition policy context, files/folders, and an `isCurrent` cancellation check. The source tree and registry are read-only.
+
+The result contains a full cloned `candidateTree` (including all existing hidden nodes), a staging-only `attachmentRegistry` for new files, exact addition/ownership/summary metadata, and idempotent `dispose()`. `dispose()` clears only staged attachments. D2 must revalidate dataset/revision/destination ownership, transfer staged attachments into the live registry, and install through the existing editor transaction.
+
+The service applies existing naming/case-collision rules, node counts, free/paid context limits (300/1000 plus any tighter caller or internal-paid test budget), depth limits, attachment limits and whole-request rejection. Supplied empty folders are retained. `folderListingComplete:false` records that the picker could not expose empty folders; preparation does not silently discard supplied folders. Upload preparation does not install, revise, save, or otherwise change the active map.

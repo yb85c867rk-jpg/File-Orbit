@@ -15,3 +15,4 @@ export { createNodeDragGesture } from './drag-gesture.js';
 export { fitBlockReason, isNodeGestureOwned, performReparentInstallation, recoverAuthoritativeSession } from './reparent-action.js';
 
 
+export { prepareUploadAddition } from './upload-preparation.js';

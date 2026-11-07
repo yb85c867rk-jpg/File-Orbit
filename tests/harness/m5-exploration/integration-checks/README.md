@@ -97,3 +97,5 @@ These use test hooks/picker stubs, not native OS acceptance.
 
 
 The Phase C test also covers the compact collapsible Library controls, + New, actual B destination writes, 499/500/501 code-point descriptions and 1600×900/700 fit.
+
+- Upload preparation tests: `tests/engine/exploration/upload-preparation.test.mjs` covers file/folder structure, empty folders, collisions, Unicode/zero-byte metadata, exact bindings, 300/1000 boundaries, attachment limits, stale cancellation, source immutability and cleanup. D1 has no Upload UI.
