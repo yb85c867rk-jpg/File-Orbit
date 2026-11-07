@@ -90,3 +90,5 @@ These use test hooks/picker stubs, not native OS acceptance.
 - Phase A2 controller tests and integration checks cover migration/empty authority, A/B retention, reload, dedupe, active-document preservation and failure paths while retaining the existing sidebar.
 
 - `library-collection-ui-check.mjs`: actual B1 sidebar collection/empty/selected views, linking, duplicate reuse, cancel, refresh, reconnect, narrow/light presentation and reload.
+
+- `sidebar-scroll-check.mjs`: sole sidebar scroll owner, no inner vertical/horizontal scroll, many files/Libraries, short/normal/narrow layouts, collapsed rail, light theme, and last-entry/Settings reachability.

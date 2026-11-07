@@ -747,3 +747,7 @@ The sidebar section is now “Map libraries”. `Map Library List` switches betw
 Collection Refresh queries permission/status only and never enumerates or opens maps. Selected-Library Refresh re-enumerates only that directory. Both preserve the active document and writable destination. Returning to the current map’s Library restores highlighting through actual file identity. The directory-edit modal, aliases, Create Map changes, Upload, Unlink and Delete remain deferred.
 
 Selection now advances the controller operation token even when `persist:false`, so a delayed adoption cannot overwrite a newer selection.
+
+## Sidebar scrolling
+
+The primary navigation rail is the sole vertical scroll owner. Internal navigation items, Map Library collection/selected views, panels, and `.orbit-list` grow naturally with `overflow: visible` and no inner max-height, including responsive overrides. Grid/flex tracks use `minmax(0, 1fr)` and `min-width: 0`; long file names ellipsize and directory names wrap, with full names retained in accessible labels/titles. The body/graph workspace remains non-scrollable. Verified with 55 long-named files, 12 Libraries, 1900×870, 1600×900, 700px height, 480px narrow layout, collapsed/expanded rail, light/dark and keyboard reachability of the last file plus Settings.
