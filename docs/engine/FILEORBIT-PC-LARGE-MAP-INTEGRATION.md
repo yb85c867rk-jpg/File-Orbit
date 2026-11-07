@@ -785,3 +785,21 @@ The preview is centered, application-styled, keyboard/Escape accessible, and sho
 Add to Map revalidates document/dataset/revision/destination/ownership and disposal state, validates admission, transfers only new attachments into the live registry, and installs the D1 full candidate through the existing editor layout/commit/recovery boundary. Any transfer, layout, history or commit failure rolls back provisional attachments and leaves the previous tree/history/selection/destination intact. Successful upload advances the revision, creates one `structural-add-many` history action, and preserves the active document handle and baseline. Undo removes the whole addition; Redo restores the full hierarchy and attachment bindings. Attachments remain retained by tree/history references until ownership is released.
 
 Save is separate from Add to Map. Upload success remains dirty when automatic save is blocked/failed, retains history, and reports the existing actionable save state; it never reports a failed save as saved. The native folder input limitation for empty directories and all synthetic browser/handle test adapters are disclosed in test evidence.
+
+### Upload layout failure diagnostics
+
+The Upload error text names the layout root (`angular.rootId`), not necessarily the parent whose angular clearance failed. Do not infer the failing parent from that node ID alone.
+
+When preparation fails after the preview candidate exists, the preview retains the prepared candidate and offers **Export structure diagnostic**. This downloads a JSON file locally and does not upload, save, or apply anything. It includes:
+
+- synthetic node IDs and synthetic parent relationships
+- folder/file kind, depth and direct-child count
+- node/folder/file counts, root child count and maximum depth
+- comparison mode, requested and effective projection radius
+- effective clearance/scale configuration and failing-parent depth/child count
+- error code, required/available angular clearance and attempt counts
+- application module/location/build-identity metadata
+
+It deliberately excludes uploaded filenames, source paths, destination names, descriptions, attachment IDs, attachment bytes, and file contents. The original directory is only read by the native picker. The JSON must be supplied manually; no diagnostic is sent automatically.
+
+If the export shows `comparisonMode:true` but `requestedExperiment:null` or `effectiveReferenceProjectionRadiusCss:240`, the layout configuration was lost before the actual recompute (or the browser is running stale modules). If it shows requested/effective R480 and the failing parent’s required clearance exceeds available clearance, the real hierarchy is infeasible under the current layout. If it shows requested R480 but effective R240, a forwarding/module mismatch is proven; this is distinct from both cases.

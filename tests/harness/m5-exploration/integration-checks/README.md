@@ -101,3 +101,6 @@ The Phase C test also covers the compact collapsible Library controls, + New, ac
 - Upload preparation tests: `tests/engine/exploration/upload-preparation.test.mjs` covers file/folder structure, empty folders, collisions, Unicode/zero-byte metadata, exact bindings, 300/1000 boundaries, attachment limits, stale cancellation, source immutability and cleanup. D1 has no Upload UI.
 
 - `upload-d2-check.mjs`: actual folder context Upload menus, Local Files/Folder path normalization, preview/cancel, collision, repeated/duplicate-name folders, stale/double Add, layout-failure attachment rollback, one-action undo/redo, save failure, and save/reopen.
+
+- `upload-structure-diagnostic.test.mjs`: verifies failure export contains synthetic structure/layout data only.
+- `upload-installation-diagnostic.test.mjs`: verifies the actual Upload preparation failure records effective configuration and failing parent.

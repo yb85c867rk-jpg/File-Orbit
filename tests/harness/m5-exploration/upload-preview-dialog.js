@@ -4,7 +4,7 @@ import { isFocusableElement } from './shell-controls.js';
  * Centered preview for a prepared local upload. The dialog never installs or
  * mutates the map; onAdd/onChooseAgain/onCancel remain owned by main.
  */
-export function createUploadPreviewDialog({ document, host, onAdd, onChooseAgain, onCancel } = {}) {
+export function createUploadPreviewDialog({ document, host, onAdd, onChooseAgain, onCancel, onExportDiagnostic } = {}) {
   if (!document || !host) throw new Error('upload preview requires document and host');
   const backdrop = document.createElement('div');
   backdrop.className = 'upload-preview-backdrop';
@@ -23,8 +23,9 @@ export function createUploadPreviewDialog({ document, host, onAdd, onChooseAgain
   const actions = document.createElement('div'); actions.className = 'upload-preview-actions';
   const cancel = document.createElement('button'); cancel.type = 'button'; cancel.textContent = 'Cancel';
   const chooseAgain = document.createElement('button'); chooseAgain.type = 'button'; chooseAgain.textContent = 'Choose Again'; chooseAgain.hidden = true;
+  const diagnostic = document.createElement('button'); diagnostic.type = 'button'; diagnostic.textContent = 'Export structure diagnostic'; diagnostic.hidden = true;
   const add = document.createElement('button'); add.type = 'button'; add.textContent = 'Add to Map'; add.disabled = true;
-  actions.append(cancel, chooseAgain, add);
+  actions.append(cancel, chooseAgain, diagnostic, add);
   dialog.append(title, destination, summary, limitation, error, actions);
   backdrop.append(dialog); host.append(backdrop);
 
@@ -36,6 +37,7 @@ export function createUploadPreviewDialog({ document, host, onAdd, onChooseAgain
   const sync = () => {
     cancel.disabled = !open || busy;
     chooseAgain.disabled = !open || busy;
+    diagnostic.disabled = !open || busy || !current?.preparation;
     add.disabled = !open || busy || !current?.preparation;
     dialog.setAttribute('aria-busy', String(busy));
   };
@@ -56,7 +58,7 @@ export function createUploadPreviewDialog({ document, host, onAdd, onChooseAgain
     if (!open) return;
     if (event.key === 'Escape') { event.preventDefault(); if (!busy) close(); return; }
     if (event.key !== 'Tab') return;
-    const list = [cancel, chooseAgain, add].filter((button) => !button.hidden && !button.disabled);
+    const list = [cancel, chooseAgain, diagnostic, add].filter((button) => !button.hidden && !button.disabled);
     if (!list.length) return;
     const first = list[0], last = list.at(-1);
     if (!list.includes(document.activeElement)) { event.preventDefault(); (event.shiftKey ? last : first).focus(); return; }
@@ -72,7 +74,9 @@ export function createUploadPreviewDialog({ document, host, onAdd, onChooseAgain
       if (result?.ok) { busy = false; close({ notify: false, restoreFocus: true }); return; }
       busy = false; sync();
       if (result?.stale) { close({ notify: true }); return; }
+      if (result?.diagnostics && current?.preparation) { current.diagnostics = result.diagnostics; diagnostic.hidden = false; }
       setError(String(result?.message || 'The upload could not be added.'));
+      sync();
     } catch (err) {
       busy = false; sync(); setError(String(err?.message || err));
     }
@@ -84,6 +88,7 @@ export function createUploadPreviewDialog({ document, host, onAdd, onChooseAgain
     onChooseAgain(context);
   });
   cancel.addEventListener('click', () => { if (!busy) close(); });
+  diagnostic.addEventListener('click', () => { if (open && !busy && current?.preparation) onExportDiagnostic?.(current); });
   backdrop.addEventListener('mousedown', (event) => { if (event.target === backdrop && !busy) close(); });
 
   function show({ folderName, destinationPath, preparation = null, error: message = '', limitation: limitationText = '', context = null } = {}) {
@@ -104,6 +109,7 @@ export function createUploadPreviewDialog({ document, host, onAdd, onChooseAgain
     }
     add.hidden = !preparation;
     chooseAgain.hidden = Boolean(preparation);
+    diagnostic.hidden = true;
     setError(message);
     sync();
     backdrop.hidden = false;
