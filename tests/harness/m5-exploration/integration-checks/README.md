@@ -86,3 +86,5 @@ These use test hooks/picker stubs, not native OS acceptance.
 - `hypertree-create-map-form-check.mjs`: actual Create Map controls for Map Information/description, collapsed/expanded source folder, no file/drop controls, destination guidance, Unicode multiline create/save/reopen, Details display, cancel preservation, themes and small height.
 
 - Collection storage tests (`tests/engine/persistence/map-library-settings.test.mjs`) and OPFS structured-clone evidence (`map-library-collection-opfs-check.mjs`) cover Phase A1 only; application integration is Phase A2.
+
+- Phase A2 controller tests and integration checks cover migration/empty authority, A/B retention, reload, dedupe, active-document preservation and failure paths while retaining the existing sidebar.

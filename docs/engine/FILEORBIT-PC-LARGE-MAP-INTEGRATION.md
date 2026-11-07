@@ -731,3 +731,11 @@ A version-2 `map-libraries-v2` settings record stores `{version, libraries:[{id,
 
 `saveCollection()` serializes writes per API instance with latest-wins ordering and resolves after transaction completion. Failures return `{ok:false, reason, message}` for invalid records, invalid selected IDs, clone failures, storage errors and superseded writes. This is not cross-tab conflict protection. The current application still uses the legacy single-directory `load/save/clear` API; no sidebar or Create Map integration is active in Phase A1.
 
+
+## Map Library collection application integration (Phase A2)
+
+The application now uses one `LibraryCollectionController` over the A1 `map-libraries-v2` settings record. Startup invokes explicit legacy migration, loads the authoritative collection, restores the selected record, queries read permission without prompting, and enumerates only when already granted. Empty collections remain empty; malformed collection data reports an error and does not fall back to legacy state.
+
+Choose/Change Directory still uses the accepted read-only picker and explanation. Successful adoption deduplicates by `isSameEntry`, preserves earlier records, adds a stable-ID record when new, selects it, and persists via the collection controller. Identity-comparison errors do not merge by name. Durable write failure keeps the session record and reports that it could not be remembered. Picker cancellation and adoption failure preserve the prior selection, list, settings and active document.
+
+Reconnect and refresh remain read-only and operate on the selected record. Permission/listing status is tracked by Library ID. Application flows no longer call legacy `load/save/clear`; the legacy record and compatibility API remain for migration only. The visible sidebar remains the existing single-selected-Library UI. The new Map Library List, link-edit modal, Create Map restructuring, Upload, Unlink and Delete are deferred.
