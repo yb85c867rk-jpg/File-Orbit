@@ -1,4 +1,4 @@
-﻿import { loadTree } from '../data/index.js';
+import { loadTree } from '../data/index.js';
 import { stageExperimentalV2Layout, refineExperimentalV2Layout } from '../layout/index.js';
 import { createExplorationModel } from '../exploration/navigation-model.js';
 import { installCandidateEnvironment } from '../exploration/reparent-action.js';
@@ -46,10 +46,12 @@ export function performEditorCommandInstallation({
       candidateBaseLayout = command.baseLayout;
     } else {
       const staged = stageExperimentalV2Layout(loaded.graph, {
-        rootId: command.candidateTree.id, phases: ['current'], nodeOptions: { overridable: true }
+        rootId: command.candidateTree.id, phases: ['current'], nodeOptions: { overridable: true },
+        ...(command.layoutExperiment ? { experimentV2: command.layoutExperiment } : {})
       });
       const refined = refineExperimentalV2Layout(staged, loaded.graph, {
-        viewport, padding: 24, phase, projectionBaseRadiusCss: baseRadiusCss
+        viewport, padding: 24, phase, projectionBaseRadiusCss: baseRadiusCss,
+        ...(command.layoutDiagnosticMaxNodes ? { diagnosticMaxNodes: command.layoutDiagnosticMaxNodes } : {})
       });
       candidateBaseLayout = refined.staged;
     }
@@ -177,7 +179,9 @@ export function performUploadInstallation(args) {
       baseRevision: args.baseRevision,
       actionLabel: 'Upload',
       historyEntry: args.historyEntry || null,
-      view: args.historyViewAfter || null
+      view: args.historyViewAfter || null,
+      layoutExperiment: args.layoutExperiment || null,
+      layoutDiagnosticMaxNodes: args.layoutDiagnosticMaxNodes || null
     }
   });
 }
