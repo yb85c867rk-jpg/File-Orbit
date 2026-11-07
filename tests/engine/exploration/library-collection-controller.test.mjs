@@ -76,6 +76,43 @@ test('read failure is truthful and disposal prevents later adoption', async () =
   assert.equal(controller.snapshot().libraries.length, 0);
 });
 
+test('relink replaces the same ID only after persistence and preserves other records', async () => {
+  const a = { id: 'a', handle: dir('A'), name: 'A' }; const other = { id: 'b', handle: dir('B'), name: 'B' };
+  const settings = settingsStub({ libraries: [a, other], selectedId: 'a' });
+  const controller = createLibraryCollectionController({ settings });
+  await controller.initialize();
+  const replacement = dir('A2');
+  const result = await controller.relink('a', replacement, 'A2');
+  assert.equal(result.ok, true); assert.equal(result.persisted, true);
+  assert.equal(controller.snapshot().selectedId, 'a');
+  const records = controller.snapshot().libraries;
+  assert.equal(records.length, 2); assert.equal(records[0].id, 'a'); assert.equal(records[0].name, 'A2'); assert.equal(records[1].id, 'b');
+  assert.deepEqual(settings.state.libraries.map((r) => r.id), ['a', 'b']);
+});
+
+test('relink no-op, duplicate-linked, failure and identity cases preserve committed state', async () => {
+  const a = { id: 'a', handle: dir('A'), name: 'A' }; const b = { id: 'b', handle: dir('B'), name: 'B' };
+  const base = settingsStub({ libraries: [a, b], selectedId: 'a' });
+  const controller = createLibraryCollectionController({ settings: base });
+  await controller.initialize();
+  const noChange = await controller.relink('a', dir('A'), 'A');
+  assert.equal(noChange.ok, true); assert.equal(noChange.noChange, true); assert.equal(base.state.saves, 0);
+  const duplicate = await controller.relink('a', dir('B'), 'B');
+  assert.equal(duplicate.ok, false); assert.equal(duplicate.reason, 'already-linked'); assert.equal(duplicate.existingId, 'b');
+  assert.deepEqual(controller.snapshot().libraries.map((r) => r.id), ['a', 'b']);
+  const failing = settingsStub({ libraries: [a, b], selectedId: 'a', failSave: true });
+  const failed = createLibraryCollectionController({ settings: failing });
+  await failed.initialize();
+  const write = await failed.relink('a', dir('New'), 'New');
+  assert.equal(write.ok, false); assert.equal(write.reason, 'storage-write-failed');
+  assert.equal(failed.snapshot().libraries[0].name, 'A');
+  const broken = createLibraryCollectionController({ settings: base });
+  await broken.initialize();
+  const unknown = await broken.relink('a', { kind: 'directory', name: 'X', async isSameEntry() { throw new Error('no'); } }, 'X');
+  assert.equal(unknown.ok, false); assert.equal(unknown.reason, 'identity-unverified');
+  assert.equal(broken.snapshot().libraries[0].name, 'A');
+});
+
 test('non-persisted selection invalidates a delayed adoption continuation', async () => {
   const a = { id: 'a', handle: dir('A'), name: 'A' };
   const settings = settingsStub({ libraries: [a], selectedId: 'a' });

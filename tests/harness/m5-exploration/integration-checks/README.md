@@ -92,3 +92,5 @@ These use test hooks/picker stubs, not native OS acceptance.
 - `library-collection-ui-check.mjs`: actual B1 sidebar collection/empty/selected views, linking, duplicate reuse, cancel, refresh, reconnect, narrow/light presentation and reload.
 
 - `sidebar-scroll-check.mjs`: sole sidebar scroll owner, no inner vertical/horizontal scroll, many files/Libraries, short/normal/narrow layouts, collapsed rail, light theme, and last-entry/Settings reachability.
+
+- `library-edit-ui-check.mjs`: B2 icon/modal, draft, picker cancel, Apply/Cancel/Escape, same-folder no-op, already-linked selection, persistence failure, document preservation and reload.

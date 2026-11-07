@@ -751,3 +751,9 @@ Selection now advances the controller operation token even when `persist:false`,
 ## Sidebar scrolling
 
 The primary navigation rail is the sole vertical scroll owner. Internal navigation items, Map Library collection/selected views, panels, and `.orbit-list` grow naturally with `overflow: visible` and no inner max-height, including responsive overrides. Grid/flex tracks use `minmax(0, 1fr)` and `min-width: 0`; long file names ellipsize and directory names wrap, with full names retained in accessible labels/titles. The body/graph workspace remains non-scrollable. Verified with 55 long-named files, 12 Libraries, 1900×870, 1600×900, 700px height, 480px narrow layout, collapsed/expanded rail, light/dark and keyboard reachability of the last file plus Settings.
+
+## Linked-folder editor (Phase B2)
+
+The selected Library’s old Change Directory button is replaced by a compact pencil icon labelled “Change linked folder”. It opens a centered draft modal showing the current folder, “No replacement selected”, Choose Folder, Cancel and Apply. Choose Folder invokes the native read picker without adding a Library. Apply validates read access and listing, compares handle identity with the original and other records, and commits only after `relink` persistence succeeds.
+
+Outcomes: same original is a no-op; a new directory replaces the handle/name under the same stable ID and preserves other records; an already-linked directory selects its existing Library and preserves both records; identity failures and permission/listing/storage failures retain the draft and original connection. The active document handle, identity, baseline, history, revision and dirty state are never changed. The icon/modal are hidden from startup and use the existing hidden-state/focus/escape conventions. Directory aliases and OS directory renaming remain unsupported.

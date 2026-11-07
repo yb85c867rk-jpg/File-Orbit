@@ -58,6 +58,7 @@ import { highlightSearchFolderScene, searchHighlightToken } from '../../../src/e
 import { createSearchResultsView } from './search-results.js';
 import { createEmbedDialog } from './embed-dialog.js';
 import { createPermissionDialog } from './permission-dialog.js';
+import { createLibraryEditDialog } from './library-edit-dialog.js';
 import { validateSearchActivation, createSearchNavigationWaiter } from '../../../src/engine/hypertree/exploration/search-activation.js';
 import { resolveDeleteTarget } from '../../../src/engine/hypertree/editor/delete-target.js';
 import { dispatchEditorMenuAction, validateDeleteIntent } from '../../../src/engine/hypertree/editor/menu-dispatch.js';
@@ -149,6 +150,7 @@ const openMapButtons = [...document.querySelectorAll('[data-action="open-map"]')
 const overlayHost = document.querySelector('#overlay-host');
 const embedDialog = createEmbedDialog({ document, host: overlayHost, fixtureUrl: './embed-host.html' });
 const permissionDialog = createPermissionDialog({ document, host: overlayHost });
+const libraryEditDialog = createLibraryEditDialog({ document, host: overlayHost, onChoose: () => chooseEditReplacementFolder(), onApply: (draft) => applyLibraryEdit(draft), onCancel: () => { libraryEditOriginalId = null; libraryEditToken += 1; if (!destroying) setInfoStatus('Linked folder change cancelled. The current Library connection and open map were preserved.', { ttl: 4000 }); } });
 const shellStatusEl = document.querySelector('#shell-status');
 const themeAction = document.querySelector('#theme-action');
 const fullscreenAction = document.querySelector('#fullscreen-action');
@@ -3251,7 +3253,90 @@ async function pickCreationDestination(title) {
   return { ok: true, handle: picked.handle, name: picked.handle?.name || suggested, forceDownload: false, mode: 'writable' };
 }
 
-﻿const libraryListAction = document.querySelector('#library-list-action');
+﻿﻿let libraryEditOriginalId = null;
+let libraryEditToken = 0;
+
+function isLibraryEditCurrent(token, originalId) {
+  return !destroying && token === libraryEditToken && libraryEditDialog?.open
+    && libraryCollection?.snapshot().selectedId === originalId;
+}
+
+async function chooseEditReplacementFolder() {
+  if (destroying || !libraryEditDialog?.open) return { ok: false, reason: 'stale' };
+  const token = libraryEditToken;
+  const picked = await orbitAdapter.pickDirectory({ mode: 'read' });
+  if (destroying || token !== libraryEditToken || !libraryEditDialog.open) return { ok: false, reason: 'stale' };
+  return picked;
+}
+
+function openLibraryEdit() {
+  if (destroying || !libraryCollection || !libraryEditDialog || libraryEditDialog.open || permissionDialog?.open) return;
+  const selected = libraryCollection.snapshot().selected;
+  if (!selected) return;
+  libraryEditOriginalId = selected.id;
+  libraryEditToken += 1;
+  libraryEditDialog.show(selected);
+}
+
+async function activateRelinkedLibrary(record, originalId, token) {
+  if (!record || !isLibraryEditCurrent(token, originalId)) return { ok: false, reason: 'stale' };
+  const displayToken = ++mapLibraryRestoreToken;
+  await orbitState.restoreDirectory(record.handle, { name: record.name, permission: 'granted', enumerate: true });
+  if (destroying || displayToken !== mapLibraryRestoreToken || token !== libraryEditToken) return { ok: false, reason: 'stale' };
+  libraryCollection.markAccess(record.id, { permission: 'granted', phase: 'ready', error: null, lastListedAt: Date.now() });
+  await syncOrbitCurrentEntry();
+  libraryListOpen = false;
+  libraryPendingName = null;
+  renderOrbitPanel();
+  return { ok: true };
+}
+
+async function applyLibraryEdit(draft) {
+  const originalId = libraryEditOriginalId;
+  const token = ++libraryEditToken;
+  if (destroying || !draft?.handle || !originalId || !libraryEditDialog?.open) return { ok: false, reason: 'stale' };
+  const snapshot = libraryCollection?.snapshot();
+  const original = snapshot?.libraries.find((record) => record.id === originalId);
+  if (!original || snapshot.selectedId !== originalId) return { ok: false, reason: 'stale', message: 'The selected Map Library changed before Apply.' };
+  const queried = await orbitAdapter.queryReadPermission(draft.handle);
+  if (destroying || token !== libraryEditToken) return { ok: false, reason: 'stale' };
+  if (!queried?.ok || queried.permission !== 'granted') {
+    return { ok: false, reason: 'permission-required', message: 'Read access to the replacement folder is required. Choose the folder again or cancel.' };
+  }
+  const listing = await orbitAdapter.enumerateTopLevelMaps(draft.handle, { isCurrent: () => !destroying && token === libraryEditToken && libraryEditDialog.open });
+  if (destroying || token !== libraryEditToken) return { ok: false, reason: 'stale' };
+  if (!listing?.ok) return { ok: false, reason: listing?.reason || 'listing-failed', message: 'The replacement folder could not be read. The original Library connection is unchanged.' };
+  const linked = await libraryCollection.relink(originalId, draft.handle, draft.name);
+  if (destroying || token !== libraryEditToken) return { ok: false, reason: 'stale' };
+  if (!linked.ok) {
+    if (linked.reason === 'already-linked') {
+      const selected = await selectLibraryFromCollection(linked.existingId);
+      if (destroying || token !== libraryEditToken) return { ok: false, reason: 'stale' };
+      if (selected?.ok) {
+        libraryEditOriginalId = null;
+        setInfoStatus('This folder is already linked. Its existing Map Library has been selected.', { ttl: 5000 });
+        return { ok: true, alreadyLinked: true };
+      }
+      return selected || { ok: false, reason: 'selection-failed' };
+    }
+    if (linked.reason === 'identity-unverified') return { ok: false, reason: 'identity-unverified', message: 'The replacement folder could not be identity-checked. Nothing was changed; you can retry or cancel.' };
+    return linked;
+  }
+  if (linked.noChange) {
+    libraryEditOriginalId = null;
+    setInfoStatus('The selected folder is already this Library’s linked folder. No changes were made.', { ttl: 4000 });
+    return { ok: true, noChange: true };
+  }
+  const activated = await activateRelinkedLibrary(linked.library, originalId, token);
+  if (!activated.ok) return activated;
+  libraryEditOriginalId = null;
+  setInfoStatus('Linked folder changed. The open map and its save destination were not changed.', { ttl: 5000 });
+  return { ok: true, library: linked.library };
+}
+
+const libraryEditButton = document.querySelector('#library-edit');
+
+const libraryListAction = document.querySelector('#library-list-action');
 const libraryCollectionEl = document.querySelector('#library-collection');
 const libraryCollectionListEl = document.querySelector('#library-collection-list');
 const libraryCollectionStatusEl = document.querySelector('#library-collection-status');
@@ -3360,6 +3445,7 @@ if (libraryListAction) libraryListAction.addEventListener('click', () => {
   (libraryCollectionListEl?.querySelector('button') || libraryLinkButton)?.focus?.();
 });
 if (libraryLinkButton) libraryLinkButton.addEventListener('click', () => { if (!destroying) void requestLibraryConnection(); });
+if (libraryEditButton) libraryEditButton.addEventListener('click', () => { if (!destroying) openLibraryEdit(); });
 if (libraryCollectionRefreshButton) libraryCollectionRefreshButton.addEventListener('click', () => { if (!destroying) void refreshLibraryCollectionStatus(); });
 
 function renderOrbitPanel() {
@@ -3369,6 +3455,11 @@ function renderOrbitPanel() {
   const canAdd = Boolean(hasMap && !busy);
   const snapshot = orbitState.snapshot();
   orbitPanel.render(snapshot, { supported: orbitAdapter.supported, currentKey: orbitCurrentEntryKey, busy, pendingName: libraryPendingName });
+  const selectedLibrary = libraryCollection?.snapshot().selected;
+  if (libraryEditButton) {
+    libraryEditButton.hidden = !selectedLibrary || libraryListOpen || Boolean(libraryPendingName);
+    libraryEditButton.disabled = busy || Boolean(libraryPendingName);
+  }
   renderLibraryCollection();
   if (createMapDialog?.open) createMapDialog.refreshSaveLocation?.();
   syncSidebarTooltips();

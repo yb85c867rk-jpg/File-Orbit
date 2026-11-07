@@ -8,9 +8,8 @@ export function createOrbitPanel({ document, onRefresh, onSelect, onChoose, onRe
   const statusEl = document.querySelector('#orbit-status');
   const emptyEl = document.querySelector('#orbit-empty');
   const listEl = document.querySelector('#orbit-list');
-  const chooseButton = document.querySelector('#orbit-choose');
   const reconnectButton = document.querySelector('#orbit-reconnect');
-  if (!section || !toggle || !panel || !nameEl || !refreshButton || !statusEl || !emptyEl || !listEl || !chooseButton || !reconnectButton) {
+  if (!section || !toggle || !panel || !nameEl || !refreshButton || !statusEl || !emptyEl || !listEl || !reconnectButton) {
     throw new TypeError('Orbit panel elements are missing.');
   }
   let last = null;
@@ -98,8 +97,6 @@ export function createOrbitPanel({ document, onRefresh, onSelect, onChoose, onRe
       expanded = true;
       section.hidden = false;
       nameEl.textContent = String(pendingName);
-      chooseButton.textContent = 'Change Directory';
-      chooseButton.disabled = true;
       reconnectButton.hidden = true;
       panel.setAttribute('aria-busy', 'true');
       setButton(refreshButton, true);
@@ -113,8 +110,6 @@ export function createOrbitPanel({ document, onRefresh, onSelect, onChoose, onRe
     wasActive = active;
     section.hidden = false;
     nameEl.textContent = active ? String(snapshot.name || snapshot.handle?.name || 'Library directory') : 'No directory connected';
-    chooseButton.textContent = active ? 'Change Directory' : 'Choose Directory';
-    chooseButton.disabled = Boolean(busy || snapshot?.phase === 'opening' || snapshot?.phase === 'listing');
     const reconnect = Boolean(active && (snapshot?.error?.reason === 'permission-required' || snapshot?.error?.reason === 'permission-denied' || snapshot?.permission === 'prompt' || snapshot?.permission === 'denied'));
     reconnectButton.hidden = !reconnect;
     reconnectButton.disabled = Boolean(busy || snapshot?.phase === 'opening' || snapshot?.phase === 'listing');
@@ -145,7 +140,6 @@ export function createOrbitPanel({ document, onRefresh, onSelect, onChoose, onRe
     syncToggle();
     if (!expanded && panel.contains?.(document.activeElement)) toggle.focus?.();
   });
-  chooseButton.addEventListener('click', () => { if (!chooseButton.disabled) onChoose?.(); });
   reconnectButton.addEventListener('click', () => { if (!reconnectButton.disabled) onReconnect?.(); });
   refreshButton.addEventListener('click', () => { if (!refreshButton.disabled) onRefresh?.(); });
 

@@ -135,6 +135,33 @@ export function createLibraryCollectionController({
     });
   }
 
+  async function relink(id, handle, name) {
+    if (disposed) return { ok: false, reason: 'disposed' };
+    if (!handle || handle.kind !== 'directory') return { ok: false, reason: 'invalid-handle' };
+    if (!initialized) { const loaded = await initialize(); if (!loaded.ok) return loaded; }
+    const token = ++operationSeq;
+    const original = records.find((record) => record.id === id);
+    if (!original) return { ok: false, reason: 'unknown-library' };
+    const directoryName = String(name || handle.name || '').trim();
+    if (!directoryName) return { ok: false, reason: 'invalid-name' };
+    const sameOriginal = await sameHandle(handle, original.handle);
+    if (!sameOriginal.ok) return { ok: false, reason: 'identity-unverified' };
+    if (sameOriginal.same) return { ok: true, noChange: true, library: { ...original }, persisted: false };
+    const duplicate = await findByHandle(handle);
+    if (!duplicate.ok) return { ok: false, reason: 'identity-unverified' };
+    if (duplicate.record && duplicate.record.id !== id) return { ok: false, reason: 'already-linked', existingId: duplicate.record.id, library: { ...duplicate.record } };
+    if (disposed || token !== operationSeq) return { ok: false, reason: 'stale' };
+    if (!canPersist()) return { ok: false, reason: 'storage-write-failed', message: 'Collection persistence is unavailable.' };
+    const next = records.map((record) => record.id === id ? { ...record, handle, name: directoryName, updatedAt: now() } : record);
+    const saved = await settings.saveCollection(next, id);
+    if (!saved.ok) return saved;
+    if (disposed || token !== operationSeq) return { ok: false, reason: 'stale' };
+    records = next;
+    selectedId = id;
+    setStatus(id, { permission: 'granted', phase: 'ready', error: null, lastListedAt: now() });
+    return { ok: true, library: { ...records.find((record) => record.id === id) }, persisted: true };
+  }
+
   function markAccess(id, patch = {}) {
     if (!records.some((record) => record.id === id)) return null;
     return setStatus(id, patch);
@@ -153,6 +180,8 @@ export function createLibraryCollectionController({
   return {
     initialize,
     adopt,
+    relink,
+    findByHandle,
     select,
     persist: persistCollection,
     markAccess,
