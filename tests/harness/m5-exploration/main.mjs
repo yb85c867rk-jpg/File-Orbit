@@ -440,6 +440,7 @@ let uploadPickContext = null;
 let uploadPickGeneration = 0;
 let uploadLastFailure = null;
 let uploadLayoutExperimentOverride = null;
+const UPLOAD_DIAGNOSTIC_BUILD = 'upload-diagnostics-1';
 let createDraftDestinationMode = 'standalone';
 let creationFolderSeq = 0;
 function createSaveLocation() {
@@ -3196,6 +3197,7 @@ function uploadDiagnosticSource() {
     }
   } catch {}
   return {
+    buildId: UPLOAD_DIAGNOSTIC_BUILD,
     appModule: new URL('./main.mjs', import.meta.url).href,
     location: String(globalThis.location?.href || ''),
     lastModified: String(document.lastModified || ''),
