@@ -162,6 +162,36 @@ export function createLibraryCollectionController({
     return { ok: true, library: { ...records.find((record) => record.id === id) }, persisted: true };
   }
 
+  async function unlink(id, { expectedHandle = null, expectedName = null } = {}) {
+    if (disposed) return { ok: false, reason: 'disposed' };
+    if (!initialized) { const loaded = await initialize(); if (!loaded.ok) return loaded; }
+    if (disposed) return { ok: false, reason: 'disposed' };
+    const token = ++operationSeq;
+    const original = records.find((record) => record.id === id);
+    if (!original) return { ok: false, reason: 'unknown-library' };
+    if (!expectedHandle) return { ok: false, reason: 'identity-required' };
+    if (expectedName !== null && String(expectedName) !== original.name) return { ok: false, reason: 'target-changed' };
+    const compared = await sameHandle(expectedHandle, original.handle);
+    if (!compared.ok) return { ok: false, reason: 'identity-unverified' };
+    if (!compared.same) return { ok: false, reason: 'target-changed' };
+    if (disposed || token !== operationSeq) return { ok: false, reason: 'stale' };
+    const next = records.filter((record) => record.id !== id);
+    const nextSelectedId = selectedId === id ? null : selectedId;
+    if (!canPersist()) return { ok: false, reason: 'storage-write-failed', message: 'Collection persistence is unavailable.' };
+    const saved = await settings.saveCollection(next, nextSelectedId);
+    if (!saved.ok) return saved;
+    if (disposed || token !== operationSeq) return { ok: false, reason: 'stale' };
+    records = next;
+    selectedId = nextSelectedId;
+    statuses.delete(id);
+    return {
+      ok: true,
+      removed: { ...original },
+      selectedId,
+      persisted: true
+    };
+  }
+
   function markAccess(id, patch = {}) {
     if (!records.some((record) => record.id === id)) return null;
     return setStatus(id, patch);
@@ -181,6 +211,7 @@ export function createLibraryCollectionController({
     initialize,
     adopt,
     relink,
+    unlink,
     findByHandle,
     select,
     persist: persistCollection,

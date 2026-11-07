@@ -4,7 +4,7 @@ import { createLibraryCollectionController } from '../../harness/m5-exploration/
 
 const dir = (name, token = name) => ({ kind: 'directory', name, token, async isSameEntry(other) { return other?.token === token; } });
 function settingsStub({ libraries = [], selectedId = null, failSave = false, failLoad = false } = {}) {
-  const state = { libraries: libraries.map((r) => ({ ...r })), selectedId, saves: 0, writes: [] };
+  const state = { libraries: libraries.map((r) => ({ ...r })), selectedId, saves: 0, writes: [], failSave };
   return {
     state,
     async migrateLegacyCollection() { return { ok: true, migrated: false, initialized: true, libraries: state.libraries, selectedId: state.selectedId }; },
@@ -13,7 +13,7 @@ function settingsStub({ libraries = [], selectedId = null, failSave = false, fai
       return { ok: true, initialized: true, libraries: state.libraries.map((r) => ({ ...r })), selectedId: state.selectedId };
     },
     async saveCollection(libraries, selectedId) {
-      if (failSave) return { ok: false, reason: 'storage-write-failed', message: 'write failed' };
+      if (state.failSave) return { ok: false, reason: 'storage-write-failed', message: 'write failed' };
       state.saves += 1; state.libraries = libraries.map((r) => ({ ...r })); state.selectedId = selectedId; state.writes.push({ ids: libraries.map((r) => r.id), selectedId });
       return { ok: true };
     }
@@ -141,4 +141,110 @@ test('select rejects unknown IDs and persists valid selection', async () => {
   const selected = await controller.select('b');
   assert.equal(selected.ok, true);
   assert.equal(settings.state.selectedId, 'b');
+});
+
+
+test('unlink non-selected Library preserves selected ID and persists exact next collection', async () => {
+  const a = { id: 'a', handle: dir('A'), name: 'A' }; const b = { id: 'b', handle: dir('B'), name: 'B' };
+  const settings = settingsStub({ libraries: [a, b], selectedId: 'a' });
+  const controller = createLibraryCollectionController({ settings });
+  await controller.initialize();
+  const result = await controller.unlink('b', { expectedHandle: a.handle === b.handle ? a.handle : dir('B') });
+  assert.equal(result.ok, true); assert.equal(result.selectedId, 'a'); assert.equal(result.removed.id, 'b');
+  assert.deepEqual(controller.snapshot().libraries.map((r) => r.id), ['a']);
+  assert.equal(controller.snapshot().selectedId, 'a');
+  assert.deepEqual(settings.state.writes.at(-1), { ids: ['a'], selectedId: 'a' });
+});
+
+test('unlink selected Library sets selectedId null without choosing another', async () => {
+  const a = { id: 'a', handle: dir('A'), name: 'A' }; const b = { id: 'b', handle: dir('B'), name: 'B' };
+  const settings = settingsStub({ libraries: [a, b], selectedId: 'b' });
+  const controller = createLibraryCollectionController({ settings });
+  await controller.initialize();
+  const result = await controller.unlink('b', { expectedHandle: dir('B') });
+  assert.equal(result.ok, true); assert.equal(result.selectedId, null);
+  assert.equal(controller.snapshot().selectedId, null);
+  assert.deepEqual(controller.snapshot().libraries.map((r) => r.id), ['a']);
+  assert.deepEqual(settings.state.writes.at(-1), { ids: ['a'], selectedId: null });
+  assert.equal(controller.getStatus('b').phase, 'idle');
+});
+
+test('unlink final Library persists an authoritative empty collection', async () => {
+  const a = { id: 'a', handle: dir('A'), name: 'A' };
+  const settings = settingsStub({ libraries: [a], selectedId: 'a' });
+  const controller = createLibraryCollectionController({ settings });
+  await controller.initialize();
+  const result = await controller.unlink('a', { expectedHandle: dir('A') });
+  assert.equal(result.ok, true);
+  assert.deepEqual(settings.state.libraries, []);
+  assert.equal(settings.state.selectedId, null);
+  assert.deepEqual(settings.state.writes.at(-1), { ids: [], selectedId: null });
+  assert.deepEqual(controller.snapshot().libraries, []);
+  assert.equal(controller.snapshot().selectedId, null);
+});
+
+test('unlink storage failure preserves collection/selection and can be retried', async () => {
+  const a = { id: 'a', handle: dir('A'), name: 'A' }; const b = { id: 'b', handle: dir('B'), name: 'B' };
+  const settings = settingsStub({ libraries: [a, b], selectedId: 'b', failSave: true });
+  const controller = createLibraryCollectionController({ settings });
+  await controller.initialize();
+  const before = controller.snapshot();
+  const failed = await controller.unlink('b', { expectedHandle: dir('B') });
+  assert.equal(failed.ok, false); assert.equal(failed.reason, 'storage-write-failed');
+  assert.deepEqual(controller.snapshot().libraries.map((r) => r.id), before.libraries.map((r) => r.id));
+  assert.equal(controller.snapshot().selectedId, 'b');
+  settings.state.failSave = false;
+  const retried = await controller.unlink('b', { expectedHandle: dir('B') });
+  assert.equal(retried.ok, true);
+  assert.deepEqual(controller.snapshot().libraries.map((r) => r.id), ['a']);
+  assert.equal(controller.snapshot().selectedId, null);
+});
+
+test('unlink rejects unknown, changed, unverifiable and repeated targets without mutation', async () => {
+  const a = { id: 'a', handle: dir('A'), name: 'A' }; const b = { id: 'b', handle: dir('B'), name: 'B' };
+  const settings = settingsStub({ libraries: [a, b], selectedId: 'a' });
+  const controller = createLibraryCollectionController({ settings });
+  await controller.initialize();
+  assert.equal((await controller.unlink('missing', { expectedHandle: dir('X') })).reason, 'unknown-library');
+  assert.equal((await controller.unlink('b', { expectedHandle: dir('B', 'other') })).reason, 'target-changed');
+  assert.equal((await controller.unlink('b', { expectedHandle: dir('B'), expectedName: 'Renamed B' })).reason, 'target-changed');
+  assert.equal((await controller.unlink('b')).reason, 'identity-required');
+  const broken = { kind: 'directory', name: 'B', async isSameEntry() { throw new Error('compare failed'); } };
+  assert.equal((await controller.unlink('b', { expectedHandle: broken })).reason, 'identity-unverified');
+  assert.deepEqual(controller.snapshot().libraries.map((r) => r.id), ['a', 'b']);
+  assert.equal((await controller.unlink('b', { expectedHandle: dir('B') })).ok, true);
+  assert.equal((await controller.unlink('b', { expectedHandle: dir('B') })).reason, 'unknown-library');
+  assert.deepEqual(settings.state.libraries.map((r) => r.id), ['a']);
+});
+
+test('unlink uses only collection persistence and never a file/directory mutation API', async () => {
+  const calls = [];
+  const handle = { kind: 'directory', name: 'A', async isSameEntry() { calls.push('isSameEntry'); return true; } };
+  const settings = settingsStub({ libraries: [{ id: 'a', handle, name: 'A' }], selectedId: 'a' });
+  settings.saveCollection = async (libraries, selectedId) => { calls.push('saveCollection'); return { ok: true, libraries, selectedId }; };
+  const controller = createLibraryCollectionController({ settings });
+  await controller.initialize();
+  const result = await controller.unlink('a', { expectedHandle: handle });
+  assert.equal(result.ok, true);
+  assert.deepEqual(calls, ['saveCollection']);
+  assert.equal(calls.some((call) => /remove|delete|rename|write|createWritable/.test(call)), false);
+});
+
+
+test('delayed unlink identity check becomes stale after a newer collection operation', async () => {
+  const a = { id: 'a', handle: dir('A'), name: 'A' };
+  const settings = settingsStub({ libraries: [a], selectedId: 'a' });
+  const controller = createLibraryCollectionController({ settings });
+  await controller.initialize();
+  let release;
+  const gate = new Promise((resolve) => { release = resolve; });
+  const delayed = { kind: 'directory', name: 'A', async isSameEntry() { await gate; return true; } };
+  const pending = controller.unlink('a', { expectedHandle: delayed, expectedName: 'A' });
+  await new Promise((resolve) => setTimeout(resolve, 0));
+  assert.equal((await controller.select('a', { persist: false })).ok, true);
+  release();
+  const result = await pending;
+  assert.equal(result.reason, 'stale');
+  assert.deepEqual(controller.snapshot().libraries.map((r) => r.id), ['a']);
+  assert.equal(settings.state.libraries.length, 1);
 });
