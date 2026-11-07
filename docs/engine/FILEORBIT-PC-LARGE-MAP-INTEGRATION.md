@@ -722,3 +722,11 @@ The Create Map form is reorganized into Map Information, a collapsed optional so
 The Map Library Setting section retains the existing destination controls and accurately labels standalone versus connected destinations. Create still uses the existing save/creation pipeline and confirmation. Details now renders `data.description` for the root/selected node with pre-wrap text.
 
 Known Step 1 transaction limitation: title-only creation still invokes the existing save-destination picker/transaction; there is no separate draft Library destination or publish-after-success redesign yet. Large source-folder import and collision behavior remain on the existing pipeline.
+
+## Map Library collection storage (Phase A1)
+
+A version-2 `map-libraries-v2` settings record stores `{version, libraries:[{id, handle, name, updatedAt}], selectedId, updatedAt}`. Handles are structured-cloneable File System Access handles, never JSON. Library IDs are application-generated stable IDs; names are actual directory names and are not identities. Selected IDs must reference a stored record.
+
+`loadCollection()` is read-only. `migrateLegacyCollection()` is the only migration operation: an existing valid collection, including an empty collection, is authoritative; otherwise a legacy `map-library-directory` creates one Library and the legacy record is retained. Repeating migration is idempotent. Malformed/unsupported collection records fail explicitly and never fall back to legacy data.
+
+`saveCollection()` serializes writes per API instance with latest-wins ordering and resolves after transaction completion. Failures return `{ok:false, reason, message}` for invalid records, invalid selected IDs, clone failures, storage errors and superseded writes. This is not cross-tab conflict protection. The current application still uses the legacy single-directory `load/save/clear` API; no sidebar or Create Map integration is active in Phase A1.
