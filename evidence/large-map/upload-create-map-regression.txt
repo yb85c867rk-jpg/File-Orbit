@@ -1,0 +1,20 @@
+﻿Tested SHA: 42f40363a0aeb94275030b56e815104ac58c5341
+Command: node --test --test-isolation=none tests/engine/exploration/create-map.test.mjs
+
+✔ normalizes relative paths and rejects absolute/traversal/ambiguous forms (0.8528ms)
+✔ multiple files, nested/empty folders, unicode names, deterministic order (2.8063ms)
+✔ duplicate and conflicting sibling paths reject; same name in different folders allowed (0.487ms)
+✔ title-only selection creates exactly one structural root; a selected empty folder remains valid (0.2742ms)
+✔ node, per-file, and total-byte limits reject without partial registry retention (0.7926ms)
+✔ stale selection and classification failure release candidate attachments (0.4203ms)
+✔ imported files start with description:null and require one on subsequent Edit Data (0.6323ms)
+✔ creation description limit is 500 Unicode code points (0.3388ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 30.81
+
