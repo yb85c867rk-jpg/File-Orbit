@@ -492,6 +492,9 @@ let orbitState = createOrbitStateController({ adapter: orbitAdapter });
 let mapLibrarySettings = null;
 try { mapLibrarySettings = createMapLibrarySettings({ indexedDB: globalThis.indexedDB }); } catch { mapLibrarySettings = null; }
 let libraryCollection = null;
+let libraryListOpen = false;
+let libraryPendingName = null;
+let libraryCollectionRefreshToken = 0;
 try { libraryCollection = createLibraryCollectionController({ settings: mapLibrarySettings, canPersist: () => !mapLibraryStorageFailureForTest }); } catch { libraryCollection = null; }
 let mapLibraryRestoreToken = 0;
 let mapLibraryPermissionRequestCount = 0;
@@ -3248,13 +3251,125 @@ async function pickCreationDestination(title) {
   return { ok: true, handle: picked.handle, name: picked.handle?.name || suggested, forceDownload: false, mode: 'writable' };
 }
 
+﻿const libraryListAction = document.querySelector('#library-list-action');
+const libraryCollectionEl = document.querySelector('#library-collection');
+const libraryCollectionListEl = document.querySelector('#library-collection-list');
+const libraryCollectionStatusEl = document.querySelector('#library-collection-status');
+const libraryCollectionEmptyEl = document.querySelector('#library-collection-empty');
+const libraryLinkButton = document.querySelector('#library-link');
+const libraryCollectionRefreshButton = document.querySelector('#library-collection-refresh');
+const librarySelectedEl = document.querySelector('#library-selected');
+
+function collectionStatusText(status) {
+  if (!status) return '';
+  if (status.error === 'permission-required' || status.permission === 'prompt') return 'Reconnect needed';
+  if (status.error === 'permission-denied' || status.permission === 'denied') return 'Access denied';
+  if (status.phase === 'blocked') return 'Unavailable';
+  if (status.phase === 'listing') return 'Refreshing…';
+  return '';
+}
+
+function renderLibraryCollection() {
+  if (!libraryCollectionEl || !librarySelectedEl) return;
+  libraryCollectionEl.hidden = !libraryListOpen;
+  librarySelectedEl.hidden = libraryListOpen;
+  if (!libraryListOpen || !libraryCollectionListEl) return;
+  const snapshot = libraryCollection?.snapshot?.() || { libraries: [], selectedId: null };
+  libraryCollectionListEl.replaceChildren();
+  const names = snapshot.libraries.map((record) => record.name);
+  for (const record of snapshot.libraries) {
+    const item = document.createElement('li');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.dataset.libraryId = record.id;
+    button.setAttribute('aria-current', String(record.id === snapshot.selectedId));
+    const name = document.createElement('span');
+    name.className = 'library-collection-name';
+    name.textContent = record.name;
+    const meta = document.createElement('span');
+    meta.className = 'library-collection-meta';
+    const status = collectionStatusText(libraryCollection?.getStatus?.(record.id));
+    const duplicateName = names.filter((value) => value === record.name).length > 1;
+    const identifier = duplicateName ? ` · #${record.id.slice(0, 6)}` : '';
+    meta.textContent = `${status || 'Linked'}${identifier}`;
+    button.append(name, meta);
+    button.addEventListener('click', () => { void selectLibraryFromCollection(record.id); });
+    item.appendChild(button);
+    libraryCollectionListEl.appendChild(item);
+  }
+  if (libraryCollectionEmptyEl) libraryCollectionEmptyEl.hidden = snapshot.libraries.length !== 0;
+  if (libraryCollectionStatusEl) libraryCollectionStatusEl.textContent = snapshot.libraries.length ? `${snapshot.libraries.length} linked ${snapshot.libraries.length === 1 ? 'Library' : 'Libraries'}.` : '';
+}
+
+async function selectLibraryFromCollection(id) {
+  if (destroying || !libraryCollection) return { ok: false, reason: 'unavailable' };
+  const current = libraryCollection.snapshot();
+  const record = current.libraries.find((item) => item.id === id);
+  if (!record) { setInfoStatus('That Map Library is no longer in the collection.', { ttl: 4000 }); return { ok: false, reason: 'unknown-library' }; }
+  const token = ++mapLibraryRestoreToken;
+  libraryListOpen = false;
+  libraryPendingName = record.name;
+  renderOrbitPanel();
+  const selected = await libraryCollection.select(id, { persist: true });
+  if (destroying || token !== mapLibraryRestoreToken) return { ...(selected || {}), stale: true };
+  if (!selected?.library) { libraryPendingName = null; renderOrbitPanel(); setShellStatus('That Map Library could not be selected.'); return selected; }
+  if (!selected.persisted) setShellStatus('Map Library selected for this session, but the selection could not be remembered.');
+  const queried = mapLibraryReadQueryOverride ? { ok: true, permission: mapLibraryReadQueryOverride } : await orbitAdapter.queryReadPermission(record.handle);
+  mapLibraryReadQueryOverride = null;
+  if (destroying || token !== mapLibraryRestoreToken) return { ok: false, reason: 'stale' };
+  if (!queried?.ok || queried.permission === 'denied') {
+    await orbitState.restoreDirectory(record.handle, { name: record.name, permission: 'denied' });
+    if (destroying || token !== mapLibraryRestoreToken) return { ok: false, reason: 'stale' };
+    libraryCollection.markAccess(record.id, { permission: 'denied', phase: 'blocked', error: 'permission-denied' });
+  } else {
+    const permission = queried.permission === 'granted' ? 'granted' : 'prompt';
+    await orbitState.restoreDirectory(record.handle, { name: record.name, permission, enumerate: permission === 'granted' });
+    if (destroying || token !== mapLibraryRestoreToken) return { ok: false, reason: 'stale' };
+    libraryCollection.markAccess(record.id, { permission, phase: permission === 'granted' ? 'ready' : 'blocked', error: permission === 'granted' ? null : 'permission-required', lastListedAt: permission === 'granted' ? Date.now() : null });
+    if (permission === 'granted') await syncOrbitCurrentEntry();
+  }
+  if (destroying || token !== mapLibraryRestoreToken) return { ok: false, reason: 'stale' };
+  libraryPendingName = null;
+  renderOrbitPanel();
+  orbitPanel?.focusAction?.();
+  return { ok: true, library: selected.library, persisted: selected.persisted, permission: queried.permission };
+}
+
+async function refreshLibraryCollectionStatus() {
+  if (!libraryCollection || destroying) return { ok: false, reason: 'unavailable' };
+  const token = ++libraryCollectionRefreshToken;
+  const snapshot = libraryCollection.snapshot();
+  if (libraryCollectionStatusEl) libraryCollectionStatusEl.textContent = 'Refreshing Library status…';
+  for (const record of snapshot.libraries) {
+    const queried = await orbitAdapter.queryReadPermission(record.handle);
+    if (destroying || token !== libraryCollectionRefreshToken) return { ok: false, reason: 'stale' };
+    if (!queried?.ok || queried.permission === 'denied') libraryCollection.markAccess(record.id, { permission: 'denied', phase: 'blocked', error: 'permission-denied' });
+    else if (queried.permission === 'granted') libraryCollection.markAccess(record.id, { permission: 'granted', phase: record.id === libraryCollection.snapshot().selectedId ? 'ready' : 'idle', error: null });
+    else libraryCollection.markAccess(record.id, { permission: 'prompt', phase: 'blocked', error: 'permission-required' });
+  }
+  if (destroying || token !== libraryCollectionRefreshToken) return { ok: false, reason: 'stale' };
+  renderLibraryCollection();
+  return { ok: true };
+}
+
+if (libraryListAction) libraryListAction.addEventListener('click', () => {
+  if (destroying) return;
+  libraryListOpen = true;
+  libraryPendingName = null;
+  renderOrbitPanel();
+  (libraryCollectionListEl?.querySelector('button') || libraryLinkButton)?.focus?.();
+});
+if (libraryLinkButton) libraryLinkButton.addEventListener('click', () => { if (!destroying) void requestLibraryConnection(); });
+if (libraryCollectionRefreshButton) libraryCollectionRefreshButton.addEventListener('click', () => { if (!destroying) void refreshLibraryCollectionStatus(); });
+
 function renderOrbitPanel() {
   if (!orbitPanel) return;
   let busy = false;
   try { busy = Boolean(orbitWorkspaceBusy || documentSaving || persistenceBusy || replacementGuard || pendingBackupImport || installingBackupImport); } catch { busy = false; }
   const canAdd = Boolean(hasMap && !busy);
   const snapshot = orbitState.snapshot();
-  orbitPanel.render(snapshot, { supported: orbitAdapter.supported, currentKey: orbitCurrentEntryKey, busy });
+  orbitPanel.render(snapshot, { supported: orbitAdapter.supported, currentKey: orbitCurrentEntryKey, busy, pendingName: libraryPendingName });
+  renderLibraryCollection();
   if (createMapDialog?.open) createMapDialog.refreshSaveLocation?.();
   syncSidebarTooltips();
 }
@@ -3397,6 +3512,8 @@ async function openOrbit({ deferStatus = false } = {}) {
   const result = await pending;
   if (destroying) return { ok: false, reason: 'stale', stale: true, ownership, statusMessage };
   if (result?.ok) {
+    libraryListOpen = false;
+    libraryPendingName = null;
     const snapshot = orbitState.snapshot();
     publishStatus('Map Library connected: ' + (result.state?.name || snapshot.name || 'directory') + '.', 'routine');
     await persistMapLibraryHandle(snapshot.handle, snapshot.name);

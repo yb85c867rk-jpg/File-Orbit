@@ -126,9 +126,9 @@ export function createLibraryCollectionController({
     if (!initialized) return initialize().then((loaded) => loaded.ok ? select(id, { persist }) : loaded);
     const record = records.find((item) => item.id === id);
     if (!record) return { ok: false, reason: 'unknown-library' };
+    const token = ++operationSeq;
     selectedId = record.id;
     if (!persist) return { ok: true, library: { ...record }, persisted: false };
-    const token = ++operationSeq;
     return persistCollection().then((result) => {
       if (disposed || token !== operationSeq) return { ok: false, reason: 'stale' };
       return { ok: Boolean(result.ok), library: { ...record }, persisted: Boolean(result.ok), persistence: result.ok ? null : result };

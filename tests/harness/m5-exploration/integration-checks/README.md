@@ -88,3 +88,5 @@ These use test hooks/picker stubs, not native OS acceptance.
 - Collection storage tests (`tests/engine/persistence/map-library-settings.test.mjs`) and OPFS structured-clone evidence (`map-library-collection-opfs-check.mjs`) cover Phase A1 only; application integration is Phase A2.
 
 - Phase A2 controller tests and integration checks cover migration/empty authority, A/B retention, reload, dedupe, active-document preservation and failure paths while retaining the existing sidebar.
+
+- `library-collection-ui-check.mjs`: actual B1 sidebar collection/empty/selected views, linking, duplicate reuse, cancel, refresh, reconnect, narrow/light presentation and reload.

@@ -739,3 +739,11 @@ The application now uses one `LibraryCollectionController` over the A1 `map-libr
 Choose/Change Directory still uses the accepted read-only picker and explanation. Successful adoption deduplicates by `isSameEntry`, preserves earlier records, adds a stable-ID record when new, selects it, and persists via the collection controller. Identity-comparison errors do not merge by name. Durable write failure keeps the session record and reports that it could not be remembered. Picker cancellation and adoption failure preserve the prior selection, list, settings and active document.
 
 Reconnect and refresh remain read-only and operate on the selected record. Permission/listing status is tracked by Library ID. Application flows no longer call legacy `load/save/clear`; the legacy record and compatibility API remain for migration only. The visible sidebar remains the existing single-selected-Library UI. The new Map Library List, link-edit modal, Create Map restructuring, Upload, Unlink and Delete are deferred.
+
+## Map Library collection list (Phase B1)
+
+The sidebar section is now “Map libraries”. `Map Library List` switches between the shared linked-Library collection and the selected-Library view. The collection shows actual directory names, selected state, and concise access status; same-named directories are distinguished by abbreviated application IDs. Linking uses the accepted read-only explanation/picker and controller deduplication. Selecting a Library uses its stored handle, queries read permission without requesting it, clears the old list while loading, and enumerates only when granted. Permission-required selection shows the selected name and Reconnect.
+
+Collection Refresh queries permission/status only and never enumerates or opens maps. Selected-Library Refresh re-enumerates only that directory. Both preserve the active document and writable destination. Returning to the current map’s Library restores highlighting through actual file identity. The directory-edit modal, aliases, Create Map changes, Upload, Unlink and Delete remain deferred.
+
+Selection now advances the controller operation token even when `persist:false`, so a delayed adoption cannot overwrite a newer selection.

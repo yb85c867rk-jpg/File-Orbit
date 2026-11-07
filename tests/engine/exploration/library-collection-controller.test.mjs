@@ -76,6 +76,25 @@ test('read failure is truthful and disposal prevents later adoption', async () =
   assert.equal(controller.snapshot().libraries.length, 0);
 });
 
+test('non-persisted selection invalidates a delayed adoption continuation', async () => {
+  const a = { id: 'a', handle: dir('A'), name: 'A' };
+  const settings = settingsStub({ libraries: [a], selectedId: 'a' });
+  const controller = createLibraryCollectionController({ settings, createId: () => 'new' });
+  await controller.initialize();
+  let release;
+  const gate = new Promise((resolve) => { release = resolve; });
+  const delayed = { kind: 'directory', name: 'B', async isSameEntry() { await gate; return false; } };
+  const adoption = controller.adopt(delayed, { name: 'B' });
+  await new Promise((resolve) => setTimeout(resolve, 0));
+  const selected = controller.select('a', { persist: false });
+  assert.equal(selected.ok, true);
+  release();
+  const adopted = await adoption;
+  assert.equal(adopted.reason, 'stale');
+  assert.equal(controller.snapshot().selectedId, 'a');
+  assert.deepEqual(controller.snapshot().libraries.map((r) => r.id), ['a']);
+});
+
 test('select rejects unknown IDs and persists valid selection', async () => {
   const a = { id: 'a', handle: dir('A'), name: 'A' }; const b = { id: 'b', handle: dir('B'), name: 'B' };
   const settings = settingsStub({ libraries: [a, b], selectedId: 'a' });

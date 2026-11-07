@@ -90,10 +90,25 @@ export function createOrbitPanel({ document, onRefresh, onSelect, onChoose, onRe
     panel.hidden = !visibleExpanded;
   };
 
-  function render(snapshot, { supported = true, currentKey = null, busy = false } = {}) {
+  function render(snapshot, { supported = true, currentKey = null, busy = false, pendingName = null } = {}) {
     last = snapshot || null;
     currentEntryKey = currentKey || null;
     const active = Boolean(snapshot?.handle);
+    if (pendingName) {
+      expanded = true;
+      section.hidden = false;
+      nameEl.textContent = String(pendingName);
+      chooseButton.textContent = 'Change Directory';
+      chooseButton.disabled = true;
+      reconnectButton.hidden = true;
+      panel.setAttribute('aria-busy', 'true');
+      setButton(refreshButton, true);
+      statusEl.textContent = 'Loading ' + String(pendingName) + '…';
+      emptyEl.hidden = true;
+      listEl.replaceChildren();
+      syncToggle();
+      return;
+    }
     if (active && !wasActive) expanded = railExpanded();
     wasActive = active;
     section.hidden = false;
