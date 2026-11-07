@@ -803,3 +803,11 @@ When preparation fails after the preview candidate exists, the preview retains t
 It deliberately excludes uploaded filenames, source paths, destination names, descriptions, attachment IDs, attachment bytes, and file contents. The original directory is only read by the native picker. The JSON must be supplied manually; no diagnostic is sent automatically.
 
 If the export shows `comparisonMode:true` but `requestedExperiment:null` or `effectiveReferenceProjectionRadiusCss:240`, the layout configuration was lost before the actual recompute (or the browser is running stale modules). If it shows requested/effective R480 and the failing parent’s required clearance exceeds available clearance, the real hierarchy is infeasible under the current layout. If it shows requested R480 but effective R240, a forwarding/module mismatch is proven; this is distinct from both cases.
+
+### Descendant-aware angular clearance (experimental, >300 comparison maps)
+
+The v2 allocator historically reserved only each child's own sibling clearance and split the remaining parent span by child demand. A deep child with many descendants could therefore receive a span smaller than the sum of its descendants' minimum clearance. In the anonymized 492-node Upload, `n153` (depth 4, 22 direct file children) received `0.022111091882192735` rad while its children required `0.049280487493726446` rad.
+
+The opt-in `descendantAwareClearance` mode first computes, bottom-up, the minimum angular span each subtree needs from its own child clearances. At each parent, each child base is `max(own sibling clearance, subtree minimum)`; only the residual after those minima is distributed by demand. A parent that cannot satisfy its minimum bases still fails with diagnostics rather than shrinking glyphs or hiding nodes.
+
+The mode is enabled only for comparison-mode structures above 300 nodes (Upload, ordinary open/reopen, and Undo/Redo replay). Ordinary ≤300 behavior, non-comparison large-map rendering, admission limits, clearance CSS, glyph sizes and diagnostics remain unchanged. It does not flatten the hierarchy or alter visibility/serialization. Actual 492-node Upload: 85 folders, 407 files, depth 7, 492/1000, R480, descendant-aware, workspace scale 2.5, zero unsatisfied parents. Reopen uses the same mode.

@@ -16,6 +16,7 @@ export const V2_DEFAULTS = Object.freeze({
   safetyMargin: 1e-6,
   glyphRadiusCss: 6,
   clearanceCss: 4,
+  descendantAwareClearance: false,
   referenceProjectionRadiusCss: 240,
   workspaceScaleMin: 1,
   workspaceScaleMax: 16,
@@ -159,6 +160,57 @@ function validateV2Invariants(nodes, angular, config) {
     }
   }
 }
+function minimumDescendantSpans(angular, maxRhoByDepth, config, workspaceScale) {
+  const radialById = new Map([[angular.rootId, 0]]);
+  const requiredByChild = new Map();
+  const order = [angular.rootId];
+  for (let index = 0; index < order.length; index += 1) {
+    const parentId = order[index];
+    const parentRho = radialById.get(parentId);
+    const childIds = angular.children.get(parentId) || [];
+    for (let childIndex = 0; childIndex < childIds.length; childIndex += 1) {
+      const childId = childIds[childIndex];
+      const depth = angular.depths.get(childId);
+      const lower = parentRho + config.minStep;
+      const upper = maxRhoByDepth.get(depth);
+      if (!Number.isFinite(upper) || upper < lower) return { ok: false, parentId, lower, upper };
+      const bandIndex = childIndex % config.bandCount;
+      const bandFraction = config.bandCount === 1 ? 1 : 0.2 + 0.8 * bandIndex / (config.bandCount - 1);
+      const rho = lower + config.radialFlex * bandFraction * (upper - lower);
+      const arcRadius = rho * config.referenceProjectionRadiusCss * workspaceScale;
+      const required = 2 * Math.asin(Math.min(1, (2 * config.glyphRadiusCss + config.clearanceCss) / (2 * arcRadius)));
+      radialById.set(childId, rho);
+      requiredByChild.set(childId, required);
+      order.push(childId);
+    }
+  }
+  const minimumByNode = new Map();
+  for (let index = order.length - 1; index >= 0; index -= 1) {
+    const id = order[index];
+    let minimum = 0;
+    for (const childId of angular.children.get(id) || []) {
+      minimum += Math.max(requiredByChild.get(childId), minimumByNode.get(childId) || 0);
+    }
+    minimumByNode.set(id, minimum);
+  }
+  return { ok: true, minimumByNode };
+}
+
+function radialBandFailure({ unsatisfied, config, workspaceScale }) {
+  return {
+    feasibility: {
+      satisfied: false,
+      workspaceScale,
+      maxWorkspaceScale: config.workspaceScaleMax,
+      unsatisfied,
+      glyphRadiusCss: config.glyphRadiusCss,
+      clearanceCss: config.clearanceCss,
+      referenceProjectionRadiusCss: config.referenceProjectionRadiusCss,
+      descendantAwareClearance: config.descendantAwareClearance
+    }
+  };
+}
+
 function attemptV2(graph, angular, nodeOptions, phases, maxDepth, maxRhoByDepth, demand, config, workspaceScale) {
   const nodes = new Map();
   const positions = (theta, rho) => new Map(phases.map((phase) => [phase, { theta, rho }]));
@@ -194,6 +246,16 @@ function attemptV2(graph, angular, nodeOptions, phases, maxDepth, maxRhoByDepth,
     });
   }
   const unsatisfied = [];
+  const descendantMinimums = config.descendantAwareClearance
+    ? minimumDescendantSpans(angular, maxRhoByDepth, config, workspaceScale)
+    : null;
+  if (descendantMinimums && !descendantMinimums.ok) {
+    const failure = radialBandFailure({
+      unsatisfied: [{ parentId: descendantMinimums.parentId, reason: 'radial-band', lower: descendantMinimums.lower, upper: descendantMinimums.upper, workspaceScale }],
+      config, workspaceScale
+    });
+    return failure;
+  }
   const queue = [angular.rootId];
   let head = 0;
   while (head < queue.length) {
@@ -211,25 +273,18 @@ function attemptV2(graph, angular, nodeOptions, phases, maxDepth, maxRhoByDepth,
       const upper = maxRhoByDepth.get(depth);
       if (!Number.isFinite(upper) || upper < lower) {
         unsatisfied.push({ parentId, reason: 'radial-band', lower, upper, workspaceScale });
-        return {
-          feasibility: {
-            satisfied: false,
-            workspaceScale,
-            maxWorkspaceScale: config.workspaceScaleMax,
-            unsatisfied,
-            glyphRadiusCss: config.glyphRadiusCss,
-            clearanceCss: config.clearanceCss,
-            referenceProjectionRadiusCss: config.referenceProjectionRadiusCss
-          }
-        };
+        return radialBandFailure({ unsatisfied, config, workspaceScale });
       }
       const bandFraction = config.bandCount === 1 ? 1 : 0.2 + 0.8 * bandIndex / (config.bandCount - 1);
       const approximateRho = lower + config.radialFlex * bandFraction * (upper - lower);
       const arcRadius = approximateRho * config.referenceProjectionRadiusCss * workspaceScale;
       const required = 2 * Math.asin(Math.min(1, (2 * config.glyphRadiusCss + config.clearanceCss) / (2 * arcRadius)));
-      return { childId, index, depth, bandIndex, lower, upper, bandFraction, approximateRho, required };
+      const minimumRequired = descendantMinimums
+        ? Math.max(required, descendantMinimums.minimumByNode.get(childId) || 0)
+        : required;
+      return { childId, index, depth, bandIndex, lower, upper, bandFraction, approximateRho, required, minimumRequired };
     });
-    const totalRequired = childInfo.reduce((sum, item) => sum + item.required, 0);
+    const totalRequired = childInfo.reduce((sum, item) => sum + item.minimumRequired, 0);
     if (totalRequired > parentSpan) {
       unsatisfied.push({ parentId, required: totalRequired, available: parentSpan, workspaceScale });
       return {
@@ -260,7 +315,7 @@ function attemptV2(graph, angular, nodeOptions, phases, maxDepth, maxRhoByDepth,
     let angleInit = parent.angleSpan.begin;
     for (const item of childInfo) {
       const child = nodes.get(item.childId);
-      const span = item.required + remaining * demand.get(item.childId) / totalDemand;
+      const span = item.minimumRequired + remaining * demand.get(item.childId) / totalDemand;
       const next = angleInit + span;
       const rho = item.lower + config.radialFlex * item.bandFraction * (item.upper - item.lower);
       child.angleSpan = { begin: angleInit, end: next };
@@ -354,6 +409,7 @@ function attemptV2(graph, angular, nodeOptions, phases, maxDepth, maxRhoByDepth,
 
 function normalizeV2Config(options) {
   const config = { ...V2_DEFAULTS, ...(options.experimentV2 || {}) };
+  if (typeof config.descendantAwareClearance !== 'boolean') throw new LayoutContractError('invalid-experiment-v2', 'descendantAwareClearance must be boolean');
   for (const key of ['minStep', 'radialFlex', 'branchWeight', 'demandCompression', 'safetyMargin', 'glyphRadiusCss', 'clearanceCss', 'referenceProjectionRadiusCss', 'workspaceScaleMin', 'workspaceScaleMax', 'workspaceScaleStep', 'radius']) {
     if (typeof config[key] !== 'number' || !Number.isFinite(config[key])) {
       throw new LayoutContractError('invalid-experiment-v2', `${key} must be finite`);

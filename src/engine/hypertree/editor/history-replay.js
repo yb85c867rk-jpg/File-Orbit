@@ -22,6 +22,12 @@ export function validateReplayAttachments(tree, registry) {
   }
   return { ok: true };
 }
+function countNodes(tree) {
+  let count = 0;
+  const walk = (node) => { count += 1; for (const child of node?.children || []) walk(child); };
+  if (tree) walk(tree);
+  return count;
+}
 export function performMetadataHistoryReplay({ direction, history, tree, datasetToken, commit, attachmentRegistry = null, policyContext = undefined, maxNodes = undefined, ...rest }) {
   if (!history) return { ok: false, reason: 'history-unavailable' };
   const plan = direction === 'undo' ? history.planUndo() : history.planRedo();
@@ -35,9 +41,13 @@ export function performMetadataHistoryReplay({ direction, history, tree, dataset
     const attachments = validateReplayAttachments(command.candidateTree, attachmentRegistry);
     if (!attachments.ok) return attachments;
   }
+  const candidateNodeCount = countNodes(command.candidateTree);
+  const layoutExperiment = rest.layoutExperimentForNodeCount?.(candidateNodeCount) ?? rest.layoutExperiment ?? null;
+  const layoutDiagnosticMaxNodes = rest.layoutDiagnosticMaxNodesForNodeCount?.(candidateNodeCount) ?? rest.layoutDiagnosticMaxNodes ?? null;
+  const { layoutExperimentForNodeCount, layoutDiagnosticMaxNodesForNodeCount, ...installRest } = rest;
   const result = performEditorCommandInstallation({
-    ...rest, tree, datasetToken, commit,
-    command: { ...command, baseLayout: rest.baseLayout, baseRevision: rest.baseRevision ?? 0 }
+    ...installRest, tree, datasetToken, commit,
+    command: { ...command, baseLayout: rest.baseLayout, baseRevision: rest.baseRevision ?? 0, layoutExperiment, layoutDiagnosticMaxNodes }
   });
   if (!result.ok) return result;
   history.commitMove(plan);
