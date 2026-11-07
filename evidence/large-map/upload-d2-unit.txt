@@ -1,36 +1,38 @@
-﻿Tested SHA: 253ab77ffa781af88ad42e6f68fa4bae84e7e597
+﻿Tested SHA: cf6513bb22bf72e971a9949b6817ea4aabb3922c
 
-✔ menu opens only and clamps near viewport (2.2835ms)
-✔ folder menu is Edit Folder, Add Folder, Add Data, Upload, disabled Delete Folder (0.8517ms)
-✔ data menu is Edit Data and disabled Delete Data only (0.2491ms)
-✔ outside click and Escape dismiss; destroy removes DOM (0.4911ms)
-✔ one upload history entry undoes and redoes the entire added hierarchy (1.1991ms)
-✔ bulk upload replay rejects a changed subtree and stale dataset (0.1871ms)
-✔ synthetic 84-folder/407-file upload reproduces R240 clearance failure and R480 success (34.3688ms)
-✔ multiple local files are added directly beneath the destination (1.9216ms)
-✔ multiple files under a nested destination preserve full hidden tree (0.377ms)
-✔ a selected source folder remains a child with its hierarchy and empty folders (7.1726ms)
-✔ an explicitly empty source folder is retained (0.3923ms)
-✔ same-named files in different folders keep distinct bytes and attachment IDs (0.4156ms)
-✔ Korean and zero-byte attachments preserve metadata (0.556ms)
-✔ sibling and case-normalized collisions reject the whole request with paths (0.3427ms)
-✔ node IDs and attachment bindings are unique and exact (0.3768ms)
-✔ free 300-node boundary accepts one file at exactly 300 and rejects a folder that would make 301 (0.7172ms)
-✔ internal paid policy admits 1000 nodes and rejects 1001 (2.05ms)
-✔ oversized files and combined attachment usage reject atomically (0.3499ms)
-✔ missing, file, and stale destinations are rejected (0.126ms)
-✔ cancellation during classification releases staging and preserves inputs (0.2467ms)
-✔ source tree and live registry are unchanged on success and failure (0.4074ms)
-✔ dispose is idempotent and releases only the staging registry (0.1655ms)
-✔ empty upload and duplicate paths reject without touching the source (0.2949ms)
-✔ caller-declared incomplete folder listing and classification failures reject atomically (0.3613ms)
-✔ uploads exceeding the editor depth limit reject (0.2476ms)
-ℹ tests 25
+✔ menu opens only and clamps near viewport (2.3314ms)
+✔ folder menu is Edit Folder, Add Folder, Add Data, Upload, disabled Delete Folder (0.8921ms)
+✔ data menu is Edit Data and disabled Delete Data only (0.2458ms)
+✔ outside click and Escape dismiss; destroy removes DOM (0.4351ms)
+✔ one upload history entry undoes and redoes the entire added hierarchy (1.1371ms)
+✔ bulk upload replay rejects a changed subtree and stale dataset (0.1809ms)
+✔ actual Upload preparation failure captures effective R240 config and failing root (23.5674ms)
+✔ synthetic 84-folder/407-file upload reproduces R240 clearance failure and R480 success (23.4879ms)
+✔ multiple local files are added directly beneath the destination (2.6393ms)
+✔ multiple files under a nested destination preserve full hidden tree (0.4643ms)
+✔ a selected source folder remains a child with its hierarchy and empty folders (7.4662ms)
+✔ an explicitly empty source folder is retained (0.2529ms)
+✔ same-named files in different folders keep distinct bytes and attachment IDs (0.3056ms)
+✔ Korean and zero-byte attachments preserve metadata (0.2846ms)
+✔ sibling and case-normalized collisions reject the whole request with paths (0.2365ms)
+✔ node IDs and attachment bindings are unique and exact (0.3492ms)
+✔ free 300-node boundary accepts one file at exactly 300 and rejects a folder that would make 301 (0.8415ms)
+✔ internal paid policy admits 1000 nodes and rejects 1001 (2.2697ms)
+✔ oversized files and combined attachment usage reject atomically (0.308ms)
+✔ missing, file, and stale destinations are rejected (0.1306ms)
+✔ cancellation during classification releases staging and preserves inputs (0.228ms)
+✔ source tree and live registry are unchanged on success and failure (0.4324ms)
+✔ dispose is idempotent and releases only the staging registry (0.1759ms)
+✔ empty upload and duplicate paths reject without touching the source (0.316ms)
+✔ caller-declared incomplete folder listing and classification failures reject atomically (0.3225ms)
+✔ uploads exceeding the editor depth limit reject (0.1692ms)
+✔ structure diagnostic exports synthetic hierarchy and no private upload data (0.3749ms)
+ℹ tests 27
 ℹ suites 0
-ℹ pass 25
+ℹ pass 27
 ℹ fail 0
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 121.9731
+ℹ duration_ms 149.4049
 

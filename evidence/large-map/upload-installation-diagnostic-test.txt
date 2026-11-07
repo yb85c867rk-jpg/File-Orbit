@@ -1,0 +1,12 @@
+﻿Tested SHA: cf6513bb22bf72e971a9949b6817ea4aabb3922c
+
+✔ actual Upload preparation failure captures effective R240 config and failing root (23.1092ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 81.2672
+
