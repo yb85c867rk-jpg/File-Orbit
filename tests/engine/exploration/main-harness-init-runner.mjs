@@ -2725,9 +2725,9 @@ if (process.env.P1B) {
     const p1bLibrary = makeFakeOrbitDirectory('P1B Library', []);
     const addedLibrary = await globalThis.window.__M5_P1B_TEST__.addMapLibraryForTest(p1bLibrary, 'P1B Library');
     assert.equal(addedLibrary.ok, true, 'P1B Library could not be adopted');
-    await findAll(createDialog, 'button').find((button) => button.textContent === 'Refresh').click();
     for (let i = 0; i < 40 && !findAll(createDialog, 'button').find((button) => button.textContent === 'P1B Library'); i += 1) await settle(50);
     await findAll(createDialog, 'button').find((button) => button.textContent === 'P1B Library').click();
+    for (let i = 0; i < 40 && findAll(createDialog, 'button').find((button) => button.textContent === 'Create Map')?.disabled; i += 1) await settle(50);
     await findAll(createDialog, 'button').find((button) => button.textContent === 'Create Map').click(); await settle(300);
 assert.equal(globalThis.window.__M5_EXPLORATION_STATUS__.persistence.hasMap, true);
     assert.equal(globalThis.window.__M5_EXPLORATION_STATUS__.totalCount, 1, 'Create Map must produce exactly one root');

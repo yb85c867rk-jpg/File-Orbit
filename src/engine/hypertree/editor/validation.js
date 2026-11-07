@@ -6,6 +6,7 @@ import { evaluateContextNodeAccess } from '../edition/context.js';
 export const EDITOR_MAX_NODES = EDITION_NODE_LIMITS.free;
 export const MAX_NAME_CODE_POINTS = 200;
 export const MAX_DESCRIPTION_CODE_POINTS = 2000;
+export const CREATE_MAP_DESCRIPTION_CODE_POINTS = 500;
 export const MAX_LINK_CODE_POINTS = MAX_WEB_LINK_CODE_POINTS;
 export const ID_ALLOCATION_ATTEMPTS = 10000;
 export const MAX_ATTACHMENT_BYTES = 20 * 1024 * 1024;

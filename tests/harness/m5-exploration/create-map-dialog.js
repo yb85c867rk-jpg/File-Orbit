@@ -1,5 +1,5 @@
 import { isFocusableElement } from './shell-controls.js';
-import { validateName, validateDescription } from '../../../src/engine/hypertree/editor/validation.js';
+import { CREATE_MAP_DESCRIPTION_CODE_POINTS, validateName, validateDescription } from '../../../src/engine/hypertree/editor/validation.js';
 
 export function createCreateMapDialog({
   document, host, onNameChange = null, onCreate, onCancel,
@@ -18,8 +18,6 @@ export function createCreateMapDialog({
   dialog.setAttribute('aria-labelledby', 'create-map-title');
 
   const title = document.createElement('h2'); title.id = 'create-map-title'; title.textContent = 'Create Map';
-  const note = document.createElement('p'); note.className = 'create-map-note';
-  note.textContent = 'Create an empty map with one root folder. Add map information, then choose a linked Map Library destination.';
 
   const form = document.createElement('div'); form.className = 'create-map-form';
   const infoHeading = document.createElement('h3'); infoHeading.textContent = 'Map Information';
@@ -28,20 +26,24 @@ export function createCreateMapDialog({
   const nameError = document.createElement('p'); nameError.className = 'create-map-name-error'; nameError.setAttribute('role', 'alert');
   nameLabel.appendChild(nameInput);
   const descriptionLabel = document.createElement('label'); descriptionLabel.textContent = 'Map description (optional)';
-  const descriptionInput = document.createElement('textarea'); descriptionInput.rows = 4; descriptionInput.maxLength = 2000; descriptionInput.className = 'create-map-description';
+  const descriptionInput = document.createElement('textarea'); descriptionInput.rows = 2; descriptionInput.className = 'create-map-description';
+  const descriptionCounter = document.createElement('span'); descriptionCounter.className = 'create-map-description-count'; descriptionCounter.setAttribute('aria-live', 'polite');
+  const descriptionRow = document.createElement('span'); descriptionRow.className = 'create-map-description-row';
+  descriptionRow.append(descriptionInput, descriptionCounter);
   const descriptionError = document.createElement('p'); descriptionError.className = 'create-map-name-error'; descriptionError.setAttribute('role', 'alert');
-  descriptionLabel.appendChild(descriptionInput);
+  descriptionLabel.append(descriptionRow, descriptionError);
 
   const libraryHeading = document.createElement('h3'); libraryHeading.textContent = 'Map Library Setting';
-  const libraryGuidance = document.createElement('p'); libraryGuidance.className = 'create-map-location-guidance';
-  libraryGuidance.textContent = 'Linked Map Libraries are shown below. Choose the destination for this new map. Linking a folder only updates the shared Library collection; it does not create a map.';
-  const destinationLabel = document.createElement('p'); destinationLabel.className = 'create-map-location-label'; destinationLabel.textContent = 'Creation destination';
-  const destinationName = document.createElement('p'); destinationName.className = 'create-map-location-name'; destinationName.textContent = 'No Map Library selected';
-  const libraryList = document.createElement('div'); libraryList.className = 'create-map-library-list';
-  const libraryRow = document.createElement('div'); libraryRow.className = 'create-map-location';
-  const linkButton = document.createElement('button'); linkButton.type = 'button'; linkButton.textContent = 'Link Folder to Map Library';
-  const refreshButton = document.createElement('button'); refreshButton.type = 'button'; refreshButton.textContent = 'Refresh';
-  libraryRow.append(linkButton, refreshButton);
+  const libraryControls = document.createElement('div'); libraryControls.className = 'create-map-library-controls';
+  const libraryToggle = document.createElement('button');
+  libraryToggle.type = 'button'; libraryToggle.id = 'create-map-library-toggle'; libraryToggle.className = 'create-map-library-toggle';
+  libraryToggle.textContent = 'Linked Map Libraries'; libraryToggle.setAttribute('aria-expanded', 'false'); libraryToggle.setAttribute('aria-controls', 'create-map-library-list');
+  const newButton = document.createElement('button');
+  newButton.type = 'button'; newButton.className = 'create-map-library-new'; newButton.textContent = '+ New'; newButton.setAttribute('aria-label', 'Link folder to Map Library'); newButton.title = 'Link folder to Map Library';
+  libraryControls.append(libraryToggle, newButton);
+  const destinationName = document.createElement('p'); destinationName.className = 'create-map-selected-destination'; destinationName.textContent = 'No Map Library selected';
+  const libraryList = document.createElement('div'); libraryList.className = 'create-map-library-list'; libraryList.id = 'create-map-library-list'; libraryList.hidden = true;
+  const libraryError = document.createElement('p'); libraryError.className = 'create-map-name-error'; libraryError.setAttribute('role', 'alert');
 
   const status = document.createElement('p'); status.className = 'create-map-status'; status.setAttribute('role', 'status'); status.setAttribute('aria-live', 'polite');
   const actions = document.createElement('div'); actions.className = 'create-map-actions';
@@ -58,9 +60,8 @@ export function createCreateMapDialog({
   confirmActions.append(confirmCancelButton, backButton, replaceButton);
   confirm.append(confirmText, confirmActions);
 
-  form.append(infoHeading, nameLabel, nameError, descriptionLabel, descriptionError,
-    libraryHeading, libraryGuidance, destinationLabel, destinationName, libraryList, libraryRow);
-  dialog.append(title, note, form, status, actions, confirm);
+  form.append(infoHeading, nameLabel, nameError, descriptionLabel, libraryHeading, libraryControls, destinationName, libraryList, libraryError);
+  dialog.append(title, form, status, actions, confirm);
   backdrop.appendChild(dialog); host.appendChild(backdrop);
 
   let open = false;
@@ -75,67 +76,124 @@ export function createCreateMapDialog({
   let activePrepare = null;
   let libraryBusy = false;
 
+  let descriptionComposing = false;
+  let listExpanded = false;
+  let refreshButton = null;
+
   const setStatus = (message, kind = 'info') => { status.textContent = message || ''; status.dataset.kind = kind; };
+  const setLibraryError = (message = '') => { libraryError.textContent = message || ''; };
+  const codePointCount = (value) => [...String(value || '')].length;
+  const updateDescriptionCount = () => {
+    descriptionCounter.textContent = `${codePointCount(descriptionInput.value)} / ${CREATE_MAP_DESCRIPTION_CODE_POINTS}`;
+  };
+  const checkDescription = (value) => {
+    const count = codePointCount(value);
+    if (count > CREATE_MAP_DESCRIPTION_CODE_POINTS) return { ok: false, message: `Description must be at most ${CREATE_MAP_DESCRIPTION_CODE_POINTS} characters.` };
+    return validateDescription(value);
+  };
   const libraries = () => {
     try { const list = getLibraries?.(); return Array.isArray(list) ? list : []; } catch { return []; }
   };
   const ownsPrepare = (token) => Boolean(token && token === activePrepare && token.session === sessionSeq && open);
+  const updateOptionStates = () => {
+    for (const button of libraryList.children || []) {
+      if (button.tagName !== 'BUTTON' || !button.dataset.libraryId) continue;
+      const selected = button.dataset.libraryId === destination?.id;
+      button.setAttribute('aria-pressed', String(selected));
+      button.classList?.toggle?.('create-map-library-option-selected', selected);
+    }
+  };
   const setDestination = (record) => {
     destination = record ? { id: record.id, name: record.name, handle: record.handle } : null;
     destinationName.textContent = destination ? destination.name : 'No Map Library selected';
     destinationName.title = destination?.name || '';
+    updateOptionStates();
     syncButtonState();
   };
   const destinationRecord = () => destination ? libraries().find((record) => record.id === destination.id) : null;
+  const setListExpanded = (expanded) => {
+    listExpanded = Boolean(expanded);
+    libraryList.hidden = !listExpanded;
+    libraryToggle.setAttribute('aria-expanded', String(listExpanded));
+    syncButtonState();
+  };
+  async function refreshLibraries() {
+    if (!open || submitting || libraryBusy || typeof onRefreshLibraries !== 'function') return;
+    libraryBusy = true; syncButtonState(); setStatus('Refreshing…'); setLibraryError('');
+    try {
+      const result = await onRefreshLibraries();
+      if (!open) return;
+      renderLibraries();
+      setStatus('');
+      if (result?.ok === false) setLibraryError(String(result?.message || 'The Map Library list could not be refreshed.'));
+    } catch (error) {
+      if (open) setLibraryError(String(error?.message || error));
+    } finally {
+      if (open) { libraryBusy = false; renderLibraries(); syncButtonState(); }
+    }
+  }
   function renderLibraries() {
     libraryList.replaceChildren();
+    refreshButton = null;
     const records = libraries();
     for (const record of records) {
       const button = document.createElement('button');
       button.type = 'button';
       button.className = 'create-map-library-option';
+      button.dataset.libraryId = record.id;
       button.setAttribute('aria-pressed', String(destination?.id === record.id));
       button.textContent = record.name;
       button.title = record.name;
       button.addEventListener('click', () => {
         if (!open || submitting || libraryBusy) return;
         setDestination(record);
-        setStatus('Creation destination: ' + record.name + '. The sidebar selection and open map were not changed.', 'ok');
+        setListExpanded(false);
+        setLibraryError('');
+        libraryToggle.focus();
       });
       libraryList.appendChild(button);
     }
     if (!records.length) {
-      const empty = document.createElement('p'); empty.className = 'create-map-status';
-      empty.textContent = 'No Map Libraries linked yet. Link a folder to choose a destination.';
+      const empty = document.createElement('p'); empty.className = 'create-map-library-empty';
+      empty.textContent = 'No linked Map Libraries. Use + New to link one.';
       libraryList.appendChild(empty);
     }
+    const refreshRow = document.createElement('div'); refreshRow.className = 'create-map-library-refresh';
+    refreshButton = document.createElement('button'); refreshButton.type = 'button'; refreshButton.textContent = 'Refresh';
+    refreshButton.addEventListener('click', () => { void refreshLibraries(); });
+    refreshRow.appendChild(refreshButton);
+    libraryList.appendChild(refreshRow);
     const current = destinationRecord();
     if (destination && !current) {
       setDestination(null);
-      setStatus('The selected destination is no longer linked. Choose another Map Library.', 'error');
+      setLibraryError('The selected destination is no longer linked. Choose another Map Library.');
     } else if (destination && current && current.handle !== destination.handle) {
       setDestination(null);
-      setStatus('The linked folder changed. Select the Library destination again.', 'error');
+      setLibraryError('The linked folder changed. Select the Library destination again.');
     } else if (current) {
       destination.name = current.name;
       destinationName.textContent = current.name;
       destinationName.title = current.name;
     }
+    updateOptionStates();
+    libraryList.hidden = !listExpanded;
+    libraryToggle.setAttribute('aria-expanded', String(listExpanded));
     syncButtonState();
   }
   function syncButtonState() {
-    const busy = submitting || preparing || composing || libraryBusy;
+    const busy = submitting || preparing || composing || libraryBusy || descriptionComposing;
     const confirmation = open && !confirm.hidden;
     cancelButton.disabled = !open || submitting || libraryBusy;
     confirmCancelButton.disabled = !open || submitting || libraryBusy;
     nameInput.disabled = !open || submitting;
     descriptionInput.disabled = !open || submitting;
-    linkButton.disabled = !open || busy;
-    refreshButton.disabled = !open || busy;
+    libraryToggle.disabled = !open || busy;
+    newButton.disabled = !open || busy;
+    if (refreshButton) refreshButton.disabled = !open || busy;
     createButton.disabled = !open || !previewData || !destination || busy || confirmation;
     backButton.disabled = !confirmation || !previewData || submitting;
     replaceButton.disabled = !confirmation || !previewData || submitting;
-    for (const button of libraryList.children || []) if (button.tagName === 'BUTTON') button.disabled = !open || busy;
+    for (const button of libraryList.children || []) if (button.tagName === 'BUTTON' && button !== refreshButton) button.disabled = !open || busy;
   }
   function beginPrepare() {
     prepareSeq += 1;
@@ -149,9 +207,14 @@ export function createCreateMapDialog({
   function abandonPreparation() { activePrepare = null; preparing = false; syncButtonState(); }
   const clearPreview = () => { previewData = null; syncButtonState(); };
   function acceptCandidate(result) {
-    if (!result?.ok) { clearPreview(); setStatus(result?.message || 'The map could not be prepared.', 'error'); return; }
+    if (!result?.ok) {
+      clearPreview();
+      if (result?.field === 'description') descriptionError.textContent = result.message || 'The description is invalid.';
+      else setStatus(result?.message || 'The map could not be prepared.', 'error');
+      return;
+    }
     previewData = result;
-    setStatus('Ready to create “' + result.tree.name + '” in ' + (destination?.name || 'the selected Map Library') + '.', 'ok');
+    setStatus('');
     syncButtonState();
   }
   async function updateName() {
@@ -160,12 +223,13 @@ export function createCreateMapDialog({
       const checked = validateName(nameInput.value);
       nameError.textContent = checked.ok ? '' : checked.message;
       clearPreview();
+      updateDescriptionCount();
       if (!ownsPrepare(token)) return;
-      if (!checked.ok) { setStatus(checked.message, 'error'); return; }
-      const desc = validateDescription(descriptionInput.value);
+      if (!checked.ok) { setStatus(''); return; }
+      const desc = checkDescription(descriptionInput.value);
       descriptionError.textContent = desc.ok ? '' : desc.message;
-      if (!desc.ok) { setStatus(desc.message, 'error'); return; }
-      if (typeof onNameChange !== 'function') { setStatus('Enter a map title.'); return; }
+      if (!desc.ok) { setStatus(''); return; }
+      if (typeof onNameChange !== 'function') { return; }
       setStatus('Preparing map…');
       try {
         const result = await onNameChange({ mapName: checked.name, description: desc.value, selection: { files: [], folders: [] } });
@@ -177,45 +241,41 @@ export function createCreateMapDialog({
     } finally { endPrepare(token); }
   }
   nameInput.addEventListener('input', (event) => { if (!composing && !event.isComposing) updateName(); });
-  descriptionInput.addEventListener('input', () => {
-    const checked = validateDescription(descriptionInput.value);
+  descriptionInput.addEventListener('input', (event) => {
+    updateDescriptionCount();
+    if (descriptionComposing || event.isComposing) return;
+    const checked = checkDescription(descriptionInput.value);
     descriptionError.textContent = checked.ok ? '' : checked.message;
     if (checked.ok) updateName(); else clearPreview();
   });
   nameInput.addEventListener('compositionstart', () => { composing = true; syncButtonState(); });
   nameInput.addEventListener('compositionend', () => { composing = false; syncButtonState(); updateName(); });
+  descriptionInput.addEventListener('compositionstart', () => { descriptionComposing = true; syncButtonState(); });
+  descriptionInput.addEventListener('compositionend', () => { descriptionComposing = false; syncButtonState(); updateName(); });
 
-  linkButton.addEventListener('click', async () => {
+  libraryToggle.addEventListener('click', () => {
+    if (!open || submitting || libraryBusy) return;
+    setListExpanded(!listExpanded);
+    if (listExpanded) {
+      const first = [...libraryList.children].find((node) => node.tagName === 'BUTTON');
+      (first || refreshButton)?.focus?.();
+    }
+  });
+  newButton.addEventListener('click', async () => {
     if (!open || submitting || libraryBusy || typeof onLinkLibrary !== 'function') return;
-    libraryBusy = true; syncButtonState(); setStatus('Choose a folder to link…');
+    libraryBusy = true; syncButtonState(); setLibraryError('');
     try {
       const result = await onLinkLibrary();
       if (!open) return;
       if (result?.ok && result.library) {
         renderLibraries();
         setDestination(result.library);
-        setStatus('Linked ' + result.library.name + ' as the creation destination.', 'ok');
+        setListExpanded(false);
       } else if (result?.reason !== 'cancelled' && result?.reason !== 'stale') {
-        setStatus(String(result?.message || 'The folder could not be linked.'), 'error');
-      } else if (result?.reason === 'cancelled') {
-        setStatus('Folder linking cancelled. Your map details and destination were kept.');
+        setLibraryError(String(result?.message || 'The folder could not be linked.'));
       }
     } catch (error) {
-      if (open) setStatus(String(error?.message || error), 'error');
-    } finally {
-      if (open) { libraryBusy = false; renderLibraries(); syncButtonState(); }
-    }
-  });
-  refreshButton.addEventListener('click', async () => {
-    if (!open || submitting || libraryBusy || typeof onRefreshLibraries !== 'function') return;
-    libraryBusy = true; syncButtonState(); setStatus('Refreshing Map Libraries…');
-    try {
-      const result = await onRefreshLibraries();
-      if (!open) return;
-      renderLibraries();
-      setStatus(result?.message || 'Map Library list refreshed. The current destination is kept when it is still available.', 'ok');
-    } catch (error) {
-      if (open) setStatus(String(error?.message || error), 'error');
+      if (open) setLibraryError(String(error?.message || error));
     } finally {
       if (open) { libraryBusy = false; renderLibraries(); syncButtonState(); }
     }
@@ -224,7 +284,7 @@ export function createCreateMapDialog({
   const isVisible = (el) => isFocusableElement(el, document);
   const focusables = () => {
     const list = confirm.hidden
-      ? [nameInput, descriptionInput, ...(libraryList.children || []), linkButton, refreshButton, cancelButton, createButton]
+      ? [nameInput, descriptionInput, libraryToggle, newButton, ...(libraryList.children || []), cancelButton, createButton]
       : [confirmCancelButton, backButton, replaceButton];
     return list.filter((el) => el?.tagName === 'BUTTON' || el === nameInput || el === descriptionInput).filter(isVisible);
   };
@@ -242,6 +302,12 @@ export function createCreateMapDialog({
 
   async function submitCreation() {
     if (!open || !previewData || !destination || submitting) return;
+    const liveDescription = checkDescription(descriptionInput.value);
+    descriptionError.textContent = liveDescription.ok ? '' : liveDescription.message;
+    if (!liveDescription.ok) { setStatus(''); syncButtonState(); return; }
+    const liveName = validateName(nameInput.value);
+    nameError.textContent = liveName.ok ? '' : liveName.message;
+    if (!liveName.ok) { setStatus(''); syncButtonState(); return; }
     const session = sessionSeq;
     const candidate = { ...previewData, destinationId: destination.id, destinationHandle: destination.handle, destinationName: destination.name };
     submitting = true; setStatus('Creating map…'); syncButtonState(); confirmCancelButton.focus();
@@ -270,6 +336,12 @@ export function createCreateMapDialog({
   }
   createButton.addEventListener('click', () => {
     if (!open || !previewData || !destination || submitting || !confirm.hidden) return;
+    const liveDescription = checkDescription(descriptionInput.value);
+    descriptionError.textContent = liveDescription.ok ? '' : liveDescription.message;
+    if (!liveDescription.ok) { setStatus(''); syncButtonState(); return; }
+    const liveName = validateName(nameInput.value);
+    nameError.textContent = liveName.ok ? '' : liveName.message;
+    if (!liveName.ok) { setStatus(''); syncButtonState(); return; }
     if (!hasCurrentMap()) { submitCreation(); return; }
     confirm.hidden = false; form.hidden = true; actions.hidden = true; syncButtonState(); replaceButton.focus();
   });
@@ -283,9 +355,10 @@ export function createCreateMapDialog({
 
   function close({ restoreFocus = true } = {}) {
     if (!open || submitting) return;
-    open = false; sessionSeq += 1; submitting = false; libraryBusy = false; abandonPreparation(); composing = false;
+    open = false; sessionSeq += 1; submitting = false; libraryBusy = false; abandonPreparation(); composing = false; descriptionComposing = false;
     backdrop.hidden = true; clearPreview(); setDestination(null); nameInput.value = ''; descriptionInput.value = '';
-    nameError.textContent = ''; descriptionError.textContent = ''; confirm.hidden = true; form.hidden = false; actions.hidden = false;
+    nameError.textContent = ''; descriptionError.textContent = ''; setLibraryError(''); updateDescriptionCount();
+    confirm.hidden = true; form.hidden = false; actions.hidden = false; setListExpanded(false);
     setStatus(''); syncButtonState();
     onCancel?.();
     if (restoreFocus) {
@@ -296,16 +369,19 @@ export function createCreateMapDialog({
   }
   function show() {
     if (open) return;
-    open = true; sessionSeq += 1; submitting = false; preparing = false; composing = false; libraryBusy = false;
+    open = true; sessionSeq += 1; submitting = false; preparing = false; composing = false; descriptionComposing = false; libraryBusy = false;
     activePrepare = null; previewData = null; nameInput.value = ''; descriptionInput.value = '';
-    nameError.textContent = ''; descriptionError.textContent = ''; confirm.hidden = true; form.hidden = false; actions.hidden = false;
+    nameError.textContent = ''; descriptionError.textContent = ''; setLibraryError(''); updateDescriptionCount();
+    confirm.hidden = true; form.hidden = false; actions.hidden = false;
     destination = null;
+    setListExpanded(false);
     renderLibraries();
     const preferredId = getDefaultLibraryId?.();
     const preferred = preferredId ? libraries().find((record) => record.id === preferredId) : null;
     if (preferred) setDestination(preferred); else setDestination(null);
+    setListExpanded(false);
     syncButtonState();
-    setStatus('Enter a map title and choose a linked Map Library destination.');
+    setStatus('');
     backdrop.hidden = false; lastFocus = document.activeElement || null; nameInput.focus();
   }
 

@@ -95,3 +95,5 @@ These use test hooks/picker stubs, not native OS acceptance.
 
 - `library-edit-ui-check.mjs`: B2 icon/modal, draft, picker cancel, Apply/Cancel/Escape, same-folder no-op, already-linked selection, persistence failure, document preservation and reload.
 
+
+The Phase C test also covers the compact collapsible Library controls, + New, actual B destination writes, 499/500/501 code-point descriptions and 1600×900/700 fit.

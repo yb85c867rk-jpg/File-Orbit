@@ -56,8 +56,8 @@ test('latest title owns the preview; an older title cannot replace it', async ()
   env.names[1].resolve(candidate('AB')); await flush();
   env.names[0].resolve(candidate('A')); await flush();
   assert.equal(button(env.section, 'Create Map').disabled, false);
-  assert.match(byClass(env.section, 'create-map-status').textContent, /AB/);
-  assert.doesNotMatch(byClass(env.section, 'create-map-status').textContent, /“A”/);
+  assert.equal(byClass(env.section, 'create-map-status').textContent, '');
+  assert.equal(button(env.section, 'Create Map').disabled, false);
   await button(env.section, 'Create Map').click();
   await button(env.section, 'Replace map').click(); await flush();
   assert.deepEqual(env.created, [{ name: 'AB', id: 'a' }]);
@@ -91,12 +91,13 @@ test('cancel/reopen invalidates old preparation ownership', async () => {
 
 test('destination selection stays local and survives refresh', async () => {
   const env = setup();
+  await byClass(env.section, 'create-map-library-toggle').click();
   const options = walk(env.section).filter((node) => node.className === 'create-map-library-option');
   await options[1].click();
-  assert.equal(byClass(env.section, 'create-map-location-name').textContent, 'B');
+  assert.equal(byClass(env.section, 'create-map-selected-destination').textContent, 'B');
   await type(env, 'Keep');
   env.names[0].resolve(candidate('Keep')); await flush();
   await button(env.section, 'Refresh').click(); await flush();
-  assert.equal(byClass(env.section, 'create-map-location-name').textContent, 'B');
+  assert.equal(byClass(env.section, 'create-map-selected-destination').textContent, 'B');
   assert.equal(env.title.value, 'Keep');
 });

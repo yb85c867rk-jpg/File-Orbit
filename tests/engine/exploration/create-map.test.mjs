@@ -73,3 +73,16 @@ test('stale selection and classification failure release candidate attachments',
 });
 
 
+
+test('creation description limit is 500 Unicode code points', async () => {
+  const atLimit = await prepareCreateMapCandidate({ mapName: 'Limit 500', datasetToken: 1, description: '😀'.repeat(500) });
+  assert.equal(atLimit.ok, true);
+  assert.equal(atLimit.tree.data.description, '😀'.repeat(500));
+  const tooLong = await prepareCreateMapCandidate({ mapName: 'Limit 501', datasetToken: 1, description: '😀'.repeat(501) });
+  assert.equal(tooLong.ok, false);
+  assert.equal(tooLong.reason, 'description-too-long');
+  assert.match(tooLong.message, /500/);
+  const empty = await prepareCreateMapCandidate({ mapName: 'Empty description', datasetToken: 1, description: '' });
+  assert.equal(empty.ok, true);
+  assert.equal(empty.tree.data.description, null);
+});

@@ -1,7 +1,7 @@
-﻿import { classifyFile } from '../editor/attachment-classification.js';
+import { classifyFile } from '../editor/attachment-classification.js';
 import { validateDescription } from '../editor/validation.js';
 import { createAttachmentRegistry } from '../editor/attachments.js';
-import { EDITOR_MAX_NODES, MAX_ATTACHMENT_BYTES, MAX_ATTACHMENT_TOTAL_BYTES, MAX_NAME_CODE_POINTS, nameKey, validateName } from '../editor/validation.js';
+import { CREATE_MAP_DESCRIPTION_CODE_POINTS, EDITOR_MAX_NODES, MAX_ATTACHMENT_BYTES, MAX_ATTACHMENT_TOTAL_BYTES, MAX_NAME_CODE_POINTS, nameKey, validateName } from '../editor/validation.js';
 import { evaluateContextNodeAccess } from '../edition/context.js';
 
 export const CREATE_MAP_CLASSIFY_CONCURRENCY = 4;
@@ -55,6 +55,7 @@ export async function prepareCreateMapCandidate({
   if (!nameResult.ok) return fail(nameResult.reason, nameResult.message, { field: 'name' });
   const descriptionResult = validateDescription(description);
   if (!descriptionResult.ok) return fail(descriptionResult.reason, descriptionResult.message, { field: 'description' });
+  if (descriptionResult.value && [...descriptionResult.value].length > CREATE_MAP_DESCRIPTION_CODE_POINTS) return fail('description-too-long', `Description must be at most ${CREATE_MAP_DESCRIPTION_CODE_POINTS} characters.`, { field: 'description' });
   if (!Number.isSafeInteger(datasetToken) || datasetToken < 0) return fail('dataset-invalid', 'A fresh dataset identity is required.');
   if (!Array.isArray(files) || !Array.isArray(folders)) return fail('selection-invalid', 'The selection is invalid.');
   const budget = evaluateContextNodeAccess(policyContext, 1, maxNodes);
