@@ -1,0 +1,30 @@
+﻿Tested SHA: 55f16e1eff7b6bd5f85483456fec3a754e95f8d8
+Command: node --test --test-isolation=none tests/engine/exploration/upload-preparation.test.mjs
+
+✔ multiple local files are added directly beneath the destination (3.4872ms)
+✔ multiple files under a nested destination preserve full hidden tree (0.4881ms)
+✔ a selected source folder remains a child with its hierarchy and empty folders (7.7391ms)
+✔ an explicitly empty source folder is retained (0.3018ms)
+✔ same-named files in different folders keep distinct bytes and attachment IDs (0.5256ms)
+✔ Korean and zero-byte attachments preserve metadata (0.3368ms)
+✔ sibling and case-normalized collisions reject the whole request with paths (0.279ms)
+✔ node IDs and attachment bindings are unique and exact (0.3882ms)
+✔ free 300-node boundary accepts one file at exactly 300 and rejects a folder that would make 301 (0.9457ms)
+✔ internal paid policy admits 1000 nodes and rejects 1001 (3.8892ms)
+✔ oversized files and combined attachment usage reject atomically (0.3844ms)
+✔ missing, file, and stale destinations are rejected (0.1464ms)
+✔ cancellation during classification releases staging and preserves inputs (0.2547ms)
+✔ source tree and live registry are unchanged on success and failure (0.4315ms)
+✔ dispose is idempotent and releases only the staging registry (0.1673ms)
+✔ empty upload and duplicate paths reject without touching the source (0.2493ms)
+✔ caller-declared incomplete folder listing and classification failures reject atomically (0.2777ms)
+✔ uploads exceeding the editor depth limit reject (0.1466ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 49.1179
+
