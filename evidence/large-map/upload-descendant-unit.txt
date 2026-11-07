@@ -1,0 +1,63 @@
+﻿Tested SHA: a8a9a5916a71da00828ca530cdcf55c34951da79
+
+✔ one upload history entry undoes and redoes the entire added hierarchy (3.2899ms)
+✔ bulk upload replay rejects a changed subtree and stale dataset (0.2678ms)
+✔ anonymized 492-node Upload reproduces the n153 shortfall without descendant-aware allocation (34.8129ms)
+✔ descendant-aware allocation preserves hierarchy and satisfies every parent at R480 (11.1939ms)
+✔ actual Upload preparation failure captures effective R240 config and failing root (18.8418ms)
+✔ multiple local files are added directly beneath the destination (2.0337ms)
+✔ multiple files under a nested destination preserve full hidden tree (0.4022ms)
+✔ a selected source folder remains a child with its hierarchy and empty folders (7.8708ms)
+✔ an explicitly empty source folder is retained (0.3426ms)
+✔ same-named files in different folders keep distinct bytes and attachment IDs (0.9772ms)
+✔ Korean and zero-byte attachments preserve metadata (0.6207ms)
+✔ sibling and case-normalized collisions reject the whole request with paths (0.2912ms)
+✔ node IDs and attachment bindings are unique and exact (0.3796ms)
+✔ free 300-node boundary accepts one file at exactly 300 and rejects a folder that would make 301 (0.7092ms)
+✔ internal paid policy admits 1000 nodes and rejects 1001 (2.4203ms)
+✔ oversized files and combined attachment usage reject atomically (0.3898ms)
+✔ missing, file, and stale destinations are rejected (0.2828ms)
+✔ cancellation during classification releases staging and preserves inputs (0.2717ms)
+✔ source tree and live registry are unchanged on success and failure (0.5823ms)
+✔ dispose is idempotent and releases only the staging registry (0.1996ms)
+✔ empty upload and duplicate paths reject without touching the source (0.1667ms)
+✔ caller-declared incomplete folder listing and classification failures reject atomically (0.8214ms)
+✔ uploads exceeding the editor depth limit reject (0.2945ms)
+✔ structure diagnostic exports synthetic hierarchy and no private upload data (0.6357ms)
+✔ current-scale clearance applicability is false after initial fit below 1 (0.1778ms)
+✔ manual zoom-out is inapplicable and reset to evaluated scale is applicable (0.0855ms)
+✔ resize, focus, presentation, radius, and workspace mismatches invalidate applicability (0.0842ms)
+✔ historical layout feasibility is not treated as current display proof (0.0656ms)
+✔ refinement is deterministic and bounded (200.0532ms)
+✔ accepted refinement preserves IDs, topology, sibling order, depths, phases, counts (4.0044ms)
+✔ accepted candidate is independently owned and leaves original v2 unchanged (1.8434ms)
+✔ non-improving fixture returns the original v2 candidate with reason (3.998ms)
+✔ all compared fixtures preserve nodes and remain contained after final fit (109.0234ms)
+✔ refined final scene installs matching hit geometry (86.8884ms)
+✔ shape-aware boundary separation handles circles and diamonds exactly at the sign boundary (0.3394ms)
+✔ phase option defaults to firstPhase and accepts end/start selected phases (13.5218ms)
+✔ invalid phase is rejected without mutation (3.9048ms)
+✔ accepted output independently owns phases, experiment config, feasibility, nodes, and maps (3.6127ms)
+✔ signed diamond penetration is normalized CSS-pixel minimum translation (0.7131ms)
+✔ v2 is deterministic and places crowded siblings in multiple bands (1.2411ms)
+✔ v2 preserves IDs, order, depths, phases, radial order, and open disk (0.7268ms)
+✔ v2 fixed glyph policy preserves radius 6 and hit geometry at camera/focus (14.6539ms)
+✔ v2 workspace bounds are finite and secondary projection is explicit (9.3624ms)
+✔ v2 infeasible spacing reports diagnostics and rejects (0.8115ms)
+✔ v2 invalid configuration and input ownership are explicit (0.6982ms)
+✔ v2 bounded scale search rejects non-progressing/excessive ranges and records attempts (1.1777ms)
+✔ v2 non-divisible ranges use bounded index candidates without duplicates (0.463ms)
+✔ v2 rejects invalid ranges and leaves input untouched (0.5049ms)
+✔ v2 reported feasibility scope is local sibling angular capacity only (16.2075ms)
+✔ v2 primary scale-1 infeasibility is explicit and secondary scale is separate (6.3317ms)
+✔ v2 capacity uses the declared projection radius, not an implicit viewport radius (13.3478ms)
+✔ v2 projection contract separates radii and invalidates guarantee on resize (0.2398ms)
+ℹ tests 52
+ℹ suites 0
+ℹ pass 52
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 676.8221
+
