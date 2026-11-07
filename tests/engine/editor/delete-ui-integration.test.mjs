@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { createEditorContextMenu } from '../../harness/m5-exploration/editor-context-menu.js';
 import { dispatchEditorMenuAction, validateDeleteIntent } from '../../../src/engine/hypertree/editor/menu-dispatch.js';
 import { buildDeleteCommand } from '../../../src/engine/hypertree/editor/commands.js';
+import { createInternalPolicyContext } from '../../../src/engine/hypertree/edition/context.js';
 
 class El {
   constructor(tag) { this.tagName = tag; this.children = []; this.style = {}; this.attributes = new Map(); this.hidden = false; this._text = ''; this.listeners = []; this.parentNode = null; }
@@ -71,3 +72,16 @@ test('shared menu dispatcher routes delete without opening editor flow', () => {
 });
 
 
+
+
+test('delete uses paid admission for a 492-node current map', () => {
+  const tree = { id: 'r', name: 'Root', kind: 'folder', data: {}, children: [] };
+  for (let i = 0; i < 491; i += 1) tree.children.push({ id: 'n' + i, name: 'N' + i, kind: 'file', data: {} });
+  const paid = createInternalPolicyContext({ edition: 'paid' });
+  const accepted = buildDeleteCommand({ tree, targetId: 'n0', structuralRootId: 'r', datasetToken: 1, datasetTokenExpected: 1, baseRevision: 0, expectedRevision: 0, policyContext: paid });
+  assert.equal(accepted.ok, true);
+  assert.equal(accepted.candidateTree.children.length, 490);
+  const free = buildDeleteCommand({ tree, targetId: 'n0', structuralRootId: 'r', datasetToken: 1, datasetTokenExpected: 1, baseRevision: 0, expectedRevision: 0 });
+  assert.equal(free.ok, false);
+  assert.equal(free.reason, 'editor-node-limit');
+});

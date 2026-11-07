@@ -334,7 +334,11 @@ export function performDeleteInstallation(args) {
   }) : null;
   return performEditorCommandInstallation({
     ...args, history: args.history,
-    command: { ...command, historyEntry, baseLayout: args.baseLayout, baseRevision: args.baseRevision }
+    command: {
+      ...command, historyEntry, baseLayout: args.baseLayout, baseRevision: args.baseRevision,
+      layoutExperiment: args.layoutExperiment || null,
+      layoutDiagnosticMaxNodes: args.layoutDiagnosticMaxNodes || null
+    }
   });
 }
 
