@@ -1,0 +1,17 @@
+﻿Tested SHA: 82e57fdb41eaa84f8e66e888ed5ed6afec91af34
+
+✔ folder menu enables Delete Folder except at root (1.1277ms)
+✔ data menu enables Delete Data (0.1946ms)
+✔ shared menu dispatcher routes delete without opening editor flow (0.5501ms)
+✔ delete admission accepts 300 nodes and rejects 301 before candidate (1.4471ms)
+✔ pending Delete intent validates dataset/revision/id/kind/visibility (0.2409ms)
+✔ delete uses paid admission for a 492-node current map (1.235ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 31.311
+
