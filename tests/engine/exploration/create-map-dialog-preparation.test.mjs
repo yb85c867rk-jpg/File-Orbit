@@ -1,212 +1,102 @@
-﻿import test from 'node:test';
+import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createCreateMapDialog } from '../../harness/m5-exploration/create-map-dialog.js';
 
-class FakeDialogElement {
-  constructor(tag = 'div', ownerDocument = null) {
-    this.tagName = String(tag).toUpperCase(); this.ownerDocument = ownerDocument; this.children = []; this.parent = null;
-    this.dataset = {}; this.attributes = new Map(); this.style = {}; this.listeners = new Map();
-    this.className = ''; this.id = ''; this.hidden = false; this.disabled = false; this._textContent = '';
-    this.value = ''; this.type = ''; this.files = []; this.tabIndex = 0; this.isConnected = true;
-    this.offsetWidth = 40; this.offsetHeight = 16; this.offsetParent = {};
-  }
-  get parentElement() { return this.parent; }
+class El {
+  constructor(tag = 'div') { this.tagName = String(tag).toUpperCase(); this.children = []; this.parent = null; this.attributes = new Map(); this.dataset = {}; this.style = {}; this.listeners = new Map(); this.className = ''; this.id = ''; this.hidden = false; this.disabled = false; this._textContent = ''; this.value = ''; this.type = ''; this.isConnected = true; this.offsetParent = {}; this.offsetWidth = 40; this.offsetHeight = 16; this.maxLength = 0; }
   get textContent() { return this._textContent; }
   set textContent(value) { this._textContent = String(value); this.children = []; }
   appendChild(child) { child.parent = this; this.children.push(child); child.ownerDocument = this.ownerDocument; return child; }
   append(...nodes) { for (const node of nodes) this.appendChild(node); }
-  prepend(node) { node.parent = this; this.children.unshift(node); }
   replaceChildren(...nodes) { this.children = []; this.append(...nodes); }
-  remove() { this.parent?.removeChild?.(this); this.parent = null; this.isConnected = false; }
-  removeChild(child) { this.children = this.children.filter((item) => item !== child); child.parent = null; return child; }
-  setAttribute(name, value) { this.attributes.set(name, String(value)); if (name === 'id') this.id = String(value); if (name === 'hidden') this.hidden = true; if (name === 'disabled') this.disabled = true; }
+  remove() { if (this.parent) this.parent.children = this.parent.children.filter((node) => node !== this); }
+  setAttribute(name, value) { this.attributes.set(name, String(value)); if (name === 'id') this.id = String(value); }
   getAttribute(name) { return this.attributes.has(name) ? this.attributes.get(name) : null; }
   removeAttribute(name) { this.attributes.delete(name); }
-  hasAttribute(name) { return this.attributes.has(name); }
   addEventListener(type, fn) { if (!this.listeners.has(type)) this.listeners.set(type, []); this.listeners.get(type).push(fn); }
   removeEventListener(type, fn) { this.listeners.set(type, (this.listeners.get(type) || []).filter((item) => item !== fn)); }
   async dispatch(type, event = {}) { for (const fn of [...(this.listeners.get(type) || [])]) await fn({ type, target: this, currentTarget: this, preventDefault() {}, stopPropagation() {}, ...event }); }
-  async click() { if (this.disabled) return; await this.dispatch('click'); }
-  focus() { if (this.ownerDocument) this.ownerDocument.activeElement = this; }
-  contains(target) { return target === this || this.children.some((child) => child.contains(target)); }
-  querySelector(selector) { return find(this, selector); }
-  querySelectorAll(selector) { return findAll(this, selector); }
+  async click() { if (!this.disabled) await this.dispatch('click'); }
+  focus() { this.ownerDocument.activeElement = this; }
 }
-class FakeDialogDocument {
-  constructor() {
-    this.documentElement = new FakeDialogElement('html', this); this.body = new FakeDialogElement('body', this); this.documentElement.appendChild(this.body);
-    this.activeElement = null; this.listeners = new Map();
-    this.defaultView = { getComputedStyle: (node) => ({ display: node.hidden ? 'none' : 'block', visibility: 'visible' }) };
-  }
-  createElement(tag) { return new FakeDialogElement(tag, this); }
+class Doc {
+  constructor() { this.documentElement = new El('html'); this.activeElement = null; this.listeners = new Map(); this.defaultView = { getComputedStyle: (node) => ({ display: node.hidden ? 'none' : 'block', visibility: node.style.visibility === 'hidden' ? 'hidden' : 'visible' }) }; }
+  createElement(tag) { const el = new El(tag); el.ownerDocument = this; return el; }
   addEventListener(type, fn) { if (!this.listeners.has(type)) this.listeners.set(type, []); this.listeners.get(type).push(fn); }
   removeEventListener(type, fn) { this.listeners.set(type, (this.listeners.get(type) || []).filter((item) => item !== fn)); }
+  async keydown(event) { for (const fn of [...(this.listeners.get('keydown') || [])]) await fn({ preventDefault() {}, ...event }); }
 }
-function matches(node, selector) {
-  if (selector.startsWith('#')) return node.id === selector.slice(1);
-  if (selector.startsWith('.')) return node.className.split(/\s+/).includes(selector.slice(1));
-  return node.tagName === selector.toUpperCase();
-}
-function find(root, selector) { for (const child of root.children) { if (matches(child, selector)) return child; const found = find(child, selector); if (found) return found; } return null; }
-function findAll(root, selector, out = []) { for (const child of root.children) { if (matches(child, selector)) out.push(child); findAll(child, selector, out); } return out; }
-function textOf(node) { return `${node.textContent} ${node.children.map((child) => textOf(child)).join(' ')}`; }
-function deferred() { let resolve; let reject; const promise = new Promise((res, rej) => { resolve = res; reject = rej; }); return { promise, resolve, reject }; }
-function file(name) { return { name, webkitRelativePath: name, type: 'text/plain', size: 1 }; }
-function result(marker) {
-  return { ok: true, tree: { kind: 'folder', name: marker, children: [{ kind: 'file', name: `${marker}.txt` }] }, stats: { folderCount: 1, fileCount: 1, totalBytes: 1 } };
-}
+function walk(node, out = []) { out.push(node); for (const child of node.children) walk(child, out); return out; }
+function button(root, text) { return walk(root).find((node) => node.tagName === 'BUTTON' && node.textContent === text); }
+function byClass(root, name) { return walk(root).find((node) => String(node.className).split(/\s+/).includes(name)); }
+function deferred() { let resolve, reject; const promise = new Promise((res, rej) => { resolve = res; reject = rej; }); return { promise, resolve, reject }; }
 const flush = () => new Promise((resolve) => setImmediate(resolve));
-
+const candidate = (name) => ({ ok: true, tree: { name, kind: 'folder', data: {}, children: [] }, registry: { clear() {} }, datasetToken: 1 });
 function setup() {
-  const document = new FakeDialogDocument();
-  const host = document.createElement('div'); document.body.appendChild(host);
-  const selections = []; const names = []; const created = []; const cancels = [];
-  let dropHandler = async () => ({ ok: false, message: 'unsupported' });
-  const dialog = createCreateMapDialog({
-    document, host, hasCurrentMap: () => true,
-    onSelection: (request) => { const d = deferred(); selections.push({ request, ...d }); return d.promise; },
+  const document = new Doc(); const host = document.createElement('div');
+  const libraries = [{ id: 'a', name: 'A', handle: { name: 'A' } }, { id: 'b', name: 'B', handle: { name: 'B' } }];
+  const names = []; const created = []; let cancels = 0;
+  const dialog = createCreateMapDialog({ document, host, hasCurrentMap: () => true,
+    getLibraries: () => libraries, getDefaultLibraryId: () => 'a',
     onNameChange: (request) => { const d = deferred(); names.push({ request, ...d }); return d.promise; },
-    onCreate: async (candidate) => { created.push(candidate); return { ok: true }; },
-    onCancel: () => cancels.push(true)
-  });
-  dialog.setDropEntryHandler((request) => dropHandler(request));
+    onCreate: async (preview, destination) => { created.push({ name: preview.tree.name, id: destination.id }); return { ok: true }; },
+    onCancel: () => { cancels += 1; } });
   dialog.show();
-  const backdrop = host.children[0];
-  const section = backdrop.children[0];
-  const fileInput = findAll(section, 'input').find((input) => input.type === 'file' && input.multiple && input.hasAttribute('webkitdirectory'));
-  const nameInput = findAll(section, 'input').find((input) => input.type === 'text');
-  const drop = section.querySelector('.create-map-drop');
-  const button = (text) => findAll(section, 'button').find((item) => item.textContent === text);
-  const create = button('Create Map'); const replace = button('Replace map'); const back = button('Back');
-  return { document, host, dialog, backdrop, section, fileInput, nameInput, drop, create, replace, back, selections, names, created, cancels, setDropHandler: (fn) => { dropHandler = fn; } };
+  const section = host.children[0].children[0];
+  const title = walk(section).find((node) => node.tagName === 'INPUT' && node.type === 'text');
+  return { document, host, section, dialog, title, names, created, get cancels() { return cancels; } };
 }
-function pick(env, name) { env.fileInput.files = [file(name)]; return env.fileInput.dispatch('change'); }
-function itemDrop(env, name) { return pick(env, name); }
-function entryDrop(env, name) { return pick(env, name); }
+async function type(env, value) { env.title.value = value; await env.title.dispatch('input'); await flush(); }
 
-test('picker A pending then item drop B: B owns the preview and is submitted once', async () => {
+test('latest title owns the preview; an older title cannot replace it', async () => {
   const env = setup();
-  await pick(env, 'A.txt');
-  await itemDrop(env, 'B.txt');
-  env.selections[1].resolve(result('B'));
-  await flush();
-  assert.equal(env.create.disabled, false);
-  assert.match(textOf(env.section.querySelector('.create-map-preview')), /B/);
-  env.selections[0].resolve(result('A'));
-  await flush();
-  assert.equal(env.create.disabled, false);
-  assert.match(textOf(env.section.querySelector('.create-map-preview')), /B/);
-  assert.doesNotMatch(textOf(env.section.querySelector('.create-map-preview')), /A/);
-  await env.create.click();
-  await env.replace.click();
-  await flush();
-  assert.equal(env.created.length, 1);
-  assert.equal(env.created[0].tree.name, 'B');
-});
-
-test('reverse completion: A resolves while B is pending; B remains the only installable candidate', async () => {
-  const env = setup();
-  await pick(env, 'A.txt');
-  await itemDrop(env, 'B.txt');
-  env.selections[0].resolve(result('A'));
-  await flush();
-  assert.equal(env.create.disabled, true);
-  assert.match(textOf(env.section.querySelector('.create-map-status')), /Preparing preview/);
-  env.selections[1].resolve(result('B'));
-  await flush();
-  assert.equal(env.create.disabled, false);
-  assert.match(textOf(env.section.querySelector('.create-map-preview')), /B/);
-});
-
-test('folder pick A then B: B wins, and obsolete A rejection cannot replace B status', async () => {
-  const env = setup();
-  await pick(env, 'A'); const a = env.selections[0];
-  await pick(env, 'B'); const b = env.selections[1];
-  b.resolve(result('B'));
-  await flush();
-  assert.equal(env.create.disabled, false);
-  a.reject(new Error('A failed late'));
-  await flush();
-  assert.equal(env.create.disabled, false);
-  assert.match(textOf(env.section.querySelector('.create-map-status')), /Review, then choose Create Map/);
-  assert.match(textOf(env.section.querySelector('.create-map-preview')), /B/);
-});
-
-test('name changes are latest-wins and invalid latest name blocks creation', async () => {
-  const env = setup();
-  const first = env.selections[0] = { request: null, ...deferred() };
-  // Install a valid base preview first.
-  await pick(env, 'Base.txt');
-  env.selections.at(-1).resolve(result('Base'));
-  env.selections.splice(0, 1);
-  await flush();
-  assert.equal(env.create.disabled, false);
-  env.nameInput.value = 'One'; await env.nameInput.dispatch('input');
-  assert.equal(env.names.length, 1);
-  env.nameInput.value = 'Two'; await env.nameInput.dispatch('input');
+  await type(env, 'A');
+  await type(env, 'AB');
   assert.equal(env.names.length, 2);
-  assert.equal(env.create.disabled, true);
-  env.names[0].resolve(result('One'));
-  await flush();
-  assert.equal(env.create.disabled, true);
-  env.names[1].resolve(result('Two'));
-  await flush();
-  assert.equal(env.create.disabled, false);
-  assert.match(textOf(env.section.querySelector('.create-map-preview')), /Two/);
-  env.nameInput.value = ''; await env.nameInput.dispatch('input');
-  assert.equal(env.create.disabled, true);
-  assert.match(env.section.querySelector('.create-map-name-error').textContent, /\S/);
+  env.names[1].resolve(candidate('AB')); await flush();
+  env.names[0].resolve(candidate('A')); await flush();
+  assert.equal(button(env.section, 'Create Map').disabled, false);
+  assert.match(byClass(env.section, 'create-map-status').textContent, /AB/);
+  assert.doesNotMatch(byClass(env.section, 'create-map-status').textContent, /“A”/);
+  await button(env.section, 'Create Map').click();
+  await button(env.section, 'Replace map').click(); await flush();
+  assert.deepEqual(env.created, [{ name: 'AB', id: 'a' }]);
 });
 
-test('close/reopen isolates preparation ownership and reservations by session', async () => {
+test('invalid latest title clears readiness and never submits', async () => {
   const env = setup();
-  await pick(env, 'A.txt');
-  const a = env.selections[0];
-  env.dialog.close({ restoreFocus: false });
-  env.dialog.show();
-  await pick(env, 'B.txt');
-  const b = env.selections[1];
-  a.resolve(result('A'));
-  await flush();
-  assert.equal(env.backdrop.hidden, false);
-  assert.equal(env.create.disabled, true);
-  assert.match(textOf(env.section.querySelector('.create-map-status')), /Preparing preview/);
-  assert.equal(env.section.querySelector('.create-map-preview').children.length, 0);
-  b.resolve(result('B'));
-  await flush();
-  assert.equal(env.create.disabled, false);
-  await env.create.click(); await env.replace.click(); await flush();
-  assert.equal(env.created.length, 1); assert.equal(env.created[0].tree.name, 'B');
+  await type(env, 'Valid');
+  env.names[0].resolve(candidate('Valid')); await flush();
+  assert.equal(button(env.section, 'Create Map').disabled, false);
+  await type(env, '   ');
+  assert.equal(button(env.section, 'Create Map').disabled, true);
+  await env.document.keydown({ key: 'Escape' });
+  assert.equal(env.host.children[0].hidden, true);
+  assert.equal(env.created.length, 0);
 });
 
-test('cancel and destroy ignore late preparation and never submit', async () => {
+test('cancel/reopen invalidates old preparation ownership', async () => {
   const env = setup();
-  await pick(env, 'A.txt');
-  const a = env.selections[0];
-  env.dialog.close({ restoreFocus: false });
-  a.resolve(result('A'));
-  await flush();
-  assert.equal(env.created.length, 0);
-  assert.equal(env.backdrop.hidden, true);
-  assert.equal(env.cancels.length, 1);
+  await type(env, 'Old');
+  await env.document.keydown({ key: 'Escape' });
   env.dialog.show();
-  await pick(env, 'C.txt');
-  const c = env.selections[1];
-  env.dialog.destroy();
-  c.resolve(result('C'));
-  await flush();
+  env.names[0].resolve(candidate('Old')); await flush();
   assert.equal(env.created.length, 0);
-});test('folder pick reverse completion: A finishing while B is pending cannot own the preview', async () => {
+  await type(env, 'New');
+  env.names[1].resolve(candidate('New')); await flush();
+  await button(env.section, 'Create Map').click();
+  await button(env.section, 'Replace map').click(); await flush();
+  assert.deepEqual(env.created, [{ name: 'New', id: 'a' }]);
+});
+
+test('destination selection stays local and survives refresh', async () => {
   const env = setup();
-  await pick(env, 'A'); const a = env.selections[0];
-  await pick(env, 'B'); const b = env.selections[1];
-  a.resolve(result('A'));
-  await flush();
-  assert.equal(env.create.disabled, true);
-  assert.match(textOf(env.section.querySelector('.create-map-status')), /Preparing preview/);
-  assert.equal(env.section.querySelector('.create-map-preview').children.length, 0);
-  b.resolve(result('B'));
-  await flush();
-  assert.equal(env.create.disabled, false);
-  assert.match(textOf(env.section.querySelector('.create-map-preview')), /B/);
+  const options = walk(env.section).filter((node) => node.className === 'create-map-library-option');
+  await options[1].click();
+  assert.equal(byClass(env.section, 'create-map-location-name').textContent, 'B');
+  await type(env, 'Keep');
+  env.names[0].resolve(candidate('Keep')); await flush();
+  await button(env.section, 'Refresh').click(); await flush();
+  assert.equal(byClass(env.section, 'create-map-location-name').textContent, 'B');
+  assert.equal(env.title.value, 'Keep');
 });

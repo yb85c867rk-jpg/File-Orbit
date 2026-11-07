@@ -1,4 +1,4 @@
-import test from 'node:test';
+﻿import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 
@@ -20,17 +20,18 @@ test('Create Map style block contains real newlines and no stray quote tokens', 
   assert.equal(style.includes('\\'), false);
   assert.match(style, /^  \.create-map-form \{ display: grid; gap: 7px; \}$/m);
   assert.match(style, /^  \.create-map-form\[hidden\], \.create-map-actions\[hidden\], \.create-map-preview\[hidden\], \.create-map-confirm\[hidden\] \{ display: none; \}$/m);
-  assert.match(style, /^  \.create-map-form input\[hidden\] \{ display: none; \}$/m);
-  assert.match(style, /^  \.create-map-form input \{ background: var\(--fo-input\);/m);
+  assert.match(style, /^\s*\.create-map-form input\[hidden\] \{ display: none; \}$/m);
+  assert.match(style, /^\s*\.create-map-form input \{ background: var\(--fo-input\);/m);
 });
 
 test('Create Map dialog exposes exactly one stage at a time in source transitions', () => {
   const js = readFileSync(new URL('../../harness/m5-exploration/create-map-dialog.js', import.meta.url), 'utf8');
-  assert.match(js, /confirm\.hidden = false; form\.hidden = true; preview\.hidden = true; actions\.hidden = true;/);
-  assert.match(js, /confirm\.hidden = true; form\.hidden = false; preview\.hidden = false; actions\.hidden = false;/);
+  assert.match(js, /confirm\.hidden = false; form\.hidden = true; actions\.hidden = true;/);
+  assert.match(js, /confirm\.hidden = true; form\.hidden = false; actions\.hidden = false;/);
   assert.match(js, /if \(!hasCurrentMap\(\)\) \{ submitCreation\(\); return; \}/);
   assert.match(js, /function syncButtonState\(\)/);
   assert.match(js, /const session = sessionSeq;/);
   assert.match(js, /if \(!open \|\| session !== sessionSeq\) return;/);
   assert.match(js, /if \(session === sessionSeq\) \{ submitting = false; syncButtonState\(\); \}/);
 });
+

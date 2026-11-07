@@ -446,6 +446,10 @@
 .create-map-location button:disabled { opacity: .55; cursor: default; }
 .create-map-location button[aria-pressed="true"] { border-color: var(--fo-accent); }
 .create-map-location-note { color: var(--fo-muted); font-size: 11px; line-height: 1.35; }
+.create-map-library-list { display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px; min-width: 0; }
+.create-map-library-list button { box-sizing: border-box; width: 100%; min-height: 32px; text-align: left; overflow-wrap: anywhere; background: var(--fo-panel-2); color: var(--fo-text); border: 1px solid var(--fo-border); border-radius: 6px; padding: 6px 8px; font: inherit; font-size: 12px; cursor: pointer; }
+.create-map-library-list button[aria-pressed="true"] { border-color: var(--fo-accent); }
+.create-map-library-list button:focus-visible { outline: 2px solid var(--fo-accent); outline-offset: 1px; }
   .create-map-preview { max-height: 240px; overflow: auto; border: 1px solid var(--fo-border); border-radius: 6px; padding: 5px; font-size: 12px; }
   .create-map-row { display: flex; gap: 6px; min-height: 22px; align-items: center; overflow-wrap: anywhere; }
   .create-map-status { min-height: 16px; color: var(--fo-muted); font-size: 12px; overflow-wrap: anywhere; }
@@ -552,7 +556,7 @@
    <span id="history-status" class="visually-hidden" role="status" aria-live="polite"></span>
   </div>
   <div id="graph-viewport">
-   <div id="empty-state" hidden><h2>Create a map to get started</h2><p>Enter a title to create an empty map, or select files and folders to build one.</p><button type="button" data-action="create-map" data-available="true" data-label="Create Map">Create Map</button></div>
+   <div id="empty-state" hidden><h2>Create a map to get started</h2><p>Create an empty map with one root folder, then add content later.</p><button type="button" data-action="create-map" data-available="true" data-label="Create Map">Create Map</button></div>
    <div id="graph-host"></div><div id="label-host"></div>
    <div id="drag-layer" aria-hidden="true"><div id="drag-ghost"></div><div id="drag-target"></div></div>
    <div id="drag-feedback" role="status" aria-live="polite" aria-atomic="true"></div>
@@ -593,6 +597,8 @@
 <script type="module" src="./main.mjs"></script>
 </body>
 </html>
+
+
 
 
 

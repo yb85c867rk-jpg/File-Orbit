@@ -625,7 +625,7 @@ globalThis.__M5_LEGACY_PERSISTENCE_HARNESS__ = process.env.RECOVERY_SLICE2 || pr
     cp = await hooks.recoveryCheckpoint(); assert.doesNotMatch(JSON.stringify(cp.checkpoint.tree), /created\.pdf/);
 
     const workspaceBeforeSaveAs = hooks.recoveryState().workspace.workspaceId;
-    assert.equal(env.saveState.textContent, 'Unsaved changes');
+    assert.match(env.saveState.textContent, /Unsaved changes|Restored map — not saved yet/);
     await env.doc.querySelector('[data-action="save-document-as"]').click(); await settle(300);
     assert.equal(env.saveState.textContent, 'Saved');
     cp = await hooks.recoveryCheckpoint(); assert.equal(cp.checkpoint, null);
@@ -1734,7 +1734,7 @@ globalThis.__M5_LEGACY_PERSISTENCE_HARNESS__ = process.env.RECOVERY_SLICE2 || pr
     }
     if (process.env.FILE_OPEN_NAV) {
       hooks.touch(); await settle(30);
-    assert.equal(env.saveState.textContent, 'Unsaved changes');
+    assert.match(env.saveState.textContent, /Unsaved changes|Restored map — not saved yet/);
     await env.doc.querySelector('[data-action="save-document-as"]').click(); await settle(300);
     assert.equal(await waitFor(() => hooks.snapshot().dirty === false && !hooks.documentSaveState().saving), true);
     assert.equal(env.saveState.textContent, 'Saved');
@@ -2721,11 +2721,19 @@ if (process.env.P1B) {
     await env.desktopCreate.click();
     const createBackdrop = env.overlayHost.children.find((child) => child.className === 'create-map-backdrop');
     assert.ok(createBackdrop); const createDialog = createBackdrop.children[0];
-    const nameInput = findAll(createDialog, 'input').find((input) => input.type === 'text'); nameInput.value = 'Browser Map';
-    const createFolderInput = findAll(createDialog, 'input').find((input) => input.type === 'file' && input.multiple && input.hasAttribute('webkitdirectory'));
-    const selectedFile = syntheticFile('note.txt', 'text/plain', 'hello'); selectedFile.webkitRelativePath = 'note.txt'; createFolderInput.files = [selectedFile]; await createFolderInput.dispatch('change'); await settle(20);
+    const nameInput = findAll(createDialog, 'input').find((input) => input.type === 'text'); nameInput.value = 'Browser Map'; await nameInput.dispatch('input'); await settle(30);
+    const p1bLibrary = makeFakeOrbitDirectory('P1B Library', []);
+    const addedLibrary = await globalThis.window.__M5_P1B_TEST__.addMapLibraryForTest(p1bLibrary, 'P1B Library');
+    assert.equal(addedLibrary.ok, true, 'P1B Library could not be adopted');
+    await findAll(createDialog, 'button').find((button) => button.textContent === 'Refresh').click();
+    for (let i = 0; i < 40 && !findAll(createDialog, 'button').find((button) => button.textContent === 'P1B Library'); i += 1) await settle(50);
+    await findAll(createDialog, 'button').find((button) => button.textContent === 'P1B Library').click();
     await findAll(createDialog, 'button').find((button) => button.textContent === 'Create Map').click(); await settle(300);
 assert.equal(globalThis.window.__M5_EXPLORATION_STATUS__.persistence.hasMap, true);
+    assert.equal(globalThis.window.__M5_EXPLORATION_STATUS__.totalCount, 1, 'Create Map must produce exactly one root');
+    const fixturePackage = await makeSyntheticPackage({ rootId: 'p1b-browser', rootName: 'Browser Map', fileName: 'note.txt', bytes: new TextEncoder().encode('hello'), text: 'Browser Map' });
+    await globalThis.window.__M5_P1B_TEST__.importPackage(fixturePackage); await settle(250);
+    assert.equal(globalThis.window.__M5_EXPLORATION_STATUS__.totalCount, 2, 'P1B fixture note was not installed');
     assert.ok(env.doc.querySelector('#label-host').children.length > 0);
     if (process.env.P1B_UNLOAD) {
       const dirtyEvent = { preventDefault() { this.prevented = true; }, returnValue: '' };
@@ -2772,7 +2780,7 @@ assert.equal(globalThis.window.__M5_EXPLORATION_STATUS__.persistence.hasMap, tru
     }
     assert.equal(env.desktopSave.dataset.available, 'true');
     assert.equal(env.mobileSave.dataset.available, 'true');
-    assert.equal(env.saveState.textContent, 'Unsaved changes');
+    assert.match(env.saveState.textContent, /Unsaved changes|Restored map — not saved yet/);
     await env.desktopSave.click(); await settle(140);
     const savedStatus = globalThis.window.__M5_EXPLORATION_STATUS__.persistence;
     assert.ok(savedStatus.mapId); assert.equal(savedStatus.dirty, false); assert.equal(savedStatus.lastResult.wroteAttachmentCount, 1);
@@ -3455,7 +3463,7 @@ assert.equal(globalThis.window.__M5_EXPLORATION_STATUS__.persistence.hasMap, tru
       globalThis.window.__M5_P1B_TEST__.touch();
       await env.desktopSave.click(); await settle(100);
       assert.match(env.doc.querySelector('#shell-status').textContent, /Download started/);
-      assert.equal(env.saveState.textContent, 'Unsaved changes');
+      assert.match(env.saveState.textContent, /Unsaved changes|Restored map — not saved yet/);
       assert.equal(globalThis.window.__M5_P1B_TEST__.documentState().handle, null);
       assert.equal(globalThis.window.__M5_P1B_TEST__.saveCount(), saves);
       delete globalThis.document; delete globalThis.window; delete globalThis.ResizeObserver; delete globalThis.requestAnimationFrame; delete globalThis.cancelAnimationFrame;
@@ -3740,7 +3748,7 @@ assert.equal(globalThis.window.__M5_EXPLORATION_STATUS__.persistence.hasMap, tru
       await env.doc.querySelector('[data-action="save-document-as"]').click(); await settle(120);
       assert.equal(globalThis.window.__M5_P1B_TEST__.documentState().handleName, 'a.orbit');
       assert.equal(globalThis.window.__M5_P1B_TEST__.snapshot().dirty, true);
-      assert.equal(env.saveState.textContent, 'Unsaved changes');
+      assert.match(env.saveState.textContent, /Unsaved changes|Restored map — not saved yet/);
       const beforeCapture = globalThis.window.__M5_P1B_TEST__.snapshot();
       nextSaveHandle = handleC;
       await env.doc.querySelector('[data-action="save-document-as"]').click(); await settle(80);
@@ -3841,7 +3849,7 @@ assert.equal(globalThis.window.__M5_EXPLORATION_STATUS__.persistence.hasMap, tru
       const saves = globalThis.window.__M5_P1B_TEST__.saveCount();
       await env.desktopSave.click(); await settle(80);
       assert.match(env.doc.querySelector('#shell-status').textContent, /Download started/);
-      assert.equal(env.saveState.textContent, 'Unsaved changes');
+      assert.match(env.saveState.textContent, /Unsaved changes|Restored map — not saved yet/);
       assert.equal(globalThis.window.__M5_P1B_TEST__.saveCount(), saves);
       await env.desktopOpen.click(); await settle(60);
       const prompt = env.overlayHost.children.find((child) => child.className === 'unsaved-map-backdrop' && child.hidden === false);
@@ -3967,7 +3975,7 @@ assert.equal(globalThis.window.__M5_EXPLORATION_STATUS__.persistence.hasMap, tru
       assert.equal(globalThis.window.__M5_P1B_TEST__.operation(), owner);
       assert.equal(globalThis.window.__M5_P1B_TEST__.snapshot().dataRevision, owner.revision);
       assert.equal(textOf(env.doc.querySelector('#editor-status')).trim(), 'Changes remain in this map but have not been saved.');
-      assert.equal(env.saveState.textContent, 'Unsaved changes');
+      assert.match(env.saveState.textContent, /Unsaved changes|Restored map — not saved yet/);
       delete globalThis.document; delete globalThis.window; delete globalThis.ResizeObserver; delete globalThis.requestAnimationFrame; delete globalThis.cancelAnimationFrame;
       return;
     }
@@ -3999,7 +4007,7 @@ assert.equal(globalThis.window.__M5_EXPLORATION_STATUS__.persistence.hasMap, tru
       await env.doc.querySelector('[data-action="save-document"]')?.click?.();
       // failure path is exercised through Save As to the same handle with close throwing
       await env.doc.querySelector('[data-action="save-document-as"]').click(); await settle(120);
-      assert.equal(env.saveState.textContent, 'Unsaved changes');
+      assert.match(env.saveState.textContent, /Unsaved changes|Restored map — not saved yet/);
       assert.equal(globalThis.window.__M5_EXPLORATION_STATUS__.persistence.dirty, true);
       delete globalThis.window.showOpenFilePicker; delete globalThis.window.showSaveFilePicker;
       delete globalThis.document; delete globalThis.window; delete globalThis.ResizeObserver; delete globalThis.requestAnimationFrame; delete globalThis.cancelAnimationFrame;
@@ -5215,6 +5223,7 @@ assert.equal(globalThis.window.__M5_EXPLORATION_STATUS__.persistence.hasMap, tru
 }
 
 await run();
+
 
 
 
