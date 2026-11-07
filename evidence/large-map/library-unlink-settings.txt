@@ -1,0 +1,29 @@
+﻿Tested SHA: e7a7228c8e6cf00655f7d93b8f606e6becf4a563
+
+✔ no existing setting leaves collection uninitialized and migration is non-mutating (10.4269ms)
+✔ loadCollection does not migrate or mutate storage merely by reading (12.7081ms)
+✔ explicit legacy migration writes one stable record and keeps legacy compatibility record (20.5633ms)
+✔ migration cannot overwrite a collection saved in the same instance before migration (13.6804ms)
+✔ migration cannot resurrect legacy over an intentionally empty collection saved concurrently (27.5465ms)
+✔ invalid save validation cannot supersede a valid queued write (14.1171ms)
+✔ non-directory handles are rejected on save and invalidate loaded collections (13.6269ms)
+✔ repeated migration is idempotent and preserves stable ID (27.2448ms)
+✔ existing collection is authoritative over legacy and an empty collection stays empty (27.9231ms)
+✔ same-named distinct directories are preserved by ID without name merging (14.0472ms)
+✔ valid selected ID round-trips and invalid selected ID is rejected (13.3493ms)
+✔ malformed and unsupported collection records fail without legacy fallback (75.8258ms)
+✔ invalid records and duplicate IDs are rejected before writing (0.3674ms)
+✔ unavailable IndexedDB reports read and write failures (0.6272ms)
+✔ newest accepted collection write wins over older queued write (5.8664ms)
+✔ clone and transaction-abort failures are reported without claiming success (0.56ms)
+✔ legacy single-directory load/save/clear compatibility remains intact (19.8621ms)
+✔ collection writes do not touch map or other settings stores (20.9173ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 353.1998
+

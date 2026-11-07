@@ -1,0 +1,27 @@
+﻿Tested SHA: e7a7228c8e6cf00655f7d93b8f606e6becf4a563
+
+✔ controller initializes migration/collection and selected Library (0.928ms)
+✔ controller adopts A and B, deduplicates A, and keeps same-named distinct records (0.57ms)
+✔ identity comparison failure is explicit and does not merge by name (0.2239ms)
+✔ storage write failure keeps the adopted collection and selection in session (0.1808ms)
+✔ read failure is truthful and disposal prevents later adoption (0.287ms)
+✔ relink replaces the same ID only after persistence and preserves other records (1.9928ms)
+✔ relink no-op, duplicate-linked, failure and identity cases preserve committed state (0.5407ms)
+✔ non-persisted selection invalidates a delayed adoption continuation (2.3921ms)
+✔ select rejects unknown IDs and persists valid selection (0.2261ms)
+✔ unlink non-selected Library preserves selected ID and persists exact next collection (0.3359ms)
+✔ unlink selected Library sets selectedId null without choosing another (0.1745ms)
+✔ unlink final Library persists an authoritative empty collection (0.1144ms)
+✔ unlink storage failure preserves collection/selection and can be retried (0.1566ms)
+✔ unlink rejects unknown, changed, unverifiable and repeated targets without mutation (0.3281ms)
+✔ unlink uses only collection persistence and never a file/directory mutation API (0.5014ms)
+✔ delayed unlink identity check becomes stale after a newer collection operation (7.4005ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 37.307
+
