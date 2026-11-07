@@ -104,3 +104,5 @@ The Phase C test also covers the compact collapsible Library controls, + New, ac
 
 - `upload-structure-diagnostic.test.mjs`: verifies failure export contains synthetic structure/layout data only.
 - `upload-installation-diagnostic.test.mjs`: verifies the actual Upload preparation failure records effective configuration and failing parent.
+
+- `upload-anonymized-492-check.mjs`: actual Local Folder Upload of the anonymized 85-folder/407-file hierarchy (492 nodes), descendant-aware R480 layout, full diagnostics, navigation/label, wheel/pan, one-action undo/redo, failed-install preservation, and save/reopen.
