@@ -1,4 +1,5 @@
 import { createDownloadResourceManager } from './backup-resources.js';
+import { dataExportContentExtension, sanitizeExportFilename, suggestedDataExportName, dataExportMime } from './node-export-content.js';
 import { encodeBackup, decodeBackup, safeBackupFilename, safeDocumentFilename } from '../../../src/engine/hypertree/persistence/backup.js';
 import { createDocumentAdapter } from './document-adapter.js';
 import { createOrbitDirectoryAdapter } from './orbit-directory-adapter.js';
@@ -1987,45 +1988,6 @@ function openEditorMenuTarget(target, action) {
   publish();
   if (result.ok) openAttachmentViewer(target.id);
   return result;
-}
-function dataExportContentExtension(details, record) {
-  const original = String(record?.name || details?.attachment?.originalName || '');
-  const originalExtension = original.includes('.') && !original.startsWith('.') ? original.split('.').pop().toLowerCase() : '';
-  const classification = record?.classification || details?.attachment?.classification || null;
-  const format = String(classification?.format || '');
-  if (format === 'pdf') return 'pdf';
-  if (format === 'markdown') return ['md', 'markdown'].includes(originalExtension) ? originalExtension : 'md';
-  if (format === 'text') return ['txt', 'text', 'md', 'markdown', 'json', 'xml', 'yaml', 'yml', 'csv', 'log', 'html', 'htm', 'css', 'js', 'ts'].includes(originalExtension) ? originalExtension : 'txt';
-  const classified = String(classification?.extension || '').replace(/^[.]+/, '').toLowerCase();
-  if (classified) return classified;
-  if (originalExtension) return originalExtension;
-  const mime = String(record?.mime || record?.file?.type || '').toLowerCase();
-  const known = { 'application/pdf': 'pdf', 'image/png': 'png', 'image/jpeg': 'jpg', 'image/gif': 'gif', 'image/webp': 'webp', 'image/svg+xml': 'svg', 'text/plain': 'txt', 'text/markdown': 'md', 'application/json': 'json', 'application/zip': 'zip', 'application/octet-stream': 'bin' };
-  return known[mime] || '';
-}
-function sanitizeExportFilename(value, fallback) {
-  let name = String(value || '').normalize('NFC').replace(/[\u0000-\u001f\u007f<>:"/\\|?*]+/g, '_').replace(/\s+/g, ' ').trim();
-  name = name.replace(/[. ]+$/g, '');
-  if (!name || name === '.' || name === '..') name = String(fallback || 'data').replace(/[\u0000-\u001f\u007f<>:"/\\|?*]+/g, '_').trim() || 'data';
-  const dot = name.lastIndexOf('.');
-  const stem = dot > 0 ? name.slice(0, dot) : name;
-  const ext = dot > 0 ? name.slice(dot) : '';
-  if (/^(con|prn|aux|nul|com[1-9]|lpt[1-9])$/i.test(stem)) name = '_' + name;
-  if (name.length > 180) name = name.slice(0, 180 - ext.length) + ext;
-  return name;
-}
-function suggestedDataExportName(details, record) {
-  const current = String(details?.name || record?.name || 'data');
-  const extension = dataExportContentExtension(details, record);
-  const currentExtension = current.includes('.') && !current.startsWith('.') ? current.split('.').pop() : '';
-  let candidate = current;
-  if (extension && !currentExtension) candidate = current + '.' + extension;
-  else if (extension && currentExtension && currentExtension.toLowerCase() !== extension.toLowerCase()) candidate = current.slice(0, current.length - currentExtension.length - 1) + '.' + extension;
-  return sanitizeExportFilename(candidate, record?.name || 'data');
-}
-function dataExportMime(details, record) {
-  const mime = String(record?.mime || record?.classification?.mime || details?.attachment?.mime || record?.file?.type || '').trim();
-  return /^[^\s/]+\/[^\s/]+$/.test(mime) ? mime : 'application/octet-stream';
 }
 function dataExportAvailability(target) {
   if (dataExportBusy) return { enabled: false, title: 'A data copy is already being saved.' };
