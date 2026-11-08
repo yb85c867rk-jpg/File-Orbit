@@ -68,14 +68,14 @@ export function buildUploadStructureDiagnostic({ preparation = null, diagnostics
   };
 }
 
-export function downloadUploadStructureDiagnostic(diagnostic, { document = globalThis.document } = {}) {
+export function downloadUploadStructureDiagnostic(diagnostic, { document = globalThis.document, filename = 'fileorbit-upload-structure-diagnostic.json' } = {}) {
   if (!diagnostic || !document) return false;
   const text = JSON.stringify(diagnostic, null, 2);
   const blob = new Blob([text], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
   const anchor = document.createElement('a');
   anchor.href = url;
-  anchor.download = 'fileorbit-upload-structure-diagnostic.json';
+  anchor.download = filename;
   anchor.hidden = true;
   document.body.append(anchor);
   anchor.click();

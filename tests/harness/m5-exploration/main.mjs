@@ -3327,7 +3327,7 @@ function exportUploadStructureDiagnostic(current) {
     context: current.context
   });
   globalThis.__M5_UPLOAD_STRUCTURE_DIAGNOSTIC__ = diagnostic;
-  return downloadUploadStructureDiagnostic(diagnostic, { document });
+  return downloadUploadStructureDiagnostic(diagnostic, { document, filename: 'fileorbit-delete-structure-diagnostic.json' });
 }
 
 async function installUploadPreview(current) {
