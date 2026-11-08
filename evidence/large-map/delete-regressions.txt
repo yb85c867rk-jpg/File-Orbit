@@ -1,28 +1,28 @@
-﻿Tested SHA: 82e57fdb41eaa84f8e66e888ed5ed6afec91af34
+﻿Tested SHA: 4340e62eccdd3b7b5e1f68fae92611ff3bb4577b
 
-✔ classification uses signature, MIME, extension, and conflict precedence (1.4751ms)
-✔ classifyFile reads only a bounded prefix (0.6652ms)
-✔ registry enforces per-file and total budgets and owns references (0.3779ms)
-✔ registry replacement/cancel accounting releases only staged references (0.1487ms)
-✔ declared policy limits and classification are deterministic (0.1564ms)
-✔ YAML/YML extensions are text independent of MIME; common YAML MIME types are text (0.5163ms)
-✔ confirmation shows counts/name and cancel does not confirm (1.0005ms)
-✔ confirmation passes captured identity to onConfirm (0.335ms)
-✔ folder menu enables Delete Folder except at root (0.9681ms)
-✔ data menu enables Delete Data (0.2142ms)
-✔ shared menu dispatcher routes delete without opening editor flow (0.1388ms)
-✔ delete admission accepts 300 nodes and rejects 301 before candidate (0.7286ms)
-✔ pending Delete intent validates dataset/revision/id/kind/visibility (0.1331ms)
-✔ delete uses paid admission for a 492-node current map (0.5535ms)
-✔ real menu Delete opens real confirmation; Confirm runs shared installer and Undo/Redo (13.713ms)
-✔ Cancel and Escape never call delete installer (0.9778ms)
-✔ explicit right-click target differs from selection; failure preserves tree/history (2.8991ms)
-✔ data menu Delete → real confirmation → installer → Undo → Redo (2.4232ms)
-✔ history bounds use UTF-8 bytes and non-mutating reservation (5.0714ms)
-✔ metadata replay validates expected state and restores exact before/after (0.462ms)
-✔ history keeps attachments as JSON metadata only and preserves classification (0.1361ms)
-✔ redo clears only on successful add and entries remain independently owned (0.2ms)
-✔ E3-A replay rejects 301 nodes before candidate preparation (0.1707ms)
+✔ classification uses signature, MIME, extension, and conflict precedence (1.5127ms)
+✔ classifyFile reads only a bounded prefix (0.6599ms)
+✔ registry enforces per-file and total budgets and owns references (0.3548ms)
+✔ registry replacement/cancel accounting releases only staged references (0.1513ms)
+✔ declared policy limits and classification are deterministic (0.2123ms)
+✔ YAML/YML extensions are text independent of MIME; common YAML MIME types are text (0.3664ms)
+✔ confirmation shows counts/name and cancel does not confirm (0.9371ms)
+✔ confirmation passes captured identity to onConfirm (0.3393ms)
+✔ folder menu enables Delete Folder except at root (0.6969ms)
+✔ data menu enables Delete Data (0.1832ms)
+✔ shared menu dispatcher routes delete without opening editor flow (0.1179ms)
+✔ delete admission accepts 300 nodes and rejects 301 before candidate (0.7642ms)
+✔ pending Delete intent validates dataset/revision/id/kind/visibility (0.1196ms)
+✔ delete uses paid admission for a 492-node current map (0.5622ms)
+✔ real menu Delete opens real confirmation; Confirm runs shared installer and Undo/Redo (15.1121ms)
+✔ Cancel and Escape never call delete installer (1.618ms)
+✔ explicit right-click target differs from selection; failure preserves tree/history (2.62ms)
+✔ data menu Delete → real confirmation → installer → Undo → Redo (2.7916ms)
+✔ history bounds use UTF-8 bytes and non-mutating reservation (5.2007ms)
+✔ metadata replay validates expected state and restores exact before/after (0.4088ms)
+✔ history keeps attachments as JSON metadata only and preserves classification (0.1333ms)
+✔ redo clears only on successful add and entries remain independently owned (0.186ms)
+✔ E3-A replay rejects 301 nodes before candidate preparation (0.1761ms)
 ℹ tests 23
 ℹ suites 0
 ℹ pass 23
@@ -30,5 +30,5 @@
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 128.2561
+ℹ duration_ms 123.2501
 

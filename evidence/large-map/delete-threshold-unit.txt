@@ -1,0 +1,15 @@
+﻿Tested SHA: 4340e62eccdd3b7b5e1f68fae92611ff3bb4577b
+
+✔ delete diagnostic exports synthetic before/candidate topology without private data (1.02ms)
+✔ anonymized 492-node Upload reproduces the n153 shortfall without descendant-aware allocation (29.217ms)
+✔ descendant-aware allocation preserves hierarchy and satisfies every parent at R480 (10.889ms)
+✔ deleting a large subtree below 300 retains descendant-aware feasibility (17.866ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 105.3403
+
