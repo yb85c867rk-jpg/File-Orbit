@@ -835,3 +835,7 @@ Deletion layout configuration now remains descendant-aware for the whole compari
 A failed Delete now keeps the confirmation open with the visible failure text and a local **Export structure diagnostic** action. The exported JSON contains synthetic before/candidate topology, synthetic deleted-target ID, counts, projection/descendant configuration, failing parent and clearance measurements. It excludes original names, paths, descriptions, attachment IDs and contents. Nothing is uploaded automatically. Cancelling after failure changes no map state.
 
 The diagnostic is the required input when the exact user hierarchy/target cannot be reconstructed from the available anonymized before-tree alone.
+
+### Sidebar Map libraries header
+
+The separate Map Library List and full-width Link Folder controls are removed. The Map libraries row is the navigation control; a compact adjacent + links an existing folder through the existing explanation/read-mode picker. The + is a separate button and never toggles the row. Selected file view returns to the linked collection on toggle; an expanded collection collapses. Empty collection copy is “No Map Libraries linked. Use + to link a folder.” After the last Unlink, focus returns to an available Map libraries control. The open-map unlink note requires actual folder membership; selection alone never establishes membership.

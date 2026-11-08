@@ -1,5 +1,5 @@
-﻿/** Connected-Orbit navigation/list presentation. It renders snapshots only. */
-export function createOrbitPanel({ document, onRefresh, onSelect, onChoose, onReconnect, onExpandRail } = {}) {
+/** Connected-Orbit navigation/list presentation. It renders snapshots only. */
+export function createOrbitPanel({ document, onRefresh, onSelect, onChoose, onReconnect, onExpandRail, onShowCollection } = {}) {
   const section = document.querySelector('#orbit-section');
   const toggle = document.querySelector('#orbit-toggle');
   const panel = document.querySelector('#orbit-panel');
@@ -16,6 +16,7 @@ export function createOrbitPanel({ document, onRefresh, onSelect, onChoose, onRe
   let currentEntryKey = null;
   let expanded = false;
   let wasActive = false;
+  let lastCollectionOpen = false;
 
   const setButton = (button, disabled) => { button.disabled = Boolean(disabled); button.setAttribute('aria-disabled', String(Boolean(disabled))); };
   const formatUpdated = (value) => {
@@ -84,13 +85,14 @@ export function createOrbitPanel({ document, onRefresh, onSelect, onChoose, onRe
     toggle.hidden = false;
     toggle.disabled = false;
     toggle.setAttribute('aria-expanded', String(visibleExpanded));
-    toggle.setAttribute('aria-label', 'Map Library');
-    toggle.title = active ? `Map Library: ${name}` : 'Map Library';
+    toggle.setAttribute('aria-label', 'Map libraries');
+    toggle.title = active ? `Map libraries: ${name}` : 'Map libraries';
     panel.hidden = !visibleExpanded;
   };
 
-  function render(snapshot, { supported = true, currentKey = null, busy = false, pendingName = null } = {}) {
+  function render(snapshot, { supported = true, currentKey = null, busy = false, pendingName = null, collectionOpen = false } = {}) {
     last = snapshot || null;
+    lastCollectionOpen = Boolean(collectionOpen);
     currentEntryKey = currentKey || null;
     const active = Boolean(snapshot?.handle);
     if (pendingName) {
@@ -133,12 +135,24 @@ export function createOrbitPanel({ document, onRefresh, onSelect, onChoose, onRe
     if (!railExpanded()) {
       onExpandRail?.();
       expanded = true;
+      if (!lastCollectionOpen) onShowCollection?.();
       syncToggle();
       return;
     }
-    expanded = !expanded;
+    if (!expanded) {
+      expanded = true;
+      if (!lastCollectionOpen) onShowCollection?.();
+      syncToggle();
+      return;
+    }
+    if (!lastCollectionOpen) {
+      onShowCollection?.();
+      syncToggle();
+      return;
+    }
+    expanded = false;
     syncToggle();
-    if (!expanded && panel.contains?.(document.activeElement)) toggle.focus?.();
+    if (panel.contains?.(document.activeElement)) toggle.focus?.();
   });
   reconnectButton.addEventListener('click', () => { if (!reconnectButton.disabled) onReconnect?.(); });
   refreshButton.addEventListener('click', () => { if (!refreshButton.disabled) onRefresh?.(); });
@@ -159,4 +173,6 @@ export function createOrbitPanel({ document, onRefresh, onSelect, onChoose, onRe
     }
   };
 }
+
+
 

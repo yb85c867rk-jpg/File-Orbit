@@ -119,10 +119,15 @@
   #settings-panel { display: grid; gap: 4px; margin-top: 2px; padding: 5px; border: 1px solid var(--fo-border); border-radius: 7px; background: var(--fo-bg); }
   #settings-panel[hidden] { display: none; }
 .orbit-section { display: grid; gap: 4px; margin-top: 2px; padding-top: 5px; border-top: 1px solid var(--fo-border); min-width: 0; }
+.orbit-header { display: flex; align-items: stretch; gap: 3px; min-width: 0; }
+.orbit-header .orbit-toggle { flex: 1 1 auto; min-width: 0; }
+.orbit-add { flex: 0 0 28px; width: 28px; height: 28px; min-height: 28px; padding: 0; display: inline-grid; place-items: center; border: 1px solid var(--fo-border-strong); border-radius: 5px; background: var(--fo-panel-2); color: var(--fo-text); font: inherit; font-size: 18px; line-height: 1; cursor: pointer; }
+.orbit-add:hover { border-color: var(--fo-accent); }
+.orbit-add:focus-visible { outline: 2px solid var(--fo-accent); outline-offset: 1px; }
+#nav-rail[data-expanded="false"] .orbit-add { display: none; }
 .orbit-toggle .nav-label { flex: 1 1 auto; min-width: 0; overflow: visible; text-overflow: clip; white-space: nowrap; }
 .library-collection[hidden], .library-selected[hidden] { display: none !important; }
 .library-collection { display: grid; grid-template-columns: minmax(0, 1fr); gap: 5px; min-width: 0; }
-.library-list-action { box-sizing: border-box; width: 100%; max-width: 100%; min-height: 30px; background: var(--fo-panel-2); color: var(--fo-text); border: 1px solid var(--fo-border-strong); border-radius: 5px; font: inherit; font-size: 12px; cursor: pointer; }
 .library-collection-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px; min-width: 0; }
 .library-collection-list > li, .orbit-list > li { min-width: 0; max-width: 100%; }
 .library-collection-list button { box-sizing: border-box; width: 100%; max-width: 100%; min-width: 0; overflow: hidden; display: grid; gap: 2px; text-align: left; padding: 6px 7px; background: var(--fo-panel-2); color: var(--fo-text); border: 1px solid var(--fo-border); border-radius: 5px; font: inherit; cursor: pointer; }
@@ -539,19 +544,16 @@
     <button class="nav-action" type="button" data-action="create-map" data-available="true" aria-label="Create Map" title="Create Map"><span class="nav-icon nav-icon-mask create-map-icon" aria-hidden="true"></span><span class="nav-label">Create Map</span></button>
     <button class="nav-action" type="button" data-action="save-document-as" data-available="false" aria-label="Save As" title="Save As"><svg class="nav-icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 3h9l2 2v5M4 3v14h6M13 11v6m-3-3h6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-label">Save As</span></button>
     <div id="orbit-section" class="orbit-section" aria-label="Map libraries">
-      <button id="orbit-toggle" class="nav-action orbit-toggle" type="button" aria-expanded="false" aria-controls="orbit-panel" aria-label="Map libraries" title="Map libraries">
+      <div class="orbit-header"><button id="orbit-toggle" class="nav-action orbit-toggle" type="button" aria-expanded="false" aria-controls="orbit-panel" aria-label="Map libraries" title="Map libraries">
         <span class="nav-icon nav-icon-mask orbit-folder-icon" aria-hidden="true"></span>
         <span class="nav-label">Map libraries</span>
         <svg class="orbit-chevron" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="m6 8 4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-      <div id="orbit-panel" class="orbit-panel" hidden role="region" aria-label="Map libraries contents" tabindex="-1">
-        <button id="library-list-action" class="library-list-action" type="button">Map Library List</button>
+      </button><button id="orbit-link-add" class="orbit-add" type="button" aria-label="Link existing Map Library" title="Link existing Map Library">+</button></div><div id="orbit-panel" class="orbit-panel" hidden role="region" aria-label="Map libraries contents" tabindex="-1">
         <div id="library-collection" class="library-collection" hidden>
           <p id="library-collection-status" class="orbit-status" role="status" aria-live="polite"></p>
-          <p id="library-collection-empty" class="orbit-empty" hidden>No Map Libraries linked yet.</p>
+          <p id="library-collection-empty" class="orbit-empty" hidden>No Map Libraries linked. Use + to link a folder.</p>
           <ul id="library-collection-list" class="library-collection-list" aria-label="Linked Map Libraries"></ul>
           <div class="orbit-actions">
-            <button id="library-link" type="button">Link Folder to Map Library</button>
             <button id="library-collection-refresh" type="button">Refresh</button>
           </div>
         </div>
@@ -640,6 +642,8 @@
 <script type="module" src="./main.mjs"></script>
 </body>
 </html>
+
+
 
 
 

@@ -546,7 +546,7 @@ let automaticSaveFailure = null;
 let automaticSaveActionInFlight = false;
 function claimDocumentOwnership() { documentOwnershipSeq += 1; return documentOwnershipSeq; }
 try {
-  orbitPanel = createOrbitPanel({ document, onRefresh: () => refreshOrbit(), onSelect: (entry) => openOrbitEntry(entry), onChoose: () => requestLibraryConnection(), onReconnect: () => reconnectMapLibrary(), onExpandRail: () => setRailExpanded(true) });
+  orbitPanel = createOrbitPanel({ document, onRefresh: () => refreshOrbit(), onSelect: (entry) => openOrbitEntry(entry), onChoose: () => requestLibraryConnection(), onReconnect: () => reconnectMapLibrary(), onExpandRail: () => setRailExpanded(true), onShowCollection: () => { libraryListOpen = true; libraryPendingName = null; renderOrbitPanel(); (libraryCollectionListEl?.querySelector('button') || orbitAddButton)?.focus?.(); } });
 } catch (error) {
   orbitPanel = null;
 }
@@ -3610,12 +3610,11 @@ async function applyLibraryEdit(draft) {
 
 const libraryEditButton = document.querySelector('#library-edit');
 
-const libraryListAction = document.querySelector('#library-list-action');
 const libraryCollectionEl = document.querySelector('#library-collection');
 const libraryCollectionListEl = document.querySelector('#library-collection-list');
 const libraryCollectionStatusEl = document.querySelector('#library-collection-status');
 const libraryCollectionEmptyEl = document.querySelector('#library-collection-empty');
-const libraryLinkButton = document.querySelector('#library-link');
+const orbitAddButton = document.querySelector('#orbit-link-add');
 const libraryCollectionRefreshButton = document.querySelector('#library-collection-refresh');
 const librarySelectedEl = document.querySelector('#library-selected');
 
@@ -3714,7 +3713,7 @@ async function libraryContainsOpenDocument(record) {
       if (typeof activeDocument.handle.isSameEntry === 'function' && await activeDocument.handle.isSameEntry(file)) return true;
     }
   } catch {}
-  return libraryCollection?.snapshot().selectedId === record?.id;
+  return false;
 }
 
 async function openLibraryUnlink(id, returnFocus = null) {
@@ -3732,8 +3731,8 @@ async function openLibraryUnlink(id, returnFocus = null) {
 }
 
 function focusAfterLibraryUnlink() {
-  if (!libraryListOpen) { (libraryListAction || libraryLinkButton)?.focus?.(); return; }
-  const next = libraryCollectionListEl?.querySelector('.library-collection-option') || libraryCollectionListEl?.querySelector('.library-collection-unlink') || libraryLinkButton;
+  if (!libraryListOpen) { (document.querySelector('#orbit-toggle') || orbitAddButton || document.querySelector('[data-action="create-map"]'))?.focus?.(); return; }
+  const next = libraryCollectionListEl?.querySelector('.library-collection-option') || libraryCollectionListEl?.querySelector('.library-collection-unlink') || orbitAddButton || document.querySelector('#orbit-toggle');
   next?.focus?.();
 }
 
@@ -3792,14 +3791,7 @@ async function refreshLibraryCollectionStatus() {
   return { ok: true };
 }
 
-if (libraryListAction) libraryListAction.addEventListener('click', () => {
-  if (destroying) return;
-  libraryListOpen = true;
-  libraryPendingName = null;
-  renderOrbitPanel();
-  (libraryCollectionListEl?.querySelector('button') || libraryLinkButton)?.focus?.();
-});
-if (libraryLinkButton) libraryLinkButton.addEventListener('click', () => { if (!destroying) void requestLibraryConnection(); });
+if (orbitAddButton) orbitAddButton.addEventListener('click', () => { if (!destroying) void requestLibraryConnection(); });
 if (libraryEditButton) libraryEditButton.addEventListener('click', () => { if (!destroying) openLibraryEdit(); });
 if (libraryCollectionRefreshButton) libraryCollectionRefreshButton.addEventListener('click', () => { if (!destroying) void refreshLibraryCollectionStatus(); });
 
@@ -3809,7 +3801,7 @@ function renderOrbitPanel() {
   try { busy = Boolean(orbitWorkspaceBusy || documentSaving || persistenceBusy || replacementGuard || pendingBackupImport || installingBackupImport); } catch { busy = false; }
   const canAdd = Boolean(hasMap && !busy);
   const snapshot = orbitState.snapshot();
-  orbitPanel.render(snapshot, { supported: orbitAdapter.supported, currentKey: orbitCurrentEntryKey, busy, pendingName: libraryPendingName });
+  orbitPanel.render(snapshot, { supported: orbitAdapter.supported, currentKey: orbitCurrentEntryKey, busy, pendingName: libraryPendingName, collectionOpen: libraryListOpen });
   const selectedLibrary = libraryCollection?.snapshot().selected;
   if (libraryEditButton) {
     libraryEditButton.hidden = !selectedLibrary || libraryListOpen || Boolean(libraryPendingName);
