@@ -1,4 +1,4 @@
-import { findOrbitNameCollision, normalizeOrbitMapFilename, validateOrbitDirectoryName } from '../../../src/engine/hypertree/orbit/names.js';
+﻿import { findOrbitNameCollision, normalizeOrbitMapFilename, validateOrbitDirectoryName } from '../../../src/engine/hypertree/orbit/names.js';
 
 export const DEFAULT_MAX_ORBIT_ENTRIES = 1000;
 export const DEFAULT_MAX_ENUMERATION_MS = 5000;
@@ -362,11 +362,12 @@ export function createOrbitDirectoryAdapter({
     if (expectedSize !== null || expectedLastModified !== null) {
       try {
         const currentFile = await resolved.getFile();
-        if ((expectedSize !== null && Number(currentFile.size) !== Number(expectedSize)) || (expectedLastModified !== null && Number(currentFile.lastModified) !== Number(expectedLastModified))) return failure('target-changed', 'metadata', null, 'The .orbit file at that name changed. No file was deleted.');
+        if ((expectedSize !== null && Number(currentFile.size) !== Number(expectedSize)) || (expectedLastModified !== null && Number(currentFile.lastModified) !== Number(expectedLastModified))) return { ...failure('metadata-changed', 'metadata', null, 'The .orbit file changed after confirmation. No file was deleted.'), currentSize: Number(currentFile.size), currentLastModified: Number(currentFile.lastModified) };
       } catch { return failure('target-changed', 'metadata', null, 'The .orbit file at that name changed. No file was deleted.'); }
     }
     if (!isCurrent()) return stale('identity');
     if (globalThis.__M5_ORBIT_DELETE_FAILURE__) return failure('delete-failed', 'remove', null, 'injected Orbit delete failure');
+    globalThis.__M5_DELETE_REMOVE_CALLS__ = Number(globalThis.__M5_DELETE_REMOVE_CALLS__ || 0) + 1;
     try {
       await directory.removeEntry(filename, { recursive: false });
       return { ok: true, name: filename, stage: 'removed', recursive: false };
@@ -413,6 +414,7 @@ export function createOrbitDirectoryAdapter({
     requestReadPermission(handle) { return ensurePermission(handle, 'read'); }
   };
 }
+
 
 
 

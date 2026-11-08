@@ -859,3 +859,7 @@ Browser APIs do not provide an atomic compare-and-delete against external proces
 ### Owned Orbit open-blocked feedback through Save
 
 The Orbit open guard uses owned open-blocked feedback. The exact producer now attaches ownership before setting the temporary message. A successful resumed Orbit install clears that feedback as part of the opening transaction, and guard release/publish clears it when the blocker settles. The redundant pending-decision banner is not emitted because the centered replacement prompt already owns that interaction. Unrelated actionable feedback is token-isolated and preserved. Late continuation callbacks are bound to their pending request and cannot restore an obsolete message.
+
+### File-deletion concurrency verification
+
+The save guard compares equivalent file handles with `isSameEntry`, not only object identity. A file deletion requested while a save is in flight waits for that save to settle. If the save changes the target metadata, deletion stops at a metadata-changed boundary and requires a renewed Delete File confirmation; only a known in-flight save may renew in place. External same-name replacement without that condition remains a stale-target abort. A pre-removal test gate verifies stale continuations after document replacement or Library relink. Actual OPFS remove calls are counted; six successful confirmations removed exactly one file each, while stale continuations made zero removal calls.

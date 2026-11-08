@@ -120,3 +120,4 @@ Sidebar Library tests use only the visible Map libraries toggle and adjacent +; 
 
 - `delete-map-file-check.mjs`: exact render-selected `.orbit` file deletion using disposable OPFS, including Cancel, non-current/current, dirty Save a Copy/Discard/Cancel, permission denial/cancellation, API failure, missing/replaced target, double submit, reload, pending Library unlink, light/dark and short-height confirmation.
 - `delete-save-open-feedback-check.mjs`: actual deleted-subtree dirty map → Orbit entry → Save prompt → Save, including blocked-open feedback during Save, no-click cleanup, target/third map opens, saved subtree reopen, Cancel and Save failure.
+- `delete-map-file-concurrency-check.mjs`: deterministic in-flight manual/automatic save, metadata renewal, document replacement and Library relink at a pre-removal gate, save guard, cancellation and exact OPFS remove-call counts.
