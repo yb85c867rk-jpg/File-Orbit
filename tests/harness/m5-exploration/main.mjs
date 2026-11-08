@@ -2109,7 +2109,8 @@ function requestFolderExport(target) {
     outputName: plan.outputFolderName,
     totals: plan.totals,
     planErrors: plan.errors.map(folderExportErrorText),
-    pickerUnsupported: typeof window?.showDirectoryPicker !== 'function'
+    pickerUnsupported: typeof window?.showDirectoryPicker !== 'function',
+    fallbackFocus: graphActionToolbar?.querySelector?.('button:not([disabled])') || mapMenuButton || null
   });
   return { ok: plan.ok, reason: plan.ok ? 'preview-open' : 'preparation-failed' };
 }
@@ -2235,9 +2236,15 @@ async function runFolderExportInner(requestedOutputName = '') {
   const skippedText = plan.skippedDescriptionOnly + ' description-only item' + (plan.skippedDescriptionOnly === 1 ? '' : 's');
   const complete = !cancelled && !stale && !failure && completedDirectories === plan.totals.directories && completedFiles === totalFiles;
   if (complete) {
-    folderExportDialog?.setProgress('Exported ' + plan.totals.directories + ' folders and ' + totalFiles + ' files to “' + outputName + '” in “' + (destination.name || 'the chosen destination') + '”. Skipped ' + skippedText + '.');
-    setInfoStatus('Exported “' + plan.selectedFolder.name + '” to “' + outputName + '”. Skipped ' + skippedText + '.', { ttl: 4500 });
-    return { ok: true, outputName, completedDirectories, completedAttachments, completedWebLinks, completedFiles, skipped: plan.skippedDescriptionOnly };
+    const notification = 'Folder exported successfully to ‘' + outputName + '’.' + (plan.skippedDescriptionOnly > 0 ? ' Skipped ' + plan.skippedDescriptionOnly + ' description-only items.' : '');
+    folderExportDialog?.setBusy(false);
+    folderExportDialog?.close({ restoreFocus: true });
+    folderExportPlan = null;
+    folderExportDestination = null;
+    folderExportCancelRequested = false;
+    folderExportOperation = 0;
+    setInfoStatus(notification, { ttl: 3000 });
+    return { ok: true, outputName, completedDirectories, completedAttachments, completedWebLinks, completedFiles, skipped: plan.skippedDescriptionOnly, notification };
   }
   const reasonText = cancelled ? 'Export was cancelled' : stale ? 'The map changed during export' : 'The export failed';
   const summary = root ? reasonText + '. The partial export folder “' + outputName + '” remains in “' + (destination.name || 'the chosen destination') + '”. Completed ' + completedDirectories + '/' + plan.totals.directories + ' folders and ' + completedFiles + '/' + totalFiles + ' files. Skipped ' + skippedText + '.' : reasonText + ' before an export folder was created. Nothing was written. Skipped ' + skippedText + '.';

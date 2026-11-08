@@ -30,6 +30,7 @@ export function createFolderExportDialog({ document, host = document?.body, onCh
   overlay.appendChild(dialog); host.appendChild(overlay);
 
   let trigger = null;
+  let fallbackFocus = null;
   let busy = false;
   let destinationName = null;
   let errorsPresent = false;
@@ -64,16 +65,18 @@ export function createFolderExportDialog({ document, host = document?.body, onCh
     errors.hidden = !errorsPresent;
     sync();
   }
+  function visibleFocusTarget(element) { return Boolean(element && element.isConnected && !element.hidden && element.getClientRects?.().length); }
   function close({ restoreFocus = true } = {}) {
     if (abort) { abort.abort(); abort = null; }
     overlay.hidden = true;
     busy = false;
-    if (restoreFocus && trigger?.focus) trigger.focus();
-    trigger = null;
+    if (restoreFocus) { const target = visibleFocusTarget(trigger) ? trigger : visibleFocusTarget(fallbackFocus) ? fallbackFocus : null; target?.focus?.(); }
+    trigger = null; fallbackFocus = null;
   }
-  function open({ folderName, outputName, totals, planErrors = [], pickerUnsupported = false } = {}) {
+  function open({ folderName, outputName, totals, planErrors = [], pickerUnsupported = false, fallbackFocus: nextFallbackFocus = null } = {}) {
     close({ restoreFocus: false });
     trigger = document.activeElement || null;
+    fallbackFocus = nextFallbackFocus || null;
     title.textContent = 'Export Folder';
     intro.textContent = `Export “${folderName}” as an independent copy. This does not change the .orbit file or synchronize with the source.`;
     counts.replaceChildren();
