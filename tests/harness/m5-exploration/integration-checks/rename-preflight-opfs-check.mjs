@@ -54,8 +54,13 @@ try {
  assert.equal(result.success.ok,true);
  assert.equal(result.success.filename,'Renamed.orbit');
  assert.equal(result.capability.directMoveVerified,false);
+ assert.equal(result.capability.directMoveEligible,false);
+ assert.equal(result.capability.directMoveAuthorized,false);
+ assert.equal(result.capability.directMoveBlockedReason,'backend-unverified');
  assert.equal(result.capability.overwriteSemantics,'unverified');
  assert.equal(result.capability.copyPathAvailable,true);
+ assert.equal(result.capability.copyPathAuthorized,false);
+ assert.equal(result.capability.strategy,'copy-verify-remove');
  assert.deepEqual(result.requests,[]);
  assert.equal(result.queries.length,1);
  assert.equal(result.lists.length,1);

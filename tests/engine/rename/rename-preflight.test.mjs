@@ -398,15 +398,53 @@ test('capability description never calls methods and does not equate presence wi
   const present = describeRenameCapability({ fileHandle, parentHandle, backend: 'native-windows' });
   assert.equal(present.directMovePresent, true);
   assert.equal(present.directMoveVerified, false);
-  assert.equal(present.strategy, 'direct-move-unverified');
+  assert.equal(present.directMoveEligible, false);
+  assert.equal(present.directMoveAuthorized, false);
+  assert.equal(present.directMoveBlockedReason, 'backend-unverified');
+  assert.equal(present.strategy, 'copy-verify-remove');
   assert.equal(present.overwriteSemantics, 'unverified');
+  assert.equal(present.requiresFurtherCapabilityVerification, true);
+  assert.equal(calls, 0);
+
+  const presenceWithoutCopy = describeRenameCapability({ fileHandle, parentHandle: { kind: 'directory' }, backend: 'native-windows' });
+  assert.equal(presenceWithoutCopy.directMoveEligible, false);
+  assert.equal(presenceWithoutCopy.directMoveAuthorized, false);
+  assert.equal(presenceWithoutCopy.strategy, 'unavailable');
+  assert.equal(presenceWithoutCopy.requiresFurtherCapabilityVerification, true);
+  assert.equal(calls, 0);
+
+  const verifiedMoveOnly = describeRenameCapability({ fileHandle, parentHandle, backend: 'native-windows', directMoveVerification: 'verified-backend' });
+  assert.equal(verifiedMoveOnly.directMoveEligible, false);
+  assert.equal(verifiedMoveOnly.directMoveAuthorized, false);
+  assert.equal(verifiedMoveOnly.directMoveBlockedReason, 'overwrite-unverified');
+  assert.equal(verifiedMoveOnly.overwriteSemantics, 'unverified');
+  assert.equal(verifiedMoveOnly.strategy, 'copy-verify-remove');
+  assert.equal(verifiedMoveOnly.requiresFurtherCapabilityVerification, true);
   assert.equal(calls, 0);
 
   const verified = describeRenameCapability({ fileHandle, parentHandle, backend: 'native-windows', directMoveVerification: 'verified-backend', overwriteSemanticsVerification: 'no-overwrite' });
   assert.equal(verified.strategy, 'direct-move');
   assert.equal(verified.overwriteSemantics, 'verified-no-overwrite');
 
+  const overwriteOnly = describeRenameCapability({ fileHandle: { kind: 'file', createWritable() {} }, parentHandle: { getFileHandle() {}, removeEntry() {} }, backend: 'opfs', overwriteSemanticsVerification: 'no-overwrite' });
+  assert.equal(overwriteOnly.directMovePresent, false);
+  assert.equal(overwriteOnly.directMoveEligible, false);
+  assert.equal(overwriteOnly.overwriteSemantics, 'verified-no-overwrite');
+  assert.equal(overwriteOnly.strategy, 'copy-verify-remove');
+  assert.equal(calls, 0);
+
   const fallback = describeRenameCapability({ fileHandle: { kind: 'file', createWritable() {} }, parentHandle: { getFileHandle() {}, removeEntry() {} }, backend: 'opfs' });
+  assert.equal(fallback.directMovePresent, false);
+  assert.equal(fallback.directMoveEligible, false);
+  assert.equal(fallback.copyPathAvailable, true);
+  assert.equal(fallback.copyPathAuthorized, false);
   assert.equal(fallback.strategy, 'copy-verify-remove');
+  assert.equal(calls, 0);
+
+  const unavailable = describeRenameCapability({ fileHandle: { kind: 'file' }, parentHandle: { kind: 'directory' }, backend: 'unknown' });
+  assert.equal(unavailable.directMovePresent, false);
+  assert.equal(unavailable.copyPathAvailable, false);
+  assert.equal(unavailable.strategy, 'unavailable');
+  assert.equal(unavailable.directMoveEligible, false);
   assert.equal(calls, 0);
 });
