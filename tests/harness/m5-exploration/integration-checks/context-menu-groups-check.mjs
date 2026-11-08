@@ -66,7 +66,7 @@ try {
   addForm:addForm.state.action==='add-folder'&&addForm.state.targetId===folderPoint.id&&addForm.menu.open===false,
   keyboard:keyboardAdd==='editor-context-add'&&firstSub==='add-folder'&&backAdd==='editor-context-add'&&escapeOne.submenuOpen===false&&escapeOne.open===true&&escapeTwo.open===false,
   outside:afterOutside.menu.open===false&&afterOutside.selected===beforeOutside.selected&&afterOutside.count===beforeOutside.count,
-  fileStructure:fileMenu.target?.name===fileNode.name&&fileMenu.mainItems.map(i=>i.text).join('|')==='Open|Edit Data…|Delete Data…'&&fileMenu.submenuOpen===false,
+  fileStructure:fileMenu.target?.name===fileNode.name&&fileMenu.mainItems.map(i=>i.text).join('|')==='Open|Edit Data…|Save Data As…|Delete Data…'&&fileMenu.mainItems.find(i=>i.action==='save-data-as')?.disabled===true&&/no attached file content/i.test(fileMenu.mainItems.find(i=>i.action==='save-data-as')?.title||'')&&fileMenu.submenuOpen===false,
   fileOpen:fileOpen.menu.open===false&&(!fileOpen.viewer||fileOpen.viewer===true),
   folderOpen:folderOpen.menu.open===false&&folderOpen.focused===folderPoint.id&&folderOpen.count===300,
   root:rootMenu.target?.name===rootName&&rootMenu.mainItems.find(i=>i.action==='delete-folder')?.disabled===true&&/structural root/.test(rootMenu.mainItems.find(i=>i.action==='delete-folder')?.title||''),
