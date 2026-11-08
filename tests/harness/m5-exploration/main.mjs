@@ -164,6 +164,7 @@ const permissionDialog = createPermissionDialog({ document, host: overlayHost })
 const libraryUnlinkDialog = createLibraryUnlinkDialog({ document, host: overlayHost, onUnlink: (record) => commitLibraryUnlink(record), onCancel: () => { libraryUnlinkOriginalId = null; libraryUnlinkToken += 1; } });
 const libraryEditDialog = createLibraryEditDialog({ document, host: overlayHost, onChoose: () => chooseEditReplacementFolder(), onApply: (draft) => applyLibraryEdit(draft), onCancel: () => { libraryEditOriginalId = null; libraryEditToken += 1; if (!destroying) setInfoStatus('Linked folder change cancelled. The current Library connection and open map were preserved.', { ttl: 4000 }); } });
 const shellStatusEl = document.querySelector('#shell-status');
+const folderExportSuccessEl = document.querySelector('#folder-export-success');
 const themeAction = document.querySelector('#theme-action');
 const fullscreenAction = document.querySelector('#fullscreen-action');
 const copyMapButton = document.querySelector('#copy-map');
@@ -595,6 +596,10 @@ let folderExportCancelRequested = false;
 let folderExportOperation = 0;
 let folderExportSubmission = false;
 let folderExportLastNotification = null;
+let folderExportSuccessTimer = null;
+let folderExportSuccessToken = 0;
+let folderExportSuccessObserver = null;
+let folderExportSuccessResize = null;
 function claimDocumentOwnership() { documentOwnershipSeq += 1; return documentOwnershipSeq; }
 try {
   orbitPanel = createOrbitPanel({ document, onRefresh: () => refreshOrbit(), onSelect: (entry) => openOrbitEntry(entry), onChoose: () => requestLibraryConnection(), onReconnect: () => reconnectMapLibrary(), onExpandRail: () => setRailExpanded(true), onDelete: (entry) => requestDeleteMapFile(entry), onShowCollection: () => { libraryListOpen = true; libraryPendingName = null; renderOrbitPanel(); (libraryCollectionListEl?.querySelector('button') || orbitAddButton)?.focus?.(); } });
@@ -2095,7 +2100,55 @@ async function saveNodeDataAs(target) {
     if (dataExportOperation === operation) dataExportBusy = false;
   }
 }
-﻿function folderExportPlanCurrent(plan) {
+﻿function folderExportSuccessWorkspace() {
+  const viewport = document.querySelector('#graph-viewport');
+  const rect = viewport?.getBoundingClientRect?.();
+  if (rect && rect.width > 1 && rect.height > 1) return rect;
+  return { left: 0, top: 0, width: globalThis.innerWidth || 0, height: globalThis.innerHeight || 0 };
+}
+function positionFolderExportSuccess() {
+  if (!folderExportSuccessEl || folderExportSuccessEl.hidden) return;
+  const rect = folderExportSuccessWorkspace();
+  const maxWidth = Math.max(120, Math.min(520, rect.width - 32));
+  folderExportSuccessEl.style.maxWidth = maxWidth + 'px';
+  folderExportSuccessEl.style.left = (rect.left + rect.width / 2) + 'px';
+  folderExportSuccessEl.style.top = (rect.top + rect.height / 2) + 'px';
+}
+function stopFolderExportSuccessTracking() {
+  if (folderExportSuccessObserver) { folderExportSuccessObserver.disconnect(); folderExportSuccessObserver = null; }
+  if (folderExportSuccessResize) { globalThis.removeEventListener('resize', folderExportSuccessResize); folderExportSuccessResize = null; }
+}
+function hideFolderExportSuccess() {
+  folderExportSuccessToken += 1;
+  if (folderExportSuccessTimer !== null) { clearTimeout(folderExportSuccessTimer); folderExportSuccessTimer = null; }
+  stopFolderExportSuccessTracking();
+  if (folderExportSuccessEl) { folderExportSuccessEl.hidden = true; folderExportSuccessEl.textContent = ''; }
+}
+function showFolderExportSuccess(message) {
+  if (!folderExportSuccessEl) return false;
+  const token = ++folderExportSuccessToken;
+  if (folderExportSuccessTimer !== null) { clearTimeout(folderExportSuccessTimer); folderExportSuccessTimer = null; }
+  stopFolderExportSuccessTracking();
+  folderExportSuccessEl.textContent = message;
+  folderExportSuccessEl.hidden = false;
+  positionFolderExportSuccess();
+  requestAnimationFrame(positionFolderExportSuccess);
+  if (typeof ResizeObserver === 'function') {
+    folderExportSuccessObserver = new ResizeObserver(positionFolderExportSuccess);
+    for (const selector of ['#graph-viewport', '#nav-rail', '#details-panel', '#layout']) {
+      const target = document.querySelector(selector);
+      if (target) folderExportSuccessObserver.observe(target);
+    }
+  }
+  folderExportSuccessResize = positionFolderExportSuccess;
+  globalThis.addEventListener('resize', folderExportSuccessResize);
+  folderExportSuccessTimer = setTimeout(() => {
+    if (token !== folderExportSuccessToken) return;
+    hideFolderExportSuccess();
+  }, 3000);
+  return true;
+}
+function folderExportPlanCurrent(plan) {
   if (!plan) return false;
   if (plan.datasetToken !== datasetToken || plan.revision !== dataRevision || plan.session !== persistenceSessionSeq || plan.ownership !== documentOwnershipSeq || plan.documentHandle !== activeDocument.handle || plan.documentIdentity !== activeDocument.documentIdentity) return false;
   const details = model?.details?.(plan.selectedFolder.id);
@@ -2249,8 +2302,8 @@ async function runFolderExportInner(requestedOutputName = '') {
     folderExportDestination = null;
     folderExportCancelRequested = false;
     folderExportOperation = 0;
-    setInfoStatus(notification, { ttl: 3000, preserve: true });
-    folderExportLastNotification = { message: notification, token: shellStatusToken, at: Date.now() };
+    showFolderExportSuccess(notification);
+    folderExportLastNotification = { message: notification, token: folderExportSuccessToken, at: Date.now(), surface: 'folder-export-success' };
     return { ok: true, outputName, completedDirectories, completedAttachments, completedWebLinks, completedFiles, skipped: plan.skippedDescriptionOnly, notification };
   }
   const reasonText = cancelled ? 'Export was cancelled' : stale ? 'The map changed during export' : 'The export failed';

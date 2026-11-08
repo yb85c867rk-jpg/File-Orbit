@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -300,6 +300,8 @@
   .delete-confirm-backdrop { position: fixed; inset: 0; z-index: 40; display: grid; place-items: center; background: rgba(0,0,0,.55); padding: 16px; }
   .folder-export-backdrop { position: fixed; inset: 0; z-index: 45; display: grid; place-items: center; background: rgba(0,0,0,.55); padding: 16px; }
   .folder-export-backdrop[hidden] { display: none; }
+  .folder-export-success { position: fixed; z-index: 55; box-sizing: border-box; max-width: min(520px, calc(100vw - 32px)); padding: 10px 14px; border: 1px solid var(--fo-border-strong); border-radius: 8px; background: var(--fo-panel); color: var(--fo-text); font-size: 13px; line-height: 1.45; text-align: center; overflow-wrap: anywhere; box-shadow: 0 10px 30px rgba(0,0,0,.35); pointer-events: none; transform: translate(-50%, -50%); }
+  .folder-export-success[hidden] { display: none !important; }
   .folder-export-dialog { width: min(620px, 100%); max-height: calc(100dvh - 32px); display: grid; grid-template-rows: auto minmax(0, 1fr) auto; gap: 12px; padding: 16px; border: 1px solid #475569; border-radius: 8px; background: #111827; color: #e5e7eb; }
   .folder-export-dialog h2 { margin: 0; font-size: 17px; }
   .folder-export-body { min-height: 0; overflow: auto; display: grid; gap: 10px; align-content: start; }
@@ -701,6 +703,7 @@
 <div id="nav-rail-tooltip" role="tooltip" hidden></div>
 <div id="overlay-host" aria-live="polite"></div>
 </div>
+<div id="folder-export-success" class="folder-export-success" role="status" aria-live="polite" hidden></div>
 <pre id="status" aria-hidden="true"></pre>
 <script>globalThis.__M5_P1B_TEST_HOOKS__ = true; globalThis.__STROKES__ = [];</script>
 <script type="module" src="./main.mjs"></script>
