@@ -60,13 +60,14 @@ export function createEditorContextMenu({
   const addData = item('add-data', 'Data…');
   const uploadFiles = item('upload-files', 'Upload Files…');
   const uploadFolder = item('upload-folder', 'Upload Folder…');
+  const exportFolder = item('export-folder', 'Export Folder…');
   const saveData = item('save-data-as', 'Save Data As…');
   const deleteFolder = item('delete-folder', 'Delete Folder…', { danger: true });
   const deleteData = item('delete-data', 'Delete Data…', { danger: true });
 
   const folderSeparator = separator();
   const fileSeparator = separator();
-  for (const child of [openFolder, editFolder, addButton, folderSeparator, deleteFolder, openData, editData, saveData, fileSeparator, deleteData]) menu.appendChild(child);
+  for (const child of [openFolder, editFolder, addButton, exportFolder, folderSeparator, deleteFolder, openData, editData, saveData, fileSeparator, deleteData]) menu.appendChild(child);
   for (const child of [addFolder, addData, separator(), uploadFiles, uploadFolder]) submenu.appendChild(child);
 
   const deleteNote = document.createElement('p');
@@ -89,7 +90,7 @@ export function createEditorContextMenu({
   function actionsFor(hitKind) {
     return hitKind === 'file'
       ? ['open-data', 'edit-data', 'save-data-as', 'delete-data']
-      : ['open-folder', 'edit-folder', 'add', 'delete-folder'];
+      : ['open-folder', 'edit-folder', 'add', 'export-folder', 'delete-folder'];
   }
   function submenuActions() { return ['add-folder', 'add-data', 'upload-files', 'upload-folder']; }
   function enabledMainItems() {
@@ -104,6 +105,7 @@ export function createEditorContextMenu({
     editFolder.hidden = !folder; editData.hidden = folder;
     saveData.hidden = folder;
     addButton.hidden = !folder;
+    exportFolder.hidden = !folder;
     folderSeparator.hidden = !folder; fileSeparator.hidden = folder;
     deleteFolder.hidden = !folder; deleteData.hidden = folder;
     for (const action of submenuActions()) buttons.get(action).hidden = !folder;

@@ -66,6 +66,8 @@ test('prepares selected nested folder with hierarchy, empty dirs, skips and exac
   assert.match(html.html, /href="https:\/\/example\.com\/a\?x=1&amp;y=2"/);
   assert.match(html.html, /첫 줄 🙂\n둘째 줄 &lt;b&gt;/);
   assert.doesNotMatch(html.html, /<b>/);
+  assert.doesNotMatch(html.html, /<script/i);
+  assert.doesNotMatch(html.html, /attachment/i);
   assert.equal(JSON.stringify(tree), snapshot, 'preparation must not mutate the tree');
 });
 test('root export includes selected root directory and all descendants', () => {
@@ -109,7 +111,10 @@ test('collisions include case, Unicode, sanitization, generated HTML and file/di
     }
     const plan = prepareFolderExport({ tree, folderId: 'root', attachmentRegistry: registry() });
     assert.equal(plan.ok, false, JSON.stringify(entry));
-    assert.ok(plan.errors.some((error) => error.reason === 'filesystem-name-collision'), JSON.stringify(entry));
+    const collision = plan.errors.find((error) => error.reason === 'filesystem-name-collision');
+    assert.ok(collision, JSON.stringify(entry));
+    assert.match(collision.message, /Filesystem paths collide/);
+    assert.ok(collision.first.relativePath && collision.second.relativePath);
   }
   const tree = { id: 'root', kind: 'folder', name: 'Root', children: [
     { id: 'dir', kind: 'folder', name: 'X.pdf', children: [] },
@@ -125,4 +130,15 @@ test('selected folder name is sanitized without mutating the map name', () => {
   assert.equal(plan.ok, true);
   assert.equal(plan.outputFolderName, '_CON');
   assert.equal(plan.selectedFolder.name, 'CON');
+});
+
+test('same display names under different directories remain distinct', () => {
+  const root = { id: 'root', kind: 'folder', name: 'Root', children: [
+    { id: 'a', kind: 'folder', name: 'A', children: [{ id: 'fa', kind: 'file', name: 'same.txt', data: { dataType: 'file', attachmentId: 'a-text' } }] },
+    { id: 'b', kind: 'folder', name: 'B', children: [{ id: 'fb', kind: 'file', name: 'same.txt', data: { dataType: 'file', attachmentId: 'a-pdf' } }] }
+  ] };
+  const plan = prepareFolderExport({ tree: root, folderId: 'root', attachmentRegistry: registry() });
+  assert.equal(plan.ok, true);
+  assert.deepEqual(plan.files.map((file) => file.relativePath).sort(), ['Root/A/same.txt', 'Root/B/same.pdf']);
+  assert.notEqual(plan.files[0].bytes, plan.files[1].bytes);
 });

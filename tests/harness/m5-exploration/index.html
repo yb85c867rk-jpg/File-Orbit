@@ -298,6 +298,31 @@
   html[data-theme="light"] .editor-menu-separator { background: #cbd5e1; }
   .editor-context-submenu .editor-menu-separator { background: #334155; }
   .delete-confirm-backdrop { position: fixed; inset: 0; z-index: 40; display: grid; place-items: center; background: rgba(0,0,0,.55); padding: 16px; }
+  .folder-export-backdrop { position: fixed; inset: 0; z-index: 45; display: grid; place-items: center; background: rgba(0,0,0,.55); padding: 16px; }
+  .folder-export-backdrop[hidden] { display: none; }
+  .folder-export-dialog { width: min(620px, 100%); max-height: calc(100dvh - 32px); display: grid; grid-template-rows: auto minmax(0, 1fr) auto; gap: 12px; padding: 16px; border: 1px solid #475569; border-radius: 8px; background: #111827; color: #e5e7eb; }
+  .folder-export-dialog h2 { margin: 0; font-size: 17px; }
+  .folder-export-body { min-height: 0; overflow: auto; display: grid; gap: 10px; align-content: start; }
+  .folder-export-body p { margin: 0; overflow-wrap: anywhere; }
+  .folder-export-counts { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 16px; margin: 0; }
+  .folder-export-counts dt { color: #cbd5e1; }
+  .folder-export-counts dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; }
+  .folder-export-field { display: grid; gap: 4px; font-size: 13px; }
+  .folder-export-field input { min-width: 0; padding: 7px 9px; border: 1px solid #475569; border-radius: 6px; background: #0f172a; color: #e5e7eb; font: inherit; }
+  .folder-export-destination { color: #bbf7d0; overflow-wrap: anywhere; }
+  .folder-export-errors { border: 1px solid #7f1d1d; border-radius: 6px; padding: 8px; color: #fecaca; background: #450a0a; }
+  .folder-export-errors ul { margin: 6px 0 0; padding-left: 18px; }
+  .folder-export-progress { color: #bfdbfe; }
+  .folder-export-actions { display: flex; justify-content: flex-end; gap: 8px; }
+  .folder-export-actions button { padding: 7px 12px; border-radius: 6px; border: 1px solid #475569; background: #1f2937; color: #e5e7eb; font: inherit; }
+  .folder-export-actions button:disabled { color: #64748b; cursor: not-allowed; }
+  .folder-export-actions .folder-export-primary { border-color: #2563eb; background: #1d4ed8; }
+  html[data-theme="light"] .folder-export-dialog { background: #fff; color: #0f172a; border-color: #cbd5e1; }
+  html[data-theme="light"] .folder-export-counts dt { color: #475569; }
+  html[data-theme="light"] .folder-export-field input { background: #f8fafc; color: #0f172a; border-color: #cbd5e1; }
+  html[data-theme="light"] .folder-export-destination { color: #166534; }
+  html[data-theme="light"] .folder-export-errors { background: #fef2f2; color: #991b1b; border-color: #fecaca; }
+  html[data-theme="light"] .folder-export-actions button { background: #f1f5f9; color: #0f172a; border-color: #cbd5e1; }
   .delete-confirm-backdrop[hidden] { display: none; }
   .delete-confirm { width: min(420px, 100%); display: grid; gap: 10px; padding: 16px; border: 1px solid #475569; border-radius: 8px; background: #111827; color: #e5e7eb; }
   .delete-confirm h2 { margin: 0; font-size: 16px; }

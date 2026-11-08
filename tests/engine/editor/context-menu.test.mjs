@@ -40,7 +40,7 @@ test('folder menu is Open, Edit, Add, separated Delete; Add owns submenu actions
   const s = setup();
   const root = { id: 'r', name: 'Root', hitKind: 'folder', isRoot: true };
   s.menu.open({ target: root, x: 10, y: 10 });
-  assert.deepEqual([...s.menu.actions.keys()].filter((key) => !s.menu.actions.get(key).hidden && !s.menu.submenu.contains(s.menu.actions.get(key))), ['open-folder', 'edit-folder', 'delete-folder']);
+  assert.deepEqual([...s.menu.actions.keys()].filter((key) => !s.menu.actions.get(key).hidden && !s.menu.submenu.contains(s.menu.actions.get(key))), ['open-folder', 'edit-folder', 'export-folder', 'delete-folder']);
   assert.equal(s.menu.addButton.hidden, false);
   assert.equal(s.menu.actions.get('delete-folder').disabled, true);
   assert.match(s.menu.actions.get('delete-folder').getAttribute('title'), /structural root/);

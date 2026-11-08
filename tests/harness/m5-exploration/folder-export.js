@@ -20,7 +20,9 @@ export function prepareFolderExport({
   datasetToken = 0,
   revision = 0,
   ownership = null,
-  documentHandle = null
+  documentHandle = null,
+  session = null,
+  documentIdentity = null
 } = {}) {
   if (!tree || typeof tree !== 'object') return { ok: false, errors: [error('missing-tree', 'The map is not available.')] };
   if (typeof folderId !== 'string' || folderId.length === 0) return { ok: false, errors: [error('missing-folder', 'Choose a folder to export.')] };
@@ -77,7 +79,7 @@ export function prepareFolderExport({
       const fileSegments = [...segments.slice(0, -1), filename];
       files.push({
         kind: 'web-link', nodeId: node.id, name: node.name, filename,
-        link: html.value, html: html.html, bytes: html.bytes.length, mime: 'text/html;charset=utf-8',
+        link: html.value, html: html.html, htmlBytes: html.bytes, bytes: html.bytes.length, mime: 'text/html;charset=utf-8',
         segments: fileSegments, relativePath: relative(fileSegments), mapPath: currentMapPath.join(' / '), extension: 'html'
       });
       return;
@@ -96,7 +98,8 @@ export function prepareFolderExport({
         reason: 'filesystem-name-collision',
         key,
         first: { type: previous.type, relativePath: previous.entry.relativePath, mapPath: previous.entry.mapPath },
-        second: { type, relativePath: entry.relativePath, mapPath: entry.mapPath }
+        second: { type, relativePath: entry.relativePath, mapPath: entry.mapPath },
+        message: `Filesystem paths collide: “${previous.entry.relativePath}” and “${entry.relativePath}”. Rename the map items before retrying.`
       });
     } else seen.set(key, { type, entry });
   };
@@ -110,7 +113,7 @@ export function prepareFolderExport({
   return {
     schema: FOLDER_EXPORT_PLAN_SCHEMA,
     ok: errors.length === 0,
-    datasetToken, revision, ownership, documentHandle,
+    datasetToken, revision, ownership, documentHandle, session, documentIdentity,
     selectedFolder: { id: selected.node.id, name: selected.node.name },
     outputFolderName: sanitizeExportFilename(selected.node.name, 'export'),
     directories,
