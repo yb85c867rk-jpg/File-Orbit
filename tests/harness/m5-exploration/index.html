@@ -278,7 +278,25 @@
   .editor-context-menu[hidden] { display: none; }
   .editor-context-menu button { background: transparent; color: #e5e7eb; border: 0; border-radius: 4px; padding: 6px 10px; text-align: left; font: inherit; }
   .editor-context-menu button:focus, .editor-context-menu button:hover { background: #1f2937; }
-  .editor-context-menu button:disabled { color: #64748b; cursor: not-allowed; }
+.editor-context-menu button:disabled { color: #64748b; cursor: not-allowed; }
+  .editor-context-menu { min-width: 180px; max-height: calc(100dvh - 16px); overflow: auto; }
+  .editor-context-menu button { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+  .editor-menu-separator { height: 1px; margin: 6px 4px; background: #475569; }
+  .editor-context-add .editor-menu-arrow { color: #94a3b8; font-size: 11px; }
+  .editor-menu-danger { color: #fca5a5 !important; }
+  .editor-context-submenu { position: fixed; z-index: 21; display: grid; gap: 2px; min-width: 170px; max-height: calc(100dvh - 16px); overflow: auto; padding: 4px; background: #111827; border: 1px solid #334155; border-radius: 6px; box-shadow: 0 8px 24px rgba(0,0,0,.35); }
+  .editor-context-submenu[hidden] { display: none !important; pointer-events: none; visibility: hidden; }
+  .editor-context-submenu button { width: 100%; background: transparent; color: #e5e7eb; border: 0; border-radius: 4px; padding: 6px 10px; text-align: left; font: inherit; }
+  .editor-context-submenu button:focus, .editor-context-submenu button:hover { background: #1f2937; }
+  .editor-context-submenu button:disabled { color: #64748b; cursor: not-allowed; }
+  .editor-context-menu button[hidden], .editor-context-submenu button[hidden], .editor-menu-separator[hidden] { display: none !important; }
+  html[data-theme="light"] .editor-context-menu, html[data-theme="light"] .editor-context-submenu { background: #ffffff; border-color: #cbd5e1; box-shadow: 0 8px 24px rgba(15,23,42,.18); }
+  html[data-theme="light"] .editor-context-menu button, html[data-theme="light"] .editor-context-submenu button { color: #0f172a; }
+  html[data-theme="light"] .editor-context-menu button:focus, html[data-theme="light"] .editor-context-menu button:hover, html[data-theme="light"] .editor-context-submenu button:focus, html[data-theme="light"] .editor-context-submenu button:hover { background: #e2e8f0; }
+  html[data-theme="light"] .editor-context-menu button:disabled, html[data-theme="light"] .editor-context-submenu button:disabled { color: #94a3b8; }
+  html[data-theme="light"] .editor-menu-danger { color: #b91c1c !important; }
+  html[data-theme="light"] .editor-menu-separator { background: #cbd5e1; }
+  .editor-context-submenu .editor-menu-separator { background: #334155; }
   .delete-confirm-backdrop { position: fixed; inset: 0; z-index: 40; display: grid; place-items: center; background: rgba(0,0,0,.55); padding: 16px; }
   .delete-confirm-backdrop[hidden] { display: none; }
   .delete-confirm { width: min(420px, 100%); display: grid; gap: 10px; padding: 16px; border: 1px solid #475569; border-radius: 8px; background: #111827; color: #e5e7eb; }

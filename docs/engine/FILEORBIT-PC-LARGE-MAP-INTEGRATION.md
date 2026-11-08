@@ -863,3 +863,7 @@ The Orbit open guard uses owned open-blocked feedback. The exact producer now at
 ### File-deletion concurrency verification
 
 The save guard compares equivalent file handles with `isSameEntry`, not only object identity. A file deletion requested while a save is in flight waits for that save to settle. If the save changes the target metadata, deletion stops at a metadata-changed boundary and requires a renewed Delete File confirmation; only a known in-flight save may renew in place. External same-name replacement without that condition remains a stale-target abort. A pre-removal test gate verifies stale continuations after document replacement or Library relink. Actual OPFS remove calls are counted; six successful confirmations removed exactly one file each, while stale continuations made zero removal calls.
+
+### Compact node context menus
+
+Folder nodes use Open Folder, Edit Folder, an Add submenu (Folder, Data, Upload Files, Upload Folder), and a separated Delete Folder. Data nodes use Open, Edit Data, and a separated Delete Data. The Add submenu is one level, opens on click or hover, and does not expose deferred export or Rename Map actions. Menu targets are the right-clicked node IDs, not focus or selection; delete confirmation is bound to that target's dataset/revision. Escape closes the submenu first, then the menu. Edge placement clamps the main menu and opens the submenu left when needed. Node deletion wording now clarifies that items are removed from the map only and original disk folders/files are not deleted.

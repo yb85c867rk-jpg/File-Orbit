@@ -15,7 +15,7 @@ export function createDeleteConfirmation({ document, host = document?.body, onCo
   const name = document.createElement('p');
   const summary = document.createElement('p');
   const note = document.createElement('p');
-  note.textContent = 'This removes items from the current FileOrbit session. You can undo this action.';
+  note.textContent = 'This removes items from this map only. It does not delete original folders or files on disk. You can undo this action.';
   const actions = document.createElement('div');
   actions.className = 'delete-confirm-actions';
   const cancel = document.createElement('button'); cancel.type = 'button'; cancel.textContent = 'Cancel';
