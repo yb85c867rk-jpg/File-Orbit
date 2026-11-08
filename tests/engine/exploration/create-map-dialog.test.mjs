@@ -41,7 +41,7 @@ function setup({ hasCurrentMap = true, libraries = [{ id: 'lib-a', name: 'Librar
     hasCurrentMap: () => hasCurrentMap,
     getLibraries: () => libraries,
     getDefaultLibraryId: () => selectedId,
-    onLinkLibrary: async () => { calls.links += 1; const c = { id: 'lib-c', name: 'Library C', handle: { name: 'Library C' } }; libraries.push(c); return { ok: true, library: c }; },
+    onChooseDestination: async () => { calls.links += 1; return { ok: true, destination: { id: null, name: 'Library C', handle: { name: 'Library C' }, draft: true, token: 1 } }; },
     onRefreshLibraries: async () => { calls.refreshes += 1; return { ok: true }; }
   });
   return { document, host, dialog, calls, libraries };
@@ -73,7 +73,7 @@ test('root-only form lists shared Libraries, defaults to the selected destinatio
   assert.deepEqual(calls.creates[0], { name: 'Root Map', id: 'lib-a', handle: { name: 'Library A' } });
   assert.equal(calls.cancels, 1);
 });
-test('choosing another linked Library changes only the form destination; linking C updates it', async () => {
+test('choosing another linked Library changes only the form destination; + New stages C without linking it', async () => {
   const { host, dialog, calls } = setup({ hasCurrentMap: false });
   dialog.show();
   const title = input(host, 'INPUT'); title.value = 'Draft'; title.dispatch('input');
@@ -124,4 +124,5 @@ test('no current map creates directly; cancel and reopen isolate prior preparati
   await findButton(host, 'Cancel').click();
   assert.equal(calls.cancels, 2);
 });
+
 

@@ -5,7 +5,7 @@ export function createCreateMapDialog({
   document, host, onNameChange = null, onCreate, onCancel,
   getFallbackFocus = () => null, hasCurrentMap = () => true,
   getLibraries = () => [], getDefaultLibraryId = () => null,
-  onLinkLibrary = null, onRefreshLibraries = null
+  onChooseDestination = null, onRefreshLibraries = null
 } = {}) {
   if (!document || !host) throw new Error('create-map dialog requires document and host');
   const backdrop = document.createElement('div');
@@ -39,7 +39,7 @@ export function createCreateMapDialog({
   libraryToggle.type = 'button'; libraryToggle.id = 'create-map-library-toggle'; libraryToggle.className = 'create-map-library-toggle';
   libraryToggle.textContent = 'Linked Map Libraries'; libraryToggle.setAttribute('aria-expanded', 'false'); libraryToggle.setAttribute('aria-controls', 'create-map-library-list');
   const newButton = document.createElement('button');
-  newButton.type = 'button'; newButton.className = 'create-map-library-new'; newButton.textContent = '+ New'; newButton.setAttribute('aria-label', 'Link folder to Map Library'); newButton.title = 'Link folder to Map Library';
+  newButton.type = 'button'; newButton.className = 'create-map-library-new'; newButton.textContent = '+ New'; newButton.setAttribute('aria-label', 'Choose folder for this map'); newButton.title = 'Choose folder for this map';
   libraryControls.append(libraryToggle, newButton);
   const destinationName = document.createElement('p'); destinationName.className = 'create-map-selected-destination'; destinationName.textContent = 'No Map Library selected';
   const libraryList = document.createElement('div'); libraryList.className = 'create-map-library-list'; libraryList.id = 'create-map-library-list'; libraryList.hidden = true;
@@ -104,13 +104,13 @@ export function createCreateMapDialog({
     }
   };
   const setDestination = (record) => {
-    destination = record ? { id: record.id, name: record.name, handle: record.handle } : null;
+    destination = record ? { id: record.id || null, name: record.name, handle: record.handle, draft: Boolean(record.draft), token: record.token || null } : null;
     destinationName.textContent = destination ? destination.name : 'No Map Library selected';
     destinationName.title = destination?.name || '';
     updateOptionStates();
     syncButtonState();
   };
-  const destinationRecord = () => destination ? libraries().find((record) => record.id === destination.id) : null;
+  const destinationRecord = () => destination ? (destination.draft ? destination : libraries().find((record) => record.id === destination.id)) : null;
   const setListExpanded = (expanded) => {
     listExpanded = Boolean(expanded);
     libraryList.hidden = !listExpanded;
@@ -155,7 +155,7 @@ export function createCreateMapDialog({
     }
     if (!records.length) {
       const empty = document.createElement('p'); empty.className = 'create-map-library-empty';
-      empty.textContent = 'No linked Map Libraries. Use + New to link one.';
+      empty.textContent = 'No linked Map Libraries. Use + New to choose a draft destination.';
       libraryList.appendChild(empty);
     }
     const refreshRow = document.createElement('div'); refreshRow.className = 'create-map-library-refresh';
@@ -164,6 +164,15 @@ export function createCreateMapDialog({
     refreshRow.appendChild(refreshButton);
     libraryList.appendChild(refreshRow);
     const current = destinationRecord();
+    if (destination?.draft) {
+      destinationName.textContent = destination.name;
+      destinationName.title = destination.name;
+      updateOptionStates();
+      libraryList.hidden = !listExpanded;
+      libraryToggle.setAttribute('aria-expanded', String(listExpanded));
+      syncButtonState();
+      return;
+    }
     if (destination && !current) {
       setDestination(null);
       setLibraryError('The selected destination is no longer linked. Choose another Map Library.');
@@ -262,17 +271,17 @@ export function createCreateMapDialog({
     }
   });
   newButton.addEventListener('click', async () => {
-    if (!open || submitting || libraryBusy || typeof onLinkLibrary !== 'function') return;
+    if (!open || submitting || libraryBusy || typeof onChooseDestination !== 'function') return;
     libraryBusy = true; syncButtonState(); setLibraryError('');
     try {
-      const result = await onLinkLibrary();
+      const result = await onChooseDestination();
       if (!open) return;
-      if (result?.ok && result.library) {
-        renderLibraries();
-        setDestination(result.library);
+      if (result?.ok && result.destination) {
+        setDestination(result.destination);
         setListExpanded(false);
+        setLibraryError('');
       } else if (result?.reason !== 'cancelled' && result?.reason !== 'stale') {
-        setLibraryError(String(result?.message || 'The folder could not be linked.'));
+        setLibraryError(String(result?.message || 'The folder could not be selected.'));
       }
     } catch (error) {
       if (open) setLibraryError(String(error?.message || error));
@@ -309,7 +318,7 @@ export function createCreateMapDialog({
     nameError.textContent = liveName.ok ? '' : liveName.message;
     if (!liveName.ok) { setStatus(''); syncButtonState(); return; }
     const session = sessionSeq;
-    const candidate = { ...previewData, destinationId: destination.id, destinationHandle: destination.handle, destinationName: destination.name };
+    const candidate = { ...previewData, destinationId: destination.id || null, destinationHandle: destination.handle, destinationName: destination.name, destinationDraft: Boolean(destination.draft), destinationToken: destination.token || null };
     submitting = true; setStatus('Creating map…'); syncButtonState(); confirmCancelButton.focus();
     try {
       const outcome = await onCreate(candidate, { ...destination });

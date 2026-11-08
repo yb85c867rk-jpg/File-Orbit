@@ -87,7 +87,7 @@ export function createLibraryCollectionController({
     };
   }
 
-  async function adopt(handle, { name = '', permission = 'granted' } = {}) {
+  async function adopt(handle, { name = '', permission = 'granted', rollbackOnPersistFailure = false } = {}) {
     if (disposed) return { ok: false, reason: 'disposed' };
     if (!handle || handle.kind !== 'directory') return { ok: false, reason: 'invalid-handle' };
     if (!initialized) { const loaded = await initialize(); if (!loaded.ok) return loaded; }
@@ -98,6 +98,8 @@ export function createLibraryCollectionController({
     if (!found.ok) return found;
     const directoryName = String(name || handle.name || '').trim();
     if (!directoryName) return { ok: false, reason: 'invalid-name' };
+    const priorRecords = records;
+    const priorSelectedId = selectedId;
 
     let record = found.record;
     let duplicate = Boolean(record);
@@ -112,6 +114,7 @@ export function createLibraryCollectionController({
     setStatus(record.id, { permission, phase: 'ready', error: null });
     const persisted = await persistCollection();
     if (disposed || token !== operationSeq) return { ok: false, reason: 'stale' };
+    if (!persisted.ok && rollbackOnPersistFailure) { records = priorRecords; selectedId = priorSelectedId; }
     return {
       ok: true,
       duplicate,
@@ -222,3 +225,4 @@ export function createLibraryCollectionController({
     get disposed() { return disposed; }
   };
 }
+

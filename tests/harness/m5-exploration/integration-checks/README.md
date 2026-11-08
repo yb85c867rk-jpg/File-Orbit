@@ -115,3 +115,5 @@ The Phase C test also covers the compact collapsible Library controls, + New, ac
 Deletion failure confirmation remains open with a privacy-safe `Export structure diagnostic` action. The export covers anonymized before/candidate topology and the deleted target ID.
 
 Sidebar Library tests use only the visible Map libraries toggle and adjacent +; no legacy list/link controls remain.
+
+- `create-map-draft-check.mjs`: staged empty-folder destination, no collection mutation, linked-destination reuse, collision/permission/write failure, and post-write persistence retry without duplicate file creation.

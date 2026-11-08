@@ -839,3 +839,9 @@ The diagnostic is the required input when the exact user hierarchy/target cannot
 ### Sidebar Map libraries header
 
 The separate Map Library List and full-width Link Folder controls are removed. The Map libraries row is the navigation control; a compact adjacent + links an existing folder through the existing explanation/read-mode picker. The + is a separate button and never toggles the row. Selected file view returns to the linked collection on toggle; an expanded collection collapses. Empty collection copy is “No Map Libraries linked. Use + to link a folder.” After the last Unlink, focus returns to an available Map libraries control. The open-map unlink note requires actual folder membership; selection alone never establishes membership.
+
+### Create Map draft Library destination
+
+Create Map + New now stages a folder as a draft destination. It uses the read-mode directory picker, displays the folder’s actual name, and does not link/persist a Library, change the sidebar selection or write a file until Create Map succeeds. Already-linked folders reuse their stable Library ID. Picker cancellation and Cancel/Escape preserve or discard only the form draft.
+
+After the file is encoded, written and closed, a new draft Library is registered once with rollback on persistence failure. The existing protected document installation and overwrite baseline path are retained. If the file exists but settings persistence fails, the dialog reports that explicitly, preserves the file and retries only the connection; the same written file is adopted without another create/overwrite. Existing collision, permission, write-failure, created-not-opened and double-submit protections remain.

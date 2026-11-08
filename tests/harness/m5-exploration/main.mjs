@@ -1,4 +1,4 @@
-import { createDownloadResourceManager } from './backup-resources.js';
+﻿import { createDownloadResourceManager } from './backup-resources.js';
 import { encodeBackup, decodeBackup, safeBackupFilename, safeDocumentFilename } from '../../../src/engine/hypertree/persistence/backup.js';
 import { createDocumentAdapter } from './document-adapter.js';
 import { createOrbitDirectoryAdapter } from './orbit-directory-adapter.js';
@@ -445,6 +445,9 @@ let uploadLayoutExperimentOverride = null;
 const UPLOAD_DIAGNOSTIC_BUILD = 'upload-diagnostics-1';
 let createDraftDestinationMode = 'standalone';
 let creationFolderSeq = 0;
+let createStagedDestination = null;
+let createStagedToken = 0;
+let createPendingWritten = null;
 function createSaveLocation() {
   const snapshot = orbitState.snapshot();
   const connected = Boolean(snapshot.handle && snapshot.phase !== 'blocked');
@@ -464,7 +467,7 @@ try {
     hasCurrentMap: () => hasMap,
     getLibraries: () => libraryCollection?.snapshot().libraries || [],
     getDefaultLibraryId: () => libraryCollection?.snapshot().selectedId || null,
-    onLinkLibrary: () => linkLibraryForCreate(),
+    onChooseDestination: () => chooseCreationDestinationForDialog(),
     onRefreshLibraries: () => refreshLibrariesForCreate(),
   onCancel: () => {
     creationFolderSeq += 1;
@@ -3159,13 +3162,32 @@ async function chooseCreationFolderForDialog() {
 }
 
 
-async function linkLibraryForCreate() {
+async function chooseCreationDestinationForDialog() {
   if (!createMapDialog?.open || destroying) return { ok: false, reason: 'stale' };
-  const linked = await requestLibraryConnection();
-  if (!linked?.ok) return linked || { ok: false, reason: 'link-failed', message: 'The folder could not be linked.' };
-  const selected = libraryCollection?.snapshot().selected;
-  if (!selected) return { ok: false, reason: 'link-failed', message: 'The folder was linked, but no creation destination could be selected.' };
-  return { ok: true, library: selected };
+  if (!orbitAdapter.supported) return { ok: false, message: 'Folder-based saving is not available in this browser. You can still create a standalone map.' };
+  const seq = ++creationFolderSeq;
+  const session = persistenceSessionSeq;
+  const dataset = datasetToken;
+  const picked = await orbitAdapter.pickDirectory();
+  if (!createMapDialog?.open || seq !== creationFolderSeq || session !== persistenceSessionSeq || dataset !== datasetToken) return { ok: false, stale: true };
+  if (!picked?.ok) {
+    return {
+      ok: false,
+      reason: picked?.reason || 'pick-failed',
+      message: picked?.reason === 'cancelled' ? 'Folder selection cancelled. Your map details and previous destination were kept.' : picked?.reason === 'permission-denied' ? 'Folder access was not granted. Your map details and previous destination were kept.' : 'The folder could not be selected. Your map details and previous destination were kept.'
+    };
+  }
+  const name = String(picked.name || picked.handle?.name || 'selected folder');
+  let existing = null;
+  for (const record of libraryCollection?.snapshot().libraries || []) {
+    if (!record?.handle) continue;
+    if (record.handle === picked.handle) { existing = record; break; }
+    try { if (typeof picked.handle.isSameEntry === 'function' && await picked.handle.isSameEntry(record.handle)) { existing = record; break; } } catch {}
+  }
+  createStagedDestination = existing
+    ? { id: existing.id, name: existing.name || name, handle: existing.handle, draft: false, existing: true, token: ++createStagedToken }
+    : { id: null, name, handle: picked.handle, draft: true, existing: false, token: ++createStagedToken };
+  return { ok: true, destination: { ...createStagedDestination } };
 }
 
 async function refreshLibrariesForCreate() {
@@ -5088,7 +5110,12 @@ async function installCreatedMap(preview, { request = null, silent = false, dest
   if (!admitted.ok) { setShellStatus(admitted.message); return { ok: false, reason: 'edition-node-limit', message: admitted.message, nodeCount: admitted.nodeCount }; }
   const importing = Boolean(request);
   const operation = importing ? 'import-' + request.id : createMapOperation;
-  const destinationRecord = !importing && destination?.id ? libraryCollection?.snapshot().libraries.find((record) => record.id === destination.id) : null;
+  const destinationDraft = Boolean(destination?.draft);
+  const destinationRecord = !importing && destination?.handle
+    ? (destinationDraft
+      ? Object.freeze({ id: destination.id || null, name: destination.name, handle: destination.handle, draft: true, token: destination.token || null })
+      : libraryCollection?.snapshot().libraries.find((record) => record.id === destination.id))
+    : null;
   const orbitCreation = !importing && destinationRecord ? Object.freeze({
     handle: destinationRecord.handle,
     sessionId: orbitState.snapshot().sessionId,
@@ -5104,11 +5131,21 @@ async function installCreatedMap(preview, { request = null, silent = false, dest
     && createMapOperation === orbitCreation.operation
     && persistenceSessionSeq === orbitCreation.session
     && datasetToken === orbitCreation.dataset
-    && (() => { const current = libraryCollection?.snapshot().libraries.find((record) => record.id === destination?.id); return Boolean(current && current.handle === orbitCreation.handle); })();
+    && (() => {
+      const current = destinationDraft
+        ? (createStagedDestination?.token === destination?.token && createStagedDestination?.handle === orbitCreation.handle ? createStagedDestination : null)
+        : libraryCollection?.snapshot().libraries.find((record) => record.id === destination?.id);
+      return Boolean(current && current.handle === orbitCreation.handle);
+    })();
   const orbitWriteCurrent = () => Boolean(orbitCreation) && !destroying
     && documentOwnershipSeq === orbitCreation.ownership
     && (createMapOperation === orbitCreation.operation || createMapOperation === dialogCloseOperation)
-    && (() => { const current = libraryCollection?.snapshot().libraries.find((record) => record.id === destination?.id); return Boolean(current && current.handle === orbitCreation.handle); })();
+    && (() => {
+      const current = destinationDraft
+        ? (createStagedDestination?.token === destination?.token && createStagedDestination?.handle === orbitCreation.handle ? createStagedDestination : null)
+        : libraryCollection?.snapshot().libraries.find((record) => record.id === destination?.id);
+      return Boolean(current && current.handle === orbitCreation.handle);
+    })();
   const creationOwner = importing ? null : Object.freeze({
     operation,
     session: persistenceSessionSeq,
@@ -5131,7 +5168,7 @@ async function installCreatedMap(preview, { request = null, silent = false, dest
   let prewritten = null;
   if (!importing) {
     if (!creationOwnerCurrent()) return staleCreation();
-    if (!orbitCreation || !destinationRecord) return { ok: false, reason: 'destination-required', keepDraft: true, message: 'Choose a valid linked Map Library destination.', destination: null };
+    if (!orbitCreation || !destinationRecord) return { ok: false, reason: 'destination-required', keepDraft: true, message: 'Choose a valid Map Library destination.', destination: null };
     if (!destinationRecordCurrent()) return { ok: false, reason: 'destination-changed', keepDraft: true, message: 'The selected Map Library changed before creation. Select the destination again.', destination: null };
     if (destination?.handle && typeof destination.handle.isSameEntry === 'function') {
       let same = false;
@@ -5140,6 +5177,14 @@ async function installCreatedMap(preview, { request = null, silent = false, dest
       if (!same) return { ok: false, reason: 'destination-changed', keepDraft: true, message: 'The selected Map Library folder changed before creation. Select the destination again.', destination: null };
     }
     const filename = safeDocumentFilename(preview.tree.name || 'FileOrbit map');
+    const reusableWritten = Boolean(createPendingWritten
+      && createPendingWritten.name === filename
+      && createPendingWritten.destination?.token === destination?.token
+      && createPendingWritten.directoryHandle === orbitCreation.handle);
+    if (reusableWritten) {
+      prewritten = { ...createPendingWritten };
+      creationDestination = { ok: true, orbit: true, handle: prewritten.handle, name: prewritten.name, identity: prewritten.identity, prewritten: true };
+    } else {
     let queried = savePermissionQueryOverride ? { ok: true, permission: savePermissionQueryOverride } : await orbitAdapter.queryWritePermission(orbitCreation.handle);
     if (!creationOwnerCurrent() || !destinationRecordCurrent()) return staleCreation();
     if (!queried?.ok || (queried.permission !== 'granted' && queried.permission !== 'unknown')) {
@@ -5188,7 +5233,21 @@ async function installCreatedMap(preview, { request = null, silent = false, dest
     if (!opened?.ok) return { ok: false, reason: 'baseline-failed', keepDraft: true, message: 'The map file was created but its saved baseline could not be established. It was not opened; the previous map was preserved.', created: { name: created.name, handle: created.handle }, destination: null };
     prewritten = { handle: created.handle, name: created.name, identity: orbitCreation.identity, baseline: opened.baseline };
     creationDestination = { ok: true, orbit: true, handle: created.handle, name: created.name, identity: orbitCreation.identity, prewritten: true };
+    }
   }
+  let linkedLibraryId = destinationRecord?.id || destination?.id || null;
+  if (prewritten && !importing && destinationDraft && !destination.existing) {
+    const adopted = await libraryCollection.adopt(orbitCreation.handle, { name: destination.name, permission: 'granted', rollbackOnPersistFailure: true });
+    if (destinationRecordCurrent() && creationOwnerCurrent() && adopted?.ok && adopted.persisted && adopted.library) {
+      linkedLibraryId = adopted.library.id;
+    } else {
+      createPendingWritten = { handle: prewritten.handle, directoryHandle: orbitCreation.handle, name: prewritten.name, identity: prewritten.identity, baseline: prewritten.baseline, destination: { ...destination } };
+      const message = 'The map file “' + prewritten.name + '” was created, but the Map Library connection could not be remembered. The file was preserved; choose Create Map again to retry the connection without creating or overwriting the file.';
+      setShellStatus(message);
+      return { ok: false, reason: 'library-persist-failed', keepDraft: true, created: { name: prewritten.name, handle: prewritten.handle }, fileCreated: true, message };
+    }
+  }
+  if (prewritten) createPendingWritten = null;
   const hadPriorMap = hasMap && Boolean(tree && model && session);
   const available = viewport();
   if (available.width <= 0 || available.height <= 0) {
@@ -5306,12 +5365,12 @@ async function installCreatedMap(preview, { request = null, silent = false, dest
       restoredMapAwaitingSave = false;
       let selectedFresh = false; let persistedFresh = false;
       try {
-        const selected = await libraryCollection.select(destination.id, { persist: true });
+        const selected = await libraryCollection.select(linkedLibraryId, { persist: true });
         selectedFresh = Boolean(selected?.ok);
         persistedFresh = Boolean(selected?.persisted);
         if (selectedFresh) {
-          await orbitState.restoreDirectory(prewritten.handle, { name: prewritten.name, permission: 'granted', enumerate: true });
-          libraryCollection.markAccess(destination.id, { permission: 'granted', phase: 'ready', error: null, lastListedAt: Date.now() });
+          await orbitState.restoreDirectory(orbitCreation.handle, { name: destination.name, permission: 'granted', enumerate: true });
+          libraryCollection.markAccess(linkedLibraryId, { permission: 'granted', phase: 'ready', error: null, lastListedAt: Date.now() });
           await syncOrbitCurrentEntry();
         }
       } catch {}
@@ -5583,6 +5642,11 @@ startEmptyState();
 void startRecoveryDiscovery();
 syncPersistenceControls();
 syncAutomaticSaveFeedback();
+
+
+
+
+
 
 
 
