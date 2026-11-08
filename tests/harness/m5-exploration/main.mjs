@@ -775,6 +775,7 @@ let searchHighlightStatusEl = document.querySelector('#search-highlight-status')
 let searchComposing = false;
 let pendingSearchActivation = null;
 const searchRevealWaiter = createSearchNavigationWaiter();
+let searchRevealFitActive = false;
 try {
   searchView = createSearchResultsView({ document, host: searchResultsHost, onActivate: (result) => activateSearchResult(result).catch((error) => searchView?.showError(String(error?.message || error))), onPage: (delta) => goToSearchPage(delta), onClear: () => clearSearch() });
 } catch (error) {
@@ -1455,7 +1456,7 @@ function installFrame({ operation, fit, entry, camera, framing }) {
   const env = candidateEnv || { graph, baseLayout, model };
   const prepared = stageExplorationFrame({
     graph: env.graph, baseLayout: env.baseLayout, view: env.model.view(), viewport: viewport(), baseRadiusCss: baseRadius(),
-    fit, entry, camera, framing, fitSubtree: hypertreeComparisonMode, cameraLimits: EXPERIMENTAL_CAMERA_LIMITS, presentation: EXPLORATION_PRESENTATION,
+    fit, entry, camera, framing, fitSubtree: searchRevealFitActive ? true : (hypertreeComparisonMode ? 'adaptive' : false), labelBudget: hypertreeComparisonMode ? 64 : 40, cameraLimits: EXPERIMENTAL_CAMERA_LIMITS, presentation: EXPLORATION_PRESENTATION,
     adapters: {
       draw: (scene) => { frameBoundary(operation, 'draw'); drawCurrentGraphScene(scene, { selectedId: env.model.selectedId, sourceGraph: env.graph }); },
       labels: (scene) => {
@@ -1623,7 +1624,8 @@ function createNavigator() {
     viewport: viewport(),
     baseRadiusCss: baseRadius(),
     cameraLimits: EXPERIMENTAL_CAMERA_LIMITS,
-    fitSubtree: hypertreeComparisonMode,
+    fitSubtree: () => searchRevealFitActive ? true : (hypertreeComparisonMode ? 'adaptive' : false),
+    labelBudget: hypertreeComparisonMode ? 64 : 40,
     presentation: EXPLORATION_PRESENTATION,
     duration: EXPLORATION_TRANSITION_DURATION_MS,
     reducedMotion: typeof window.matchMedia === 'function' && window.matchMedia('(prefers-reduced-motion: reduce)').matches,
@@ -2574,10 +2576,14 @@ async function navigateSearchParent({ folderId, targetId, datasetToken: token, r
   if (folderId === model.focusedFolderId) return { ok: true, immediate: true };
   const wait = searchRevealWaiter.begin({ folderId, targetId, parentId: folderId, datasetToken: token, revision });
   if (!wait.ok) return wait;
-  const nav = enterFolder(folderId);
+  searchRevealFitActive = true;
+  let nav;
+  try { nav = enterFolder(folderId); }
+  finally { if (nav?.mode !== 'transition') searchRevealFitActive = false; }
   if (!nav.ok) { searchRevealWaiter.clear(); return { ok: false, reason: nav.reason, message: 'Could not reveal the result scope.' }; }
   if (nav.mode !== 'transition') { searchRevealWaiter.clear(); return { ok: true, immediate: true }; }
   try { await wait.promise; } catch (error) { return { ok: false, reason: 'navigation-failed', message: String(error?.message || error) }; }
+  finally { searchRevealFitActive = false; }
   return { ok: true, immediate: false };
 }
 function selectSearchData(result) {

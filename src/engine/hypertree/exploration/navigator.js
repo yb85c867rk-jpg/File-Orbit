@@ -16,6 +16,7 @@ export function createExplorationNavigator({
   baseRadiusCss,
   cameraLimits,
   fitSubtree = false,
+  labelBudget = null,
   presentation = undefined,
   duration = 780,
   reducedMotion = false,
@@ -54,11 +55,12 @@ export function createExplorationNavigator({
       const targetView = deriveSubtreeView({
         graph, baseLayout, focusedFolderId: id, structuralRootId: model.structuralRootId, phase: 'current'
       });
+      const fitSubtreeMode = typeof fitSubtree === 'function' ? fitSubtree() : fitSubtree;
       let targetPrepared;
       try {
         targetPrepared = prepare({
           graph, baseLayout, view: targetView, viewport, baseRadiusCss,
-          fit: true, fitSubtree, camera: null, cameraLimits, presentation
+          fit: true, fitSubtree: fitSubtreeMode, labelBudget, camera: null, cameraLimits, presentation
         });
       } catch (cause) {
         return { ok: false, reason: 'target-fit-failed', id, error: String(cause?.message || cause) };

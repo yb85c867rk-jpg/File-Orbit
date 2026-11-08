@@ -89,3 +89,38 @@ test('genuine padding violation beyond tolerance is rejected', () => {
   assert.equal(withinPadding(genuine, viewport, 24), false);
   assert.equal(withinPadding(genuine, viewport, 24, 0), false);
 });
+
+test('adaptive fit retains visible context when the scene is within the label budget', () => {
+  const ctx = setup();
+  const viewport = { width: 1100, height: 473 };
+  ctx.model.enterFolder('n0');
+  assert.equal(ctx.model.enterFolder('n30').ok, true);
+  const view = ctx.model.view();
+  const frame = prepareExplorationFrame({
+    graph: ctx.graph, baseLayout: ctx.baseLayout, view, viewport,
+    padding: 24, baseRadiusCss, fit: true, camera: null,
+    cameraLimits: EXPERIMENTAL_CAMERA_LIMITS, fitSubtree: 'adaptive', labelBudget: 64
+  });
+  assert.equal(frame.containment.scope, 'all-visible');
+  assert.equal(frame.containment.contained, true);
+  assert.equal(frame.containment.containedCount, view.visibleIds.length);
+  assert.equal(frame.scene.nodes.size, view.visibleIds.length);
+});
+
+test('adaptive fit falls back to the active branch above the label budget', () => {
+  const ctx = setup();
+  const viewport = { width: 1100, height: 473 };
+  ctx.model.enterFolder('n0');
+  assert.equal(ctx.model.enterFolder('n30').ok, true);
+  const view = ctx.model.view();
+  const activeIds = new Set([...view.ancestorIds, ...view.descendantIds]);
+  const frame = prepareExplorationFrame({
+    graph: ctx.graph, baseLayout: ctx.baseLayout, view, viewport,
+    padding: 24, baseRadiusCss, fit: true, camera: null,
+    cameraLimits: EXPERIMENTAL_CAMERA_LIMITS, fitSubtree: 'adaptive', labelBudget: 1
+  });
+  assert.equal(frame.containment.scope, 'active-branch');
+  assert.equal(frame.containment.contained, true);
+  assert.equal(frame.containment.totalCount, activeIds.size);
+  assert.ok(frame.scene.nodes.size > activeIds.size);
+});

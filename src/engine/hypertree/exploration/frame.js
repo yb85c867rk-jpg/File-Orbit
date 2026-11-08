@@ -22,6 +22,7 @@ export function prepareExplorationFrame({
   cameraLimits,
   padding = 24,
   fitSubtree = false,
+  labelBudget = null,
   focusedStaged = null,
   presentation = undefined,
   nodeOpacity = undefined,
@@ -41,9 +42,20 @@ export function prepareExplorationFrame({
   let nextCamera = camera;
   let nextFraming = framing;
   let fitInfo = null;
-  const fitIds = fitSubtree && view.focusedFolderId !== view.structuralRootId ? new Set([...view.ancestorIds, ...view.descendantIds]) : null;
+  const activeFitIds = fitSubtree && view.focusedFolderId !== view.structuralRootId ? new Set([...view.ancestorIds, ...view.descendantIds]) : null;
+  let fitIds = activeFitIds;
   if (fit) {
-    fitInfo = centeredFit(fitBase, view, viewport, padding, cameraLimits, fitIds);
+    if (fitSubtree === 'adaptive' && activeFitIds && (!labelBudget || fitBase.nodes.size <= labelBudget)) {
+      try {
+        fitIds = null;
+        fitInfo = centeredFit(fitBase, view, viewport, padding, cameraLimits, null);
+      } catch {
+        fitIds = activeFitIds;
+        fitInfo = centeredFit(fitBase, view, viewport, padding, cameraLimits, fitIds);
+      }
+    } else {
+      fitInfo = centeredFit(fitBase, view, viewport, padding, cameraLimits, fitIds);
+    }
     nextCamera = fitInfo.camera;
     nextFraming = 'fit';
   } else if (entry?.camera && entry.framingMode === 'manual') {
@@ -68,7 +80,7 @@ export function prepareExplorationFrame({
     centerToleranceCss: CENTER_TOLERANCE_CSS,
     paddingToleranceCss: CONTAINMENT_TOLERANCE_CSS
   };
-  if (fit && (!containment.contained || (!fitIds && centerError > containment.centerToleranceCss))) {
+  if (fit && (!containment.contained || (fitSubtree !== 'adaptive' && !fitIds && centerError > containment.centerToleranceCss))) {
     throw new Error(`centered-fit-infeasible: contained ${containedCount}/${containedTotal}, center ${centerError}`);
   }
   const hit = createHitSnapshot(finalScene);

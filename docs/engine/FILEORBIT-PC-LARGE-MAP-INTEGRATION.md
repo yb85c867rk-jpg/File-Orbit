@@ -1,4 +1,4 @@
-# FileOrbit PC large-map integration candidate
+﻿# FileOrbit PC large-map integration candidate
 
 Integration branch `integration/pc-large-map`, derived from work tip `bbf1ff5`. Baseline source remains `fileorbit-stage3j2a-manual-save-r169.zip` (SHA-256 `B3D0D2C2097247E46E1A40F9E668DDF8C448FDB2FC3D8BC36C939621E48CD997`).
 
@@ -881,3 +881,5 @@ The preview shows selected folder, editable output name, directory/attachment/we
 On complete success, folder export waits for every planned write and close, clears operation references, closes the modal/backdrop, restores focus to a visible graph control, and shows one tokenized success toast centered in the visible graph viewport for approximately three seconds. When description-only nodes were skipped, the toast appends their count; at zero it omits skipped wording. Failure, partial output and cancellation retain the existing open explanation and never show success or delete partial output.
 
 The success toast is a dedicated pointer-transparent, non-focusable status surface, not the shell status; save/conflict/permission/error feedback keeps its existing placement. Its center is recalculated from `#graph-viewport` on viewport resize and sidebar/Details changes, so it excludes the navigation rail and Details panel. The toast uses theme panel/text variables, wrapping and bounded width for light, dark and short layouts. Its timer is token-owned: showing newer feedback clears the old timer, and routine automatic-save status cannot replace the success toast.
+
+Hypertree comparison framing uses an adaptive destination fit in the existing transition/frame owner. When the displayed scene is within the current label budget, the fit expands to all intended visible context with the normal 24px padding; when the scene exceeds that budget, it falls back to the focused active branch so dense maps retain selected-region and label readability. Search reveals explicitly retain active-branch fit for exact filename hits. The same scope is used by transition completion and manual Fit, so Fit does not silently change focus and completion does not snap to a second camera. This is not a universal full-map or 1000-node fit claim; dense scenes above the label budget still intentionally clip surrounding context.
