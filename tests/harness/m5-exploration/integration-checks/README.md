@@ -111,3 +111,5 @@ The Phase C test also covers the compact collapsible Library controls, + New, ac
 
 - `delete-folder-ordinary-check.mjs`: actual rendered non-root Delete Folder, exact subtree counts, single-action Undo/Redo, root protection and forced installation failure.
 - `delete-large-r480-check.mjs`: actual paid R480 492-node Upload followed by focused nested Delete Folder, layout diagnostics, attachment-aware Undo/Redo, failed-delete preservation and save/reopen.
+
+Deletion failure confirmation remains open with a privacy-safe `Export structure diagnostic` action. The export covers anonymized before/candidate topology and the deleted target ID.

@@ -827,3 +827,11 @@ Delete Folder for a non-root current-map node uses the same edition policy as th
 The commit path now passes the current paid/free policy context. Deletion recompute also receives the accepted comparison configuration for the post-delete candidate count: R480 and descendant-aware clearance above 300 nodes, no comparison experiment for ordinary/smaller maps. Undo/Redo already resolve layout configuration from their replayed candidate count.
 
 Failed deletion now reports an actionable deletion-failed status while preserving tree, registry, history, revision, document handle, baseline and save destination. Root protection and stale-target checks are unchanged. Only the current map is affected; no filesystem folder/file deletion is performed.
+
+### Delete failure threshold and structure diagnostic
+
+Deletion layout configuration now remains descendant-aware for the whole comparison layout mode, including when the candidate falls below 300 nodes. A paid 492-node hierarchy deleting a large subtree can produce a 285-node candidate; R480 without descendant-aware allocation is infeasible for that retained hierarchy, while the descendant-aware mode succeeds. Ordinary non-comparison ≤300 behavior is unchanged.
+
+A failed Delete now keeps the confirmation open with the visible failure text and a local **Export structure diagnostic** action. The exported JSON contains synthetic before/candidate topology, synthetic deleted-target ID, counts, projection/descendant configuration, failing parent and clearance measurements. It excludes original names, paths, descriptions, attachment IDs and contents. Nothing is uploaded automatically. Cancelling after failure changes no map state.
+
+The diagnostic is the required input when the exact user hierarchy/target cannot be reconstructed from the available anonymized before-tree alone.

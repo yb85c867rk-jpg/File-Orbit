@@ -1,4 +1,4 @@
-﻿import test from 'node:test';
+import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createEditorContextMenu } from '../../harness/m5-exploration/editor-context-menu.js';
 import { createDeleteConfirmation } from '../../harness/m5-exploration/delete-confirm.js';
@@ -77,7 +77,8 @@ function createFlow() {
   return { doc, s, confirmation, menu, get confirms() { return confirmOpen; }, get deleteResult() { return deleteResult; } };
 }
 function click(el) { el.fire('click'); }
-test('real menu Delete opens real confirmation; Confirm runs shared installer and Undo/Redo', () => {
+const clickAsync = async (el) => { el.fire('click'); await new Promise((resolve) => setTimeout(resolve, 0)); };
+test('real menu Delete opens real confirmation; Confirm runs shared installer and Undo/Redo', async () => {
   const f = createFlow();
   f.menu.open({ target: { id: 'a', hitKind: 'folder', name: 'Alpha', isRoot: false }, x: 20, y: 20 });
   click(f.menu.actions.get('delete-folder'));
@@ -85,7 +86,7 @@ test('real menu Delete opens real confirmation; Confirm runs shared installer an
   assert.equal(f.s.live.tree.children.some((node) => node.id === 'a'), true);
   const dialog = f.confirmation.element.children[0];
   const confirm = dialog.children[4].children[1];
-  click(confirm);
+  await clickAsync(confirm);
   assert.equal(f.confirmation.isOpen, false);
   assert.equal(f.s.live.tree.children.some((node) => node.id === 'a'), false);
   assert.equal(f.s.history.undoCount, 1);

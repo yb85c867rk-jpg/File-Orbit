@@ -92,7 +92,7 @@ export function createDeleteConfirmation({ document, host = document?.body, onCo
     }, { signal });
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape') {
-        event.preventDefault(); event.stopPropagation();
+        event.preventDefault(); event.stopPropagation?.();
         if (!busy) close();
         return;
       }
