@@ -855,3 +855,7 @@ Deletion requires the explicit confirmation, then delete-specific permission gui
 For a current dirty map, Save a Copy, Discard changes, or Cancel is resolved before final confirmation. Save a Copy adopts the new copy; deletion still targets and names the captured original, and the new copy is not closed. A clean current map is closed only if it still owns the removed file. New saves to the target are blocked while deletion is pending; an existing save is awaited; autosave pending work is invalidated.
 
 Browser APIs do not provide an atomic compare-and-delete against external processes. This implementation compares handle identity and captured size/last-modified metadata immediately before removal, but cannot eliminate an external race between that check and `removeEntry`. OPFS tests do not establish native Windows behavior or Recycle Bin recovery.
+
+### Owned Orbit open-blocked feedback through Save
+
+The Orbit open guard uses owned open-blocked feedback. The exact producer now attaches ownership before setting the temporary message. A successful resumed Orbit install clears that feedback as part of the opening transaction, and guard release/publish clears it when the blocker settles. The redundant pending-decision banner is not emitted because the centered replacement prompt already owns that interaction. Unrelated actionable feedback is token-isolated and preserved. Late continuation callbacks are bound to their pending request and cannot restore an obsolete message.
