@@ -22,10 +22,10 @@ class FakeDocument extends EventTarget {
   constructor() { super(); this.activeElement = null; this.body = new FakeElement('body', this); }
   createElement(tag) { return new FakeElement(tag, this); }
 }
-function setup() {
+function setup(extra = {}) {
   const document = new FakeDocument();
   const actions = [];
-  const menu = createEditorContextMenu({ document, host: document.body, viewport: () => ({ width: 300, height: 200 }), onAction: (target, action) => actions.push([target, action]) });
+  const menu = createEditorContextMenu({ document, host: document.body, viewport: () => ({ width: 300, height: 200 }), onAction: (target, action) => actions.push([target, action]), ...extra });
   return { document, menu, actions };
 }
 test('menu opens only and clamps near viewport', () => {
@@ -55,7 +55,9 @@ test('data menu is Open, Edit Data, separated Delete Data only', () => {
   const s = setup();
   const data = { id: 'x', name: 'Data', hitKind: 'file' };
   s.menu.open({ target: data, x: 10, y: 10 });
-  assert.deepEqual([...s.menu.actions.keys()].filter((key) => !s.menu.actions.get(key).hidden), ['open-data', 'edit-data', 'delete-data']);
+  assert.deepEqual([...s.menu.actions.keys()].filter((key) => !s.menu.actions.get(key).hidden), ['open-data', 'edit-data', 'save-data-as', 'delete-data']);
+  assert.equal(s.menu.actions.get('save-data-as').disabled, true);
+  assert.match(s.menu.actions.get('save-data-as').getAttribute('title'), /no attached file content/i);
   assert.equal(s.menu.addButton.hidden, true);
   assert.equal(s.menu.actions.get('upload-files').hidden, true);
   s.menu.actions.get('open-data').dispatchEvent(new Event('click'));
@@ -75,4 +77,13 @@ test('outside pointer and Escape dismiss; destroy removes DOM', () => {
   assert.equal(s.menu.isOpen, false);
   s.menu.destroy();
   assert.equal(s.document.body.children.includes(s.menu.element), false);
+});
+
+test('Save Data As dispatches only when live content is exportable', () => {
+  const s = setup({ getDataExportState: () => ({ enabled: true, title: 'Save Data As…' }) });
+  const data = { id: 'x', name: 'Data', hitKind: 'file' };
+  s.menu.open({ target: data, x: 10, y: 10 });
+  assert.equal(s.menu.actions.get('save-data-as').disabled, false);
+  s.menu.actions.get('save-data-as').dispatchEvent(new Event('click'));
+  assert.deepEqual(s.actions.at(-1), [data, 'save-data-as']);
 });

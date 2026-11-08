@@ -7,7 +7,8 @@ export function createEditorContextMenu({
   host = document?.body,
   viewport = () => ({ width: 0, height: 0 }),
   onAction = null,
-  onRename = () => {}
+  onRename = () => {},
+  getDataExportState = () => ({ enabled: false, title: 'No attached file content to save.' })
 }) {
   if (!document || !host) throw new Error('document and host are required');
   const menu = document.createElement('div');
@@ -59,12 +60,13 @@ export function createEditorContextMenu({
   const addData = item('add-data', 'Data…');
   const uploadFiles = item('upload-files', 'Upload Files…');
   const uploadFolder = item('upload-folder', 'Upload Folder…');
+  const saveData = item('save-data-as', 'Save Data As…');
   const deleteFolder = item('delete-folder', 'Delete Folder…', { danger: true });
   const deleteData = item('delete-data', 'Delete Data…', { danger: true });
 
   const folderSeparator = separator();
   const fileSeparator = separator();
-  for (const child of [openFolder, editFolder, addButton, folderSeparator, deleteFolder, openData, editData, fileSeparator, deleteData]) menu.appendChild(child);
+  for (const child of [openFolder, editFolder, addButton, folderSeparator, deleteFolder, openData, editData, saveData, fileSeparator, deleteData]) menu.appendChild(child);
   for (const child of [addFolder, addData, separator(), uploadFiles, uploadFolder]) submenu.appendChild(child);
 
   const deleteNote = document.createElement('p');
@@ -86,7 +88,7 @@ export function createEditorContextMenu({
 
   function actionsFor(hitKind) {
     return hitKind === 'file'
-      ? ['open-data', 'edit-data', 'delete-data']
+      ? ['open-data', 'edit-data', 'save-data-as', 'delete-data']
       : ['open-folder', 'edit-folder', 'add', 'delete-folder'];
   }
   function submenuActions() { return ['add-folder', 'add-data', 'upload-files', 'upload-folder']; }
@@ -100,6 +102,7 @@ export function createEditorContextMenu({
     const folder = targetValue.hitKind !== 'file';
     openFolder.hidden = !folder; openData.hidden = folder;
     editFolder.hidden = !folder; editData.hidden = folder;
+    saveData.hidden = folder;
     addButton.hidden = !folder;
     folderSeparator.hidden = !folder; fileSeparator.hidden = folder;
     deleteFolder.hidden = !folder; deleteData.hidden = folder;
@@ -110,6 +113,10 @@ export function createEditorContextMenu({
     deleteFolder.disabled = rootProtected;
     deleteFolder.setAttribute('aria-disabled', String(rootProtected));
     deleteFolder.setAttribute('title', rootProtected ? 'The structural root cannot be deleted.' : 'Delete Folder');
+    saveData.disabled = folder;
+    saveData.setAttribute('aria-disabled', String(folder));
+    saveData.setAttribute('title', folder ? '' : 'Save Data As…');
+    if (!folder) { const state = getDataExportState(targetValue) || {}; saveData.disabled = state.enabled === false; saveData.setAttribute('aria-disabled', String(saveData.disabled)); saveData.setAttribute('title', saveData.disabled ? String(state.title || 'No attached file content to save.') : 'Save Data As…'); }
     deleteData.disabled = false;
     deleteData.setAttribute('aria-disabled', 'false');
     deleteData.setAttribute('title', 'Delete Data');
@@ -215,7 +222,10 @@ export function createEditorContextMenu({
       items[next].focus();
       return;
     }
-    if (document.activeElement !== addButton) return;
+    if (document.activeElement !== addButton) {
+      if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); const action = document.activeElement?.getAttribute?.('data-action'); if (action && action !== 'add') activate(action); }
+      return;
+    }
     if (event.key === 'ArrowRight') { event.preventDefault(); openSubmenu({ focus: true }); return; }
     if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openSubmenu({ focus: true }); return; }
     if (event.key === 'ArrowLeft') { event.preventDefault(); closeSubmenu({ restoreFocus: false }); addButton.focus(); }
