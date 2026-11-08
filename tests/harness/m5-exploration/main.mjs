@@ -194,6 +194,7 @@ let shellStatusPreviousExpiry = null;
 let shellStatusScope = null;
 let shellStatusTransient = false;
 let openErrorStatusToken = null;
+let openBlockedFeedback = null;
 function clearOpenErrorStatus() {
   if (openErrorStatusToken === null || openErrorStatusToken !== shellStatusToken) return false;
   openErrorStatusToken = null;
@@ -255,6 +256,33 @@ const setShellStatus = (message, { kind = 'actionable', ttl = ROUTINE_NOTIFICATI
   }
   return true;
 };
+function currentOrbitOpenBlockedReason() {
+  if (orbitWorkspaceBusy) return 'Finish the current Orbit write before opening another map.';
+  if (editorAppliedOperation || editorController?.isSaving()) return 'Finish the applied editor Save or Retry before opening an Orbit map.';
+  if (persistenceBusy || replacementGuard || pendingBackupImport || installingBackupImport) return 'Finish the current save, open, or replacement before opening an Orbit map.';
+  return '';
+}
+function setOpenBlockedStatus(message) {
+  if (!setShellStatus(message)) return false;
+  openBlockedFeedback = { token: shellStatusToken };
+  return true;
+}
+function clearOpenBlockedStatus({ onlyIfSettled = false } = {}) {
+  const owned = openBlockedFeedback;
+  if (!owned) return false;
+  if (owned.token !== shellStatusToken || shellStatusKind !== 'actionable') { openBlockedFeedback = null; return false; }
+  if (onlyIfSettled && currentOrbitOpenBlockedReason()) return false;
+  openBlockedFeedback = null;
+  openErrorStatusToken = null;
+  if (shellStatusTimer !== null) { clearTimeout(shellStatusTimer); shellStatusTimer = null; }
+  shellStatusExpiryCallback = null; shellStatusPreviousExpiry = null;
+  shellStatusToken += 1; shellStatusKind = 'none'; shellStatusScope = null; shellStatusTransient = false;
+  if (shellStatusEl) { shellStatusEl.textContent = ''; shellStatusEl.dataset.feedbackKind = 'none'; shellStatusEl.hidden = true; }
+  return true;
+}
+function clearSettledOpenBlockedFeedback() {
+  if (openBlockedFeedback && !currentOrbitOpenBlockedReason()) clearOpenBlockedStatus({ onlyIfSettled: true });
+}
 const setRoutineStatus = (message, options = {}) => setShellStatus(message, { ...options, kind: 'routine' });
 const setInfoStatus = (message, options = {}) => setShellStatus(message, { ...options, kind: 'info' });
 const showTransientStatus = (message) => setShellStatus(message, { kind: 'actionable', transient: true });
@@ -4276,7 +4304,7 @@ async function openOrbitEntry(entry) {
     if (installingBackupImport?.documentMeta?.ownership === ownership) clearOwnedBackupImport(installingBackupImport);
     return;
   }
-  if (result?.ok) { clearOpenErrorStatus(); if (result.pending === 'map' || result.pending === 'editor') setShellStatus('Finish the current map/editor decision to open the Orbit map.'); else setRoutineStatus('Opened ' + entry.name + '.'); syncOrbitCurrentEntry(); }
+  if (result?.ok) { clearOpenBlockedStatus(); clearOpenErrorStatus(); if (result.pending === 'map' || result.pending === 'editor') setShellStatus('Finish the current map/editor decision to open the Orbit map.'); else setRoutineStatus('Opened ' + entry.name + '.'); syncOrbitCurrentEntry(); }
   else if (result?.reason !== 'stale' && result?.reason !== 'cancelled') setOpenErrorStatus('Could not open Orbit map: ' + String(result?.error?.message || result?.reason || 'unknown error'), token);
   renderOrbitPanel();
 }
