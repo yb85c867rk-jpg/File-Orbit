@@ -49,29 +49,32 @@ function fakeAdapter({ name = 'Old Map.orbit' } = {}) {
   const sourceBlob = new Blob([sourceBytes], { type: 'application/x-orbit' });
   const source = fileHandle(name, sourceBlob);
   store.set(name, { handle: source, blob: sourceBlob });
-  const calls = { list: 0, create: 0, write: 0, remove: 0, permission: 0, move: 0 };
-  const state = { failCreate: false, failWrite: false, failClose: false, failRemove: false, corruptWrite: false, replaceOnWrite: false, changeSourceAfterWrite: false, replaceNewAfterWrite: false, cancelAt: null, staleAt: null, writeGate: null };
+  const calls = { list: 0, create: 0, write: 0, remove: 0, permission: 0, move: 0, order: [] };
+  const state = { failCreate: false, failWrite: false, failClose: false, failRemove: false, corruptWrite: false, replaceOnWrite: false, changeSourceAfterWrite: false, replaceNewAfterWrite: false, removeNewAfterRemove: false, replaceNewAfterRemove: false, reuseSourceAfterRemove: false, removeThrowsAfterDelete: false, sourceReadErrorAfterRemove: false, readErrorAfterRemove: false, deferOwnershipAtCreate: false, deferOwnershipAtWrite: false, deferOwnershipAtRemove: false, revision: 12, cancelAt: null, staleAt: null, writeGate: null };
   const adapter = {
     parent, store, source, calls, state,
     async getFileHandle(_directory, entryName) {
+      if (state.readErrorAfterRemove && entryName === 'Old Map.orbit') throw new Error('read-failed-after-remove');
       const entry = store.get(entryName);
       if (!entry) throw new DOMException('not found', 'NotFoundError');
       return entry.handle;
     },
     async listEntries() {
-      calls.list += 1;
+      calls.list += 1; calls.order.push('list');
       return { ok: true, entries: [...store].map(([entryName, entry]) => ({ name: entryName, handle: entry.handle, kind: 'file' })), truncated: false };
     },
-    async createFile(_directory, entryName) {
-      calls.create += 1;
+    async createFile(_directory, entryName, options = {}) {
+      calls.create += 1; calls.order.push('create');
+      if (state.deferOwnershipAtCreate) { state.revision = 13; try { await options.assertCurrent?.(); } catch { return { ok: false, reason: 'stale' }; } }
       if (state.failCreate) return { ok: false, reason: 'create-failed' };
       if (store.has(entryName)) return { ok: false, reason: 'exists' };
       const handle = fileHandle(entryName, new Blob([]));
       store.set(entryName, { handle, blob: new Blob([]) });
       return { ok: true, handle };
     },
-    async writeFile(handle, blob) {
-      calls.write += 1;
+    async writeFile(handle, blob, options = {}) {
+      calls.write += 1; calls.order.push('write');
+      if (state.deferOwnershipAtWrite) { state.revision = 13; try { await options.assertCurrent?.(); } catch { return { ok: false, reason: 'stale' }; } }
       if (state.writeGate) await state.writeGate;
       if (state.failWrite) return { ok: false, reason: 'write-failed' };
       const bytes = state.corruptWrite ? new Uint8Array(await blob.arrayBuffer()).reverse() : blob;
@@ -85,7 +88,8 @@ function fakeAdapter({ name = 'Old Map.orbit' } = {}) {
       return { ok: true, close: !state.failClose };
     },
     async removeFile(_directory, entryName, options = {}) {
-      calls.remove += 1;
+      calls.remove += 1; calls.order.push('remove');
+      if (state.deferOwnershipAtRemove) { state.revision = 13; try { await options.assertCurrent?.(); } catch { return { ok: false, reason: 'stale' }; } }
       if (state.changeSourceBeforeRemove) {
         const entry = store.get('Old Map.orbit'); if (entry) { entry.blob = new Blob(['changed']); entry.handle.blob = entry.blob; }
       }
@@ -97,6 +101,12 @@ function fakeAdapter({ name = 'Old Map.orbit' } = {}) {
       calls.sourceBlobAtRemove = entry?.blob || null;
       if (!entry || entry.handle !== options.expectedHandle) return { ok: false, reason: 'target-changed' };
       store.delete(entryName);
+      calls.physicalRemove = (calls.physicalRemove || 0) + 1;
+      if (state.sourceReadErrorAfterRemove) state.readErrorAfterRemove = true;
+      if (state.removeThrowsAfterDelete) throw new Error('remove-ack-lost');
+      if (state.removeNewAfterRemove) store.delete('New Map.orbit');
+      if (state.replaceNewAfterRemove) { const replacement = fileHandle('New Map.orbit', new Blob([await sourceBytes]), 'replace-' + (++idSeq)); store.set('New Map.orbit', { handle: replacement, blob: new Blob([sourceBytes]) }); }
+      if (state.reuseSourceAfterRemove) { const replacement = fileHandle('Old Map.orbit', new Blob(['reused']), 'reuse-' + (++idSeq)); store.set('Old Map.orbit', { handle: replacement, blob: new Blob(['reused']) }); }
       return { ok: true };
     }
   };
@@ -135,7 +145,7 @@ function executeOptions(adapter, candidate, extra = {}) {
     plan: extra.plan,
     candidate,
     permissions: { sourceRead: true, parentRead: true, parentWrite: true, sourceRemove: true },
-    getState: () => outcomeState(adapter.source, extra.revision ?? 12),
+    getState: () => outcomeState(adapter.source, extra.revision ?? adapter.state.revision ?? 12),
     isCancelled: extra.isCancelled || (() => false)
   };
 }
@@ -176,6 +186,7 @@ test('successful distinct-name rename writes one new file, verifies it and remov
   assert.equal(adapter.store.has('New Map.orbit'), true);
   assert.equal(outcome.files.destination.present, true);
   assert.equal(outcome.files.destination.verified, true);
+  assert.deepEqual(adapter.calls.order, ['list', 'create', 'write', 'remove']);
   assert.deepEqual(new Uint8Array(await adapter.calls.sourceBlobAtRemove.arrayBuffer()), sourceBytes);
   const decoded = await decodeBackup(adapter.store.get('New Map.orbit').blob, { cryptoApi });
   assert.equal(decoded.tree.name, 'New Map');
@@ -377,4 +388,114 @@ test('double execution is rejected while the first operation is in flight', asyn
   release();
   const settled = await first;
   assert.equal(settled.ok, true);
+});
+
+test('ownership revalidation at create/write/remove boundaries prevents physical mutation', async () => {
+  for (const [statePatch, expectedStage, expectedCreate, expectedWrite, expectedPhysical] of [
+    [{ deferOwnershipAtCreate: true }, 'create', 1, 0, 0],
+    [{ deferOwnershipAtWrite: true }, 'write', 1, 1, 0],
+    [{ deferOwnershipAtRemove: true }, 'remove', 1, 1, 0]
+  ]) {
+    const adapter = fakeAdapter();
+    Object.assign(adapter.state, statePatch);
+    const plan = await makePlan(adapter);
+    const candidate = await makeCandidate(plan);
+    const outcome = await createRenameExecutor({ adapter, cryptoApi }).execute(executeOptions(adapter, candidate, { plan }));
+    assert.equal(outcome.ok, false);
+    assert.equal(adapter.calls.physicalRemove || 0, expectedPhysical);
+    assert.equal(adapter.store.has('Old Map.orbit'), true);
+    assert.equal(adapter.store.has('New Map.orbit'), expectedStage !== 'create');
+    assert.equal(adapter.calls.remove, expectedStage === 'remove' ? 1 : 0);
+    if (expectedStage === 'create') assert.equal(outcome.stage, 'create');
+    if (expectedStage === 'write') assert.equal(outcome.stage, 'write');
+    if (expectedStage === 'remove') assert.equal(outcome.stage, 'remove');
+  }
+});
+
+test('removal that physically completes but loses acknowledgement is uncertain', async () => {
+  const adapter = fakeAdapter();
+  adapter.state.removeThrowsAfterDelete = true;
+  const plan = await makePlan(adapter);
+  const candidate = await makeCandidate(plan);
+  const outcome = await createRenameExecutor({ adapter, cryptoApi }).execute(executeOptions(adapter, candidate, { plan }));
+  assert.equal(outcome.status, 'post-removal-uncertain');
+  assert.equal(outcome.removalAcknowledged, false);
+  assert.equal(outcome.filesystemComplete, false);
+  assert.equal(outcome.adoptionBlocked, true);
+  assert.equal(outcome.files.source.status, 'absent');
+  assert.equal(adapter.calls.physicalRemove, 1);
+  assert.equal(adapter.store.has('New Map.orbit'), true);
+});
+
+test('same executor is released after success, cancellation and failure', async () => {
+  const successAdapter = fakeAdapter();
+  const successPlan = await makePlan(successAdapter);
+  const successCandidate = await makeCandidate(successPlan);
+  const successExecutor = createRenameExecutor({ adapter: successAdapter, cryptoApi });
+  const success = await successExecutor.execute(executeOptions(successAdapter, successCandidate, { plan: successPlan }));
+  assert.equal(success.ok, true);
+  assert.equal(successExecutor.busy, false);
+  const afterSuccess = await successExecutor.execute({});
+  assert.notEqual(afterSuccess.status, 'busy');
+
+  const cancelAdapter = fakeAdapter();
+  const cancelPlan = await makePlan(cancelAdapter);
+  const cancelCandidate = await makeCandidate(cancelPlan);
+  const cancelExecutor = createRenameExecutor({ adapter: cancelAdapter, cryptoApi });
+  const cancelled = await cancelExecutor.execute(executeOptions(cancelAdapter, cancelCandidate, { plan: cancelPlan, isCancelled: () => true }));
+  assert.equal(cancelled.status, 'cancelled');
+  assert.equal(cancelExecutor.busy, false);
+  const afterCancel = await cancelExecutor.execute({});
+  assert.notEqual(afterCancel.status, 'busy');
+
+  const failureAdapter = fakeAdapter();
+  failureAdapter.state.failRemove = true;
+  const failurePlan = await makePlan(failureAdapter);
+  const failureCandidate = await makeCandidate(failurePlan);
+  const failureExecutor = createRenameExecutor({ adapter: failureAdapter, cryptoApi });
+  const failure = await failureExecutor.execute(executeOptions(failureAdapter, failureCandidate, { plan: failurePlan }));
+  assert.equal(failure.status, 'verified-new-original-retained');
+  assert.equal(failureExecutor.busy, false);
+  const afterFailure = await failureExecutor.execute({});
+  assert.notEqual(afterFailure.status, 'busy');
+});
+
+test('an unexpected thrown error releases the in-flight guard', async () => {
+  const adapter = fakeAdapter();
+  const plan = await makePlan(adapter);
+  const broken = { ok: true, schema: 'fileorbit-rename-candidate-v1', filename: plan.filename, blob: new Blob(['x']), packageSize: 1 };
+  Object.defineProperty(broken, 'title', { get() { throw new Error('injected candidate getter'); } });
+  const executor = createRenameExecutor({ adapter, cryptoApi });
+  await assert.rejects(() => executor.execute(executeOptions(adapter, broken, { plan })), /injected candidate getter/);
+  assert.equal(executor.busy, false);
+  const later = await executor.execute({});
+  assert.notEqual(later.status, 'busy');
+});
+
+test('post-removal uncertainty is separate from verified filesystem completion', async () => {
+  const scenarios = [
+    { patch: { removeNewAfterRemove: true }, expectedSource: 'absent', expectedDestination: 'absent' },
+    { patch: { replaceNewAfterRemove: true }, expectedSource: 'absent', expectedDestination: 'present' },
+    { patch: { reuseSourceAfterRemove: true }, expectedSource: 'present', expectedDestination: 'present' },
+    { patch: { sourceReadErrorAfterRemove: true }, expectedSource: 'read-error', expectedDestination: 'present' }
+  ];
+  for (const scenario of scenarios) {
+    const adapter = fakeAdapter();
+    Object.assign(adapter.state, scenario.patch);
+    const plan = await makePlan(adapter);
+    const candidate = await makeCandidate(plan);
+    const outcome = await createRenameExecutor({ adapter, cryptoApi }).execute(executeOptions(adapter, candidate, { plan }));
+    assert.equal(outcome.ok, false);
+    assert.equal(outcome.status, 'post-removal-uncertain');
+    assert.equal(outcome.removalAcknowledged, true);
+    assert.equal(outcome.filesystemComplete, false);
+    assert.equal(outcome.adoptionBlocked, true);
+    assert.equal(outcome.requiresReinspection, true);
+    assert.equal(outcome.recovery.automatic, false);
+    assert.equal(outcome.recovery.actions.includes('retry-remove-original'), false);
+    assert.equal(outcome.files.source.status, scenario.expectedSource);
+    assert.equal(outcome.files.destination.status, scenario.expectedDestination);
+    assert.equal(adapter.calls.physicalRemove, 1);
+    assert.equal(buildRenameRemovalRetryPlan({ outcome }).ok, false);
+  }
 });
