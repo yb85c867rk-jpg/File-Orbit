@@ -105,7 +105,7 @@ function fakeAdapter({ name = 'Old Map.orbit' } = {}) {
       if (state.sourceReadErrorAfterRemove) state.readErrorAfterRemove = true;
       if (state.removeThrowsAfterDelete) throw new Error('remove-ack-lost');
       if (state.removeNewAfterRemove) store.delete('New Map.orbit');
-      if (state.replaceNewAfterRemove) { const replacement = fileHandle('New Map.orbit', new Blob([await sourceBytes]), 'replace-' + (++idSeq)); store.set('New Map.orbit', { handle: replacement, blob: new Blob([sourceBytes]) }); }
+      if (state.replaceNewAfterRemove) { const existing = store.get('New Map.orbit'); const sameBytes = existing?.blob || new Blob([]); const replacement = fileHandle('New Map.orbit', sameBytes, 'replace-' + (++idSeq)); store.set('New Map.orbit', { handle: replacement, blob: sameBytes }); }
       if (state.reuseSourceAfterRemove) { const replacement = fileHandle('Old Map.orbit', new Blob(['reused']), 'reuse-' + (++idSeq)); store.set('Old Map.orbit', { handle: replacement, blob: new Blob(['reused']) }); }
       return { ok: true };
     }
@@ -495,6 +495,7 @@ test('post-removal uncertainty is separate from verified filesystem completion',
     assert.equal(outcome.recovery.actions.includes('retry-remove-original'), false);
     assert.equal(outcome.files.source.status, scenario.expectedSource);
     assert.equal(outcome.files.destination.status, scenario.expectedDestination);
+    if (scenario.patch.replaceNewAfterRemove) { assert.equal(outcome.files.destination.size, candidate.packageSize); assert.equal(outcome.files.destination.handleMatch, false); }
     assert.equal(adapter.calls.physicalRemove, 1);
     assert.equal(buildRenameRemovalRetryPlan({ outcome }).ok, false);
   }
