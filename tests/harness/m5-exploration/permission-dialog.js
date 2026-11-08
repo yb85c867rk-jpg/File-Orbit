@@ -79,7 +79,12 @@ export function createPermissionDialog({ document, host } = {}) {
     open = true;
     resolvePromise = null;
     lastFocus = document.activeElement;
-    if (mode === 'library') {
+    if (mode === 'delete') {
+      title.textContent = 'Permission to delete this map file';
+      body.textContent = `To delete ‘${fileName || directoryName}’ from ‘${directoryName}’, FileOrbit needs permission to remove this file.`;
+      browserNote.textContent = 'Choose Continue, then Allow in the browser prompt. Only the named .orbit file will be removed. The Map Library and other files remain.';
+      proceed.textContent = 'Continue';
+    } else if (mode === 'library') {
       title.textContent = 'Connect a Map Library folder';
       body.textContent = 'This folder stores and organizes the topic maps you create.';
       browserNote.textContent = 'In the next browser permission prompt, choose Allow so FileOrbit can list and open maps in the selected folder. Saving a map may require additional permission. Connecting a folder does not change or delete any files.';
@@ -102,6 +107,7 @@ export function createPermissionDialog({ document, host } = {}) {
     show,
     showLibraryConnection() { return show({ mode: 'library' }); },
     showSavePermission(options = {}) { return show({ ...options, mode: 'save' }); },
+    showDeletePermission(options = {}) { return show({ ...options, mode: 'delete' }); },
     close,
     get open() { return open; },
     element: backdrop,

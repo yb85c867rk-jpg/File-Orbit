@@ -117,3 +117,5 @@ Deletion failure confirmation remains open with a privacy-safe `Export structure
 Sidebar Library tests use only the visible Map libraries toggle and adjacent +; no legacy list/link controls remain.
 
 - `create-map-draft-check.mjs`: staged empty-folder destination, no collection mutation, linked-destination reuse, collision/permission/write failure, and post-write persistence retry without duplicate file creation.
+
+- `delete-map-file-check.mjs`: exact render-selected `.orbit` file deletion using disposable OPFS, including Cancel, non-current/current, dirty Save a Copy/Discard/Cancel, permission denial/cancellation, API failure, missing/replaced target, double submit, reload, pending Library unlink, light/dark and short-height confirmation.

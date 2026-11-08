@@ -1,5 +1,5 @@
 /** Connected-Orbit navigation/list presentation. It renders snapshots only. */
-export function createOrbitPanel({ document, onRefresh, onSelect, onChoose, onReconnect, onExpandRail, onShowCollection } = {}) {
+export function createOrbitPanel({ document, onRefresh, onSelect, onChoose, onReconnect, onExpandRail, onShowCollection, onDelete } = {}) {
   const section = document.querySelector('#orbit-section');
   const toggle = document.querySelector('#orbit-toggle');
   const panel = document.querySelector('#orbit-panel');
@@ -40,6 +40,7 @@ export function createOrbitPanel({ document, onRefresh, onSelect, onChoose, onRe
 
   const renderRows = (snapshot) => {
     const focusedKey = document.activeElement?.dataset?.orbitEntryKey || null;
+    const focusedDelete = Boolean(document.activeElement?.classList?.contains?.('orbit-entry-delete'));
     listEl.replaceChildren();
     for (const entry of snapshot.entries || []) {
       const item = document.createElement('li');
@@ -71,9 +72,26 @@ export function createOrbitPanel({ document, onRefresh, onSelect, onChoose, onRe
         if (button.disabled) return;
         onSelect?.(entry);
       });
-      item.appendChild(button);
+      const deleteButton = document.createElement('button');
+      deleteButton.type = 'button';
+      deleteButton.className = 'orbit-entry-delete';
+      deleteButton.dataset.orbitEntryKey = entry.key;
+      deleteButton.disabled = snapshot.phase === 'opening';
+      deleteButton.setAttribute('aria-disabled', String(deleteButton.disabled));
+      deleteButton.setAttribute('aria-label', 'Delete map file: ' + entry.name);
+      deleteButton.title = 'Delete map file: ' + entry.name;
+      deleteButton.innerHTML = '<svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 6h12M8 6V4h4v2m-6 0 1 10h6l1-10M9 9v4m2-4v4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+      deleteButton.addEventListener('click', (event) => {
+        event.stopPropagation();
+        if (deleteButton.disabled) return;
+        onDelete?.(entry);
+      });
+      const row = document.createElement('div');
+      row.className = 'orbit-entry-row';
+      row.append(button, deleteButton);
+      item.appendChild(row);
       listEl.appendChild(item);
-      if (focusedKey === entry.key) button.focus();
+      if (focusedKey === entry.key) (focusedDelete ? deleteButton : button).focus();
     }
   };
 

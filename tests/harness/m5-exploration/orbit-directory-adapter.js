@@ -1,4 +1,4 @@
-﻿import { findOrbitNameCollision, normalizeOrbitMapFilename, validateOrbitDirectoryName } from '../../../src/engine/hypertree/orbit/names.js';
+import { findOrbitNameCollision, normalizeOrbitMapFilename, validateOrbitDirectoryName } from '../../../src/engine/hypertree/orbit/names.js';
 
 export const DEFAULT_MAX_ORBIT_ENTRIES = 1000;
 export const DEFAULT_MAX_ENUMERATION_MS = 5000;
@@ -337,6 +337,46 @@ export function createOrbitDirectoryAdapter({
     }
   }
 
+  async function removeMapFile(directory, rawFilename, { expectedHandle = null, expectedSize = null, expectedLastModified = null, isCurrent = () => true } = {}) {
+    if (!directory || typeof directory.getFileHandle !== 'function' || typeof directory.removeEntry !== 'function') {
+      return failure('operation-failed', 'remove', null, 'An Orbit directory handle is required.');
+    }
+    const checked = normalizeOrbitMapFilename(rawFilename);
+    if (!checked.ok) return { ...checked, stage: 'validation' };
+    const filename = checked.filename;
+    let resolved;
+    try { resolved = await directory.getFileHandle(filename); }
+    catch (error) {
+      if (isNotFound(error)) return failure('not-found', 'resolve', error, 'That .orbit file no longer exists.');
+      if (isDenied(error)) return failure('permission-denied', 'resolve', error, 'File permission was denied.');
+      return failure('resolve-failed', 'resolve', error, 'Could not resolve the .orbit file.');
+    }
+    if (!isCurrent()) return stale('resolve');
+    if (expectedHandle) {
+      let same = resolved === expectedHandle;
+      if (!same && typeof expectedHandle.isSameEntry === 'function') {
+        try { same = await expectedHandle.isSameEntry(resolved); } catch { same = false; }
+      }
+      if (!same) return failure('target-changed', 'identity', null, 'The .orbit file at that name changed. No file was deleted.');
+    }
+    if (expectedSize !== null || expectedLastModified !== null) {
+      try {
+        const currentFile = await resolved.getFile();
+        if ((expectedSize !== null && Number(currentFile.size) !== Number(expectedSize)) || (expectedLastModified !== null && Number(currentFile.lastModified) !== Number(expectedLastModified))) return failure('target-changed', 'metadata', null, 'The .orbit file at that name changed. No file was deleted.');
+      } catch { return failure('target-changed', 'metadata', null, 'The .orbit file at that name changed. No file was deleted.'); }
+    }
+    if (!isCurrent()) return stale('identity');
+    if (globalThis.__M5_ORBIT_DELETE_FAILURE__) return failure('delete-failed', 'remove', null, 'injected Orbit delete failure');
+    try {
+      await directory.removeEntry(filename, { recursive: false });
+      return { ok: true, name: filename, stage: 'removed', recursive: false };
+    } catch (error) {
+      if (isNotFound(error)) return failure('not-found', 'remove', error, 'That .orbit file no longer exists.');
+      if (isDenied(error)) return failure('permission-denied', 'remove', error, 'Deletion permission was denied.');
+      return failure('delete-failed', 'remove', error, 'The .orbit file could not be deleted.');
+    }
+  }
+
   async function writeFile(handle, blob) {
     if (!handle || typeof handle.createWritable !== 'function') {
       return failure('operation-failed', 'createWritable', null, 'A writable file handle is required.');
@@ -366,10 +406,13 @@ export function createOrbitDirectoryAdapter({
     getFileMetadata,
     createMapFile,
     writeFile,
+    removeMapFile,
     queryWritePermission(handle) { return queryOnly(handle, 'readwrite'); },
     requestWritePermission(handle) { return ensurePermission(handle, 'readwrite'); },
     queryReadPermission(handle) { return queryOnly(handle, 'read'); },
     requestReadPermission(handle) { return ensurePermission(handle, 'read'); }
   };
 }
+
+
 

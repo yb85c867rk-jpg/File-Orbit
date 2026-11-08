@@ -1,4 +1,4 @@
-﻿import { createDownloadResourceManager } from './backup-resources.js';
+import { createDownloadResourceManager } from './backup-resources.js';
 import { encodeBackup, decodeBackup, safeBackupFilename, safeDocumentFilename } from '../../../src/engine/hypertree/persistence/backup.js';
 import { createDocumentAdapter } from './document-adapter.js';
 import { createOrbitDirectoryAdapter } from './orbit-directory-adapter.js';
@@ -42,6 +42,7 @@ import { createEditorTarget, createEditorAction } from '../../../src/engine/hype
 import { chooseEditorAction as chooseEditorActionFlow, openEditorMenu, resumeEditorAction } from '../../../src/engine/hypertree/editor/activation-flow.js';
 import { createEditorPanel } from './editor-panel.js';
 import { createDeleteConfirmation } from './delete-confirm.js';
+import { createDeleteMapFileDialog } from './delete-map-file-dialog.js';
 import { createCreateMapDialog } from './create-map-dialog.js';
 import { createUploadPreviewDialog } from './upload-preview-dialog.js';
 import { buildUploadStructureDiagnostic, buildDeleteStructureDiagnostic, downloadUploadStructureDiagnostic } from './upload-structure-diagnostic.js';
@@ -577,7 +578,7 @@ let automaticSaveFailure = null;
 let automaticSaveActionInFlight = false;
 function claimDocumentOwnership() { documentOwnershipSeq += 1; return documentOwnershipSeq; }
 try {
-  orbitPanel = createOrbitPanel({ document, onRefresh: () => refreshOrbit(), onSelect: (entry) => openOrbitEntry(entry), onChoose: () => requestLibraryConnection(), onReconnect: () => reconnectMapLibrary(), onExpandRail: () => setRailExpanded(true), onShowCollection: () => { libraryListOpen = true; libraryPendingName = null; renderOrbitPanel(); (libraryCollectionListEl?.querySelector('button') || orbitAddButton)?.focus?.(); } });
+  orbitPanel = createOrbitPanel({ document, onRefresh: () => refreshOrbit(), onSelect: (entry) => openOrbitEntry(entry), onChoose: () => requestLibraryConnection(), onReconnect: () => reconnectMapLibrary(), onExpandRail: () => setRailExpanded(true), onDelete: (entry) => requestDeleteMapFile(entry), onShowCollection: () => { libraryListOpen = true; libraryPendingName = null; renderOrbitPanel(); (libraryCollectionListEl?.querySelector('button') || orbitAddButton)?.focus?.(); } });
 } catch (error) {
   orbitPanel = null;
 }
@@ -621,6 +622,13 @@ let recoveryDiscardStartRelease = null;
 let recoveryAfterClaimRelease = null;
 let recoveryDiscoveryPending = false;
 let unsavedMapPrompt = null;
+let deleteMapFileDialog = null;
+let deleteMapFileDirtyPrompt = null;
+let deleteMapFilePending = null;
+let deleteMapFileOperation = 0;
+let deleteMapFileBusy = false;
+let deleteMapFileExecuting = false;
+let deleteMapFileGuard = null;
 let saveConflictDialog = null;
 let conflictGuard = null;
 let conflictIdentity = null;
@@ -717,10 +725,21 @@ try {
     onDiscard: () => discardAndContinueReplacement(),
     onCancel: () => cancelReplacement()
   });
+  deleteMapFileDirtyPrompt = createUnsavedMapPrompt({
+    document, host: overlayHost,
+    onSave: () => saveMapFileBeforeDelete(),
+    onDiscard: () => discardMapFileBeforeDelete(),
+    onCancel: () => cancelMapFileDelete()
+  });
+  deleteMapFileDialog = createDeleteMapFileDialog({
+    document, host: overlayHost,
+    onDelete: () => executeDeleteMapFile(),
+    onCancel: () => cancelDeleteMapFileConfirmation()
+  });
   saveConflictDialog = createSaveConflictDialog({ document, host: overlayHost, onReload: () => resolveConflictReload(), onSaveCopy: () => resolveConflictSaveCopy(), onCancel: () => cancelSaveConflict() });
   recoveryDialog = createRecoveryDialog({ document, host: overlayHost, onRecover: (record) => recoverRecoveryCandidate(record), onDiscard: (record) => discardRecoveryCandidate(record), onLater: () => { setRoutineStatus('Recovery postponed. The recovery copy was not changed.'); } });
 } catch (error) {
-  persistenceUnavailable = String(error?.message || error);
+  persistenceUnavailable = String(error?.message || error);
 }
 let searchQuery = '';
 let searchResultIds = new Set();
@@ -4309,6 +4328,168 @@ async function openOrbitEntry(entry) {
   renderOrbitPanel();
 }
 
+function sameFileEntry(a, b) {
+  if (!a || !b) return false;
+  if (a === b) return true;
+  try { return typeof a.isSameEntry === 'function' ? a.isSameEntry(b) : false; } catch { return false; }
+}
+async function activeDocumentIsFile(handle) {
+  return Boolean(activeDocument.active && activeDocument.origin === 'orbit' && activeDocument.handle && await sameFileEntry(activeDocument.handle, handle));
+}
+function releaseDeleteMapFileGuard({ resumeAutosave = true } = {}) {
+  if (!deleteMapFileGuard) return;
+  deleteMapFileGuard = null;
+  if (resumeAutosave && !destroying && hasMap && mapDirty() && !automaticSaveBlocked) requestAutomaticSave();
+}
+function resetDeleteMapFileOperation() {
+  deleteMapFileOperation += 1;
+  deleteMapFilePending = null;
+  deleteMapFileBusy = false;
+  deleteMapFileExecuting = false;
+  deleteMapFileDirtyPrompt?.close?.({ restoreFocus: false });
+  releaseDeleteMapFileGuard();
+}
+function focusAfterMapFileDelete(returnFocus = null) {
+  const candidate = document.querySelector('.orbit-entry') || document.querySelector('#orbit-refresh') || document.querySelector('#orbit-link-add') || document.querySelector('#orbit-toggle');
+  const target = candidate || returnFocus;
+  target?.focus?.();
+}
+async function requestDeleteMapFile(entry) {
+  if (destroying || deleteMapFileBusy || deleteMapFileDialog?.isOpen || deleteMapFileDirtyPrompt?.isOpen) return;
+  if (!entry?.handle || !entry.name || !/\.orbit$/i.test(entry.name)) { setShellStatus('Only an explicitly listed .orbit file can be deleted.'); return; }
+  if (permissionDialog?.open || libraryUnlinkDialog?.open || libraryEditDialog?.open || deleteConfirmation?.isOpen) return;
+  const selected = libraryCollection?.snapshot?.().libraries.find((record) => record.id === libraryCollection.snapshot().selectedId) || null;
+  if (!selected) { setShellStatus('Select a linked Map Library before deleting a map file.'); return; }
+  const operation = ++deleteMapFileOperation;
+  let targetFile;
+  try { targetFile = await entry.handle.getFile(); }
+  catch { setShellStatus('The selected .orbit file could not be read. No file was deleted.'); return; }
+  const pending = {
+    operation,
+    libraryId: selected.id,
+    libraryName: selected.name || selected.handle?.name || 'Map Library',
+    directoryHandle: selected.handle,
+    filename: entry.name,
+    fileHandle: entry.handle,
+    fileSize: Number(targetFile.size),
+    fileLastModified: Number(targetFile.lastModified),
+    key: entry.key || null,
+    returnFocus: document.activeElement || null,
+    ownership: documentOwnershipSeq,
+    session: persistenceSessionSeq,
+    dataset: datasetToken
+  };
+  deleteMapFilePending = pending;
+  deleteMapFileBusy = true;
+  if (documentSaveInFlight || documentSaving) { setInfoStatus('Waiting for the current document save before deleting this file…', { ttl: 2000 }); await waitForDocumentSaveCompletion(); }
+  if (destroying || operation !== deleteMapFileOperation) return;
+  if (!libraryCollection?.snapshot().libraries.some((record) => record.id === pending.libraryId && record.handle === pending.directoryHandle)) {
+    resetDeleteMapFileOperation(); setShellStatus('The Map Library connection changed. No file was deleted.'); return;
+  }
+  pending.isCurrent = await activeDocumentIsFile(pending.fileHandle);
+  if (operation !== deleteMapFileOperation) return;
+  if (pending.isCurrent && mapDirty()) {
+    deleteMapFileDirtyPrompt?.show({ text: 'This map has unsaved changes. Save a Copy, discard changes, or cancel before deleting this map file.', saveLabel: 'Save a Copy' });
+    return;
+  }
+  showDeleteMapFileConfirmation(pending);
+}
+function showDeleteMapFileConfirmation(pending = deleteMapFilePending) {
+  if (!pending || pending.operation !== deleteMapFileOperation) return false;
+  const shown = deleteMapFileDialog?.show({ filename: pending.filename, libraryName: pending.libraryName, returnFocus: pending.returnFocus });
+  if (!shown) resetDeleteMapFileOperation();
+  return Boolean(shown);
+}
+async function saveMapFileBeforeDelete() {
+  const pending = deleteMapFilePending;
+  if (!pending || pending.operation !== deleteMapFileOperation || !deleteMapFileDirtyPrompt?.isOpen) return;
+  deleteMapFileDirtyPrompt.setBusy(true, 'Saving a copy…');
+  const result = await saveCurrentDocument({ context: 'delete-map-file', saveAs: true });
+  if (pending.operation !== deleteMapFileOperation) return;
+  if (!result?.ok || result?.handoff) {
+    deleteMapFileDirtyPrompt.setBusy(false);
+    deleteMapFileDirtyPrompt.showError(result?.message || 'A copy was not saved. The file was not deleted.');
+    return;
+  }
+  deleteMapFileDirtyPrompt.setBusy(false);
+  deleteMapFileDirtyPrompt.close({ restoreFocus: false });
+  showDeleteMapFileConfirmation(pending);
+}
+function discardMapFileBeforeDelete() {
+  const pending = deleteMapFilePending;
+  if (!pending || pending.operation !== deleteMapFileOperation) return;
+  deleteMapFileDirtyPrompt?.close({ restoreFocus: false });
+  showDeleteMapFileConfirmation(pending);
+}
+function cancelMapFileDelete() {
+  resetDeleteMapFileOperation();
+  setRoutineStatus('Map file deletion cancelled. The document and file were not changed.');
+}
+function cancelDeleteMapFileConfirmation() {
+  const pending = deleteMapFilePending;
+  resetDeleteMapFileOperation();
+  pending?.returnFocus?.focus?.();
+  setRoutineStatus('Map file deletion cancelled. The document and file were not changed.');
+}
+function deleteMapFileFailure(message, { refresh = false } = {}) {
+  deleteMapFileBusy = false;
+  deleteMapFileExecuting = false;
+  deleteMapFileDialog?.setBusy(false);
+  releaseDeleteMapFileGuard();
+  if (refresh) { void refreshOrbit({ deferStatus: true }).then(() => renderOrbitPanel()).catch(() => {}); }
+  return { ok: false, message };
+}
+async function executeDeleteMapFile() {
+  const pending = deleteMapFilePending;
+  if (!pending || deleteMapFileExecuting || pending.operation !== deleteMapFileOperation) return { ok: false, message: 'This file deletion is stale. Close the dialog and try again.' };
+  deleteMapFileExecuting = true;
+  deleteMapFileBusy = true;
+  deleteMapFileGuard = { fileHandle: pending.fileHandle, operation: pending.operation };
+  automaticSavePending = null;
+  automaticSaveToken += 1;
+  deleteMapFileDialog?.setBusy(true);
+  await waitForDocumentSaveCompletion();
+  if (destroying || pending.operation !== deleteMapFileOperation) return deleteMapFileFailure('The file deletion became stale. No file was deleted.');
+  if (documentOwnershipSeq !== pending.ownership || persistenceSessionSeq !== pending.session || datasetToken !== pending.dataset) return deleteMapFileFailure('The active document changed while the deletion was pending. No file was deleted.');
+  const record = libraryCollection?.snapshot().libraries.find((item) => item.id === pending.libraryId);
+  if (!record || record.handle !== pending.directoryHandle) return deleteMapFileFailure('The Map Library connection changed. No file was deleted.', { refresh: true });
+  let queried = savePermissionQueryOverride ? { ok: true, permission: savePermissionQueryOverride } : await orbitAdapter.queryWritePermission(pending.directoryHandle);
+  if (pending.operation !== deleteMapFileOperation) return deleteMapFileFailure('The file deletion became stale. No file was deleted.');
+  if (!queried?.ok || (queried.permission !== 'granted' && queried.permission !== 'unknown')) {
+    if (!permissionDialog?.showDeletePermission) return deleteMapFileFailure('Delete permission guidance is unavailable. No file was deleted.');
+    const accepted = await permissionDialog.showDeletePermission({ directoryName: pending.libraryName, fileName: pending.filename });
+    if (pending.operation !== deleteMapFileOperation) return deleteMapFileFailure('The file deletion became stale. No file was deleted.');
+    if (!accepted) return deleteMapFileFailure('File deletion was cancelled at the permission prompt. The document and file were not changed.');
+    queried = savePermissionRequestOverride ? { ok: savePermissionRequestOverride !== 'denied', permission: savePermissionRequestOverride } : await orbitAdapter.requestWritePermission(pending.directoryHandle);
+    if (pending.operation !== deleteMapFileOperation) return deleteMapFileFailure('The file deletion became stale. No file was deleted.');
+    if (!queried?.ok || queried.permission === 'denied') return deleteMapFileFailure('Delete permission was not granted. The document and file were not changed.');
+  }
+  const current = () => pending.operation === deleteMapFileOperation && !destroying
+    && documentOwnershipSeq === pending.ownership
+    && persistenceSessionSeq === pending.session && datasetToken === pending.dataset
+    && libraryCollection?.snapshot().libraries.some((item) => item.id === pending.libraryId && item.handle === pending.directoryHandle);
+  const removed = await orbitAdapter.removeMapFile(pending.directoryHandle, pending.filename, { expectedHandle: pending.fileHandle, expectedSize: pending.fileSize, expectedLastModified: pending.fileLastModified, isCurrent: current });
+  if (!removed?.ok) {
+    if (removed?.reason === 'stale') return deleteMapFileFailure('The file deletion became stale. No file was deleted.');
+    if (removed?.reason === 'not-found') return deleteMapFileFailure('That map file was already missing. The list was refreshed; this request did not delete it.', { refresh: true });
+    if (removed?.reason === 'target-changed') return deleteMapFileFailure('The .orbit file at that name was replaced before deletion. No file was deleted.', { refresh: true });
+    if (removed?.reason === 'permission-denied') return deleteMapFileFailure('Delete permission was denied. The document and file were not changed.');
+    return deleteMapFileFailure(removed?.message || 'The map file could not be deleted. The document and file were not changed.', { refresh: true });
+  }
+  if (!current()) return deleteMapFileFailure('The file deletion became stale after removal. The file may have been deleted; refresh the Library and check the file.', { refresh: true });
+  const stillCurrent = await activeDocumentIsFile(pending.fileHandle);
+  deleteMapFilePending = null;
+  deleteMapFileBusy = false;
+  deleteMapFileExecuting = false;
+  releaseDeleteMapFileGuard({ resumeAutosave: false });
+  if (stillCurrent) startEmptyState();
+  await refreshOrbit({ deferStatus: true }).catch(() => {});
+  renderOrbitPanel();
+  focusAfterMapFileDelete(pending.returnFocus);
+  setRoutineStatus('Deleted “' + pending.filename + '” from “' + pending.libraryName + '”. The Map Library and other files remain.');
+  return { ok: true };
+}
+
 function browserBusy() {
   try { return Boolean(orbitWorkspaceBusy || documentSaving || persistenceBusy || replacementGuard || pendingBackupImport || installingBackupImport || fileOpenBrowser?.isBusy); } catch { return false; }
 }
@@ -4542,6 +4723,11 @@ async function openDocument() {
 let documentSaveInFlight = false;
 let documentSaveOwner = null;
 let documentSaving = false;
+let documentSaveWaiters = [];
+function waitForDocumentSaveCompletion() {
+  if (!documentSaveInFlight && !documentSaving) return Promise.resolve();
+  return new Promise((resolve) => documentSaveWaiters.push(resolve));
+}
 function invalidateDocumentSave() {
   documentOperation += 1;
   documentSaveOwner = null;
@@ -4799,6 +4985,7 @@ async function saveDocument({ saveAs = false, capturedRevision = null, allowEdit
   if (destroying) return { ok: false, reason: 'stale', stale: true, stage: 'destroyed' };
   if ((expectedOwnership !== null && expectedOwnership !== documentOwnershipSeq) || (expectedSession !== null && expectedSession !== persistenceSessionSeq) || (expectedDataset !== null && expectedDataset !== datasetToken) || (expectedHandle !== null && activeDocument.handle !== expectedHandle) || (expectedIdentity !== null && activeDocument.documentIdentity !== expectedIdentity)) return { ok: false, reason: 'stale', stale: true, stage: 'ownership' };
   if (!hasMap || !tree || !attachmentRegistry) { setShellStatus('There is no map to save.'); return { ok: false, reason: 'no-map' }; }
+  if (deleteMapFileGuard && !saveAs && ((target?.handle && target.handle === deleteMapFileGuard.fileHandle) || (activeDocument.handle && activeDocument.handle === deleteMapFileGuard.fileHandle))) { setShellStatus('This map file is pending deletion; saving is blocked until that operation finishes.'); return { ok: false, reason: 'file-deletion-pending' }; }
   if (documentSaveInFlight) { setShellStatus('A document save is already running.'); return { ok: false, reason: 'busy' }; }
   if (editorController?.isOpen() && !allowEditorOpen) { setShellStatus('Finish or close the editor form before saving the document.'); return { ok: false, reason: 'editor-open' }; }
   if (persistenceBusy || (replacementGuard && !(allowReplacement && replacementGuard.token === replacementToken))) { setShellStatus('Finish the current operation before saving the document.'); return { ok: false, reason: 'busy' }; }
@@ -4981,6 +5168,7 @@ async function saveDocument({ saveAs = false, capturedRevision = null, allowEdit
     if (recoveryReservation && !recoveryRetirementAttempted) { await recoveryScheduler.abandonDocumentSave(recoveryReservation); if (mapDirty()) scheduleRecoveryCheckpoint(); }
     if (documentSaveOwner === operation) {
       documentSaveOwner = null; documentSaveInFlight = false; documentSaving = false;
+      for (const resolve of documentSaveWaiters.splice(0)) resolve();
       if (!destroying) { syncPersistenceControls(); publish(); }
     }
   }
@@ -5670,6 +5858,9 @@ startEmptyState();
 void startRecoveryDiscovery();
 syncPersistenceControls();
 syncAutomaticSaveFeedback();
+
+
+
 
 
 

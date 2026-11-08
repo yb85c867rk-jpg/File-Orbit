@@ -845,3 +845,13 @@ The separate Map Library List and full-width Link Folder controls are removed. T
 Create Map + New now stages a folder as a draft destination. It uses the read-mode directory picker, displays the folder’s actual name, and does not link/persist a Library, change the sidebar selection or write a file until Create Map succeeds. Already-linked folders reuse their stable Library ID. Picker cancellation and Cancel/Escape preserve or discard only the form draft.
 
 After the file is encoded, written and closed, a new draft Library is registered once with rollback on persistence failure. The existing protected document installation and overwrite baseline path are retained. If the file exists but settings persistence fails, the dialog reports that explicitly, preserves the file and retries only the connection; the same written file is adopted without another create/overwrite. Existing collision, permission, write-failure, created-not-opened and double-submit protections remain.
+
+### Delete one Map Library .orbit file
+
+Each `.orbit` row has a separate compact delete action labeled “Delete map file: {name}”. It captures the selected Library ID, directory handle, exact filename/file handle and file metadata; clicking it never opens the map. A centered confirmation names the exact file and Library folder, states that only the `.orbit` file is removed and that map Undo/Redo cannot restore filesystem deletion.
+
+Deletion requires the explicit confirmation, then delete-specific permission guidance if write permission is unavailable. The named entry is re-resolved without create and compared to the captured handle and metadata before one non-recursive `removeEntry`. Missing files and replaced same-name files are reported separately and never counted as this request’s deletion.
+
+For a current dirty map, Save a Copy, Discard changes, or Cancel is resolved before final confirmation. Save a Copy adopts the new copy; deletion still targets and names the captured original, and the new copy is not closed. A clean current map is closed only if it still owns the removed file. New saves to the target are blocked while deletion is pending; an existing save is awaited; autosave pending work is invalidated.
+
+Browser APIs do not provide an atomic compare-and-delete against external processes. This implementation compares handle identity and captured size/last-modified metadata immediately before removal, but cannot eliminate an external race between that check and `removeEntry`. OPFS tests do not establish native Windows behavior or Recycle Bin recovery.

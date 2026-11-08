@@ -18,11 +18,11 @@ export function createUnsavedMapPrompt({ document, host, onSave, onDiscard, onCa
   actions.append(save, discard, cancel);
   dialog.append(title, message, error, actions);
   overlay.appendChild(dialog); host.appendChild(overlay);
-  let open = false; let busy = false; let lastFocus = null; let onKey = null;
+  let open = false; let busy = false; let lastFocus = null; let onKey = null; let saveLabel = 'Save and continue';
   const setBusy = (value, text = 'Saving…') => {
     busy = Boolean(value);
     save.disabled = busy; discard.disabled = busy; cancel.disabled = busy;
-    save.textContent = busy ? text : 'Save and continue';
+    save.textContent = busy ? text : saveLabel;
   };
   const close = ({ restoreFocus = true } = {}) => {
     if (!open) return;
@@ -32,10 +32,10 @@ export function createUnsavedMapPrompt({ document, host, onSave, onDiscard, onCa
     if (restoreFocus && lastFocus?.focus) lastFocus.focus();
     lastFocus = null;
   };
-  const show = ({ text = 'This map has changes that are not saved in this browser.' } = {}) => {
+  const show = ({ text = 'This map has changes that are not saved in this browser.', saveLabel: nextLabel = 'Save and continue' } = {}) => {
     if (open) return;
-    open = true; busy = false; error.textContent = ''; message.textContent = text;
-    save.disabled = false; discard.disabled = false; cancel.disabled = false; save.textContent = 'Save and continue';
+    open = true; busy = false; error.textContent = ''; message.textContent = text; saveLabel = String(nextLabel || 'Save and continue');
+    save.disabled = false; discard.disabled = false; cancel.disabled = false; save.textContent = saveLabel;
     lastFocus = document.activeElement || null; overlay.hidden = false;
     onKey = (event) => {
       if (!open) return;
