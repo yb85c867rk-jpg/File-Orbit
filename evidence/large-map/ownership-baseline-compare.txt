@@ -1,0 +1,22 @@
+﻿Rename Map R2 ownership-test baseline comparison
+================================================
+
+R2 implementation: 1301c3cff5b51fad0f952200f9c0c93eecc9ffcc
+R2 reported tip: cf5fe264314df9d6275b5fe761af0cb27d8fd46e
+Pre-R2 baseline: 213938f2638e98e1326b676a7249c4ca242ccc02
+
+Same command in both isolated checkouts:
+  node --test --test-isolation=none tests/engine/exploration/orbit-r1-ownership.test.mjs
+
+R2 result: exit 1
+Baseline result: exit 1
+Same failing assertion:
+  main-harness-init-runner.mjs:1578
+  assert.equal(await waitFor(() => orbitName.textContent === 'Orbit Alpha'), true);
+  actual false !== expected true
+
+Runner SHA-256 in both checkouts:
+  832e18ad39fbd5b7fbc5b40ffcea8ea098b91d9f5eb9f8270cb726c10df6c651
+
+Conclusion: the failure is pre-existing at 213938f, identical at R2, and is not
+a regression introduced by the R2 rename helpers.
