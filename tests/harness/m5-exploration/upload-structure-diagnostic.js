@@ -83,3 +83,56 @@ export function downloadUploadStructureDiagnostic(diagnostic, { document = globa
   setTimeout(() => URL.revokeObjectURL(url), 1000);
   return true;
 }
+
+
+export function buildDeleteStructureDiagnostic({ tree, targetId, targetName = null, counts = null, diagnostics = null, source = null } = {}) {
+  const before = [];
+  const candidate = [];
+  const syntheticById = new Map();
+  let sequence = 0;
+  let targetSyntheticId = null;
+  const walk = (node, parentSyntheticId, depth, inDeletedSubtree = false) => {
+    const syntheticId = 'n' + sequence;
+    sequence += 1;
+    syntheticById.set(node.id, syntheticId);
+    if (node.id === targetId) { targetSyntheticId = syntheticId; inDeletedSubtree = true; }
+    const children = Array.isArray(node.children) ? node.children : [];
+    const record = { id: syntheticId, parentId: parentSyntheticId, kind: node.kind === 'folder' ? 'folder' : 'file', depth, directChildCount: children.length };
+    before.push(record);
+    if (!inDeletedSubtree) candidate.push({ ...record });
+    for (const child of children) walk(child, syntheticId, depth + 1, inDeletedSubtree);
+  };
+  if (tree) walk(tree, null, 0, false);
+  const failingActualId = diagnostics?.failingParent?.id || diagnostics?.unsatisfied?.[0]?.parentId || null;
+  return {
+    schema: 'fileorbit-delete-structure-diagnostic-v1',
+    source,
+    operation: {
+      targetSyntheticId,
+      actualIdIncluded: false,
+      deletedFolders: counts?.folders ?? null,
+      deletedFiles: counts?.files ?? null,
+      beforeNodeCount: before.length,
+      candidateNodeCount: candidate.length,
+      failingParentSyntheticId: failingActualId ? (syntheticById.get(failingActualId) || null) : null
+    },
+    layout: diagnostics?.layout || null,
+    diagnostic: diagnostics ? {
+      code: diagnostics.code || null,
+      reason: diagnostics.reason || null,
+      layout: diagnostics.layout || null,
+      failingParent: diagnostics.failingParent ? {
+        syntheticId: failingActualId ? (syntheticById.get(failingActualId) || null) : null,
+        actualIdIncluded: false,
+        depth: diagnostics.failingParent.depth ?? null,
+        directChildCount: diagnostics.failingParent.directChildCount ?? null
+      } : null,
+      required: diagnostics.required ?? diagnostics.unsatisfied?.[0]?.required ?? null,
+      available: diagnostics.available ?? diagnostics.unsatisfied?.[0]?.available ?? null,
+      attemptCount: diagnostics.layout?.attemptCount ?? null,
+      candidateCount: diagnostics.layout?.candidateCount ?? null
+    } : null,
+    before,
+    candidate
+  };
+}

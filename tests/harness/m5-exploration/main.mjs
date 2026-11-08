@@ -44,7 +44,7 @@ import { createEditorPanel } from './editor-panel.js';
 import { createDeleteConfirmation } from './delete-confirm.js';
 import { createCreateMapDialog } from './create-map-dialog.js';
 import { createUploadPreviewDialog } from './upload-preview-dialog.js';
-import { buildUploadStructureDiagnostic, downloadUploadStructureDiagnostic } from './upload-structure-diagnostic.js';
+import { buildUploadStructureDiagnostic, buildDeleteStructureDiagnostic, downloadUploadStructureDiagnostic } from './upload-structure-diagnostic.js';
 import { createSavedMapsDialog } from './saved-maps-dialog.js';
 import { createPcRuntimeAccess } from '../../../src/app/pc/runtime-access.js';
 import { activeDocument, activeMap, resetActiveDocument as resetDocumentOwnership, adoptActiveDocument, clearActiveMap, setActiveMap, documentIsDirty } from '../../../src/app/pc/document-ownership.js';
@@ -879,6 +879,7 @@ let editorPanel = null;
 let detailsTargetId = null;
 let editorMenu = null;
 let deleteConfirmation = null;
+let deleteLastFailure = null;
 let attachmentViewer = null;
 let viewerDiagnosticId = null;
 let idAllocator = null;
@@ -1666,7 +1667,7 @@ function createEditor() {
     onExportDiagnostic: (current) => exportUploadStructureDiagnostic(current)
   });
   ensureUploadInputs();
-  deleteConfirmation = createDeleteConfirmation({ document, host: overlayHost, onConfirm: (value) => executeDeleteConfirmation(value), onCancel: () => { lastClickDiagnostic = { reason: 'delete-cancelled' }; publish(); } });
+  deleteConfirmation = createDeleteConfirmation({ document, host: overlayHost, onConfirm: (value) => executeDeleteConfirmation(value), onExportDiagnostic: (value, failure) => exportDeleteStructureDiagnostic(value, failure), onClosed: () => syncHistoryControls(), onCancel: () => { lastClickDiagnostic = { reason: 'delete-cancelled' }; publish(); } });
   editorPanel = createEditorPanel({
     document, summaryHost: detailsEl, editorHost, controller: editorController,
     canEdit: () => !ownership.blocked() && !destroying && !navigator?.busy && !dragState && editorAdmissionAllowed(),
@@ -3198,7 +3199,7 @@ function comparisonLayoutExperiment(nodeCount) {
   if (!hypertreeComparisonMode) return null;
   return {
     referenceProjectionRadiusCss: comparisonProjectionRadius,
-    ...(nodeCount > 300 ? { descendantAwareClearance: true } : {})
+    descendantAwareClearance: true
   };
 }
 
@@ -5500,6 +5501,24 @@ function requestDeleteConfirmation(target, action, identity = {}) {
   publish();
   return { ok: opened, reason: opened ? 'confirm-open' : 'delete-confirm-failed' };
 }
+function exportDeleteStructureDiagnostic(value, failure) {
+  if (!deleteLastFailure || value?.target?.id !== deleteLastFailure.target.id) return false;
+  const diagnostics = {
+    ...(failure?.diagnostics || {}),
+    layout: failure?.diagnostics?.layout || deleteLastFailure.layout || null
+  };
+  const diagnostic = buildDeleteStructureDiagnostic({
+    tree: deleteLastFailure.tree,
+    targetId: deleteLastFailure.target.id,
+    targetName: deleteLastFailure.target.name,
+    counts: deleteLastFailure.counts,
+    diagnostics,
+    source: uploadDiagnosticSource()
+  });
+  globalThis.__M5_DELETE_STRUCTURE_DIAGNOSTIC__ = diagnostic;
+  return downloadUploadStructureDiagnostic(diagnostic, { document });
+}
+
 function executeDeleteConfirmation(value) {
   if (!value || ownership.blocked()) return { ok: false, reason: 'interaction-inert' };
   if (navigator?.busy) return { ok: false, reason: 'transition-busy' };
@@ -5546,11 +5565,22 @@ function executeDeleteConfirmation(value) {
     commit, recover
   });
   if (!result.ok) {
+    deleteLastFailure = {
+      tree: structuredClone(tree), target: { ...value.target }, counts: { ...resolved.counts }, candidateNodeCount,
+      layout: {
+        comparisonMode: hypertreeComparisonMode,
+        requestedProjectionRadiusCss: hypertreeComparisonMode ? comparisonProjectionRadius : null,
+        requestedExperiment: comparisonLayoutExperiment(candidateNodeCount),
+        edition: largeMapPolicyContext?.edition || null
+      }
+    };
     lastClickDiagnostic = { reason: result.reason || 'delete-failed', id: value.target.id, error: String(result.error?.message || result.message || result.reason || 'delete failed') };
     setShellStatus('Delete failed: ' + String(result.message || result.reason || 'the map was not changed.') + ' The map and its attachments were preserved.');
     publish(); return result;
   }
+  deleteLastFailure = null;
   sweepAttachments();
+  syncHistoryControls();
   scheduleRecoveryCheckpoint();
   lastClickDiagnostic = { reason: 'delete-complete', id: value.target.id };
   publish();

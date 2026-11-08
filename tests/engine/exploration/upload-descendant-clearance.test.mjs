@@ -73,3 +73,17 @@ test('descendant-aware allocation preserves hierarchy and satisfies every parent
   }
   assert.ok(staged.nodes.get('n153').angleSpan.end - staged.nodes.get('n153').angleSpan.begin >= 0.049280487493726446 - 1e-12);
 });
+
+
+test('deleting a large subtree below 300 retains descendant-aware feasibility', () => {
+  const original = buildAnonymizedTree();
+  const prune = (node) => node.id === 'n45' ? null : { ...node, children: (node.children || []).map(prune).filter(Boolean) };
+  const tree = prune(original);
+  const graph = loadTree(tree).graph;
+  assert.equal(graph.nodes.size, 285);
+  assert.throws(() => stageExperimentalV2Layout(graph, { rootId: 'n0', phases: ['current'], nodeOptions: { overridable: true }, experimentV2: { referenceProjectionRadiusCss: 480 } }), (error) => error.code === 'experimental-v2-infeasible');
+  const staged = stageExperimentalV2Layout(graph, { rootId: 'n0', phases: ['current'], nodeOptions: { overridable: true }, experimentV2: { referenceProjectionRadiusCss: 480, descendantAwareClearance: true } });
+  assert.equal(staged.feasibility.satisfied, true);
+  assert.equal(staged.feasibility.unsatisfied.length, 0);
+  assert.equal(staged.nodeCount, 285);
+});
