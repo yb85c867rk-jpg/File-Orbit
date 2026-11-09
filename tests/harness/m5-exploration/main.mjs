@@ -3924,7 +3924,7 @@ async function saveBeforeReplacement() {
   if (closeIntent && (result.baselineWritten === false || result.baselineVerification?.ok === false)) {
     releaseReplacementGuard();
     unsavedMapPrompt.setBusy(false);
-    unsavedMapPrompt.showError('The file may have been written, but FileOrbit couldn’t confirm it. Choose Save As to save a copy elsewhere, or Cancel to keep the map open.');
+    unsavedMapPrompt.showError('The file may have been written, but FileOrbit couldn’t confirm it. Choose Cancel, then Save As to save elsewhere.');
     syncPersistenceControls(); publish();
     return;
   }
@@ -6225,6 +6225,11 @@ async function saveDocument({ saveAs = false, capturedRevision = null, allowEdit
       else if (!requireVerification) { recoveryRetirementAttempted = true; await recoveryScheduler.retireDocumentSave(recoveryReservation); }
     }
     if (!owns()) return { ok: false, reason: 'stale', stage: 'recovery-retirement' };
+    const priorActive = activeDocument.active;
+    const priorName = activeDocument.name;
+    const priorMode = activeDocument.mode;
+    const priorOrigin = activeDocument.origin;
+    const priorIdentity = activeDocument.documentIdentity;
     const priorBaseline = activeDocument.baseline;
     const priorHandleBeforeAdopt = activeDocument.handle;
     const priorParentBeforeAdopt = activeDocument.parentHandle || null;
@@ -6277,7 +6282,12 @@ async function saveDocument({ saveAs = false, capturedRevision = null, allowEdit
         else setShellStatus('The file may have been written, but FileOrbit couldn’t confirm it.');
       }
     } else if (!deferFinalize) setRoutineStatus('Saved');
-    if (requireVerification) activeDocument.savedRevision = persistenceConfirmed ? revision : priorSavedRevision;
+    if (requireVerification && !persistenceConfirmed) {
+      adoptActiveDocument({ active: priorActive, name: priorName, handle: priorHandleBeforeAdopt, mode: priorMode, savedRevision: priorSavedRevision, origin: priorOrigin, documentIdentity: priorIdentity, parentHandle: priorParentBeforeAdopt, baseline: priorBaseline });
+      expectedHandleValue = priorHandleBeforeAdopt;
+      syncPersistenceControls(); publish();
+    }
+    if (requireVerification && persistenceConfirmed) activeDocument.savedRevision = revision;
     if (requireVerification && recoveryReservation && !recoveryRetirementAttempted && persistenceConfirmed) {
       recoveryRetirementAttempted = true;
       await recoveryScheduler.retireDocumentSave(recoveryReservation);

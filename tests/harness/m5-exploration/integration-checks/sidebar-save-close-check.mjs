@@ -85,7 +85,7 @@ try {
  assert.equal(checkpoint,true);
  await shot('sidebar-close-readback-failed.png');
  await clickPrompt('Cancel');await wait(()=>ev("document.querySelector('.unsaved-map-backdrop')?.hidden===true"),'readback cancel');
- // 10. An unsaved map that first picks a destination must also be readback-confirmed.
+ // 10. A failed first-save verification keeps no destination and leaves the written candidate for inspection.
  await nav('#nav-close-map');await wait(()=>ev("document.querySelector('.unsaved-map-backdrop')?.hidden===false"),'discard before new destination');await clickPrompt('Discard changes');await wait(()=>ev("__M5_P1B_TEST__.snapshot()?.hasMap===false"),'empty before destination');
  await ev("(async()=>{const bytes=await (await fetch('/tests/fixtures/large-map/FileOrbit-300.orbit')).arrayBuffer();await __M5_LARGE_MAP_TEST__.importFile(new File([bytes],'Imported.orbit'));return true})()");
  await wait(()=>ev("__M5_P1B_TEST__.snapshot()?.hasMap===true && !__M5_P1B_TEST__.documentState()?.handleName"),'imported destination map');await ev("__M5_P1B_TEST__.touch();true");
@@ -93,9 +93,23 @@ try {
  await ev("__M5_P1B_TEST__.failNextBaselineVerificationForTest();true");
  await nav('#nav-close-map');await wait(()=>ev("document.querySelector('.unsaved-map-backdrop')?.hidden===false"),'destination close prompt');await clickPrompt('Save and continue');
  await wait(()=>ev("document.querySelector('.unsaved-map-error')?.textContent?.includes('may have been written')"),'destination readback failure',25000);
- const destination=await ev("({prompt:document.querySelector('.unsaved-map-backdrop')?.hidden===false,error:document.querySelector('.unsaved-map-error')?.textContent||'',hasMap:__M5_P1B_TEST__.snapshot()?.hasMap})");
+ const destination=await ev("({prompt:document.querySelector('.unsaved-map-backdrop')?.hidden===false,error:document.querySelector('.unsaved-map-error')?.textContent||'',hasMap:__M5_P1B_TEST__.snapshot()?.hasMap,handle:__M5_P1B_TEST__.documentState()?.handleName,dirty:__M5_P1B_TEST__.snapshot()?.dirty})");
  const destinationExists=await ev("(async()=>{try{const f=await __D__.getFileHandle('First.orbit');const file=await f.getFile();return file.size>0}catch{return false}})()");
- assert.equal(destination.prompt,true);assert.equal(destination.hasMap,true);assert.equal(destinationExists,true);
- await clickPrompt('Cancel');await wait(()=>ev("document.querySelector('.unsaved-map-backdrop')?.hidden===true"),'destination cancel'); assert.equal(errors.length,0);
- console.log(JSON.stringify({sha,bound,missing,conflict,clean,savePrompt,afterCancel,failState,cancelSaveAs,guarded,reopened,readback,checkpoint,destination,destinationExists,errors},null,2));
+ assert.equal(destination.prompt,true);assert.equal(destination.hasMap,true);assert.equal(destination.handle,null);assert.equal(destination.dirty,true);assert.equal(destinationExists,true);
+ const firstCandidate=await meta('First.orbit','globalThis.__D__');
+ await clickPrompt('Cancel');await wait(()=>ev("document.querySelector('.unsaved-map-backdrop')?.hidden===true"),'destination cancel');
+ // Ordinary Save asks for a destination again and does not touch the unverified candidate.
+ await ev("globalThis.__PICK_CALLS__=0;window.showSaveFilePicker=async()=>{globalThis.__PICK_CALLS__++;throw new DOMException('cancelled','AbortError')};true");
+ await nav('#nav-save-map');await wait(()=>ev("globalThis.__PICK_CALLS__===1"),'ordinary save picker',20000);
+ const ordinary=await ev("({handle:__M5_P1B_TEST__.documentState()?.handleName,hasMap:__M5_P1B_TEST__.snapshot()?.hasMap,dirty:__M5_P1B_TEST__.snapshot()?.dirty})");
+ assert.equal(ordinary.handle,null);assert.equal(ordinary.hasMap,true);assert.equal(ordinary.dirty,true);
+ assert.deepEqual(await meta('First.orbit','globalThis.__D__'),firstCandidate);
+ // A verified first save still closes the map.
+ await ev("window.showSaveFilePicker=async()=>{const real=await __D__.getFileHandle('Verified.orbit',{create:true});return {kind:'file',name:'Verified.orbit',async queryPermission(){return 'granted'},async requestPermission(){return 'granted'},async createWritable(){return real.createWritable()},async isSameEntry(){return false},async getFile(){return real.getFile()}};true}");
+ await nav('#nav-close-map');await wait(()=>ev("document.querySelector('.unsaved-map-backdrop')?.hidden===false"),'verified first save close prompt');await clickPrompt('Save and continue');
+ await wait(()=>ev("__M5_P1B_TEST__.snapshot()?.hasMap===false"),'verified first save close',25000);
+ const verifiedExists=await ev("(async()=>{try{const f=await __D__.getFileHandle('Verified.orbit');const file=await f.getFile();return file.size>0}catch{return false}})()");
+ assert.equal(verifiedExists,true);await shot('sidebar-close-first-save-verified.png');
+ assert.equal(errors.length,0);
+ console.log(JSON.stringify({sha,bound,missing,conflict,clean,savePrompt,afterCancel,failState,cancelSaveAs,guarded,reopened,readback,checkpoint,destination,destinationExists,ordinary,verifiedExists,errors},null,2));
 } finally {try{ws?.close()}catch{}try{process.kill(b.pid)}catch{}}
