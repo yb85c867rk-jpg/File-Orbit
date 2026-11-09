@@ -72,6 +72,30 @@ try {
  await ev("__M5_P1B_TEST__.releaseDeferredSave();true");await wait(()=>ev("__M5_P1B_TEST__.snapshot()?.dirty===false"),'deferred save done',20000);
  await nav('#nav-close-map');await wait(()=>ev("__M5_P1B_TEST__.snapshot()?.hasMap===false"),'close after save');await openMap('D.orbit');
  const reopened=await ev("({dirty:__M5_P1B_TEST__.snapshot()?.dirty,name:__M5_P1B_TEST__.documentState()?.name})");assert.equal(reopened.dirty,false);assert.equal(reopened.name,'D.orbit');
- assert.equal(errors.length,0);
- console.log(JSON.stringify({sha,bound,missing,conflict,clean,savePrompt,afterCancel,failState,cancelSaveAs,guarded,reopened,errors},null,2));
+
+ // 9. Write completes, but readback verification doesn't: keep map, edits, prompt, and checkpoint.
+ await ev("__M5_P1B_TEST__.touch();true");const dReadBefore=await meta('D.orbit','globalThis.__D__');
+ await ev("__M5_P1B_TEST__.failNextBaselineVerificationForTest();true");
+ await nav('#nav-close-map');await wait(()=>ev("document.querySelector('.unsaved-map-backdrop')?.hidden===false"),'readback close prompt');await clickPrompt('Save and continue');
+ await wait(()=>ev("document.querySelector('.unsaved-map-error')?.textContent?.includes('may have been written')"),'readback failure',25000);
+ const readback=await ev("({prompt:document.querySelector('.unsaved-map-backdrop')?.hidden===false,error:document.querySelector('.unsaved-map-error')?.textContent||'',hasMap:__M5_P1B_TEST__.snapshot()?.hasMap,dirty:__M5_P1B_TEST__.snapshot()?.dirty,handle:__M5_P1B_TEST__.documentState()?.handleName})");
+ const dReadAfter=await meta('D.orbit','globalThis.__D__');
+ assert.equal(readback.prompt,true);assert.equal(readback.hasMap,true);assert.equal(readback.dirty,true);assert.equal(readback.handle,'D.orbit');assert.ok(dReadAfter.mtime>=dReadBefore.mtime);
+ const checkpoint=await ev("(async()=>{await __M5_P1B_TEST__.flushRecovery();const r=await __M5_P1B_TEST__.recoveryCheckpoint();return Boolean(r?.checkpoint)})()");
+ assert.equal(checkpoint,true);
+ await shot('sidebar-close-readback-failed.png');
+ await clickPrompt('Cancel');await wait(()=>ev("document.querySelector('.unsaved-map-backdrop')?.hidden===true"),'readback cancel');
+ // 10. An unsaved map that first picks a destination must also be readback-confirmed.
+ await nav('#nav-close-map');await wait(()=>ev("document.querySelector('.unsaved-map-backdrop')?.hidden===false"),'discard before new destination');await clickPrompt('Discard changes');await wait(()=>ev("__M5_P1B_TEST__.snapshot()?.hasMap===false"),'empty before destination');
+ await ev("(async()=>{const bytes=await (await fetch('/tests/fixtures/large-map/FileOrbit-300.orbit')).arrayBuffer();await __M5_LARGE_MAP_TEST__.importFile(new File([bytes],'Imported.orbit'));return true})()");
+ await wait(()=>ev("__M5_P1B_TEST__.snapshot()?.hasMap===true && !__M5_P1B_TEST__.documentState()?.handleName"),'imported destination map');await ev("__M5_P1B_TEST__.touch();true");
+ await ev("window.showSaveFilePicker=async()=>{const real=await __D__.getFileHandle('First.orbit',{create:true});return {kind:'file',name:'First.orbit',async queryPermission(){return 'granted'},async requestPermission(){return 'granted'},async createWritable(){return real.createWritable()},async isSameEntry(){return false},async getFile(){return real.getFile()}};true}");
+ await ev("__M5_P1B_TEST__.failNextBaselineVerificationForTest();true");
+ await nav('#nav-close-map');await wait(()=>ev("document.querySelector('.unsaved-map-backdrop')?.hidden===false"),'destination close prompt');await clickPrompt('Save and continue');
+ await wait(()=>ev("document.querySelector('.unsaved-map-error')?.textContent?.includes('may have been written')"),'destination readback failure',25000);
+ const destination=await ev("({prompt:document.querySelector('.unsaved-map-backdrop')?.hidden===false,error:document.querySelector('.unsaved-map-error')?.textContent||'',hasMap:__M5_P1B_TEST__.snapshot()?.hasMap})");
+ const destinationExists=await ev("(async()=>{try{const f=await __D__.getFileHandle('First.orbit');const file=await f.getFile();return file.size>0}catch{return false}})()");
+ assert.equal(destination.prompt,true);assert.equal(destination.hasMap,true);assert.equal(destinationExists,true);
+ await clickPrompt('Cancel');await wait(()=>ev("document.querySelector('.unsaved-map-backdrop')?.hidden===true"),'destination cancel'); assert.equal(errors.length,0);
+ console.log(JSON.stringify({sha,bound,missing,conflict,clean,savePrompt,afterCancel,failState,cancelSaveAs,guarded,reopened,readback,checkpoint,destination,destinationExists,errors},null,2));
 } finally {try{ws?.close()}catch{}try{process.kill(b.pid)}catch{}}
