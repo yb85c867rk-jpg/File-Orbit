@@ -12,3 +12,6 @@ These globals exist only for deterministic rendered OPFS verification. They are 
 The browser tests use disposable OPFS directories and generated `.orbit` files. They never use OntoMap or user source directories.
 
 - `__M5_RENAME_CALLS__`: optional `{create,write,remove}` counters incremented at the wired adapter’s physical call boundaries. Tests initialize it before a rename and assert the final counts.
+
+- `__M5_EDITOR_DIAGNOSTIC__`: populated after an editor save applies but persistence fails. It records the failure reason/stage, document handle/name, identity, revision/session/dataset/ownership, baseline digest, and whether the baseline handle binding matched. It is cleared on a successful editor save.
+- `__M5_SAVE_ENCODE_FAILURE__`: intentionally fails the next document encode to exercise applied-unsaved editor recovery without touching a destination file.

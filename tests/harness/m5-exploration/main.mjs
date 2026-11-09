@@ -559,6 +559,7 @@ try { libraryCollection = createLibraryCollectionController({ settings: mapLibra
 let mapLibraryRestoreToken = 0;
 let renameMapDialog = null;
 let renameMapContext = null;
+let lastEditorPersistenceFailure = null;
 let renameMapInFlight = false;
 let renameRecoveryBlock = null;
 function bindRenameRecovery(context, reason, outcome) {
@@ -1924,14 +1925,25 @@ async function saveEditorAction({ action, name, description, dataType, link, lin
   catch (error) { persisted = { ok: false, message: String(error?.message || error) }; }
   if (!appliedOperationOwns(owner)) return { ok: false, reason: 'stale' };
   if (persisted?.handoff) return { ok: false, applied: true, handoff: true, message: 'Download started. FileOrbit cannot confirm that the file was saved. Retry Save or Close; the change is already applied.' };
-  if (persisted?.ok) { if (editorAppliedOperation === owner) editorAppliedOperation = null; return { ...result, persisted: true }; }
+  if (persisted?.ok) { lastEditorPersistenceFailure = null; globalThis.__M5_EDITOR_DIAGNOSTIC__ = null; if (editorAppliedOperation === owner) editorAppliedOperation = null; return { ...result, persisted: true }; }
   if (persisted?.reason === 'stale-generation') pendingEditorConflictCompletion = true;
+  lastEditorPersistenceFailure = { reason: String(persisted?.reason || 'save-failed'), stage: String(persisted?.stage || 'unknown'), message: String(persisted?.message || ''), documentName: owner.documentName, documentHandle: owner.documentHandle, documentIdentity: owner.documentIdentity, revision: owner.revision, session: owner.session, datasetToken: owner.datasetToken, ownership: owner.ownership, baselineDigest: activeDocument.baseline?.digest || null, baselineBinding: activeDocument.baseline ? { handle: activeDocument.baseline.handle === activeDocument.handle, documentIdentity: activeDocument.baseline.documentIdentity, revision: activeDocument.baseline.revision, session: activeDocument.baseline.session, operation: activeDocument.baseline.operation } : null };
+  globalThis.__M5_EDITOR_DIAGNOSTIC__ = lastEditorPersistenceFailure;
+  setShellStatus(editorPersistenceFailureMessage(persisted));
   automaticSaveFailure = null;
   automaticSavePending = null;
   syncAutomaticSaveFeedback();
-  return { ok: false, applied: true, reason: 'applied-unsaved', message: UNSAVED_MESSAGE, persistence: persisted };
+  return { ok: false, applied: true, reason: 'applied-unsaved', message: editorPersistenceFailureMessage(persisted), persistence: persisted };
 }
 
+function editorPersistenceFailureMessage(persisted) {
+  const reason = String(persisted?.reason || '');
+  if (reason === 'permission-cancelled' || reason === 'permission-denied' || reason === 'write-permission-required') return 'The description was applied but the file was not saved because write permission was not granted. The applied edit and draft are retained. Retry Save after granting access, or Save As.';
+  if (reason === 'conflict' || reason === 'conflict-cancelled' || reason === 'stale-generation') return 'The description was applied but the file changed or could not be verified. The applied edit and draft are retained. Retry Save, choose Save As, or reopen the file.';
+  if (reason === 'not-found') return 'The description was applied but the destination file is missing. The applied edit and draft are retained. Use Save As or reopen the map.';
+  if (reason === 'write-failed' || reason === 'encoding-failed' || reason === 'save-failed') return 'The description was applied but writing or verification failed. The applied edit and draft are retained. Retry Save; if it keeps failing, use Save As or reopen the map.';
+  return 'The description was applied but was not saved. The applied edit and draft are retained. Retry Save, use Save As, or reopen the map.';
+}
 function resolveClickIntent(event) {
   if (!frameState || !surface) return null;
   let point;
@@ -2425,7 +2437,12 @@ async function openRenameMap() {
     setShellStatus('Rename Map is available only for an open, writable .orbit map.');
     return { ok: false, reason: 'no-writable-map' };
   }
-  if (editorController?.isOpen() || editorController?.isSaving()) { setShellStatus('Finish or close the editor form before renaming the map.'); return { ok: false, reason: 'editor-open' }; }
+  if (editorController?.isOpen() || editorController?.isSaving()) {
+    if (lastEditorPersistenceFailure && editorAppliedOperation) setShellStatus('The description was applied but not saved. Use Retry Save in the editor, Save As, or Cancel the applied edit before renaming the map.');
+    else if (editorController?.isSaving()) setShellStatus('Wait for the editor Save to finish before renaming the map.');
+    else setShellStatus('Finish or close the editor form before renaming the map.');
+    return { ok: false, reason: 'editor-open' };
+  }
   if (documentSaveInFlight || persistenceBusy || replacementGuard || deleteMapFileGuard || pendingBackupImport || installingBackupImport) {
     setShellStatus('Finish the current save, open, or replacement operation before renaming the map.');
     return { ok: false, reason: 'busy' };
