@@ -13,5 +13,5 @@ The browser tests use disposable OPFS directories and generated `.orbit` files. 
 
 - `__M5_RENAME_CALLS__`: optional `{create,write,remove}` counters incremented at the wired adapter’s physical call boundaries. Tests initialize it before a rename and assert the final counts.
 
-- `__M5_EDITOR_DIAGNOSTIC__`: populated after an editor save applies but persistence fails. It records the failure reason/stage, document handle/name, identity, revision/session/dataset/ownership, baseline digest, and whether the baseline handle binding matched. It is cleared on a successful editor save.
+- `__M5_EDITOR_DIAGNOSTIC__`: populated for every editor outcome. The schema is `fileorbit-editor-outcome-v1` and records `action`, `stage`, `reason`, `changed{name,description,link}`, `appliedRetained`, `revisionEqual`, `dirty`, `baseline{handleBound,identityBound,state,operation}`, and `write{confirmed,decoded}`. Stages: `admission` (early exit), `apply` (command failed or `no-change` no-op), `verify` (written bytes unverified or decoded mismatch), `saved` (decoded destination matched the applied edit). It never contains description text, filenames, paths or live handles.
 - `__M5_SAVE_ENCODE_FAILURE__`: intentionally fails the next document encode to exercise applied-unsaved editor recovery without touching a destination file.

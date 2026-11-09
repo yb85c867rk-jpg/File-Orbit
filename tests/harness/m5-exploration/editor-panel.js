@@ -363,17 +363,18 @@ export function createEditorPanel({
       onState({ reason: 'editor-save-failed' });
       return;
     }
+    const noop = result.reason === 'noop';
     controller.saveSucceeded();
     save.textContent = 'Save';
     cancel.textContent = 'Cancel';
-    status.textContent = result.reason === 'noop' ? 'No changes.' : controller.status || 'Saved.';
+    status.textContent = noop ? 'No changes.' : controller.status || 'Saved.';
     pendingReservation = null;
     resetAttachment({ keepReservation: true });
     hideAll();
     renderSummary();
     summary.focus();
-    try { onState?.({ reason: 'editor-saved' }); } catch {}
-    onState({ reason: 'editor-saved' });
+    try { onState?.({ reason: noop ? 'editor-noop' : 'editor-saved' }); } catch {}
+    onState({ reason: noop ? 'editor-noop' : 'editor-saved' });
   }
   function resetAttachment({ keepReservation = false } = {}) {
     if (!keepReservation && pendingReservation) pendingReservation.owner.release(pendingReservation.id);
@@ -477,7 +478,7 @@ export function createEditorPanel({
       id: target.id,
       action,
       name: action === 'add-folder' || action === 'add-data' ? '' : (target.name || ''),
-      description: action === 'edit-folder' || action === 'edit-data' || action === 'edit-details' ? target.description ?? null : null,
+      description: action === 'edit-folder' || action === 'edit-data' || action === 'edit-details' || action === 'edit-description' ? target.description ?? null : null,
       link: action === 'edit-data' || action === 'edit-details' ? target.link ?? null : null,
       dataType: action === 'add-data' ? '' : (action === 'edit-data' && (target.dataType === 'file' || target.dataType === 'web-link') ? target.dataType : null),
       datasetToken: identity.datasetToken ?? null,
