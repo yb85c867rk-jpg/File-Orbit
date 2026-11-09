@@ -38,7 +38,6 @@ export function createEditorContextMenu({
     return button;
   };
 
-  const openFolder = item('open-folder', 'Open Folder');
   const openData = item('open-data', 'Open');
   const editFolder = item('edit-folder', 'Edit Folder…');
   const renameMap = item('rename-map', 'Rename Map…');
@@ -69,7 +68,7 @@ export function createEditorContextMenu({
 
   const folderSeparator = separator();
   const fileSeparator = separator();
-  for (const child of [openFolder, editFolder, renameMap, editDescription, addButton, exportFolder, folderSeparator, deleteFolder, openData, editData, saveData, fileSeparator, deleteData]) menu.appendChild(child);
+  for (const child of [editFolder, renameMap, editDescription, addButton, exportFolder, folderSeparator, deleteFolder, openData, editData, saveData, fileSeparator, deleteData]) menu.appendChild(child);
   for (const child of [addFolder, addData, separator(), uploadFiles, uploadFolder]) submenu.appendChild(child);
 
   const deleteNote = document.createElement('p');
@@ -92,8 +91,8 @@ export function createEditorContextMenu({
   function actionsFor(targetValue) {
     if (targetValue?.hitKind === 'file') return ['open-data', 'edit-data', 'save-data-as', 'delete-data'];
     return targetValue?.isRoot
-      ? ['open-folder', 'rename-map', 'edit-description', 'add', 'export-folder', 'delete-folder']
-      : ['open-folder', 'edit-folder', 'add', 'export-folder', 'delete-folder'];
+      ? ['rename-map', 'edit-description', 'add', 'export-folder', 'delete-folder']
+      : ['edit-folder', 'add', 'export-folder', 'delete-folder'];
   }
   function submenuActions() { return ['add-folder', 'add-data', 'upload-files', 'upload-folder']; }
   function enabledMainItems() {
@@ -104,7 +103,7 @@ export function createEditorContextMenu({
   }
   function renderActions(targetValue) {
     const folder = targetValue.hitKind !== 'file';
-    openFolder.hidden = !folder; openData.hidden = folder;
+    openData.hidden = folder;
     editFolder.hidden = !folder || Boolean(targetValue.isRoot);
     renameMap.hidden = !folder || !targetValue.isRoot;
     editDescription.hidden = !folder || !targetValue.isRoot;
@@ -304,7 +303,7 @@ export function createEditorContextMenu({
     addButton.addEventListener('pointerenter', () => { if (!submenuOpen) openSubmenu({ focus: false }); }, { signal });
     addButton.addEventListener('pointerleave', () => scheduleHoverClose(), { signal });
     const first = actionsFor(nextTarget).map((action) => buttons.get(action)).find((button) => button && !button.hidden && !button.disabled);
-    (first || openFolder || openData).focus();
+    (first || openData).focus();
     return true;
   }
 
@@ -330,7 +329,6 @@ export function createEditorContextMenu({
       if (submenu.parentNode) submenu.parentNode.removeChild(submenu);
     },
     get element() { return menu; },
-    get item() { return openFolder; },
     get actions() { return buttons; }
   };
 }
