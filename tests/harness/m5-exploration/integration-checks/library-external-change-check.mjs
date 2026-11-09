@@ -1,0 +1,105 @@
+import { spawn, execSync } from 'node:child_process'; import { writeFileSync, rmSync } from 'node:fs'; import assert from 'node:assert/strict';
+const sha=execSync('git rev-parse HEAD',{encoding:'utf8'}).trim(); const profile=process.cwd()+'/.library-external-profile'; rmSync(profile,{recursive:true,force:true}); const port=9637; const b=spawn('C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',['--headless=new',`--remote-debugging-port=${port}`,`--user-data-dir=${profile}`,'--no-first-run','--disable-gpu','about:blank'],{stdio:'ignore',windowsHide:true}); const sl=ms=>new Promise(r=>setTimeout(r,ms)); let ws;
+try {
+ const wait=async(fn,label,ms=40000)=>{const end=Date.now()+ms;while(Date.now()<end){try{const v=await fn();if(v)return v}catch{}await sl(110)}throw new Error('timeout: '+label)};
+ const tar=await wait(async()=>{const r=await fetch(`http://127.0.0.1:${port}/json/new?about:blank`,{method:'PUT'});return r.ok?r.json():null},'target'); ws=new WebSocket(tar.webSocketDebuggerUrl); await new Promise((r,j)=>{ws.onopen=r;ws.onerror=j}); let id=0; const pending=new Map(), errors=[]; ws.onmessage=e=>{const m=JSON.parse(e.data);if(m.id&&pending.has(m.id)){const q=pending.get(m.id);pending.delete(m.id);m.error?q.j(m.error):q.r(m.result)}if(m.method==='Runtime.exceptionThrown')errors.push(m.params?.exceptionDetails?.exception?.description||m.params?.exceptionDetails?.text)}; const send=(method,params={})=>new Promise((r,j)=>{const n=++id;pending.set(n,{r,j});ws.send(JSON.stringify({id:n,method,params}))}); const ev=async x=>{const r=await send('Runtime.evaluate',{expression:x,returnByValue:true,awaitPromise:true});if(r.exceptionDetails)throw new Error(r.exceptionDetails.exception?.description||r.exceptionDetails.text);return r.result?.value}; const shot=async n=>{const r=await send('Page.captureScreenshot',{format:'png'});writeFileSync('evidence/large-map/'+n,Buffer.from(r.data,'base64'))};
+ await send('Page.enable');await send('Runtime.enable');await send('Network.enable');await send('Network.setCacheDisabled',{cacheDisabled:true});await send('Page.addScriptToEvaluateOnNewDocument',{source:'globalThis.__M5_LARGE_MAP_TEST_HOOK__=true;globalThis.__M5_P1B_TEST_HOOKS__=true;'});await send('Emulation.setDeviceMetricsOverride',{width:1900,height:870,deviceScaleFactor:1,mobile:false});await send('Page.navigate',{url:'http://127.0.0.1:8164/tests/harness/m5-exploration/index.html'});await wait(()=>ev("typeof __M5_P1B_TEST__==='object'"),'app');
+ await ev("(async()=>{const backup=await import('/src/engine/hypertree/persistence/backup.js');const settingsMod=await import('/tests/harness/m5-exploration/map-library-settings.js');const storage=await navigator.storage.getDirectory();const dir=await storage.getDirectoryHandle('External Library',{create:true});await storage.getDirectoryHandle('External Dest',{create:true});const bytes=new Uint8Array([65,66,67,68,69]);const af=new File([bytes],'seq.txt',{type:'text/plain'});const registry={get(id){return id==='att_seq'?{file:af,metadata:{originalName:'seq.txt',sizeBytes:5,mime:'text/plain'},name:'seq.txt',classification:null}:null}};for(const [name,title,description] of [['A.orbit','Map A','initial'],['Other.orbit','Other Map','other initial']]){const tree={id:'root',kind:'folder',name:title,data:{description},children:[{id:'f',kind:'file',name:'Doc',data:{attachmentId:'att_seq',originalName:'seq.txt',sizeBytes:5,mime:'text/plain'},children:[]}]};const e=await backup.encodeBackup({tree,registry,mapName:name,cryptoApi:globalThis.crypto});const f=await dir.getFileHandle(name,{create:true});const w=await f.createWritable();await w.write(e.blob);await w.close();}const settings=settingsMod.createMapLibrarySettings({indexedDB});await settings.saveCollection([{id:'lib-ext',handle:dir,name:'External Library'}],'lib-ext');return true})()");
+ await send('Page.reload',{ignoreCache:true});await wait(()=>ev("typeof __M5_P1B_TEST__==='object'"),'reload');await wait(()=>ev("document.querySelector('#orbit-name')?.textContent==='External Library'"),'library');await ev("(async()=>{const backup=await import('/src/engine/hypertree/persistence/backup.js');const root=await navigator.storage.getDirectory();globalThis.__DIR__=await root.getDirectoryHandle('External Library');globalThis.__DEST__=await root.getDirectoryHandle('External Dest');globalThis.__COPY__=(await import('/tests/harness/m5-exploration/map-library-settings.js'));globalThis.__mkIn=async(dir,name,title,description,bytes)=>{const arr=new Uint8Array(bytes||[65,66,67,68,69]);const af=new File([arr],'seq.txt',{type:'text/plain'});const registry={get(id){return id==='att_seq'?{file:af,metadata:{originalName:'seq.txt',sizeBytes:arr.length,mime:'text/plain'},name:'seq.txt',classification:null}:null}};const tree={id:'root',kind:'folder',name:title,data:{description},children:[{id:'f',kind:'file',name:'Doc',data:{attachmentId:'att_seq',originalName:'seq.txt',sizeBytes:arr.length,mime:'text/plain'},children:[]}]};const e=await backup.encodeBackup({tree,registry,mapName:name,cryptoApi:globalThis.crypto});const f=await dir.getFileHandle(name,{create:true});const w=await f.createWritable();await w.write(e.blob);await w.close();return {size:(await f.getFile()).size}};globalThis.__decode=async(name,dir)=>{const d=dir||globalThis.__DIR__;const f=await d.getFileHandle(name);const file=await f.getFile();const dec=await backup.decodeBackup(file,{cryptoApi:globalThis.crypto});return {title:dec.tree.name,description:dec.tree.data?.description??null,bytes:Array.from(new Uint8Array(await dec.attachments[0].blob.arrayBuffer())),size:file.size,lastModified:file.lastModified}};globalThis.__rename=async(from,to)=>{const h=await __DIR__.getFileHandle(from);if(typeof h.move!=='function')throw new Error('move-unsupported');await h.move(to);return true};globalThis.__moveTo=async(from,sub,to)=>{const d=await __DIR__.getDirectoryHandle(sub,{create:true});const h=await __DIR__.getFileHandle(from);await h.move(d,to);return true};globalThis.__remove=async(name)=>{await __DIR__.removeEntry(name);return true};return true})()");
+ const rows=()=>ev("[...document.querySelectorAll('#orbit-list .orbit-entry')].map(b=>({name:b.querySelector('.orbit-entry-name')?.textContent||'',current:b.getAttribute('aria-current')==='true'}))");
+ const names=async()=>(await rows()).map(r=>r.name);
+ const orbitStatus=()=>ev("document.querySelector('#orbit-status')?.textContent||''");
+ const clickRefresh=async()=>{await ev("document.querySelector('#orbit-refresh').click();true");await wait(()=>ev("document.querySelector('#orbit-refresh')?.disabled===true"),'refresh start',5000).catch(()=>null);await wait(()=>ev("document.querySelector('#orbit-refresh')?.disabled===false"),'refresh done',20000);await sl(300)};
+ const openMap=async name=>{await ev("(()=>{[...document.querySelectorAll('#orbit-list .orbit-entry')].find(b=>b.querySelector('.orbit-entry-name')?.textContent==="+JSON.stringify(name)+")?.click();return true})()");await wait(()=>ev("__M5_P1B_TEST__.documentState()?.name==="+JSON.stringify(name)),'open '+name);await sl(500)};
+ const save=()=>ev("(async()=>{const r=await __M5_P1B_TEST__.saveDocumentForTest();return {ok:r.ok,reason:r.reason||null,stage:r.stage||null,message:String(r.message||'')}})()");
+ const autoSave=()=>ev("(async()=>{const r=await __M5_P1B_TEST__.automaticSaveForTest();return {ok:r.ok,reason:r.reason||null}})()");
+ const openDescription=async()=>{await ev("__M5_P1B_TEST__.openRootMenuAtForTest(300,300)");await wait(()=>ev("document.querySelector('#editor-context-menu')?.hidden===false"),'menu');await ev("(()=>{document.querySelector('#editor-context-menu button[data-action=\\\"edit-description\\\"]').click();return true})()");await wait(()=>ev("document.querySelector('#editor-form')?.hidden===false"),'desc form');await sl(120)};
+ const setText=async text=>ev("(()=>{const d=document.querySelector('#editor-description');d.value="+JSON.stringify(text)+";d.dispatchEvent(new Event('input',{bubbles:true}));return true})()");
+ const closeEditor=async()=>{await ev("(()=>{const b=[...document.querySelectorAll('#editor-form .editor-actions button')].find(x=>x.textContent==='Close'||x.textContent==='Cancel');if(b)b.click();return true})()");await sl(200)};
+ const toast=()=>ev("document.querySelector('#folder-export-success')?.textContent||''");
+ const DESC='외부 변경 후 저장\n둘째 줄 ✓';
+ // 1. External rename is reflected on Refresh; the open map survives and saving to the old name is blocked.
+ await openMap('A.orbit');
+ const mapBefore=await ev("({title:__M5_P1B_TEST__.treeSnapshot().name,description:__M5_P1B_TEST__.treeSnapshot().data?.description||null,undo:__M5_P1B_TEST__.historyState().undo})");
+ const aBefore=await ev("(async()=>__decode('A.orbit'))()");
+ await ev("__rename('A.orbit','A2.orbit')");
+ await clickRefresh();
+ await wait(()=>ev("[...document.querySelectorAll('#orbit-list .orbit-entry')].some(b=>b.querySelector('.orbit-entry-name')?.textContent==='A2.orbit')"),'renamed listed');
+ const renameRows=await rows(); const renameStatus=await orbitStatus();
+ assert.deepEqual(renameRows.map(r=>r.name).sort(),['A2.orbit','Other.orbit']);assert.equal(renameRows.find(r=>r.name==='A2.orbit').current,false);
+ assert.match(renameStatus,/not in this list/i);
+ const mapAfter=await ev("({title:__M5_P1B_TEST__.treeSnapshot().name,description:__M5_P1B_TEST__.treeSnapshot().data?.description||null,undo:__M5_P1B_TEST__.historyState().undo})");
+ assert.deepEqual(mapAfter,mapBefore);
+ const renameSave=await save(); assert.equal(renameSave.ok,false);assert.ok(['destination-missing','destination-renamed'].includes(renameSave.reason));
+ assert.match(await toast(),/renamed externally|no longer in the Map Library/i);
+ const a2After=await ev("(async()=>__decode('A2.orbit'))()"); assert.deepEqual(a2After,aBefore);
+ await shot('external-rename.png');
+ // 2. Reopen the renamed file to establish a new binding.
+ await openMap('A2.orbit'); const rebound=await ev("({name:__M5_P1B_TEST__.documentState().name,handleName:__M5_P1B_TEST__.documentState().handle?.name||null})");
+ assert.equal(rebound.name,'A2.orbit');assert.equal(rebound.handleName,'A2.orbit');
+ // 3. Move away: Refresh reports missing, save/autosave do not recreate it.
+ await ev("__rename('A2.orbit','A3.orbit')");
+ await clickRefresh();
+ await wait(()=>ev("[...document.querySelectorAll('#orbit-list .orbit-entry')].some(b=>b.querySelector('.orbit-entry-name')?.textContent==='A3.orbit')"),'moved away');
+ assert.equal((await names()).includes('A2.orbit'),false);
+ assert.match(await orbitStatus(),/not in this list/i);
+ const movedSave=await save(); assert.equal(movedSave.ok,false);assert.equal(movedSave.reason,'destination-missing');
+ const movedAuto=await autoSave(); assert.equal(movedAuto.ok,false);assert.equal(movedAuto.reason,'destination-missing');
+ const movedNames=await names(); assert.equal(movedNames.includes('A2.orbit'),false);assert.equal(movedNames.includes('A3.orbit'),true);
+ const movedCopy=await ev("(async()=>__decode('A3.orbit'))()"); assert.deepEqual(movedCopy,aBefore);
+ await ev("__remove('A3.orbit')"); await clickRefresh();
+ await wait(()=>ev("![...document.querySelectorAll('#orbit-list .orbit-entry')].some(b=>b.querySelector('.orbit-entry-name')?.textContent==='A3.orbit')"),'moved copy removed');
+ await shot('external-missing.png');
+ // 4. Save As preserves the edited description and attachment bytes without recreating the old name.
+ await openDescription(); await setText(DESC);
+ await ev("document.querySelector('#editor-form button[type=submit]').click();true");
+ await wait(()=>ev("__M5_EDITOR_DIAGNOSTIC__?.reason==='destination-missing'"),'applied unsaved missing',30000);
+ const missingForm=await ev("({open:document.querySelector('#editor-form')?.hidden===false,saveAs:[...document.querySelectorAll('#editor-form button')].some(b=>b.textContent==='Save As'&&!b.hidden),draft:document.querySelector('#editor-description')?.value||'',status:(document.querySelector('#editor-status')?.textContent||'').slice(0,90),shell:(document.querySelector('#shell-status')?.textContent||'').slice(0,160)})");
+ assert.equal(missingForm.open,true);assert.equal(missingForm.saveAs,true);assert.equal(missingForm.draft,DESC);assert.match(missingForm.shell,/no longer in the Map Library|Save As/i);
+ await ev("window.showOpenFilePicker=async()=>[];window.showSaveFilePicker=async()=>{const real=await __DEST__.getFileHandle('Recovered.orbit',{create:true});return {kind:'file',name:'Recovered.orbit',async queryPermission(){return 'granted'},async requestPermission(){return 'granted'},async isSameEntry(o){try{return real.isSameEntry?await real.isSameEntry(o):false}catch{return false}},async createWritable(){return real.createWritable()},async getFile(){return real.getFile()}}};true");
+ await ev("(()=>{[...document.querySelectorAll('#editor-form button')].find(b=>b.textContent==='Save As').click();return true})()");
+ await wait(()=>ev("document.querySelector('#editor-form')?.hidden===true"),'save as closed',40000); await sl(300);
+ const recovered=await ev("(async()=>__decode('Recovered.orbit',__DEST__))()");
+ assert.equal(recovered.description,DESC);assert.deepEqual(recovered.bytes,[65,66,67,68,69]);
+ assert.equal((await names()).includes('A3.orbit'),false);
+ // 5. Deletion of a bound file blocks saving without recreating it.
+ await ev("__mkIn(__DIR__,'C.orbit','Map C','c initial')"); await clickRefresh();
+ await wait(()=>ev("[...document.querySelectorAll('#orbit-list .orbit-entry')].some(b=>b.querySelector('.orbit-entry-name')?.textContent==='C.orbit')"),'C listed');
+ await openMap('C.orbit'); const cBefore=await ev("(async()=>__decode('C.orbit'))()");
+ await ev("__remove('C.orbit')"); await clickRefresh();
+ await wait(()=>ev("![...document.querySelectorAll('#orbit-list .orbit-entry')].some(b=>b.querySelector('.orbit-entry-name')?.textContent==='C.orbit')"),'C deleted');
+ const deletedSave=await save();assert.equal(deletedSave.ok,false);assert.equal(deletedSave.reason,'destination-missing');
+ const deletedAuto=await autoSave();assert.equal(deletedAuto.ok,false);assert.equal(deletedAuto.reason,'destination-missing');
+ assert.equal((await names()).includes('C.orbit'),false);
+ // 6. Same-name replacement is preserved; saving cannot overwrite it.
+ await ev("__mkIn(__DIR__,'C.orbit','Replacement Map','replacement body',[9,9,9,9])"); await clickRefresh();
+ await wait(()=>ev("[...document.querySelectorAll('#orbit-list .orbit-entry')].some(b=>b.querySelector('.orbit-entry-name')?.textContent==='C.orbit')"),'replacement listed');
+ const replacementBefore=await ev("(async()=>__decode('C.orbit'))()");assert.equal(replacementBefore.title,'Replacement Map');
+ const replacedAuto=await autoSave();assert.equal(replacedAuto.ok,false);assert.equal(replacedAuto.reason,'conflict');
+ const replacementAfter=await ev("(async()=>__decode('C.orbit'))()");assert.deepEqual(replacementAfter,replacementBefore);
+ const replacedManual={ok:false,reason:'interactive-dialog-not-automated'};
+ await shot('external-replaced.png');
+ // 7. Listing failure keeps the last valid list and explains the failure.
+ const listBeforeFailure=await names();
+ await ev("__M5_P1B_TEST__.failNextOrbitListing('enumerate-failed');true");
+ await clickRefresh(); const failedStatus=await ev("document.querySelector('#shell-status')?.textContent||''");
+ assert.match(failedStatus,/could not be listed|last valid list/i);assert.deepEqual(await names(),listBeforeFailure);
+ await ev("__M5_P1B_TEST__.failNextOrbitListing('permission-denied');true");
+ await clickRefresh(); const deniedStatus=await ev("document.querySelector('#shell-status')?.textContent||''");
+ assert.match(deniedStatus,/denied|Reconnect/i);assert.deepEqual(await names(),listBeforeFailure);
+ await clickRefresh();
+ // 8. Delayed save with a document switch: no stale write or success.
+ await ev("__mkIn(__DIR__,'D.orbit','Map D','d initial')"); await clickRefresh();
+ await wait(()=>ev("[...document.querySelectorAll('#orbit-list .orbit-entry')].some(b=>b.querySelector('.orbit-entry-name')?.textContent==='D.orbit')"),'D listed');
+ await openMap('D.orbit'); await ev("__M5_P1B_TEST__.touch();true");
+ const dBefore=await ev("(async()=>__decode('D.orbit'))()");
+ await ev("__M5_P1B_TEST__.deferOrbitBindingCheck();__M5_P1B_TEST__.saveDocumentForTest().then(r=>{globalThis.__SAVE__={ok:r.ok,reason:r.reason||null}});true");
+ await wait(()=>ev("__M5_P1B_TEST__.orbitBindingCheckState()?.started===true"),'binding gate',15000);
+ await ev("__M5_P1B_TEST__.replaceSession();__M5_P1B_TEST__.settleSession();true");
+ await ev("__M5_P1B_TEST__.releaseOrbitBindingCheck();true");
+ await wait(()=>ev("Boolean(globalThis.__SAVE__)"),'delayed save result',15000);
+ const delayedSave=await ev("globalThis.__SAVE__");assert.equal(delayedSave.ok,false);assert.equal(delayedSave.reason,'stale');
+ const dAfter=await ev("(async()=>__decode('D.orbit'))()");assert.deepEqual(dAfter,dBefore);
+ assert.equal(errors.length,0);
+ console.log(JSON.stringify({sha,mapBefore,renameRows,renameStatus,renameSave,a2After,rebound,movedSave,movedAuto,missingForm,recovered,deletedSave,deletedAuto,replacementBefore,replacedAuto,replacedManual,failedStatus,deniedStatus,delayedSave,dAfter,errors},null,2));
+} finally {try{ws?.close()}catch{}try{process.kill(b.pid)}catch{}}

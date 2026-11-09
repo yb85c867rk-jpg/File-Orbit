@@ -23,13 +23,14 @@ export function createOrbitPanel({ document, onRefresh, onSelect, onChoose, onRe
     if (!Number.isFinite(value)) return '';
     try { return new Date(value).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }); } catch { return ''; }
   };
-  const statusFor = (snapshot) => {
+  const statusFor = (snapshot, { openDocumentMissing = false } = {}) => {
     if (snapshot?.phase === 'opening') return 'Opening Orbit…';
     if (!snapshot?.handle) return 'Choose a directory to show its .orbit maps.';
     if (snapshot.phase === 'listing') return 'Refreshing Map Library…';
     if (snapshot.phase === 'blocked' || snapshot.error) return snapshot.error?.message || 'This Orbit is unavailable. Refresh after restoring permission.';
     if (snapshot.stale && snapshot.truncated) return 'The map list may be out of date and is truncated. Refresh to update it.';
     if (snapshot.stale) return 'The map list may be out of date. Refresh to update it.';
+    if (openDocumentMissing) return 'The open map is not in this list. It may have been renamed, moved, or deleted; Save As or reopen it.';
     if (snapshot.truncated) {
       const count = snapshot.entries.length;
       return `Showing ${count} map${count === 1 ? '' : 's'}; the directory list is truncated. Refresh after narrowing the folder.`;
@@ -108,7 +109,7 @@ export function createOrbitPanel({ document, onRefresh, onSelect, onChoose, onRe
     panel.hidden = !visibleExpanded;
   };
 
-  function render(snapshot, { supported = true, currentKey = null, busy = false, pendingName = null, collectionOpen = false } = {}) {
+  function render(snapshot, { supported = true, currentKey = null, busy = false, pendingName = null, collectionOpen = false, openDocumentMissing = false } = {}) {
     last = snapshot || null;
     lastCollectionOpen = Boolean(collectionOpen);
     currentEntryKey = currentKey || null;
@@ -135,7 +136,7 @@ export function createOrbitPanel({ document, onRefresh, onSelect, onChoose, onRe
     reconnectButton.disabled = Boolean(busy || snapshot?.phase === 'opening' || snapshot?.phase === 'listing');
     panel.setAttribute('aria-busy', String(snapshot?.phase === 'opening' || snapshot?.phase === 'listing'));
     setButton(refreshButton, busy || !active || snapshot.phase === 'opening' || snapshot.phase === 'listing');
-    statusEl.textContent = statusFor(snapshot);
+    statusEl.textContent = statusFor(snapshot, { openDocumentMissing });
     const entries = Array.isArray(snapshot?.entries) ? snapshot.entries : [];
     const empty = Boolean(active) && entries.length === 0 && !['opening', 'listing', 'blocked'].includes(snapshot.phase);
     emptyEl.hidden = !empty;
