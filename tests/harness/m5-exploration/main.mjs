@@ -159,6 +159,8 @@ if (storageHelpButton && storageHelpText) {
   });
 }
 const saveMapButtons = [...document.querySelectorAll('[data-action="save-map"]')];
+const navSaveMapButton = document.querySelector('#nav-save-map');
+const closeMapButton = document.querySelector('#nav-close-map');
 const openMapButtons = [...document.querySelectorAll('[data-action="open-map"]')];
 const overlayHost = document.querySelector('#overlay-host');
 const embedDialog = createEmbedDialog({ document, host: overlayHost, fixtureUrl: './embed-host.html' });
@@ -888,6 +890,7 @@ const shellActions = createActionButtonsController({ buttons: actionButtons, onA
   if (action === 'create-map') { startCreateMap(); return; }
   if (action === 'save-map') { if (editorController?.isOpen()) { if (typeof editorPanel?.submit !== 'function') { setShellStatus('Editor Save API is unavailable.'); return; } editorPanel.submit(); return; } saveCurrentDocument({ context: 'toolbar' }); return; }
   if (action === 'save-document-as') { explainSaveAs(); saveCurrentDocument({ context: 'saveAs', saveAs: true }); return; }
+  if (action === 'close-map') { closeActiveMap(); return; }
   if (action === 'open-map') { requestOpenSavedMaps(); return; }
   if (action === 'copy-map') { copyCurrentMap(); return; }
   if (action === 'download') { downloadBackup(); return; }
@@ -3667,6 +3670,7 @@ function syncPersistenceControls() {
   const saveDescription = hasMap ? `Save changes (${saveText})` : 'Save changes';
   renderOrbitPanel();
   for (const button of saveMapButtons) {
+    if (button === navSaveMapButton) continue;
     button.dataset.available = saveAvailable ? 'true' : 'false';
     button.dataset.state = saveVisualState;
     button.disabled = !saveAvailable;
@@ -3678,6 +3682,10 @@ function syncPersistenceControls() {
   }
   const saveAsAvailable = Boolean(hasMap && !persistenceBusy && !documentSaving && !documentSaveInFlight && !replacementGuard && !editorController?.isOpen() && !ownership.blocked());
   for (const button of saveAsButtons) { button.dataset.available = saveAsAvailable ? 'true' : 'false'; button.disabled = !saveAsAvailable; if (saveAsAvailable) button.removeAttribute('aria-disabled'); else button.setAttribute('aria-disabled', 'true'); }
+  const navSaveAvailable = Boolean(hasMap && !saveBusy && !persistenceBusy && !replacementGuard && !editorController?.isOpen() && !editorController?.isSaving() && !navigator?.busy && !pendingBackupImport && !installingBackupImport && !session?.getState()?.installing && !dragState && !ownership.blocked() && !persistenceBlockedReason({ ignoreEditor: true }));
+  if (navSaveMapButton) { navSaveMapButton.dataset.available = navSaveAvailable ? 'true' : 'false'; navSaveMapButton.disabled = !navSaveAvailable; if (navSaveAvailable) navSaveMapButton.removeAttribute('aria-disabled'); else navSaveMapButton.setAttribute('aria-disabled', 'true'); }
+  const closeMapAvailable = Boolean(hasMap && !saveBusy && !persistenceBusy && !replacementGuard && !editorController?.isOpen() && !editorController?.isSaving() && !navigator?.busy && !pendingBackupImport && !installingBackupImport && !session?.getState()?.installing && !dragState && !ownership.blocked() && !deleteConfirmation?.isOpen);
+  if (closeMapButton) { closeMapButton.dataset.available = closeMapAvailable ? 'true' : 'false'; closeMapButton.disabled = !closeMapAvailable; if (closeMapAvailable) closeMapButton.removeAttribute('aria-disabled'); else closeMapButton.setAttribute('aria-disabled', 'true'); }
   for (const button of openMapButtons) {
     button.dataset.available = openAvailable ? 'true' : 'false';
     button.disabled = !openAvailable;
@@ -3939,7 +3947,7 @@ async function saveBeforeReplacement() {
     const started = startCreateMap({ skipDirty: true, skipUnsaved: true });
     releaseReplacementGuard();
     if (!started) setShellStatus('The map was saved, but Create Map could not start.');
-  } else {
+  } else if (intent === 'close') { releaseReplacementGuard(); performCloseMap(); } else {
     showSavedMapsLibrary({ guard });
   }
 }
@@ -3953,14 +3961,42 @@ function discardAndContinueReplacement() {
     pendingBackupImport = backupRequest;
     resumeBackupImport(backupRequest).catch((error) => { backupRequest.registry?.clear?.(); setShellStatus('Backup import failed: ' + String(error?.message || error)); });
   } else if (intent === 'create') startCreateMap({ skipDirty: true, skipUnsaved: true });
+  else if (intent === 'close') performCloseMap();
   else if (intent === 'open') showSavedMapsLibrary();
 }
 function cancelReplacement() {
+  const intent = pendingReplacement?.intent;
   pendingReplacement = null;
   clearPendingBackupImport();
   releaseReplacementGuard();
-  setRoutineStatus('Replacement cancelled. The current map was not changed.');
+  setRoutineStatus(intent === 'close' ? 'Close cancelled. The map remains open.' : 'Replacement cancelled. The current map was not changed.');
 }
+
+function closeActiveMap() {
+  if (destroying || !hasMap) return false;
+  if (unsavedMapPrompt?.isOpen) return false;
+  if (editorController?.isOpen() || editorController?.isSaving()) { setShellStatus('Save or cancel your current edit before closing the map.'); return false; }
+  if (documentSaving || documentSaveInFlight) { setShellStatus('Wait for the save to finish before closing the map.'); return false; }
+  if (persistenceBusy || replacementGuard || navigator?.busy || pendingBackupImport || installingBackupImport || dragState || session?.getState()?.installing || deleteConfirmation?.isOpen) { setShellStatus('Finish the current operation before closing the map.'); return false; }
+  if (mapDirty()) {
+    if (!unsavedMapPrompt) { setShellStatus('Close Map is unavailable while this map has unsaved changes.'); return false; }
+    pendingReplacement = { intent: 'close' };
+    unsavedMapPrompt.show({ text: 'This map has changes that are not saved in this browser. Close it anyway?' });
+    return false;
+  }
+  performCloseMap();
+  return true;
+}
+
+function performCloseMap() {
+  if (!hasMap) return false;
+  startEmptyState();
+  syncPersistenceControls();
+  publish();
+  setRoutineStatus('Map closed.', { ttl: 3000 });
+  return true;
+}
+
 async function openSavedMap(mapId) {
   cancelStartupRecovery();
   claimDocumentOwnership();
@@ -6915,9 +6951,6 @@ startEmptyState();
 void startRecoveryDiscovery();
 syncPersistenceControls();
 syncAutomaticSaveFeedback();
-
-
-
 
 
 
