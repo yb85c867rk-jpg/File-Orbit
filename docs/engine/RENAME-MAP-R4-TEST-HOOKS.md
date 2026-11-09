@@ -10,3 +10,5 @@ These globals exist only for deterministic rendered OPFS verification. They are 
 - `__M5_RENAME_AFTER_ADOPTION_BASELINE_GATE__`: `{ promise, release }` pauses after the adoption baseline was confirmed but before the final ownership recheck and application of the handle.
 
 The browser tests use disposable OPFS directories and generated `.orbit` files. They never use OntoMap or user source directories.
+
+- `__M5_RENAME_CALLS__`: optional `{create,write,remove}` counters incremented at the wired adapter’s physical call boundaries. Tests initialize it before a rename and assert the final counts.

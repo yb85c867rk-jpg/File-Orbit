@@ -2567,9 +2567,10 @@ async function submitRenameMap({ name } = {}) {
       queryReadPermission: (handle) => orbitAdapter.queryReadPermission(handle),
       listEntries: async (directory, options = {}) => orbitAdapter.enumerateTopLevelMaps(directory, { ...options, includeFolders: true }),
       getFileHandle: (directory, filename) => directory.getFileHandle(filename),
-      createFile: async (directory, filename, options = {}) => { await options.assertCurrent?.(); return orbitAdapter.createMapFile(directory, filename, { isCurrent: options.isCurrent }); },
+      createFile: async (directory, filename, options = {}) => { await options.assertCurrent?.(); if (globalThis.__M5_RENAME_CALLS__) globalThis.__M5_RENAME_CALLS__.create += 1; return orbitAdapter.createMapFile(directory, filename, { isCurrent: options.isCurrent }); },
       writeFile: async (handle, blob, options = {}) => {
         await options.assertCurrent?.();
+        if (globalThis.__M5_RENAME_CALLS__) globalThis.__M5_RENAME_CALLS__.write += 1;
         let writable = null; let wrote = false;
         try {
           writable = await handle.createWritable();
@@ -2586,6 +2587,7 @@ async function submitRenameMap({ name } = {}) {
       removeFile: async (directory, filename, options = {}) => {
         if (globalThis.__M5_RENAME_BEFORE_REMOVE_GATE__) await globalThis.__M5_RENAME_BEFORE_REMOVE_GATE__.promise;
         await options.assertCurrent?.();
+        if (globalThis.__M5_RENAME_CALLS__) globalThis.__M5_RENAME_CALLS__.remove += 1;
         const removed = await orbitAdapter.removeMapFile(directory, filename, options);
         if (removed?.ok && globalThis.__M5_RENAME_AFTER_REMOVAL_GATE__) await globalThis.__M5_RENAME_AFTER_REMOVAL_GATE__.promise;
         return removed;

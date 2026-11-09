@@ -9,20 +9,22 @@ try {
  const openMap=async name=>{await ev("(()=>{[...document.querySelectorAll('#orbit-list .orbit-entry')].find(x=>x.textContent.includes("+JSON.stringify(name)+")).click();return true})()");await wait(()=>ev("document.querySelector('#shell-status')?.textContent?.includes("+JSON.stringify(name)+")"),'open '+name);await sl(500)};
  const openRename=async name=>{await ev("__M5_P1B_TEST__.openRootMenuAtForTest(300,300)");await wait(()=>ev("document.querySelector('#editor-context-menu')?.hidden===false"),'menu');await ev("(()=>{document.querySelector('#editor-context-menu button[data-action=\\\"rename-map\\\"]').click();return true})()");await wait(()=>ev("document.querySelector('.rename-map-backdrop')?.hidden===false"),'dialog');await ev("(()=>{const i=document.querySelector('#rename-map-name');i.value="+JSON.stringify(name)+";i.dispatchEvent(new Event('input',{bubbles:true}));return true})()");await wait(()=>ev("document.querySelector('#rename-map-preview')?.textContent==="+JSON.stringify(name+'.orbit')),'preview')};
  const submit=async()=>ev("(()=>{document.querySelector('.rename-map-dialog .embed-dialog-actions button:last-child').click();return true})()");
- await openMap('Hold.orbit');
+ await openMap('Hold.orbit');await ev("globalThis.__M5_RENAME_CALLS__={create:0,write:0,remove:0};true");
  await ev("(async()=>{let release;const promise=new Promise(r=>{release=r});globalThis.__R4_GATE__={promise,release};globalThis.__M5_RENAME_AFTER_ADOPTION_BASELINE_GATE__=globalThis.__R4_GATE__;return true})()");
  await openRename('Renamed Hold');await submit();
  await wait(()=>ev("(async()=>{const names=[];for await(const [n] of globalThis.__R4_DIR__.entries())names.push(n);return names.includes('Renamed Hold.orbit')&&!names.includes('Hold.orbit')})()"),'held after removal');await sl(700);
  await openMap('Replacement.orbit');await wait(()=>ev("document.querySelector('#orbit-name')?.textContent==='R4 Recovery Library'"),'replacement active');
  const beforeRelease=await ev("({status:document.querySelector('#shell-status')?.textContent,save:__M5_P1B_TEST__.automaticSaveState()})");
  await ev("globalThis.__R4_GATE__.release();delete globalThis.__M5_RENAME_AFTER_ADOPTION_BASELINE_GATE__;true");await sl(1200);
- const afterRelease=await ev("(async()=>{const names=[];for await(const [n] of globalThis.__R4_DIR__.entries())names.push(n);const saved=await __M5_LARGE_MAP_TEST__.saveCurrent();return {names:names.sort(),saved,status:document.querySelector('#shell-status')?.textContent,save:__M5_P1B_TEST__.automaticSaveState()}})()");
+ const afterRelease=await ev("(async()=>{const names=[];for await(const [n] of globalThis.__R4_DIR__.entries())names.push(n);const saved=await __M5_LARGE_MAP_TEST__.saveCurrent();return {names:names.sort(),saved,status:document.querySelector('#shell-status')?.textContent,save:__M5_P1B_TEST__.automaticSaveState(),calls:{...globalThis.__M5_RENAME_CALLS__}}})()");
  assert.deepEqual(afterRelease.names,['Renamed Hold.orbit','Replacement.orbit']);
  assert.equal(afterRelease.saved.ok,true,'replacement save after old operation');
  assert.equal(afterRelease.saved.filename,'Replacement.orbit');
- await openRename('Uncertain Name');await ev("globalThis.__M5_RENAME_FORCE_UNCERTAIN__='acknowledged';true");await submit();await wait(()=>ev("document.querySelector('#rename-map-status')?.textContent?.includes('acknowledged')"),'uncertain acknowledged',30000);const uncertain=await ev("(async()=>{const saved=await __M5_LARGE_MAP_TEST__.saveCurrent();const names=[];for await(const [n] of globalThis.__R4_DIR__.entries())names.push(n);return {message:document.querySelector('#rename-map-status')?.textContent,shell:document.querySelector('#shell-status')?.textContent,saved,names:names.sort(),save:__M5_P1B_TEST__.automaticSaveState()}})()");await ev("globalThis.__M5_RENAME_FORCE_UNCERTAIN__=null;true");
+ assert.deepEqual(afterRelease.calls,{create:1,write:1,remove:1});
+ await openRename('Uncertain Name');await ev("globalThis.__M5_RENAME_FORCE_UNCERTAIN__='acknowledged';true");await submit();await wait(()=>ev("document.querySelector('#rename-map-status')?.textContent?.includes('acknowledged')"),'uncertain acknowledged',30000);const uncertain=await ev("(async()=>{const saved=await __M5_LARGE_MAP_TEST__.saveCurrent();const names=[];for await(const [n] of globalThis.__R4_DIR__.entries())names.push(n);return {message:document.querySelector('#rename-map-status')?.textContent,shell:document.querySelector('#shell-status')?.textContent,saved,names:names.sort(),save:__M5_P1B_TEST__.automaticSaveState(),calls:{...globalThis.__M5_RENAME_CALLS__}}})()");await ev("globalThis.__M5_RENAME_FORCE_UNCERTAIN__=null;true");
  assert.equal(uncertain.saved.reason,'rename-recovery-required');
  assert.deepEqual(uncertain.names,['Renamed Hold.orbit','Uncertain Name.orbit']);
+ assert.deepEqual(uncertain.calls,{create:2,write:2,remove:2});
  assert.equal(errors.length,0);
  console.log(JSON.stringify({sha,beforeRelease,afterRelease,uncertain,errors},null,2));
 } finally {try{ws?.close()}catch{}try{process.kill(b.pid)}catch{}}
