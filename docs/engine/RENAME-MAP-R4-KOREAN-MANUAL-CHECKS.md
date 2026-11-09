@@ -58,6 +58,7 @@
 2. 폴더를 다른 위치로 이동 → Change linked folder → 이동한 폴더를 선택 → 같은 Library ID가 유지되고 목록이 읽히는가? 취소하면 기존 연결이 그대로인가?
 3. 폴더 삭제 후 새 폴더에 같은 이름의 `.orbit`을 넣고 Change linked folder로 연결: 예전에 열린 지도에서 Save해도 새 폴더의 같은 이름 파일에 **0회 쓰기**인가? Save As로 편집 내용이 별도 파일에 보존되는가?
 4. 폴더 권한 거부 → **Reconnect Map Library** 안내가 보이고, 허용 후 목록이 복구되는가? 취소 시 기존 연결이 유지되는가?
+4a. 앱을 다시 시작했을 때 읽기 권한은 허용으로 보이지만 폴더 목록 읽기가 거부되면, 같은 **Reconnect Map Library** 안내가 보이는가? 폴더를 찾을 수 없으면 **Change linked folder**, 알 수 없는 읽기 실패면 **Refresh**와 **Change linked folder**가 보이는가? 시작 중에 다른 Library를 선택하면 늦게 끝난 복원이 새 목록/안내를 덮어쓰지 않는가?
 5. 다른 Library에 이미 연결된 폴더를 선택 → 중복 생성 없이 기존 Library가 선택되는가?
 6. 앱 재시작: 이동/재연결한 Library가 선택된 상태로 복원되고 목록이 보이는가?
 7. 다른 Library로 전환하는 동안 늦게 끝난 Refresh가 새 Library의 목록을 덮어쓰지 않는가?
