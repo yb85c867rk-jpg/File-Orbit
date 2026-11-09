@@ -100,9 +100,9 @@ try {
  await clickPrompt('Cancel');await wait(()=>ev("document.querySelector('.unsaved-map-backdrop')?.hidden===true"),'destination cancel');
  // Ordinary Save asks for a destination again and does not touch the unverified candidate.
  await ev("globalThis.__PICK_CALLS__=0;window.showSaveFilePicker=async()=>{globalThis.__PICK_CALLS__++;throw new DOMException('cancelled','AbortError')};true");
- await nav('#nav-save-map');await wait(()=>ev("globalThis.__PICK_CALLS__===1"),'ordinary save picker',20000);
- const ordinary=await ev("({handle:__M5_P1B_TEST__.documentState()?.handleName,hasMap:__M5_P1B_TEST__.snapshot()?.hasMap,dirty:__M5_P1B_TEST__.snapshot()?.dirty})");
- assert.equal(ordinary.handle,null);assert.equal(ordinary.hasMap,true);assert.equal(ordinary.dirty,true);
+ await nav('#nav-save-map');await wait(()=>ev("document.querySelector('#shell-status')?.textContent?.includes('Choose Save As')"),'ordinary save guidance',20000);
+ const ordinary=await ev("({handle:__M5_P1B_TEST__.documentState()?.handleName,hasMap:__M5_P1B_TEST__.snapshot()?.hasMap,dirty:__M5_P1B_TEST__.snapshot()?.dirty,pickers:globalThis.__PICK_CALLS__})");
+ assert.equal(ordinary.pickers,0);assert.equal(ordinary.handle,null);assert.equal(ordinary.hasMap,true);assert.equal(ordinary.dirty,true);
  assert.deepEqual(await meta('First.orbit','globalThis.__D__'),firstCandidate);
  // A verified first save still closes the map.
  await ev("window.showSaveFilePicker=async()=>{const real=await __D__.getFileHandle('Verified.orbit',{create:true});return {kind:'file',name:'Verified.orbit',async queryPermission(){return 'granted'},async requestPermission(){return 'granted'},async createWritable(){return real.createWritable()},async isSameEntry(){return false},async getFile(){return real.getFile()}};true}");
