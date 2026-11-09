@@ -35,6 +35,7 @@
 24. 설명 변경 저장 실패(인코딩/권한/검증): 폼이 닫히지 않고 Retry Save / Save As와 이유가 보이며, 입력과 적용 내용이 유지되는가? Retry Save 후에는 decode된 설명이 일치하는가?
 25. 변경 없이 Save: 폼이 닫히고 “No changes. Nothing was written.”가 화면에 보이며 파일이 바뀌지 않는가?
 26. 실패 재현 시 보고: `window.__M5_EDITOR_DIAGNOSTIC__`의 `action`, `stage`, `reason`, `changed`, `write` 값과 화면 문구를 기록한다. 설명 텍스트/경로/핸들은 포함하지 않는다.
+27. 적용된 편집 복구 **Save As**: 저장 실패 후 Save As로 새 파일을 만들고, 다시 열어 설명/첨부 바이트가 정확한가? 취소·검증 불가·대상 불일치에서는 편집기와 초안이 유지되고 "파일이 이미 있을 수 있음"이 안내되는가? 확정 성공 후 다음 일반 Save가 새 파일에 쓰는가?
 
 ## 증거 구분
 - OPFS/disposable Edge 검증은 R4 자동화 증거입니다.

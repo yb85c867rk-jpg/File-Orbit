@@ -1,0 +1,97 @@
+import { spawn, execSync } from 'node:child_process'; import { writeFileSync, rmSync } from 'node:fs'; import assert from 'node:assert/strict';
+const sha=execSync('git rev-parse HEAD',{encoding:'utf8'}).trim(); const profile=process.cwd()+'/.r4-save-as-profile'; rmSync(profile,{recursive:true,force:true}); const port=9634; const b=spawn('C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',['--headless=new',`--remote-debugging-port=${port}`,`--user-data-dir=${profile}`,'--no-first-run','--disable-gpu','about:blank'],{stdio:'ignore',windowsHide:true}); const sl=ms=>new Promise(r=>setTimeout(r,ms)); let ws;
+try {
+ const wait=async(fn,label,ms=40000)=>{const end=Date.now()+ms;while(Date.now()<end){try{const v=await fn();if(v)return v}catch{}await sl(110)}throw new Error('timeout: '+label)};
+ const tar=await wait(async()=>{const r=await fetch(`http://127.0.0.1:${port}/json/new?about:blank`,{method:'PUT'});return r.ok?r.json():null},'target'); ws=new WebSocket(tar.webSocketDebuggerUrl); await new Promise((r,j)=>{ws.onopen=r;ws.onerror=j}); let id=0; const pending=new Map(), errors=[]; ws.onmessage=e=>{const m=JSON.parse(e.data);if(m.id&&pending.has(m.id)){const q=pending.get(m.id);pending.delete(m.id);m.error?q.j(m.error):q.r(m.result)}if(m.method==='Runtime.exceptionThrown')errors.push(m.params?.exceptionDetails?.exception?.description||m.params?.exceptionDetails?.text)}; const send=(method,params={})=>new Promise((r,j)=>{const n=++id;pending.set(n,{r,j});ws.send(JSON.stringify({id:n,method,params}))}); const ev=async x=>{const r=await send('Runtime.evaluate',{expression:x,returnByValue:true,awaitPromise:true});if(r.exceptionDetails)throw new Error(r.exceptionDetails.exception?.description||r.exceptionDetails.text);return r.result?.value}; const shot=async n=>{const r=await send('Page.captureScreenshot',{format:'png'});writeFileSync('evidence/large-map/'+n,Buffer.from(r.data,'base64'))};
+ await send('Page.enable');await send('Runtime.enable');await send('Network.enable');await send('Network.setCacheDisabled',{cacheDisabled:true});await send('Page.addScriptToEvaluateOnNewDocument',{source:'globalThis.__M5_LARGE_MAP_TEST_HOOK__=true;globalThis.__M5_P1B_TEST_HOOKS__=true;'});await send('Emulation.setDeviceMetricsOverride',{width:1900,height:870,deviceScaleFactor:1,mobile:false});await send('Page.navigate',{url:'http://127.0.0.1:8164/tests/harness/m5-exploration/index.html'});await wait(()=>ev("typeof __M5_P1B_TEST__==='object'"),'app');
+ const DESCRIPTION='저장 실패 후 복구\n둘째 줄 signature ✓';
+ const DESC2='두 번째 저장\n확인 줄';
+ const DESC3='다른 대상 확인';
+ const DESC4='교체 중 검증';
+ await ev("(async()=>{const backup=await import('/src/engine/hypertree/persistence/backup.js');const settingsMod=await import('/tests/harness/m5-exploration/map-library-settings.js');const storage=await navigator.storage.getDirectory();const dir=await storage.getDirectoryHandle('R4 Save As Library',{create:true});const dest=await storage.getDirectoryHandle('R4 Save As Dest',{create:true});const bytes=new Uint8Array([65,66,67,68,69]);const af=new File([bytes],'seq.txt',{type:'text/plain'});const registry={get(id){return id==='att_seq'?{file:af,metadata:{originalName:'seq.txt',sizeBytes:5,mime:'text/plain'},name:'seq.txt',classification:null}:null}};for(const [name,title,description] of [['A.orbit','Map A','initial'],['Other.orbit','Other Map','other initial']]){const tree={id:'root',kind:'folder',name:title,data:{description},children:[{id:'f',kind:'file',name:'Doc',data:{attachmentId:'att_seq',originalName:'seq.txt',sizeBytes:5,mime:'text/plain'},children:[]}]};const e=await backup.encodeBackup({tree,registry,mapName:name,cryptoApi:globalThis.crypto});const f=await dir.getFileHandle(name,{create:true});const w=await f.createWritable();await w.write(e.blob);await w.close();}globalThis.__R4_DIR__=dir;globalThis.__DEST_DIR__=dest;const settings=settingsMod.createMapLibrarySettings({indexedDB});await settings.saveCollection([{id:'lib-sa',handle:dir,name:'R4 Save As Library'}],'lib-sa');return true})()");
+ await send('Page.reload',{ignoreCache:true});await wait(()=>ev("typeof __M5_P1B_TEST__==='object'"),'reload');await wait(()=>ev("document.querySelector('#orbit-name')?.textContent==='R4 Save As Library'"),'library');await ev("(async()=>{const storage=await navigator.storage.getDirectory();globalThis.__R4_DIR__=await storage.getDirectoryHandle('R4 Save As Library');globalThis.__DEST_DIR__=await storage.getDirectoryHandle('R4 Save As Dest');globalThis.__makeHandle=async(name,mode)=>{const real=await globalThis.__DEST_DIR__.getFileHandle(name,{create:true});const staleFile=mode==='stale'?await real.getFile():null;let wrongBytes=null;if(mode==='wrong'){const f=await globalThis.__R4_DIR__.getFileHandle('B.orbit');wrongBytes=new Uint8Array(await (await f.getFile()).arrayBuffer());}let calls=0;return{kind:'file',name,async queryPermission(){return 'granted'},async requestPermission(){return 'granted'},async isSameEntry(other){try{return real.isSameEntry?await real.isSameEntry(other):false}catch{return false}},async createWritable(){return real.createWritable()},async getFile(){calls+=1;if(staleFile)return staleFile;if(wrongBytes)return new File([wrongBytes],name);if(mode==='gate'&&calls>=2){globalThis.__GATE__.started=true;await globalThis.__GATE__.promise}return real.getFile()}}};window.showOpenFilePicker=async()=>[];return true})()");await sl(400);
+ const openMap=async name=>{await ev("(()=>{[...document.querySelectorAll('#orbit-list .orbit-entry')].find(x=>x.textContent.includes("+JSON.stringify(name)+")).click();return true})()");await wait(()=>ev("document.querySelector('#shell-status')?.textContent?.includes("+JSON.stringify(name)+")"),'open '+name);await sl(600)};
+ const decode=async(name,dirName)=>{const dir=dirName?("await (await navigator.storage.getDirectory()).getDirectoryHandle("+JSON.stringify(dirName)+")"):"globalThis.__R4_DIR__";return ev("(async()=>{const backup=await import('/src/engine/hypertree/persistence/backup.js');const names=[];for await(const [n] of globalThis.__R4_DIR__.entries())names.push(n);const d="+dir+";const f=await d.getFileHandle("+JSON.stringify(name)+");const dec=await backup.decodeBackup(await f.getFile(),{cryptoApi:globalThis.crypto});return {names:names.sort(),title:dec.tree.name,description:dec.tree.data?.description??null,bytes:Array.from(new Uint8Array(await dec.attachments[0].blob.arrayBuffer()))}})()")};
+ const rootMenu=async()=>{await ev("__M5_P1B_TEST__.openRootMenuAtForTest(300,300)");await wait(()=>ev("document.querySelector('#editor-context-menu')?.hidden===false"),'menu')};
+ const openDescription=async()=>{await rootMenu();await ev("(()=>{document.querySelector('#editor-context-menu button[data-action=\\\"edit-description\\\"]').click();return true})()");await wait(()=>ev("document.querySelector('#editor-form')?.hidden===false"),'desc form');await sl(120)};
+ const rename=async name=>{await rootMenu();await ev("(()=>{document.querySelector('#editor-context-menu button[data-action=\\\"rename-map\\\"]').click();return true})()");await wait(()=>ev("document.querySelector('.rename-map-backdrop')?.hidden===false"),'rename dialog');await ev("(()=>{const i=document.querySelector('#rename-map-name');i.value="+JSON.stringify(name)+";i.dispatchEvent(new Event('input',{bubbles:true}));return true})()");await wait(()=>ev("document.querySelector('#rename-map-preview')?.textContent==="+JSON.stringify(name+'.orbit')),'preview');await ev("(()=>{document.querySelector('.rename-map-dialog .embed-dialog-actions button:last-child').click();return true})()");await wait(()=>ev("document.querySelector('.rename-map-backdrop')?.hidden===true"),'renamed '+name,30000);await sl(700)};
+ const setText=async text=>ev("(()=>{const d=document.querySelector('#editor-description');d.value="+JSON.stringify(text)+";d.dispatchEvent(new Event('input',{bubbles:true}));return true})()");
+ const recovery=()=>ev("({open:document.querySelector('#editor-form')?.hidden===false,saveAs:[...document.querySelectorAll('#editor-form button')].some(b=>b.textContent==='Save As'&&!b.hidden),retry:[...document.querySelectorAll('#editor-form button')].some(b=>b.textContent==='Retry Save'&&!b.hidden),draft:document.querySelector('#editor-description')?.value||'',status:document.querySelector('#editor-status')?.textContent||'',toast:document.querySelector('#folder-export-success')?.textContent||'',shell:document.querySelector('#shell-status')?.textContent||''})");
+ const diag=()=>ev("(()=>{const d=__M5_EDITOR_DIAGNOSTIC__;return d?{action:d.action,stage:d.stage,reason:d.reason,changed:d.changed,appliedRetained:d.appliedRetained,write:d.write}:null})()");
+ const debug=()=>ev("({reason:__M5_EDITOR_DIAGNOSTIC__?.reason||null,stage:__M5_EDITOR_DIAGNOSTIC__?.stage||null,formHidden:document.querySelector('#editor-form')?.hidden===true,applied:__M5_P1B_TEST__.openState().editorApplied,saveAsVisible:[...document.querySelectorAll('#editor-form button')].some(b=>b.textContent==='Save As'&&!b.hidden),pickerCalls:globalThis.__PICKER_CALLS__||0,status:(document.querySelector('#editor-status')?.textContent||'').slice(0,60)})");
+ const appliedUnsaved=async text=>{await openDescription();await setText(text);await ev("globalThis.__M5_SAVE_ENCODE_FAILURE__=true;true");await ev("document.querySelector('#editor-form button[type=submit]').click();true");await wait(()=>ev("__M5_EDITOR_DIAGNOSTIC__?.reason?.includes('encoding')===true"),'applied unsaved');await ev("globalThis.__M5_SAVE_ENCODE_FAILURE__=false;true");await sl(200)};
+ const clickSaveAs=async()=>{await ev("(()=>{[...document.querySelectorAll('#editor-form button')].find(b=>b.textContent==='Save As').click();return true})()");};
+ const closeEditor=async()=>{await ev("(()=>{document.querySelector('#editor-form .editor-actions button:last-child').click();return true})()");await wait(()=>ev("document.querySelector('#editor-form')?.hidden===true"),'editor closed')};
+ const waitDiag=async(pred,label,ms)=>{try{return await wait(()=>ev(pred),label,ms)}catch(e){const state=await debug();console.log(JSON.stringify({phase:'debug',label,state}));throw new Error(label+' -> '+JSON.stringify(state))}};
+ await openMap('A.orbit');
+ await rename('B');
+ const originalBefore=await decode('B.orbit');
+ // 1. Rename -> edit -> first Save fails, then recover through the rendered Save As button.
+ await appliedUnsaved(DESCRIPTION);
+ const unsavedBefore=await diag(); const unsavedForm=await recovery();
+ assert.equal(unsavedForm.open,true);assert.equal(unsavedForm.saveAs,true);assert.match(unsavedBefore.reason,/encoding/);
+ await ev("globalThis.__SRC__=__M5_P1B_TEST__.activeDocumentHandleForTest();true");
+ await ev("globalThis.__PICKER_CALLS__=0;window.showSaveFilePicker=async()=>{globalThis.__PICKER_CALLS__+=1;return __makeHandle('Recovered.orbit','stale')};true");
+ await clickSaveAs();
+ await waitDiag("__M5_EDITOR_DIAGNOSTIC__?.reason==='write-unverified'",'unverified save as',30000); await sl(300);
+ const unverified=await diag(); const unverifiedForm=await recovery(); const stillSource=await ev("__M5_P1B_TEST__.activeDocumentHandleForTest()===globalThis.__SRC__");
+ const recoveredExists=await decode('Recovered.orbit','R4 Save As Dest');
+ assert.equal(unverifiedForm.open,true,'unverified Save As closed the editor');assert.equal(unverifiedForm.saveAs,true);assert.equal(unverifiedForm.retry,true);assert.equal(unverifiedForm.draft,DESCRIPTION);
+ assert.equal(unverified.stage,'verify');assert.equal(unverified.appliedRetained,true);assert.equal(unverified.write.confirmed,false);
+ assert.match(unverifiedForm.status,/could not be verified/i);assert.match(unverifiedForm.status,/may already exist/i);
+ assert.equal(stillSource,true);assert.equal(recoveredExists.description,DESCRIPTION);assert.deepEqual(recoveredExists.bytes,[65,66,67,68,69]);
+ const originalAfterUnverified=await decode('B.orbit'); assert.deepEqual(originalAfterUnverified,originalBefore);
+ await shot('r4-save-as-unverified.png');
+ // 2. Picker cancellation keeps the editor and draft and writes nothing.
+ const cancelBefore=await decode('Recovered.orbit','R4 Save As Dest');
+ await ev("window.showSaveFilePicker=async()=>{throw new DOMException('cancelled','AbortError')};true");
+ await clickSaveAs(); await sl(900);
+ const cancelled=await diag(); const cancelledForm=await recovery(); const cancelAfter=await decode('Recovered.orbit','R4 Save As Dest');
+ assert.equal(cancelled.reason,'cancelled');assert.equal(cancelled.stage,'picker');
+ assert.equal(cancelledForm.open,true);assert.equal(cancelledForm.draft,DESCRIPTION);assert.equal(cancelledForm.saveAs,true);
+ assert.match(cancelledForm.toast,/Save As cancelled/i);
+ assert.deepEqual(cancelAfter,cancelBefore);
+ // 3. A fresh destination confirms: exact description/bytes, editor closes, next Save targets the new file.
+ await ev("window.showSaveFilePicker=async()=>__makeHandle('Recovered.orbit','fresh');true");
+ await clickSaveAs();
+ await waitDiag("document.querySelector('#editor-form')?.hidden===true",'save as confirmed',40000); await sl(400);
+ const verified=await diag(); const verifiedState=await ev("({status:document.querySelector('#shell-status')?.textContent||'',handle:Boolean(__M5_P1B_TEST__.activeDocumentHandleForTest())})"); await wait(()=>ev("!((document.querySelector('#folder-export-success')?.textContent||'').includes('Save As cancelled'))"),'cancel toast cleared',7000).catch(()=>null); await shot('r4-save-as-verified.png');
+ const recoveredFinal=await decode('Recovered.orbit','R4 Save As Dest'); const originalAfterVerified=await decode('B.orbit');
+ assert.equal(verified.stage,'saved');assert.equal(verified.reason,'save-as-verified');assert.equal(verified.write.decoded,true);
+ assert.equal(recoveredFinal.description,DESCRIPTION);assert.deepEqual(recoveredFinal.bytes,[65,66,67,68,69]);
+ assert.deepEqual(originalAfterVerified,originalBefore);
+ // Next ordinary Save must target the new file.
+ await openDescription(); await setText(DESC2); await ev("document.querySelector('#editor-form button[type=submit]').click();true");
+ await waitDiag("document.querySelector('#editor-form')?.hidden===true",'ordinary save after save as',40000); await sl(400);
+ const afterOrdinary=await decode('Recovered.orbit','R4 Save As Dest'); const originalAfterOrdinary=await decode('B.orbit');
+ assert.equal(afterOrdinary.description,DESC2);assert.deepEqual(originalAfterOrdinary,originalBefore);
+ // 4. A destination whose readback disagrees with the write is not confirmed; the file is left for inspection.
+ await appliedUnsaved(DESC3);
+ await ev("window.showSaveFilePicker=async()=>__makeHandle('Wrong.orbit','wrong');true");
+ await clickSaveAs();
+ await waitDiag("__M5_EDITOR_DIAGNOSTIC__?.reason==='write-unverified'",'wrong destination unverified',30000); await sl(300);
+ const wrongDiag=await diag(); const wrongForm=await recovery(); const wrongFile=await decode('Wrong.orbit','R4 Save As Dest'); const currentAfterWrong=await decode('Recovered.orbit','R4 Save As Dest');
+ assert.equal(wrongForm.open,true);assert.equal(wrongDiag.reason,'write-unverified');assert.match(wrongForm.status,/may already exist/i);
+ assert.equal(wrongFile.description,DESC3);assert.deepEqual(wrongFile.bytes,[65,66,67,68,69]);
+ assert.equal(currentAfterWrong.description,DESC2);
+ await closeEditor();
+ // 5. Document replacement during destination verification: the stale continuation must not close the new editor.
+ await appliedUnsaved(DESC4);
+ await ev("globalThis.__GATE__={started:false,release:null};globalThis.__GATE__.promise=new Promise(r=>{globalThis.__GATE__.release=r});window.showSaveFilePicker=async()=>__makeHandle('Gated.orbit','gate');true");
+ await clickSaveAs();
+ await waitDiag("globalThis.__GATE__?.started===true",'gated verification',30000);
+ await ev("__M5_P1B_TEST__.replaceSession();__M5_P1B_TEST__.settleSession();true");
+ await sl(300);
+ await ev("(()=>{const b=[...document.querySelectorAll('#editor-form .editor-actions button')].find(x=>x.textContent==='Close'||x.textContent==='Cancel');if(b)b.click();return true})()");
+ await sl(300);
+ await openDescription(); await setText('replacement draft text');
+ await ev("globalThis.__GATE__.release();true");
+ await waitDiag("__M5_EDITOR_DIAGNOSTIC__?.reason==='stale'",'stale continuation',15000); await sl(500);
+ const replacementForm=await recovery(); const staleDiag=await diag(); const gatedExists=await decode('Gated.orbit','R4 Save As Dest');
+ assert.equal(replacementForm.open,true,'stale continuation closed the replacement editor');
+ assert.equal(replacementForm.draft,'replacement draft text');assert.equal(staleDiag.reason,'stale');assert.equal(staleDiag.stage,'ownership');
+ assert.equal(gatedExists.description,DESC4);
+ await closeEditor();
+ assert.equal(errors.length,0);
+ console.log(JSON.stringify({sha,unsavedBefore,unverified,unverifiedForm,recoveredExists,originalAfterUnverified,cancelled,cancelledForm,verified,verifiedState,recoveredFinal,afterOrdinary,wrongDiag,wrongForm,wrongFile,staleDiag,replacementForm,gatedExists,errors},null,2));
+} finally {try{ws?.close()}catch{}try{process.kill(b.pid)}catch{}}

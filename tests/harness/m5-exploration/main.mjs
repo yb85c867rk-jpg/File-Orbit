@@ -1848,10 +1848,13 @@ function recordEditorOutcome({ action, stage, reason, changes = null, writeConfi
   globalThis.__M5_EDITOR_DIAGNOSTIC__ = outcome;
   return outcome;
 }
-function editorPersistenceFailureMessage(persisted, action = editorController?.action) {
+function editorPersistenceFailureMessage(persisted, action = editorController?.action, { saveAs = false, mayExist = false } = {}) {
   const noun = editorActionNoun(action);
   const reason = String(persisted?.reason || '');
   const retained = 'The applied edit and draft are retained. Retry Save, use Save As, or reopen the map.';
+  if (saveAs && (reason === 'write-unverified' || reason === 'persistence-mismatch' || reason === 'destination-unreadable' || reason === 'destination-undecodable' || reason === 'destination-changed')) {
+    return 'The ' + noun + ' was applied but the Save As copy could not be verified' + (mayExist ? '; a file may already exist at the destination you chose, and it was left there for inspection' : '') + '. Your applied edit is still on the original map. Inspect the destination, then use Save As again or Close.';
+  }
   if (reason === 'permission-cancelled' || reason === 'permission-denied' || reason === 'write-permission-required') return 'The ' + noun + ' was applied but the file was not saved because write permission was not granted. ' + retained;
   if (reason === 'conflict' || reason === 'conflict-cancelled' || reason === 'stale-generation') return 'The ' + noun + ' was applied but the file changed or could not be verified. ' + retained;
   if (reason === 'not-found') return 'The ' + noun + ' was applied but the destination file is missing. ' + retained;
@@ -1893,25 +1896,78 @@ async function confirmEditorEditPersisted({ action, targetId }) {
   if (savedLink !== liveLink) return { ok: false, reason: 'persistence-mismatch', field: 'link', stage: 'verify' };
   return { ok: true, decodedMatch: true };
 }
-function appliedEditorFailure(persisted, action, owner) {
-  lastEditorPersistenceFailure = { action, reason: String(persisted?.reason || 'save-failed'), stage: String(persisted?.stage || 'unknown'), message: String(persisted?.message || ''), documentName: owner.documentName, documentHandle: owner.documentHandle, documentIdentity: owner.documentIdentity, revision: owner.revision, session: owner.session, datasetToken: owner.datasetToken, ownership: owner.ownership, baselineDigest: activeDocument.baseline?.digest || null, baselineBinding: activeDocument.baseline ? { handle: activeDocument.baseline.handle === activeDocument.handle, documentIdentity: activeDocument.baseline.documentIdentity, revision: activeDocument.baseline.revision, session: activeDocument.baseline.session, operation: activeDocument.baseline.operation } : null };
+function appliedEditorFailure(persisted, action, owner, { saveAs = false, mayExist = false } = {}) {
+  const message = editorPersistenceFailureMessage(persisted, action, { saveAs, mayExist });
+  lastEditorPersistenceFailure = { action, reason: String(persisted?.reason || 'save-failed'), stage: String(persisted?.stage || 'unknown'), message, documentName: owner.documentName, documentHandle: owner.documentHandle, documentIdentity: owner.documentIdentity, revision: owner.revision, session: owner.session, datasetToken: owner.datasetToken, ownership: owner.ownership, baselineDigest: activeDocument.baseline?.digest || null, baselineBinding: activeDocument.baseline ? { handle: activeDocument.baseline.handle === activeDocument.handle, documentIdentity: activeDocument.baseline.documentIdentity, revision: activeDocument.baseline.revision, session: activeDocument.baseline.session, operation: activeDocument.baseline.operation } : null };
   recordEditorOutcome({ action, stage: String(persisted?.stage || 'verify'), reason: String(persisted?.reason || 'save-failed'), changes: editorDraftChanges(), writeConfirmed: Boolean(persisted?.ok) });
-  setShellStatus(editorPersistenceFailureMessage(persisted, action));
+  setShellStatus(message);
   automaticSaveFailure = null;
   automaticSavePending = null;
   syncAutomaticSaveFeedback();
-  return { ok: false, applied: true, reason: 'applied-unsaved', message: editorPersistenceFailureMessage(persisted, action), persistence: persisted };
+  return { ok: false, applied: true, reason: 'applied-unsaved', message, persistence: persisted, mayExist: Boolean(mayExist) };
 }
 async function saveAppliedEditorAs() {
   const operation = editorAppliedOperation;
   if (!operation || !appliedOperationOwns(operation)) return { ok: false, reason: 'no-applied-edit' };
-  const result = await saveCurrentDocument({ context: 'editor-save-as', saveAs: true, allowEditorOpen: true });
-  if (result?.ok) {
+  if (operation.persisting) return { ok: false, reason: 'busy', message: 'A save for this applied edit is already running.' };
+  if (operation.revision !== dataRevision) { recordEditorOutcome({ action: operation.action, stage: 'ownership', reason: 'revision-changed', changes: editorDraftChanges() }); return { ok: false, reason: 'stale' }; }
+  operation.persisting = true;
+  const prior = { active: activeDocument.active, name: activeDocument.name, handle: activeDocument.handle, mode: activeDocument.mode, savedRevision: activeDocument.savedRevision, origin: activeDocument.origin, documentIdentity: activeDocument.documentIdentity, baseline: activeDocument.baseline };
+  // A failed Save As must leave the applied edit on the source map, not on a
+  // destination whose write could not be confirmed.
+  const restoreSource = () => {
+    if (!appliedOperationOwns(operation)) return false;
+    adoptActiveDocument(prior);
+    syncPersistenceControls();
+    publish();
+    return true;
+  };
+  try {
+    let result;
+    try { result = await saveCurrentDocument({ context: 'editor-save-as', saveAs: true, allowEditorOpen: true, capturedRevision: operation.revision, expectedOwnership: operation.ownership, expectedSession: operation.session, expectedDataset: operation.datasetToken }); }
+    catch (error) { result = { ok: false, message: String(error?.message || error) }; }
+    if (!appliedOperationOwns(operation)) { recordEditorOutcome({ action: operation.action, stage: 'ownership', reason: 'stale', changes: editorDraftChanges() }); return { ok: false, reason: 'stale' }; }
+    if (result?.handoff) {
+      recordEditorOutcome({ action: operation.action, stage: 'handoff', reason: 'download', changes: editorDraftChanges() });
+      return { ok: false, applied: true, handoff: true, message: 'Download started. FileOrbit cannot confirm that the file was saved. The applied edit and draft are retained; use Save As again or Close.' };
+    }
+    if (!result?.ok) {
+      if (result?.reason === 'cancelled' || result?.reason === 'conflict-cancelled') {
+        recordEditorOutcome({ action: operation.action, stage: 'picker', reason: 'cancelled', changes: editorDraftChanges() });
+        setInfoStatus('Save As cancelled. The applied edit and draft are retained.', { ttl: 4000 });
+        return { ...result, cancelled: true };
+      }
+      const failure = appliedEditorFailure({ ...result, stage: result?.stage || 'save-as' }, operation.action, operation, { saveAs: true });
+      editorPanel?.showSaveError?.(failure.message);
+      return failure;
+    }
+    if (result.baselineWritten === false || result.baselineVerification?.ok === false) {
+      restoreSource();
+      const failure = appliedEditorFailure({ ...result, ok: false, reason: 'write-unverified', stage: 'verify' }, operation.action, operation, { saveAs: true, mayExist: true });
+      editorPanel?.showSaveError?.(failure.message);
+      return failure;
+    }
+    const destinationHandle = activeDocument.handle;
+    let confirmation;
+    try { confirmation = await confirmEditorEditPersisted({ action: operation.action, targetId: operation.targetId }); }
+    catch { confirmation = { ok: false, reason: 'destination-undecodable', stage: 'verify' }; }
+    if (!appliedOperationOwns(operation)) { recordEditorOutcome({ action: operation.action, stage: 'ownership', reason: 'stale', changes: editorDraftChanges() }); return { ok: false, reason: 'stale' }; }
+    if (activeDocument.handle !== destinationHandle || activeDocument.name !== result.filename || activeDocument.savedRevision !== result.revision || !activeDocument.baseline || activeDocument.baseline.handle !== activeDocument.handle) {
+      restoreSource();
+      const failure = appliedEditorFailure({ ok: false, reason: 'destination-changed', stage: 'verify' }, operation.action, operation, { saveAs: true, mayExist: true });
+      editorPanel?.showSaveError?.(failure.message);
+      return failure;
+    }
+    if (!confirmation.ok) {
+      restoreSource();
+      const failure = appliedEditorFailure({ ok: false, reason: confirmation.reason, stage: confirmation.stage || 'verify', field: confirmation.field }, operation.action, operation, { saveAs: true, mayExist: true });
+      editorPanel?.showSaveError?.(failure.message);
+      return failure;
+    }
     if (editorPanel?.completeAppliedFromPersistence?.() === true) editorAppliedOperation = null;
-  } else if (result?.reason !== 'conflict-cancelled' && result?.reason !== 'cancelled') {
-    editorPanel?.showSaveError?.(UNSAVED_MESSAGE);
-  }
-  return result;
+    recordEditorOutcome({ action: operation.action, stage: 'saved', reason: 'save-as-verified', changes: editorDraftChanges(), writeConfirmed: true, decodedMatch: true });
+    return { ...result, ok: true, confirmed: true };
+  } finally { operation.persisting = false; }
 }
 
 async function retryAppliedEditorPersistence() {

@@ -600,7 +600,7 @@ export function createEditorPanel({
       try { onState?.({ reason: 'editor-saved' }); } catch {}
       return true;
     },
-    showSaveError(message) { if (appliedPending) { error.textContent = ''; renderAppliedUnsavedFeedback(); } else setError(message); },
+    showSaveError(message) { if (appliedPending) { error.textContent = ''; renderAppliedUnsavedFeedback(); if (message) status.textContent = String(message); } else setError(message); },
     clear() {
       if (retryInFlight) return false;
       details = null;
