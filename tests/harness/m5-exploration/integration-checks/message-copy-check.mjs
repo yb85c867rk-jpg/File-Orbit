@@ -63,10 +63,10 @@ try {
  await wait(()=>ev("document.querySelector('#folder-export-success')?.textContent==="+JSON.stringify(COPY.permission)),'permission copy',15000); await sl(200);
  assert.equal(await toast(),COPY.permission); assert.equal(await ev("document.querySelector('#orbit-reconnect')?.hidden===false"),true); await shot('copy-permission.png');
  // 6. Blocked Rename copy while the editor is open.
- await openDescription(); await ev("__M5_P1B_TEST__.openRootMenuAtForTest(300,300);true"); await wait(()=>ev("document.querySelector('#editor-context-menu')?.hidden===false"),'menu2');
+ await openDescription(); await setText('draft stays'); await ev("__M5_P1B_TEST__.openRootMenuAtForTest(300,300);true"); await wait(()=>ev("document.querySelector('#editor-context-menu')?.hidden===false"),'menu2');
  await ev("(()=>{document.querySelector('#editor-context-menu button[data-action=\\\"rename-map\\\"]').click();return true})()"); await sl(400);
- const blocked=await ev("document.querySelector('#shell-status')?.textContent||''"); assert.equal(blocked,COPY.blocked); await shot('copy-blocked-rename.png');
+ const draftState=await ev("({status:document.querySelector('#shell-status')?.textContent||'',value:document.querySelector('#editor-description')?.value||'',buttons:[...document.querySelectorAll('#editor-form button')].filter(b=>!b.hidden).map(b=>b.textContent)})"); assert.equal(draftState.status,COPY.blocked); assert.equal(draftState.value,'draft stays'); assert.equal(draftState.buttons.includes('Cancel'),true); await shot('copy-blocked-rename.png');
  await closeEditor();
  assert.equal(errors.length,0);
- console.log(JSON.stringify({sha,COPY,narrow,retained,savedCopy,blocked,errors},null,2));
+ console.log(JSON.stringify({sha,COPY,narrow,retained,savedCopy,draftState,errors},null,2));
 } finally {try{ws?.close()}catch{}try{process.kill(b.pid)}catch{}}

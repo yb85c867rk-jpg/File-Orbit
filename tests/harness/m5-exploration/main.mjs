@@ -2639,7 +2639,7 @@ async function openRenameMap() {
     return { ok: false, reason: 'no-writable-map' };
   }
   if (editorController?.isOpen() || editorController?.isSaving()) {
-    if (lastEditorPersistenceFailure && editorAppliedOperation) setShellStatus('Your edit isn’t saved yet. Choose Retry Save or cancel the edit before renaming the map.');
+    if (lastEditorPersistenceFailure && editorAppliedOperation) setShellStatus('Your changes haven’t been saved. Choose Retry Save or Save As to save them, or Close to leave the editor before renaming the map.');
     else if (editorController?.isSaving()) setShellStatus('Wait for the editor to finish saving, then rename the map.');
     else setShellStatus('Save or cancel your current edit before renaming the map.');
     return { ok: false, reason: 'editor-open' };
