@@ -561,6 +561,14 @@ let renameMapDialog = null;
 let renameMapContext = null;
 let renameMapInFlight = false;
 let renameRecoveryBlock = null;
+function bindRenameRecovery(context, reason, outcome) {
+  if (!renameContextMatches(context)) return false;
+  renameRecoveryBlock = { reason, documentIdentity: context.documentIdentity, handle: context.handle, session: context.session, ownership: context.ownership, removalAcknowledged: outcome?.removalAcknowledged === true };
+  return true;
+}
+function renameRecoveryApplies() {
+  return Boolean(renameRecoveryBlock && activeDocument.active && activeDocument.handle === renameRecoveryBlock.handle && activeDocument.documentIdentity === renameRecoveryBlock.documentIdentity);
+}
 let mapLibraryPermissionRequestCount = 0;
 let mapLibraryPermissionOverride = null;
 let mapLibraryStorageFailureForTest = false;
@@ -2487,6 +2495,7 @@ async function adoptRenamedMap(context, plan, candidate, outcome) {
     });
   } catch (error) { confirmed = { ok: false, message: String(error?.message || error) }; }
   if (!confirmed?.ok) return { ok: false, message: 'The renamed file could not be bound to a verified baseline. Reopen the map before saving.' };
+  if (!renameContextMatches(context)) return { ok: false, stale: true, message: 'The document changed before the renamed file could be adopted. The disk outcome was not adopted.' };
   tree = candidate.tree;
   applyRenamedRootTitle(plan.title);
   refreshRenamedRootPresentation();
@@ -2543,7 +2552,7 @@ async function submitRenameMap({ name } = {}) {
     invalidateAutomaticSave();
     plan = renamePlanFor(context, parent, name);
     if (!plan.ok) return { ok: false, message: plan.message || 'The proposed name is not valid.' };
-    const candidate = await prepareRenameCandidate({ plan, tree, registry: attachmentRegistry, cryptoApi: globalThis.crypto, sourceMapId: activeMap?.mapId || null });
+    const candidate = await prepareRenameCandidate({ plan, tree, registry: attachmentRegistry, cryptoApi: globalThis.crypto, policyContext: largeMapPolicyContext, sourceMapId: activeMap?.mapId || null });
     if (!candidate.ok) return { ok: false, message: candidate.message || 'The renamed candidate could not be prepared.' };
     if (plan.kind === 'title-only') {
       const result = await commitTitleOnlyRename(context, plan, candidate);
@@ -2554,7 +2563,7 @@ async function submitRenameMap({ name } = {}) {
       const record = (libraryCollection?.snapshot?.().libraries || []).find((item) => item.id === context.libraryId) || null;
       return { datasetToken, session: persistenceSessionSeq, ownership: documentOwnershipSeq, revision: dataRevision, handle: activeDocument.handle, documentIdentity: activeDocument.documentIdentity, parentHandle: record?.handle || null };
     };
-    const executor = createRenameExecutor({ adapter: {
+    const executor = createRenameExecutor({ policyContext: largeMapPolicyContext, adapter: {
       queryReadPermission: (handle) => orbitAdapter.queryReadPermission(handle),
       listEntries: async (directory, options = {}) => orbitAdapter.enumerateTopLevelMaps(directory, { ...options, includeFolders: true }),
       getFileHandle: (directory, filename) => directory.getFileHandle(filename),
@@ -2574,27 +2583,43 @@ async function submitRenameMap({ name } = {}) {
           return { ok: false, reason: 'write-failed', wrote, message: String(error?.message || error) };
         }
       },
-      removeFile: async (directory, filename, options = {}) => { await options.assertCurrent?.(); return orbitAdapter.removeMapFile(directory, filename, options); }
+      removeFile: async (directory, filename, options = {}) => {
+        if (globalThis.__M5_RENAME_BEFORE_REMOVE_GATE__) await globalThis.__M5_RENAME_BEFORE_REMOVE_GATE__.promise;
+        await options.assertCurrent?.();
+        const removed = await orbitAdapter.removeMapFile(directory, filename, options);
+        if (removed?.ok && globalThis.__M5_RENAME_AFTER_REMOVAL_GATE__) await globalThis.__M5_RENAME_AFTER_REMOVAL_GATE__.promise;
+        return removed;
+      }
     }, cryptoApi: globalThis.crypto });
-    const outcome = await executor.execute({
+    let outcome = await executor.execute({
       plan, candidate,
       permissions: { sourceRead: true, parentRead: true, parentWrite: true, sourceRemove: true },
       getState: currentState, isCancelled: () => destroying
     });
+    if (globalThis.__M5_RENAME_FORCE_UNCERTAIN__ && outcome.status === 'filesystem-complete-adoption-required') {
+      outcome = { ...outcome, ok: false, status: 'post-removal-uncertain', removalAcknowledged: globalThis.__M5_RENAME_FORCE_UNCERTAIN__ === 'acknowledged' };
+    }
     if (outcome.ok && outcome.status === 'filesystem-complete-adoption-required') {
       const adopted = await adoptRenamedMap(context, plan, candidate, outcome);
       if (!adopted.ok) {
-        renameRecoveryBlock = { reason: 'adoption-failed-after-rename', plan, outcome };
-        setShellStatus('The filesystem rename completed, but the document could not be adopted. Do not save; reopen or reinspect the new file.');
-        return { ok: false, message: 'The filesystem rename completed, but this document could not be adopted. Reopen the map to continue safely.' };
+        const bound = bindRenameRecovery(context, 'adoption-failed-after-rename', outcome);
+        if (bound) setShellStatus('The filesystem rename completed, but the document could not be adopted. Save is blocked; reopen or reinspect the new file.');
+        else setShellStatus('The rename finished after the document changed. The disk outcome was not adopted and the replacement document was not blocked.');
+        return { ok: false, message: bound ? 'The filesystem rename completed, but this document could not be adopted. Reopen the map to continue safely.' : 'The rename finished after the document changed. Its disk outcome was not adopted into the replacement document.' };
       }
       renameMapContext = null;
       return { ok: true };
     }
     if (outcome.status === 'post-removal-uncertain') {
-      renameRecoveryBlock = { reason: 'post-removal-uncertain', plan, outcome };
-      setShellStatus('The original was removed, but the final file state could not be verified. Save is blocked. Reopen or reinspect both filenames.');
-      return { ok: false, message: 'The filesystem outcome is uncertain. The original may be gone and the new file may be incomplete or replaced. Do not save; reopen or reinspect the folder.' };
+      const acknowledged = outcome.removalAcknowledged === true;
+      const bound = bindRenameRecovery(context, 'post-removal-uncertain', outcome);
+      if (bound) setShellStatus(acknowledged
+        ? 'The original removal was acknowledged, but the final file state could not be verified. Save is blocked; reopen or reinspect both filenames.'
+        : 'The original removal could not be confirmed, and the final file state is uncertain. Save is blocked; reopen or reinspect both filenames.');
+      else setShellStatus('The rename finished after the document changed. Its disk outcome is reported but was not adopted, and the replacement document is not blocked.');
+      return { ok: false, message: bound
+        ? (acknowledged ? 'The original removal was acknowledged, but the final file state is uncertain. The active document was not adopted and Save is blocked.' : 'The original removal was not confirmed, and the final file state is uncertain. The active document was not adopted and Save is blocked.')
+        : 'The rename finished after the document changed. Its disk outcome was not adopted into the replacement document.' };
     }
     if (outcome.status === 'verified-new-original-retained') {
       setShellStatus('A verified new copy was created, but the original remains. Both files were preserved.');
@@ -5659,7 +5684,7 @@ async function saveCurrentDocument(options = {}) {
 }
 async function saveDocument({ saveAs = false, capturedRevision = null, allowEditorOpen = false, allowRename = false, allowReplacement = false, replacementToken = null, target = null, preencoded = null, expectedOwnership = null, expectedSession = null, expectedDataset = null, expectedHandle = null, expectedIdentity = null, allowPicker = true, allowDownload = true, interactiveConflict = true, automatic = false, recovery = false } = {}) {
   if (destroying) return { ok: false, reason: 'stale', stale: true, stage: 'destroyed' };
-  if (renameRecoveryBlock) { setShellStatus('Saving is blocked until the Rename Map disk outcome is reinspected or the map is reopened.'); return { ok: false, reason: 'rename-recovery-required' }; }
+  if (renameRecoveryBlock && renameRecoveryApplies()) { setShellStatus('Saving is blocked until the Rename Map disk outcome is reinspected or the map is reopened.'); return { ok: false, reason: 'rename-recovery-required' }; }
   if (renameMapInFlight && !allowRename) { setShellStatus('Wait for Rename Map to finish before saving.'); return { ok: false, reason: 'rename-in-progress' }; }
   if ((expectedOwnership !== null && expectedOwnership !== documentOwnershipSeq) || (expectedSession !== null && expectedSession !== persistenceSessionSeq) || (expectedDataset !== null && expectedDataset !== datasetToken) || (expectedHandle !== null && activeDocument.handle !== expectedHandle) || (expectedIdentity !== null && activeDocument.documentIdentity !== expectedIdentity)) return { ok: false, reason: 'stale', stale: true, stage: 'ownership' };
   if (!hasMap || !tree || !attachmentRegistry) { setShellStatus('There is no map to save.'); return { ok: false, reason: 'no-map' }; }

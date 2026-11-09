@@ -86,7 +86,7 @@ export function buildRenameRemovalRetryPlan({ outcome = null } = {}) {
   });
 }
 
-export function createRenameExecutor({ adapter = null, cryptoApi = globalThis.crypto } = {}) {
+export function createRenameExecutor({ adapter = null, cryptoApi = globalThis.crypto, policyContext = undefined } = {}) {
   let inFlight = false;
 
   async function execute({ plan = null, candidate = null, permissions = null, getState = null, isCancelled = () => false } = {}) {
@@ -271,7 +271,7 @@ export function createRenameExecutor({ adapter = null, cryptoApi = globalThis.cr
       } catch { return partial('verification-failed', 'verify-new', 'The new file could not be re-resolved for verification. Both files are preserved.', { destinationCreated: true }); }
       if (verifiedNew.size !== candidate.blob.size || verifiedNew.digest !== candidateDigest) return partial('verification-failed', 'verify-new', 'The new file bytes do not match the encoded candidate. Both files are preserved.', { destinationCreated: true });
       let decoded;
-      try { decoded = await decodeBackup(verifiedNew.blob, { cryptoApi }); }
+      try { decoded = await decodeBackup(verifiedNew.blob, { cryptoApi, policyContext }); }
       catch { return partial('verification-failed', 'verify-new', 'The new file cannot be decoded by the package validator. Both files are preserved.', { destinationCreated: true }); }
       if (decoded?.tree?.name !== candidate.title || decoded?.manifest?.mapName !== candidate.filename) return partial('verification-failed', 'verify-new', 'The new package title or mapName does not match the candidate. Both files are preserved.', { destinationCreated: true });
 
