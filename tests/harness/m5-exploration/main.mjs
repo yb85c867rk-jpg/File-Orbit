@@ -247,6 +247,7 @@ const setShellStatus = (message, { kind = 'actionable', ttl = ROUTINE_NOTIFICATI
     if (shellStatusEl.textContent !== message) shellStatusEl.textContent = message;
     shellStatusEl.hidden = false;
   }
+  if (message && (nextKind !== 'routine' || Date.now() >= notificationPriorityUntil)) showNotificationToast(message, { kind: nextKind });
   if (shellStatusTransient && message) {
     const session = persistenceSessionSeq;
     const dataset = datasetToken;
@@ -613,6 +614,7 @@ let folderExportSubmission = false;
 let folderExportLastNotification = null;
 let folderExportSuccessTimer = null;
 let folderExportSuccessToken = 0;
+let notificationPriorityUntil = 0;
 let folderExportSuccessObserver = null;
 let folderExportSuccessResize = null;
 function claimDocumentOwnership() { documentOwnershipSeq += 1; return documentOwnershipSeq; }
@@ -2162,12 +2164,14 @@ function hideFolderExportSuccess() {
   stopFolderExportSuccessTracking();
   if (folderExportSuccessEl) { folderExportSuccessEl.hidden = true; folderExportSuccessEl.textContent = ''; }
 }
-function showFolderExportSuccess(message) {
+function showNotificationToast(message, { kind = 'info' } = {}) {
   if (!folderExportSuccessEl) return false;
   const token = ++folderExportSuccessToken;
   if (folderExportSuccessTimer !== null) { clearTimeout(folderExportSuccessTimer); folderExportSuccessTimer = null; }
   stopFolderExportSuccessTracking();
   folderExportSuccessEl.textContent = message;
+  folderExportSuccessEl.dataset.notificationKind = String(kind || 'info');
+  if (kind !== 'routine') notificationPriorityUntil = Date.now() + TRANSIENT_NOTIFICATION_MS;
   folderExportSuccessEl.hidden = false;
   positionFolderExportSuccess();
   requestAnimationFrame(positionFolderExportSuccess);
@@ -2183,8 +2187,11 @@ function showFolderExportSuccess(message) {
   folderExportSuccessTimer = setTimeout(() => {
     if (token !== folderExportSuccessToken) return;
     hideFolderExportSuccess();
-  }, 3000);
+  }, TRANSIENT_NOTIFICATION_MS);
   return true;
+}
+function showFolderExportSuccess(message) {
+  return showNotificationToast(message, { kind: 'success' });
 }
 function folderExportPlanCurrent(plan) {
   if (!plan) return false;
