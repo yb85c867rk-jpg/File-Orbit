@@ -138,6 +138,23 @@ export function createLibraryCollectionController({
     });
   }
 
+  async function rename(id, name) {
+    if (disposed) return { ok: false, reason: 'disposed' };
+    if (!initialized) { const loaded = await initialize(); if (!loaded.ok) return loaded; }
+    const token = ++operationSeq;
+    const original = records.find((record) => record.id === id);
+    if (!original) return { ok: false, reason: 'unknown-library' };
+    const directoryName = String(name || '').trim();
+    if (!directoryName) return { ok: false, reason: 'invalid-name' };
+    if (directoryName === original.name) return { ok: true, noChange: true, library: { ...original }, persisted: false };
+    if (!canPersist()) return { ok: false, reason: 'storage-write-failed', message: 'Collection persistence is unavailable.' };
+    const next = records.map((record) => record.id === id ? { ...record, name: directoryName, updatedAt: now() } : record);
+    const saved = await settings.saveCollection(next, selectedId);
+    if (!saved.ok) return saved;
+    if (disposed || token !== operationSeq) return { ok: false, reason: 'stale' };
+    records = next;
+    return { ok: true, library: { ...records.find((record) => record.id === id) }, persisted: true };
+  }
   async function relink(id, handle, name) {
     if (disposed) return { ok: false, reason: 'disposed' };
     if (!handle || handle.kind !== 'directory') return { ok: false, reason: 'invalid-handle' };
@@ -214,6 +231,7 @@ export function createLibraryCollectionController({
     initialize,
     adopt,
     relink,
+    rename,
     unlink,
     findByHandle,
     select,

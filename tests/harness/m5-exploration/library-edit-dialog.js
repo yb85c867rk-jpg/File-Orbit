@@ -100,7 +100,7 @@ export function createLibraryEditDialog({ document, host, onChoose, onApply, onC
       } else if (picked?.reason !== 'cancelled' && picked?.reason !== 'stale') {
         setStatus(String(picked?.message || 'The folder could not be selected.'), 'error');
       } else if (picked?.reason === 'cancelled') {
-        setStatus('Folder selection cancelled. The current draft was kept.');
+        setStatus('No folder was chosen. The Library connection was not changed. Choose Folder to try again.');
       }
     } catch (error) {
       if (open) setStatus(String(error?.message || error), 'error');

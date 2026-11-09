@@ -1,4 +1,4 @@
-﻿import { findOrbitNameCollision, normalizeOrbitMapFilename, validateOrbitDirectoryName } from '../../../src/engine/hypertree/orbit/names.js';
+import { findOrbitNameCollision, normalizeOrbitMapFilename, validateOrbitDirectoryName } from '../../../src/engine/hypertree/orbit/names.js';
 
 export const DEFAULT_MAX_ORBIT_ENTRIES = 1000;
 export const DEFAULT_MAX_ENUMERATION_MS = 5000;
@@ -192,7 +192,7 @@ export function createOrbitDirectoryAdapter({
       return { ok: true, handle, name, created: 'preflight-absent', atomic: false, stage: 'created' };
     } catch (error) {
       if (isDenied(error)) return failure('permission-denied', 'create', error, 'Directory creation permission was denied.');
-      return failure('create-failed', 'create', error, 'Could not create the Orbit directory.');
+      return failure('create-failed', 'create', error, 'FileOrbit couldn’t create the folder.');
     }
   }
 
@@ -265,7 +265,7 @@ export function createOrbitDirectoryAdapter({
         catch (error) {
           if (isNotFound(error)) { skipped += 1; continue; }
           if (isDenied(error)) return failure('permission-denied', 'enumerate', error, 'Directory permission was denied while reading metadata.');
-          return failure('enumerate-failed', 'enumerate', error, 'Could not read map metadata.');
+          return failure('enumerate-failed', 'enumerate', error, 'FileOrbit couldn’t read a map file. Refresh to try again.');
         }
         if (!current()) return stale('enumerate');
         if (nowFn() >= deadline) { timedOut = true; truncated = true; break; }
@@ -280,7 +280,7 @@ export function createOrbitDirectoryAdapter({
       }
     } catch (error) {
       if (isDenied(error)) return failure('permission-denied', 'enumerate', error, 'Directory permission was denied.');
-      return failure('enumerate-failed', 'enumerate', error, 'Could not enumerate the Orbit directory.');
+      return failure('enumerate-failed', 'enumerate', error, 'FileOrbit couldn’t read this folder. It may have been moved, renamed, or deleted.');
     } finally {
       if (!completed) await closeIterator(iterator);
     }
@@ -298,7 +298,7 @@ export function createOrbitDirectoryAdapter({
     } catch (error) {
       if (isNotFound(error)) return failure('not-found', 'metadata', error, 'That file no longer exists.');
       if (isDenied(error)) return failure('permission-denied', 'metadata', error, 'File permission was denied.');
-      return failure('metadata-failed', 'metadata', error, 'Could not read file metadata.');
+      return failure('metadata-failed', 'metadata', error, 'FileOrbit couldn’t read that map file.');
     }
   }
 
@@ -306,7 +306,7 @@ export function createOrbitDirectoryAdapter({
     const checked = normalizeOrbitMapFilename(rawFilename);
     if (!checked.ok) return { ...checked, stage: 'validation' };
     if (!directory || typeof directory.getFileHandle !== 'function') {
-      return failure('operation-failed', 'create', null, 'An Orbit directory handle is required.');
+      return failure('operation-failed', 'create', null, 'Choose a folder first.');
     }
     const filename = checked.filename;
     const isCurrent = options.isCurrent || (() => true);
@@ -339,7 +339,7 @@ export function createOrbitDirectoryAdapter({
 
   async function removeMapFile(directory, rawFilename, { expectedHandle = null, expectedSize = null, expectedLastModified = null, isCurrent = () => true } = {}) {
     if (!directory || typeof directory.getFileHandle !== 'function' || typeof directory.removeEntry !== 'function') {
-      return failure('operation-failed', 'remove', null, 'An Orbit directory handle is required.');
+      return failure('operation-failed', 'remove', null, 'Choose a folder first.');
     }
     const checked = normalizeOrbitMapFilename(rawFilename);
     if (!checked.ok) return { ...checked, stage: 'validation' };

@@ -83,7 +83,7 @@ try {
  const listBeforeFailure=await names();
  await ev("__M5_P1B_TEST__.failNextOrbitListing('enumerate-failed');true");
  await clickRefresh(); const failedStatus=await ev("document.querySelector('#shell-status')?.textContent||''");
- assert.match(failedStatus,/couldn.t refresh this folder|last list is still shown/i);assert.deepEqual(await names(),listBeforeFailure);
+ assert.match(failedStatus,/couldn.t open this folder|out of date/i);assert.deepEqual(await names(),listBeforeFailure);
  await ev("__M5_P1B_TEST__.failNextOrbitListing('permission-denied');true");
  await clickRefresh(); const deniedStatus=await ev("document.querySelector('#shell-status')?.textContent||''");
  assert.match(deniedStatus,/can.t read this folder|Reconnect Map Library/i);assert.deepEqual(await names(),listBeforeFailure);

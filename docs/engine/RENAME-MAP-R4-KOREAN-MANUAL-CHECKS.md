@@ -50,6 +50,18 @@
 7. **Refresh 없이** 외부에서 이름 변경/삭제/같은 이름 교체 후 바로 Save: 각각 차단(미싱/치환)되고 대상에 0회 쓰기인가? 같은 이름의 다른 파일이 보존되는가? Save As로 별도 대상에 정확히 저장되는가?
 8. Library A의 map을 연 뒤 B를 선택: Save가 현재 목록이 아니라 A에 바인딩된 부모로 검증되는가? A에서 파일을 지우면 (Refresh 없이) 미싱으로 차단되는가?
 
+## Windows Map Library 폴더 이동/이름 변경/삭제 점검 (테스트 복사본)
+
+준비: 사용자 원본이 아닌 테스트 폴더에 `.orbit` 복사본을 두고 Map Library로 연결합니다. OntoMap과 사용자 소스 폴더는 사용하지 않습니다.
+
+1. 테스트 Library 폴더를 Explorer에서 같은 드라이브의 새 이름으로 변경 → **Refresh**: 브라우저가 핸들을 유지하면 목록과 표시 이름이 새 이름으로 갱신되는가? 핸들이 무효면 "폴더를 열 수 없음"과 **Change linked folder**가 보이고 마지막 목록이 "out of date"로 표시되는가? 열린 지도와 편집 내용은 유지되는가?
+2. 폴더를 다른 위치로 이동 → Change linked folder → 이동한 폴더를 선택 → 같은 Library ID가 유지되고 목록이 읽히는가? 취소하면 기존 연결이 그대로인가?
+3. 폴더 삭제 후 새 폴더에 같은 이름의 `.orbit`을 넣고 Change linked folder로 연결: 예전에 열린 지도에서 Save해도 새 폴더의 같은 이름 파일에 **0회 쓰기**인가? Save As로 편집 내용이 별도 파일에 보존되는가?
+4. 폴더 권한 거부 → **Reconnect Map Library** 안내가 보이고, 허용 후 목록이 복구되는가? 취소 시 기존 연결이 유지되는가?
+5. 다른 Library에 이미 연결된 폴더를 선택 → 중복 생성 없이 기존 Library가 선택되는가?
+6. 앱 재시작: 이동/재연결한 Library가 선택된 상태로 복원되고 목록이 보이는가?
+7. 다른 Library로 전환하는 동안 늦게 끝난 Refresh가 새 Library의 목록을 덮어쓰지 않는가?
+
 ## 증거 구분
 - OPFS/disposable Edge 검증은 R4 자동화 증거입니다.
 - Native Windows File System Access 동작(특히 close/rename/remove, 외부 프로세스 경쟁)은 별도 수동 승인 항목이며 OPFS 결과로 대체하지 않습니다.

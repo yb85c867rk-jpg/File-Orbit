@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Isolated Orbit state controller for Slice 2.
  *
  * It owns directory-selection, metadata-list, permission, and stale-request
@@ -321,6 +321,19 @@ export function createOrbitStateController({ adapter, now = () => Date.now() } =
     return { ok: true, matched: null, index: -1, state: snapshot() };
   }
 
+  function setDirectoryName(nextName) {
+    const value = String(nextName || '').trim();
+    if (value) name = value;
+    return snapshot();
+  }
+
+  function markUnavailable(reason, message) {
+    error = { reason: String(reason || 'unavailable'), stage: 'enumerate', message: String(message || ''), errorName: '', errorMessage: '' };
+    stale = true;
+    settledPhase = 'blocked';
+    phase = openRequest ? 'opening' : 'blocked';
+    return snapshot();
+  }
   function close() {
     openRequest = null;
     listRequest = null;
@@ -348,7 +361,7 @@ export function createOrbitStateController({ adapter, now = () => Date.now() } =
     return snapshot();
   }
 
-  return { openDirectory, adoptDirectory, restoreDirectory, refresh, matchEntry, close, destroy, snapshot };
+  return { openDirectory, adoptDirectory, restoreDirectory, refresh, matchEntry, setDirectoryName, markUnavailable, close, destroy, snapshot };
 }
 
 
