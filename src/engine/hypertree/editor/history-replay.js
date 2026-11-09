@@ -37,6 +37,11 @@ export function performMetadataHistoryReplay({ direction, history, tree, dataset
       : buildStructuralReplayCommand;
   const command = build({ tree, entry: plan.entry, direction, datasetToken, structuralRootId: rest.structuralRootId, policyContext, maxNodes });
   if (!command.ok) return command;
+  if (command.candidateTree && command.candidateTree.id === tree.id) command.candidateTree.name = tree.name;
+  if (command.noop) {
+    history.commitMove(plan);
+    return { ok: true, noop: true, historyPlan: plan, entry: plan.entry, message: command.message || 'This history entry only changes the superseded root title.' };
+  }
   if (attachmentRegistry) {
     const attachments = validateReplayAttachments(command.candidateTree, attachmentRegistry);
     if (!attachments.ok) return attachments;

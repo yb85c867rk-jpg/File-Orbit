@@ -187,7 +187,7 @@ export function createEditorPanel({
     const dataType = action === 'add-data' ? controller.draftDataType : editorTarget?.dataType;
     return {
       name: action === 'rename' || action === 'add-folder' || action === 'edit-folder' || action === 'add-data' || action === 'edit-data',
-      description: action === 'add-folder' || action === 'edit-folder' || action === 'add-data' || action === 'edit-data' || action === 'edit-details',
+      description: action === 'add-folder' || action === 'edit-folder' || action === 'add-data' || action === 'edit-data' || action === 'edit-details' || action === 'edit-description',
       dataType: action === 'add-data',
       file: action === 'add-data' && dataType === 'file',
       link: (action === 'add-data' && dataType === 'web-link') || (action === 'edit-data' && dataType === 'web-link') || (action === 'edit-details' && dataType !== 'file'),
@@ -242,7 +242,7 @@ export function createEditorPanel({
     descriptionField.element.value = controller.draftDescription ?? '';
     linkField.element.value = controller.draftLink ?? '';
     dataTypeField.element.value = controller.draftDataType ?? '';
-    legend.textContent = action === 'edit-folder' ? 'Edit Folder' : action === 'add-folder' ? 'Add Folder' : action === 'edit-data' ? 'Edit Data' : action === 'add-data' ? 'Add Data' : action === 'rename' ? 'Rename node' : 'Edit details';
+    legend.textContent = action === 'edit-folder' ? 'Edit Folder' : action === 'add-folder' ? 'Add Folder' : action === 'edit-data' ? 'Edit Data' : action === 'add-data' ? 'Add Data' : action === 'edit-description' ? 'Edit Description' : action === 'rename' ? 'Rename node' : 'Edit details';
     const prefix = action === 'add-folder' || action === 'add-data' ? 'Destination folder' : 'Target';
     targetLine.textContent = `${prefix}: ${editorTarget?.name || controller.targetId}`;
     const typeValue = action === 'edit-data' ? (editorTarget?.dataType === 'file' ? 'File' : editorTarget?.dataType === 'web-link' ? 'Web link' : 'Legacy / unclassified') : '';

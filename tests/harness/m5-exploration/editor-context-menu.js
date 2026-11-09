@@ -41,6 +41,8 @@ export function createEditorContextMenu({
   const openFolder = item('open-folder', 'Open Folder');
   const openData = item('open-data', 'Open');
   const editFolder = item('edit-folder', 'Edit Folder…');
+  const renameMap = item('rename-map', 'Rename Map…');
+  const editDescription = item('edit-description', 'Edit Description…');
   const editData = item('edit-data', 'Edit Data…');
   const addButton = document.createElement('button');
   addButton.type = 'button';
@@ -67,7 +69,7 @@ export function createEditorContextMenu({
 
   const folderSeparator = separator();
   const fileSeparator = separator();
-  for (const child of [openFolder, editFolder, addButton, exportFolder, folderSeparator, deleteFolder, openData, editData, saveData, fileSeparator, deleteData]) menu.appendChild(child);
+  for (const child of [openFolder, editFolder, renameMap, editDescription, addButton, exportFolder, folderSeparator, deleteFolder, openData, editData, saveData, fileSeparator, deleteData]) menu.appendChild(child);
   for (const child of [addFolder, addData, separator(), uploadFiles, uploadFolder]) submenu.appendChild(child);
 
   const deleteNote = document.createElement('p');
@@ -87,9 +89,10 @@ export function createEditorContextMenu({
   let suppressClick = false;
   let suppressTimer = null;
 
-  function actionsFor(hitKind) {
-    return hitKind === 'file'
-      ? ['open-data', 'edit-data', 'save-data-as', 'delete-data']
+  function actionsFor(targetValue) {
+    if (targetValue?.hitKind === 'file') return ['open-data', 'edit-data', 'save-data-as', 'delete-data'];
+    return targetValue?.isRoot
+      ? ['open-folder', 'rename-map', 'edit-description', 'add', 'export-folder', 'delete-folder']
       : ['open-folder', 'edit-folder', 'add', 'export-folder', 'delete-folder'];
   }
   function submenuActions() { return ['add-folder', 'add-data', 'upload-files', 'upload-folder']; }
@@ -102,7 +105,10 @@ export function createEditorContextMenu({
   function renderActions(targetValue) {
     const folder = targetValue.hitKind !== 'file';
     openFolder.hidden = !folder; openData.hidden = folder;
-    editFolder.hidden = !folder; editData.hidden = folder;
+    editFolder.hidden = !folder || Boolean(targetValue.isRoot);
+    renameMap.hidden = !folder || !targetValue.isRoot;
+    editDescription.hidden = !folder || !targetValue.isRoot;
+    editData.hidden = folder;
     saveData.hidden = folder;
     addButton.hidden = !folder;
     exportFolder.hidden = !folder;
@@ -208,7 +214,7 @@ export function createEditorContextMenu({
   function activate(action) {
     if (!target || buttons.get(action)?.disabled) return;
     const chosen = target;
-    close({ restoreFocus: false });
+    close({ restoreFocus: action === 'rename-map' || action === 'edit-description' });
     if (onAction) onAction(chosen, action);
     else if (action === 'edit-folder' || action === 'edit-data') onRename(chosen);
   }
@@ -297,7 +303,7 @@ export function createEditorContextMenu({
     }, { signal });
     addButton.addEventListener('pointerenter', () => { if (!submenuOpen) openSubmenu({ focus: false }); }, { signal });
     addButton.addEventListener('pointerleave', () => scheduleHoverClose(), { signal });
-    const first = actionsFor(nextTarget.hitKind).map((action) => buttons.get(action)).find((button) => button && !button.hidden && !button.disabled);
+    const first = actionsFor(nextTarget).map((action) => buttons.get(action)).find((button) => button && !button.hidden && !button.disabled);
     (first || openFolder || openData).focus();
     return true;
   }

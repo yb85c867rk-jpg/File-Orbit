@@ -114,7 +114,7 @@ export function createRenameExecutor({ adapter = null, cryptoApi = globalThis.cr
       const stateFieldsCurrent = (state) => {
         if (!stateFieldsMatch(state)) return false;
         if (state.handle !== plan?.current?.handle) return false;
-        if (plan?.parent?.handle && state.parentHandle !== undefined && state.parentHandle !== null && state.parentHandle !== plan.parent.handle) return false;
+        if (plan?.parent?.handle && (!state.parentHandle || state.parentHandle !== plan.parent.handle)) return false;
         return true;
       };
       const syncCurrent = () => current() && stateFieldsCurrent(stateSnapshot());
@@ -123,7 +123,7 @@ export function createRenameExecutor({ adapter = null, cryptoApi = globalThis.cr
         const state = stateSnapshot();
         if (!stateFieldsMatch(state)) return false;
         if (!(await sameEntry(state.handle, plan?.current?.handle))) return false;
-        if (plan?.parent?.handle && state.parentHandle !== undefined && state.parentHandle !== null && !(await sameEntry(state.parentHandle, plan.parent.handle))) return false;
+        if (plan?.parent?.handle && (!state.parentHandle || !(await sameEntry(state.parentHandle, plan.parent.handle)))) return false;
         return true;
       };
       const assertCurrent = async () => {
@@ -194,6 +194,7 @@ export function createRenameExecutor({ adapter = null, cryptoApi = globalThis.cr
           files: fileState,
           mutations: mutateCounts(counts),
           removalAcknowledged: Boolean(removalAcknowledged),
+          destinationHandle: createdHandle,
           filesystemComplete: false,
           adoptionBlocked: true,
           requiresReinspection: true,
@@ -306,6 +307,7 @@ export function createRenameExecutor({ adapter = null, cryptoApi = globalThis.cr
         mutations: mutateCounts(counts),
         filesystemComplete: true,
         removalAcknowledged: true,
+        destinationHandle: createdHandle,
         adoptionRequired: true,
         cancelledAfterRemoval,
         message: cancelledAfterRemoval ? 'The original was already removed when cancellation was observed; the disk rename is complete and adoption/reopen is required.' : 'The filesystem rename is complete; the caller must adopt or reopen the new file.'

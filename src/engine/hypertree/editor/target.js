@@ -1,6 +1,6 @@
 ﻿export const EDITOR_TARGET_KIND = 'editor-target';
 export const EDITOR_ACTION_KIND = 'editor-action';
-export const EDITOR_ACTIONS = Object.freeze(['rename', 'add-folder', 'add-data', 'edit-folder', 'edit-data', 'edit-details', 'delete-folder', 'delete-data']);
+export const EDITOR_ACTIONS = Object.freeze(['rename', 'add-folder', 'add-data', 'edit-folder', 'edit-data', 'edit-details', 'edit-description', 'delete-folder', 'delete-data']);
 
 function requireKind(value) {
   if (value !== 'folder' && value !== 'file') throw new Error('editor target hitKind must be folder or file');

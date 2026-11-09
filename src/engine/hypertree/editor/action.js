@@ -291,14 +291,14 @@ export function performMetadataInstallation(args) {
   return performEditorCommandInstallation({
     ...args,
     history: args.history,
-    command: attachHistory(args, { ...command, operation: 'edit-details', baseLayout: args.baseLayout, baseRevision: args.baseRevision }, 'Edit details')
+    command: attachHistory(args, { ...command, operation: args.historyOperation || 'edit-details', baseLayout: args.baseLayout, baseRevision: args.baseRevision }, args.historyAction || 'Edit details')
   });
 }
 export function performEditFolderInstallation(args) {
   const command = buildEditFolderCommand({ tree: args.tree, targetId: args.targetId, draftName: args.draftName, draftDescription: args.draftDescription, datasetToken: args.datasetToken, baseRevision: args.baseRevision, expectedDatasetToken: args.expectedDatasetToken, expectedRevision: args.expectedRevision, policyContext: args.policyContext, maxNodes: args.maxNodes });
   if (command.noop) return { ok: true, reason: 'noop', noop: true, revision: args.baseRevision };
   if (!command.ok) return command;
-  return performEditorCommandInstallation({ ...args, history: args.history, command: attachHistory(args, { ...command, baseLayout: args.baseLayout, baseRevision: args.baseRevision }, 'Edit Folder') });
+  return performEditorCommandInstallation({ ...args, history: args.history, command: attachHistory(args, { ...command, baseLayout: args.baseLayout, baseRevision: args.baseRevision }, args.historyAction || 'Edit Folder') });
 }
 
 export function performEditDataInstallation(args) {

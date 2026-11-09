@@ -38,7 +38,7 @@ export function chooseEditorAction({
     if (canonical.hitKind !== 'folder') return { ok: false, reason: 'action-kind-mismatch' };
   } else if (canonical.action === 'edit-data' || canonical.action === 'edit-details') {
     if (canonical.hitKind !== 'file') return { ok: false, reason: 'action-kind-mismatch' };
-  } else if (canonical.action === 'edit-folder') {
+  } else if (canonical.action === 'edit-folder' || canonical.action === 'edit-description') {
     if (canonical.hitKind !== 'folder') return { ok: false, reason: 'action-kind-mismatch' };
   } else if (canonical.action === 'delete-folder' || canonical.action === 'delete-data') {
     return { ok: false, reason: 'delete-unavailable' };

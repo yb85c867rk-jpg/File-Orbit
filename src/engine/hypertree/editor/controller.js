@@ -69,7 +69,7 @@ export function createEditorController() {
     open({ id, action: nextAction = 'rename', name = '', description = null, link = null, dataType = null, datasetToken: token = null, baseRevision: revision = null }) {
       if (isOpen()) return false;
       if (typeof id !== 'string' || typeof name !== 'string') return false;
-      if (!['rename', 'add-folder', 'add-data', 'edit-folder', 'edit-data', 'edit-details'].includes(nextAction)) return false;
+      if (!['rename', 'add-folder', 'add-data', 'edit-folder', 'edit-data', 'edit-details', 'edit-description'].includes(nextAction)) return false;
       mode = 'editing';
       action = nextAction;
       datasetToken = token;

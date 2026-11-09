@@ -70,6 +70,8 @@ import { createEmbedDialog } from './embed-dialog.js';
 import { createPermissionDialog } from './permission-dialog.js';
 import { createLibraryEditDialog } from './library-edit-dialog.js';
 import { createLibraryUnlinkDialog } from './library-unlink-dialog.js';
+import { createRenameMapDialog } from './rename-map-dialog.js';
+import { resolveRenameParent, buildRenamePreflight, prepareRenameCandidate, createRenameExecutor } from '../../../src/engine/hypertree/rename/index.js';
 import { validateSearchActivation, createSearchNavigationWaiter } from '../../../src/engine/hypertree/exploration/search-activation.js';
 import { resolveDeleteTarget } from '../../../src/engine/hypertree/editor/delete-target.js';
 import { dispatchEditorMenuAction, validateDeleteIntent } from '../../../src/engine/hypertree/editor/menu-dispatch.js';
@@ -555,6 +557,10 @@ let libraryPendingName = null;
 let libraryCollectionRefreshToken = 0;
 try { libraryCollection = createLibraryCollectionController({ settings: mapLibrarySettings, canPersist: () => !mapLibraryStorageFailureForTest }); } catch { libraryCollection = null; }
 let mapLibraryRestoreToken = 0;
+let renameMapDialog = null;
+let renameMapContext = null;
+let renameMapInFlight = false;
+let renameRecoveryBlock = null;
 let mapLibraryPermissionRequestCount = 0;
 let mapLibraryPermissionOverride = null;
 let mapLibraryStorageFailureForTest = false;
@@ -1717,6 +1723,8 @@ function createEditor() {
   if (deleteConfirmation) { deleteConfirmation.destroy(); deleteConfirmation = null; }
   for (const stale of [...overlayHost.querySelectorAll('.delete-confirm-backdrop')]) stale.remove();
   if (editorMenu) editorMenu.destroy();
+  if (renameMapDialog) { try { renameMapDialog.destroy(); } catch {} renameMapDialog = null; }
+  for (const stale of overlayHost.querySelectorAll('.rename-map-backdrop')) stale.remove();
   if (editorPanel) editorPanel.destroy();
   editorController = createEditorController();
   if (!attachmentViewer) attachmentViewer = createAttachmentViewer({
@@ -1740,6 +1748,12 @@ function createEditor() {
     viewport: () => ({ width: window.innerWidth, height: window.innerHeight }),
     onAction: (target, action) => chooseEditorAction(target, action),
     getDataExportState: (target) => dataExportAvailability(target)
+  });
+  renameMapDialog = createRenameMapDialog({
+    document, host: overlayHost,
+    onValidate: (value) => validateRenameMapDraft(value),
+    onSubmit: (value) => submitRenameMap(value),
+    onCancel: () => { lastClickDiagnostic = { reason: 'rename-dialog-cancelled' }; renameMapContext = null; setRoutineStatus('Rename cancelled. The map title and file were not changed.'); }
   });
   if (uploadPreview) { try { uploadPreview.destroy(); } catch {} uploadPreview = null; }
   for (const stale of overlayHost.querySelectorAll('.upload-preview-backdrop')) stale.remove();
@@ -1882,6 +1896,8 @@ async function saveEditorAction({ action, name, description, dataType, link, lin
     result = performMetadataInstallation({ ...base, targetId, description, link, linkProvided });
   } else if (action === 'edit-folder') {
     result = performEditFolderInstallation({ ...base, targetId, draftName: name, draftDescription: description });
+  } else if (action === 'edit-description') {
+    result = performEditFolderInstallation({ ...base, targetId, draftName: tree.name, draftDescription: description, historyAction: 'Edit Description' });
   } else if (action === 'edit-data') {
     result = performEditDataInstallation({ ...base, targetId, draftName: name, description, link, linkProvided });
   } else {
@@ -2321,9 +2337,282 @@ async function runFolderExport(requestedOutputName = '') {
   try { return await runFolderExportInner(requestedOutputName); }
   finally { folderExportSubmission = false; }
 }
+
+function renameLibraries() {
+  return (libraryCollection?.snapshot?.().libraries || []).map((record) => ({ ...record, libraryId: record.id, handle: record.handle, name: record.name }));
+}
+function renameSelectedDirectory() {
+  const snapshot = orbitState?.snapshot?.();
+  if (!snapshot?.handle) return null;
+  const selectedId = libraryCollection?.snapshot?.().selectedId ?? null;
+  return { handle: snapshot.handle, name: snapshot.name, libraryId: selectedId };
+}
+function renameParentMessage(result) {
+  if (!result) return 'The parent folder could not be verified.';
+  if (result.reason === 'permission-required') return 'Rename needs read and write permission for the parent folder. Choose it from the Map Library, then try again.';
+  if (result.reason === 'permission-denied') return 'Read permission for the parent folder was denied. Choose a folder you can access.';
+  if (result.reason === 'no-candidates' || result.reason === 'no-verified-parent') return 'The parent folder could not be verified from the current folder or linked Map Libraries.';
+  if (result.reason === 'incomplete-enumeration' || result.reason === 'unverified-uniqueness') return 'The parent folder could not be conclusively inspected. Close other tabs or retry after refreshing the Map Library.';
+  return String(result.message || 'The parent folder could not be verified.');
+}
+function renameContextMatches(context) {
+  return Boolean(context
+    && hasMap && tree === context.tree
+    && activeDocument.active && activeDocument.origin === 'orbit'
+    && activeDocument.handle === context.handle
+    && activeDocument.documentIdentity === context.documentIdentity
+    && datasetToken === context.datasetToken
+    && persistenceSessionSeq === context.session
+    && documentOwnershipSeq === context.ownership
+    && dataRevision === context.revision);
+}
+async function resolveRenameParentForContext(context = renameMapContext) {
+  if (!context) return { ok: false, reason: 'no-context', message: 'Rename Map state is unavailable.' };
+  const libraries = renameLibraries();
+  const selected = renameSelectedDirectory();
+  const parent = await resolveRenameParent({
+    activeHandle: context.handle,
+    selectedDirectory: selected,
+    libraries,
+    adapter: orbitAdapter,
+    isCurrent: () => !destroying && renameContextMatches(context)
+  });
+  if (!parent.ok) return parent;
+  const libraryId = parent.parent?.libraryId ?? null;
+  const library = libraries.find((record) => record.id === libraryId) || null;
+  if (!library) return { ok: false, reason: 'unbound-library', message: 'The verified parent folder is not bound to a Map Library record. Reconnect or select the folder in Map Library, then retry.' };
+  return { ...parent, library, libraryId };
+}
+function renamePlanFor(context, parentResult, name) {
+  if (!context) return { ok: false, schema: 'fileorbit-rename-preflight-v1', reason: 'no-context', message: 'Rename Map state is unavailable.' };
+  if (!context.baseline) return { ok: false, schema: 'fileorbit-rename-preflight-v1', reason: 'baseline-missing', message: 'Rename Map needs a verified file baseline. Save the map once, then retry.' };
+  const live = { datasetToken, session: persistenceSessionSeq, ownership: documentOwnershipSeq, revision: dataRevision, handle: activeDocument.handle, documentIdentity: activeDocument.documentIdentity, savedRevision: activeDocument.savedRevision };
+  return buildRenamePreflight({
+    tree, activeHandle: context.handle, activeDocumentName: context.filename,
+    documentIdentity: context.documentIdentity, baseline: context.baseline,
+    current: live, captured: live, parent: parentResult, proposedName: name, backend: 'filesystem'
+  });
+}
+function validateRenameMapDraft(value) {
+  const context = renameMapContext;
+  if (!context) return { ok: false, message: 'Rename Map is not available.' };
+  if (!context.parent?.ok) return { ok: false, message: renameParentMessage(context.parent) };
+  const plan = renamePlanFor(context, context.parent, value);
+  if (!plan.ok) return { ok: false, message: plan.message || 'The proposed name is not valid.', reason: plan.reason };
+  if (plan.change.caseOnlyFilenameChange || plan.change.normalizationEquivalentFilenameChange) {
+    return { ok: false, message: 'Case-only and normalization-equivalent filename changes are not supported yet. Choose a distinctly different filename.', reason: 'unsupported-case-only' };
+  }
+  return {
+    ok: true, title: plan.title, adjusted: plan.title, filename: plan.filename,
+    requiresConfirmation: plan.requiresConfirmation,
+    noop: plan.kind === 'noop',
+    message: plan.requiresConfirmation ? 'The map title will be adjusted to “' + plan.title + '”.' : ''
+  };
+}
+async function openRenameMap() {
+  lastClickDiagnostic = { reason: 'rename-open-start', active: Boolean(activeDocument.active), origin: activeDocument.origin, mode: activeDocument.mode, hasHandle: Boolean(activeDocument.handle), hasDialog: Boolean(renameMapDialog), hasMap };
+  if (!renameMapDialog || renameMapInFlight) return { ok: false, reason: 'busy' };
+  if (!hasMap || !tree || !activeDocument.active || activeDocument.origin !== 'orbit' || !activeDocument.handle || activeDocument.mode !== 'writable') {
+    lastClickDiagnostic = { reason: 'rename-open-unavailable', active: Boolean(activeDocument.active), origin: activeDocument.origin, mode: activeDocument.mode, hasHandle: Boolean(activeDocument.handle), hasMap };
+    setShellStatus('Rename Map is available only for an open, writable .orbit map.');
+    return { ok: false, reason: 'no-writable-map' };
+  }
+  if (editorController?.isOpen() || editorController?.isSaving()) { setShellStatus('Finish or close the editor form before renaming the map.'); return { ok: false, reason: 'editor-open' }; }
+  if (documentSaveInFlight || persistenceBusy || replacementGuard || deleteMapFileGuard || pendingBackupImport || installingBackupImport) {
+    setShellStatus('Finish the current save, open, or replacement operation before renaming the map.');
+    return { ok: false, reason: 'busy' };
+  }
+  const context = {
+    tree, title: tree.name, filename: activeDocument.name, handle: activeDocument.handle,
+    documentIdentity: activeDocument.documentIdentity, baseline: activeDocument.baseline,
+    datasetToken, session: persistenceSessionSeq, ownership: documentOwnershipSeq, revision: dataRevision,
+    parent: null, library: null
+  };
+  renameMapContext = context;
+  let parent;
+  try { parent = await resolveRenameParentForContext(context); }
+  catch (error) { parent = { ok: false, reason: 'resolution-failed', message: String(error?.message || error) }; }
+  lastClickDiagnostic = { reason: 'rename-parent-resolved', ok: Boolean(parent?.ok), parentReason: parent?.reason || null, candidates: parent?.candidates?.length || 0, message: parent?.message || null };
+  if (renameMapContext !== context) return { ok: false, reason: 'stale' };
+  context.parent = parent;
+  context.library = parent.library || null;
+  context.libraryId = parent.libraryId || parent.library?.id || null;
+  const shown = renameMapDialog.show({ titleValue: tree.name, filename: activeDocument.name, parent: parent.ok ? parent.parent.name : 'Unverifiable parent', currentTitle: tree.name });
+  lastClickDiagnostic = { reason: shown ? 'rename-dialog-shown' : 'rename-dialog-refused', parentOk: Boolean(parent.ok) };
+  if (!shown) return { ok: false, reason: 'dialog-open' };
+  if (!parent.ok) setShellStatus(renameParentMessage(parent));
+  return { ok: true };
+}
+async function renameEnsurePermission(parentHandle) {
+  if (globalThis.__M5_RENAME_PERMISSION_OVERRIDE__ === 'denied') return { ok: false, reason: 'permission-denied', message: 'Write permission for the parent folder was not granted. The map and file were not changed.' };
+  if (globalThis.__M5_RENAME_PERMISSION_OVERRIDE__ === 'granted') return { ok: true };
+  let queried;
+  try { queried = await orbitAdapter.queryWritePermission(parentHandle); } catch (error) { return { ok: false, reason: 'permission-query-failed', message: String(error?.message || error) }; }
+  if (queried?.ok && (queried.permission === 'granted' || queried.permission === 'unknown')) return { ok: true };
+  let requested;
+  try { requested = await orbitAdapter.requestWritePermission(parentHandle); } catch (error) { return { ok: false, reason: 'permission-request-failed', message: String(error?.message || error) }; }
+  if (!requested?.ok || requested.permission === 'denied') return { ok: false, reason: 'permission-denied', message: 'Write permission for the parent folder was not granted. The map and file were not changed.' };
+  return { ok: true };
+}
+function applyRenamedRootTitle(title) {
+  tree.name = title;
+  const rootNode = graph?.nodes?.get(tree.id);
+  if (rootNode) rootNode.name = title;
+}
+function refreshRenamedRootPresentation() {
+  candidateEnv = null;
+  frameState = null;
+  try {
+    const camera = session?.getState?.().camera;
+    installFrame({ operation: 'rename-root-title', fit: false, entry: null, camera, framing: null });
+  } catch {}
+  try {
+    const label = document.querySelector(`[data-vd-label-id="${String(tree.id).replace(/"/g, '\\"')}"] [data-vd-name]`);
+    if (label) label.textContent = tree.name;
+  } catch {}
+}
+async function adoptRenamedMap(context, plan, candidate, outcome) {
+  if (globalThis.__M5_RENAME_FORCE_ADOPTION_FAILURE__) return { ok: false, message: 'Injected adoption failure.' };
+  if (!renameContextMatches(context) || outcome?.destinationHandle == null) return { ok: false, message: 'The map changed before the renamed file could be adopted. Reopen the map.' };
+  let destination;
+  try { destination = await context.library.handle.getFileHandle(plan.filename); }
+  catch (error) { return { ok: false, message: 'The renamed file could not be reopened for adoption.', error }; }
+  if (!(await sameFileEntry(destination, outcome.destinationHandle))) return { ok: false, message: 'The destination file identity changed before adoption.' };
+  let confirmed;
+  try {
+    confirmed = await createConfirmedWriteBaseline({
+      handle: destination, writtenBytes: candidate.blob,
+      binding: { handle: destination, documentIdentity: context.documentIdentity, revision: dataRevision, session: persistenceSessionSeq, operation: 'rename' },
+      isCurrent: () => renameContextMatches(context), cryptoApi: globalThis.crypto
+    });
+  } catch (error) { confirmed = { ok: false, message: String(error?.message || error) }; }
+  if (!confirmed?.ok) return { ok: false, message: 'The renamed file could not be bound to a verified baseline. Reopen the map before saving.' };
+  tree = candidate.tree;
+  applyRenamedRootTitle(plan.title);
+  refreshRenamedRootPresentation();
+  adoptActiveDocument({ active: true, name: plan.filename, handle: destination, mode: 'writable', savedRevision: dataRevision, origin: 'orbit', documentIdentity: context.documentIdentity, baseline: confirmed.baseline });
+  setActiveMap({ mapId: activeMap.mapId, generation: activeMap.generation, savedRevision: dataRevision });
+  renameRecoveryBlock = null;
+  detailsTargetId = detailsTargetId || tree.id;
+  syncHistoryControls();
+  publish();
+  try { await refreshOrbit({ deferStatus: true }); } catch {}
+  setRoutineStatus('Renamed map to “' + plan.title + '” and saved it as “' + plan.filename + '”.');
+  return { ok: true };
+}
+async function commitTitleOnlyRename(context, plan, candidate) {
+  const saved = await saveDocument({
+    preencoded: { blob: candidate.blob }, capturedRevision: context.revision,
+    expectedOwnership: context.ownership, expectedSession: context.session, expectedDataset: context.datasetToken,
+    expectedHandle: context.handle, expectedIdentity: context.documentIdentity,
+    allowEditorOpen: false, allowPicker: false, allowDownload: false, interactiveConflict: true, allowRename: true
+  });
+  if (!saved?.ok) return { ok: false, message: saved?.reason === 'conflict-cancelled' ? 'Save cancelled. The map title was not changed.' : 'The map title could not be saved. The original title and file were preserved where possible.' };
+  if (!renameContextMatches(context)) return { ok: false, message: 'The map changed while the title was being saved. Reopen the map.' };
+  applyRenamedRootTitle(plan.title);
+  refreshRenamedRootPresentation();
+  activeDocument.savedRevision = dataRevision;
+  setActiveMap({ mapId: activeMap.mapId, generation: activeMap.generation, savedRevision: dataRevision });
+  syncHistoryControls(); publish();
+  setRoutineStatus('Updated the map title without renaming the file.');
+  return { ok: true };
+}
+async function submitRenameMap({ name } = {}) {
+  const context = renameMapContext;
+  if (!context || renameMapInFlight) return { ok: false, message: 'Rename Map is not available.' };
+  if (!renameContextMatches(context)) return { ok: false, message: 'The map changed before Rename Map could start. Reopen the menu and try again.' };
+  if (documentSaveInFlight || documentSaving || persistenceBusy || replacementGuard || deleteMapFileGuard || pendingBackupImport || installingBackupImport || editorController?.isOpen() || editorController?.isSaving()) {
+    return { ok: false, message: 'Finish the current save, edit, open, or replacement operation before renaming the map.' };
+  }
+  if (!context.parent?.ok) return { ok: false, message: renameParentMessage(context.parent) };
+  const parent = await resolveRenameParentForContext(context);
+  if (!renameContextMatches(context)) return { ok: false, message: 'The map changed before Rename Map could start. Reopen the menu and try again.' };
+  if (!parent.ok) return { ok: false, message: renameParentMessage(parent) };
+  if (!(await sameFileEntry(parent.parent.handle, context.parent.parent.handle)) || parent.parent.libraryId !== context.parent.parent.libraryId) return { ok: false, message: 'The verified parent folder changed. Reopen Rename Map.' };
+  context.parent = parent; context.library = parent.library; context.libraryId = parent.libraryId || parent.library?.id || null;
+  let plan = renamePlanFor(context, parent, name);
+  if (!plan.ok) return { ok: false, message: plan.message || 'The proposed name is not valid.' };
+  if (plan.change.caseOnlyFilenameChange || plan.change.normalizationEquivalentFilenameChange) return { ok: false, message: 'Case-only and normalization-equivalent filename changes are not supported yet.' };
+  if (plan.kind === 'noop') { renameMapContext = null; setRoutineStatus('The map title and filename already match. No file was changed.'); return { ok: true }; }
+  renameMapInFlight = true;
+  try {
+    const permission = await renameEnsurePermission(parent.parent.handle);
+    if (!permission.ok) return { ok: false, message: permission.message };
+    if (!renameContextMatches(context)) return { ok: false, message: 'The map changed while permission was being checked. No file was changed.' };
+    cancelQueuedDocumentSaves();
+    invalidateAutomaticSave();
+    plan = renamePlanFor(context, parent, name);
+    if (!plan.ok) return { ok: false, message: plan.message || 'The proposed name is not valid.' };
+    const candidate = await prepareRenameCandidate({ plan, tree, registry: attachmentRegistry, cryptoApi: globalThis.crypto, sourceMapId: activeMap?.mapId || null });
+    if (!candidate.ok) return { ok: false, message: candidate.message || 'The renamed candidate could not be prepared.' };
+    if (plan.kind === 'title-only') {
+      const result = await commitTitleOnlyRename(context, plan, candidate);
+      if (result.ok) renameMapContext = null;
+      return result;
+    }
+    const currentState = () => {
+      const record = (libraryCollection?.snapshot?.().libraries || []).find((item) => item.id === context.libraryId) || null;
+      return { datasetToken, session: persistenceSessionSeq, ownership: documentOwnershipSeq, revision: dataRevision, handle: activeDocument.handle, documentIdentity: activeDocument.documentIdentity, parentHandle: record?.handle || null };
+    };
+    const executor = createRenameExecutor({ adapter: {
+      queryReadPermission: (handle) => orbitAdapter.queryReadPermission(handle),
+      listEntries: async (directory, options = {}) => orbitAdapter.enumerateTopLevelMaps(directory, { ...options, includeFolders: true }),
+      getFileHandle: (directory, filename) => directory.getFileHandle(filename),
+      createFile: async (directory, filename, options = {}) => { await options.assertCurrent?.(); return orbitAdapter.createMapFile(directory, filename, { isCurrent: options.isCurrent }); },
+      writeFile: async (handle, blob, options = {}) => {
+        await options.assertCurrent?.();
+        let writable = null; let wrote = false;
+        try {
+          writable = await handle.createWritable();
+          await options.assertCurrent?.();
+          await writable.write(blob); wrote = true;
+          await options.assertCurrent?.();
+          await writable.close();
+          return { ok: true, close: true };
+        } catch (error) {
+          try { await writable?.abort?.(); } catch {}
+          return { ok: false, reason: 'write-failed', wrote, message: String(error?.message || error) };
+        }
+      },
+      removeFile: async (directory, filename, options = {}) => { await options.assertCurrent?.(); return orbitAdapter.removeMapFile(directory, filename, options); }
+    }, cryptoApi: globalThis.crypto });
+    const outcome = await executor.execute({
+      plan, candidate,
+      permissions: { sourceRead: true, parentRead: true, parentWrite: true, sourceRemove: true },
+      getState: currentState, isCancelled: () => destroying
+    });
+    if (outcome.ok && outcome.status === 'filesystem-complete-adoption-required') {
+      const adopted = await adoptRenamedMap(context, plan, candidate, outcome);
+      if (!adopted.ok) {
+        renameRecoveryBlock = { reason: 'adoption-failed-after-rename', plan, outcome };
+        setShellStatus('The filesystem rename completed, but the document could not be adopted. Do not save; reopen or reinspect the new file.');
+        return { ok: false, message: 'The filesystem rename completed, but this document could not be adopted. Reopen the map to continue safely.' };
+      }
+      renameMapContext = null;
+      return { ok: true };
+    }
+    if (outcome.status === 'post-removal-uncertain') {
+      renameRecoveryBlock = { reason: 'post-removal-uncertain', plan, outcome };
+      setShellStatus('The original was removed, but the final file state could not be verified. Save is blocked. Reopen or reinspect both filenames.');
+      return { ok: false, message: 'The filesystem outcome is uncertain. The original may be gone and the new file may be incomplete or replaced. Do not save; reopen or reinspect the folder.' };
+    }
+    if (outcome.status === 'verified-new-original-retained') {
+      setShellStatus('A verified new copy was created, but the original remains. Both files were preserved.');
+      return { ok: false, message: 'A verified new copy was created, but the original file remains. This is not a completed rename. Both files are preserved; reopen or remove the original manually only after inspecting them.' };
+    }
+    if (outcome.status === 'partial-candidate-output' || outcome.status === 'verification-failed') {
+      setShellStatus('Rename did not complete. The original was preserved and any new output was left in place for inspection.');
+      return { ok: false, message: 'Rename did not complete. The original map remains active and any partial new file was preserved. Inspect the folder before retrying.' };
+    }
+    return { ok: false, message: String(outcome.message || 'Rename could not be completed.') };
+  } finally {
+    renameMapInFlight = false;
+  }
+}
 function chooseEditorAction(target, action) {
   try {
     if (action === 'save-data-as') return saveNodeDataAs(target);
+    if (action === 'rename-map') return openRenameMap();
     if (action === 'export-folder') return requestFolderExport(target);
     if (action === 'open-folder' || action === 'open-data') return openEditorMenuTarget(target, action);
     if (action === 'upload-files' || action === 'upload-folder') return startUpload(target, action);
@@ -3064,7 +3353,7 @@ function releasePendingCreateCandidate() {
   try { pendingCreateCandidate?.registry?.clear?.(); } catch {}
   pendingCreateCandidate = null;
 }
-function resetActiveDocument() { invalidateDocumentSave(); invalidateAutomaticSave(); resetDocumentOwnership(); orbitCurrentEntryKey = null; orbitCurrentSeq += 1; renderOrbitPanel(); }
+function resetActiveDocument() { invalidateDocumentSave(); invalidateAutomaticSave(); renameRecoveryBlock = null; resetDocumentOwnership(); orbitCurrentEntryKey = null; orbitCurrentSeq += 1; renderOrbitPanel(); }
 function mapDirty() {
   if (!hasMap) return false;
   if (activeDocument.active && activeDocument.savedRevision !== null) return dataRevision !== activeDocument.savedRevision;
@@ -5368,8 +5657,10 @@ async function saveCurrentDocument(options = {}) {
   const expectedIdentity = options.saveAs ? null : (Object.prototype.hasOwnProperty.call(options, 'expectedIdentity') ? options.expectedIdentity : activeDocument.documentIdentity);
   return enqueueDocumentSave({ ...options, capturedRevision: options.capturedRevision ?? dataRevision, expectedOwnership: options.expectedOwnership ?? documentOwnershipSeq, expectedSession: options.expectedSession ?? persistenceSessionSeq, expectedDataset: options.expectedDataset ?? datasetToken, expectedHandle, expectedIdentity });
 }
-async function saveDocument({ saveAs = false, capturedRevision = null, allowEditorOpen = false, allowReplacement = false, replacementToken = null, target = null, preencoded = null, expectedOwnership = null, expectedSession = null, expectedDataset = null, expectedHandle = null, expectedIdentity = null, allowPicker = true, allowDownload = true, interactiveConflict = true, automatic = false, recovery = false } = {}) {
+async function saveDocument({ saveAs = false, capturedRevision = null, allowEditorOpen = false, allowRename = false, allowReplacement = false, replacementToken = null, target = null, preencoded = null, expectedOwnership = null, expectedSession = null, expectedDataset = null, expectedHandle = null, expectedIdentity = null, allowPicker = true, allowDownload = true, interactiveConflict = true, automatic = false, recovery = false } = {}) {
   if (destroying) return { ok: false, reason: 'stale', stale: true, stage: 'destroyed' };
+  if (renameRecoveryBlock) { setShellStatus('Saving is blocked until the Rename Map disk outcome is reinspected or the map is reopened.'); return { ok: false, reason: 'rename-recovery-required' }; }
+  if (renameMapInFlight && !allowRename) { setShellStatus('Wait for Rename Map to finish before saving.'); return { ok: false, reason: 'rename-in-progress' }; }
   if ((expectedOwnership !== null && expectedOwnership !== documentOwnershipSeq) || (expectedSession !== null && expectedSession !== persistenceSessionSeq) || (expectedDataset !== null && expectedDataset !== datasetToken) || (expectedHandle !== null && activeDocument.handle !== expectedHandle) || (expectedIdentity !== null && activeDocument.documentIdentity !== expectedIdentity)) return { ok: false, reason: 'stale', stale: true, stage: 'ownership' };
   if (!hasMap || !tree || !attachmentRegistry) { setShellStatus('There is no map to save.'); return { ok: false, reason: 'no-map' }; }
   if (deleteMapFileGuard && !saveAs) {

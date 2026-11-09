@@ -34,11 +34,16 @@ export function buildMetadataReplayCommand({ tree, entry, direction, datasetToke
   if (!found || found.node.kind !== entry.hitKind) return { ok: false, reason: 'stale-target', message: 'The edited node no longer exists.' };
   const expected = direction === 'undo' ? entry.after : entry.before;
   const next = direction === 'undo' ? entry.before : entry.after;
-  if (stable(metadata(found.node)) !== stable(expected)) return { ok: false, reason: 'expected-state-mismatch', message: 'The node changed since this history entry. Undo/Redo was rejected.' };
+  const rootTarget = entry.targetId === tree.id;
+  const expectedComparable = rootTarget ? { name: found.node.name, data: expected.data } : expected;
+  if (stable(metadata(found.node)) !== stable(expectedComparable)) return { ok: false, reason: 'expected-state-mismatch', message: 'The node changed since this history entry. Undo/Redo was rejected.' };
   const candidateTree = cloneTree(tree);
   const node = findTreeNode(candidateTree, entry.targetId);
-  node.name = next.name;
+  node.name = rootTarget ? tree.name : next.name;
   node.data = jsonClone(next.data);
+  if (rootTarget && stable(metadata(node)) === stable(metadata(found.node))) {
+    return { ok: true, noop: true, reason: 'superseded-root-title', candidateTree, targetId: entry.targetId, operation: direction === 'undo' ? 'undo-metadata' : 'redo-metadata', actionLabel: entry.action, direction, message: 'This history entry only changes the superseded root title.' };
+  }
   return {
     ok: true, noop: false, candidateTree, targetId: entry.targetId,
     layoutMode: 'preserve', operation: direction === 'undo' ? 'undo-metadata' : 'redo-metadata',
