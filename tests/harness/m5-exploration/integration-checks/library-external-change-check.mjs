@@ -4,7 +4,7 @@ try {
  const wait=async(fn,label,ms=40000)=>{const end=Date.now()+ms;while(Date.now()<end){try{const v=await fn();if(v)return v}catch{}await sl(110)}throw new Error('timeout: '+label)};
  const tar=await wait(async()=>{const r=await fetch(`http://127.0.0.1:${port}/json/new?about:blank`,{method:'PUT'});return r.ok?r.json():null},'target'); ws=new WebSocket(tar.webSocketDebuggerUrl); await new Promise((r,j)=>{ws.onopen=r;ws.onerror=j}); let id=0; const pending=new Map(), errors=[]; ws.onmessage=e=>{const m=JSON.parse(e.data);if(m.id&&pending.has(m.id)){const q=pending.get(m.id);pending.delete(m.id);m.error?q.j(m.error):q.r(m.result)}if(m.method==='Runtime.exceptionThrown')errors.push(m.params?.exceptionDetails?.exception?.description||m.params?.exceptionDetails?.text)}; const send=(method,params={})=>new Promise((r,j)=>{const n=++id;pending.set(n,{r,j});ws.send(JSON.stringify({id:n,method,params}))}); const ev=async x=>{const r=await send('Runtime.evaluate',{expression:x,returnByValue:true,awaitPromise:true});if(r.exceptionDetails)throw new Error(r.exceptionDetails.exception?.description||r.exceptionDetails.text);return r.result?.value}; const shot=async n=>{const r=await send('Page.captureScreenshot',{format:'png'});writeFileSync('evidence/large-map/'+n,Buffer.from(r.data,'base64'))};
  await send('Page.enable');await send('Runtime.enable');await send('Network.enable');await send('Network.setCacheDisabled',{cacheDisabled:true});await send('Page.addScriptToEvaluateOnNewDocument',{source:'globalThis.__M5_LARGE_MAP_TEST_HOOK__=true;globalThis.__M5_P1B_TEST_HOOKS__=true;'});await send('Emulation.setDeviceMetricsOverride',{width:1900,height:870,deviceScaleFactor:1,mobile:false});await send('Page.navigate',{url:'http://127.0.0.1:8164/tests/harness/m5-exploration/index.html'});await wait(()=>ev("typeof __M5_P1B_TEST__==='object'"),'app');
- await ev("(async()=>{const backup=await import('/src/engine/hypertree/persistence/backup.js');const settingsMod=await import('/tests/harness/m5-exploration/map-library-settings.js');const storage=await navigator.storage.getDirectory();const dir=await storage.getDirectoryHandle('External Library',{create:true});await storage.getDirectoryHandle('External Dest',{create:true});const bytes=new Uint8Array([65,66,67,68,69]);const af=new File([bytes],'seq.txt',{type:'text/plain'});const registry={get(id){return id==='att_seq'?{file:af,metadata:{originalName:'seq.txt',sizeBytes:5,mime:'text/plain'},name:'seq.txt',classification:null}:null}};for(const [name,title,description] of [['A.orbit','Map A','initial'],['Other.orbit','Other Map','other initial']]){const tree={id:'root',kind:'folder',name:title,data:{description},children:[{id:'f',kind:'file',name:'Doc',data:{attachmentId:'att_seq',originalName:'seq.txt',sizeBytes:5,mime:'text/plain'},children:[]}]};const e=await backup.encodeBackup({tree,registry,mapName:name,cryptoApi:globalThis.crypto});const f=await dir.getFileHandle(name,{create:true});const w=await f.createWritable();await w.write(e.blob);await w.close();}const settings=settingsMod.createMapLibrarySettings({indexedDB});await settings.saveCollection([{id:'lib-ext',handle:dir,name:'External Library'}],'lib-ext');return true})()");
+ await ev("(async()=>{const backup=await import('/src/engine/hypertree/persistence/backup.js');const settingsMod=await import('/tests/harness/m5-exploration/map-library-settings.js');const storage=await navigator.storage.getDirectory();const dir=await storage.getDirectoryHandle('External Library',{create:true});await storage.getDirectoryHandle('External Dest',{create:true});const bytes=new Uint8Array([65,66,67,68,69]);const af=new File([bytes],'seq.txt',{type:'text/plain'});const registry={get(id){return id==='att_seq'?{file:af,metadata:{originalName:'seq.txt',sizeBytes:5,mime:'text/plain'},name:'seq.txt',classification:null}:null}};for(const [name,title,description] of [['A.orbit','Map A','initial'],['Other.orbit','Other Map','other initial']]){const tree={id:'root',kind:'folder',name:title,data:{description},children:[{id:'f',kind:'file',name:'Doc',data:{attachmentId:'att_seq',originalName:'seq.txt',sizeBytes:5,mime:'text/plain'},children:[]}]};const e=await backup.encodeBackup({tree,registry,mapName:name,cryptoApi:globalThis.crypto});const f=await dir.getFileHandle(name,{create:true});const w=await f.createWritable();await w.write(e.blob);await w.close();}const dirB=await storage.getDirectoryHandle('External Library B',{create:true});const settings=settingsMod.createMapLibrarySettings({indexedDB});await settings.saveCollection([{id:'lib-ext',handle:dir,name:'External Library'},{id:'lib-ext-b',handle:dirB,name:'External Library B'}],'lib-ext');return true})()");
  await send('Page.reload',{ignoreCache:true});await wait(()=>ev("typeof __M5_P1B_TEST__==='object'"),'reload');await wait(()=>ev("document.querySelector('#orbit-name')?.textContent==='External Library'"),'library');await ev("(async()=>{const backup=await import('/src/engine/hypertree/persistence/backup.js');const root=await navigator.storage.getDirectory();globalThis.__DIR__=await root.getDirectoryHandle('External Library');globalThis.__DEST__=await root.getDirectoryHandle('External Dest');globalThis.__COPY__=(await import('/tests/harness/m5-exploration/map-library-settings.js'));globalThis.__mkIn=async(dir,name,title,description,bytes)=>{const arr=new Uint8Array(bytes||[65,66,67,68,69]);const af=new File([arr],'seq.txt',{type:'text/plain'});const registry={get(id){return id==='att_seq'?{file:af,metadata:{originalName:'seq.txt',sizeBytes:arr.length,mime:'text/plain'},name:'seq.txt',classification:null}:null}};const tree={id:'root',kind:'folder',name:title,data:{description},children:[{id:'f',kind:'file',name:'Doc',data:{attachmentId:'att_seq',originalName:'seq.txt',sizeBytes:arr.length,mime:'text/plain'},children:[]}]};const e=await backup.encodeBackup({tree,registry,mapName:name,cryptoApi:globalThis.crypto});const f=await dir.getFileHandle(name,{create:true});const w=await f.createWritable();await w.write(e.blob);await w.close();return {size:(await f.getFile()).size}};globalThis.__decode=async(name,dir)=>{const d=dir||globalThis.__DIR__;const f=await d.getFileHandle(name);const file=await f.getFile();const dec=await backup.decodeBackup(file,{cryptoApi:globalThis.crypto});return {title:dec.tree.name,description:dec.tree.data?.description??null,bytes:Array.from(new Uint8Array(await dec.attachments[0].blob.arrayBuffer())),size:file.size,lastModified:file.lastModified}};globalThis.__rename=async(from,to)=>{const h=await __DIR__.getFileHandle(from);if(typeof h.move!=='function')throw new Error('move-unsupported');await h.move(to);return true};globalThis.__moveTo=async(from,sub,to)=>{const d=await __DIR__.getDirectoryHandle(sub,{create:true});const h=await __DIR__.getFileHandle(from);await h.move(d,to);return true};globalThis.__remove=async(name)=>{await __DIR__.removeEntry(name);return true};return true})()");
  const rows=()=>ev("[...document.querySelectorAll('#orbit-list .orbit-entry')].map(b=>({name:b.querySelector('.orbit-entry-name')?.textContent||'',current:b.getAttribute('aria-current')==='true'}))");
  const names=async()=>(await rows()).map(r=>r.name);
@@ -31,7 +31,7 @@ try {
  const mapAfter=await ev("({title:__M5_P1B_TEST__.treeSnapshot().name,description:__M5_P1B_TEST__.treeSnapshot().data?.description||null,undo:__M5_P1B_TEST__.historyState().undo})");
  assert.deepEqual(mapAfter,mapBefore);
  const renameSave=await save(); assert.equal(renameSave.ok,false);assert.ok(['destination-missing','destination-renamed'].includes(renameSave.reason));
- assert.match(await toast(),/renamed externally|no longer in the Map Library/i);
+ assert.match(await toast(),/renamed externally|no longer in its Map Library folder|no longer in the Map Library/i);
  const a2After=await ev("(async()=>__decode('A2.orbit'))()"); assert.deepEqual(a2After,aBefore);
  await shot('external-rename.png');
  // 2. Reopen the renamed file to establish a new binding.
@@ -88,6 +88,50 @@ try {
  await clickRefresh(); const deniedStatus=await ev("document.querySelector('#shell-status')?.textContent||''");
  assert.match(deniedStatus,/denied|Reconnect/i);assert.deepEqual(await names(),listBeforeFailure);
  await clickRefresh();
+ // 9. No Refresh: the bound-parent lookup detects rename/delete/replacement before any listing update.
+ await ev("__mkIn(__DIR__,'E.orbit','Map E','e initial')"); await clickRefresh();
+ await openMap('E.orbit');
+ const eBefore=await ev("(async()=>__decode('E.orbit'))()");
+ await ev("__rename('E.orbit','E2.orbit')");
+ const renameNoRefresh=await save(); assert.equal(renameNoRefresh.ok,false); assert.equal(renameNoRefresh.reason,'destination-missing');
+ assert.equal((await names()).includes('E.orbit'),true);
+ assert.deepEqual(await ev("(async()=>__decode('E2.orbit'))()"),eBefore);
+ await openDescription(); await setText('갱신 없이 Save As');
+ await ev("document.querySelector('#editor-form button[type=submit]').click();true");
+ await wait(()=>ev("__M5_EDITOR_DIAGNOSTIC__?.reason==='destination-missing'"),'no-refresh applied unsaved',30000);
+ await ev("window.showOpenFilePicker=async()=>[];window.showSaveFilePicker=async()=>{const real=await __DEST__.getFileHandle('NoRefresh.orbit',{create:true});return {kind:'file',name:'NoRefresh.orbit',async queryPermission(){return 'granted'},async requestPermission(){return 'granted'},async isSameEntry(o){try{return real.isSameEntry?await real.isSameEntry(o):false}catch{return false}},async createWritable(){return real.createWritable()},async getFile(){return real.getFile()}}};true");
+ await ev("(()=>{[...document.querySelectorAll('#editor-form button')].find(b=>b.textContent==='Save As').click();return true})()");
+ await wait(()=>ev("document.querySelector('#editor-form')?.hidden===true"),'no-refresh save as closed',40000); await sl(300);
+ const noRefreshSaved=await ev("(async()=>__decode('NoRefresh.orbit',__DEST__))()");
+ assert.equal(noRefreshSaved.description,'갱신 없이 Save As'); assert.deepEqual(noRefreshSaved.bytes,[65,66,67,68,69]);
+ assert.deepEqual(await ev("(async()=>__decode('E2.orbit'))()"),eBefore); assert.equal((await names()).includes('E.orbit'),true);
+ await ev("__mkIn(__DIR__,'F.orbit','Map F','f initial')"); await clickRefresh(); await openMap('F.orbit');
+ await ev("__remove('F.orbit')");
+ const deleteNoRefresh=await save(); assert.equal(deleteNoRefresh.ok,false); assert.equal(deleteNoRefresh.reason,'destination-missing');
+ assert.equal((await names()).includes('F.orbit'),true);
+ await ev("__mkIn(__DIR__,'G.orbit','Map G','g initial')"); await clickRefresh(); await openMap('G.orbit');
+ await ev("__remove('G.orbit');__mkIn(__DIR__,'G.orbit','Replacement G','replacement g',[7,7,7])");
+ const replacementNoRefreshBefore=await ev("(async()=>__decode('G.orbit'))()"); assert.equal(replacementNoRefreshBefore.title,'Replacement G');
+ const replaceNoRefresh=await autoSave(); assert.equal(replaceNoRefresh.ok,false); assert.equal(replaceNoRefresh.reason,'conflict');
+ assert.deepEqual(await ev("(async()=>__decode('G.orbit'))()"),replacementNoRefreshBefore);
+ await clickRefresh();
+ // 10. A map opened from Library A stays protected while Library B is selected.
+ await ev("__mkIn(__DIR__,'H.orbit','Map H','h initial')"); await clickRefresh(); await openMap('H.orbit');
+ const hBefore=await ev("(async()=>__decode('H.orbit'))()");
+ await ev("__M5_P1B_TEST__.selectLibraryForTest('lib-ext-b')");
+ await wait(()=>ev("document.querySelector('#orbit-name')?.textContent==='External Library B'"),'B selected',20000); await sl(400);
+ assert.equal(await ev("__M5_P1B_TEST__.documentState().name"),'H.orbit');
+ const saveWhileB=await save(); assert.equal(saveWhileB.ok,true);
+ const hAfter=await ev("(async()=>__decode('H.orbit'))()"); assert.equal(hAfter.title,hBefore.title); assert.equal(hAfter.description,hBefore.description); assert.deepEqual(hAfter.bytes,hBefore.bytes);
+ await ev("__remove('H.orbit')");
+ const crossMissing=await save(); assert.equal(crossMissing.ok,false); assert.equal(crossMissing.reason,'destination-missing');
+ const bNames=await ev("[...document.querySelectorAll('#orbit-list .orbit-entry')].map(b=>b.querySelector('.orbit-entry-name')?.textContent)");
+ assert.equal(bNames.includes('H.orbit'),false);
+ await ev("__M5_P1B_TEST__.selectLibraryForTest('lib-ext')");
+ await wait(()=>ev("document.querySelector('#orbit-name')?.textContent==='External Library'"),'A reselected',20000); await sl(300);
+ await clickRefresh();
+ assert.equal((await names()).includes('H.orbit'),false);
+
  // 8. Delayed save with a document switch: no stale write or success.
  await ev("__mkIn(__DIR__,'D.orbit','Map D','d initial')"); await clickRefresh();
  await wait(()=>ev("[...document.querySelectorAll('#orbit-list .orbit-entry')].some(b=>b.querySelector('.orbit-entry-name')?.textContent==='D.orbit')"),'D listed');
@@ -101,5 +145,5 @@ try {
  const delayedSave=await ev("globalThis.__SAVE__");assert.equal(delayedSave.ok,false);assert.equal(delayedSave.reason,'stale');
  const dAfter=await ev("(async()=>__decode('D.orbit'))()");assert.deepEqual(dAfter,dBefore);
  assert.equal(errors.length,0);
- console.log(JSON.stringify({sha,mapBefore,renameRows,renameStatus,renameSave,a2After,rebound,movedSave,movedAuto,missingForm,recovered,deletedSave,deletedAuto,replacementBefore,replacedAuto,replacedManual,failedStatus,deniedStatus,delayedSave,dAfter,errors},null,2));
+ console.log(JSON.stringify({sha,mapBefore,renameRows,renameStatus,renameSave,a2After,rebound,movedSave,movedAuto,missingForm,recovered,deletedSave,deletedAuto,replacementBefore,replacedAuto,replacedManual,failedStatus,deniedStatus,delayedSave,dAfter,renameNoRefresh,deleteNoRefresh,replaceNoRefresh,noRefreshSaved,crossMissing,saveWhileB,errors},null,2));
 } finally {try{ws?.close()}catch{}try{process.kill(b.pid)}catch{}}
