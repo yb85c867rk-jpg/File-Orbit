@@ -1886,6 +1886,7 @@ async function confirmEditorEditPersisted({ action, targetId }) {
   let decoded;
   try { decoded = await decodeBackup(file, { cryptoApi: globalThis.crypto, policyContext: largeMapPolicyContext }); }
   catch { return { ok: false, reason: 'destination-undecodable', stage: 'verify' }; }
+  if (globalThis.__M5_EDITOR_CONFIRM_MISMATCH__) return { ok: false, reason: 'persistence-mismatch', field: 'description', stage: 'verify' };
   const saved = findDecodedNode(decoded?.tree, targetId);
   const live = findDecodedNode(tree, targetId);
   if (!saved || !live) return { ok: false, reason: 'persistence-mismatch', field: 'target', stage: 'verify' };
@@ -1924,10 +1925,12 @@ async function saveAppliedEditorAs() {
   };
   try {
     let result;
-    try { result = await saveCurrentDocument({ context: 'editor-save-as', saveAs: true, allowEditorOpen: true, capturedRevision: operation.revision, expectedOwnership: operation.ownership, expectedSession: operation.session, expectedDataset: operation.datasetToken }); }
+    try { result = await saveCurrentDocument({ context: 'editor-save-as', saveAs: true, allowEditorOpen: true, deferEditorFinalization: true, capturedRevision: operation.revision, expectedOwnership: operation.ownership, expectedSession: operation.session, expectedDataset: operation.datasetToken }); }
     catch (error) { result = { ok: false, message: String(error?.message || error) }; }
-    if (!appliedOperationOwns(operation)) { recordEditorOutcome({ action: operation.action, stage: 'ownership', reason: 'stale', changes: editorDraftChanges() }); return { ok: false, reason: 'stale' }; }
+    const releaseReservation = async () => { try { await result?.editorFinalization?.abandon?.(); } catch {} };
+    if (!appliedOperationOwns(operation)) { await releaseReservation(); recordEditorOutcome({ action: operation.action, stage: 'ownership', reason: 'stale', changes: editorDraftChanges() }); return { ok: false, reason: 'stale' }; }
     if (result?.handoff) {
+      await releaseReservation();
       recordEditorOutcome({ action: operation.action, stage: 'handoff', reason: 'download', changes: editorDraftChanges() });
       return { ok: false, applied: true, handoff: true, message: 'Download started. FileOrbit cannot confirm that the file was saved. The applied edit and draft are retained; use Save As again or Close.' };
     }
@@ -1942,6 +1945,7 @@ async function saveAppliedEditorAs() {
       return failure;
     }
     if (result.baselineWritten === false || result.baselineVerification?.ok === false) {
+      await releaseReservation();
       restoreSource();
       const failure = appliedEditorFailure({ ...result, ok: false, reason: 'write-unverified', stage: 'verify' }, operation.action, operation, { saveAs: true, mayExist: true });
       editorPanel?.showSaveError?.(failure.message);
@@ -1951,19 +1955,22 @@ async function saveAppliedEditorAs() {
     let confirmation;
     try { confirmation = await confirmEditorEditPersisted({ action: operation.action, targetId: operation.targetId }); }
     catch { confirmation = { ok: false, reason: 'destination-undecodable', stage: 'verify' }; }
-    if (!appliedOperationOwns(operation)) { recordEditorOutcome({ action: operation.action, stage: 'ownership', reason: 'stale', changes: editorDraftChanges() }); return { ok: false, reason: 'stale' }; }
+    if (!appliedOperationOwns(operation)) { await releaseReservation(); recordEditorOutcome({ action: operation.action, stage: 'ownership', reason: 'stale', changes: editorDraftChanges() }); return { ok: false, reason: 'stale' }; }
     if (activeDocument.handle !== destinationHandle || activeDocument.name !== result.filename || activeDocument.savedRevision !== result.revision || !activeDocument.baseline || activeDocument.baseline.handle !== activeDocument.handle) {
+      await releaseReservation();
       restoreSource();
       const failure = appliedEditorFailure({ ok: false, reason: 'destination-changed', stage: 'verify' }, operation.action, operation, { saveAs: true, mayExist: true });
       editorPanel?.showSaveError?.(failure.message);
       return failure;
     }
     if (!confirmation.ok) {
+      await releaseReservation();
       restoreSource();
       const failure = appliedEditorFailure({ ok: false, reason: confirmation.reason, stage: confirmation.stage || 'verify', field: confirmation.field }, operation.action, operation, { saveAs: true, mayExist: true });
       editorPanel?.showSaveError?.(failure.message);
       return failure;
     }
+    await result.editorFinalization?.finish?.();
     if (editorPanel?.completeAppliedFromPersistence?.() === true) editorAppliedOperation = null;
     recordEditorOutcome({ action: operation.action, stage: 'saved', reason: 'save-as-verified', changes: editorDraftChanges(), writeConfirmed: true, decodedMatch: true });
     return { ...result, ok: true, confirmed: true };
@@ -5883,8 +5890,11 @@ async function saveCurrentDocument(options = {}) {
   const expectedIdentity = options.saveAs ? null : (Object.prototype.hasOwnProperty.call(options, 'expectedIdentity') ? options.expectedIdentity : activeDocument.documentIdentity);
   return enqueueDocumentSave({ ...options, capturedRevision: options.capturedRevision ?? dataRevision, expectedOwnership: options.expectedOwnership ?? documentOwnershipSeq, expectedSession: options.expectedSession ?? persistenceSessionSeq, expectedDataset: options.expectedDataset ?? datasetToken, expectedHandle, expectedIdentity });
 }
-async function saveDocument({ saveAs = false, capturedRevision = null, allowEditorOpen = false, allowRename = false, allowReplacement = false, replacementToken = null, target = null, preencoded = null, expectedOwnership = null, expectedSession = null, expectedDataset = null, expectedHandle = null, expectedIdentity = null, allowPicker = true, allowDownload = true, interactiveConflict = true, automatic = false, recovery = false } = {}) {
+async function saveDocument({ saveAs = false, capturedRevision = null, allowEditorOpen = false, allowRename = false, allowReplacement = false, replacementToken = null, target = null, preencoded = null, expectedOwnership = null, expectedSession = null, expectedDataset = null, expectedHandle = null, expectedIdentity = null, allowPicker = true, allowDownload = true, interactiveConflict = true, automatic = false, recovery = false, context = '', deferEditorFinalization = false } = {}) {
   if (destroying) return { ok: false, reason: 'stale', stale: true, stage: 'destroyed' };
+  // Editor applied-edit Save As keeps its recovery reservation and success
+  // notification until the caller verifies the written destination.
+  const deferFinalize = deferEditorFinalization === true && context === 'editor-save-as';
   if (renameRecoveryBlock && renameRecoveryApplies()) { setShellStatus('Saving is blocked until the Rename Map disk outcome is reinspected or the map is reopened.'); return { ok: false, reason: 'rename-recovery-required' }; }
   if (renameMapInFlight && !allowRename) { setShellStatus('Wait for Rename Map to finish before saving.'); return { ok: false, reason: 'rename-in-progress' }; }
   if ((expectedOwnership !== null && expectedOwnership !== documentOwnershipSeq) || (expectedSession !== null && expectedSession !== persistenceSessionSeq) || (expectedDataset !== null && expectedDataset !== datasetToken) || (expectedHandle !== null && activeDocument.handle !== expectedHandle) || (expectedIdentity !== null && activeDocument.documentIdentity !== expectedIdentity)) return { ok: false, reason: 'stale', stale: true, stage: 'ownership' };
@@ -5904,7 +5914,7 @@ async function saveDocument({ saveAs = false, capturedRevision = null, allowEdit
   const ownerSession = persistenceSessionSeq; const ownerDataset = datasetToken;
   const revision = capturedRevision ?? dataRevision;
   let recoveryReservation = null;
-  let recoveryRetirementAttempted = false;
+  let recoveryRetirementAttempted = false; let deferredReservation = null;
   let stage = 'destination';
   let orbitProtection = null;
   let expectedHandleValue = expectedHandle;
@@ -6033,7 +6043,10 @@ async function saveDocument({ saveAs = false, capturedRevision = null, allowEdit
     const written = await documentAdapter.write(handle, encoded.blob);
     if (!owns()) return { ok: false, reason: 'stale' };
     if (!written.ok) return fail(written.reason || 'write-failed', written.stage || stage, written.error, 'Document save failed at ' + (written.stage || stage) + ' stage. The current document remains unsaved.');
-    if (recoveryReservation) { recoveryRetirementAttempted = true; await recoveryScheduler.retireDocumentSave(recoveryReservation); }
+    if (recoveryReservation) {
+      if (deferFinalize) deferredReservation = recoveryReservation;
+      else { recoveryRetirementAttempted = true; await recoveryScheduler.retireDocumentSave(recoveryReservation); }
+    }
     if (!owns()) return { ok: false, reason: 'stale', stage: 'recovery-retirement' };
     const orbitOrigin = activeDocument.origin === 'orbit' || target?.origin === 'orbit';
     const identity = activeDocument.documentIdentity || target?.documentIdentity || null;
@@ -6057,19 +6070,31 @@ async function saveDocument({ saveAs = false, capturedRevision = null, allowEdit
         baselineVerification = confirmed;
         activeDocument.baseline = confirmed.baseline || (priorBaseline ? Object.freeze({ ...priorBaseline, state: 'unknown' }) : null);
         baselineWritten = Boolean(confirmed.ok);
-        if (confirmed.ok) setRoutineStatus('Saved');
-        else if (confirmed.reason === 'changed') setShellStatus('Saved; the file changed before verification. The next overwrite requires a conflict decision.');
-        else setShellStatus('Saved; the file baseline could not be verified. The next overwrite requires revalidation.');
+        if (!deferFinalize && confirmed.ok) setRoutineStatus('Saved');
+        else if (!deferFinalize && confirmed.reason === 'changed') setShellStatus('Saved; the file changed before verification. The next overwrite requires a conflict decision.');
+        else if (!deferFinalize) setShellStatus('Saved; the file baseline could not be verified. The next overwrite requires revalidation.');
       } catch (error) {
         baselineWritten = false;
         activeDocument.baseline = priorBaseline ? Object.freeze({ ...priorBaseline, state: 'unknown' }) : null;
-        setShellStatus('Saved; the file baseline could not be verified. The next overwrite requires revalidation.');
+        if (!deferFinalize) setShellStatus('Saved; the file baseline could not be verified. The next overwrite requires revalidation.');
       }
     }
-    if (!orbitOrigin || !identity) setRoutineStatus('Saved');
+    if (!deferFinalize && (!orbitOrigin || !identity)) setRoutineStatus('Saved');
     syncPersistenceControls(); publish();
     syncOrbitCurrentEntry();
-    return { ok: true, filename: name, revision, stage: 'saved', baseline: activeDocument.baseline, baselineVerification, baselineWritten };
+    const editorFinalization = deferFinalize ? Object.freeze({
+      finish: async () => {
+        if (deferredReservation) { try { await recoveryScheduler.retireDocumentSave(deferredReservation); } catch {} deferredReservation = null; }
+        if (!destroying) setInfoStatus('Saved', { ttl: 3000 });
+      },
+      abandon: async () => {
+        if (!deferredReservation) return false;
+        const reservation = deferredReservation; deferredReservation = null;
+        try { return await recoveryScheduler.abandonDocumentSave(reservation); } catch { return false; }
+      }
+    }) : null;
+    if (deferredReservation) recoveryReservation = null;
+    return { ok: true, filename: name, revision, stage: 'saved', baseline: activeDocument.baseline, baselineVerification, baselineWritten, editorFinalization };
   } catch (error) {
     if (!owns()) return { ok: false, reason: 'stale' };
     return fail('save-failed', stage, error, 'Document save failed at ' + stage + ' stage.');
