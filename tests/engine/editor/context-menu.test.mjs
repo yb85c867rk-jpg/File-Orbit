@@ -36,11 +36,11 @@ test('menu opens only and clamps near viewport', () => {
   assert.equal(s.menu.element.style.top, '152px');
   assert.equal(s.menu.item.textContent, 'Open Folder');
 });
-test('folder menu is Open, Edit, Add, separated Delete; Add owns submenu actions', () => {
+test('root menu is Open, Rename Map, Edit Description, Add, separated Delete; Add owns submenu actions', () => {
   const s = setup();
   const root = { id: 'r', name: 'Root', hitKind: 'folder', isRoot: true };
   s.menu.open({ target: root, x: 10, y: 10 });
-  assert.deepEqual([...s.menu.actions.keys()].filter((key) => !s.menu.actions.get(key).hidden && !s.menu.submenu.contains(s.menu.actions.get(key))), ['open-folder', 'edit-folder', 'export-folder', 'delete-folder']);
+  assert.deepEqual([...s.menu.actions.keys()].filter((key) => !s.menu.actions.get(key).hidden && !s.menu.submenu.contains(s.menu.actions.get(key))), ['open-folder', 'rename-map', 'edit-description', 'export-folder', 'delete-folder']);
   assert.equal(s.menu.addButton.hidden, false);
   assert.equal(s.menu.actions.get('delete-folder').disabled, true);
   assert.match(s.menu.actions.get('delete-folder').getAttribute('title'), /structural root/);
@@ -50,6 +50,14 @@ test('folder menu is Open, Edit, Add, separated Delete; Add owns submenu actions
   s.menu.actions.get('add-folder').dispatchEvent(new Event('click'));
   assert.deepEqual(s.actions, [[root, 'add-folder']]);
   assert.equal(s.menu.isOpen, false);
+});
+test('descendant folder keeps Open, Edit Folder, Add, separated Delete', () => {
+  const s = setup();
+  const folder = { id: 'f', name: 'Folder', hitKind: 'folder', isRoot: false };
+  s.menu.open({ target: folder, x: 10, y: 10 });
+  assert.deepEqual([...s.menu.actions.keys()].filter((key) => !s.menu.actions.get(key).hidden && !s.menu.submenu.contains(s.menu.actions.get(key))), ['open-folder', 'edit-folder', 'export-folder', 'delete-folder']);
+  assert.equal(s.menu.actions.get('rename-map').hidden, true);
+  assert.equal(s.menu.actions.get('edit-description').hidden, true);
 });
 test('data menu is Open, Edit Data, separated Delete Data only', () => {
   const s = setup();

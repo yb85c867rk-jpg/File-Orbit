@@ -145,7 +145,7 @@ function executeOptions(adapter, candidate, extra = {}) {
     plan: extra.plan,
     candidate,
     permissions: { sourceRead: true, parentRead: true, parentWrite: true, sourceRemove: true },
-    getState: () => outcomeState(adapter.source, extra.revision ?? adapter.state.revision ?? 12),
+    getState: () => ({ ...outcomeState(adapter.source, extra.revision ?? adapter.state.revision ?? 12), parentHandle: adapter.parent }),
     isCancelled: extra.isCancelled || (() => false)
   };
 }
