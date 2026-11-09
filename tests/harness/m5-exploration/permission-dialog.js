@@ -80,8 +80,8 @@ export function createPermissionDialog({ document, host } = {}) {
     resolvePromise = null;
     lastFocus = document.activeElement;
     if (mode === 'delete') {
-      title.textContent = 'Permission to delete this map file';
-      body.textContent = `To delete ‘${fileName || directoryName}’ from ‘${directoryName}’, FileOrbit needs permission to remove this file.`;
+      title.textContent = 'FileOrbit needs permission to delete this file';
+      body.textContent = `To delete ‘${fileName || directoryName}’ from ‘${directoryName}’, FileOrbit needs your permission to remove it.`;
       browserNote.textContent = 'Choose Continue, then Allow in the browser prompt. Only the named .orbit file will be removed. The Map Library and other files remain.';
       proceed.textContent = 'Continue';
     } else if (mode === 'library') {

@@ -4,7 +4,7 @@
  */
 import { classifyFile, MAX_ATTACHMENT_BYTES } from '../../../src/engine/hypertree/editor/attachment-classification.js';
 
-const UNSAVED_MESSAGE = 'Changes remain in this map but have not been saved.';
+const UNSAVED_MESSAGE = 'Your edits aren’t saved yet.';
 
 export function createEditorPanel({
   document,
@@ -269,7 +269,7 @@ export function createEditorPanel({
   }
   function setError(message, field = null) {
     controller.saveFailed(message);
-    error.textContent = String(message || 'Save failed.');
+    error.textContent = String(message || 'We couldn’t save your changes.');
     const target = fieldFor(field || 'name');
     target.element.setAttribute('aria-invalid', 'true');
     setFormBusy(!canEdit());
@@ -299,7 +299,7 @@ export function createEditorPanel({
     let result;
     try { result = await onRetryApplied(); } catch (errorValue) { result = { ok: false, message: String(errorValue?.message || errorValue) }; }
     if (disposed || formToken !== ownerFormToken || controller !== ownerController || !appliedPending) { retryInFlight = false; return; }
-    if (result?.ok === true) { appliedPending = false; retryInFlight = false; save.textContent = 'Save'; cancel.textContent = 'Cancel'; controller.saveSucceeded(); status.textContent = 'Saved in this browser.'; pendingReservation = null; resetAttachment({ keepReservation: true }); hideAll(); renderSummary(); summary.focus(); try { onState?.({ reason: 'editor-saved' }); } catch {} return; }
+    if (result?.ok === true) { appliedPending = false; retryInFlight = false; save.textContent = 'Save'; cancel.textContent = 'Cancel'; controller.saveSucceeded(); status.textContent = 'Saved.'; pendingReservation = null; resetAttachment({ keepReservation: true }); hideAll(); renderSummary(); summary.focus(); try { onState?.({ reason: 'editor-saved' }); } catch {} return; }
     retryInFlight = false;
     renderAppliedUnsavedFeedback();
   }
@@ -313,7 +313,7 @@ export function createEditorPanel({
     if (shown.dataType) controller.updateField('dataType', dataTypeField.element.value);
     if (shown.link) controller.updateField('link', linkField.element.value);
     if (shown.file && (!selectedFile || fileLoading || !fileClassification || fileError)) {
-      setError(fileError || 'Choose and classify a file before saving.', 'file');
+      setError(fileError || 'Choose a file before saving.', 'file');
       return;
     }
     if (!controller.beginSave()) return;
@@ -358,8 +358,8 @@ export function createEditorPanel({
         try { onState?.({ reason: 'editor-applied-unsaved' }); } catch {}
         return;
       }
-      setError(result?.message || 'Save failed.', result?.field || null);
-      status.textContent = 'Save failed. Retry when ready.';
+      setError(result?.message || 'We couldn’t save your changes.', result?.field || null);
+      status.textContent = 'We couldn’t save your changes. Try again.';
       onState({ reason: 'editor-save-failed' });
       return;
     }
@@ -595,7 +595,7 @@ export function createEditorPanel({
     completeAppliedFromPersistence() {
       if (!appliedPending) return false;
       appliedPending = false; retryInFlight = false; save.textContent = 'Save'; cancel.textContent = 'Cancel'; saveAsAction.hidden = true; saveAsAction.disabled = true;
-      pendingReservation = null; controller.saveSucceeded(); status.textContent = 'Saved in this browser.';
+      pendingReservation = null; controller.saveSucceeded(); status.textContent = 'Saved.';
       resetAttachment({ keepReservation: true }); hideAll(); renderSummary(); summary.focus();
       try { onState?.({ reason: 'editor-saved' }); } catch {}
       return true;

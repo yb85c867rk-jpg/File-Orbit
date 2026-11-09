@@ -81,9 +81,9 @@ import { clientToCanvasCss, hitTestNode } from '../../../src/engine/hypertree/in
 import { EXPERIMENTAL_CAMERA_LIMITS, createMouseNavigationController, resetCamera } from '../../../src/engine/hypertree/navigation/index.js';
 import { f20, f200 } from '../../engine/layout/fixtures.mjs';
 
-const UNSAVED_MESSAGE = 'Changes remain in this map but have not been saved.';
-const ENCODING_FAILURE_MESSAGE = 'We couldn’t create the map file. Your changes are still in this map. Please try again.';
-const ENCODING_FAILURE_BASE = 'We couldn’t create the map file. Please try again.';
+const UNSAVED_MESSAGE = 'Your edits aren’t saved yet.';
+const ENCODING_FAILURE_MESSAGE = 'We couldn’t create the map file. Your edits are still open. Choose Save As to try a different file.';
+const ENCODING_FAILURE_BASE = 'We couldn’t create the map file. Choose Save As to try a different file.';
 
 const host = document.querySelector('#graph-host');
 const graphWrap = document.querySelector('#graph-wrap');
@@ -227,7 +227,7 @@ const shellStatusScopeMatches = (scope) => Boolean(scope && shellStatusScope
   && scope.ownership === documentOwnershipSeq
   && scope.session === persistenceSessionSeq
   && scope.dataset === datasetToken);
-const setShellStatus = (message, { kind = 'actionable', ttl = ROUTINE_NOTIFICATION_MS, scope = null, resolves = null, transient = false, preserve = false } = {}) => {
+const setShellStatus = (message, { kind = 'actionable', ttl = ROUTINE_NOTIFICATION_MS, scope = null, resolves = null, transient = false, preserve = false, forceNotification = false } = {}) => {
   const nextKind = kind === 'routine' ? 'routine' : kind === 'info' ? 'info' : kind === 'progress' ? 'progress' : 'actionable';
   if (nextKind === 'routine' && protectedInfoNotification?.token === shellStatusToken && shellStatusKind === 'info') return false;
   if (nextKind === 'progress' && shellStatusKind === 'actionable') return false;
@@ -247,7 +247,7 @@ const setShellStatus = (message, { kind = 'actionable', ttl = ROUTINE_NOTIFICATI
     if (shellStatusEl.textContent !== message) shellStatusEl.textContent = message;
     shellStatusEl.hidden = false;
   }
-  if (message && (nextKind !== 'routine' || Date.now() >= notificationPriorityUntil)) showNotificationToast(message, { kind: nextKind });
+  if (message && (forceNotification || nextKind !== 'routine' || Date.now() >= notificationPriorityUntil)) showNotificationToast(message, { kind: nextKind });
   if (shellStatusTransient && message) {
     const session = persistenceSessionSeq;
     const dataset = datasetToken;
@@ -322,7 +322,7 @@ const renewShellFeedbackScope = (scope) => {
   return scope;
 };
 const resolveShellFeedback = (scope, message, options = {}) => {
-  if (setRoutineStatus(message, { ...options, resolves: scope })) return true;
+  if (setRoutineStatus(message, { ...options, resolves: scope, forceNotification: true })) return true;
   if (shellStatusKind === 'actionable' || shellStatusKind === 'progress') return false;
   return setRoutineStatus(message, options);
 };
@@ -886,7 +886,7 @@ fitButton?.addEventListener('click', () => { if (largeMapView?.isActive()) { lar
 const shellActions = createActionButtonsController({ buttons: actionButtons, onAction: ({ action }) => {
   if (action === 'create-map') { startCreateMap(); return; }
   if (action === 'save-map') { if (editorController?.isOpen()) { if (typeof editorPanel?.submit !== 'function') { setShellStatus('Editor Save API is unavailable.'); return; } editorPanel.submit(); return; } saveCurrentDocument({ context: 'toolbar' }); return; }
-  if (action === 'save-document-as') { saveCurrentDocument({ context: 'saveAs', saveAs: true }); return; }
+  if (action === 'save-document-as') { explainSaveAs(); saveCurrentDocument({ context: 'saveAs', saveAs: true }); return; }
   if (action === 'open-map') { requestOpenSavedMaps(); return; }
   if (action === 'copy-map') { copyCurrentMap(); return; }
   if (action === 'download') { downloadBackup(); return; }
@@ -1854,19 +1854,17 @@ function recordEditorOutcome({ action, stage, reason, changes = null, writeConfi
   return outcome;
 }
 function editorPersistenceFailureMessage(persisted, action = editorController?.action, { saveAs = false, mayExist = false } = {}) {
-  const noun = editorActionNoun(action);
   const reason = String(persisted?.reason || '');
-  const retained = 'The applied edit and draft are retained. Retry Save, use Save As, or reopen the map.';
-  if (saveAs && (reason === 'write-unverified' || reason === 'persistence-mismatch' || reason === 'destination-unreadable' || reason === 'destination-undecodable' || reason === 'destination-changed')) {
-    return 'The ' + noun + ' was applied but the Save As copy could not be verified' + (mayExist ? '; a file may already exist at the destination you chose, and it was left there for inspection' : '') + '. Your applied edit is still on the original map. Inspect the destination, then use Save As again or Close.';
-  }
-  if (reason === 'permission-cancelled' || reason === 'permission-denied' || reason === 'write-permission-required') return 'The ' + noun + ' was applied but the file was not saved because write permission was not granted. ' + retained;
-  if (reason === 'conflict' || reason === 'conflict-cancelled' || reason === 'stale-generation') return 'The ' + noun + ' was applied but the file changed or could not be verified. ' + retained;
-  if (reason === 'not-found') return 'The ' + noun + ' was applied but the destination file is missing. ' + retained;
-  if (reason === 'write-unverified' || reason === 'destination-unreadable' || reason === 'destination-undecodable' || reason === 'persistence-mismatch') return 'The ' + noun + ' was applied but the saved file could not be verified. ' + retained;
-  if (reason === 'write-failed' || reason === 'encoding-failed' || reason === 'save-failed') return 'The ' + noun + ' was applied but writing or verification failed. ' + retained;
-  if (reason === 'destination-missing' || reason === 'destination-renamed' || reason === 'destination-replaced' || reason === 'permission-required' || reason === 'listing-unverified' || reason === 'listing-incomplete' || reason === 'identity-unverified') return String(persisted?.message || ('The ' + noun + ' was applied but the destination could not be verified. ' + retained));
-  return 'The ' + noun + ' was applied but was not saved. ' + retained;
+  const editsOpen = 'Your edits are still open.';
+  if (reason === 'destination-missing' || reason === 'not-found') return 'We couldn’t find the original file. ' + editsOpen + ' Choose Save As to save them in a new file.';
+  if (reason === 'destination-replaced') return 'A different file now has this name. ' + editsOpen + ' Choose Save As to keep them in a separate file.';
+  if (saveAs && (reason === 'write-unverified' || reason === 'persistence-mismatch' || reason === 'destination-unreadable' || reason === 'destination-undecodable' || reason === 'destination-changed')) return 'We couldn’t confirm that the new file saved correctly. ' + editsOpen + ' Check the file you chose, or use Save As to try again.';
+  if (reason === 'permission-cancelled' || reason === 'permission-denied' || reason === 'write-permission-required' || reason === 'permission-required') return 'FileOrbit doesn’t have permission to save this file. ' + editsOpen + ' Choose Retry Save to try again, or Save As to save a new file.';
+  if (reason === 'conflict' || reason === 'conflict-cancelled' || reason === 'stale-generation') return 'The file changed before FileOrbit could save it. ' + editsOpen + ' Choose Retry Save or Save As.';
+  if (reason === 'write-unverified' || reason === 'destination-changed' || reason === 'persistence-mismatch') return 'FileOrbit couldn’t confirm that the file saved correctly. ' + editsOpen + ' Choose Retry Save or Save As.';
+  if (reason === 'encoding-failed' || reason === 'write-failed' || reason === 'save-failed' || reason === 'injected-save-encoding-failure') return 'FileOrbit couldn’t save the file. ' + editsOpen + ' Choose Retry Save or Save As.';
+  if (reason === 'listing-unverified' || reason === 'listing-incomplete' || reason === 'identity-unverified') return 'FileOrbit couldn’t check this file’s folder. ' + editsOpen + ' Choose Save As to save them in a new file, or Reconnect Map Library.';
+  return 'FileOrbit couldn’t save your edit. ' + editsOpen + ' Choose Retry Save or Save As.';
 }
 function findDecodedNode(node, id) {
   if (!node || typeof node !== 'object') return null;
@@ -1913,10 +1911,12 @@ function appliedEditorFailure(persisted, action, owner, { saveAs = false, mayExi
   syncAutomaticSaveFeedback();
   return { ok: false, applied: true, reason: 'applied-unsaved', message, persistence: persisted, mayExist: Boolean(mayExist) };
 }
+function explainSaveAs() { setInfoStatus('Save As creates a new file and keeps the map title.', { ttl: 4000 }); }
 async function saveAppliedEditorAs() {
   const operation = editorAppliedOperation;
   if (!operation || !appliedOperationOwns(operation)) return { ok: false, reason: 'no-applied-edit' };
   if (operation.persisting) return { ok: false, reason: 'busy', message: 'A save for this applied edit is already running.' };
+  explainSaveAs();
   if (operation.revision !== dataRevision) { recordEditorOutcome({ action: operation.action, stage: 'ownership', reason: 'revision-changed', changes: editorDraftChanges() }); return { ok: false, reason: 'stale' }; }
   operation.persisting = true;
   const prior = { active: activeDocument.active, name: activeDocument.name, handle: activeDocument.handle, mode: activeDocument.mode, savedRevision: activeDocument.savedRevision, origin: activeDocument.origin, documentIdentity: activeDocument.documentIdentity, parentHandle: activeDocument.parentHandle || null, baseline: activeDocument.baseline };
@@ -2365,7 +2365,7 @@ function showNotificationToast(message, { kind = 'info' } = {}) {
   stopFolderExportSuccessTracking();
   folderExportSuccessEl.textContent = message;
   folderExportSuccessEl.dataset.notificationKind = String(kind || 'info');
-  if (kind !== 'routine') notificationPriorityUntil = Date.now() + TRANSIENT_NOTIFICATION_MS;
+  if (kind === 'actionable' || kind === 'error') notificationPriorityUntil = Date.now() + TRANSIENT_NOTIFICATION_MS;
   folderExportSuccessEl.hidden = false;
   positionFolderExportSuccess();
   requestAnimationFrame(positionFolderExportSuccess);
@@ -2639,9 +2639,9 @@ async function openRenameMap() {
     return { ok: false, reason: 'no-writable-map' };
   }
   if (editorController?.isOpen() || editorController?.isSaving()) {
-    if (lastEditorPersistenceFailure && editorAppliedOperation) setShellStatus('The ' + editorActionNoun(lastEditorPersistenceFailure.action) + ' was applied but not saved. Use Retry Save in the editor, Save As, or Cancel the applied edit before renaming the map.');
-    else if (editorController?.isSaving()) setShellStatus('Wait for the editor Save to finish before renaming the map.');
-    else setShellStatus('Finish or close the editor form before renaming the map.');
+    if (lastEditorPersistenceFailure && editorAppliedOperation) setShellStatus('Your edit isn’t saved yet. Choose Retry Save or cancel the edit before renaming the map.');
+    else if (editorController?.isSaving()) setShellStatus('Wait for the editor to finish saving, then rename the map.');
+    else setShellStatus('Save or cancel your current edit before renaming the map.');
     return { ok: false, reason: 'editor-open' };
   }
   if (documentSaveInFlight || persistenceBusy || replacementGuard || deleteMapFileGuard || pendingBackupImport || installingBackupImport) {
@@ -4882,7 +4882,7 @@ async function reconnectMapLibrary() {
     await orbitState.restoreDirectory(snapshot.handle, { name: snapshot.name, permission: 'granted', enumerate: true });
     if (destroying || token !== mapLibraryRestoreToken) return;
     const state = orbitState.snapshot();
-    if (state.error) { libraryCollection?.markAccess(selectedLibraryId, { permission: 'granted', phase: 'blocked', error: 'listing-failed' }); setShellStatus('Map Library permission was granted, but its files could not be listed: ' + String(state.error.message || state.error.reason || 'unknown error')); }
+    if (state.error) { libraryCollection?.markAccess(selectedLibraryId, { permission: 'granted', phase: 'blocked', error: 'listing-failed' }); setShellStatus('FileOrbit still couldn’t list this folder. Choose Refresh to try again.'); }
     else { libraryCollection?.markAccess(selectedLibraryId, { permission: 'granted', phase: 'ready', error: null, lastListedAt: Date.now() }); await persistMapLibraryHandle(snapshot.handle, snapshot.name); setInfoStatus('Map Library reconnected. The current map was not changed.', { ttl: 4000 }); }
     renderOrbitPanel();
     return;
@@ -4891,7 +4891,7 @@ async function reconnectMapLibrary() {
     libraryCollection?.markAccess(selectedLibraryId, { permission: 'denied', phase: 'blocked', error: 'permission-denied' });
     await orbitState.restoreDirectory(snapshot.handle, { name: snapshot.name, permission: 'denied' });
     if (destroying || token !== mapLibraryRestoreToken) return;
-    setShellStatus('Map Library access was not granted. Choose another directory or try Reconnect again.');
+    setShellStatus('FileOrbit can’t read this folder. Choose Reconnect Map Library to allow access, or choose another folder.');
     renderOrbitPanel();
     return;
   }
@@ -4903,14 +4903,14 @@ async function reconnectMapLibrary() {
     libraryCollection?.markAccess(selectedLibraryId, { permission: 'denied', phase: 'blocked', error: 'permission-denied' });
     await orbitState.restoreDirectory(snapshot.handle, { name: snapshot.name, permission: 'denied' });
     if (destroying || token !== mapLibraryRestoreToken) return;
-    setShellStatus('Map Library access was not granted. Choose another directory or try Reconnect again.');
+    setShellStatus('FileOrbit can’t read this folder. Choose Reconnect Map Library to allow access, or choose another folder.');
     renderOrbitPanel();
     return;
   }
   await orbitState.restoreDirectory(snapshot.handle, { name: snapshot.name, permission: 'granted', enumerate: true });
   if (destroying || token !== mapLibraryRestoreToken) return;
   const state = orbitState.snapshot();
-  if (state.error) { libraryCollection?.markAccess(selectedLibraryId, { permission: 'granted', phase: 'blocked', error: 'listing-failed' }); setShellStatus('Map Library permission was granted, but its files could not be listed: ' + String(state.error.message || state.error.reason || 'unknown error')); }
+  if (state.error) { libraryCollection?.markAccess(selectedLibraryId, { permission: 'granted', phase: 'blocked', error: 'listing-failed' }); setShellStatus('FileOrbit still couldn’t list this folder. Choose Refresh to try again.'); }
   else { libraryCollection?.markAccess(selectedLibraryId, { permission: 'granted', phase: 'ready', error: null, lastListedAt: Date.now() }); await persistMapLibraryHandle(snapshot.handle, snapshot.name); setInfoStatus('Map Library reconnected. The current map was not changed.', { ttl: 4000 }); }
   renderOrbitPanel();
 }
@@ -4976,13 +4976,13 @@ async function refreshOrbit({ deferStatus = false } = {}) {
   let statusMessage = null; let statusKind = 'actionable';
   if (result?.ok) {
     await syncOrbitCurrentEntry();
-    if (orbitCurrentEntryMissing) { statusMessage = 'Orbit refreshed. The open map is not in this list; it may have been renamed, moved, or deleted. Save As or reopen it.'; statusKind = 'actionable'; }
-    else { statusMessage = result.truncated ? 'Orbit refreshed; the list is truncated.' : 'Orbit refreshed.'; statusKind = 'routine'; }
+    if (orbitCurrentEntryMissing) { statusMessage = 'Map Library refreshed. The open map isn’t in this folder anymore. Choose Save As to keep your edits, or reopen the file.'; statusKind = 'actionable'; }
+    else { statusMessage = result.truncated ? 'Map Library refreshed. Not all files are shown; narrow the folder or refresh again.' : 'Map Library refreshed.'; statusKind = 'routine'; }
   } else if (result?.reason !== 'stale') {
     const kept = ' The last valid list was kept.';
-    if (result?.reason === 'permission-denied') statusMessage = 'Map Library access was denied, so the list could not be refreshed. Reconnect Map Library, then try again.' + kept;
-    else if (result?.reason === 'enumerate-failed' || result?.reason === 'preflight-incomplete' || result?.stage === 'enumerate') statusMessage = 'Map Library could not be listed. Refresh again or reconnect; the open map and its edits were preserved.' + kept;
-    else statusMessage = 'Orbit refresh failed: ' + String(result?.message || result?.reason || 'unknown error') + kept;
+    if (result?.reason === 'permission-denied') statusMessage = 'FileOrbit can’t read this folder. Choose Reconnect Map Library to restore access. The last list is still shown.';
+    else if (result?.reason === 'enumerate-failed' || result?.reason === 'preflight-incomplete' || result?.stage === 'enumerate') statusMessage = 'FileOrbit couldn’t refresh this folder. The last list is still shown. Choose Refresh to try again.';
+    else statusMessage = 'FileOrbit couldn’t refresh this folder. The last list is still shown.';
   }  if (statusMessage && !deferStatus) { if (statusKind === 'routine') setRoutineStatus(statusMessage); else setShellStatus(statusMessage); }
   renderOrbitPanel();
   return { ...(result || {}), statusMessage, statusKind };
@@ -5041,7 +5041,7 @@ async function verifyOrbitDestinationBinding({ handle, name, owns }) {
   if (!activeDocument.active || activeDocument.origin !== 'orbit') return { ok: true, skipped: true, reason: 'no-orbit-document' };
   const parentHandle = activeDocument.parentHandle || null;
   if (!parentHandle) return { ok: true, skipped: true, reason: 'parent-unknown' };
-  if (typeof parentHandle.getFileHandle !== 'function') return { ok: false, reason: 'identity-unverified', actionable: true, message: 'The verified Library folder cannot be queried, so the bound file cannot be verified. Use Save As, or reopen the map.' };
+  if (typeof parentHandle.getFileHandle !== 'function') return { ok: false, reason: 'identity-unverified', actionable: true, message: 'FileOrbit can’t check this file’s folder. Your edits are still open. Choose Save As to save them in a new file, or reopen the map.' };
   if (!owns()) return { ok: false, reason: 'stale', stale: true };
   if (globalThis.__M5_ORBIT_BINDING_GATE__) {
     globalThis.__M5_ORBIT_BINDING_GATE__.started = true;
@@ -5055,15 +5055,15 @@ async function verifyOrbitDestinationBinding({ handle, name, owns }) {
   catch (error) {
     if (!owns()) return { ok: false, reason: 'stale', stale: true };
     const errorName = String(error?.name || '');
-    if (errorName === 'NotFoundError') return { ok: false, reason: 'destination-missing', actionable: true, message: 'The open map file is no longer in its Map Library folder. Saving is blocked so the missing file is not recreated. Use Save As to keep your edits, or reopen the map.' };
-    if (errorName === 'NotAllowedError' || errorName === 'SecurityError') return { ok: false, reason: 'permission-required', actionable: true, message: 'The Map Library folder can no longer be read, so the bound file cannot be verified. Reconnect the Library, or use Save As.' };
-    return { ok: false, reason: 'identity-unverified', actionable: true, message: 'The bound Map Library entry could not be verified. Use Save As, or reopen the map.' };
+    if (errorName === 'NotFoundError') return { ok: false, reason: 'destination-missing', actionable: true, message: 'We couldn’t find the original file. Your edits are still open. Choose Save As to save them in a new file.' };
+    if (errorName === 'NotAllowedError' || errorName === 'SecurityError') return { ok: false, reason: 'permission-required', actionable: true, message: 'FileOrbit can’t read this folder. Your edits are still open. Choose Reconnect Map Library to restore access, or Save As to save them in a new file.' };
+    return { ok: false, reason: 'identity-unverified', actionable: true, message: 'FileOrbit couldn’t check this file’s folder. Your edits are still open. Choose Save As to save them in a new file, or reopen the map.' };
   }
   if (!owns()) return { ok: false, reason: 'stale', stale: true };
   let same = false;
   try { same = await sameFileEntry(candidate, handle); } catch { same = false; }
   if (!owns()) return { ok: false, reason: 'stale', stale: true };
-  if (!same) return { ok: false, reason: 'destination-replaced', actionable: true, message: 'Another file now uses “' + expectedName + '”. It was not overwritten. Use Save As, or reopen the file you intend to edit.' };
+  if (!same) return { ok: false, reason: 'destination-replaced', actionable: true, message: 'A different file now has this name. Your edits are still open. Choose Save As to keep them in a separate file.' };
   return { ok: true };
 }
 async function protectOrbitOverwrite({ handle, name, owns, approval = null, interactive = true }) {
@@ -5071,7 +5071,7 @@ async function protectOrbitOverwrite({ handle, name, owns, approval = null, inte
     return { ok: true, handle, name, approval: null, copied: false };
   }
   if (!activeDocument.baseline) {
-    return { ok: false, reason: 'unprotected-baseline', message: 'This Orbit document has no overwrite baseline. Reopen it before saving.' };
+    return { ok: false, reason: 'unprotected-baseline', message: 'FileOrbit can’t confirm this file’s saved state. Reopen the map before saving.' };
   }
   const acceptCopy = async (decision) => {
     if (!decision.picked?.ok) return { ok: false, reason: decision.picked?.reason || 'cancelled', cancelled: decision.picked?.reason === 'cancelled' };
@@ -5106,17 +5106,17 @@ async function protectOrbitOverwrite({ handle, name, owns, approval = null, inte
     if (result.ok) return { ok: true, handle, name, approval, copied: false };
     if (result.reason === 'approval-stale') { approval = null; continue; }
     if (result.reason === 'not-found') {
-      return { ok: false, reason: 'not-found', actionable: true, message: 'The destination file no longer exists. Save a Copy or reopen the file.' };
+      return { ok: false, reason: 'not-found', actionable: true, message: 'We couldn’t find the original file. Your edits are still open. Choose Save As to save them in a new file.' };
     }
     if (result.reason === 'unverifiable') {
-      if (!interactive) return { ok: false, reason: 'conflict', actionable: true, message: 'The file changed or cannot be verified. Choose Retry or Save As.' };
+      if (!interactive) return { ok: false, reason: 'conflict', actionable: true, message: 'We couldn’t confirm this file. Your edits are still open. Choose Retry Save or Save As.' };
       const decision = await askOrbitConflict({ filename: name, reason: 'unverifiable', allowOverwrite: false });
       if (!owns()) return { ok: false, reason: 'stale', stale: true };
       if (decision.decision === 'copy') return acceptCopy(decision);
       return { ok: false, reason: 'conflict-cancelled', cancelled: true, message: UNSAVED_MESSAGE };
     }
     if (result.reason === 'conflict') {
-      if (!interactive) return { ok: false, reason: 'conflict', actionable: true, message: 'The file changed externally. Choose Retry or Save As.' };
+      if (!interactive) return { ok: false, reason: 'conflict', actionable: true, message: 'The file changed before FileOrbit could save it. Your edits are still open. Choose Retry Save or Save As.' };
       const decision = await askOrbitConflict({ filename: name, reason: 'changed', allowOverwrite: true });
       if (!owns()) return { ok: false, reason: 'stale', stale: true };
       if (decision.decision === 'copy') return acceptCopy(decision);
@@ -5255,7 +5255,7 @@ async function openOrbitEntry(entry) {
   let file;
   try { file = await entry.handle.getFile(); }
   catch (error) {
-    if (ownerCurrent() && sessionCurrent()) setOpenErrorStatus(error?.name === 'NotFoundError' ? 'That Orbit map no longer exists. Refresh the list.' : 'Could not read that Orbit map.', token);
+    if (ownerCurrent() && sessionCurrent()) setOpenErrorStatus(error?.name === 'NotFoundError' ? 'That map file is no longer in this folder. Choose Refresh to update the list.' : 'FileOrbit couldn’t read that map file.', token);
     return;
   }
   if (!ownerCurrent() || !sessionCurrent()) return;
@@ -5654,7 +5654,7 @@ async function openDocument() {
   if (!picked.ok) {
     if (picked.reason === 'cancelled') showTransientStatus('Open cancelled. The current map and edits were preserved.');
     else if (picked.reason === 'permission-denied') setShellStatus('Permission to read that document was denied. The current map was preserved.');
-    else setShellStatus('Could not open that document. The current map was preserved.');
+    else setShellStatus('FileOrbit couldn’t open that file. The current map is still open.');
     return picked;
   }
   if (!/\.orbit$/i.test(picked.file.name || '')) { setShellStatus('Only .orbit files are supported. The current map was preserved.'); return { ok: false, reason: 'unsupported-extension' }; }
@@ -5923,6 +5923,7 @@ function requestAutomaticSave() {
 }
 
 async function runAutomaticSaveFeedbackAction(kind) {
+  if (kind === 'save-as') explainSaveAs();
   const failure = automaticSaveFailure;
   if (!failure || automaticSaveActionInFlight || !automaticSaveContextCurrent(failure)) { syncAutomaticSaveFeedback(); return; }
   automaticSaveActionInFlight = true;
@@ -5963,18 +5964,18 @@ async function saveDocument({ saveAs = false, capturedRevision = null, allowEdit
   // Editor applied-edit Save As keeps its recovery reservation and success
   // notification until the caller verifies the written destination.
   const deferFinalize = deferEditorFinalization === true && context === 'editor-save-as';
-  if (renameRecoveryBlock && renameRecoveryApplies()) { setShellStatus('Saving is blocked until the Rename Map disk outcome is reinspected or the map is reopened.'); return { ok: false, reason: 'rename-recovery-required' }; }
-  if (renameMapInFlight && !allowRename) { setShellStatus('Wait for Rename Map to finish before saving.'); return { ok: false, reason: 'rename-in-progress' }; }
+  if (renameRecoveryBlock && renameRecoveryApplies()) { setShellStatus('Saving is paused. Reopen the map or check the Rename Map result before saving.'); return { ok: false, reason: 'rename-recovery-required' }; }
+  if (renameMapInFlight && !allowRename) { setShellStatus('Wait for Rename Map to finish, then save again.'); return { ok: false, reason: 'rename-in-progress' }; }
   if ((expectedOwnership !== null && expectedOwnership !== documentOwnershipSeq) || (expectedSession !== null && expectedSession !== persistenceSessionSeq) || (expectedDataset !== null && expectedDataset !== datasetToken) || (expectedHandle !== null && activeDocument.handle !== expectedHandle) || (expectedIdentity !== null && activeDocument.documentIdentity !== expectedIdentity)) return { ok: false, reason: 'stale', stale: true, stage: 'ownership' };
   if (!hasMap || !tree || !attachmentRegistry) { setShellStatus('There is no map to save.'); return { ok: false, reason: 'no-map' }; }
   if (deleteMapFileGuard && !saveAs) {
     const guardedHandle = deleteMapFileGuard.fileHandle;
     const activeEquivalent = activeDocument.handle ? await sameFileEntry(activeDocument.handle, guardedHandle) : false;
     const targetEquivalent = target?.handle ? await sameFileEntry(target.handle, guardedHandle) : false;
-    if (activeEquivalent || targetEquivalent) { setShellStatus('This map file is pending deletion; saving is blocked until that operation finishes.'); return { ok: false, reason: 'file-deletion-pending' }; }
+    if (activeEquivalent || targetEquivalent) { setShellStatus('This file is being deleted. Wait for that to finish before saving.'); return { ok: false, reason: 'file-deletion-pending' }; }
   }
-  if (documentSaveInFlight) { setShellStatus('A document save is already running.'); return { ok: false, reason: 'busy' }; }
-  if (editorController?.isOpen() && !allowEditorOpen) { setShellStatus('Finish or close the editor form before saving the document.'); return { ok: false, reason: 'editor-open' }; }
+  if (documentSaveInFlight) { setShellStatus('A save is already in progress. Wait for it to finish.'); return { ok: false, reason: 'busy' }; }
+  if (editorController?.isOpen() && !allowEditorOpen) { setShellStatus('Save or cancel your current edit before saving.'); return { ok: false, reason: 'editor-open' }; }
   if (persistenceBusy || (replacementGuard && !(allowReplacement && replacementGuard.token === replacementToken))) { setShellStatus('Finish the current operation before saving the document.'); return { ok: false, reason: 'busy' }; }
   if (!automatic && !recovery) { if (automaticSaveFailure) clearAutomaticSaveFailure(); else automaticSaveBlocked = false; }
   const operation = ++documentOperation;
@@ -6004,8 +6005,8 @@ async function saveDocument({ saveAs = false, capturedRevision = null, allowEdit
     let name = target?.name || (activeDocument.active ? activeDocument.name : safeDocumentFilename(tree.name));
     let mode = handle ? 'writable' : 'download';
     if (!handle) {
-      if (!allowPicker) return fail('no-destination', 'destination', null, 'This map has no writable destination. Choose Save As to persist it.');
-      if (automatic) return fail('no-destination', 'destination', null, 'This map has no writable destination. Choose Save As to persist it.');
+      if (!allowPicker) return fail('no-destination', 'destination', null, 'This map isn’t saved to a file yet. Choose Save As to save it.');
+      if (automatic) return fail('no-destination', 'destination', null, 'This map isn’t saved to a file yet. Choose Save As to save it.');
     }
     if (!handle && !target?.forceDownload && documentAdapter.writableSupported) {
       stage = 'picker';
@@ -6026,7 +6027,7 @@ async function saveDocument({ saveAs = false, capturedRevision = null, allowEdit
       const queried = savePermissionQueryOverride ? { ok: true, permission: savePermissionQueryOverride } : await orbitAdapter.queryWritePermission(handle);
       if (!owns()) { permissionDialog?.close(false); return { ok: false, reason: 'stale' }; }
       if (!queried?.ok || (queried.permission !== 'granted' && queried.permission !== 'unknown')) {
-        if (automatic || recovery) return fail('write-permission-required', 'permission', null, 'Save needs permission to write to this destination. Use Save to grant access.');
+        if (automatic || recovery) return fail('write-permission-required', 'permission', null, 'FileOrbit needs permission to save this file. Choose Save to allow access.');
         if (!permissionDialog) return fail('permission-unavailable', 'permission', null, 'Permission guidance is unavailable. The map remains unsaved.');
         const accepted = await permissionDialog.showSavePermission({ directoryName: name, fileName: name, fileSpecific: handle.kind === 'file' });
         if (!owns()) { permissionDialog.close(false); return { ok: false, reason: 'stale' }; }
@@ -6034,7 +6035,7 @@ async function saveDocument({ saveAs = false, capturedRevision = null, allowEdit
         savePermissionRequestCount += 1;
         const requested = savePermissionRequestOverride ? { ok: savePermissionRequestOverride !== 'denied', permission: savePermissionRequestOverride } : await orbitAdapter.requestWritePermission(handle);
         if (!owns()) { permissionDialog.close(false); return { ok: false, reason: 'stale' }; }
-        if (!requested?.ok || requested.permission === 'denied') return fail('permission-denied', 'permission', requested?.error || null, 'Write permission was not granted. The map remains unsaved.');
+        if (!requested?.ok || requested.permission === 'denied') return fail('permission-denied', 'permission', requested?.error || null, 'FileOrbit doesn’t have permission to save this file. Your edits are still open.');
       }
     }
     let sameOrbitDestination = false;
@@ -6110,7 +6111,7 @@ async function saveDocument({ saveAs = false, capturedRevision = null, allowEdit
     stage = 'write';
     const written = await documentAdapter.write(handle, encoded.blob);
     if (!owns()) return { ok: false, reason: 'stale' };
-    if (!written.ok) return fail(written.reason || 'write-failed', written.stage || stage, written.error, 'Document save failed at ' + (written.stage || stage) + ' stage. The current document remains unsaved.');
+    if (!written.ok) return fail(written.reason || 'write-failed', written.stage || stage, written.error, 'FileOrbit couldn’t save the map. Your edits are still open.');
     if (recoveryReservation) {
       if (deferFinalize) deferredReservation = recoveryReservation;
       else { recoveryRetirementAttempted = true; await recoveryScheduler.retireDocumentSave(recoveryReservation); }
@@ -6141,12 +6142,12 @@ async function saveDocument({ saveAs = false, capturedRevision = null, allowEdit
         activeDocument.baseline = confirmed.baseline || (priorBaseline ? Object.freeze({ ...priorBaseline, state: 'unknown' }) : null);
         baselineWritten = Boolean(confirmed.ok);
         if (!deferFinalize && confirmed.ok) setRoutineStatus('Saved');
-        else if (!deferFinalize && confirmed.reason === 'changed') setShellStatus('Saved; the file changed before verification. The next overwrite requires a conflict decision.');
-        else if (!deferFinalize) setShellStatus('Saved; the file baseline could not be verified. The next overwrite requires revalidation.');
+        else if (!deferFinalize && confirmed.reason === 'changed') setShellStatus('Saved, but the file changed before FileOrbit could check it.');
+        else if (!deferFinalize) setShellStatus('Saved, but FileOrbit couldn’t check the file.');
       } catch (error) {
         baselineWritten = false;
         activeDocument.baseline = priorBaseline ? Object.freeze({ ...priorBaseline, state: 'unknown' }) : null;
-        if (!deferFinalize) setShellStatus('Saved; the file baseline could not be verified. The next overwrite requires revalidation.');
+        if (!deferFinalize) setShellStatus('Saved, but FileOrbit couldn’t check the file.');
       }
     }
     if (!deferFinalize && (!orbitOrigin || !identity)) setRoutineStatus('Saved');
@@ -6322,7 +6323,7 @@ async function resumeBackupImport(request) {
     if (!orbitMeta) resolveShellFeedback(renewShellFeedbackScope(request.feedbackScope), 'Opened ' + (activeDocument.name || request.documentMeta.name || 'document'));
     syncPersistenceControls(); publish();
   } else {
-    setRoutineStatus('Backup restored. Save to IndexedDB to keep this restored map on this device.');
+    setRoutineStatus('Backup restored. Choose Save to keep this map in FileOrbit.');
   }
   syncOrbitCurrentEntry();
   return { ok: true, manifest: request.manifest, baselineVerification };

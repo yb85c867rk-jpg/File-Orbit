@@ -9,7 +9,7 @@ export function createUnsavedMapPrompt({ document, host, onSave, onDiscard, onCa
   dialog.setAttribute('aria-modal', 'true');
   dialog.setAttribute('aria-labelledby', 'unsaved-map-title');
   const title = document.createElement('h2'); title.id = 'unsaved-map-title'; title.textContent = 'Unsaved map changes';
-  const message = document.createElement('p'); message.textContent = 'This map has changes that are not saved in this browser.';
+  const message = document.createElement('p'); message.textContent = 'Your edits aren’t saved yet.';
   const error = document.createElement('p'); error.className = 'unsaved-map-error'; error.setAttribute('role', 'alert');
   const actions = document.createElement('div'); actions.className = 'unsaved-map-actions';
   const save = document.createElement('button'); save.type = 'button'; save.textContent = 'Save and continue';
@@ -32,7 +32,7 @@ export function createUnsavedMapPrompt({ document, host, onSave, onDiscard, onCa
     if (restoreFocus && lastFocus?.focus) lastFocus.focus();
     lastFocus = null;
   };
-  const show = ({ text = 'This map has changes that are not saved in this browser.', saveLabel: nextLabel = 'Save and continue' } = {}) => {
+  const show = ({ text = 'Your edits aren’t saved yet.', saveLabel: nextLabel = 'Save and continue' } = {}) => {
     if (open) return;
     open = true; busy = false; error.textContent = ''; message.textContent = text; saveLabel = String(nextLabel || 'Save and continue');
     save.disabled = false; discard.disabled = false; cancel.disabled = false; save.textContent = saveLabel;

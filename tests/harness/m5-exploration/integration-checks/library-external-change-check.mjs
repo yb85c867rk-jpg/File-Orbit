@@ -27,11 +27,11 @@ try {
  await wait(()=>ev("[...document.querySelectorAll('#orbit-list .orbit-entry')].some(b=>b.querySelector('.orbit-entry-name')?.textContent==='A2.orbit')"),'renamed listed');
  const renameRows=await rows(); const renameStatus=await orbitStatus();
  assert.deepEqual(renameRows.map(r=>r.name).sort(),['A2.orbit','Other.orbit']);assert.equal(renameRows.find(r=>r.name==='A2.orbit').current,false);
- assert.match(renameStatus,/not in this list/i);
+ assert.match(renameStatus,/isn.t in this folder|not in this list/i);
  const mapAfter=await ev("({title:__M5_P1B_TEST__.treeSnapshot().name,description:__M5_P1B_TEST__.treeSnapshot().data?.description||null,undo:__M5_P1B_TEST__.historyState().undo})");
  assert.deepEqual(mapAfter,mapBefore);
  const renameSave=await save(); assert.equal(renameSave.ok,false);assert.ok(['destination-missing','destination-renamed'].includes(renameSave.reason));
- assert.match(await toast(),/renamed externally|no longer in its Map Library folder|no longer in the Map Library/i);
+ assert.match(await toast(),/couldn.t find the original file|Choose Save As/i);
  const a2After=await ev("(async()=>__decode('A2.orbit'))()"); assert.deepEqual(a2After,aBefore);
  await shot('external-rename.png');
  // 2. Reopen the renamed file to establish a new binding.
@@ -42,7 +42,7 @@ try {
  await clickRefresh();
  await wait(()=>ev("[...document.querySelectorAll('#orbit-list .orbit-entry')].some(b=>b.querySelector('.orbit-entry-name')?.textContent==='A3.orbit')"),'moved away');
  assert.equal((await names()).includes('A2.orbit'),false);
- assert.match(await orbitStatus(),/not in this list/i);
+ assert.match(await orbitStatus(),/isn.t in this folder|not in this list/i);
  const movedSave=await save(); assert.equal(movedSave.ok,false);assert.equal(movedSave.reason,'destination-missing');
  const movedAuto=await autoSave(); assert.equal(movedAuto.ok,false);assert.equal(movedAuto.reason,'destination-missing');
  const movedNames=await names(); assert.equal(movedNames.includes('A2.orbit'),false);assert.equal(movedNames.includes('A3.orbit'),true);
@@ -83,10 +83,10 @@ try {
  const listBeforeFailure=await names();
  await ev("__M5_P1B_TEST__.failNextOrbitListing('enumerate-failed');true");
  await clickRefresh(); const failedStatus=await ev("document.querySelector('#shell-status')?.textContent||''");
- assert.match(failedStatus,/could not be listed|last valid list/i);assert.deepEqual(await names(),listBeforeFailure);
+ assert.match(failedStatus,/couldn.t refresh this folder|last list is still shown/i);assert.deepEqual(await names(),listBeforeFailure);
  await ev("__M5_P1B_TEST__.failNextOrbitListing('permission-denied');true");
  await clickRefresh(); const deniedStatus=await ev("document.querySelector('#shell-status')?.textContent||''");
- assert.match(deniedStatus,/denied|Reconnect/i);assert.deepEqual(await names(),listBeforeFailure);
+ assert.match(deniedStatus,/can.t read this folder|Reconnect Map Library/i);assert.deepEqual(await names(),listBeforeFailure);
  await clickRefresh();
  // 9. No Refresh: the bound-parent lookup detects rename/delete/replacement before any listing update.
  await ev("__mkIn(__DIR__,'E.orbit','Map E','e initial')"); await clickRefresh();

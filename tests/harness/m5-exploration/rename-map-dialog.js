@@ -13,7 +13,7 @@ export function createRenameMapDialog({ document, host, onValidate, onSubmit, on
   const title = document.createElement('h2'); title.id = 'rename-map-title'; title.textContent = 'Rename Map';
   head.append(title);
   const body = document.createElement('div'); body.className = 'embed-dialog-copy';
-  const explanation = document.createElement('p'); explanation.id = 'rename-map-copy'; explanation.textContent = 'Change the map title and its .orbit filename together.';
+  const explanation = document.createElement('p'); explanation.id = 'rename-map-copy'; explanation.textContent = 'Rename Map changes the map title and its file name.';
   const currentRow = document.createElement('p');
   const currentLabel = document.createElement('strong'); currentLabel.textContent = 'Current filename: ';
   const currentName = document.createElement('span'); currentName.id = 'rename-map-current';

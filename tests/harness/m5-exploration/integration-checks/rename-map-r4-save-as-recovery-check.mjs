@@ -38,7 +38,7 @@ try {
  const recoveredExists=await decode('Recovered.orbit','R4 Save As Dest');
  assert.equal(unverifiedForm.open,true,'unverified Save As closed the editor');assert.equal(unverifiedForm.saveAs,true);assert.equal(unverifiedForm.retry,true);assert.equal(unverifiedForm.draft,DESCRIPTION);
  assert.equal(unverified.stage,'verify');assert.equal(unverified.appliedRetained,true);assert.equal(unverified.write.confirmed,false);
- assert.match(unverifiedForm.status,/could not be verified/i);assert.match(unverifiedForm.status,/may already exist/i);
+ assert.match(unverifiedForm.status,/couldn.t confirm/i);assert.match(unverifiedForm.status,/Check the file you chose/i);
  assert.equal(stillSource,true);assert.equal(recoveredExists.description,DESCRIPTION);assert.deepEqual(recoveredExists.bytes,[65,66,67,68,69]);
  const originalAfterUnverified=await decode('B.orbit'); assert.deepEqual(originalAfterUnverified,originalBefore);
  await shot('r4-save-as-unverified.png');
@@ -71,7 +71,7 @@ try {
  await clickSaveAs();
  await waitDiag("__M5_EDITOR_DIAGNOSTIC__?.reason==='write-unverified'",'wrong destination unverified',30000); await sl(300);
  const wrongDiag=await diag(); const wrongForm=await recovery(); const wrongFile=await decode('Wrong.orbit','R4 Save As Dest'); const currentAfterWrong=await decode('Recovered.orbit','R4 Save As Dest');
- assert.equal(wrongForm.open,true);assert.equal(wrongDiag.reason,'write-unverified');assert.match(wrongForm.status,/may already exist/i);
+ assert.equal(wrongForm.open,true);assert.equal(wrongDiag.reason,'write-unverified');assert.match(wrongForm.status,/Check the file you chose|Save As/i);
  assert.equal(wrongFile.description,DESC3);assert.deepEqual(wrongFile.bytes,[65,66,67,68,69]);
  assert.equal(currentAfterWrong.description,DESC2);
  await closeEditor();
@@ -173,7 +173,7 @@ try {
  assert.equal(abandonRaceForm.open,true,'late failure cleanup closed replacement editor');
  assert.equal(abandonRaceForm.draft,'replacement after abandon');
  assert.equal(abandonRaceSaved,savedBeforeAbandonRace);
- assert.doesNotMatch(abandonRaceToast,/could not be verified/);
+ assert.doesNotMatch(abandonRaceToast,/couldn.t confirm/);
  assert.equal(abandonRaceCheckpoint.hasCheckpoint,true);
  assert.equal(abandonRaceCheckpoint.lastRetirement?.saveId,retireBeforeAbandonRace.lastRetirement?.saveId,'old cleanup retired a checkpoint');
  await ev("globalThis.__M5_EDITOR_CONFIRM_MISMATCH__=false;true");

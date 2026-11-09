@@ -98,7 +98,7 @@ export function createUploadPreviewDialog({ document, host, onAdd, onChooseAgain
     destination.textContent = 'Destination: ' + String(destinationPath || folderName || 'folder');
     if (preparation?.summary) {
       const s = preparation.summary;
-      summary.textContent = `${s.addedFolderCount} folders, ${s.addedFileCount} files added. Result: ${s.resultingNodeCount} / ${s.nodeLimit} nodes. Attachments: ${s.addedAttachmentBytes} bytes.`;
+      summary.textContent = `${s.addedFolderCount} folders and ${s.addedFileCount} files added. The map now has ${s.resultingNodeCount} of ${s.nodeLimit} items and ${s.addedAttachmentBytes} bytes of attachments.`;
       limitation.hidden = s.folderListingComplete !== false;
       limitation.textContent = s.folderListingComplete === false
         ? 'This browser picker does not expose empty folders; empty source folders may be omitted.'

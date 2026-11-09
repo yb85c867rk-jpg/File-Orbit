@@ -169,12 +169,15 @@ export function createFileConflictDialog({ document, host, getMapBounds = null }
     const name = safeFilename(filename);
     fileLine.textContent = name;
     const unverified = reason === 'unverifiable' || reason === 'unknown';
-    title.textContent = unverified ? 'This file could not be verified' : 'This file has a newer saved version';
-    overwrite.hidden = unverified || allowOverwrite === false;
-    overwrite.disabled = unverified || allowOverwrite === false;
+    const replaced = reason === 'replaced';
+    title.textContent = unverified ? 'We couldn’t check this file' : replaced ? 'A different file now has this name' : 'This file changed since you saved';
+    overwrite.hidden = unverified || replaced || allowOverwrite === false;
+    overwrite.disabled = unverified || replaced || allowOverwrite === false;
     description.textContent = unverified
-      ? 'FileOrbit could not verify the destination contents. Overwriting is unavailable; save a copy or cancel instead.'
-      : 'Another window or app saved changes to this file. Keep both versions by saving your changes as a copy, or replace the saved version with your changes. Cancel keeps your changes open without saving.';
+      ? 'FileOrbit couldn’t confirm what is in the saved file. Choose Save a Copy to keep your edits in a new file, or Cancel.'
+      : replaced
+        ? 'Your edits are still open. Choose Save a Copy to keep them in a separate file, or Cancel.'
+        : 'This file changed outside FileOrbit. Choose Replace Saved File to save over it, Save a Copy to keep both versions, or Cancel to keep your edits open.';
     const request = { id: ++sequence, settled: false, resolve: null, onSaveCopy };
     const promise = new Promise((resolve) => { request.resolve = resolve; });
     active = request;

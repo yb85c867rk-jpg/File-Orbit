@@ -15,7 +15,7 @@ export function createDeleteMapFileDialog({ document, host, onDelete, onCancel }
   const name = document.createElement('p'); name.className = 'delete-map-file-name';
   const library = document.createElement('p'); library.className = 'delete-map-file-library';
   const copy = document.createElement('p'); copy.id = 'delete-map-file-copy';
-  copy.textContent = 'This deletes the .orbit file from this folder. The Map Library and your original source files will remain.';
+  copy.textContent = 'This removes this map file from this folder. The Map Library and your original files stay.';
   const undo = document.createElement('p'); undo.className = 'delete-map-file-undo';
   undo.textContent = 'This file deletion cannot be undone with map Undo/Redo.';
   const error = document.createElement('p'); error.className = 'delete-map-file-error'; error.setAttribute('role', 'alert'); error.hidden = true;
@@ -67,7 +67,7 @@ export function createDeleteMapFileDialog({ document, host, onDelete, onCancel }
       const result = await onDelete?.({ ...target });
       if (!open) return;
       if (result?.ok) { busy = false; close({ restoreFocus: false }); return; }
-      busy = false; setError(String(result?.message || 'The .orbit file could not be deleted.')); sync();
+      busy = false; setError(String(result?.message || 'The map file couldn’t be deleted.')); sync();
     } catch (failure) {
       if (!open) return;
       busy = false; setError(String(failure?.message || failure)); sync();

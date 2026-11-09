@@ -12,7 +12,7 @@ export function createRecoveryDialog({ document, host, onRecover, onDiscard, onL
   const status = document.createElement('p'); status.className = 'recovery-status'; status.setAttribute('role', 'status'); status.setAttribute('aria-live', 'polite');
   const list = document.createElement('div'); list.className = 'recovery-list';
   const warning = document.createElement('p'); warning.className = 'recovery-warning';
-  warning.textContent = 'Discard recovery permanently removes the selected recovery copy from this browser. It does not delete the original .orbit file.';
+  warning.textContent = 'Discard removes this recovery copy from FileOrbit permanently. It does not delete the original .orbit file.';
   const actions = document.createElement('div'); actions.className = 'recovery-actions';
   const recoverButton = document.createElement('button'); recoverButton.type = 'button'; recoverButton.textContent = 'Recover work';
   const discardButton = document.createElement('button'); discardButton.type = 'button'; discardButton.textContent = 'Discard recovery';

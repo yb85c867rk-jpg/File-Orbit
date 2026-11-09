@@ -24,13 +24,13 @@ export function createOrbitPanel({ document, onRefresh, onSelect, onChoose, onRe
     try { return new Date(value).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }); } catch { return ''; }
   };
   const statusFor = (snapshot, { openDocumentMissing = false } = {}) => {
-    if (snapshot?.phase === 'opening') return 'Opening Orbit…';
-    if (!snapshot?.handle) return 'Choose a directory to show its .orbit maps.';
+    if (snapshot?.phase === 'opening') return 'Opening folder…';
+    if (!snapshot?.handle) return 'Choose a folder to show its map files.';
     if (snapshot.phase === 'listing') return 'Refreshing Map Library…';
-    if (snapshot.phase === 'blocked' || snapshot.error) return snapshot.error?.message || 'This Orbit is unavailable. Refresh after restoring permission.';
+    if (snapshot.phase === 'blocked' || snapshot.error) return snapshot.error?.message || 'This folder isn’t available. Choose Reconnect Map Library.';
     if (snapshot.stale && snapshot.truncated) return 'The map list may be out of date and is truncated. Refresh to update it.';
     if (snapshot.stale) return 'The map list may be out of date. Refresh to update it.';
-    if (openDocumentMissing) return 'The open map is not in this list. It may have been renamed, moved, or deleted; Save As or reopen it.';
+    if (openDocumentMissing) return 'The open map isn’t in this folder. It may have been renamed, moved, or deleted. Choose Save As or reopen it.';
     if (snapshot.truncated) {
       const count = snapshot.entries.length;
       return `Showing ${count} map${count === 1 ? '' : 's'}; the directory list is truncated. Refresh after narrowing the folder.`;

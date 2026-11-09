@@ -11,12 +11,12 @@ export function createFileOpenBrowserDialog({ document, host, supported = true, 
   card.className = 'file-open-browser-card';
   const title = document.createElement('h2');
   title.id = 'file-open-browser-title';
-  title.textContent = 'Open Orbit Folder';
+  title.textContent = 'Open Map Folder';
   const folderRow = document.createElement('div');
   folderRow.className = 'file-open-browser-folder';
   const folderName = document.createElement('span');
   folderName.className = 'file-open-browser-folder-name';
-  folderName.textContent = 'No Orbit selected';
+  folderName.textContent = 'No folder selected';
   const folderActions = document.createElement('div');
   folderActions.className = 'file-open-browser-folder-actions';
   const chooseButton = document.createElement('button');
@@ -48,7 +48,7 @@ export function createFileOpenBrowserDialog({ document, host, supported = true, 
   listWrap.className = 'file-open-browser-list-wrap';
   const list = document.createElement('ul');
   list.className = 'file-open-browser-list';
-  list.setAttribute('aria-label', 'Orbit map files');
+  list.setAttribute('aria-label', 'Map files');
   listWrap.appendChild(list);
   const footer = document.createElement('div');
   footer.className = 'file-open-browser-footer';
@@ -117,22 +117,22 @@ export function createFileOpenBrowserDialog({ document, host, supported = true, 
     currentKey = nextCurrentKey || null;
     if (typeof nextBusy === 'boolean') busy = nextBusy;
     const active = Boolean(snapshot?.handle);
-    folderName.textContent = active ? String(snapshot.name || 'Orbit') : 'No Orbit selected';
+    folderName.textContent = active ? String(snapshot.name || 'Orbit') : 'No folder selected';
     chooseButton.textContent = active ? 'Change folder' : 'Choose folder';
     const phase = snapshot?.phase;
     const entries = snapshot?.entries || [];
     let stateText = '';
     if (!active && phase === 'opening') stateText = 'Opening folder…';
     else if (!active) stateText = supported ? 'Choose a folder to browse its top-level .orbit files.' : 'Orbit folder access is not available in this browser. Open file elsewhere remains available.';
-    else if (phase === 'opening' || phase === 'listing') stateText = 'Refreshing Orbit…';
-    else if (phase === 'blocked' || snapshot?.error) stateText = snapshot?.error?.message || 'This Orbit is unavailable. Restore permission or choose another folder.';
-    else if (snapshot?.truncated) stateText = 'The Orbit list is truncated; showing the first ' + entries.length + ' maps.';
+    else if (phase === 'opening' || phase === 'listing') stateText = 'Refreshing folder…';
+    else if (phase === 'blocked' || snapshot?.error) stateText = snapshot?.error?.message || 'This folder isn’t available. Restore permission or choose another folder.';
+    else if (snapshot?.truncated) stateText = 'The folder list is truncated; showing the first ' + entries.length + ' maps.';
     else if (snapshot?.stale) stateText = 'The Orbit list may be out of date. Refresh to update it.';
     else if (!entries.length) stateText = 'This Orbit has no top-level .orbit files.';
     else stateText = entries.length + ' map' + (entries.length === 1 ? '' : 's') + ' in ' + String(snapshot.name || 'this Orbit') + '.';
     status.textContent = stateText;
     empty.hidden = active && entries.length > 0;
-    empty.textContent = !active ? (supported ? 'No Orbit folder selected.' : 'Orbit folder access is not available in this browser.') : 'No top-level .orbit files in this Orbit.';
+    empty.textContent = !active ? (supported ? 'No Orbit folder selected.' : 'This browser can’t open folders.') : 'No top-level .orbit files in this Orbit.';
     renderRows();
     setBusy(busy);
   };
@@ -166,7 +166,7 @@ export function createFileOpenBrowserDialog({ document, host, supported = true, 
   });
   refreshButton.addEventListener('click', () => {
     if (!open || busy || !snapshot?.handle) return;
-    setBusy(true, 'Refreshing Orbit…');
+    setBusy(true, 'Refreshing folder…');
     onRefresh?.();
   });
   openElsewhere.addEventListener('click', () => {

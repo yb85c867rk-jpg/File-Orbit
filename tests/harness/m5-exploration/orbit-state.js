@@ -6,11 +6,11 @@
  * touch recovery/editor/history/activeDocument state.
  */
 function normalizedError(result) {
-  if (!result) return { reason: 'unknown', stage: 'operation', message: 'Orbit operation failed.' };
+  if (!result) return { reason: 'unknown', stage: 'operation', message: 'Map Library operation failed.' };
   return {
     reason: String(result.reason || 'unknown'),
     stage: String(result.stage || 'operation'),
-    message: String(result.message || result.errorMessage || result.errorName || 'Orbit operation failed.'),
+    message: String(result.message || result.errorMessage || result.errorName || 'Map Library operation failed.'),
     errorName: String(result.errorName || ''),
     errorMessage: String(result.errorMessage || '')
   };
@@ -173,7 +173,7 @@ export function createOrbitStateController({ adapter, now = () => Date.now() } =
   };
 
   async function openDirectory({ mode = 'readwrite' } = {}) {
-    if (destroyed) return { ...failure('destroyed', 'open', 'The Orbit controller was destroyed.'), state: snapshot() };
+    if (destroyed) return { ...failure('destroyed', 'open', 'The Map Library connection was closed.'), state: snapshot() };
     const request = { id: ++requestSeq, kind: 'open' };
     openRequest = request;
     listRequest = null;
@@ -191,7 +191,7 @@ export function createOrbitStateController({ adapter, now = () => Date.now() } =
       if (settledPhase === 'listing' && !hasSuccessfulList) {
         settledPhase = 'blocked';
         phase = 'blocked';
-        error = { reason: 'listing-incomplete', stage: 'open', message: 'The Orbit selection succeeded, but its first listing did not complete. Refresh to retry.', errorName: '', errorMessage: '' };
+        error = { reason: 'listing-incomplete', stage: 'open', message: 'FileOrbit opened the folder, but couldn’t list its files. Choose Refresh to try again.', errorName: '', errorMessage: '' };
         stale = true;
       } else {
         phase = settledPhase;
@@ -222,8 +222,8 @@ export function createOrbitStateController({ adapter, now = () => Date.now() } =
   }
 
   function restoreDirectory(nextHandle, { name: nextName = '', permission: nextPermission = 'prompt', enumerate = false } = {}) {
-    if (destroyed) return { ...failure('destroyed', 'restore', 'The Orbit controller was destroyed.'), state: snapshot() };
-    if (!nextHandle || typeof nextHandle.values !== 'function') return { ...failure('invalid-handle', 'restore', 'A directory handle is required.'), state: snapshot() };
+    if (destroyed) return { ...failure('destroyed', 'restore', 'The Map Library connection was closed.'), state: snapshot() };
+    if (!nextHandle || typeof nextHandle.values !== 'function') return { ...failure('invalid-handle', 'restore', 'Choose a folder first.'), state: snapshot() };
     openRequest = null;
     listRequest = null;
     activeSession = ++sessionSeq;
@@ -249,8 +249,8 @@ export function createOrbitStateController({ adapter, now = () => Date.now() } =
       reason,
       stage: 'restore',
       message: reason === 'permission-denied'
-        ? 'Map Library access is denied. Reconnect Map Library or choose another directory.'
-        : 'Your browser needs permission to reconnect FileOrbit to this folder. Click Reconnect Map Library, then allow access in the browser prompt.',
+        ? 'FileOrbit can’t read this folder. Choose Reconnect Map Library to restore access.'
+        : 'FileOrbit needs permission to open this folder again. Choose Reconnect Map Library and allow access in the browser prompt.',
       errorName: '', errorMessage: ''
     };
     settledPhase = 'blocked';
@@ -258,8 +258,8 @@ export function createOrbitStateController({ adapter, now = () => Date.now() } =
     return { ok: false, reason, stage: 'restore', message: error.message, state: snapshot() };
   }
   async function adoptDirectory(nextHandle, { name: nextName = '', permission: nextPermission = 'granted' } = {}) {
-    if (destroyed) return { ...failure('destroyed', 'open', 'The Orbit controller was destroyed.'), state: snapshot() };
-    if (!nextHandle || typeof nextHandle.values !== 'function') return { ...failure('invalid-handle', 'open', 'A directory handle is required.'), state: snapshot() };
+    if (destroyed) return { ...failure('destroyed', 'open', 'The Map Library connection was closed.'), state: snapshot() };
+    if (!nextHandle || typeof nextHandle.values !== 'function') return { ...failure('invalid-handle', 'open', 'Choose a folder first.'), state: snapshot() };
     const request = { id: ++requestSeq, kind: 'open' };
     openRequest = request;
     listRequest = null;
@@ -284,9 +284,9 @@ export function createOrbitStateController({ adapter, now = () => Date.now() } =
   }
 
   async function refresh() {
-    if (destroyed) return { ...failure('destroyed', 'refresh', 'The Orbit controller was destroyed.'), state: snapshot() };
-    if (!handle || !activeSession) return { ...failure('no-orbit', 'refresh', 'No Orbit is active.'), state: snapshot() };
-    if (phase === 'opening') return { ...failure('busy', 'refresh', 'Directory selection is in progress.'), state: snapshot() };
+    if (destroyed) return { ...failure('destroyed', 'refresh', 'The Map Library connection was closed.'), state: snapshot() };
+    if (!handle || !activeSession) return { ...failure('no-orbit', 'refresh', 'No Map Library folder is connected.'), state: snapshot() };
+    if (phase === 'opening') return { ...failure('busy', 'refresh', 'A folder is already being chosen.'), state: snapshot() };
     const request = { id: ++requestSeq, kind: 'refresh', session: activeSession, handle };
     listRequest = request;
     phase = 'listing';

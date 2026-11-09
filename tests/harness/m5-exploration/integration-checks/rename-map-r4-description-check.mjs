@@ -56,7 +56,7 @@ try {
  await rootMenu(); const menuHasRename=await ev("Boolean(document.querySelector('#editor-context-menu button[data-action=\\\"rename-map\\\"]'))");
  await ev("(()=>{document.querySelector('#editor-context-menu button[data-action=\\\"rename-map\\\"]').click();return true})()"); await sl(400);
  const blocked=await ev("({dialog:document.querySelector('.rename-map-backdrop')?.hidden!==false,status:document.querySelector('#shell-status')?.textContent||'',draft:document.querySelector('#editor-description')?.value||''})");
- assert.equal(menuHasRename,true);assert.equal(blocked.dialog,true);assert.match(blocked.status,/editor|Finish|applied/i);assert.equal(blocked.draft,'pending draft text');
+ assert.equal(menuHasRename,true);assert.equal(blocked.dialog,true);assert.match(blocked.status,/Save or cancel|edit/i);assert.equal(blocked.draft,'pending draft text');
  await shot('r4-description-rename-blocked.png');
  const finalC=await decode('C.orbit'); assert.deepEqual(finalC.names,['C.orbit','Other.orbit']);assert.equal(finalC.description,DESCRIPTION);
  await ev("(()=>{document.querySelector('#editor-form .editor-actions button:last-child').click();return true})()");
@@ -68,7 +68,7 @@ try {
  const unsaved=await ev("({formHidden:document.querySelector('#editor-form')?.hidden,error:document.querySelector('#editor-error')?.textContent||'',status:document.querySelector('#editor-status')?.textContent||'',shell:document.querySelector('#shell-status')?.textContent||'',toast:document.querySelector('#folder-export-success')?.textContent||'',draft:document.querySelector('#editor-description')?.value||'',retry:[...document.querySelectorAll('#editor-form button')].some(b=>b.textContent==='Retry Save'&&!b.hidden)})");
  const unsavedDiagnostic=await diagnostics();
  assert.equal(unsaved.formHidden,false);assert.equal(unsaved.draft,RETRY_TEXT);assert.equal(unsaved.retry,true);assert.equal(unsavedDiagnostic.stage,'encoding');
- assert.equal(unsavedDiagnostic.appliedRetained,true);assert.match(unsaved.shell + ' ' + unsaved.toast + ' ' + unsaved.status,/applied but|not saved/i);
+ assert.equal(unsavedDiagnostic.appliedRetained,true);assert.match(unsaved.shell + ' ' + unsaved.toast + ' ' + unsaved.status,/couldn.t save|still open|Retry Save/i);
  const duringFailure=await decode('C.orbit'); assert.equal(duringFailure.description,DESCRIPTION);
  await ev("globalThis.__M5_SAVE_ENCODE_FAILURE__=false;true");
  await ev("(()=>{[...document.querySelectorAll('#editor-form button')].find(b=>b.textContent==='Retry Save').click();return true})()");

@@ -21,7 +21,7 @@ export function createOrbitFolderBrowserDialog({
   card.className = 'file-open-browser-card orbit-folder-browser-card';
   const title = document.createElement('h2');
   title.id = 'orbit-folder-browser-title';
-  title.textContent = 'Open Orbit Folder';
+  title.textContent = 'Open Map Folder';
   const folderName = document.createElement('p');
   folderName.className = 'orbit-folder-browser-current';
   const breadcrumb = document.createElement('nav');
