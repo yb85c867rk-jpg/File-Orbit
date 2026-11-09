@@ -1785,7 +1785,7 @@ function createEditor() {
     onExportDiagnostic: (current) => exportUploadStructureDiagnostic(current)
   });
   ensureUploadInputs();
-  deleteConfirmation = createDeleteConfirmation({ document, host: overlayHost, onConfirm: (value) => executeDeleteConfirmation(value), onExportDiagnostic: (value, failure) => exportDeleteStructureDiagnostic(value, failure), onClosed: () => syncHistoryControls(), onCancel: () => { lastClickDiagnostic = { reason: 'delete-cancelled' }; publish(); } });
+  deleteConfirmation = createDeleteConfirmation({ document, host: overlayHost, onConfirm: (value) => executeDeleteConfirmation(value), onExportDiagnostic: (value, failure) => exportDeleteStructureDiagnostic(value, failure), onClosed: () => { syncHistoryControls(); syncPersistenceControls(); }, onCancel: () => { lastClickDiagnostic = { reason: 'delete-cancelled' }; publish(); } });
   editorPanel = createEditorPanel({
     document, summaryHost: detailsEl, editorHost, controller: editorController,
     canEdit: () => !ownership.blocked() && !destroying && !navigator?.busy && !dragState && editorAdmissionAllowed(),
